@@ -28,6 +28,9 @@
 		1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */; };
 		1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEA81D45F9A500ABED5D /* FSConst.m */; };
 		1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */; };
+		1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */; };
+		1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */; };
+		1F7EDEBA1D4624F100ABED5D /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,11 @@
 		1F7EDEA81D45F9A500ABED5D /* FSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConst.m; sourceTree = "<group>"; };
 		1F7EDEAC1D45FFCA00ABED5D /* UIColor+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FSExtension.h"; sourceTree = "<group>"; };
 		1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FSExtension.m"; sourceTree = "<group>"; };
+		1F7EDEAF1D46167400ABED5D /* FSNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNavigationViewController.h; sourceTree = "<group>"; };
+		1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNavigationViewController.m; sourceTree = "<group>"; };
+		1F7EDEB61D4624F100ABED5D /* FSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLoginViewController.h; sourceTree = "<group>"; };
+		1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLoginViewController.m; sourceTree = "<group>"; };
+		1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSLoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +297,7 @@
 		1F7EDE7F1D45EF6900ABED5D /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				1F7EDEB21D4624A100ABED5D /* LoginAndRegister */,
 				1F7EDE801D45EF6900ABED5D /* Controller */,
 				1F7EDE841D45EF6900ABED5D /* Model */,
 				1F7EDE851D45EF6900ABED5D /* View */,
@@ -373,6 +382,8 @@
 			children = (
 				1F7EDE911D45EF6900ABED5D /* FSTabBarController.h */,
 				1F7EDE921D45EF6900ABED5D /* FSTabBarController.m */,
+				1F7EDEAF1D46167400ABED5D /* FSNavigationViewController.h */,
+				1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -395,6 +406,40 @@
 				1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		1F7EDEB21D4624A100ABED5D /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDEB31D4624A100ABED5D /* Controller */,
+				1F7EDEB41D4624A100ABED5D /* Moel */,
+				1F7EDEB51D4624A100ABED5D /* View */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		1F7EDEB31D4624A100ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDEB61D4624F100ABED5D /* FSLoginViewController.h */,
+				1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */,
+				1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDEB41D4624A100ABED5D /* Moel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Moel;
+			sourceTree = "<group>";
+		};
+		1F7EDEB51D4624A100ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +550,7 @@
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
+				1F7EDEBA1D4624F100ABED5D /* FSLoginViewController.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
@@ -539,10 +585,12 @@
 				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
+				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
+				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,
 				1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */,
 			);

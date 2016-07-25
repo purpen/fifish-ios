@@ -14,8 +14,10 @@
 #import "FSMeViewController.h"
 #import "FSTabBar.h"
 #import "UIColor+FSExtension.h"
+#import "FSNavigationViewController.h"
+#import "FSLoginViewController.h"
 
-@interface FSTabBarController ()
+@interface FSTabBarController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -42,6 +44,8 @@
 {
     [super viewDidLoad];
     
+    self.delegate = self;
+    
     // 添加子控制器
     [self setupChildVc:[[FSHomeViewController alloc] init] title:@"首页" image:@"home" selectedImage:@"home_selected"];
     
@@ -67,8 +71,27 @@
     vc.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
     
     // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    FSNavigationViewController *nav = [[FSNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
+}
+
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    //这里我判断的是当前点击的tabBarItem的标题
+    if ([viewController.tabBarItem.title isEqualToString:@"我"]) {
+        //如果没有登录
+        if (0) {
+            return YES;
+        }else{
+            //登录注册
+            FSLoginViewController *vc = [[FSLoginViewController alloc] init];
+            [self presentViewController:vc animated:YES completion:nil];
+            return NO;
+        }
+    }else {
+        return YES;
+    }
 }
 
 @end
