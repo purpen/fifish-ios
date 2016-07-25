@@ -8,13 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
-		1F7EDE1C1D45E0D300ABED5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE1B1D45E0D300ABED5D /* AppDelegate.m */; };
-		1F7EDE1F1D45E0D300ABED5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE1E1D45E0D300ABED5D /* ViewController.m */; };
-		1F7EDE221D45E0D300ABED5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE201D45E0D300ABED5D /* Main.storyboard */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
 		1F7EDE321D45E0D300ABED5D /* FifishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE311D45E0D300ABED5D /* FifishTests.m */; };
 		1F7EDE3D1D45E0D300ABED5D /* FifishUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE3C1D45E0D300ABED5D /* FifishUITests.m */; };
+		1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE6D1D45EF6900ABED5D /* FSEquipmentViewController.m */; };
+		1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE6E1D45EF6900ABED5D /* FSEquipmentViewController.xib */; };
+		1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE741D45EF6900ABED5D /* FSFoundViewController.m */; };
+		1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE751D45EF6900ABED5D /* FSFoundViewController.xib */; };
+		1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */; };
+		1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */; };
+		1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */; };
+		1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */; };
+		1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE891D45EF6900ABED5D /* FSMediaViewController.m */; };
+		1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */; };
+		1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE8F1D45EF6900ABED5D /* AppDelegate.m */; };
+		1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE921D45EF6900ABED5D /* FSTabBarController.m */; };
+		1F7EDEA21D45F15D00ABED5D /* FSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEA11D45F15D00ABED5D /* FSTabBar.m */; };
+		1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */; };
+		1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEA81D45F9A500ABED5D /* FSConst.m */; };
+		1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +50,6 @@
 /* Begin PBXFileReference section */
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F7EDE1A1D45E0D300ABED5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1F7EDE1B1D45E0D300ABED5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F7EDE1D1D45E0D300ABED5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1F7EDE1E1D45E0D300ABED5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1F7EDE211D45E0D300ABED5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F7EDE261D45E0D300ABED5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F7EDE281D45E0D300ABED5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +59,33 @@
 		1F7EDE381D45E0D300ABED5D /* FifishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FifishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE3C1D45E0D300ABED5D /* FifishUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FifishUITests.m; sourceTree = "<group>"; };
 		1F7EDE3E1D45E0D300ABED5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F7EDE6C1D45EF6900ABED5D /* FSEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEquipmentViewController.h; sourceTree = "<group>"; };
+		1F7EDE6D1D45EF6900ABED5D /* FSEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEquipmentViewController.m; sourceTree = "<group>"; };
+		1F7EDE6E1D45EF6900ABED5D /* FSEquipmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEquipmentViewController.xib; sourceTree = "<group>"; };
+		1F7EDE731D45EF6900ABED5D /* FSFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundViewController.h; sourceTree = "<group>"; };
+		1F7EDE741D45EF6900ABED5D /* FSFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundViewController.m; sourceTree = "<group>"; };
+		1F7EDE751D45EF6900ABED5D /* FSFoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFoundViewController.xib; sourceTree = "<group>"; };
+		1F7EDE7A1D45EF6900ABED5D /* FSHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeViewController.h; sourceTree = "<group>"; };
+		1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeViewController.m; sourceTree = "<group>"; };
+		1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeViewController.xib; sourceTree = "<group>"; };
+		1F7EDE811D45EF6900ABED5D /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
+		1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
+		1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeViewController.xib; sourceTree = "<group>"; };
+		1F7EDE881D45EF6900ABED5D /* FSMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaViewController.h; sourceTree = "<group>"; };
+		1F7EDE891D45EF6900ABED5D /* FSMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaViewController.m; sourceTree = "<group>"; };
+		1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMediaViewController.xib; sourceTree = "<group>"; };
+		1F7EDE8E1D45EF6900ABED5D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F7EDE8F1D45EF6900ABED5D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F7EDE911D45EF6900ABED5D /* FSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTabBarController.h; sourceTree = "<group>"; };
+		1F7EDE921D45EF6900ABED5D /* FSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTabBarController.m; sourceTree = "<group>"; };
+		1F7EDEA01D45F15D00ABED5D /* FSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTabBar.h; sourceTree = "<group>"; };
+		1F7EDEA11D45F15D00ABED5D /* FSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTabBar.m; sourceTree = "<group>"; };
+		1F7EDEA41D45F4AD00ABED5D /* UIView+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FSExtension.h"; sourceTree = "<group>"; };
+		1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FSExtension.m"; sourceTree = "<group>"; };
+		1F7EDEA71D45F9A500ABED5D /* FSConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConst.h; sourceTree = "<group>"; };
+		1F7EDEA81D45F9A500ABED5D /* FSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConst.m; sourceTree = "<group>"; };
+		1F7EDEAC1D45FFCA00ABED5D /* UIColor+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FSExtension.h"; sourceTree = "<group>"; };
+		1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FSExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +136,7 @@
 		1F7EDE161D45E0D300ABED5D /* Fifish */ = {
 			isa = PBXGroup;
 			children = (
-				1F7EDE1A1D45E0D300ABED5D /* AppDelegate.h */,
-				1F7EDE1B1D45E0D300ABED5D /* AppDelegate.m */,
-				1F7EDE1D1D45E0D300ABED5D /* ViewController.h */,
-				1F7EDE1E1D45E0D300ABED5D /* ViewController.m */,
-				1F7EDE201D45E0D300ABED5D /* Main.storyboard */,
-				1F7EDE231D45E0D300ABED5D /* Assets.xcassets */,
-				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
-				1F7EDE281D45E0D300ABED5D /* Info.plist */,
+				1F7EDE691D45EF6900ABED5D /* Classes */,
 				1F7EDE171D45E0D300ABED5D /* Supporting Files */,
 			);
 			path = Fifish;
@@ -117,6 +145,9 @@
 		1F7EDE171D45E0D300ABED5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1F7EDE231D45E0D300ABED5D /* Assets.xcassets */,
+				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
+				1F7EDE281D45E0D300ABED5D /* Info.plist */,
 				1F7EDE181D45E0D300ABED5D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +169,232 @@
 				1F7EDE3E1D45E0D300ABED5D /* Info.plist */,
 			);
 			path = FifishUITests;
+			sourceTree = "<group>";
+		};
+		1F7EDE691D45EF6900ABED5D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE6A1D45EF6900ABED5D /* Equipment */,
+				1F7EDE711D45EF6900ABED5D /* Found */,
+				1F7EDE781D45EF6900ABED5D /* Home */,
+				1F7EDE7F1D45EF6900ABED5D /* Me */,
+				1F7EDE861D45EF6900ABED5D /* Media */,
+				1F7EDE8D1D45EF6900ABED5D /* Other */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1F7EDE6A1D45EF6900ABED5D /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE6B1D45EF6900ABED5D /* Controller */,
+				1F7EDE6F1D45EF6900ABED5D /* Model */,
+				1F7EDE701D45EF6900ABED5D /* View */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		1F7EDE6B1D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE6C1D45EF6900ABED5D /* FSEquipmentViewController.h */,
+				1F7EDE6D1D45EF6900ABED5D /* FSEquipmentViewController.m */,
+				1F7EDE6E1D45EF6900ABED5D /* FSEquipmentViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE6F1D45EF6900ABED5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7EDE701D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDE711D45EF6900ABED5D /* Found */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE721D45EF6900ABED5D /* Controller */,
+				1F7EDE761D45EF6900ABED5D /* Model */,
+				1F7EDE771D45EF6900ABED5D /* View */,
+			);
+			path = Found;
+			sourceTree = "<group>";
+		};
+		1F7EDE721D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE731D45EF6900ABED5D /* FSFoundViewController.h */,
+				1F7EDE741D45EF6900ABED5D /* FSFoundViewController.m */,
+				1F7EDE751D45EF6900ABED5D /* FSFoundViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE761D45EF6900ABED5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7EDE771D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDE781D45EF6900ABED5D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE791D45EF6900ABED5D /* Controller */,
+				1F7EDE7D1D45EF6900ABED5D /* Model */,
+				1F7EDE7E1D45EF6900ABED5D /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1F7EDE791D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE7A1D45EF6900ABED5D /* FSHomeViewController.h */,
+				1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */,
+				1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE7D1D45EF6900ABED5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7EDE7E1D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDE7F1D45EF6900ABED5D /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE801D45EF6900ABED5D /* Controller */,
+				1F7EDE841D45EF6900ABED5D /* Model */,
+				1F7EDE851D45EF6900ABED5D /* View */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		1F7EDE801D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE811D45EF6900ABED5D /* FSMeViewController.h */,
+				1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */,
+				1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE841D45EF6900ABED5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7EDE851D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDE861D45EF6900ABED5D /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE871D45EF6900ABED5D /* Controller */,
+				1F7EDE8B1D45EF6900ABED5D /* Model */,
+				1F7EDE8C1D45EF6900ABED5D /* View */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		1F7EDE871D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE881D45EF6900ABED5D /* FSMediaViewController.h */,
+				1F7EDE891D45EF6900ABED5D /* FSMediaViewController.m */,
+				1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE8B1D45EF6900ABED5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F7EDE8C1D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDE8D1D45EF6900ABED5D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDEA31D45F41500ABED5D /* Category */,
+				1F7EDE901D45EF6900ABED5D /* Controller */,
+				1F7EDE931D45EF6900ABED5D /* View */,
+				1F7EDE8E1D45EF6900ABED5D /* AppDelegate.h */,
+				1F7EDE8F1D45EF6900ABED5D /* AppDelegate.m */,
+				1F7EDEA71D45F9A500ABED5D /* FSConst.h */,
+				1F7EDEA81D45F9A500ABED5D /* FSConst.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		1F7EDE901D45EF6900ABED5D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDE911D45EF6900ABED5D /* FSTabBarController.h */,
+				1F7EDE921D45EF6900ABED5D /* FSTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7EDE931D45EF6900ABED5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDEA01D45F15D00ABED5D /* FSTabBar.h */,
+				1F7EDEA11D45F15D00ABED5D /* FSTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7EDEA31D45F41500ABED5D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1F7EDEA41D45F4AD00ABED5D /* UIView+FSExtension.h */,
+				1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */,
+				1F7EDEAC1D45FFCA00ABED5D /* UIColor+FSExtension.h */,
+				1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,11 +459,13 @@
 		1F7EDE0C1D45E0D200ABED5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FS;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Dong;
 				TargetAttributes = {
 					1F7EDE131D45E0D200ABED5D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = QNKEA2Q4R9;
 					};
 					1F7EDE2C1D45E0D300ABED5D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -245,7 +504,11 @@
 			files = (
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
-				1F7EDE221D45E0D300ABED5D /* Main.storyboard in Resources */,
+				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
+				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
+				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
+				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +533,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F7EDE1F1D45E0D300ABED5D /* ViewController.m in Sources */,
-				1F7EDE1C1D45E0D300ABED5D /* AppDelegate.m in Sources */,
+				1F7EDEA21D45F15D00ABED5D /* FSTabBar.m in Sources */,
+				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
+				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
+				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
+				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
+				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
+				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
+				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
+				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
+				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,
+				1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +580,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1F7EDE201D45E0D300ABED5D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F7EDE211D45E0D300ABED5D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -345,7 +609,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -367,6 +631,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -389,7 +654,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -404,6 +669,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -413,9 +679,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fifish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.THN.Fifish;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -424,9 +691,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fifish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.THN.Fifish;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

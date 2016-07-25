@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FSMediaViewController.h
 //  Fifish
 //
 //  Created by THN-Dong on 16/7/25.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface FSMediaViewController : UIViewController
 
 @end
-
