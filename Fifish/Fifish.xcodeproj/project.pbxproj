@@ -12,6 +12,12 @@
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
 		1F4201B91D474A1C00D3E6CB /* FSForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201B71D474A1C00D3E6CB /* FSForgetViewController.m */; };
 		1F4201BA1D474A1C00D3E6CB /* FSForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B81D474A1C00D3E6CB /* FSForgetViewController.xib */; };
+		1F4201C01D4755C400D3E6CB /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */; };
+		1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C31D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m */; };
+		1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C51D475C8A00D3E6CB /* SVProgressAnimatedView.m */; };
+		1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201C71D475C8A00D3E6CB /* SVProgressHUD.bundle */; };
+		1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C91D475C8A00D3E6CB /* SVProgressHUD.m */; };
+		1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201CB1D475C8A00D3E6CB /* SVRadialGradientLayer.m */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -79,6 +85,18 @@
 		1F4201B61D474A1C00D3E6CB /* FSForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSForgetViewController.h; sourceTree = "<group>"; };
 		1F4201B71D474A1C00D3E6CB /* FSForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSForgetViewController.m; sourceTree = "<group>"; };
 		1F4201B81D474A1C00D3E6CB /* FSForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSForgetViewController.xib; sourceTree = "<group>"; };
+		1F4201BE1D4755C400D3E6CB /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		1F4201C21D475C8A00D3E6CB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		1F4201C31D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		1F4201C41D475C8A00D3E6CB /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		1F4201C51D475C8A00D3E6CB /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		1F4201C61D475C8A00D3E6CB /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		1F4201C71D475C8A00D3E6CB /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		1F4201C81D475C8A00D3E6CB /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		1F4201C91D475C8A00D3E6CB /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		1F4201CA1D475C8A00D3E6CB /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		1F4201CB1D475C8A00D3E6CB /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +199,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F4201C11D475C8A00D3E6CB /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1F4201C21D475C8A00D3E6CB /* SVIndefiniteAnimatedView.h */,
+				1F4201C31D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m */,
+				1F4201C41D475C8A00D3E6CB /* SVProgressAnimatedView.h */,
+				1F4201C51D475C8A00D3E6CB /* SVProgressAnimatedView.m */,
+				1F4201C61D475C8A00D3E6CB /* SVProgressHUD-Prefix.pch */,
+				1F4201C71D475C8A00D3E6CB /* SVProgressHUD.bundle */,
+				1F4201C81D475C8A00D3E6CB /* SVProgressHUD.h */,
+				1F4201C91D475C8A00D3E6CB /* SVProgressHUD.m */,
+				1F4201CA1D475C8A00D3E6CB /* SVRadialGradientLayer.h */,
+				1F4201CB1D475C8A00D3E6CB /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +498,8 @@
 		1F7EDEA31D45F41500ABED5D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1F4201BE1D4755C400D3E6CB /* NSString+Helper.h */,
+				1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */,
 				1F7EDEA41D45F4AD00ABED5D /* UIView+FSExtension.h */,
 				1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */,
 				1F7EDEAC1D45FFCA00ABED5D /* UIColor+FSExtension.h */,
@@ -513,6 +550,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1F4201C11D475C8A00D3E6CB /* SVProgressHUD */,
 				1F7EDEBF1D4700E500ABED5D /* IQKeyboardManager */,
 			);
 			path = ThirdParty;
@@ -710,6 +748,7 @@
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1F4201BA1D474A1C00D3E6CB /* FSForgetViewController.xib in Resources */,
@@ -740,15 +779,19 @@
 			files = (
 				1F7EDEA21D45F15D00ABED5D /* FSTabBar.m in Sources */,
 				1F7EDEEC1D4700E500ABED5D /* IQTextView.m in Sources */,
+				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
+				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
 				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
 				1F7EDEEA1D4700E500ABED5D /* IQKeyboardManager.m in Sources */,
+				1F4201C01D4755C400D3E6CB /* NSString+Helper.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
+				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F4201B91D474A1C00D3E6CB /* FSForgetViewController.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
@@ -764,6 +807,7 @@
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
+				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,
