@@ -47,13 +47,13 @@
     self.delegate = self;
     
     // 添加子控制器
-    [self setupChildVc:[[FSHomeViewController alloc] init] title:@"首页" image:@"home" selectedImage:@"home_selected"];
+    [self setupChildVc:[[FSHomeViewController alloc] init] title:NSLocalizedString(@"home", nil) image:@"home" selectedImage:@"home_selected"];
     
-    [self setupChildVc:[[FSMediaViewController alloc] init] title:@"媒体" image:@"media" selectedImage:@"media_selected"];
+    [self setupChildVc:[[FSMediaViewController alloc] init] title:NSLocalizedString(@"media", nil) image:@"media" selectedImage:@"media_selected"];
     
-    [self setupChildVc:[[FSFoundViewController alloc] init] title:@"发现" image:@"found" selectedImage:@"found_selected"];
+    [self setupChildVc:[[FSFoundViewController alloc] init] title:NSLocalizedString(@"found", nil) image:@"found" selectedImage:@"found_selected"];
     
-    [self setupChildVc:[[FSMeViewController alloc] init] title:@"我" image:@"me" selectedImage:@"me_selected"];
+    [self setupChildVc:[[FSMeViewController alloc] init] title:NSLocalizedString(@"me", nil) image:@"me" selectedImage:@"me_selected"];
     
     // 更换tabBar
     [self setValue:[[FSTabBar alloc] init] forKeyPath:@"tabBar"];
@@ -79,7 +79,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     //这里我判断的是当前点击的tabBarItem的标题
-    if ([viewController.tabBarItem.title isEqualToString:@"我"]) {
+    if ([viewController.tabBarItem.title isEqualToString:NSLocalizedString(@"me", nil)]) {
         //如果没有登录
         if (0) {
             return YES;

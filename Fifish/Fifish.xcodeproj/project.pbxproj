@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
+		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -30,7 +32,6 @@
 		1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */; };
 		1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */; };
 		1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */; };
-		1F7EDEBA1D4624F100ABED5D /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */; };
 		1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEBC1D46F99500ABED5D /* FSTextField.m */; };
 		1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEC21D4700E500ABED5D /* IQNSArray+Sort.m */; };
 		1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEC41D4700E500ABED5D /* IQUIScrollView+Additions.m */; };
@@ -71,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		1F4201911D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,7 +118,6 @@
 		1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNavigationViewController.m; sourceTree = "<group>"; };
 		1F7EDEB61D4624F100ABED5D /* FSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLoginViewController.h; sourceTree = "<group>"; };
 		1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLoginViewController.m; sourceTree = "<group>"; };
-		1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSLoginViewController.xib; sourceTree = "<group>"; };
 		1F7EDEBB1D46F99500ABED5D /* FSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTextField.h; sourceTree = "<group>"; };
 		1F7EDEBC1D46F99500ABED5D /* FSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTextField.m; sourceTree = "<group>"; };
 		1F7EDEC11D4700E500ABED5D /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
 				1F7EDE281D45E0D300ABED5D /* Info.plist */,
 				1F7EDE181D45E0D300ABED5D /* main.m */,
+				1F42018C1D47389700D3E6CB /* InfoPlist.strings */,
+				1F42018F1D47389C00D3E6CB /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -483,7 +489,6 @@
 			children = (
 				1F7EDEB61D4624F100ABED5D /* FSLoginViewController.h */,
 				1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */,
-				1F7EDEB81D4624F100ABED5D /* FSLoginViewController.xib */,
 				1F7EDEF31D47042A00ABED5D /* FSRegisterViewController.h */,
 				1F7EDEF41D47042A00ABED5D /* FSRegisterViewController.m */,
 				1F7EDEF51D47042A00ABED5D /* FSRegisterViewController.xib */,
@@ -683,6 +688,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 1F7EDE0B1D45E0D200ABED5D;
 			productRefGroup = 1F7EDE151D45E0D200ABED5D /* Products */;
@@ -702,13 +708,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
+				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				1F7EDF011D47148A00ABED5D /* FSForgetViewController.xib in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
-				1F7EDEBA1D4624F100ABED5D /* FSLoginViewController.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1F7EDEF71D47042A00ABED5D /* FSRegisterViewController.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
@@ -802,6 +809,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1F42018C1D47389700D3E6CB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F42018B1D47389700D3E6CB /* en */,
+				1F4201901D4738AB00D3E6CB /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F42018F1D47389C00D3E6CB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F42018E1D47389C00D3E6CB /* en */,
+				1F4201911D4738AB00D3E6CB /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

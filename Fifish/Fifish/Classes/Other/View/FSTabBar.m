@@ -41,7 +41,7 @@
         self.equipmentBtn = equipmentBtn;
         
         UILabel *equipmentLabel = [[UILabel alloc] init];
-        equipmentLabel.text = @"设备";
+        equipmentLabel.text = NSLocalizedString(@"equipment", nil);
         equipmentLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         equipmentLabel.font = [UIFont systemFontOfSize:12];
         equipmentLabel.textAlignment = NSTextAlignmentCenter;

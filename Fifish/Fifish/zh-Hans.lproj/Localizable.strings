@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Fifish
+
+  Created by THN-Dong on 16/7/26.
+  Copyright © 2016年 Dong. All rights reserved.
+*/
+
+"home" = "首页";
+"media" = "媒体";
+"found" = "发现";
+"me" = "我";
+"equipment" = "设备";
