@@ -79,7 +79,7 @@
     CGFloat buttonW = width / 5;
     CGFloat buttonH = height;
     NSInteger index = 0;
-    self.equipmentLabel.frame = CGRectMake(0, 0, 60, 12);
+    self.equipmentLabel.frame = CGRectMake(0, 0, 70, 12);
     self.equipmentLabel.center = CGPointMake(width * 0.5, height * 0.87 - 2);
     for (UIControl *button in self.subviews) {
         if (![button isKindOfClass:[UIControl class]] || button == self.equipmentBtn) continue;

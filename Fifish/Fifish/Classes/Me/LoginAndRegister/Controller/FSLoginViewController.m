@@ -8,7 +8,6 @@
 
 #import "FSLoginViewController.h"
 #import "FSTextField.h"
-#import "FSRegisterViewController.h"
 #import "FSForgetViewController.h"
 
 @interface FSLoginViewController ()
