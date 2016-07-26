@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,9 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSLoginViewController">
             <connections>
+                <outlet property="cancelBtn" destination="Mzt-Wb-TJs" id="5oT-Hg-1O8"/>
+                <outlet property="forgetBtn" destination="Btb-8y-TvJ" id="kA6-5O-sQO"/>
+                <outlet property="loginBtn" destination="73H-QE-NgH" id="D72-KG-RkV"/>
                 <outlet property="phoneTF" destination="y0s-fV-ciq" id="Gdn-85-Vuw"/>
                 <outlet property="pwdTF" destination="cgb-5w-LdR" id="RE0-cB-wva"/>
+                <outlet property="qqBtn" destination="3R8-3s-9RQ" id="8E0-0u-0zw"/>
+                <outlet property="registerNowBtn" destination="MSt-Uh-vwl" id="tFd-RD-qOD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weiBoBtn" destination="AnA-Cs-s2q" id="bfm-tT-yMJ"/>
+                <outlet property="weiXinBtn" destination="HZ4-3t-wff" id="vtI-ez-kh4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,6 +34,9 @@
                         <constraint firstAttribute="width" constant="18" id="t86-st-Uc5"/>
                     </constraints>
                     <state key="normal" image="navi_cancel"/>
+                    <connections>
+                        <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="RBT-bY-bge"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ita-gq-Vzn">
                     <rect key="frame" x="89" y="80" width="197" height="46"/>
@@ -37,11 +47,12 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_phone" translatesAutoresizingMaskIntoConstraints="NO" id="tJF-Vx-R0b">
                             <rect key="frame" x="28" y="50" width="19" height="19"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0s-fV-ciq">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0s-fV-ciq" customClass="FSTextField">
                             <rect key="frame" x="57" y="38" width="261" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="e5O-XX-lgt"/>
                             </constraints>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -55,11 +66,12 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_lock" translatesAutoresizingMaskIntoConstraints="NO" id="XVJ-9L-ZEb">
                             <rect key="frame" x="28" y="117" width="19" height="20"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgb-5w-LdR">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgb-5w-LdR" customClass="FSTextField">
                             <rect key="frame" x="57" y="105" width="261" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="M6v-BT-YUC"/>
                             </constraints>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -76,10 +88,16 @@
                             <state key="normal" title="忘记密码?">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="forgetBtn:" destination="-1" eventType="touchUpInside" id="FsY-hc-pGL"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73H-QE-NgH" userLabel="登录按钮">
                             <rect key="frame" x="39" y="207" width="296" height="55"/>
                             <state key="normal" image="login_login"/>
+                            <connections>
+                                <action selector="loginBtn:" destination="-1" eventType="touchUpInside" id="Bya-z6-Y1J"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -124,14 +142,23 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnA-Cs-s2q" userLabel="weibo">
                             <rect key="frame" x="168" y="68" width="40" height="41"/>
                             <state key="normal" image="login_weiBo"/>
+                            <connections>
+                                <action selector="weiboBtn:" destination="-1" eventType="touchUpInside" id="Zwv-PE-FEd"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ4-3t-wff" userLabel="weixin">
                             <rect key="frame" x="76" y="68" width="41" height="41"/>
                             <state key="normal" image="login_weixin"/>
+                            <connections>
+                                <action selector="weixinBtn:" destination="-1" eventType="touchUpInside" id="o03-Uy-c59"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3R8-3s-9RQ" userLabel="qq">
                             <rect key="frame" x="258" y="68" width="41" height="41"/>
                             <state key="normal" image="login_qq"/>
+                            <connections>
+                                <action selector="qqBtn:" destination="-1" eventType="touchUpInside" id="UwK-3O-Ui0"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awe-Lo-LPD" userLabel="去注册">
                             <rect key="frame" x="117" y="105" width="141" height="70"/>
@@ -148,6 +175,9 @@
                                     <state key="normal" title="立即注册">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="registerNowBtn:" destination="-1" eventType="touchUpInside" id="q2Y-Ro-8eh"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

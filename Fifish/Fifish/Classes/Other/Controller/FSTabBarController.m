@@ -86,7 +86,8 @@
         }else{
             //登录注册
             FSLoginViewController *vc = [[FSLoginViewController alloc] init];
-            [self presentViewController:vc animated:YES completion:nil];
+            FSNavigationViewController *naviVc = [[FSNavigationViewController alloc] initWithRootViewController:vc];
+            [self presentViewController:naviVc animated:YES completion:nil];
             return NO;
         }
     }else {

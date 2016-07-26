@@ -7,11 +7,21 @@
 //
 
 #import "FSLoginViewController.h"
+#import "FSTextField.h"
+#import "FSRegisterViewController.h"
+#import "FSForgetPwdViewController.h"
 
 @interface FSLoginViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UITextField *pwdTF;
+@property (weak, nonatomic) IBOutlet FSTextField *phoneTF;
+@property (weak, nonatomic) IBOutlet FSTextField *pwdTF;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weiXinBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weiBoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *qqBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registerNowBtn;
 
 @end
 
@@ -19,22 +29,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)cancelBtn:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
+
+- (IBAction)forgetBtn:(UIButton *)sender {
+    FSForgetPwdViewController *vc = [[FSForgetPwdViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)loginBtn:(UIButton *)sender {
+}
+- (IBAction)weixinBtn:(UIButton *)sender {
+}
+- (IBAction)weiboBtn:(id)sender {
+}
+- (IBAction)qqBtn:(UIButton *)sender {
+}
+- (IBAction)registerNowBtn:(UIButton *)sender {
+}
 
 @end

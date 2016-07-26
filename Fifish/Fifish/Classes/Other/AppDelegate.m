@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "FSTabBarController.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 
@@ -20,14 +21,22 @@
     // 创建窗口
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
-    
     // 设置窗口的根控制器
     self.window.rootViewController = [[FSTabBarController alloc] init];
-    
     // 显示窗口
     [self.window makeKeyAndVisible];
+    [self setKeyBoard];
 
     return YES;
+}
+
+-(void)setKeyBoard{
+    //  键盘事件
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
