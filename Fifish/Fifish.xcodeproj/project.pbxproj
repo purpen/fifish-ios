@@ -49,8 +49,8 @@
 		1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEE31D4700E500ABED5D /* IQKeyboardManager.bundle */; };
 		1F7EDEF61D47042A00ABED5D /* FSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEF41D47042A00ABED5D /* FSRegisterViewController.m */; };
 		1F7EDEF71D47042A00ABED5D /* FSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEF51D47042A00ABED5D /* FSRegisterViewController.xib */; };
-		1F7EDEFB1D47050D00ABED5D /* FSForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEF91D47050D00ABED5D /* FSForgetPwdViewController.m */; };
-		1F7EDEFC1D47050D00ABED5D /* FSForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEFA1D47050D00ABED5D /* FSForgetPwdViewController.xib */; };
+		1F7EDF001D47148A00ABED5D /* FSForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEFE1D47148A00ABED5D /* FSForgetViewController.m */; };
+		1F7EDF011D47148A00ABED5D /* FSForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEFF1D47148A00ABED5D /* FSForgetViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,9 +150,9 @@
 		1F7EDEF31D47042A00ABED5D /* FSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegisterViewController.h; sourceTree = "<group>"; };
 		1F7EDEF41D47042A00ABED5D /* FSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegisterViewController.m; sourceTree = "<group>"; };
 		1F7EDEF51D47042A00ABED5D /* FSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRegisterViewController.xib; sourceTree = "<group>"; };
-		1F7EDEF81D47050D00ABED5D /* FSForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSForgetPwdViewController.h; sourceTree = "<group>"; };
-		1F7EDEF91D47050D00ABED5D /* FSForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSForgetPwdViewController.m; sourceTree = "<group>"; };
-		1F7EDEFA1D47050D00ABED5D /* FSForgetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSForgetPwdViewController.xib; sourceTree = "<group>"; };
+		1F7EDEFD1D47148A00ABED5D /* FSForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSForgetViewController.h; sourceTree = "<group>"; };
+		1F7EDEFE1D47148A00ABED5D /* FSForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSForgetViewController.m; sourceTree = "<group>"; };
+		1F7EDEFF1D47148A00ABED5D /* FSForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSForgetViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,9 +487,9 @@
 				1F7EDEF31D47042A00ABED5D /* FSRegisterViewController.h */,
 				1F7EDEF41D47042A00ABED5D /* FSRegisterViewController.m */,
 				1F7EDEF51D47042A00ABED5D /* FSRegisterViewController.xib */,
-				1F7EDEF81D47050D00ABED5D /* FSForgetPwdViewController.h */,
-				1F7EDEF91D47050D00ABED5D /* FSForgetPwdViewController.m */,
-				1F7EDEFA1D47050D00ABED5D /* FSForgetPwdViewController.xib */,
+				1F7EDEFD1D47148A00ABED5D /* FSForgetViewController.h */,
+				1F7EDEFE1D47148A00ABED5D /* FSForgetViewController.m */,
+				1F7EDEFF1D47148A00ABED5D /* FSForgetViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -702,9 +702,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
+				1F7EDF011D47148A00ABED5D /* FSForgetViewController.xib in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
-				1F7EDEFC1D47050D00ABED5D /* FSForgetPwdViewController.xib in Resources */,
 				1F7EDEBA1D4624F100ABED5D /* FSLoginViewController.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
@@ -747,6 +747,7 @@
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
+				1F7EDF001D47148A00ABED5D /* FSForgetViewController.m in Sources */,
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
@@ -761,7 +762,6 @@
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
-				1F7EDEFB1D47050D00ABED5D /* FSForgetPwdViewController.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				1F7EDEF61D47042A00ABED5D /* FSRegisterViewController.m in Sources */,
 				1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */,

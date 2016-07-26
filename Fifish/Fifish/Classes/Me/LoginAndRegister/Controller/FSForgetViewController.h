@@ -1,5 +1,5 @@
 //
-//  FSForgetPwdViewController.h
+//  FSForgetViewController.h
 //  Fifish
 //
 //  Created by THN-Dong on 16/7/26.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSForgetPwdViewController : UIViewController
+@interface FSForgetViewController : UIViewController
 
 @end

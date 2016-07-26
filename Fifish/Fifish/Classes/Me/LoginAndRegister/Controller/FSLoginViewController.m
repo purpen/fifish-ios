@@ -9,7 +9,7 @@
 #import "FSLoginViewController.h"
 #import "FSTextField.h"
 #import "FSRegisterViewController.h"
-#import "FSForgetPwdViewController.h"
+#import "FSForgetViewController.h"
 
 @interface FSLoginViewController ()
 
@@ -48,7 +48,7 @@
 }
 
 - (IBAction)forgetBtn:(UIButton *)sender {
-    FSForgetPwdViewController *vc = [[FSForgetPwdViewController alloc] init];
+    FSForgetViewController *vc = [[FSForgetViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)loginBtn:(UIButton *)sender {
