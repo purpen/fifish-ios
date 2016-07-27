@@ -1,0 +1,118 @@
+//
+//  FSImproveViewController.m
+//  Fifish
+//
+//  Created by THN-Dong on 16/7/27.
+//  Copyright © 2016年 Dong. All rights reserved.
+//
+
+#import "FSImproveViewController.h"
+#import "UIImage+Helper.h"
+
+@interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIView *head_bg_view;
+@property (weak, nonatomic) IBOutlet UIImageView *head_bg_imageView;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTF;
+@property (weak, nonatomic) IBOutlet UITextField *professionalTF;
+@property (weak, nonatomic) IBOutlet UITextField *addressTF;
+@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
+
+@end
+
+@implementation FSImproveViewController
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.head_bg_view.layer.masksToBounds = YES;
+    self.head_bg_view.layer.cornerRadius = 50;
+    self.head_bg_imageView.layer.masksToBounds = YES;
+    self.head_bg_imageView.layer.cornerRadius = 48;
+    
+    UITapGestureRecognizer* singleRecognizer;
+    singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];
+    singleRecognizer.numberOfTapsRequired = 1;
+    singleRecognizer.numberOfTouchesRequired = 1;
+    [self.head_bg_imageView addGestureRecognizer:singleRecognizer];
+    self.head_bg_imageView.userInteractionEnabled = YES;
+    
+    [self.sureBtn addTarget:self action:@selector(sureBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.userNameTF.delegate = self;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField.text.length == 0) {
+        self.sureBtn.selected = NO;
+        self.sureBtn.enabled = NO;
+    }else{
+        self.sureBtn.selected = YES;
+        self.sureBtn.enabled = YES;
+    }
+}
+
+
+-(void)sureBtnClick:(UIButton*)sender{
+    //网络请求
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)singleTap:(UITapGestureRecognizer*)recognizer{
+    
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"更换头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //判断是否支持相机。模拟器没有相机
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //调取相机
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:nil];
+        }];
+        [alertC addAction:cameraAction];
+    }
+    UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //调取相册
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertC dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertC addAction:phontoAction];
+    [alertC addAction:cancelAction];
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
+    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
+    //        NSData * iconData = UIImageJPEGRepresentation(editedImg , 0.5);
+    [self uploadIconWithData:iconData];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//上传头像
+- (void)uploadIconWithData:(NSData *)iconData
+{
+    NSString * icon64Str = [iconData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//    NSDictionary * params = @{@"type": @3, @"tmp": icon64Str};
+//    FBRequest * request = [FBAPI postWithUrlString:IconURL requestDictionary:params delegate:self];
+//    request.flag = IconURL;
+//    [request startRequest];
+}
+
+
+
+
+@end

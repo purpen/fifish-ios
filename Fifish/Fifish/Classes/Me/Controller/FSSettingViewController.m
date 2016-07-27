@@ -1,18 +1,18 @@
 //
-//  FSRegisterViewController.m
+//  FSSettingViewController.m
 //  Fifish
 //
-//  Created by THN-Dong on 16/7/26.
+//  Created by THN-Dong on 16/7/27.
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import "FSRegisterViewController.h"
+#import "FSSettingViewController.h"
 
-@interface FSRegisterViewController ()
+@interface FSSettingViewController ()
 
 @end
 
-@implementation FSRegisterViewController
+@implementation FSSettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

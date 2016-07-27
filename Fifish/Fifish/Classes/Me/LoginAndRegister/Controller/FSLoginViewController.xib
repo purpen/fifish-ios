@@ -23,6 +23,7 @@
                 <outlet property="registerNowBtn" destination="MSt-Uh-vwl" id="tFd-RD-qOD"/>
                 <outlet property="timeLabel" destination="DFA-Os-aIT" id="179-gq-9gk"/>
                 <outlet property="timeView" destination="Kml-yU-Ph0" id="xIn-i7-VvI"/>
+                <outlet property="tipLabel" destination="ZvY-4J-pYg" id="qr8-P9-Qp7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weiBoBtn" destination="AnA-Cs-s2q" id="bfm-tT-yMJ"/>
                 <outlet property="weiXinBtn" destination="HZ4-3t-wff" id="vtI-ez-kh4"/>
@@ -48,10 +49,10 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ita-gq-Vzn">
-                    <rect key="frame" x="89" y="80" width="197" height="46"/>
+                    <rect key="frame" x="113" y="80" width="149" height="44"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B62-Sc-ulc" userLabel="手机号登录">
-                    <rect key="frame" x="0.0" y="136" width="375" height="257"/>
+                    <rect key="frame" x="0.0" y="134" width="375" height="257"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_phone" translatesAutoresizingMaskIntoConstraints="NO" id="tJF-Vx-R0b">
                             <rect key="frame" x="28" y="50" width="19" height="19"/>
@@ -178,12 +179,11 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-Uh-vwl">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-Uh-vwl">
                                     <rect key="frame" x="85" y="21" width="56" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <state key="normal" title="立即注册">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </state>
+                                    <state key="normal" title="立即注册"/>
+                                    <state key="selected" title="立即登录"/>
                                     <connections>
                                         <action selector="registerNowBtn:" destination="-1" eventType="touchUpInside" id="q2Y-Ro-8eh"/>
                                     </connections>
@@ -252,7 +252,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="La4-SU-CuI" userLabel="注册">
-                    <rect key="frame" x="375" y="136" width="375" height="277"/>
+                    <rect key="frame" x="375" y="134" width="375" height="277"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_phone" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-nH-kCX">
                             <rect key="frame" x="28" y="20" width="19" height="19"/>
@@ -447,7 +447,7 @@
         <image name="login_code_white" width="18" height="20"/>
         <image name="login_lock" width="19" height="20"/>
         <image name="login_login" width="289" height="48"/>
-        <image name="login_logo" width="197" height="46"/>
+        <image name="login_logo" width="149" height="44"/>
         <image name="login_phone" width="19" height="19"/>
         <image name="login_qq" width="41" height="41"/>
         <image name="login_weiBo" width="40" height="41"/>

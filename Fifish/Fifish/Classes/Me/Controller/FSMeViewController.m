@@ -7,8 +7,14 @@
 //
 
 #import "FSMeViewController.h"
+#import "UIBarButtonItem+FSExtension.h"
+#import "UIColor+FSExtension.h"
+#import "FSSettingViewController.h"
+#import "FSHomePageViewController.h"
 
 @interface FSMeViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UIButton *homePageBtn;
 
 @end
 
@@ -16,22 +22,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setupNav];
+    
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 40;
+    self.headImageView.layer.borderWidth = 2;
+    self.headImageView.layer.borderColor = [UIColor colorWithHexString:@"#F1F1F1"].CGColor;
+    
+    [self.homePageBtn addTarget:self action:@selector(clickHomePageBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)clickHomePageBtn:(UIButton*)sender{
+    FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setupNav{
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil target:self action:@selector(setClick)];
+    self.navigationItem.rightBarButtonItem = setItem;
+    self.navigationItem.leftBarButtonItem = searchItem;
 }
-*/
+
+-(void)searchClick{
+    
+}
+
+-(void)setClick{
+    FSSettingViewController *vc = [[FSSettingViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "UIView+FSExtension.h"
 #import "NSString+Helper.h"
 #import "SVProgressHUD.h"
+#import "FSImproveViewController.h"
 
 @interface FSLoginViewController ()
 
@@ -34,15 +35,41 @@
 @property (weak, nonatomic) IBOutlet FSTextField *phone_register;
 @property (weak, nonatomic) IBOutlet FSTextField *codeTF;
 
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @end
 
 @implementation FSLoginViewController
 
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.getCodeBtn_register addTarget:self action:@selector(getCodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerBtn addTarget:self action:@selector(clickRegisterBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.timeView.layer.masksToBounds = YES;
     self.timeView.layer.cornerRadius = 20;
+}
+
+-(void)clickRegisterBtn:(UIButton*)sender{
+//    if (![_phone_register.text checkTel]) {
+//        [SVProgressHUD showInfoWithStatus:@"手机号不正确"];
+//        return;
+//    }
+//    if (!_codeTF.text.length) {
+//        [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
+//        return;
+//    }
+//    if (_pwd_register.text.length < 6) {
+//        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
+//        return;
+//    }
+    //进行网络请求
+    
+    FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)getCodeBtnClick:(UIButton*)sender{
@@ -107,6 +134,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)loginBtn:(UIButton *)sender {
+    //进行网络请求
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)weixinBtn:(UIButton *)sender {
 }
@@ -115,6 +145,12 @@
 - (IBAction)qqBtn:(UIButton *)sender {
 }
 - (IBAction)registerNowBtn:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.tipLabel.text = @"已有帐号?";
+    }else{
+        self.tipLabel.text = @"还没有帐号?";
+    }
     // 退出键盘
     [self.view endEditing:YES];
     

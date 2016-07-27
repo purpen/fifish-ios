@@ -81,7 +81,7 @@
     //这里我判断的是当前点击的tabBarItem的标题
     if ([viewController.tabBarItem.title isEqualToString:NSLocalizedString(@"me", nil)]) {
         //如果没有登录
-        if (0) {
+        if (1) {
             return YES;
         }else{
             //登录注册
