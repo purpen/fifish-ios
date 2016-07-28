@@ -105,9 +105,13 @@
 
 //点击『立即使用』按钮
 -(void)clickSkips:(UIButton*)sender{
-    FSTabBarController *tab = [[FSTabBarController alloc] init];
-    [tab setSelectedIndex:0];
-    [self presentViewController:tab animated:YES completion:nil];
+    if (self.flag == shouYe) {
+        FSTabBarController *tab = [[FSTabBarController alloc] init];
+        [tab setSelectedIndex:0];
+        [self presentViewController:tab animated:YES completion:nil];
+    }else if(self.flag == welcomePage){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 //UIScrollViewDelegate

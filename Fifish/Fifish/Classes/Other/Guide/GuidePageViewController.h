@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    shouYe = 1,
+    welcomePage = 0
+} LanchFlag;
 
 @interface GuidePageViewController : UIViewController
 
+/** 标识 */
+@property (nonatomic, assign) LanchFlag flag;
 
 -(instancetype)initWithPicArr:(NSArray*)picArr andRootVC:(UIViewController*)controller;
 

@@ -8,7 +8,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSSettingViewController">
             <connections>
+                <outlet property="aboutBtn" destination="tbD-xs-upN" id="dVK-hl-Apb"/>
+                <outlet property="cacheLabel" destination="wbZ-jF-R93" id="fpI-Nn-9hu"/>
+                <outlet property="changePasswordBtn" destination="izD-ZG-Thr" id="ntg-pT-l0a"/>
+                <outlet property="clearCacheBtn" destination="DIU-Ne-frF" id="ThP-F9-McA"/>
+                <outlet property="evaluationBtn" destination="t8N-9g-u09" id="PHI-1Z-p3c"/>
+                <outlet property="feedbackBtn" destination="KlA-Uh-Yyl" id="8gJ-0G-hyK"/>
+                <outlet property="pushSettingsBtn" destination="8X1-xk-6tH" id="lU4-vz-fl4"/>
+                <outlet property="pushStateLabel" destination="8Eg-9Q-web" id="3yT-ch-VsB"/>
+                <outlet property="quiteBtn" destination="gJf-IF-jXc" id="byO-aZ-mf8"/>
+                <outlet property="shareBtn" destination="6Yp-Rb-a9h" id="1VQ-eP-Pty"/>
                 <outlet property="view" destination="inl-Hc-eWc" id="1UG-wS-hWZ"/>
+                <outlet property="welcomeBtn" destination="NEG-nX-VjC" id="htR-Ne-952"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,8 +27,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNQ-nf-OQf">
-                    <rect key="frame" x="0.0" y="213" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNQ-nf-OQf" userLabel="清空缓存">
+                    <rect key="frame" x="0.0" y="230" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清空缓存" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDY-lW-ObS">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -38,6 +49,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIU-Ne-frF">
                             <rect key="frame" x="8" y="9" width="352" height="30"/>
+                            <connections>
+                                <action selector="clearCacheBtn:" destination="-1" eventType="touchUpInside" id="pgo-em-0wq"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbZ-jF-R93">
                             <rect key="frame" x="286" y="12" width="55" height="21"/>
@@ -73,8 +87,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIS-DG-wN9">
-                    <rect key="frame" x="0.0" y="258" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIS-DG-wN9" userLabel="去评价">
+                    <rect key="frame" x="0.0" y="275" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="去评价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wX-C8-QPy">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -95,6 +109,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8N-9g-u09">
                             <rect key="frame" x="11" y="7" width="352" height="30"/>
+                            <connections>
+                                <action selector="evaluationBtn:" destination="-1" eventType="touchUpInside" id="6h9-xq-UxE"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,8 +135,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGP-gh-nFf">
-                    <rect key="frame" x="0.0" y="303" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGP-gh-nFf" userLabel="欢迎页">
+                    <rect key="frame" x="0.0" y="320" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wb3-in-J3X">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -140,6 +157,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEG-nX-VjC">
                             <rect key="frame" x="11" y="9" width="352" height="30"/>
+                            <connections>
+                                <action selector="welcomeBtn:" destination="-1" eventType="touchUpInside" id="GiV-nL-jCL"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,8 +183,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fav-QH-mWA">
-                    <rect key="frame" x="0.0" y="393" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fav-QH-mWA" userLabel="意见反馈">
+                    <rect key="frame" x="0.0" y="365" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意见反馈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-66-zjZ">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -185,6 +205,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlA-Uh-Yyl">
                             <rect key="frame" x="8" y="9" width="352" height="30"/>
+                            <connections>
+                                <action selector="feedbackBtn:" destination="-1" eventType="touchUpInside" id="duz-v5-nmf"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,10 +231,10 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5WV-yI-4vI">
-                    <rect key="frame" x="0.0" y="348" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5WV-yI-4vI" userLabel="关于太火鸟">
+                    <rect key="frame" x="0.0" y="410" width="375" height="44"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于Fiu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgU-KA-FGf">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于太火鸟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgU-KA-FGf">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="82" id="BSh-UY-ehk"/>
@@ -230,6 +253,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-xs-upN">
                             <rect key="frame" x="11" y="9" width="352" height="30"/>
+                            <connections>
+                                <action selector="aboutBtn:" destination="-1" eventType="touchUpInside" id="1iC-GI-VOG"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,8 +279,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pd-8u-sEx">
-                    <rect key="frame" x="0.0" y="438" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pd-8u-sEx" userLabel="分享给好友">
+                    <rect key="frame" x="0.0" y="455" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享给好友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkz-H4-HMv">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -275,6 +301,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yp-Rb-a9h">
                             <rect key="frame" x="11" y="7" width="352" height="30"/>
+                            <connections>
+                                <action selector="shareBtn:" destination="-1" eventType="touchUpInside" id="hiE-xe-dpT"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,8 +327,8 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果你要关闭或开启新消息通知，请在iPhone的&quot;设置&quot;-&quot;通知&quot;功能中，找到应用程序&quot;Fiu&quot;更改" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IU-oI-coj">
-                    <rect key="frame" x="15" y="120" width="343" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果你要关闭或开启新消息通知，请在iPhone的&quot;设置&quot;-&quot;通知&quot;功能中，找到应用程序&quot;Fifish&quot;更改" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IU-oI-coj">
+                    <rect key="frame" x="15" y="174" width="343" height="41"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="41" id="df1-BI-9WO"/>
                     </constraints>
@@ -307,7 +336,7 @@
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfP-Vy-oKI">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfP-Vy-oKI" userLabel="修改密码">
                     <rect key="frame" x="0.0" y="68" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL0-Ec-r3V">
@@ -329,6 +358,9 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izD-ZG-Thr">
                             <rect key="frame" x="11" y="7" width="352" height="30"/>
+                            <connections>
+                                <action selector="changePasswordBtn:" destination="-1" eventType="touchUpInside" id="6S9-Xs-BSz"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,8 +383,8 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dde-i9-mnc">
-                    <rect key="frame" x="0.0" y="168" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dde-i9-mnc" userLabel="推送设置">
+                    <rect key="frame" x="0.0" y="119" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推送设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avI-o6-gsb">
                             <rect key="frame" x="15" y="12" width="82" height="21"/>
@@ -376,6 +408,9 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X1-xk-6tH">
                             <rect key="frame" x="8" y="9" width="352" height="30"/>
+                            <connections>
+                                <action selector="pushSettingBtn:" destination="-1" eventType="touchUpInside" id="Uwr-RX-pSJ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,13 +432,13 @@
                         </mask>
                     </variation>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lk8-Dj-5te">
-                    <rect key="frame" x="0.0" y="497" width="375" height="44"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lk8-Dj-5te" userLabel="退出当前账户">
+                    <rect key="frame" x="0.0" y="514" width="375" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出当前账户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oj-5H-SNA">
                             <rect key="frame" x="146" y="14" width="84" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.74509803919999995" green="0.53725490200000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.16470588235294117" green="0.47058823529411764" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJf-IF-jXc">
@@ -429,6 +464,9 @@
                                     <exclude reference="s2y-4t-NNT"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="quiteBtn:" destination="-1" eventType="touchUpInside" id="h2C-Jd-sXS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -451,9 +489,11 @@
             </subviews>
             <color key="backgroundColor" red="0.95973086350000003" green="0.95973086350000003" blue="0.95973086350000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Dde-i9-mnc" firstAttribute="top" secondItem="PfP-Vy-oKI" secondAttribute="bottom" constant="7" id="0ce-1y-IIw"/>
                 <constraint firstItem="Lk8-Dj-5te" firstAttribute="top" secondItem="1Pd-8u-sEx" secondAttribute="bottom" constant="15" id="1Jg-Mx-8LR"/>
                 <constraint firstItem="Dde-i9-mnc" firstAttribute="top" secondItem="2IU-oI-coj" secondAttribute="bottom" constant="7" id="1ng-JX-yvo"/>
                 <constraint firstItem="PfP-Vy-oKI" firstAttribute="width" secondItem="PfP-Vy-oKI" secondAttribute="height" multiplier="375:44" id="28C-LV-lEN"/>
+                <constraint firstItem="dNQ-nf-OQf" firstAttribute="top" secondItem="2IU-oI-coj" secondAttribute="bottom" constant="15" id="3Fp-OQ-GnP"/>
                 <constraint firstItem="QGP-gh-nFf" firstAttribute="width" secondItem="QGP-gh-nFf" secondAttribute="height" multiplier="375:44" id="3se-S5-iZT"/>
                 <constraint firstAttribute="trailing" secondItem="1Pd-8u-sEx" secondAttribute="trailing" id="3zr-cI-17U"/>
                 <constraint firstAttribute="trailing" secondItem="Dde-i9-mnc" secondAttribute="trailing" id="4vS-bq-SrR"/>
@@ -461,6 +501,7 @@
                 <constraint firstItem="2IU-oI-coj" firstAttribute="top" secondItem="Dde-i9-mnc" secondAttribute="bottom" constant="8" id="5Ff-18-KfF"/>
                 <constraint firstItem="1Pd-8u-sEx" firstAttribute="top" secondItem="5WV-yI-4vI" secondAttribute="bottom" constant="1" id="5xE-QQ-iE4"/>
                 <constraint firstItem="1Pd-8u-sEx" firstAttribute="width" secondItem="1Pd-8u-sEx" secondAttribute="height" multiplier="375:44" id="6fU-ti-3ki"/>
+                <constraint firstItem="2IU-oI-coj" firstAttribute="top" secondItem="Dde-i9-mnc" secondAttribute="bottom" constant="11" id="8RT-sp-Rzv"/>
                 <constraint firstItem="fav-QH-mWA" firstAttribute="top" secondItem="QGP-gh-nFf" secondAttribute="bottom" constant="50" id="8qF-6g-XUd"/>
                 <constraint firstItem="5WV-yI-4vI" firstAttribute="top" secondItem="QGP-gh-nFf" secondAttribute="bottom" constant="1" id="D8e-ee-cJc"/>
                 <constraint firstItem="PfP-Vy-oKI" firstAttribute="top" secondItem="2IU-oI-coj" secondAttribute="bottom" constant="7" id="EZ8-hx-ThB"/>
@@ -482,6 +523,7 @@
                 <constraint firstItem="1Pd-8u-sEx" firstAttribute="leading" secondItem="inl-Hc-eWc" secondAttribute="leading" id="b7d-ls-srk"/>
                 <constraint firstItem="1Pd-8u-sEx" firstAttribute="top" secondItem="fav-QH-mWA" secondAttribute="bottom" constant="1" id="bUw-ul-Lbx"/>
                 <constraint firstItem="1Pd-8u-sEx" firstAttribute="width" secondItem="1Pd-8u-sEx" secondAttribute="height" multiplier="375:44" id="bVm-Eh-mqU"/>
+                <constraint firstItem="fav-QH-mWA" firstAttribute="bottom" secondItem="5WV-yI-4vI" secondAttribute="top" constant="-1" id="cM5-xE-1pz"/>
                 <constraint firstItem="fav-QH-mWA" firstAttribute="leading" secondItem="inl-Hc-eWc" secondAttribute="leading" id="d3f-DG-2bi"/>
                 <constraint firstItem="QGP-gh-nFf" firstAttribute="width" secondItem="QGP-gh-nFf" secondAttribute="height" multiplier="375:44" id="dVf-yu-NDs"/>
                 <constraint firstItem="oIS-DG-wN9" firstAttribute="width" secondItem="oIS-DG-wN9" secondAttribute="height" multiplier="375:44" id="dpy-aw-teo"/>
@@ -493,6 +535,7 @@
                 <constraint firstItem="PfP-Vy-oKI" firstAttribute="leading" secondItem="inl-Hc-eWc" secondAttribute="leading" id="lyh-ZW-KY6"/>
                 <constraint firstItem="dNQ-nf-OQf" firstAttribute="top" secondItem="PfP-Vy-oKI" secondAttribute="bottom" constant="1" id="mYq-en-Cxk"/>
                 <constraint firstItem="oIS-DG-wN9" firstAttribute="width" secondItem="oIS-DG-wN9" secondAttribute="height" multiplier="375:44" id="oYC-fY-8HQ"/>
+                <constraint firstItem="5WV-yI-4vI" firstAttribute="bottom" secondItem="1Pd-8u-sEx" secondAttribute="top" constant="-1" id="p0Z-E3-5G0"/>
                 <constraint firstItem="oIS-DG-wN9" firstAttribute="top" secondItem="dNQ-nf-OQf" secondAttribute="bottom" constant="1" id="pnc-o0-i9G"/>
                 <constraint firstItem="Dde-i9-mnc" firstAttribute="leading" secondItem="inl-Hc-eWc" secondAttribute="leading" id="qf7-fd-d6S"/>
                 <constraint firstAttribute="trailing" secondItem="dNQ-nf-OQf" secondAttribute="trailing" id="qge-ru-ju0"/>
@@ -503,33 +546,40 @@
                 <constraint firstItem="dNQ-nf-OQf" firstAttribute="leading" secondItem="inl-Hc-eWc" secondAttribute="leading" id="wty-ad-rCO"/>
                 <constraint firstAttribute="trailing" secondItem="fav-QH-mWA" secondAttribute="trailing" id="xNH-y4-x0B"/>
                 <constraint firstItem="fav-QH-mWA" firstAttribute="width" secondItem="fav-QH-mWA" secondAttribute="height" multiplier="375:44" id="xoS-UC-R3a"/>
+                <constraint firstItem="fav-QH-mWA" firstAttribute="top" secondItem="QGP-gh-nFf" secondAttribute="bottom" constant="1" id="yHl-EG-RyY"/>
                 <constraint firstItem="PfP-Vy-oKI" firstAttribute="width" secondItem="PfP-Vy-oKI" secondAttribute="height" multiplier="375:44" id="yMN-Ri-tGg"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="yMN-Ri-tGg"/>
+                    <exclude reference="EZ8-hx-ThB"/>
                     <exclude reference="TMb-Vc-Gs7"/>
                     <exclude reference="WxS-yM-rh2"/>
-                    <exclude reference="EZ8-hx-ThB"/>
-                    <exclude reference="5Ff-18-KfF"/>
+                    <exclude reference="yMN-Ri-tGg"/>
+                    <exclude reference="1ng-JX-yvo"/>
                     <exclude reference="It6-ld-hTC"/>
-                    <exclude reference="w0X-US-jnP"/>
-                    <exclude reference="mYq-en-Cxk"/>
+                    <exclude reference="5Ff-18-KfF"/>
+                    <exclude reference="I1m-ht-Whi"/>
+                    <exclude reference="KBu-dW-ECt"/>
                     <exclude reference="fRS-Ef-tQs"/>
+                    <exclude reference="mYq-en-Cxk"/>
+                    <exclude reference="w0X-US-jnP"/>
                     <exclude reference="dpy-aw-teo"/>
                     <exclude reference="oYC-fY-8HQ"/>
                     <exclude reference="3se-S5-iZT"/>
                     <exclude reference="dVf-yu-NDs"/>
+                    <exclude reference="D8e-ee-cJc"/>
                     <exclude reference="JSd-D4-P1d"/>
-                    <exclude reference="s0b-vc-sQh"/>
                     <exclude reference="e8I-xV-qiu"/>
-                    <exclude reference="weH-hs-Y15"/>
+                    <exclude reference="s0b-vc-sQh"/>
                     <exclude reference="8qF-6g-XUd"/>
+                    <exclude reference="kfm-fp-5Uo"/>
+                    <exclude reference="weH-hs-Y15"/>
                     <exclude reference="xoS-UC-R3a"/>
-                    <exclude reference="bVm-Eh-mqU"/>
                     <exclude reference="5xE-QQ-iE4"/>
                     <exclude reference="6fU-ti-3ki"/>
+                    <exclude reference="bUw-ul-Lbx"/>
+                    <exclude reference="bVm-Eh-mqU"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="504.5" y="380.5"/>
