@@ -86,7 +86,7 @@
 //        button.size = CGSizeMake(70, 30);
         // 让按钮内部的所有内容左对齐
 //        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-                [button sizeToFit];
+        [button sizeToFit];
         // 让按钮的内容往左边偏移10
 //        button.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
 //        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

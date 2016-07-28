@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSHomePageViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
+                <outlet property="aboutWebView" destination="s6c-1L-vIr" id="UFX-7z-YbD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6c-1L-vIr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="s6c-1L-vIr" secondAttribute="trailing" id="0B6-pi-b6w"/>
+                <constraint firstItem="s6c-1L-vIr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0lZ-PV-Kt7"/>
+                <constraint firstItem="s6c-1L-vIr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Xn-iA-dLz"/>
+                <constraint firstAttribute="bottom" secondItem="s6c-1L-vIr" secondAttribute="bottom" id="eHm-ZQ-JWd"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>

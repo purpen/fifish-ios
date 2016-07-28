@@ -10,7 +10,10 @@
 #import "AppDelegate.h"
 #import "SDImageCache.h"
 #import "SVProgressHUD.h"
+#import "ChanePwdViewController.h"
 #import "GuidePageViewController.h"
+#import "OptionViewController.h"
+#import "AboutViewController.h"
 
 @interface FSSettingViewController ()<NotificationDelege>
 
@@ -73,6 +76,8 @@
 }
 
 - (IBAction)changePasswordBtn:(id)sender {
+    ChanePwdViewController *vc = [[ChanePwdViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)pushSettingBtn:(id)sender {
     //推送设置
@@ -93,8 +98,12 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)feedbackBtn:(id)sender {
+    OptionViewController *vc = [[OptionViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)aboutBtn:(id)sender {
+    AboutViewController *vc = [[AboutViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)shareBtn:(id)sender {
 }

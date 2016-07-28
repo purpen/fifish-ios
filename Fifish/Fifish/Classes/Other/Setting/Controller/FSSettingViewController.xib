@@ -60,7 +60,7 @@
                                 <constraint firstAttribute="width" constant="55" id="m4H-zC-jTT"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="0.74509803919999995" green="0.53725490200000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.1647058824" green="0.47058823529999999" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -82,8 +82,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="YRX-r9-YiP"/>
                             <exclude reference="JAE-Yi-rKK"/>
+                            <exclude reference="YRX-r9-YiP"/>
                         </mask>
                     </variation>
                 </view>
@@ -130,8 +130,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="etK-FV-7Jy"/>
                             <exclude reference="eps-OX-i53"/>
+                            <exclude reference="etK-FV-7Jy"/>
                         </mask>
                     </variation>
                 </view>
@@ -178,8 +178,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="f01-SB-weR"/>
                             <exclude reference="O9d-v3-fvq"/>
+                            <exclude reference="f01-SB-weR"/>
                         </mask>
                     </variation>
                 </view>
@@ -226,8 +226,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="GCV-Ci-CkX"/>
                             <exclude reference="A6p-B0-XoG"/>
+                            <exclude reference="GCV-Ci-CkX"/>
                         </mask>
                     </variation>
                 </view>
@@ -378,8 +378,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="knZ-fS-IMB"/>
                             <exclude reference="0qm-eF-4e8"/>
+                            <exclude reference="knZ-fS-IMB"/>
                         </mask>
                     </variation>
                 </view>
@@ -457,9 +457,9 @@
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
+                                    <exclude reference="1EK-EQ-FCH"/>
                                     <exclude reference="ApH-ou-DVH"/>
                                     <exclude reference="NJC-fJ-Yag"/>
-                                    <exclude reference="1EK-EQ-FCH"/>
                                     <exclude reference="r1l-AO-pkh"/>
                                     <exclude reference="s2y-4t-NNT"/>
                                 </mask>
@@ -568,14 +568,14 @@
                     <exclude reference="oYC-fY-8HQ"/>
                     <exclude reference="3se-S5-iZT"/>
                     <exclude reference="dVf-yu-NDs"/>
-                    <exclude reference="D8e-ee-cJc"/>
-                    <exclude reference="JSd-D4-P1d"/>
-                    <exclude reference="e8I-xV-qiu"/>
-                    <exclude reference="s0b-vc-sQh"/>
                     <exclude reference="8qF-6g-XUd"/>
                     <exclude reference="kfm-fp-5Uo"/>
                     <exclude reference="weH-hs-Y15"/>
                     <exclude reference="xoS-UC-R3a"/>
+                    <exclude reference="D8e-ee-cJc"/>
+                    <exclude reference="JSd-D4-P1d"/>
+                    <exclude reference="e8I-xV-qiu"/>
+                    <exclude reference="s0b-vc-sQh"/>
                     <exclude reference="5xE-QQ-iE4"/>
                     <exclude reference="6fU-ti-3ki"/>
                     <exclude reference="bUw-ul-Lbx"/>

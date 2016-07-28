@@ -56,7 +56,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_camera" translatesAutoresizingMaskIntoConstraints="NO" id="ZCN-4a-ADm">
                     <rect key="frame" x="213" y="224" width="27" height="27"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-tJ-Yi3">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SF-tJ-Yi3">
                     <rect key="frame" x="45" y="571" width="285" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="4hg-PB-9qg"/>

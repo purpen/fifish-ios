@@ -95,6 +95,14 @@
 		1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEDF1D4700E500ABED5D /* IQToolbar.m */; };
 		1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEE11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m */; };
 		1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEE31D4700E500ABED5D /* IQKeyboardManager.bundle */; };
+		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
+		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
+		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
+		1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E621D49F3A100EB3C93 /* ChanePwdViewController.xib */; };
+		1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E681D49F3A900EB3C93 /* OptionViewController.m */; };
+		1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */; };
+		1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */; };
+		1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +295,18 @@
 		1F7EDEE01D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
 		1F7EDEE11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		1F7EDEE31D4700E500ABED5D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		1FF36E601D49F3A100EB3C93 /* ChanePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanePwdViewController.h; sourceTree = "<group>"; };
+		1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanePwdViewController.m; sourceTree = "<group>"; };
+		1FF36E621D49F3A100EB3C93 /* ChanePwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChanePwdViewController.xib; sourceTree = "<group>"; };
+		1FF36E671D49F3A900EB3C93 /* OptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionViewController.h; sourceTree = "<group>"; };
+		1FF36E681D49F3A900EB3C93 /* OptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionViewController.m; sourceTree = "<group>"; };
+		1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionViewController.xib; sourceTree = "<group>"; };
+		1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeHeadTableViewCell.h; sourceTree = "<group>"; };
+		1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeHeadTableViewCell.m; sourceTree = "<group>"; };
+		1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeHeadTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +407,15 @@
 		1F4202141D48D4A900D3E6CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1FF36E671D49F3A900EB3C93 /* OptionViewController.h */,
+				1FF36E681D49F3A900EB3C93 /* OptionViewController.m */,
+				1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */,
+				1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */,
+				1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */,
+				1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */,
+				1FF36E601D49F3A100EB3C93 /* ChanePwdViewController.h */,
+				1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */,
+				1FF36E621D49F3A100EB3C93 /* ChanePwdViewController.xib */,
 				1F4202151D48D4A900D3E6CB /* FSSettingViewController.h */,
 				1F4202161D48D4A900D3E6CB /* FSSettingViewController.m */,
 				1F4202171D48D4A900D3E6CB /* FSSettingViewController.xib */,
@@ -659,6 +688,9 @@
 		1F7EDE851D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */,
+				1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */,
+				1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -990,6 +1022,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
+				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
@@ -998,13 +1031,16 @@
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
+				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
+				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F4201BA1D474A1C00D3E6CB /* FSForgetViewController.xib in Resources */,
+				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,12 +1084,14 @@
 				1F7EDEEA1D4700E500ABED5D /* IQKeyboardManager.m in Sources */,
 				1F4201C01D4755C400D3E6CB /* NSString+Helper.m in Sources */,
 				1F42024E1D49B32C00D3E6CB /* SDWebImageDownloaderOperation.m in Sources */,
+				1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */,
 				1F4202531D49B32C00D3E6CB /* UIImage+MultiFormat.m in Sources */,
 				1F4202011D48AE0100D3E6CB /* MASLayoutConstraint.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
+				1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */,
 				1F4202001D48AE0100D3E6CB /* MASConstraintMaker.m in Sources */,
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
@@ -1072,9 +1110,11 @@
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
 				1F42024B1D49B32C00D3E6CB /* SDWebImageCompat.m in Sources */,
 				1F7EDEE61D4700E500ABED5D /* IQUITextFieldView+Additions.m in Sources */,
+				1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */,
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
+				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */,
