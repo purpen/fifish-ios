@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FSMeHeadTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="FSMeHeadTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -64,15 +64,22 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R28-1I-Jfb" userLabel="作品">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="47"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="R28-1I-Jfb" firstAttribute="leading" secondItem="6gv-l3-Cac" secondAttribute="leading" id="1dB-ZR-rx8"/>
+                                    <constraint firstAttribute="trailing" secondItem="R28-1I-Jfb" secondAttribute="trailing" id="Aza-r4-uFA"/>
                                     <constraint firstAttribute="trailing" secondItem="t5d-hj-Fo5" secondAttribute="trailing" id="Ef6-Od-XZB"/>
                                     <constraint firstItem="eb0-gi-bXa" firstAttribute="centerX" secondItem="6gv-l3-Cac" secondAttribute="centerX" id="SWN-Np-3Oa"/>
                                     <constraint firstItem="t5d-hj-Fo5" firstAttribute="leading" secondItem="6gv-l3-Cac" secondAttribute="leading" id="VOt-P8-V4C"/>
                                     <constraint firstItem="t5d-hj-Fo5" firstAttribute="top" secondItem="6gv-l3-Cac" secondAttribute="top" id="dOj-w1-z7j"/>
+                                    <constraint firstItem="R28-1I-Jfb" firstAttribute="top" secondItem="6gv-l3-Cac" secondAttribute="top" id="k7R-5j-nZH"/>
                                     <constraint firstItem="eb0-gi-bXa" firstAttribute="top" secondItem="t5d-hj-Fo5" secondAttribute="bottom" constant="5" id="kEt-aj-XDz"/>
                                     <constraint firstItem="t5d-hj-Fo5" firstAttribute="centerX" secondItem="6gv-l3-Cac" secondAttribute="centerX" id="ru6-Rq-mFD"/>
+                                    <constraint firstAttribute="bottom" secondItem="R28-1I-Jfb" secondAttribute="bottom" id="xzQ-Xd-c2t"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -96,13 +103,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tJ-eh-jUz" userLabel="关注">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="47"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="xYa-2Q-BIE" firstAttribute="top" secondItem="qwD-u8-apk" secondAttribute="bottom" constant="5" id="DFD-Q1-XuP"/>
+                                    <constraint firstAttribute="bottom" secondItem="5tJ-eh-jUz" secondAttribute="bottom" id="KXN-Vd-cfr"/>
                                     <constraint firstItem="xYa-2Q-BIE" firstAttribute="centerX" secondItem="Dl2-TK-jiB" secondAttribute="centerX" id="VqY-dJ-5iU"/>
                                     <constraint firstItem="qwD-u8-apk" firstAttribute="centerX" secondItem="Dl2-TK-jiB" secondAttribute="centerX" id="Vri-Gy-e8A"/>
+                                    <constraint firstItem="5tJ-eh-jUz" firstAttribute="top" secondItem="Dl2-TK-jiB" secondAttribute="top" id="W4q-Il-Jnp"/>
+                                    <constraint firstAttribute="trailing" secondItem="5tJ-eh-jUz" secondAttribute="trailing" id="odX-Mz-LE1"/>
                                     <constraint firstItem="qwD-u8-apk" firstAttribute="top" secondItem="Dl2-TK-jiB" secondAttribute="top" id="rSG-tM-hW3"/>
+                                    <constraint firstItem="5tJ-eh-jUz" firstAttribute="leading" secondItem="Dl2-TK-jiB" secondAttribute="leading" id="uzj-nO-rR8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgN-Mb-E3j" userLabel="粉丝">
@@ -120,13 +134,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyl-HK-5ZD" userLabel="粉丝">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="47"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="oyl-HK-5ZD" firstAttribute="top" secondItem="KgN-Mb-E3j" secondAttribute="top" id="5Ql-aA-0Lr"/>
+                                    <constraint firstAttribute="bottom" secondItem="oyl-HK-5ZD" secondAttribute="bottom" id="Dy8-c8-fTx"/>
                                     <constraint firstItem="3Qu-lp-TZV" firstAttribute="centerX" secondItem="KgN-Mb-E3j" secondAttribute="centerX" id="FDF-59-TyZ"/>
                                     <constraint firstItem="0Cv-U6-Y0I" firstAttribute="centerX" secondItem="KgN-Mb-E3j" secondAttribute="centerX" id="YKM-cy-gdP"/>
                                     <constraint firstItem="3Qu-lp-TZV" firstAttribute="top" secondItem="0Cv-U6-Y0I" secondAttribute="bottom" constant="5" id="bgS-Yg-fcI"/>
                                     <constraint firstItem="0Cv-U6-Y0I" firstAttribute="top" secondItem="KgN-Mb-E3j" secondAttribute="top" id="fLl-GW-Knt"/>
+                                    <constraint firstItem="oyl-HK-5ZD" firstAttribute="leading" secondItem="KgN-Mb-E3j" secondAttribute="leading" id="i5m-Rn-b7d"/>
+                                    <constraint firstAttribute="trailing" secondItem="oyl-HK-5ZD" secondAttribute="trailing" id="vbC-Wu-9qF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -178,6 +199,22 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="zIl-Qw-9X8" id="Bs4-TT-9IE"/>
+                <outlet property="bg_imageView" destination="Ian-v7-Ka4" id="99I-fw-8mG"/>
+                <outlet property="fenSiBtn" destination="oyl-HK-5ZD" id="HFy-0d-KXE"/>
+                <outlet property="fenSiLabel" destination="3Qu-lp-TZV" id="tI8-Ml-VTJ"/>
+                <outlet property="fenSiShuLabel" destination="0Cv-U6-Y0I" id="KjY-lK-fLt"/>
+                <outlet property="guanZhuBtn" destination="5tJ-eh-jUz" id="Uti-p2-Jis"/>
+                <outlet property="guanZhuLabel" destination="xYa-2Q-BIE" id="zVk-C8-O29"/>
+                <outlet property="guanZhuShuLabel" destination="qwD-u8-apk" id="GC0-k8-9Wu"/>
+                <outlet property="headImageView" destination="wo0-1o-jPq" id="OsK-73-i4y"/>
+                <outlet property="nickName" destination="4YF-ML-Ifg" id="lPa-Kb-J21"/>
+                <outlet property="signatureLabel" destination="lJq-IC-PaH" id="1cF-MX-Emt"/>
+                <outlet property="zuoPinBtn" destination="R28-1I-Jfb" id="Lqv-MY-npk"/>
+                <outlet property="zuoPinLabel" destination="eb0-gi-bXa" id="nad-mS-dBB"/>
+                <outlet property="zuoPinShu" destination="t5d-hj-Fo5" id="ArJ-eP-sHS"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

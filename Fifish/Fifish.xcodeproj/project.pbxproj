@@ -103,6 +103,14 @@
 		1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */; };
 		1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */; };
 		1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */; };
+		1FF36E811D4B3FB200EB3C93 /* FSZuoPinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */; };
+		1FF36E821D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */; };
+		1FF36E861D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */; };
+		1FF36E871D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */; };
+		1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */; };
+		1FF36E8C1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */; };
+		1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */; };
+		1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +315,18 @@
 		1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeHeadTableViewCell.h; sourceTree = "<group>"; };
 		1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeHeadTableViewCell.m; sourceTree = "<group>"; };
 		1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeHeadTableViewCell.xib; sourceTree = "<group>"; };
+		1FF36E7E1D4B3FB200EB3C93 /* FSZuoPinTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSZuoPinTableViewController.h; sourceTree = "<group>"; };
+		1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSZuoPinTableViewController.m; sourceTree = "<group>"; };
+		1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSZuoPinTableViewController.xib; sourceTree = "<group>"; };
+		1FF36E831D4B3FC100EB3C93 /* FSGuanZhuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGuanZhuTableViewController.h; sourceTree = "<group>"; };
+		1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGuanZhuTableViewController.m; sourceTree = "<group>"; };
+		1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGuanZhuTableViewController.xib; sourceTree = "<group>"; };
+		1FF36E881D4B3FCF00EB3C93 /* FSFenSiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFenSiTableViewController.h; sourceTree = "<group>"; };
+		1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFenSiTableViewController.m; sourceTree = "<group>"; };
+		1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFenSiTableViewController.xib; sourceTree = "<group>"; };
+		1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEditInformationViewController.h; sourceTree = "<group>"; };
+		1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEditInformationViewController.m; sourceTree = "<group>"; };
+		1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEditInformationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +694,18 @@
 				1F4202211D48DB8300D3E6CB /* FSHomePageViewController.h */,
 				1F4202221D48DB8300D3E6CB /* FSHomePageViewController.m */,
 				1F4202231D48DB8300D3E6CB /* FSHomePageViewController.xib */,
+				1FF36E7E1D4B3FB200EB3C93 /* FSZuoPinTableViewController.h */,
+				1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */,
+				1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */,
+				1FF36E831D4B3FC100EB3C93 /* FSGuanZhuTableViewController.h */,
+				1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */,
+				1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */,
+				1FF36E881D4B3FCF00EB3C93 /* FSFenSiTableViewController.h */,
+				1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */,
+				1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */,
+				1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */,
+				1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */,
+				1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1027,19 +1059,23 @@
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
+				1FF36E871D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
+				1FF36E8C1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F4201BA1D474A1C00D3E6CB /* FSForgetViewController.xib in Resources */,
+				1FF36E821D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
 			);
@@ -1075,6 +1111,7 @@
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1F4202551D49B32C00D3E6CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
+				1FF36E861D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m in Sources */,
 				1F4201FE1D48AE0100D3E6CB /* MASCompositeConstraint.m in Sources */,
 				1F4202241D48DB8300D3E6CB /* FSHomePageViewController.m in Sources */,
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
@@ -1096,6 +1133,7 @@
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
 				1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */,
+				1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */,
 				1F4202561D49B32C00D3E6CB /* UIImageView+WebCache.m in Sources */,
 				1F4202481D49B32C00D3E6CB /* MKAnnotationView+WebCache.m in Sources */,
 				1F4202541D49B32C00D3E6CB /* UIImage+WebP.m in Sources */,
@@ -1103,6 +1141,7 @@
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F4201B91D474A1C00D3E6CB /* FSForgetViewController.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
+				1FF36E811D4B3FB200EB3C93 /* FSZuoPinTableViewController.m in Sources */,
 				1F42024A1D49B32C00D3E6CB /* SDImageCache.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
 				1F42024C1D49B32C00D3E6CB /* SDWebImageDecoder.m in Sources */,
@@ -1123,6 +1162,7 @@
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
+				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
