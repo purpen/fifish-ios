@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FSZuoPin;
 
 @interface FSZuoPinTableViewController : UITableViewController
 
+/** 作品数据 */
+@property (nonatomic, strong) NSMutableArray *zuoPins;
 
 @end

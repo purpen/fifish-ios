@@ -21,11 +21,13 @@
 #import "AFNetworking.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
+#import "FSPerson.h"
 
 typedef enum {
-    FSZuoPinTypePicture = 1,
-    FSZuoPinTypeVideo = 10
-} FSZuoPinType;
+    FSTypeZuoPin = 1,
+    FSTypeGuanZhu = 11,
+    FSTypeFenSi = 21
+} FSType;
 
 @interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 /**  */
@@ -45,10 +47,14 @@ typedef enum {
 
 /** 作品数据 */
 @property (nonatomic, strong) NSMutableArray *zuoPins;
+/** 关注人数据 */
+@property (nonatomic, strong) NSMutableArray *guanZhuPersons;
+/** 粉丝人数据 */
+@property (nonatomic, strong) NSMutableArray *fenSiPersons;
 /** 当前页码 */
 @property (nonatomic, assign) NSInteger page;
 /** 类型 */
-@property (nonatomic, assign) FSZuoPinType type;
+@property (nonatomic, assign) FSType type;
 
 @end
 
@@ -62,6 +68,19 @@ typedef enum {
     return _zuoPins;
 }
 
+-(NSMutableArray *)guanZhuPersons{
+    if (!_guanZhuPersons) {
+        _guanZhuPersons = [NSMutableArray array];
+    }
+    return _guanZhuPersons;
+}
+
+-(NSMutableArray *)fenSiPersons{
+    if (!_fenSiPersons) {
+        _fenSiPersons = [NSMutableArray array];
+    }
+    return _fenSiPersons;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -72,7 +91,7 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.type = 
+    self.type = FSTypeZuoPin;
     
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -87,47 +106,231 @@ typedef enum {
 }
 
 -(void)setupRefresh{
-    self.contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewZuoPin)];
+    self.contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
     // 自动改变透明度
     self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contentTableView.mj_header beginRefreshing];
-    self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreZuoPin)];
+    self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
--(void)loadNewZuoPin{
+-(void)loadNew{
     // 结束上啦
     [self.contentTableView.mj_footer endRefreshing];
-    // 参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"list";
-    params[@"c"] = @"data";
-    self.params = params;
-    // 发送请求
-//    FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
-//    [request startRequestSuccess:^(FBRequest *request, id result) {
-//        if (self.params != params) return;
-//
-//        // 字典 -> 模型
-//        self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
-//
-//        // 刷新表格
-//        [self.zuoPin.tableView reloadData];
-//
-//        // 结束刷新
-//        [self.contentTableView.mj_header endRefreshing];
-//        
-//        // 清空页码
-//        self.page = 0;
-//    } failure:^(FBRequest *request, NSError *error) {
-//        if (self.params != params) return;
-//
-//        // 结束刷新
-//        [self.contentTableView.mj_header endRefreshing];
-//    }];
+    switch (self.type) {
+        case FSTypeZuoPin:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                self.zuoPin.zuoPins = self.zuoPins;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//                
+//                // 清空页码
+//                self.page = 0;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//            }];
+        }
+            break;
+            
+        case FSTypeGuanZhu:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                self.guanZhuPersons = [FSPerson mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                
+//                // 刷新表格
+//                [self.guanZhu.tableView reloadData];
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//                
+//                // 清空页码
+//                self.page = 0;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//            }];
+        }
+            break;
+            
+        case FSTypeFenSi:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                self.fenSiPersons = [FSPerson mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                
+//                // 刷新表格
+//                [self.fenSi.tableView reloadData];
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//                
+//                // 清空页码
+//                self.page = 0;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_header endRefreshing];
+//            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
--(void)loadMoreZuoPin{
-    
+-(void)loadMore{
+    // 结束上啦
+    [self.contentTableView.mj_header endRefreshing];
+    switch (self.type) {
+        case FSTypeZuoPin:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            params[@"type"] = @(self.type);
+            NSInteger page = self.page + 1;
+            params[@"page"] = @(page);
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                NSArray *newzuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                [self.zuoPins addObjectsFromArray:newzuoPins];
+//                
+//                // 刷新表格
+//                [self.zuoPin.tableView reloadData];
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//                
+//                // 清空页码
+//                self.page = page;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//            }];
+        }
+            break;
+            
+        case FSTypeGuanZhu:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            params[@"type"] = @(self.type);
+            NSInteger page = self.page + 1;
+            params[@"page"] = @(page);
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                NSArray *newGuanZhus = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                [self.guanZhuPersons addObjectsFromArray:newGuanZhus];
+//                
+//                // 刷新表格
+//                [self.guanZhu.tableView reloadData];
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//                
+//                // 清空页码
+//                self.page = page;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//            }];
+        }
+            break;
+            
+        case FSTypeFenSi:
+        {
+            // 参数
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            params[@"a"] = @"list";
+            params[@"c"] = @"data";
+            params[@"type"] = @(self.type);
+            NSInteger page = self.page + 1;
+            params[@"page"] = @(page);
+            self.params = params;
+            // 发送请求
+//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//            [request startRequestSuccess:^(FBRequest *request, id result) {
+//                if (self.params != params) return;
+//                
+//                // 字典 -> 模型
+//                NSArray *newFenSis = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//                [self.fenSiPersons addObjectsFromArray:newFenSis];
+//                
+//                // 刷新表格
+//                [self.fenSi.tableView reloadData];
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//                
+//                // 清空页码
+//                self.page = page;
+//            } failure:^(FBRequest *request, NSError *error) {
+//                if (self.params != params) return;
+//                
+//                // 结束刷新
+//                [self.contentTableView.mj_footer endRefreshing];
+//            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(FSZuoPinTableViewController *)zuoPin{
@@ -224,6 +427,25 @@ typedef enum {
     if (indexPath.row == 0) {
         FSMeHeadTableViewCell *cell = [[FSMeHeadTableViewCell alloc] init];
         cell.backgroundColor = [UIColor redColor];
+        switch (self.type) {
+            case FSTypeZuoPin:
+                cell.zuoPinShu.textColor = DEFAULT_COLOR;
+                cell.zuoPinLabel.textColor = DEFAULT_COLOR;
+                break;
+                
+            case FSTypeGuanZhu:
+                cell.guanZhuLabel.textColor = DEFAULT_COLOR;
+                cell.guanZhuShuLabel.textColor = DEFAULT_COLOR;
+                break;
+                
+            case FSTypeFenSi:
+                cell.fenSiLabel.textColor = DEFAULT_COLOR;
+                cell.fenSiShuLabel.textColor = DEFAULT_COLOR;
+                break;
+                
+            default:
+                break;
+        }
         [cell.zuoPinBtn addTarget:self action:@selector(zuoPinBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell.guanZhuBtn addTarget:self action:@selector(guanZhuBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell.fenSiBtn addTarget:self action:@selector(fenSiBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -236,7 +458,7 @@ typedef enum {
 }
 
 -(void)zuoPinBtn:(UIButton*)sender{
-    
+    self.type = FSTypeZuoPin;
     self.selectedButton.enabled = YES;
     sender.enabled = NO;
     self.selectedButton = sender;
@@ -254,6 +476,7 @@ typedef enum {
 }
 
 -(void)guanZhuBtn:(UIButton*)sender{
+    self.type = FSTypeGuanZhu;
     self.selectedButton.enabled = YES;
     sender.enabled = NO;
     self.selectedButton = sender;
@@ -271,6 +494,7 @@ typedef enum {
 }
 
 -(void)fenSiBtn:(UIButton*)sender{
+    self.type = FSTypeFenSi;
     self.selectedButton.enabled = YES;
     sender.enabled = NO;
     self.selectedButton = sender;

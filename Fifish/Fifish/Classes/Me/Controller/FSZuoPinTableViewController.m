@@ -8,6 +8,7 @@
 
 #import "FSZuoPinTableViewController.h"
 #import "FSZuoPinTableViewCell.h"
+#import "FSZuoPin.h"
 
 
 @interface FSZuoPinTableViewController ()
@@ -17,6 +18,11 @@
 static NSString * const CellId = @"zuoPin";
 
 @implementation FSZuoPinTableViewController
+
+-(void)setZuoPins:(NSMutableArray *)zuoPins{
+    _zuoPins = zuoPins;
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +40,19 @@ static NSString * const CellId = @"zuoPin";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSZuoPinTableViewCell class]) bundle:nil] forCellReuseIdentifier:CellId];
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.zuoPins.count;
+}
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSZuoPinTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    cell.zuopin = self.zuoPins[indexPath.row];
+    return cell;
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSZuoPin *zuoPin = self.zuoPins[indexPath.row];
+    return zuoPin.cellHeight;
+}
 
 @end

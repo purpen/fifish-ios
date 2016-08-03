@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class FSZuoPin;
 @interface FSZuoPinTableViewCell : UITableViewCell
-
+/**  */
+@property (nonatomic, strong) FSZuoPin *zuopin;
 @end

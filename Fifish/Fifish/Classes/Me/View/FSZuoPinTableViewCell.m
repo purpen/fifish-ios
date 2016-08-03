@@ -7,6 +7,7 @@
 //
 
 #import "FSZuoPinTableViewCell.h"
+#import "FSZuoPin.h"
 
 @interface FSZuoPinTableViewCell ()
 
@@ -16,6 +17,9 @@
 
 @implementation FSZuoPinTableViewCell
 
-
+-(void)setZuopin:(FSZuoPin *)zuopin{
+    _zuopin = zuopin;
+    
+}
 
 @end

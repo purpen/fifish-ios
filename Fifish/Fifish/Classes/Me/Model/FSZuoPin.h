@@ -6,8 +6,11 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FSZuoPin : NSObject
+
+/** cell的高度 */
+@property (nonatomic, assign, readonly) CGFloat cellHeight;
 
 @end
