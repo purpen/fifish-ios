@@ -15,20 +15,53 @@
 #import "FSFenSiTableViewController.h"
 #import "Masonry.h"
 #import "FSEditInformationViewController.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+#import "FSZuoPin.h"
+#import "AFNetworking.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+
+typedef enum {
+    FSZuoPinTypePicture = 1,
+    FSZuoPinTypeVideo = 10
+} FSZuoPinType;
 
 @interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
-
+/**  */
+@property (nonatomic, strong) FSZuoPinTableViewController *zuoPin;
+/**  */
+@property (nonatomic, strong) FSGuanZhuTableViewController *guanZhu;
+/**  */
+@property (nonatomic, strong) FSFenSiTableViewController *fenSi;
 /**  */
 @property (nonatomic, strong) UITableView *contentTableView;
 /**  */
 @property (nonatomic, strong) UIScrollView *contentScrollview;
 /** 当前选中的按钮 */
 @property (nonatomic, weak) UIButton *selectedButton;
+/** 上一次的请求参数 */
+@property (nonatomic, strong) NSDictionary *params;
+
+/** 作品数据 */
+@property (nonatomic, strong) NSMutableArray *zuoPins;
+/** 当前页码 */
+@property (nonatomic, assign) NSInteger page;
+/** 类型 */
+@property (nonatomic, assign) FSZuoPinType type;
 
 @end
 
 
 @implementation FSHomePageViewController
+
+-(NSMutableArray *)zuoPins{
+    if (!_zuoPins) {
+        _zuoPins = [NSMutableArray array];
+    }
+    return _zuoPins;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -39,6 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.type = 
     
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -48,24 +82,86 @@
     
     
     [self setChanelView];
+    // 添加刷新控件
+    [self setupRefresh];
+}
+
+-(void)setupRefresh{
+    self.contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewZuoPin)];
+    // 自动改变透明度
+    self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
+    [self.contentTableView.mj_header beginRefreshing];
+    self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreZuoPin)];
+}
+
+-(void)loadNewZuoPin{
+    // 结束上啦
+    [self.contentTableView.mj_footer endRefreshing];
+    // 参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"list";
+    params[@"c"] = @"data";
+    self.params = params;
+    // 发送请求
+//    FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+//    [request startRequestSuccess:^(FBRequest *request, id result) {
+//        if (self.params != params) return;
+//
+//        // 字典 -> 模型
+//        self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+//
+//        // 刷新表格
+//        [self.zuoPin.tableView reloadData];
+//
+//        // 结束刷新
+//        [self.contentTableView.mj_header endRefreshing];
+//        
+//        // 清空页码
+//        self.page = 0;
+//    } failure:^(FBRequest *request, NSError *error) {
+//        if (self.params != params) return;
+//
+//        // 结束刷新
+//        [self.contentTableView.mj_header endRefreshing];
+//    }];
+}
+
+-(void)loadMoreZuoPin{
     
 }
 
+-(FSZuoPinTableViewController *)zuoPin{
+    if (!_zuoPin) {
+        _zuoPin = [[FSZuoPinTableViewController alloc] init];
+        _zuoPin.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 500);
+    }
+    return _zuoPin;
+}
+
+-(FSGuanZhuTableViewController *)guanZhu{
+    if (!_guanZhu) {
+        _guanZhu = [[FSGuanZhuTableViewController alloc] init];
+        _guanZhu.view.backgroundColor = [UIColor yellowColor];
+        _guanZhu.view.frame = CGRectMake(1*SCREEN_WIDTH, 0, SCREEN_WIDTH, 500);
+    }
+    return _guanZhu;
+}
+
+-(FSFenSiTableViewController *)fenSi{
+    if (!_fenSi) {
+        _fenSi = [[FSFenSiTableViewController alloc] init];
+        _fenSi.view.backgroundColor = [UIColor greenColor];
+        _fenSi.view.frame = CGRectMake(2*SCREEN_WIDTH, 0, SCREEN_WIDTH, 500);
+    }
+    return _fenSi;
+}
+
 -(void)setChanelView{
-    FSZuoPinTableViewController *zuoPin = [[FSZuoPinTableViewController alloc] init];
-    zuoPin.view.backgroundColor = [UIColor redColor];
-    zuoPin.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 500);
-    [self.contentScrollview addSubview:zuoPin.view];
+    [self.contentScrollview addSubview:self.zuoPin.view];
     
-    FSGuanZhuTableViewController *guanZhu = [[FSGuanZhuTableViewController alloc] init];
-    guanZhu.view.backgroundColor = [UIColor yellowColor];
-    guanZhu.view.frame = CGRectMake(1*SCREEN_WIDTH, 0, SCREEN_WIDTH, 500);
-    [self.contentScrollview addSubview:guanZhu.view];
-    
-    FSFenSiTableViewController *fenSi = [[FSFenSiTableViewController alloc] init];
-    fenSi.view.backgroundColor = [UIColor greenColor];
-    fenSi.view.frame = CGRectMake(2*SCREEN_WIDTH, 0, SCREEN_WIDTH, 500);
-    [self.contentScrollview addSubview:fenSi.view];
+    [self.contentScrollview addSubview:self.guanZhu.view];
+
+    [self.contentScrollview addSubview:self.fenSi.view];
 }
 
 -(void)setupNav{
@@ -103,7 +199,7 @@
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
         _contentTableView = [[UITableView alloc] init];
-        _contentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+        _contentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
     return _contentTableView;
 }
@@ -128,8 +224,6 @@
     if (indexPath.row == 0) {
         FSMeHeadTableViewCell *cell = [[FSMeHeadTableViewCell alloc] init];
         cell.backgroundColor = [UIColor redColor];
-        cell.zuoPinLabel.textColor = DEFAULT_COLOR;
-        cell.zuoPinShu.textColor = DEFAULT_COLOR;
         [cell.zuoPinBtn addTarget:self action:@selector(zuoPinBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell.guanZhuBtn addTarget:self action:@selector(guanZhuBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell.fenSiBtn addTarget:self action:@selector(fenSiBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -142,6 +236,7 @@
 }
 
 -(void)zuoPinBtn:(UIButton*)sender{
+    
     self.selectedButton.enabled = YES;
     sender.enabled = NO;
     self.selectedButton = sender;

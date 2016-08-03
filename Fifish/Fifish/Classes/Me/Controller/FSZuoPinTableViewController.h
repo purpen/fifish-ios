@@ -10,4 +10,5 @@
 
 @interface FSZuoPinTableViewController : UITableViewController
 
+
 @end
