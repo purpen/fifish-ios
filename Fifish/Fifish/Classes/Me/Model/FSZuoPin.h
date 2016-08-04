@@ -21,4 +21,6 @@ typedef enum {
 @property (nonatomic, assign) FSZuoPinType type;
 /** 图片控件的frame */
 @property (nonatomic, assign, readonly) CGRect pictureF;
+/** 视频控件的frame */
+@property (nonatomic, assign, readonly) CGRect videoF;
 @end

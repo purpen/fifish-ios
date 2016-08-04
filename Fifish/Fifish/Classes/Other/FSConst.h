@@ -19,7 +19,7 @@
 //  屏幕高
 #define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
 
-#define DEFAULT_COLOR    [UIColor colorWithHexString:@"#4388D7"]
+#define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;

@@ -10,6 +10,8 @@
 #import "UIView+FSExtension.h"
 #import "FSConst.h"
 #import "UIColor+FSExtension.h"
+#import "FSEquipmentViewController.h"
+#import "FSNavigationViewController.h"
 
 @interface FSTabBar()
 
@@ -35,10 +37,12 @@
         // 添加发布按钮
         UIButton *equipmentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [equipmentBtn setBackgroundImage:[UIImage imageNamed:@"equipment"] forState:UIControlStateNormal];
-        [equipmentBtn setBackgroundImage:[UIImage imageNamed:@"equipment_selected"] forState:UIControlStateHighlighted];
+//        [equipmentBtn setBackgroundImage:[UIImage imageNamed:@"equipment_selected"] forState:UIControlStateSelected];
+        [equipmentBtn addTarget:self action:@selector(equipmentBtnClick) forControlEvents:UIControlEventTouchUpInside];
         equipmentBtn.size = equipmentBtn.currentBackgroundImage.size;
-        [self addSubview:equipmentBtn];
         self.equipmentBtn = equipmentBtn;
+        [self addSubview:self.equipmentBtn];
+        
         
         UILabel *equipmentLabel = [[UILabel alloc] init];
         equipmentLabel.text = NSLocalizedString(@"equipment", nil);
@@ -58,15 +62,14 @@
  *  点击设备按钮
  */
 -(void)equipmentBtnClick{
-    
+    FSEquipmentViewController *vc = [[FSEquipmentViewController alloc] init];
+    FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navi animated:YES completion:nil];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    // 标记按钮是否已经添加过监听器
-    static BOOL added = NO;
     
     CGFloat width = self.width;
     CGFloat height = self.height;
@@ -90,11 +93,6 @@
         
         // 增加索引
         index++;
-        
-        if (added == NO) {
-            // 监听按钮点击
-            [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-        }
     }
     
     if (SCREEN_WIDTH > 375) {
@@ -102,15 +100,7 @@
     } else {
         self.equipmentBtn.center = CGPointMake(width * 0.5, height * 0.3);
     }
-    
-    added = YES;
 }
 
-
-- (void)buttonClick
-{
-    // 发出一个通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:FSTabBarDidSelectNotification object:nil userInfo:nil];
-}
 
 @end
