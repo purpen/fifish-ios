@@ -7,31 +7,64 @@
 //
 
 #import "FSHomeViewController.h"
+#import "UIBarButtonItem+FSExtension.h"
+#import "FSConst.h"
+#import "FSHomeViewCell.h"
+#import "FSHomeModel.h"
 
-@interface FSHomeViewController ()
-
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+/**  */
+@property (nonatomic, strong) UITableView *contenTableView;
+/**  */
+@property (nonatomic, strong) NSMutableArray *modelAry;
 @end
+
+static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setupNav];
+    [self.view addSubview:self.contenTableView];
+    [self.contenTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSHomeViewCell class]) bundle:nil] forCellReuseIdentifier:CellId];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(UITableView *)contenTableView{
+    if (!_contenTableView) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+        _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        _contenTableView.backgroundColor = [UIColor yellowColor];
+        _contenTableView.delegate = self;
+        _contenTableView.dataSource = self;
+    }
+    return _contenTableView;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setupNav{
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil target:self action:@selector(searchClick)];
+    self.navigationItem.leftBarButtonItem = searchItem;
 }
-*/
+
+-(void)searchClick{
+    
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    cell.model = self.modelAry[indexPath.row];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomeModel *model = self.modelAry[indexPath.row];
+    return model.cellHeghit;
+}
 
 @end
