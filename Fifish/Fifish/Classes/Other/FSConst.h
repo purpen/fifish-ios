@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+FSExtension.h"
 
+typedef enum {
+    FSZuoPinTypePicture = 1,
+    FSZuoPinTypeVideo = 11
+} FSZuoPinType;
+
 // API ROOT URL
 #define kDomainBaseUrl @"http://m.taihuoniao.com/app/api"           //生产环境
 //#define kDomainBaseUrl @"http://api.taihuoniao.com"             //  上线正式环境
@@ -32,3 +37,4 @@ UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;
 
 #define kClientID             @"1415289600"
 #define kClientSecret         @"545d9f8aac6b7a4d04abffe5"
+

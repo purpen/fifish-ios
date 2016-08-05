@@ -68,9 +68,13 @@
 		1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424711D530DA80071A1D6 /* FSPictuerView.xib */; };
 		1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424741D5312690071A1D6 /* FSVideoView.m */; };
 		1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424761D5312780071A1D6 /* FSVideoView.xib */; };
-		1F04247B1D5343D90071A1D6 /* FSHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424791D5343D90071A1D6 /* FSHomeViewCell.m */; };
-		1F04247C1D5343D90071A1D6 /* FSHomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04247A1D5343D90071A1D6 /* FSHomeViewCell.xib */; };
-		1F04247F1D5344B40071A1D6 /* FSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04247E1D5344B40071A1D6 /* FSHomeModel.m */; };
+		1F0424851D542FA20071A1D6 /* FSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424841D542FA20071A1D6 /* FSHomeModel.m */; };
+		1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424871D542FD90071A1D6 /* FSHomePictuerView.m */; };
+		1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424891D542FD90071A1D6 /* FSHomeViewCell.m */; };
+		1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04248A1D542FD90071A1D6 /* FSHomeViewCell.xib */; };
+		1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04248E1D542FF30071A1D6 /* FSHomePictuerView.xib */; };
+		1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */; };
+		1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -315,11 +319,17 @@
 		1F0424731D5312690071A1D6 /* FSVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoView.h; sourceTree = "<group>"; };
 		1F0424741D5312690071A1D6 /* FSVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoView.m; sourceTree = "<group>"; };
 		1F0424761D5312780071A1D6 /* FSVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSVideoView.xib; sourceTree = "<group>"; };
-		1F0424781D5343D90071A1D6 /* FSHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSHomeViewCell.h; path = Fifish/Classes/Me/View/FSHomeViewCell.h; sourceTree = SOURCE_ROOT; };
-		1F0424791D5343D90071A1D6 /* FSHomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSHomeViewCell.m; path = Fifish/Classes/Me/View/FSHomeViewCell.m; sourceTree = SOURCE_ROOT; };
-		1F04247A1D5343D90071A1D6 /* FSHomeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSHomeViewCell.xib; path = Fifish/Classes/Me/View/FSHomeViewCell.xib; sourceTree = SOURCE_ROOT; };
-		1F04247D1D5344B40071A1D6 /* FSHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSHomeModel.h; path = Fifish/Classes/Me/View/FSHomeModel.h; sourceTree = SOURCE_ROOT; };
-		1F04247E1D5344B40071A1D6 /* FSHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSHomeModel.m; path = Fifish/Classes/Me/View/FSHomeModel.m; sourceTree = SOURCE_ROOT; };
+		1F0424831D542FA20071A1D6 /* FSHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeModel.h; sourceTree = "<group>"; };
+		1F0424841D542FA20071A1D6 /* FSHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeModel.m; sourceTree = "<group>"; };
+		1F0424861D542FD90071A1D6 /* FSHomePictuerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomePictuerView.h; sourceTree = "<group>"; };
+		1F0424871D542FD90071A1D6 /* FSHomePictuerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomePictuerView.m; sourceTree = "<group>"; };
+		1F0424881D542FD90071A1D6 /* FSHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeViewCell.h; sourceTree = "<group>"; };
+		1F0424891D542FD90071A1D6 /* FSHomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeViewCell.m; sourceTree = "<group>"; };
+		1F04248A1D542FD90071A1D6 /* FSHomeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeViewCell.xib; sourceTree = "<group>"; };
+		1F04248E1D542FF30071A1D6 /* FSHomePictuerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomePictuerView.xib; sourceTree = "<group>"; };
+		1F0424901D543CBE0071A1D6 /* FSHomeVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeVideoView.h; sourceTree = "<group>"; };
+		1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeVideoView.m; sourceTree = "<group>"; };
+		1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeVideoView.xib; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1057,8 +1067,8 @@
 		1F7EDE7D1D45EF6900ABED5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F04247D1D5344B40071A1D6 /* FSHomeModel.h */,
-				1F04247E1D5344B40071A1D6 /* FSHomeModel.m */,
+				1F0424831D542FA20071A1D6 /* FSHomeModel.h */,
+				1F0424841D542FA20071A1D6 /* FSHomeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1066,9 +1076,15 @@
 		1F7EDE7E1D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F0424781D5343D90071A1D6 /* FSHomeViewCell.h */,
-				1F0424791D5343D90071A1D6 /* FSHomeViewCell.m */,
-				1F04247A1D5343D90071A1D6 /* FSHomeViewCell.xib */,
+				1F0424861D542FD90071A1D6 /* FSHomePictuerView.h */,
+				1F0424871D542FD90071A1D6 /* FSHomePictuerView.m */,
+				1F04248E1D542FF30071A1D6 /* FSHomePictuerView.xib */,
+				1F0424881D542FD90071A1D6 /* FSHomeViewCell.h */,
+				1F0424891D542FD90071A1D6 /* FSHomeViewCell.m */,
+				1F04248A1D542FD90071A1D6 /* FSHomeViewCell.xib */,
+				1F0424901D543CBE0071A1D6 /* FSHomeVideoView.h */,
+				1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */,
+				1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1471,7 +1487,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F04247C1D5343D90071A1D6 /* FSHomeViewCell.xib in Resources */,
+				1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */,
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
 				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
@@ -1482,6 +1498,8 @@
 				1FF36E871D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
+				1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */,
+				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
@@ -1554,10 +1572,12 @@
 				1F42024E1D49B32C00D3E6CB /* SDWebImageDownloaderOperation.m in Sources */,
 				1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */,
 				1F4202531D49B32C00D3E6CB /* UIImage+MultiFormat.m in Sources */,
+				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
 				1F0423EA1D51F38E0071A1D6 /* MJRefreshAutoGifFooter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,
 				1F4202011D48AE0100D3E6CB /* MASLayoutConstraint.m in Sources */,
 				1F04244F1D51F3C30071A1D6 /* AFURLResponseSerialization.m in Sources */,
+				1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
 				1F0423EE1D51F38E0071A1D6 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1575,7 +1595,6 @@
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1F4202561D49B32C00D3E6CB /* UIImageView+WebCache.m in Sources */,
 				1F4202481D49B32C00D3E6CB /* MKAnnotationView+WebCache.m in Sources */,
-				1F04247B1D5343D90071A1D6 /* FSHomeViewCell.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
 				1F4202541D49B32C00D3E6CB /* UIImage+WebP.m in Sources */,
@@ -1600,6 +1619,7 @@
 				1F0423E51D51F38E0071A1D6 /* MJRefreshAutoFooter.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				1F4202031D48AE0100D3E6CB /* MASViewConstraint.m in Sources */,
+				1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */,
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
 				1F0423F41D51F38E0071A1D6 /* MJRefreshConst.m in Sources */,
 				1F0424491D51F3C30071A1D6 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1611,6 +1631,7 @@
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
 				1F0423F61D51F38E0071A1D6 /* UIScrollView+MJExtension.m in Sources */,
+				1F0424851D542FA20071A1D6 /* FSHomeModel.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
 				1F0424171D51F3A00071A1D6 /* NSObject+MJCoding.m in Sources */,
@@ -1644,7 +1665,6 @@
 				1F4202521D49B32C00D3E6CB /* UIImage+GIF.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
-				1F04247F1D5344B40071A1D6 /* FSHomeModel.m in Sources */,
 				1F04246D1D51F9130071A1D6 /* FSPerson.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				1F0424191D51F3A00071A1D6 /* NSObject+MJProperty.m in Sources */,

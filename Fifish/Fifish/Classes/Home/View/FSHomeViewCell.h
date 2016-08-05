@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @class FSHomeModel;
+
 
 @interface FSHomeViewCell : UITableViewCell
 
 /**  */
 @property (nonatomic, strong) FSHomeModel *model;
+
 
 @end

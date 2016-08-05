@@ -11,6 +11,8 @@
 #import "FSConst.h"
 #import "FSHomeViewCell.h"
 #import "FSHomeModel.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /**  */
@@ -23,11 +25,40 @@ static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
 
+-(NSMutableArray *)modelAry{
+    if (!_modelAry) {
+        _modelAry = [NSMutableArray array];
+        FSHomeModel *model = [[FSHomeModel alloc] init];
+        [_modelAry addObject:model];
+    }
+    return _modelAry;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNav];
     [self.view addSubview:self.contenTableView];
     [self.contenTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSHomeViewCell class]) bundle:nil] forCellReuseIdentifier:CellId];
+    // 添加刷新控件
+    [self setupRefresh];
+}
+
+-(void)setupRefresh{
+    self.contenTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+    // 自动改变透明度
+    self.contenTableView.mj_header.automaticallyChangeAlpha = YES;
+    [self.contenTableView.mj_header beginRefreshing];
+    self.contenTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+}
+
+-(void)loadNew{
+    // 结束上啦
+    [self.contenTableView.mj_footer endRefreshing];
+}
+
+-(void)loadMore{
+    // 结束下拉
+    [self.contenTableView.mj_header endRefreshing];
 }
 
 -(UITableView *)contenTableView{
@@ -35,7 +66,7 @@ static NSString * const CellId = @"home";
         self.automaticallyAdjustsScrollViewInsets = NO;
         _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        _contenTableView.backgroundColor = [UIColor yellowColor];
+        _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
     }
@@ -53,7 +84,8 @@ static NSString * const CellId = @"home";
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    self.contenTableView.mj_footer.hidden = (self.modelAry.count == 0);
+    return self.modelAry.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

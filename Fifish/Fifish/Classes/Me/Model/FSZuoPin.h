@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSConst.h"
 
-typedef enum {
-    FSZuoPinTypePicture = 1,
-    FSZuoPinTypeVideo = 11
-} FSZuoPinType;
 
 @interface FSZuoPin : NSObject
 
