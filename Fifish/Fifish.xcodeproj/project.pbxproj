@@ -75,6 +75,11 @@
 		1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04248E1D542FF30071A1D6 /* FSHomePictuerView.xib */; };
 		1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */; };
 		1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */; };
+		1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */; };
+		1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */; };
+		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
+		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
+		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -330,6 +335,14 @@
 		1F0424901D543CBE0071A1D6 /* FSHomeVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeVideoView.h; sourceTree = "<group>"; };
 		1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeVideoView.m; sourceTree = "<group>"; };
 		1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeVideoView.xib; sourceTree = "<group>"; };
+		1F0424951D5467940071A1D6 /* FSHomeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeDetailViewController.h; sourceTree = "<group>"; };
+		1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeDetailViewController.m; sourceTree = "<group>"; };
+		1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeDetailViewController.xib; sourceTree = "<group>"; };
+		1F04249A1D5479C90071A1D6 /* FSCommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommendTableViewCell.h; sourceTree = "<group>"; };
+		1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommendTableViewCell.m; sourceTree = "<group>"; };
+		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
+		1F04249F1D548A600071A1D6 /* FSCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentModel.h; sourceTree = "<group>"; };
+		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1060,6 +1073,9 @@
 				1F7EDE7A1D45EF6900ABED5D /* FSHomeViewController.h */,
 				1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */,
 				1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */,
+				1F0424951D5467940071A1D6 /* FSHomeDetailViewController.h */,
+				1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */,
+				1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1069,6 +1085,8 @@
 			children = (
 				1F0424831D542FA20071A1D6 /* FSHomeModel.h */,
 				1F0424841D542FA20071A1D6 /* FSHomeModel.m */,
+				1F04249F1D548A600071A1D6 /* FSCommentModel.h */,
+				1F0424A01D548A600071A1D6 /* FSCommentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1085,6 +1103,9 @@
 				1F0424901D543CBE0071A1D6 /* FSHomeVideoView.h */,
 				1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */,
 				1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */,
+				1F04249A1D5479C90071A1D6 /* FSCommendTableViewCell.h */,
+				1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */,
+				1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1516,6 +1537,8 @@
 				1F0424101D51F3A00071A1D6 /* Info.plist in Resources */,
 				1F0423F31D51F38E0071A1D6 /* MJRefresh.bundle in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
+				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
+				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
 				1F4201BA1D474A1C00D3E6CB /* FSForgetViewController.xib in Resources */,
 				1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */,
 				1FF36E821D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib in Resources */,
@@ -1572,6 +1595,7 @@
 				1F42024E1D49B32C00D3E6CB /* SDWebImageDownloaderOperation.m in Sources */,
 				1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */,
 				1F4202531D49B32C00D3E6CB /* UIImage+MultiFormat.m in Sources */,
+				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
 				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
 				1F0423EA1D51F38E0071A1D6 /* MJRefreshAutoGifFooter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,
@@ -1636,6 +1660,7 @@
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
 				1F0424171D51F3A00071A1D6 /* NSObject+MJCoding.m in Sources */,
 				1F0424141D51F3A00071A1D6 /* MJPropertyKey.m in Sources */,
+				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				1F0423F11D51F38E0071A1D6 /* MJRefreshNormalHeader.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
@@ -1663,6 +1688,7 @@
 				1F42024D1D49B32C00D3E6CB /* SDWebImageDownloader.m in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
 				1F4202521D49B32C00D3E6CB /* UIImage+GIF.m in Sources */,
+				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
 				1F04246D1D51F9130071A1D6 /* FSPerson.m in Sources */,

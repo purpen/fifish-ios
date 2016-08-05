@@ -13,6 +13,7 @@
 #import "FSHomeModel.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
+#import "FSHomeDetailViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /**  */
@@ -97,6 +98,12 @@ static NSString * const CellId = @"home";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeModel *model = self.modelAry[indexPath.row];
     return model.cellHeghit;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.model = self.modelAry[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
