@@ -33,7 +33,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }else{
-        self.window.rootViewController = [[FSTabBarController alloc] init];
+        self.window.rootViewController = [FSTabBarController sharedManager];
     }
     [self.window makeKeyAndVisible];
 }

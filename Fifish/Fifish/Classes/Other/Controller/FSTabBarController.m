@@ -23,6 +23,15 @@
 
 @implementation FSTabBarController
 
++ (FSTabBarController *)sharedManager
+{
+    static FSTabBarController *sharedAccountManagerInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        sharedAccountManagerInstance = [[self alloc] init];
+    });
+    return sharedAccountManagerInstance;
+}
 + (void)initialize
 {
     // 通过appearance统一设置所有UITabBarItem的文字属性

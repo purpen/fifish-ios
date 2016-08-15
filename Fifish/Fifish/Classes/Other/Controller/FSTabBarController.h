@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSTabBarController : UITabBarController
++ (FSTabBarController *)sharedManager;
 
 @end

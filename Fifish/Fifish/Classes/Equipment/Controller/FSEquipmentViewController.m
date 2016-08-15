@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navigationItem.title = @"Fifish";
     UIBarButtonItem *cancelItem = [UIBarButtonItem itemWithImage:@"eq_cancel" highImage:nil target:self action:@selector(cancelClick)];
     self.navigationItem.rightBarButtonItem = cancelItem;

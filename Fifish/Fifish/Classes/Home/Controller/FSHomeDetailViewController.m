@@ -7,6 +7,7 @@
 //
 
 #import "FSHomeDetailViewController.h"
+#import "VideoLiveController.h"
 #import "FSConst.h"
 #import "FSCommendTableViewCell.h"
 #import "FSCommentModel.h"
@@ -114,6 +115,13 @@ static NSString * const FSCommentId = @"comment";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSCommentModel *model = self.commentAry[indexPath.row];
     return model.cellHeghit;
+}
+- (IBAction)SendMessageClick:(UIButton *)sender {
+    VideoLiveController * videoLiveVC = [[VideoLiveController alloc] init];
+    [self presentViewController:videoLiveVC animated:YES completion:^{
+       
+    }];
+    
 }
 
 @end
