@@ -24,6 +24,8 @@
 		0434F4221D61C89000DBFFCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F38C1D61B59800DBFFCE /* AudioToolbox.framework */; };
 		0434F4231D61C89E00DBFFCE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F39E1D61BBC700DBFFCE /* AVFoundation.framework */; };
 		0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F4251D61C8D400DBFFCE /* FifishH264Decoder.m */; };
+		0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */; };
+		0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */; };
 		150EBB4E142F9020FE831D9C /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AB41714EAA86BBAB372D57 /* libPods-Fifish.a */; };
 		1F0423E51D51F38E0071A1D6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0423B91D51F38E0071A1D6 /* MJRefreshAutoFooter.m */; };
 		1F0423E61D51F38E0071A1D6 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0423BB1D51F38E0071A1D6 /* MJRefreshBackFooter.m */; };
@@ -347,6 +349,9 @@
 		0434F4241D61C8D400DBFFCE /* FifishH264Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifishH264Decoder.h; sourceTree = "<group>"; };
 		0434F4251D61C8D400DBFFCE /* FifishH264Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifishH264Decoder.m; sourceTree = "<group>"; };
 		0434F4261D61C8D400DBFFCE /* FifishYUV420Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifishYUV420Data.h; sourceTree = "<group>"; };
+		0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLFrameView.h; sourceTree = "<group>"; };
+		0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLFrameView.mm; sourceTree = "<group>"; };
+		0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1F0423B81D51F38E0071A1D6 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1F0423B91D51F38E0071A1D6 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1F0423BA1D51F38E0071A1D6 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -692,6 +697,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */,
 				0434F4231D61C89E00DBFFCE /* AVFoundation.framework in Frameworks */,
 				0434F4221D61C89000DBFFCE /* AudioToolbox.framework in Frameworks */,
 				0434F4211D61C87200DBFFCE /* CoreMedia.framework in Frameworks */,
@@ -758,6 +764,8 @@
 		0434F2F91D6193C300DBFFCE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */,
+				0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1805,6 +1813,7 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */,
 				0434F39E1D61BBC700DBFFCE /* AVFoundation.framework */,
 				0434F39C1D61BB2D00DBFFCE /* AVKit.framework */,
 				0434F39A1D61B9F900DBFFCE /* CoreMedia.framework */,
@@ -2165,6 +2174,7 @@
 				1F0423E61D51F38E0071A1D6 /* MJRefreshBackFooter.m in Sources */,
 				1F0423F01D51F38E0071A1D6 /* MJRefreshGifHeader.m in Sources */,
 				1F42024D1D49B32C00D3E6CB /* SDWebImageDownloader.m in Sources */,
+				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
 				1F4202521D49B32C00D3E6CB /* UIImage+GIF.m in Sources */,
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,

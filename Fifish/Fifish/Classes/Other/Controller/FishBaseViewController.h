@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FSConst.h"
 @interface FishBaseViewController : UIViewController
 
 @end

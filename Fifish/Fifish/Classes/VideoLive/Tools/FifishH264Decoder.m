@@ -11,8 +11,8 @@
 
 
 #include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libswscale/swscale.h>
+#import <libavformat/avformat.h>
+#import <libswscale/swscale.h>
 @interface FifishH264Decoder()
 {
 
@@ -33,7 +33,7 @@
 @property (nonatomic ,assign)NSInteger  pictureWidth;//图片宽度，放置视频大小突然改变
 
 @property (nonatomic ,assign)NSInteger  videoIndex;//视频流在文件流中的位置
-@property (nonatomic ,assign)BOOL       isRunningDecode;//解码状态记录
+
 
 @end
 
@@ -109,6 +109,10 @@
         return -1;
     }
     
+    
+    //视频宽高
+    self.width = _pCodecContext->width;
+    self.height= _pCodecContext->height;
     
     //查找解码器
     _pCodec = avcodec_find_decoder(_pCodecContext->codec_id);
@@ -233,6 +237,29 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
         if ([self.UpdataDelegate respondsToSelector:@selector(updateH264FrameData:)]) {
             [self.UpdataDelegate updateH264FrameData:yuvFrame];
         }
+    }
+}
+- (void)dealloc
+{
+    
+    if(_pCodecContext){
+        avcodec_close(_pCodecContext);
+        _pCodecContext=NULL;
+    }
+    
+    if(_pFormatContext){
+       avformat_close_input(&_pFormatContext);
+        _pFormatContext=NULL;
+    }
+    
+    if (_pAvpacket) {
+        av_free(_pAvpacket);
+        _pAvpacket = NULL;
+    }
+    
+    if (_pFrame) {
+        av_frame_free(&_pFrame);
+        _pFrame = NULL;
     }
 }
 @end

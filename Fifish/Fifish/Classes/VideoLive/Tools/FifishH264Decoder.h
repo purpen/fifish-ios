@@ -26,8 +26,14 @@
 
 @property (nonatomic, assign)id<updataYUV_420FrameDelegate> UpdataDelegate;
 
+@property (nonatomic, assign) int   width;
+
+@property (nonatomic, assign) int   height;
+
+@property (nonatomic ,assign)BOOL       isRunningDecode;//解码状态记录
 
 - (instancetype)initWithUrl:(NSString *)Url;
+
 
 
 //开始解码
