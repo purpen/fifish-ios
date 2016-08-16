@@ -9,42 +9,62 @@
 #import "VideoLiveController.h"
 #import "FSTabBarController.h"
 #import "FifishH264Decoder.h"
+
+//view
 #import "OpenGLFrameView.h"
-@interface VideoLiveController()<updataYUV_420FrameDelegate>
+#import "Masonry.h"
+#import "FSFSVideoLiveStatusBar.h"
+@interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate>
 
-@property (nonatomic, strong)FifishH264Decoder * ViedoDecoder;
+@property (nonatomic, strong)FifishH264Decoder * ViedoDecoder;//解码器
 
-@property (nonatomic, strong)OpenGLFrameView   * VideoGlView;
+
+@property (nonatomic, strong)OpenGLFrameView   * VideoGlView;//videoview
+
+
+@property (nonatomic, strong)FSFSVideoLiveStatusBar * statusBar;//状态栏
+
 
 @end
 @implementation VideoLiveController
 - (void)viewDidLoad{
+    
+    
+    //禁止休眠
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
+    
+    
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
+    
+  
+    
 }
-- (void)dismissVC{
-    self.ViedoDecoder.isRunningDecode = NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)dealloc{
+    
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 - (void)viewDidAppear:(BOOL)animated{
     [self.ViedoDecoder StardecodeFrame];
     [self AddVideoView];
     
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 100, 50);
-    [btn setTitle:@"FIFISH" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(dismissVC) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:btn];
-    
-    
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-    double deviceLevel = [UIDevice currentDevice].batteryLevel;
-    
-    
-    [UIApplication sharedApplication].idleTimerDisabled=YES;
-    NSLog(@"%f",deviceLevel);
+    [self.view addSubview:self.statusBar];
+    [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.right.equalTo(self.view.mas_right).offset(0);
+        make.height.equalTo(@60);
+    }];
+}
+
+//状态栏
+- (FSFSVideoLiveStatusBar *)statusBar{
+    if (!_statusBar) {
+        _statusBar = [[FSFSVideoLiveStatusBar alloc] init];
+        _statusBar.delegate = self;
+        _statusBar.backgroundColor = [UIColor clearColor];
+    }
+    return _statusBar;
 }
 
 - (void)AddVideoView{ 
@@ -69,5 +89,13 @@
 }
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskLandscapeRight;
+}
+
+
+#pragma mark VideoStatusBarDelegate
+- (void)FifishBackBtnClick{
+    //停止解码
+    self.ViedoDecoder.isRunningDecode = NO;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
