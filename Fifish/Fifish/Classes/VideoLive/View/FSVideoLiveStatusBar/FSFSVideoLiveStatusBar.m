@@ -9,8 +9,6 @@
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
-
-#import "Masonry.h"
 @interface FSFSVideoLiveStatusBar()
 
 @property (nonatomic ,strong) FSBatteryView     * batteryView;//电量
@@ -51,7 +49,14 @@
             make.size.mas_equalTo(CGSizeMake(55, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
-//        [self addSubview:self.TemperatureView];
+        
+        
+        [self addSubview:self.TemperatureView];
+        [self.TemperatureView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.batteryView.mas_left).offset(-10);
+            make.size.mas_equalTo(CGSizeMake(40, 10));
+            make.centerY.equalTo(self.mas_centerY);
+        }];
     }
     return self;
 }
@@ -87,5 +92,12 @@
     if (self.delegate&&[self.delegate respondsToSelector:@selector(FifishBackBtnClick)]) {
         [self.delegate FifishBackBtnClick];
     }
+}
+
+- (FSTemperatureView *)TemperatureView{
+    if (!_TemperatureView) {
+        _TemperatureView = [[FSTemperatureView alloc] init];
+    }
+    return _TemperatureView;
 }
 @end

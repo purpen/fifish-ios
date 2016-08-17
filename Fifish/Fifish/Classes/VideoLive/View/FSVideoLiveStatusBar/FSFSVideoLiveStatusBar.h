@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FSBaseView.h"
 @protocol FSVidoLiveStatusBarDelegate <NSObject>
 
 @required
@@ -16,7 +16,7 @@
 
 @end
 
-@interface FSFSVideoLiveStatusBar : UIView
+@interface FSFSVideoLiveStatusBar : FSBaseView
 
 
 @property (nonatomic,assign)id<FSVidoLiveStatusBarDelegate>delegate;

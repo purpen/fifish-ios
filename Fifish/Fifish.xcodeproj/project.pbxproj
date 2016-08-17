@@ -29,6 +29,8 @@
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
+		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
+		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		150EBB4E142F9020FE831D9C /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AB41714EAA86BBAB372D57 /* libPods-Fifish.a */; };
 		1F0423E51D51F38E0071A1D6 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0423B91D51F38E0071A1D6 /* MJRefreshAutoFooter.m */; };
 		1F0423E61D51F38E0071A1D6 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0423BB1D51F38E0071A1D6 /* MJRefreshBackFooter.m */; };
@@ -361,6 +363,10 @@
 		046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFSVideoLiveStatusBar.m; sourceTree = "<group>"; };
 		0467651B1D632A3A00FFA743 /* FSTemperatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTemperatureView.h; sourceTree = "<group>"; };
 		0467651C1D632A3A00FFA743 /* FSTemperatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTemperatureView.m; sourceTree = "<group>"; };
+		04A1B6F11D6435E20008223E /* FSBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseView.h; sourceTree = "<group>"; };
+		04A1B6F21D6435E20008223E /* FSBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseView.m; sourceTree = "<group>"; };
+		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
+		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
 		1F0423B81D51F38E0071A1D6 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1F0423B91D51F38E0071A1D6 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1F0423BA1D51F38E0071A1D6 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -773,6 +779,7 @@
 		0434F2F91D6193C300DBFFCE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04A1B6F41D6444E90008223E /* FSVideoLiveTabBar */,
 				046765141D63283A00FFA743 /* FSVideoLiveStatusBar */,
 				0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */,
 				0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */,
@@ -990,6 +997,24 @@
 				0467651C1D632A3A00FFA743 /* FSTemperatureView.m */,
 			);
 			path = FSVideoLiveStatusBar;
+			sourceTree = "<group>";
+		};
+		04A1B6F01D6435D90008223E /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				04A1B6F11D6435E20008223E /* FSBaseView.h */,
+				04A1B6F21D6435E20008223E /* FSBaseView.m */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		04A1B6F41D6444E90008223E /* FSVideoLiveTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */,
+				04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */,
+			);
+			path = FSVideoLiveTabBar;
 			sourceTree = "<group>";
 		};
 		1F0423B61D51F38E0071A1D6 /* MJRefresh */ = {
@@ -1673,6 +1698,7 @@
 		1F7EDE931D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04A1B6F01D6435D90008223E /* BaseView */,
 				1F7EDEA01D45F15D00ABED5D /* FSTabBar.h */,
 				1F7EDEA11D45F15D00ABED5D /* FSTabBar.m */,
 			);
@@ -2088,6 +2114,7 @@
 				1F4202491D49B32C00D3E6CB /* NSData+ImageContentType.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
+				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F4202551D49B32C00D3E6CB /* UIImageView+HighlightedWebCache.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
 				1FF36E861D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m in Sources */,
@@ -2184,6 +2211,7 @@
 				1F4202511D49B32C00D3E6CB /* UIButton+WebCache.m in Sources */,
 				1F0424541D51F3C30071A1D6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
+				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,

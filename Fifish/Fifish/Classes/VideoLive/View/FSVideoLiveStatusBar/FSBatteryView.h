@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FSBatteryView : UIView
+#import "FSBaseView.h"
+@interface FSBatteryView : FSBaseView
 
 @end

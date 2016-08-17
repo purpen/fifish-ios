@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FSTemperatureView : UIView
+#import "FSBaseView.h"
+@interface FSTemperatureView : FSBaseView
 
 @end

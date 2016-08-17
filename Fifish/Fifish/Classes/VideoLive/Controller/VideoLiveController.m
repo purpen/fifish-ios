@@ -12,8 +12,8 @@
 
 //view
 #import "OpenGLFrameView.h"
-#import "Masonry.h"
 #import "FSFSVideoLiveStatusBar.h"
+#import "FSVideoLiveBottomBar.h"
 @interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate>
 
 @property (nonatomic, strong)FifishH264Decoder * ViedoDecoder;//解码器
@@ -23,6 +23,10 @@
 
 
 @property (nonatomic, strong)FSFSVideoLiveStatusBar * statusBar;//状态栏
+
+
+//录像拍照view
+@property (nonatomic, strong)FSVideoLiveBottomBar   * bottomBar;
 
 
 @end
@@ -37,8 +41,21 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     
-  
+    [self.view addSubview:self.statusBar];
+    [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.right.equalTo(self.view.mas_right).offset(0);
+        make.height.equalTo(@60);
+    }];
     
+    [self.view addSubview:self.bottomBar];
+    [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.right.equalTo(self.view.mas_right).offset(0);
+        make.height.equalTo(@100);
+    }];
 }
 - (void)dealloc{
     
@@ -48,13 +65,9 @@
     [self.ViedoDecoder StardecodeFrame];
     [self AddVideoView];
     
-    [self.view addSubview:self.statusBar];
-    [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left).offset(0);
-        make.right.equalTo(self.view.mas_right).offset(0);
-        make.height.equalTo(@60);
-    }];
+    //状态栏、录像栏拿到最前面
+    [self.view bringSubviewToFront:self.statusBar];
+    [self.view bringSubviewToFront:self.bottomBar];
 }
 
 //状态栏
@@ -66,7 +79,13 @@
     }
     return _statusBar;
 }
-
+- (FSVideoLiveBottomBar *)bottomBar{
+    if (!_bottomBar) {
+        _bottomBar = [[FSVideoLiveBottomBar alloc] init];
+        _bottomBar.backgroundColor = [UIColor clearColor];
+    }
+    return _bottomBar;
+}
 - (void)AddVideoView{ 
     [self.view addSubview:self.VideoGlView];
 }
