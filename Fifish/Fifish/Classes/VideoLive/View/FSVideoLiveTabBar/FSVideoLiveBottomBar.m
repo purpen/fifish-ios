@@ -19,6 +19,9 @@
 //标题
 @property (nonatomic, strong) UILabel   * TitleLab;
 
+//存储中
+
+@property (nonatomic)         BOOL       isReciveVideo;
 
 @end
 
@@ -62,6 +65,7 @@
     if (!_record_btn) {
         _record_btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
+        [_record_btn addTarget:self action:@selector(recordViedeo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _record_btn;
 }
@@ -71,6 +75,12 @@
         [_take_photoBtn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
     }
     return _take_photoBtn;
+}
+- (void)recordViedeo:(UIButton *)sender{
+    sender.selected =  self.isReciveVideo = !self.isReciveVideo;
+    
+    //录制通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveMp4File" object:nil userInfo:@{@"saveStatus":[NSNumber numberWithBool:self.isReciveVideo]}];
 }
 @end
 //record_btn

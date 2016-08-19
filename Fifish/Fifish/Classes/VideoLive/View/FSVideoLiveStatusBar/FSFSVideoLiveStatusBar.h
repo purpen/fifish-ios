@@ -14,6 +14,9 @@
 //返回
 - (void)FifishBackBtnClick;
 
+//菜单
+- (void)VideoLiveMenuBtnClick;
+
 @end
 
 @interface FSFSVideoLiveStatusBar : FSBaseView

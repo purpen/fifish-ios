@@ -5,9 +5,12 @@
 //  Created by macpro on 16/8/15.
 //  Copyright © 2016年 Dong. All rights reserved.
 //
-
+//controller
 #import "VideoLiveController.h"
 #import "FSTabBarController.h"
+#import "FSVideoPlayerController.h"
+
+//other
 #import "FifishH264Decoder.h"
 
 //view
@@ -116,5 +119,14 @@
     //停止解码
     self.ViedoDecoder.isRunningDecode = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//菜单
+- (void)VideoLiveMenuBtnClick{
+    self.ViedoDecoder.isRunningDecode = NO;
+    FSVideoPlayerController * player = [[FSVideoPlayerController alloc]init];
+    player.fileUrl = self.ViedoDecoder.OutputMp4FileUrl;
+    [self presentViewController:player animated:YES completion:nil];
 }
 @end

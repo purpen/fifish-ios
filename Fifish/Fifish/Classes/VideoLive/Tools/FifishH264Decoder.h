@@ -32,6 +32,9 @@
 
 @property (nonatomic ,assign)BOOL       isRunningDecode;//解码状态记录
 
+//输出地址
+@property (nonatomic ,assign,readonly)NSString * OutputMp4FileUrl;
+
 - (instancetype)initWithUrl:(NSString *)Url;
 
 

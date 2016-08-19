@@ -23,17 +23,24 @@
     AVFrame         * _pFrame;
     
     
-    
+    AVFormatContext * _mp4outFormatContext;//输出
+    AVOutputFormat  *_mp4outFmt;//输出格式
+    AVStream        *_out_stream;//输出视频流
 }
 
 
 //url
 @property (nonatomic ,strong)NSString * FileUrl;
 
+//输出地址
+@property (nonatomic ,strong)NSString * OutputFileUrl;
+
 @property (nonatomic ,assign)NSInteger  pictureWidth;//图片宽度，放置视频大小突然改变
 
 @property (nonatomic ,assign)NSInteger  videoIndex;//视频流在文件流中的位置
 
+//是否保存
+@property (nonatomic ,assign) BOOL      IsSaveMp4File;
 
 @end
 
@@ -44,8 +51,22 @@
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
         }
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:@"SaveMp4File" object:nil];
     }
     return self;
+}
+
+- (void)Mp4fileNotice:(NSNotification *)text{
+    if ([text.userInfo[@"saveStatus"] integerValue]==1) {
+        [self MakeOutFileUrl];
+        [self starRecVideo];
+        self.IsSaveMp4File = YES;
+    }
+    else{
+        self.IsSaveMp4File = NO;
+        [self closeMp4File];
+    }
+    
 }
 
 //根据连接地址初始化
@@ -195,7 +216,10 @@
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self updataYUVFrameOnMainThread:(YUV420Frame *)&yuvFrame];
                     });
-                    
+                    if (self.IsSaveMp4File&&_pAvpacket) {
+                        [self saveMp4File:(_pAvpacket)];
+                        
+                    }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
                     free(yuvFrame.chromaR.dataBuffer);
@@ -209,6 +233,93 @@
 }
 
 
+- (void)saveMp4File:(AVPacket *)packet{
+    if (packet&&_mp4outFormatContext) {
+        AVStream *in_stream = _pFormatContext->streams[0];
+        AVStream *out_stream = _mp4outFormatContext->streams[0];
+        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
+        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
+        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
+        packet->pos = -1;
+        av_interleaved_write_frame(_mp4outFormatContext, packet);
+        
+    }
+}
+- (void)closeMp4File{
+    if (_mp4outFormatContext&&self.IsSaveMp4File == NO) {
+        av_write_trailer( _mp4outFormatContext );
+    }
+    
+    NSFileManager * man = [NSFileManager defaultManager];
+    NSLog(@"%llu",[[man attributesOfItemAtPath:self.OutputFileUrl error:nil] fileSize]);
+    
+}
+- (void)starRecVideo{
+    _mp4outFormatContext = NULL;
+    _mp4outFmt = NULL;
+    if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
+    {
+        return;
+    }
+    
+    _mp4outFmt = _mp4outFormatContext->oformat;
+    if (avio_open(&(_mp4outFormatContext->pb), [self.OutputFileUrl UTF8String], AVIO_FLAG_READ_WRITE) < 0)
+    {
+        return ;
+    }
+    
+    
+    //视频流
+    _out_stream = avformat_new_stream(_mp4outFormatContext, _pFormatContext->streams[0]->codec->codec);
+    
+    
+    if (!_out_stream) {
+        return ;
+    }
+    
+    if(avcodec_copy_context(_out_stream->codec, _pFormatContext->streams[0]->codec)<0){
+        fprintf(stderr, "Failed to copy context from input to output stream codec context\n");
+        return ;
+    }
+    
+    _out_stream->codec->codec_tag = 0;
+    if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
+        _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
+    
+    
+    av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
+    if (avformat_write_header(_mp4outFormatContext, NULL) < 0)
+    {
+        fprintf(stderr, "Failed to Mp4Header");
+        return ;
+    }
+    
+}
+//文件地址
+- (void)MakeOutFileUrl{
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString* path = [paths objectAtIndex:0];
+    NSLog(@"MP4 PATH: %@",path);
+    
+    NSDateFormatter *dateFormatter0 = [[NSDateFormatter alloc] init];
+    [dateFormatter0 setDateFormat:@"yy-MM-dd HH:mm:ss:AA"];
+    NSString *currentDateStr = [dateFormatter0 stringFromDate:[NSDate date]];
+    //NSLog(@"Current DateFormat MP4 %@\n",currentDateStr);
+    
+    
+    NSString* outputVideoName=[NSString stringWithFormat:@"%@.mp4",currentDateStr];
+    NSString *videoOutputPath=[path stringByAppendingPathComponent:outputVideoName];
+    
+    self.OutputFileUrl = videoOutputPath;
+    //赋值给外部只读属性
+    [self setOutputMp4FileUrl:self.OutputFileUrl];
+
+    
+    
+}
+- (void)setOutputMp4FileUrl:(NSString *)OutputMp4FileUrl{
+    _OutputMp4FileUrl = OutputMp4FileUrl;
+}
 
 void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, int width, int height)
 {
@@ -220,17 +331,6 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
         src +=linesize;
     }
 }
-//static NSData * copyFrameData(UInt8 * scr ,int linesize ,int width, int height){
-//    width = MIN(linesize, width);
-//    NSMutableData * md =[NSMutableData dataWithLength:width*height];
-//    Byte * dst = md.mutableBytes;
-//    for (NSInteger i ; i<height; ++i) {
-//        memcpy(dst, scr, width);
-//        dst += width;
-//        scr += linesize;
-//    }
-//    return  md;
-//}
 
 - (void)updataYUVFrameOnMainThread:(YUV420Frame *)yuvFrame{
     if (yuvFrame) {

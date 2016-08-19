@@ -78,6 +78,7 @@
         _MenuBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _MenuBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [_MenuBtn setImage:[UIImage imageNamed:@"live_menu_icon"] forState:UIControlStateNormal];
+        [_MenuBtn addTarget:self action:@selector(menuBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _MenuBtn;
 }
@@ -88,6 +89,14 @@
     }
     return _batteryView;
 }
+
+- (void)menuBtnClick:(UIButton *)sender{
+    if ([self.delegate respondsToSelector:@selector(VideoLiveMenuBtnClick)]) {
+        [self.delegate VideoLiveMenuBtnClick];
+    }
+}
+
+//返回
 - (void)BtnClick:(UIButton *)btn{
     if (self.delegate&&[self.delegate respondsToSelector:@selector(FifishBackBtnClick)]) {
         [self.delegate FifishBackBtnClick];
