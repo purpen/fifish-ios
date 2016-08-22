@@ -9,7 +9,7 @@
 #import "FifishH264Decoder.h"
 
 
-
+#include <sys/time.h>
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
@@ -26,6 +26,12 @@
     AVFormatContext * _mp4outFormatContext;//输出
     AVOutputFormat  *_mp4outFmt;//输出格式
     AVStream        *_out_stream;//输出视频流
+    
+    
+    int last_pts ;
+    int last_dts ;
+    
+    int64_t pts, dts;
 }
 
 
@@ -217,15 +223,22 @@
                         [self updataYUVFrameOnMainThread:(YUV420Frame *)&yuvFrame];
                     });
                     if (self.IsSaveMp4File&&_pAvpacket) {
-                        [self saveMp4File:(_pAvpacket)];
+                        NSLog(@"dts----->%lld\n",_pAvpacket->dts);
+                        NSLog(@"pts----->%lld\n",_pAvpacket->pts);
+                        NSLog(@"pos----->%lld\n",_pAvpacket->pos);
+                        NSLog(@"duration->%lld\n",_pAvpacket->duration);
+                        NSLog(@"---------->地址%p",_pAvpacket);
+                        
+                        [self saveMp4File:_pAvpacket];
                         
                     }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
                     free(yuvFrame.chromaR.dataBuffer);
+                    
                 }
                 
-                av_free_packet(_pAvpacket);
+//                av_free_packet(_pAvpacket);
             }
             
         }
@@ -234,15 +247,26 @@
 
 
 - (void)saveMp4File:(AVPacket *)packet{
-    if (packet&&_mp4outFormatContext) {
+    if (packet&&_mp4outFormatContext){
         AVStream *in_stream = _pFormatContext->streams[0];
-        AVStream *out_stream = _mp4outFormatContext->streams[0];
-        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
-        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
-        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
-        packet->pos = -1;
+//        AVStream *out_stream = _mp4outFormatContext->streams[0];
+//        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
+//        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
+//        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
+//        packet->pos = -1;
+        pts = packet->pts;
+        packet->pts += last_pts;
+        dts = packet->dts;
+        packet->dts += last_dts;
         av_interleaved_write_frame(_mp4outFormatContext, packet);
         
+        
+        NSLog(@"dts----->%lld\n",packet->dts);
+        NSLog(@"pts----->%lld\n",packet->pts);
+        NSLog(@"pos----->%lld\n",packet->pos);
+        NSLog(@"duration->%lld\n",packet->duration);
+        NSLog(@"---------->地址%p",packet);
+        NSLog(@"\n");
     }
 }
 - (void)closeMp4File{
@@ -255,6 +279,7 @@
     
 }
 - (void)starRecVideo{
+    
     _mp4outFormatContext = NULL;
     _mp4outFmt = NULL;
     if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
@@ -293,7 +318,6 @@
         fprintf(stderr, "Failed to Mp4Header");
         return ;
     }
-    
 }
 //文件地址
 - (void)MakeOutFileUrl{
@@ -302,7 +326,7 @@
     NSLog(@"MP4 PATH: %@",path);
     
     NSDateFormatter *dateFormatter0 = [[NSDateFormatter alloc] init];
-    [dateFormatter0 setDateFormat:@"yy-MM-dd HH:mm:ss:AA"];
+    [dateFormatter0 setDateFormat:@"yy-MM-ddHH-mm-ss-AA"];
     NSString *currentDateStr = [dateFormatter0 stringFromDate:[NSDate date]];
     //NSLog(@"Current DateFormat MP4 %@\n",currentDateStr);
     
@@ -339,6 +363,16 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
         }
     }
 }
+
+- (unsigned long)_GetTickCount{
+    struct timeval tv;
+    if (gettimeofday(&tv,NULL)!=0) {
+        return 0;
+    }
+    return (tv.tv_sec*1000 + tv.tv_usec/1000);
+}
+
+
 - (void)dealloc
 {
     

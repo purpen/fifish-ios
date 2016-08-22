@@ -30,6 +30,7 @@
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
+		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		150EBB4E142F9020FE831D9C /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AB41714EAA86BBAB372D57 /* libPods-Fifish.a */; };
@@ -366,6 +367,8 @@
 		046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFSVideoLiveStatusBar.m; sourceTree = "<group>"; };
 		0467651B1D632A3A00FFA743 /* FSTemperatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTemperatureView.h; sourceTree = "<group>"; };
 		0467651C1D632A3A00FFA743 /* FSTemperatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTemperatureView.m; sourceTree = "<group>"; };
+		04903C4A1D6AFC6800E3E041 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
+		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		04A1B6F11D6435E20008223E /* FSBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseView.h; sourceTree = "<group>"; };
 		04A1B6F21D6435E20008223E /* FSBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseView.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
@@ -1036,6 +1039,29 @@
 			path = FSVideoLiveStatusBar;
 			sourceTree = "<group>";
 		};
+		04903C471D6AFC1300E3E041 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04903C481D6AFC1300E3E041 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04903C491D6AFC4300E3E041 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04903C4A1D6AFC6800E3E041 /* FSFileManager.h */,
+				04903C4B1D6AFC6800E3E041 /* FSFileManager.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		04A1B6F01D6435D90008223E /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,9 +1695,10 @@
 		1F7EDE861D45EF6900ABED5D /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				04903C491D6AFC4300E3E041 /* Tools */,
+				04903C471D6AFC1300E3E041 /* Model */,
+				04903C481D6AFC1300E3E041 /* View */,
 				1F7EDE871D45EF6900ABED5D /* Controller */,
-				1F7EDE8B1D45EF6900ABED5D /* Model */,
-				1F7EDE8C1D45EF6900ABED5D /* View */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -1684,20 +1711,6 @@
 				1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		1F7EDE8B1D45EF6900ABED5D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1F7EDE8C1D45EF6900ABED5D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1F7EDE8D1D45EF6900ABED5D /* Other */ = {
@@ -2251,6 +2264,7 @@
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
 				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
+				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,

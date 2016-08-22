@@ -7,23 +7,18 @@
 //
 
 #import "FSMediaViewController.h"
-
+#import "FSFileManager.h"
 @interface FSMediaViewController ()
-
 @end
 
 @implementation FSMediaViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = YES;
+    NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
     // Do any additional setup after loading the view from its nib.
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 /*
 #pragma mark - Navigation
 
