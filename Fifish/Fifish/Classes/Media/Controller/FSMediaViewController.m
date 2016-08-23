@@ -17,6 +17,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
     NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
+
     // Do any additional setup after loading the view from its nib.
 }
 /*

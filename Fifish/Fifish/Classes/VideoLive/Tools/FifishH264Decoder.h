@@ -5,7 +5,13 @@
 //  Created by macpro on 16/8/13.
 //  Copyright © 2016年 taihuoniao. All rights reserved.
 //
-
+/*
+ *
+ *
+ *  工程中爆黄的问题是因为老的方法和结构体即将废弃。用的库太新，还不知道怎么换新方法
+ *
+ *
+ */
 #import <Foundation/Foundation.h>
 #import "FifishYUV420Data.h"
 @protocol updataYUV_420FrameDelegate <NSObject>

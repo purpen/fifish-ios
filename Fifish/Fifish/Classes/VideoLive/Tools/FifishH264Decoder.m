@@ -27,11 +27,6 @@
     AVOutputFormat  *_mp4outFmt;//输出格式
     AVStream        *_out_stream;//输出视频流
     
-    
-    int last_pts ;
-    int last_dts ;
-    
-    int64_t pts, dts;
 }
 
 
@@ -47,6 +42,8 @@
 
 //是否保存
 @property (nonatomic ,assign) BOOL      IsSaveMp4File;
+//找到关键帧
+@property (nonatomic ,assign) BOOL      FindKeyFlga;
 
 @end
 
@@ -222,14 +219,19 @@
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self updataYUVFrameOnMainThread:(YUV420Frame *)&yuvFrame];
                     });
+//                    if (_pFrame->pict_type == AV_PICTURE_TYPE_I) {
+//                        self.FindKeyFlga = YES;
+//                        
+//                    }
                     if (self.IsSaveMp4File&&_pAvpacket) {
-                        NSLog(@"dts----->%lld\n",_pAvpacket->dts);
-                        NSLog(@"pts----->%lld\n",_pAvpacket->pts);
-                        NSLog(@"pos----->%lld\n",_pAvpacket->pos);
-                        NSLog(@"duration->%lld\n",_pAvpacket->duration);
-                        NSLog(@"---------->地址%p",_pAvpacket);
                         
-                        [self saveMp4File:_pAvpacket];
+                       [self saveMp4File:_pAvpacket];
+                        if (_pFrame->pict_type == AV_PICTURE_TYPE_I) {
+                            NSLog(@"===+++III");
+                        }
+                        else{
+                            NSLog(@"===+++BP");  
+                        }
                         
                     }
                     free(yuvFrame.luma.dataBuffer);
@@ -237,36 +239,21 @@
                     free(yuvFrame.chromaR.dataBuffer);
                     
                 }
-                
-//                av_free_packet(_pAvpacket);
             }
-            
         }
     }
 }
 
 
 - (void)saveMp4File:(AVPacket *)packet{
-    if (packet&&_mp4outFormatContext){
+    if (packet->data&&_mp4outFormatContext){
         AVStream *in_stream = _pFormatContext->streams[0];
-//        AVStream *out_stream = _mp4outFormatContext->streams[0];
-//        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
-//        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
-//        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
-//        packet->pos = -1;
-        pts = packet->pts;
-        packet->pts += last_pts;
-        dts = packet->dts;
-        packet->dts += last_dts;
+        AVStream *out_stream = _mp4outFormatContext->streams[0];
+        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
+        packet->pos = -1;
         av_interleaved_write_frame(_mp4outFormatContext, packet);
-        
-        
-        NSLog(@"dts----->%lld\n",packet->dts);
-        NSLog(@"pts----->%lld\n",packet->pts);
-        NSLog(@"pos----->%lld\n",packet->pos);
-        NSLog(@"duration->%lld\n",packet->duration);
-        NSLog(@"---------->地址%p",packet);
-        NSLog(@"\n");
     }
 }
 - (void)closeMp4File{
@@ -279,45 +266,86 @@
     
 }
 - (void)starRecVideo{
-    
     _mp4outFormatContext = NULL;
     _mp4outFmt = NULL;
+    
     if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
     {
         return;
     }
     
     _mp4outFmt = _mp4outFormatContext->oformat;
-    if (avio_open(&(_mp4outFormatContext->pb), [self.OutputFileUrl UTF8String], AVIO_FLAG_READ_WRITE) < 0)
+    
+    for (int i = 0; i<1; i++) {
+        AVStream * instream = _pFormatContext->streams[i];
+        AVStream * outstream = avformat_new_stream(_mp4outFormatContext, instream->codec->codec);
+        if (!outstream) {
+            printf("失败");
+            return;
+        }
+        if (avcodec_copy_context(outstream->codec, instream->codec)<0) {
+            printf("失败");
+            return;
+        }
+        outstream->codec->codec_tag =0;
+        if (_mp4outFmt->flags&AVFMT_GLOBALHEADER) {
+            outstream->codec->flags|=CODEC_FLAG_GLOBAL_HEADER;
+        }
+    }
+    av_dump_format(_mp4outFormatContext, 0, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE);
+    if (!(_mp4outFmt->flags&AVFMT_NOFILE)) {
+        if (avio_open(&_mp4outFormatContext->pb, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE)<0) {
+            printf("失败");
+            return;
+        }
+    }
+    if (avformat_write_header(_mp4outFormatContext, NULL)<0) {
+        printf("失败");
+        return;
+    }
+
+    
     {
-        return ;
-    }
+//    _mp4outFormatContext = NULL;
+//    _mp4outFmt = NULL;
+//    
+//    if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
+//    {
+//        return;
+//    }
+//    
+//    _mp4outFmt = _mp4outFormatContext->oformat;
+//    if (avio_open(&(_mp4outFormatContext->pb), [self.OutputFileUrl UTF8String], AVIO_FLAG_READ_WRITE) < 0)
+//    {
+//        return ;
+//    }
+//    
+//    
+//    //视频流
+//    _out_stream = avformat_new_stream(_mp4outFormatContext, _pFormatContext->streams[0]->codec->codec);
+//    
+//    if (!_out_stream) {
+//        return ;
+//    }
+//    
+//    if(avcodec_copy_context(_out_stream->codec, _pFormatContext->streams[0]->codec)<0){
+//        fprintf(stderr, "Failed to copy context from input to output stream codec context\n");
+//        return ;
+//    }
+//    
+//    _out_stream->codec->codec_tag = 0;
+//    if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
+//        _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
+//    
+//    
+//    av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
+//    if (avformat_write_header(_mp4outFormatContext, NULL) < 0)
+//    {
+//        fprintf(stderr, "Failed to Mp4Header");
+//        return ;
+//    }
     
-    
-    //视频流
-    _out_stream = avformat_new_stream(_mp4outFormatContext, _pFormatContext->streams[0]->codec->codec);
-    
-    
-    if (!_out_stream) {
-        return ;
-    }
-    
-    if(avcodec_copy_context(_out_stream->codec, _pFormatContext->streams[0]->codec)<0){
-        fprintf(stderr, "Failed to copy context from input to output stream codec context\n");
-        return ;
-    }
-    
-    _out_stream->codec->codec_tag = 0;
-    if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
-        _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
-    
-    
-    av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
-    if (avformat_write_header(_mp4outFormatContext, NULL) < 0)
-    {
-        fprintf(stderr, "Failed to Mp4Header");
-        return ;
-    }
+}
 }
 //文件地址
 - (void)MakeOutFileUrl{
@@ -371,7 +399,6 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
     }
     return (tv.tv_sec*1000 + tv.tv_usec/1000);
 }
-
 
 - (void)dealloc
 {
