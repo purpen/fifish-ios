@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import "MWPhotoBrowser.h"
+#import <UIKit/UIKit.h>
 
-@interface FSlocalMediaViewController :MWPhotoBrowser<MWPhotoBrowserDelegate>
+@interface FSlocalMediaViewController :UIViewController
 
 @end

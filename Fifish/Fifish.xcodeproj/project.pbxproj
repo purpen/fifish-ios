@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */; };
+		042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */; };
 		0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F2F71D6193C300DBFFCE /* VideoLiveController.m */; };
 		0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F2FC1D61940000DBFFCE /* FishBaseViewController.m */; };
 		0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F3081D61B17800DBFFCE /* libz.tbd */; };
@@ -216,6 +218,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042BEACF1D7015E00067FC16 /* FSBorswerImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBorswerImageCell.h; sourceTree = "<group>"; };
+		042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBorswerImageCell.m; sourceTree = "<group>"; };
+		042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSBorswerImageCell.xib; sourceTree = "<group>"; };
+		042BEAD41D7048130067FC16 /* Fifish-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Fifish-Prefix.pch"; sourceTree = "<group>"; };
 		0434F2F61D6193C300DBFFCE /* VideoLiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLiveController.h; sourceTree = "<group>"; };
 		0434F2F71D6193C300DBFFCE /* VideoLiveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLiveController.m; sourceTree = "<group>"; };
 		0434F2FB1D61940000DBFFCE /* FishBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishBaseViewController.h; sourceTree = "<group>"; };
@@ -966,6 +972,9 @@
 		043CB2911D6EC6950060B629 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				042BEACF1D7015E00067FC16 /* FSBorswerImageCell.h */,
+				042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */,
+				042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1414,6 +1423,7 @@
 				1F7EDE181D45E0D300ABED5D /* main.m */,
 				1F42018C1D47389700D3E6CB /* InfoPlist.strings */,
 				1F42018F1D47389C00D3E6CB /* Localizable.strings */,
+				042BEAD41D7048130067FC16 /* Fifish-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2015,6 +2025,7 @@
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
+				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1F0424101D51F3A00071A1D6 /* Info.plist in Resources */,
@@ -2142,6 +2153,7 @@
 				1F0424531D51F3C30071A1D6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1F4202001D48AE0100D3E6CB /* MASConstraintMaker.m in Sources */,
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
+				042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
 				1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */,
 				1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */,
@@ -2390,6 +2402,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fifish/Fifish-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2417,6 +2431,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fifish/Fifish-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

@@ -31,7 +31,7 @@
     self.navigationController.navigationBar.hidden = YES;
     // 默认显示第0个子控制器
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
 //    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
@@ -44,7 +44,7 @@
     //添加视图scrowll
     [self.view addSubview:self.ViewControllerScrowView];
     [self.ViewControllerScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(Nav_Height,0, 0, 0));
+       make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(Nav_Height,0, Tab_Height, 0));
     }];
     
 }
@@ -91,7 +91,7 @@
     
     
     // 如果当前位置的位置已经显示过了，就直接返回
-    if ([willShowVc isViewLoaded])
+//    if ([willShowVc isViewLoaded])
 //    {
 //        [willShowVc viewWillAppear:YES];
 //        return;
@@ -99,7 +99,7 @@
     
     // 添加控制器的view到contentScrollView中;
         willShowVc.view.frame = CGRectMake(offsetX, 0, width, height);
-    
+//    NSLog(@"%@",willShowVc.view);
     [scrollView addSubview:willShowVc.view];
     
 }

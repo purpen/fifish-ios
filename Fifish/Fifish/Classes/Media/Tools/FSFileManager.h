@@ -18,4 +18,8 @@
 //删除文件
 - (BOOL)RemoveFilePath:(NSString *)path;
 
+
+//从系统相册里面的fish
+- (NSMutableArray *)GetMediaWithFishSystemLibiary;
+
 @end

@@ -86,5 +86,35 @@
     } else {
         NSLog(@"成功！");
     }
+    
+    PHFetchResult * getDataRequest = [PHAsset fetchAssetsInAssetCollection:createdCollection options:nil];
+    [getDataRequest enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[PHImageManager defaultManager] requestAVAssetForVideo:obj options:nil resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+            if ([asset isKindOfClass:[AVURLAsset class]]) {
+                NSLog(@"%@",((AVURLAsset*)asset).URL);
+//                NSLog(@"%lld",((AVURLAsset*)asset).duration);
+                CMTimeShow(((AVURLAsset*)asset).duration);
+                AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+                [generator generateCGImagesAsynchronouslyForTimes:@[[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0,2)]] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+                    UIImage *thumbImg = [UIImage imageWithCGImage:image];
+                    NSLog(@"%@",thumbImg);
+                    
+                    //回调主线程
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        UIImageView * imv = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+                        imv.image = thumbImg;
+                        [self.view addSubview:imv];
+                    });
+                }];
+                
+            }
+            else{
+                NSLog(@"%@",asset.accessibilityAssistiveTechnologyFocusedIdentifiers);
+            }
+           
+        }];
+        
+    }];
 }
+
 @end

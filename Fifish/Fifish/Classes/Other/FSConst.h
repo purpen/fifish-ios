@@ -42,3 +42,5 @@ UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;
 #define kClientID             @"1415289600"
 #define kClientSecret         @"545d9f8aac6b7a4d04abffe5"
 
+
+#define NSLog(s, ... ) NSLog(@"#%s##%d# %@",strrchr(__FILE__,'/'),__LINE__ , [NSString stringWithFormat:(s), ##__VA_ARGS__]);
