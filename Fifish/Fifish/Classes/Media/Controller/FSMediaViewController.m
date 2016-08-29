@@ -34,9 +34,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
-//    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
-//        [[FSFileManager defaultManager] RemoveFilePath:str];
-//    }
+    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
+        [[FSFileManager defaultManager] RemoveFilePath:str];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -56,7 +56,6 @@ CGFloat const Cellspecace = 1;
         _BroswerCollection.dataSource = self;
         _BroswerCollection.backgroundColor = [UIColor whiteColor];
         [_BroswerCollection registerNib:[UINib nibWithNibName:@"FSBorswerImageCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:FSBorswerImageCelliden];
-        
     }
     return _BroswerCollection;
 }

@@ -25,8 +25,10 @@
     
     AVFormatContext * _mp4outFormatContext;//输出
     AVOutputFormat  *_mp4outFmt;//输出格式
-    AVStream        *_out_stream;//输出视频流
+
     
+    long  frame_index;
+
 }
 
 
@@ -53,6 +55,9 @@
         self.FileUrl = Url;
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
+        }
+        else{
+            return nil;
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:@"SaveMp4File" object:nil];
     }
@@ -173,6 +178,7 @@
 - (void)decodeFrame{
     _pAvpacket = (AVPacket *)av_malloc(sizeof(AVPacket));
     int  GotPicPtr = 0;
+    frame_index = 0;
     while (self.isRunningDecode) {
         
         if (av_read_frame(_pFormatContext,_pAvpacket)==0) {
@@ -224,15 +230,7 @@
 //                        
 //                    }
                     if (self.IsSaveMp4File&&_pAvpacket) {
-                        
-                       [self saveMp4File:_pAvpacket];
-                        if (_pFrame->pict_type == AV_PICTURE_TYPE_I) {
-                            NSLog(@"===+++III");
-                        }
-                        else{
-                            NSLog(@"===+++BP");  
-                        }
-                        
+                        [self saveMp4File:_pAvpacket IsKeyFlga:_pFrame->pict_type==AV_PICTURE_TYPE_I?YES:NO];
                     }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
@@ -245,15 +243,33 @@
 }
 
 
-- (void)saveMp4File:(AVPacket *)packet{
+- (void)saveMp4File:(AVPacket *)packet IsKeyFlga:(BOOL)key{
     if (packet->data&&_mp4outFormatContext){
+        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
         AVStream *in_stream = _pFormatContext->streams[0];
         AVStream *out_stream = _mp4outFormatContext->streams[0];
+        
+        AVRational time_base1=in_stream->time_base;
+        //Duration between 2 frames (us)
+        int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(in_stream->r_frame_rate);
+        //Parameters
+        packet->pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+        packet->dts=packet->pts;
+        packet->duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+
         packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
-        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+        packet->dts = packet->pts;
         packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
         packet->pos = -1;
+        if (key)
+        packet->flags =AV_PKT_FLAG_KEY;
+        
+        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n",packet->pts,packet->dts,packet->duration);
+        
         av_interleaved_write_frame(_mp4outFormatContext, packet);
+        frame_index++;
+        
+
     }
 }
 - (void)closeMp4File{
@@ -269,6 +285,8 @@
     _mp4outFormatContext = NULL;
     _mp4outFmt = NULL;
     
+    
+    
     if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
     {
         return;
@@ -279,6 +297,7 @@
     for (int i = 0; i<1; i++) {
         AVStream * instream = _pFormatContext->streams[i];
         AVStream * outstream = avformat_new_stream(_mp4outFormatContext, instream->codec->codec);
+        
         if (!outstream) {
             printf("失败");
             return;
@@ -288,10 +307,14 @@
             return;
         }
         outstream->codec->codec_tag =0;
+        outstream->r_frame_rate.num=25;
+        outstream->r_frame_rate.den=1;
         if (_mp4outFmt->flags&AVFMT_GLOBALHEADER) {
             outstream->codec->flags|=CODEC_FLAG_GLOBAL_HEADER;
         }
     }
+    
+    
     av_dump_format(_mp4outFormatContext, 0, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE);
     if (!(_mp4outFmt->flags&AVFMT_NOFILE)) {
         if (avio_open(&_mp4outFormatContext->pb, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE)<0) {

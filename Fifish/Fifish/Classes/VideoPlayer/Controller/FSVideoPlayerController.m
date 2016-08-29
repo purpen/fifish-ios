@@ -20,7 +20,16 @@
     [self.view addSubview:playBtn];
     [playBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    UIButton * dissmibtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [dissmibtn setTitle:@"play" forState:UIControlStateNormal];
+    dissmibtn.frame = CGRectMake(100, 300, 100, 100);
+    [self.view addSubview:dissmibtn];
+    [dissmibtn addTarget:self action:@selector(dismissModalViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     NSLog(@"%@",self.fileUrl);
+}
+- (void)back{
+    
 }
 - (void)play:(UIButton *)btn{
 //    NSURL *playerURL = [NSURL URLWithString:self.fileUrl];
