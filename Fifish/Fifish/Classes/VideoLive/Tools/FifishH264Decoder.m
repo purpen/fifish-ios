@@ -245,7 +245,7 @@
 
 - (void)saveMp4File:(AVPacket *)packet IsKeyFlga:(BOOL)key{
     if (packet->data&&_mp4outFormatContext){
-        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
+//        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
         AVStream *in_stream = _pFormatContext->streams[0];
         AVStream *out_stream = _mp4outFormatContext->streams[0];
         
@@ -275,10 +275,8 @@
 - (void)closeMp4File{
     if (_mp4outFormatContext&&self.IsSaveMp4File == NO) {
         av_write_trailer( _mp4outFormatContext );
+        frame_index = 0;
     }
-    
-    NSFileManager * man = [NSFileManager defaultManager];
-    NSLog(@"%llu",[[man attributesOfItemAtPath:self.OutputFileUrl error:nil] fileSize]);
     
 }
 - (void)starRecVideo{
