@@ -246,21 +246,25 @@
 - (void)saveMp4File:(AVPacket *)packet IsKeyFlga:(BOOL)key{
     if (packet->data&&_mp4outFormatContext){
 //        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
-        AVStream *in_stream = _pFormatContext->streams[0];
-        AVStream *out_stream = _mp4outFormatContext->streams[0];
-        
-        AVRational time_base1=in_stream->time_base;
-        //Duration between 2 frames (us)
-        int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(in_stream->r_frame_rate);
-        //Parameters
-        packet->pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-        packet->dts=packet->pts;
-        packet->duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-
-        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
-        packet->dts = packet->pts;
-        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
-        packet->pos = -1;
+//        AVStream *in_stream = _pFormatContext->streams[0];
+//        AVStream *out_stream = _mp4outFormatContext->streams[0];
+//        
+//        AVRational time_base1=in_stream->time_base;
+//        //Duration between 2 frames (us)
+//        int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(in_stream->r_frame_rate);
+//        //Parameters
+//        packet->pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+//        packet->dts=packet->pts;
+//        packet->duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
+//
+//        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
+//        packet->dts = packet->pts;
+//        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
+//        packet->pos = -1;
+            packet->pts = frame_index*512;
+                packet->dts = packet->pts;
+                packet->duration = 512;
+                packet->pos = -1;
         if (key)
         packet->flags =AV_PKT_FLAG_KEY;
         
@@ -276,6 +280,7 @@
     if (_mp4outFormatContext&&self.IsSaveMp4File == NO) {
         av_write_trailer( _mp4outFormatContext );
         frame_index = 0;
+        av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
     }
     
 }
