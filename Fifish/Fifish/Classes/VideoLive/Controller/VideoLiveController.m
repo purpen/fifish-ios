@@ -31,19 +31,21 @@
 //录像拍照view
 @property (nonatomic, strong)FSVideoLiveBottomBar   * bottomBar;
 
+//lodingView
+@property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
 
 @end
 @implementation VideoLiveController
 - (void)viewDidLoad{
-    
-    
     //禁止休眠
     [UIApplication sharedApplication].idleTimerDisabled=YES;
     
-    
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    [self SetUpUI];
     
+    self.view.backgroundColor = [UIColor blackColor];
+}
+- (void)SetUpUI{
     [self.view addSubview:self.statusBar];
     [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -59,7 +61,14 @@
         make.right.equalTo(self.view.mas_right).offset(0);
         make.height.equalTo(@100);
     }];
+    
+    [self.view addSubview:self.activityIndicatorView];
+    [self.activityIndicatorView startAnimating];
+    [self.activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+       make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
 }
+
 - (void)dealloc{
     
     [UIApplication sharedApplication].idleTimerDisabled=NO;
@@ -72,7 +81,12 @@
     [self.view bringSubviewToFront:self.statusBar];
     [self.view bringSubviewToFront:self.bottomBar];
 }
-
+- (UIActivityIndicatorView *)activityIndicatorView{
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];   
+    }
+    return _activityIndicatorView;
+}
 //状态栏
 - (FSFSVideoLiveStatusBar *)statusBar{
     if (!_statusBar) {
@@ -107,6 +121,7 @@
     return _ViedoDecoder;
 }
 - (void)updateH264FrameData:(YUV420Frame *)yuvFrame{
+    [self.activityIndicatorView stopAnimating];
     [self.VideoGlView render:yuvFrame];
 }
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{

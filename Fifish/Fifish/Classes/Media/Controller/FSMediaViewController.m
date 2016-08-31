@@ -28,15 +28,16 @@
     [super viewDidLoad];
     [self addChileVC];
     [self setUpUI];
-    self.navigationController.navigationBar.hidden = YES;
+    self.title = @"媒体";
+//    self.navigationController.navigationBar.hidden = YES;
     // 默认显示第0个子控制器
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
-    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
-        [[FSFileManager defaultManager] RemoveFilePath:str];
-    }
+//    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
+//        [[FSFileManager defaultManager] RemoveFilePath:str];
+//    }
     // Do any additional setup after loading the view from its nib.
 }
 

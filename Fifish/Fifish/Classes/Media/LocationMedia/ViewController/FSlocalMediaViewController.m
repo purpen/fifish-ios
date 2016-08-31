@@ -5,9 +5,17 @@
 //  Created by macpro on 16/8/25.
 //  Copyright © 2016年 Dong. All rights reserved.
 //
+
+#import <Photos/Photos.h>
+ #import <MediaPlayer/MediaPlayer.h>
+
+
 #import "Masonry.h"
 #import "FSBorswerImageCell.h"
 #import "FSlocalMediaViewController.h"
+
+//资源管理器
+#import "FSFileManager.h"
 
 CGFloat const Cellspecace = 1;
 
@@ -18,6 +26,11 @@ CGFloat const Cellspecace = 1;
 
 //cell大小
 @property (nonatomic)          CGFloat            cellSize;
+
+//资源
+@property (nonatomic, strong) NSMutableArray    * sourceArr;
+
+@property (nonatomic ,strong)AVPlayer * player;
 
 
 @end
@@ -33,7 +46,13 @@ CGFloat const Cellspecace = 1;
 }
 
 - (void)GetMediaData{
-    
+    NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4FileArr];
+    self.sourceArr = [NSMutableArray array];
+    for (NSString * str in dataArr) {
+        AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:str] options:nil];
+        [self.sourceArr addObject:asset];
+    }
+    [self.BroswerCollection reloadData];
 }
 
 - (void)setupUI{
@@ -61,14 +80,22 @@ CGFloat const Cellspecace = 1;
 }
 #pragma mark collectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 100;
+    return self.sourceArr.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSBorswerImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSBorswerImageCelliden forIndexPath:indexPath];
+    cell.videoAsset = self.sourceArr[indexPath.row];
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(self.cellSize, self.cellSize);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    AVURLAsset  *asset = self.sourceArr[indexPath.row];
+    MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:asset.URL];
+    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    
 }
 
 @end
