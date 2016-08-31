@@ -140,8 +140,9 @@
     
     
     //视频宽高
-    self.width = _pCodecContext->width;
-    self.height= _pCodecContext->height;
+#warning 这里用的设备屏幕的宽高。并不是用的视频原始的宽高。
+    self.width = _pCodecContext->width=SCREEN_WIDTH;
+    self.height= _pCodecContext->height=SCREEN_HEIGHT;
     
     //查找解码器
     _pCodec = avcodec_find_decoder(_pCodecContext->codec_id);
