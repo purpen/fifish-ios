@@ -16,7 +16,7 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 
-@interface FSLoginViewController ()
+@interface FSLoginViewController ()<FBRequestDelegate>
 
 @property (weak, nonatomic) IBOutlet FSTextField *phoneTF;
 @property (weak, nonatomic) IBOutlet FSTextField *pwdTF;
@@ -66,17 +66,14 @@
         return;
     }
     //进行网络请求
-    NSDictionary *params = @{
-                             @"account" : self.phone_register.text,
-                             @"password" : self.pwd_register.text
-                             };
-    FBRequest *request = [FBAPI postWithUrlString:@"/auth/register" requestDictionary:params delegate:self];
+    FBRequest *request = [FBAPI postWithUrlString:@"/auth/register" requestDictionary:@{
+                                                                                        @"account" : self.phone_register.text,
+                                                                                        @"password" : self.pwd_register.text
+                                                                                        } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        if ([result[@"status"] isEqualToString:@"success"]) {
-            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-            FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
+        [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+        FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];
     }];
