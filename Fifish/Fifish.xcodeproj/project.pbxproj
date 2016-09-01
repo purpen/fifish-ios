@@ -30,6 +30,9 @@
 		0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */; };
 		043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */; };
 		044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044167C31D66FE79002439E7 /* FSVideoPlayerController.m */; };
+		0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CCFC1D77CA6A007694CC /* FSOSDManager.m */; };
+		0452CD011D77D429007694CC /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD001D77D429007694CC /* UIView+Toast.m */; };
+		0452CD041D77FFB6007694CC /* RovInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD031D77FFB6007694CC /* RovInfo.m */; };
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
@@ -354,6 +357,12 @@
 		043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSlocalMediaViewController.m; sourceTree = "<group>"; };
 		044167C21D66FE79002439E7 /* FSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoPlayerController.h; sourceTree = "<group>"; };
 		044167C31D66FE79002439E7 /* FSVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoPlayerController.m; sourceTree = "<group>"; };
+		0452CCFB1D77CA6A007694CC /* FSOSDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOSDManager.h; sourceTree = "<group>"; };
+		0452CCFC1D77CA6A007694CC /* FSOSDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOSDManager.m; sourceTree = "<group>"; };
+		0452CCFF1D77D429007694CC /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		0452CD001D77D429007694CC /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		0452CD021D77FFB6007694CC /* RovInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RovInfo.h; sourceTree = "<group>"; };
+		0452CD031D77FFB6007694CC /* RovInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RovInfo.m; sourceTree = "<group>"; };
 		046765151D63285800FFA743 /* FSBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBatteryView.h; sourceTree = "<group>"; };
 		046765161D63285800FFA743 /* FSBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBatteryView.m; sourceTree = "<group>"; };
 		046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFSVideoLiveStatusBar.h; sourceTree = "<group>"; };
@@ -756,6 +765,7 @@
 		0434F2FF1D61A16C00DBFFCE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0452CCFA1D77CA4F007694CC /* OSDManager */,
 				0434F4241D61C8D400DBFFCE /* FifishH264Decoder.h */,
 				0434F4251D61C8D400DBFFCE /* FifishH264Decoder.m */,
 				0434F4261D61C8D400DBFFCE /* FifishYUV420Data.h */,
@@ -1019,6 +1029,26 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0452CCFA1D77CA4F007694CC /* OSDManager */ = {
+			isa = PBXGroup;
+			children = (
+				0452CD021D77FFB6007694CC /* RovInfo.h */,
+				0452CD031D77FFB6007694CC /* RovInfo.m */,
+				0452CCFB1D77CA6A007694CC /* FSOSDManager.h */,
+				0452CCFC1D77CA6A007694CC /* FSOSDManager.m */,
+			);
+			path = OSDManager;
+			sourceTree = "<group>";
+		};
+		0452CCFE1D77D429007694CC /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				0452CCFF1D77D429007694CC /* UIView+Toast.h */,
+				0452CD001D77D429007694CC /* UIView+Toast.m */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
@@ -1777,6 +1807,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0452CCFE1D77D429007694CC /* Toast */,
 				0434F3A01D61C59B00DBFFCE /* FFmpeg-iOS */,
 				1F04241E1D51F3C30071A1D6 /* AFNetworking */,
 				1F0423F91D51F3A00071A1D6 /* MJExtension */,
@@ -2201,6 +2232,8 @@
 				1F0424141D51F3A00071A1D6 /* MJPropertyKey.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
+				0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */,
 				1F0423F11D51F38E0071A1D6 /* MJRefreshNormalHeader.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1F0423EF1D51F38E0071A1D6 /* MJRefreshBackStateFooter.m in Sources */,
@@ -2217,6 +2250,7 @@
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F0424181D51F3A00071A1D6 /* NSObject+MJKeyValue.m in Sources */,
+				0452CD011D77D429007694CC /* UIView+Toast.m in Sources */,
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
 				1F0423E71D51F38E0071A1D6 /* MJRefreshComponent.m in Sources */,

@@ -12,6 +12,8 @@
 #import "GuidePageViewController.h"
 #import "AppDelegate+FSGuide.h"
 
+#import "FSOSDManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +22,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[FSOSDManager sharedManager] starConnectWithOSD];
     
     [self setKeyBoard];
     [self windowShow];

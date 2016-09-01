@@ -74,6 +74,7 @@
     [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self.ViedoDecoder StardecodeFrame];
     [self AddVideoView];
     

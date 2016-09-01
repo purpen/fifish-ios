@@ -186,7 +186,7 @@
             
             if (_pAvpacket->stream_index == _videoIndex) {
                 
-                if (avcodec_decode_video2(_pCodecContext,_pFrame,&GotPicPtr,_pAvpacket)<0) {
+                 if(avcodec_decode_video2(_pCodecContext,_pFrame,&GotPicPtr,_pAvpacket)<0) {
                     NSLog(@"解码失败");
                     return;
                 }
@@ -225,43 +225,26 @@
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self updataYUVFrameOnMainThread:(YUV420Frame *)&yuvFrame];
+                        free(yuvFrame.luma.dataBuffer);
+                        free(yuvFrame.chromaB.dataBuffer);
+                        free(yuvFrame.chromaR.dataBuffer);
                     });
-//                    if (_pFrame->pict_type == AV_PICTURE_TYPE_I) {
-//                        self.FindKeyFlga = YES;
-//                        
-//                    }
+                    
                     if (self.IsSaveMp4File&&_pAvpacket) {
                         [self saveMp4File:_pAvpacket IsKeyFlga:_pFrame->pict_type==AV_PICTURE_TYPE_I?YES:NO];
                     }
-                    free(yuvFrame.luma.dataBuffer);
-                    free(yuvFrame.chromaB.dataBuffer);
-                    free(yuvFrame.chromaR.dataBuffer);
                     
                 }
             }
         }
     }
+    av_free(_pFrame);
+    av_free(_pAvpacket);
 }
 
 
 - (void)saveMp4File:(AVPacket *)packet IsKeyFlga:(BOOL)key{
     if (packet->data&&_mp4outFormatContext){
-//        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
-//        AVStream *in_stream = _pFormatContext->streams[0];
-//        AVStream *out_stream = _mp4outFormatContext->streams[0];
-//        
-//        AVRational time_base1=in_stream->time_base;
-//        //Duration between 2 frames (us)
-//        int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(in_stream->r_frame_rate);
-//        //Parameters
-//        packet->pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-//        packet->dts=packet->pts;
-//        packet->duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-//
-//        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
-//        packet->dts = packet->pts;
-//        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
-//        packet->pos = -1;
             packet->pts = frame_index*512;
                 packet->dts = packet->pts;
                 packet->duration = 512;
@@ -273,8 +256,6 @@
         
         av_interleaved_write_frame(_mp4outFormatContext, packet);
         frame_index++;
-        
-
     }
 }
 - (void)closeMp4File{
@@ -438,16 +419,6 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
     if(_pFormatContext){
        avformat_close_input(&_pFormatContext);
         _pFormatContext=NULL;
-    }
-    
-    if (_pAvpacket) {
-        av_free(_pAvpacket);
-        _pAvpacket = NULL;
-    }
-    
-    if (_pFrame) {
-        av_frame_free(&_pFrame);
-        _pFrame = NULL;
     }
 }
 @end

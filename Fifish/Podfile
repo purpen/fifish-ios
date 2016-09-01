@@ -2,5 +2,6 @@
 # platform :ios, '9.0'
 
 target 'Fifish' do
-pod 'MWPhotoBrowser', '~> 2.1.2'
+pod 'CocoaAsyncSocket', '~> 7.5.0'
+pod 'SDWebImage', '~> 3.8.1'
 end
