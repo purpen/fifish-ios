@@ -9,7 +9,7 @@
 #import "FifishH264Decoder.h"
 
 
-#include <sys/time.h>
+
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
@@ -25,10 +25,7 @@
     
     AVFormatContext * _mp4outFormatContext;//输出
     AVOutputFormat  *_mp4outFmt;//输出格式
-
-    
-    long  frame_index;
-
+    AVStream        *_out_stream;//输出视频流
 }
 
 
@@ -44,8 +41,9 @@
 
 //是否保存
 @property (nonatomic ,assign) BOOL      IsSaveMp4File;
-//找到关键帧
-@property (nonatomic ,assign) BOOL      FindKeyFlga;
+
+@property (nonatomic)NSUInteger         frame_index;
+
 
 @end
 
@@ -55,9 +53,6 @@
         self.FileUrl = Url;
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
-        }
-        else{
-            return nil;
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:@"SaveMp4File" object:nil];
     }
@@ -140,9 +135,8 @@
     
     
     //视频宽高
-#warning 这里用的设备屏幕的宽高。并不是用的视频原始的宽高。
-    self.width = _pCodecContext->width=SCREEN_WIDTH;
-    self.height= _pCodecContext->height=SCREEN_HEIGHT;
+    self.width = _pCodecContext->width;
+    self.height= _pCodecContext->height;
     
     //查找解码器
     _pCodec = avcodec_find_decoder(_pCodecContext->codec_id);
@@ -179,7 +173,6 @@
 - (void)decodeFrame{
     _pAvpacket = (AVPacket *)av_malloc(sizeof(AVPacket));
     int  GotPicPtr = 0;
-    frame_index = 0;
     while (self.isRunningDecode) {
         
         if (av_read_frame(_pFormatContext,_pAvpacket)==0) {
@@ -226,19 +219,18 @@
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self updataYUVFrameOnMainThread:(YUV420Frame *)&yuvFrame];
                     });
-//                    if (_pFrame->pict_type == AV_PICTURE_TYPE_I) {
-//                        self.FindKeyFlga = YES;
-//                        
-//                    }
                     if (self.IsSaveMp4File&&_pAvpacket) {
-                        [self saveMp4File:_pAvpacket IsKeyFlga:_pFrame->pict_type==AV_PICTURE_TYPE_I?YES:NO];
+                        [self saveMp4File:(_pAvpacket) IsKeyFlga:_pFrame->pict_type == AV_PICTURE_TYPE_I?YES:NO];
+                        
                     }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
                     free(yuvFrame.chromaR.dataBuffer);
-                    
                 }
+                
+                av_free_packet(_pAvpacket);
             }
+            
         }
     }
 }
@@ -246,133 +238,68 @@
 
 - (void)saveMp4File:(AVPacket *)packet IsKeyFlga:(BOOL)key{
     if (packet->data&&_mp4outFormatContext){
-//        NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n\n\n\n",packet->pts,packet->dts,packet->duration);
-//        AVStream *in_stream = _pFormatContext->streams[0];
-//        AVStream *out_stream = _mp4outFormatContext->streams[0];
-//        
-//        AVRational time_base1=in_stream->time_base;
-//        //Duration between 2 frames (us)
-//        int64_t calc_duration=(double)AV_TIME_BASE/av_q2d(in_stream->r_frame_rate);
-//        //Parameters
-//        packet->pts=(double)(frame_index*calc_duration)/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-//        packet->dts=packet->pts;
-//        packet->duration=(double)calc_duration/(double)(av_q2d(time_base1)*AV_TIME_BASE);
-//
-//        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, (AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX));
-//        packet->dts = packet->pts;
-//        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
-//        packet->pos = -1;
-            packet->pts = frame_index*512;
-                packet->dts = packet->pts;
-                packet->duration = 512;
-                packet->pos = -1;
+        packet->pts = self.frame_index*512;
+        packet->dts = packet->pts;
+        packet->duration = 512;
+        packet->pos = -1;
         if (key)
-        packet->flags =AV_PKT_FLAG_KEY;
+            packet->flags =AV_PKT_FLAG_KEY;
         
         NSLog(@"--------->pts%lld\n-------------dts%lld\n-------------->duration%lld\n",packet->pts,packet->dts,packet->duration);
         
         av_interleaved_write_frame(_mp4outFormatContext, packet);
-        frame_index++;
-        
-
+        self.frame_index++;
     }
 }
 - (void)closeMp4File{
     if (_mp4outFormatContext&&self.IsSaveMp4File == NO) {
         av_write_trailer( _mp4outFormatContext );
-        frame_index = 0;
-        av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
     }
+    
+    NSFileManager * man = [NSFileManager defaultManager];
+    NSLog(@"%llu",[[man attributesOfItemAtPath:self.OutputFileUrl error:nil] fileSize]);
     
 }
 - (void)starRecVideo{
     _mp4outFormatContext = NULL;
     _mp4outFmt = NULL;
-    
-    
-    
     if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
     {
         return;
     }
     
     _mp4outFmt = _mp4outFormatContext->oformat;
-    
-    for (int i = 0; i<1; i++) {
-        AVStream * instream = _pFormatContext->streams[i];
-        AVStream * outstream = avformat_new_stream(_mp4outFormatContext, instream->codec->codec);
-        
-        if (!outstream) {
-            printf("失败");
-            return;
-        }
-        if (avcodec_copy_context(outstream->codec, instream->codec)<0) {
-            printf("失败");
-            return;
-        }
-        outstream->codec->codec_tag =0;
-        outstream->r_frame_rate.num=25;
-        outstream->r_frame_rate.den=1;
-        if (_mp4outFmt->flags&AVFMT_GLOBALHEADER) {
-            outstream->codec->flags|=CODEC_FLAG_GLOBAL_HEADER;
-        }
-    }
-    
-    
-    av_dump_format(_mp4outFormatContext, 0, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE);
-    if (!(_mp4outFmt->flags&AVFMT_NOFILE)) {
-        if (avio_open(&_mp4outFormatContext->pb, [self.OutputFileUrl UTF8String], AVIO_FLAG_WRITE)<0) {
-            printf("失败");
-            return;
-        }
-    }
-    if (avformat_write_header(_mp4outFormatContext, NULL)<0) {
-        printf("失败");
-        return;
-    }
-
-    
+    if (avio_open(&(_mp4outFormatContext->pb), [self.OutputFileUrl UTF8String], AVIO_FLAG_READ_WRITE) < 0)
     {
-//    _mp4outFormatContext = NULL;
-//    _mp4outFmt = NULL;
-//    
-//    if (avformat_alloc_output_context2(&_mp4outFormatContext, NULL, NULL, [self.OutputFileUrl UTF8String]) < 0)
-//    {
-//        return;
-//    }
-//    
-//    _mp4outFmt = _mp4outFormatContext->oformat;
-//    if (avio_open(&(_mp4outFormatContext->pb), [self.OutputFileUrl UTF8String], AVIO_FLAG_READ_WRITE) < 0)
-//    {
-//        return ;
-//    }
-//    
-//    
-//    //视频流
-//    _out_stream = avformat_new_stream(_mp4outFormatContext, _pFormatContext->streams[0]->codec->codec);
-//    
-//    if (!_out_stream) {
-//        return ;
-//    }
-//    
-//    if(avcodec_copy_context(_out_stream->codec, _pFormatContext->streams[0]->codec)<0){
-//        fprintf(stderr, "Failed to copy context from input to output stream codec context\n");
-//        return ;
-//    }
-//    
-//    _out_stream->codec->codec_tag = 0;
-//    if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
-//        _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
-//    
-//    
-//    av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
-//    if (avformat_write_header(_mp4outFormatContext, NULL) < 0)
-//    {
-//        fprintf(stderr, "Failed to Mp4Header");
-//        return ;
-//    }
+        return ;
+    }
     
-}
+    
+    //视频流
+    _out_stream = avformat_new_stream(_mp4outFormatContext, _pFormatContext->streams[0]->codec->codec);
+    
+    
+    if (!_out_stream) {
+        return ;
+    }
+    
+    if(avcodec_copy_context(_out_stream->codec, _pFormatContext->streams[0]->codec)<0){
+        fprintf(stderr, "Failed to copy context from input to output stream codec context\n");
+        return ;
+    }
+    
+    _out_stream->codec->codec_tag = 0;
+    if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
+        _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
+    
+    
+    av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
+    if (avformat_write_header(_mp4outFormatContext, NULL) < 0)
+    {
+        fprintf(stderr, "Failed to Mp4Header");
+        return ;
+    }
+    
 }
 //文件地址
 - (void)MakeOutFileUrl{
@@ -381,7 +308,7 @@
     NSLog(@"MP4 PATH: %@",path);
     
     NSDateFormatter *dateFormatter0 = [[NSDateFormatter alloc] init];
-    [dateFormatter0 setDateFormat:@"yy-MM-ddHH-mm-ss-AA"];
+    [dateFormatter0 setDateFormat:@"yy-MM-dd HH:mm:ss:AA"];
     NSString *currentDateStr = [dateFormatter0 stringFromDate:[NSDate date]];
     //NSLog(@"Current DateFormat MP4 %@\n",currentDateStr);
     
@@ -418,15 +345,6 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
         }
     }
 }
-
-- (unsigned long)_GetTickCount{
-    struct timeval tv;
-    if (gettimeofday(&tv,NULL)!=0) {
-        return 0;
-    }
-    return (tv.tv_sec*1000 + tv.tv_usec/1000);
-}
-
 - (void)dealloc
 {
     

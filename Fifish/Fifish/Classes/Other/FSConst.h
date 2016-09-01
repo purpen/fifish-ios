@@ -26,6 +26,8 @@ typedef enum {
 
 #define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]
 
+#define KEY_WINDOW      [UIApplication sharedApplication].keyWindow//当前工程window
+
 #define Nav_Height  64.0
 #define Tab_Height  49.0
 

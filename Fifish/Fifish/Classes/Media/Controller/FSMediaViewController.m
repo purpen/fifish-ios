@@ -13,7 +13,6 @@
 
 #import "FSlocalMediaViewController.h"
 
-#import "MWPhotoBrowser.h"
 
 #import "FSFileManager.h"
 @interface FSMediaViewController ()<UIImagePickerControllerDelegate,UINavigationBarDelegate,UIScrollViewDelegate>
