@@ -13,6 +13,7 @@
 #import "Masonry.h"
 #import "FSBorswerImageCell.h"
 #import "FSlocalMediaViewController.h"
+#import "MJRefresh.h"
 
 //资源管理器
 #import "FSFileManager.h"
@@ -40,7 +41,6 @@ CGFloat const Cellspecace = 1;
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setupUI];
-    
     //读取视频数据
     [self GetMediaData];
 }
@@ -61,6 +61,11 @@ CGFloat const Cellspecace = 1;
     [self.view addSubview:self.BroswerCollection];
     [self.BroswerCollection mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0,0, 0, 0));
+    }];
+    
+    self.BroswerCollection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self GetMediaData];
+        [self.BroswerCollection.mj_header endRefreshing];
     }];
 }
 

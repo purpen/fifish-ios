@@ -98,7 +98,7 @@
 }
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
-    [self starRecordUpdataLabWithStatus:sender.selected];
+//    [self starRecordUpdataLabWithStatus:sender.selected];
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveMp4File" object:nil userInfo:@{@"saveStatus":[NSNumber numberWithBool:self.isReciveVideo]}];
 }
