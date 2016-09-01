@@ -35,7 +35,7 @@
         
         self.Temp = ((info.temp[0]&0xff<<8)|(info.temp[1]&0xff))/10.0;
         self.Depth= (((info.depth[0]&0xff)<<8)|(info.depth[1]&0xff))/10.0;
-        self.Heading_angle = (((info.heading_angle[0]&0xff)<<8)|(info.heading_angle[1]&0xff))/100.0;
+        self.Heading_angle = ((((info.heading_angle[0]&0xff)<<8)|(info.heading_angle[1]&0xff))/100.0)-180;
         self.Pitch_angle = ((((info.pitch_angle[0]&0xff)<<8)|(info.pitch_angle[1]&0xff))/100.0)-90.0;
         self.Roll_angle  = ((((info.roll_angle[0]&0xff)<<8)|(info.roll_angle[1]&0xff))/100.0)-90;
         self.Remain_battery = info.battery&0xff;

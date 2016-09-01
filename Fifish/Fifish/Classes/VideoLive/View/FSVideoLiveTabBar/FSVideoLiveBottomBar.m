@@ -28,6 +28,8 @@
 
 @property (nonatomic)         BOOL       isReciveVideo;
 
+@property (nonatomic)         __block  NSUInteger timeOutCount;
+
 @end
 
 @implementation FSVideoLiveBottomBar
@@ -98,21 +100,33 @@
 }
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
-//    [self starRecordUpdataLabWithStatus:sender.selected];
+    [self starRecordUpdataLabWithStatus:sender.selected];
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveMp4File" object:nil userInfo:@{@"saveStatus":[NSNumber numberWithBool:self.isReciveVideo]}];
 }
 - (void)starRecordUpdataLabWithStatus:(BOOL)isrecord{
     if (isrecord) {
-        __block  NSUInteger timeOutCount = 0;
+        self.timeOutCount = 0;
+        dispatch_resume(self.timer);
+    }
+    else{
+        if (dispatch_source_testcancel(self.timer)==0) {
+           dispatch_suspend(self.timer);
+        }
+        self.record_TimeLab.text = @"00:00:00";
+    }
+}
+- (dispatch_source_t)timer{
+    if (!_timer) {
+        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
         dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1ull * NSEC_PER_SEC, 0);
         dispatch_source_set_event_handler(self.timer, ^{
-            timeOutCount++;
-            NSString *str_hour = [NSString stringWithFormat:@"%02lu",timeOutCount/3600];
-
-            NSString *str_minute = [NSString stringWithFormat:@"%02lu",(timeOutCount%3600)/60];
-            NSString *str_second = [NSString stringWithFormat:@"%02lu",timeOutCount%60];
-             NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
+            self.timeOutCount++;
+            NSString *str_hour = [NSString stringWithFormat:@"%02lu",self.timeOutCount/3600];
+            
+            NSString *str_minute = [NSString stringWithFormat:@"%02lu",(self.timeOutCount%3600)/60];
+            NSString *str_second = [NSString stringWithFormat:@"%02lu",self.timeOutCount%60];
+            NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
             self.record_TimeLab.text = format_time;
             
         });
@@ -121,18 +135,11 @@
             NSLog(@"timersource cancel handle block");
             
         });
-        
-        dispatch_resume(self.timer);
-    }
-    else{
-        dispatch_source_cancel(self.timer);
-        self.record_TimeLab.text = @"00:00:00";
-    }
-}
-- (dispatch_source_t)timer{
-    if (!_timer) {
-        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
     }
     return _timer;
+}
+- (void)dealloc{
+    dispatch_source_set_cancel_handler(self.timer, nil);
+    
 }
 @end

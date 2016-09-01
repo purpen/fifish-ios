@@ -8,7 +8,6 @@
 
 #import "FSBorswerImageCell.h"
 
-
 @implementation FSBorswerImageCell
 
 - (void)awakeFromNib {
@@ -25,11 +24,9 @@
         UIImage *thumbImg = [UIImage imageWithCGImage:image];
         
 //        时长
-        NSInteger  duration = CMTimeGetSeconds(_videoAsset.duration);
-        NSInteger minute = duration/60;
+        NSInteger  duration =ceil(CMTimeGetSeconds(_videoAsset.duration));
+        NSInteger minute = duration/60.0;
         NSInteger second = duration%60;
-        
-        
         
         //回调主线程
         dispatch_sync(dispatch_get_main_queue(), ^{
