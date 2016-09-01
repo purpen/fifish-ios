@@ -13,6 +13,8 @@
 #import "NSString+Helper.h"
 #import "SVProgressHUD.h"
 #import "FSImproveViewController.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
 
 @interface FSLoginViewController ()
 
@@ -47,71 +49,70 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.getCodeBtn_register addTarget:self action:@selector(getCodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.registerBtn addTarget:self action:@selector(clickRegisterBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.timeView.layer.masksToBounds = YES;
     self.timeView.layer.cornerRadius = 20;
 }
 
 -(void)clickRegisterBtn:(UIButton*)sender{
-//    if (![_phone_register.text checkTel]) {
-//        [SVProgressHUD showInfoWithStatus:@"手机号不正确"];
-//        return;
-//    }
-//    if (!_codeTF.text.length) {
-//        [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
-//        return;
-//    }
-//    if (_pwd_register.text.length < 6) {
-//        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
-//        return;
-//    }
-    //进行网络请求
-    
-    FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
--(void)getCodeBtnClick:(UIButton*)sender{
-    if ([self.phone_register.text checkTel]) {
-        self.timeView.hidden = NO;
-        sender.hidden = YES;
-        [self startTime];
-    }else{
-        [SVProgressHUD showErrorWithStatus:@"手机号不正确"];
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    if (![_phone_register.text isValidateEmail]) {
+        [SVProgressHUD showInfoWithStatus:@"邮箱格式不正确"];
+        return;
     }
+    if (_pwd_register.text.length < 6) {
+        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
+        return;
+    }
+    //进行网络请求
+    NSDictionary *params = @{
+                             @"account" : self.phone_register.text,
+                             @"password" : self.pwd_register.text
+                             };
+    FBRequest *request = [FBAPI postWithUrlString:@"/auth/register" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        if ([result[@"status"] isEqualToString:@"success"]) {
+            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+            FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    } failure:^(FBRequest *request, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
-//开始倒计时准备重新发送
--(void)startTime{
-    __block int timeout = 30;//倒计时时间
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0*NSEC_PER_SEC, 0);//每秒执行
-    dispatch_source_set_event_handler(_timer, ^{
-        //倒计时结束，关闭
-        if (timeout <= 0) {
-            dispatch_source_cancel(_timer);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //时间到了后重新发送view消失
-                self.getCodeBtn_register.hidden = NO;
-                self.timeView.hidden = YES;
-            });
-        }//按钮显示剩余时间
-        else{
-            int seconds = timeout % 60;
-            NSString *strTime = [NSString stringWithFormat:@"%.2d",seconds];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView beginAnimations:nil context:nil];
-                [UIView setAnimationDuration:1];
-                self.timeLabel.text = strTime;
-                [UIView commitAnimations];
-            });
-            timeout --;
-        }
-    });
-    dispatch_resume(_timer);
-}
+
+////开始倒计时准备重新发送
+//-(void)startTime{
+//    __block int timeout = 30;//倒计时时间
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+//    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0*NSEC_PER_SEC, 0);//每秒执行
+//    dispatch_source_set_event_handler(_timer, ^{
+//        //倒计时结束，关闭
+//        if (timeout <= 0) {
+//            dispatch_source_cancel(_timer);
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                //时间到了后重新发送view消失
+//                self.getCodeBtn_register.hidden = NO;
+//                self.timeView.hidden = YES;
+//            });
+//        }//按钮显示剩余时间
+//        else{
+//            int seconds = timeout % 60;
+//            NSString *strTime = [NSString stringWithFormat:@"%.2d",seconds];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [UIView beginAnimations:nil context:nil];
+//                [UIView setAnimationDuration:1];
+//                self.timeLabel.text = strTime;
+//                [UIView commitAnimations];
+//            });
+//            timeout --;
+//        }
+//    });
+//    dispatch_resume(_timer);
+//}
 
 
 -(void)viewWillAppear:(BOOL)animated{

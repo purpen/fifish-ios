@@ -10,4 +10,9 @@
 
 @interface FSHeadImageModel : NSObject
 
+/**  */
+@property(nonatomic,copy) NSString *small;
+/**  */
+@property(nonatomic,copy) NSString *large;
+
 @end
