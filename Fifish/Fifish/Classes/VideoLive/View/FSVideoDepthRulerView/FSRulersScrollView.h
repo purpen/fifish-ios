@@ -1,0 +1,25 @@
+//
+//  FSRulersScrollView.h
+//  Fifish
+//
+//  Created by macpro on 16/9/2.
+//  Copyright © 2016年 Dong. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface FSRulersScrollView : UIScrollView
+/**
+ *  @author MC
+ *
+ *  初始化方法
+ *
+ *  @param minvalue 坐标最大值
+ *  @param maxvalue 最小值
+ *  @param stpe     间隔
+ *  @param frame    大小
+ *
+ *  @return self
+ */
+-(instancetype)initWithMinValue:(CGFloat)minvalue WithMaxValue:(CGFloat)maxvalue WithStpe:(CGFloat)stpe WithFrame:(CGRect)frame;
+@end

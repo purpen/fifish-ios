@@ -23,7 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[FSOSDManager sharedManager] starConnectWithOSD];
+//    [[FSOSDManager sharedManager] starConnectWithOSD];
     
     [self setKeyBoard];
     [self windowShow];

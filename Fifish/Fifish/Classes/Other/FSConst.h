@@ -23,14 +23,16 @@ typedef enum {
 #define SCREEN_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 //  屏幕高
 #define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
-
-#define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]
-
 #define KEY_WINDOW      [UIApplication sharedApplication].keyWindow//当前工程window
 
 #define Nav_Height  64.0
 #define Tab_Height  49.0
 
+
+#pragma mark 颜色
+#define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]
+
+#define RANDOM_COLOR(a) [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:a]
 
 /** tabBar被选中的通知名字 */
 UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;

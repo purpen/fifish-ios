@@ -16,6 +16,7 @@
 //view
 #import "OpenGLFrameView.h"
 #import "FSFSVideoLiveStatusBar.h"
+#import "FSVideoDepthRulerView.h"
 #import "FSVideoLiveBottomBar.h"
 @interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate>
 
@@ -28,8 +29,10 @@
 @property (nonatomic, strong)FSFSVideoLiveStatusBar * statusBar;//状态栏
 
 
-//录像拍照view
-@property (nonatomic, strong)FSVideoLiveBottomBar   * bottomBar;
+@property (nonatomic, strong)FSVideoDepthRulerView  * DetpthView;//深度尺
+
+
+@property (nonatomic, strong)FSVideoLiveBottomBar   * bottomBar;//录像拍照view
 
 //lodingView
 @property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
@@ -53,13 +56,21 @@
         make.right.equalTo(self.view.mas_right).offset(0);
         make.height.equalTo(@60);
     }];
-    
+
     [self.view addSubview:self.bottomBar];
     [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom);
         make.left.equalTo(self.view.mas_left).offset(0);
         make.right.equalTo(self.view.mas_right).offset(0);
         make.height.equalTo(@100);
+    }];
+    
+    [self.view addSubview:self.DetpthView];
+    [self.DetpthView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.statusBar.mas_bottom);
+        make.bottom.equalTo(self.bottomBar.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
     }];
     
     [self.view addSubview:self.activityIndicatorView];
@@ -75,11 +86,13 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    //解码，添加播放视图
     [self.ViedoDecoder StardecodeFrame];
     [self AddVideoView];
     
     //状态栏、录像栏拿到最前面
     [self.view bringSubviewToFront:self.statusBar];
+    [self.view bringSubviewToFront:self.DetpthView];
     [self.view bringSubviewToFront:self.bottomBar];
 }
 - (UIActivityIndicatorView *)activityIndicatorView{
@@ -97,6 +110,14 @@
     }
     return _statusBar;
 }
+//深度尺
+- (FSVideoDepthRulerView *)DetpthView{
+    if (!_DetpthView) {
+        _DetpthView = [[FSVideoDepthRulerView alloc] init];
+    }
+    return _DetpthView;
+}
+//底部栏
 - (FSVideoLiveBottomBar *)bottomBar{
     if (!_bottomBar) {
         _bottomBar = [[FSVideoLiveBottomBar alloc] init];
