@@ -21,7 +21,6 @@
 #import "AFNetworking.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
-#import "FSPerson.h"
 
 typedef enum {
     FSTypeZuoPin = 1,

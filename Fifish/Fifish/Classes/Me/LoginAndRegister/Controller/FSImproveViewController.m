@@ -8,6 +8,11 @@
 
 #import "FSImproveViewController.h"
 #import "UIImage+Helper.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+#import "SVProgressHUD.h"
+#import "FSUserModel.h"
+#import "AddreesPickerViewController.h"
 
 @interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *head_bg_view;
@@ -16,10 +21,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *professionalTF;
 @property (weak, nonatomic) IBOutlet UITextField *addressTF;
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
+@property(nonatomic,strong) AddreesPickerViewController *addreesPickerVC;
 
 @end
 
 @implementation FSImproveViewController
+
+-(AddreesPickerViewController *)addreesPickerVC{
+    if (!_addreesPickerVC) {
+        _addreesPickerVC = [[AddreesPickerViewController alloc] init];
+    }
+    return _addreesPickerVC;
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -43,6 +56,18 @@
     
     self.userNameTF.delegate = self;
 }
+- (IBAction)clickAdreesBtn:(id)sender {
+    self.addreesPickerVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+    [self presentViewController:_addreesPickerVC animated:NO completion:nil];
+    [_addreesPickerVC.pickerBtn addTarget:self action:@selector(clickAddreesPickerBtn:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+-(void)clickAddreesPickerBtn:(UIButton*)sender{
+    self.addressTF.text = [NSString stringWithFormat:@"%@ %@",self.addreesPickerVC.provinceStr,self.addreesPickerVC.cityStr];
+    [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
+}
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.text.length == 0) {
@@ -56,9 +81,33 @@
 
 
 -(void)sureBtnClick:(UIButton*)sender{
+//    [SVProgressHUD show];
+//    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     //网络请求
+    if (self.userNameTF.text.length == 0) {
+        [SVProgressHUD showInfoWithStatus:@"用户名不能为空"];
+        return;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self.navigationController popViewControllerAnimated:YES];
+//    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
+//                                                                                        @"username" : self.userNameTF.text,
+//                                                                                        @"job" : self.professionalTF.text,
+//                                                                                        @"zone" : self.addressTF.text
+//                                                                                        } delegate:self];
+//    [request startRequestSuccess:^(FBRequest *request, id result) {
+//        [SVProgressHUD dismiss];
+//        FSUserModel *model = [[FSUserModel alloc] init];
+//        model.username = self.userNameTF.text;
+//        model.job = self.professionalTF.text;
+//        model.zone = self.addressTF.text;
+//        [model saveOrUpdate];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    } failure:^(FBRequest *request, NSError *error) {
+//        [SVProgressHUD dismiss];
+//        NSLog(@"错误 %@",error.localizedDescription);
+//    }];
+    
 }
 
 -(void)singleTap:(UITapGestureRecognizer*)recognizer{
@@ -96,7 +145,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
     NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
-    //        NSData * iconData = UIImageJPEGRepresentation(editedImg , 0.5);
+//            NSData * iconData = UIImageJPEGRepresentation(editedImg , 0.5);
     [self uploadIconWithData:iconData];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
@@ -105,14 +154,18 @@
 //上传头像
 - (void)uploadIconWithData:(NSData *)iconData
 {
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     NSString * icon64Str = [iconData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//    NSDictionary * params = @{@"type": @3, @"tmp": icon64Str};
-//    FBRequest * request = [FBAPI postWithUrlString:IconURL requestDictionary:params delegate:self];
-//    request.flag = IconURL;
-//    [request startRequest];
+    NSDictionary * params = @{@"avatar" : icon64Str};
+    FBRequest * request = [FBAPI postWithUrlString:@"/upload/avatar" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"用户头像  %@",result);
+        [SVProgressHUD dismiss];
+    } failure:^(FBRequest *request, NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
 }
-
-
 
 
 @end

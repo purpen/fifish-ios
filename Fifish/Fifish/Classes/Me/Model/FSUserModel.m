@@ -7,7 +7,16 @@
 //
 
 #import "FSUserModel.h"
+#import "MJExtension.h"
 
 @implementation FSUserModel
+
+
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{
+             @"userId" : @"_id"
+             };
+}
 
 @end

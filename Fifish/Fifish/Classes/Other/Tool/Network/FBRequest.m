@@ -377,6 +377,7 @@ static BOOL                           _canSendMessage      = YES;
         for (NSString *headerField in allKeys) {
             
             NSString *value = [self.HTTPHeaderFieldsWithValues valueForKey:headerField];
+            NSLog(@"value  %@",value);
             [self.manager.requestSerializer setValue:value forHTTPHeaderField:headerField];
         }
     }
@@ -437,12 +438,19 @@ static BOOL                           _canSendMessage      = YES;
                                      parameters:[weakSelf transformRequestDictionary]
                                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                             weakSelf.isRunning = NO;
+                                            NSString *token = responseObject[@"data"][@"token"];
                                             
-                                            if ([[responseObject objectForKey:@"success"] isEqualToNumber:@1]) {
+                                            if (token.length != 0) {
+                                                NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+                                                [defaults setObject:token forKey:@"token"];
+                                                [defaults synchronize];
+                                            }
+                                            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
+                                            if (status_code == 200) {
                                                 
                                                 success(weakSelf, responseObject);
                                             } else {
-                                                [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
+                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
                                             }
                                         }
                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
