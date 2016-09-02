@@ -72,9 +72,10 @@
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-        FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self registerNowBtn:self.registerBtn];
+        
     } failure:^(FBRequest *request, NSError *error) {
+        NSLog(@"错误 %@",error.localizedDescription);
         [SVProgressHUD dismiss];
     }];
 }
@@ -133,8 +134,32 @@
 }
 - (IBAction)loginBtn:(UIButton *)sender {
     //进行网络请求
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    if (![_phoneTF.text isValidateEmail]) {
+        [SVProgressHUD showInfoWithStatus:@"邮箱格式不正确"];
+        return;
+    }
+    if (_pwdTF.text.length < 6) {
+        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
+        return;
+    }
+    //进行网络请求
+    FBRequest *request = [FBAPI postWithUrlString:@"/auth/login" requestDictionary:@{
+                                                                                        @"account" : self.phoneTF.text,
+                                                                                        @"password" : self.pwdTF.text
+                                                                                        } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"用户登录  %@",result);
+        
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(FBRequest *request, NSError *error) {
+        NSLog(@"错误 %@",error.localizedDescription);
+        [SVProgressHUD dismiss];
+    }];
+
 }
 - (IBAction)weixinBtn:(UIButton *)sender {
 }
