@@ -9,6 +9,10 @@
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
+
+#import "FSOSDManager.h"
+#import "RovInfo.h"
+
 @interface FSFSVideoLiveStatusBar()
 
 @property (nonatomic ,strong) FSBatteryView     * batteryView;//电量
@@ -18,6 +22,12 @@
 @property (nonatomic ,strong) FSTemperatureView * TemperatureView;//温度
 
 @property (nonatomic ,strong) UIButton          * MenuBtn;//菜单
+
+@property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
+
+
+@property (nonatomic ,assign) RovInfo           * ROVinfo;//ROV信息
+
 @end
 
 @implementation FSFSVideoLiveStatusBar
@@ -57,6 +67,15 @@
             make.size.mas_equalTo(CGSizeMake(40, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
+        
+        [self addSubview:self.FifishBattery];
+        [self.FifishBattery mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.TemperatureView.mas_left).offset(-10);
+            make.size.mas_equalTo(CGSizeMake(100, 10));
+            make.centerY.equalTo(self.mas_centerY);
+        }];
+        
+        [self ObserverWithOSD];
     }
     return self;
 }
@@ -90,6 +109,15 @@
     return _batteryView;
 }
 
+-(UILabel *)FifishBattery{
+    if (!_FifishBattery) {
+        _FifishBattery = [[UILabel alloc] init];
+        _FifishBattery.textColor = [UIColor blackColor];
+        _FifishBattery.textAlignment = NSTextAlignmentRight;
+        _FifishBattery.font = [UIFont systemFontOfSize:10];
+    }
+    return _FifishBattery;
+}
 - (void)menuBtnClick:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(VideoLiveMenuBtnClick)]) {
         [self.delegate VideoLiveMenuBtnClick];
@@ -107,6 +135,27 @@
     if (!_TemperatureView) {
         _TemperatureView = [[FSTemperatureView alloc] init];
     }
+    
     return _TemperatureView;
+}
+//监听控制板信息
+- (void)ObserverWithOSD{
+    self.ROVinfo = [RovInfo sharedManager];
+    [self.ROVinfo addObserver:self forKeyPath:@"Temp" options:NSKeyValueObservingOptionNew context:nil];
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"Temp"]) {
+        NSLog(@"--------%f<<<<<<<",self.ROVinfo.Pitch_angle);
+        self.TemperatureView.Tempera =self.ROVinfo.Temp;
+        self.FifishBattery.text = [NSString stringWithFormat:@"ROV电量:%f％",self.ROVinfo.Pitch_angle];
+
+    }
+    
+}
+-(void)dealloc{
+    [self.ROVinfo removeObserver:self forKeyPath:@"Temp"];
 }
 @end

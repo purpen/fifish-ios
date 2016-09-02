@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSConst.h"
+#import "UIView+Toast.h"
 @interface FishBaseViewController : UIViewController
 
 @end

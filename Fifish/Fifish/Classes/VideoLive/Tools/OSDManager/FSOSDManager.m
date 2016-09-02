@@ -42,14 +42,23 @@ NSInteger  const Fish_OSD_Port = 4321;
     [self.OSDConnectSocket connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port error:&error];
     if (error) [KEY_WINDOW makeToast:error.localizedDescription];
     else{
-//        [self.OSDConnectSocket readDataWithTimeout:3 tag:1];
+        [self.OSDConnectSocket readDataWithTimeout:3 tag:1];
         [self.OSDConnectSocket writeData:[@"app_connect" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:3 tag:1];
+    }
+}
+- (void)stopConnectWithOSD{
+    if ([self.OSDConnectSocket isConnected]) {
+        [self.OSDConnectSocket setDelegate:nil];
+        [self.OSDConnectSocket disconnect];
     }
 }
 - (GCDAsyncSocket *)OSDConnectSocket{
     if (!_OSDConnectSocket) {
         dispatch_queue_t scoketQueue = dispatch_queue_create("OSDScoket queue", NULL);
         _OSDConnectSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:scoketQueue];
+    }
+    if (!self.delegate) {
+        _OSDConnectSocket.delegate = self;
     }
     return _OSDConnectSocket;
 }
@@ -61,6 +70,9 @@ NSInteger  const Fish_OSD_Port = 4321;
 #pragma mark - 代理方法表示连接成功/失败 回调函数
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
     NSLog(@"连接成功");
+    if ([self.delegate respondsToSelector:@selector(connectWithOSDsuccess)]) {
+        [self.delegate connectWithOSDsuccess];
+    }
     // 等待数据来啊
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
         [sock readDataWithTimeout:-1 tag:200];
@@ -70,6 +82,9 @@ NSInteger  const Fish_OSD_Port = 4321;
 // 如果对象关闭了 这里也会调用
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     NSLog(@"连接失败 %@", err.localizedDescription);
+    if ([self.delegate respondsToSelector:@selector(connectWithOSDerror:)]) {
+        [self.delegate connectWithOSDerror:err];
+    }
     // 断线重连
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
         [sock connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port withTimeout:60 error:nil];

@@ -8,11 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FSOSDMannagrDelegate <NSObject>
+
+- (void)connectWithOSDsuccess;
+- (void)connectWithOSDerror:(NSError *)error;
+
+
+@end
+
 @interface FSOSDManager : NSObject
+
+@property (nonatomic,assign)id<FSOSDMannagrDelegate>delegate;
+
 
 + (FSOSDManager *)sharedManager;
 
 //开始连接
 - (void)starConnectWithOSD;
+
+
+//断开连接
+- (void)stopConnectWithOSD;
 
 @end

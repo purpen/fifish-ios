@@ -12,13 +12,15 @@
 
 //other
 #import "FifishH264Decoder.h"
+#import "FSOSDManager.h"
 
 //view
 #import "OpenGLFrameView.h"
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSVideoDepthRulerView.h"
 #import "FSVideoLiveBottomBar.h"
-@interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate>
+@interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate,FSOSDMannagrDelegate>
+
 
 @property (nonatomic, strong)FifishH264Decoder * ViedoDecoder;//解码器
 
@@ -34,6 +36,9 @@
 
 @property (nonatomic, strong)FSVideoLiveBottomBar   * bottomBar;//录像拍照view
 
+@property (nonatomic, assign)FSOSDManager           * fishMannager;
+
+
 //lodingView
 @property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
 
@@ -45,9 +50,17 @@
     
     [super viewDidLoad];
     [self SetUpUI];
-    
+    //获取设备信息，建立连接
+    [self ConnectWithROV];
     self.view.backgroundColor = [UIColor blackColor];
 }
+
+- (void)ConnectWithROV{
+    _fishMannager =  [FSOSDManager sharedManager];
+    [_fishMannager starConnectWithOSD];
+    _fishMannager.delegate =self;
+}
+
 - (void)SetUpUI{
     [self.view addSubview:self.statusBar];
     [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,7 +94,9 @@
 }
 
 - (void)dealloc{
-    
+    //终止连接
+    _fishMannager.delegate = nil;
+    [_fishMannager stopConnectWithOSD];
     [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -150,7 +165,13 @@
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
-
+#pragma OSDmannagerDelegate
+- (void)connectWithOSDsuccess{
+    
+}
+- (void)connectWithOSDerror:(NSError *)error{
+    [self.view makeToast:[NSString stringWithFormat:@"与设备连接异常:%@",error.localizedDescription]];
+}
 #pragma mark VideoStatusBarDelegate
 - (void)FifishBackBtnClick{
     //停止解码

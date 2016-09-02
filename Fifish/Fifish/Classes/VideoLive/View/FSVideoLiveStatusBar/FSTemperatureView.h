@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FSBaseView.h"
 @interface FSTemperatureView : FSBaseView
+//温度
+@property (nonatomic , assign) NSString * Tempera;
 
 @end

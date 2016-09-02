@@ -33,19 +33,19 @@
             [self.delegate UpdataNewInfoWithRovInfo:info];
         }
         
-        self.Temp = ((info.temp[0]&0xff<<8)|(info.temp[1]&0xff))/10.0;
+        self.Temp = [NSString stringWithFormat:@"%.f",((info.temp[0]&0xff<<8)|(info.temp[1]&0xff))/10.0];
         self.Depth= (((info.depth[0]&0xff)<<8)|(info.depth[1]&0xff))/10.0;
         self.Heading_angle = ((((info.heading_angle[0]&0xff)<<8)|(info.heading_angle[1]&0xff))/100.0)-180;
         self.Pitch_angle = ((((info.pitch_angle[0]&0xff)<<8)|(info.pitch_angle[1]&0xff))/100.0)-90.0;
         self.Roll_angle  = ((((info.roll_angle[0]&0xff)<<8)|(info.roll_angle[1]&0xff))/100.0)-90;
         self.Remain_battery = info.battery&0xff;
         
-        NSLog(@"温度:%f",self.Temp);
-        NSLog(@"深度:%f",self.Depth);
-        NSLog(@"偏航角:%f",self.Heading_angle);
-        NSLog(@"俯仰角:%f",self.Pitch_angle);
-        NSLog(@"反转角度:%f",self.Roll_angle);
-        NSLog(@"电量:%f",self.Remain_battery);
+//        NSLog(@"温度:%@",self.Temp);
+//        NSLog(@"深度:%f",self.Depth);
+//        NSLog(@"偏航角:%f",self.Heading_angle);
+//        NSLog(@"俯仰角:%f",self.Pitch_angle);
+//        NSLog(@"反转角度:%f",self.Roll_angle);
+//        NSLog(@"电量:%f",self.Remain_battery);
         
     }
     else{

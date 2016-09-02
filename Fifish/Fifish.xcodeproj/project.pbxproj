@@ -38,6 +38,7 @@
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
 		047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85801D79553800A88891 /* FSVideoDepthRulerView.m */; };
 		047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85831D795C6600A88891 /* FSRulersScrollView.m */; };
+		047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85861D79AB8300A88891 /* UIView+Toast.m */; };
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
@@ -389,6 +390,8 @@
 		047A85801D79553800A88891 /* FSVideoDepthRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoDepthRulerView.m; sourceTree = "<group>"; };
 		047A85821D795C6600A88891 /* FSRulersScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRulersScrollView.h; sourceTree = "<group>"; };
 		047A85831D795C6600A88891 /* FSRulersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRulersScrollView.m; sourceTree = "<group>"; };
+		047A85851D79AB8300A88891 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		047A85861D79AB8300A88891 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		04903C4A1D6AFC6800E3E041 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
 		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		04A1B6F11D6435E20008223E /* FSBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseView.h; sourceTree = "<group>"; };
@@ -1101,10 +1104,10 @@
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
-				046765151D63285800FFA743 /* FSBatteryView.h */,
-				046765161D63285800FFA743 /* FSBatteryView.m */,
 				046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */,
 				046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */,
+				046765151D63285800FFA743 /* FSBatteryView.h */,
+				046765161D63285800FFA743 /* FSBatteryView.m */,
 				0467651B1D632A3A00FFA743 /* FSTemperatureView.h */,
 				0467651C1D632A3A00FFA743 /* FSTemperatureView.m */,
 			);
@@ -1852,6 +1855,8 @@
 				1F4201DC1D48A1DD00D3E6CB /* UIImage+Helper.m */,
 				1F4201BE1D4755C400D3E6CB /* NSString+Helper.h */,
 				1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */,
+				047A85851D79AB8300A88891 /* UIView+Toast.h */,
+				047A85861D79AB8300A88891 /* UIView+Toast.m */,
 				1F7EDEA41D45F4AD00ABED5D /* UIView+FSExtension.h */,
 				1F7EDEA51D45F4AD00ABED5D /* UIView+FSExtension.m */,
 				1F7EDEAC1D45FFCA00ABED5D /* UIColor+FSExtension.h */,
@@ -2306,6 +2311,7 @@
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F0424581D51F3C30071A1D6 /* UIProgressView+AFNetworking.m in Sources */,
 				1F0424481D51F3C30071A1D6 /* AFHTTPRequestOperation.m in Sources */,
+				047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */,
 				1F04244E1D51F3C30071A1D6 /* AFURLRequestSerialization.m in Sources */,
 				1F0219A71D795002003A8A11 /* JKDBHelper.m in Sources */,
 				1F0424121D51F3A00071A1D6 /* MJFoundation.m in Sources */,
@@ -2566,7 +2572,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2595,7 +2601,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;

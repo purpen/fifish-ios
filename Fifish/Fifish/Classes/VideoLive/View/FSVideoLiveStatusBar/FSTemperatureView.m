@@ -57,4 +57,8 @@
     }
     return _temperatureIconView;
 }
+- (void)setTempera:(NSString *)Tempera{
+    _Tempera = Tempera;
+    self.temperatureLab.text = [NSString stringWithFormat:@"%@℃",_Tempera];
+}
 @end

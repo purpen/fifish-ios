@@ -33,7 +33,7 @@ struct RovinfoStruct{
 
 @interface RovInfo : NSObject
 //温度
-@property (nonatomic) CGFloat  Temp;
+@property (nonatomic,strong) NSString  * Temp;
 /**
  *  @author MC
  *
