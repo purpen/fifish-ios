@@ -16,5 +16,10 @@
 //视频直播页面
 "Video" = "Video";
 
+
+//计量单位
+"unit"  = "unit";
+"metre" = "metre";
+
 //错误处理
 

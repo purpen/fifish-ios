@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef enum : NSUInteger {
+    RulerLeftType,
+    RulerRightType,
+} RulerType;
 @interface FSRulersScrollView : UIScrollView
 /**
  *  @author MC
@@ -21,5 +24,8 @@
  *
  *  @return self
  */
--(instancetype)initWithMinValue:(CGFloat)minvalue WithMaxValue:(CGFloat)maxvalue WithStpe:(CGFloat)stpe WithFrame:(CGRect)frame;
+-(instancetype)initWithMinValue:(CGFloat)minvalue WithMaxValue:(CGFloat)maxvalue WithStpe:(CGFloat)stpe WithFrame:(CGRect)frame WithRulerType:(RulerType) type;
+
+@property (nonatomic) CGFloat   stpe;
+
 @end

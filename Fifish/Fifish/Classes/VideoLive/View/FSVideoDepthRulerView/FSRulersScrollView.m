@@ -15,28 +15,34 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
 
 @property (nonatomic) CGFloat   MaxValue;
 @property (nonatomic) CGFloat   MinValue;
-@property (nonatomic) CGFloat   stpe;
+@property (nonatomic) CGFloat   valueLenth;
+
 
 @property (nonatomic) CGFloat   SelfWidth;
 @property (nonatomic) CGFloat   SelfHei;
 
 @property (nonatomic) CGFloat   DISTANCEVALUE;//间隔
 
+@property (nonatomic) RulerType type;//左边或者右边
+
 
 
 @end
 @implementation FSRulersScrollView
--(instancetype)initWithMinValue:(CGFloat)minvalue WithMaxValue:(CGFloat)maxvalue WithStpe:(CGFloat)stpe WithFrame:(CGRect)frame{
+-(instancetype)initWithMinValue:(CGFloat)minvalue WithMaxValue:(CGFloat)maxvalue WithStpe:(CGFloat)stpe WithFrame:(CGRect)frame WithRulerType:(RulerType)type{
     self = [super initWithFrame:frame];
     if (self) {
         self.DISTANCEVALUE = 5.f;
         self.DISTANCEVALUE = stpe;
+        self.type = type;
+        
         
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator= NO;
         self.contentSize = CGSizeMake(0, (maxvalue-minvalue)*self.DISTANCEVALUE);
         self.MaxValue = maxvalue;
         self.MinValue = minvalue;
+        self.valueLenth = maxvalue-minvalue;
         self.stpe     = stpe;
         self.SelfHei = self.frame.size.height;
         self.SelfWidth= self.frame.size.width;
@@ -61,29 +67,57 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
     shapeLayer2.fillColor = [UIColor blackColor].CGColor;
     shapeLayer2.lineWidth = 1.f;
     shapeLayer2.lineCap = kCALineCapButt;
-    
-    for (int i =0; i<=self.MaxValue-self.MinValue; i++) {
-        if (i % 10 == 0) {
-            CGPathMoveToPoint(pathRef2, NULL,_SelfWidth-14,  self.DISTANCEVALUE * i);
-            CGPathAddLineToPoint(pathRef2, NULL,_SelfWidth,  self.DISTANCEVALUE * i);
+    //左边
+    if (self.type == RulerLeftType) {
+        for (int i =0; i<=self.valueLenth; i++) {
+            if (i % 10 == 0) {
+                CGPathMoveToPoint(pathRef2, NULL,_SelfWidth-14,  self.DISTANCEVALUE * i);
+                CGPathAddLineToPoint(pathRef2, NULL,_SelfWidth,  self.DISTANCEVALUE * i);
+            }
+            
+            else if (i % 5 == 0) {
+                CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL, _SelfWidth-10,  self.DISTANCEVALUE * i);
+            }
+            else
+            {
+                CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL,_SelfWidth-6, self.DISTANCEVALUE * i);
+            }
+            shapeLayer1.path = pathRef1;
+            shapeLayer2.path = pathRef2;
+            
+            [self.layer addSublayer:shapeLayer1];
+            [self.layer addSublayer:shapeLayer2];
+            
         }
-        
-        else if (i % 5 == 0) {
-            CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
-            CGPathAddLineToPoint(pathRef1, NULL, _SelfWidth-10,  self.DISTANCEVALUE * i);
-        }
-        else
-        {
-            CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
-            CGPathAddLineToPoint(pathRef1, NULL,_SelfWidth-6, self.DISTANCEVALUE * i);
-        }
-        shapeLayer1.path = pathRef1;
-        shapeLayer2.path = pathRef2;
-        
-        [self.layer addSublayer:shapeLayer1];
-        [self.layer addSublayer:shapeLayer2];
-        
     }
+//    右边
+    if (self.type == RulerRightType) {
+        for (int i =0; i<=self.valueLenth; i++) {
+            if (i % 10 == 0) {
+                CGPathMoveToPoint(pathRef2, NULL,0,  self.DISTANCEVALUE * i);
+                CGPathAddLineToPoint(pathRef2, NULL,14,  self.DISTANCEVALUE * i);
+            }
+            
+            else if (i % 5 == 0) {
+                CGPathMoveToPoint(pathRef1, NULL, 0, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL, 10,  self.DISTANCEVALUE * i);
+            }
+            else
+            {
+                CGPathMoveToPoint(pathRef1, NULL, 0, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL,6, self.DISTANCEVALUE * i);
+            }
+            shapeLayer1.path = pathRef1;
+            shapeLayer2.path = pathRef2;
+            
+            [self.layer addSublayer:shapeLayer1];
+            [self.layer addSublayer:shapeLayer2];
+            
+        }
+    }
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

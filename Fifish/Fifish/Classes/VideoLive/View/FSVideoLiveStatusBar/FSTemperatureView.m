@@ -33,7 +33,7 @@
         
         [self addSubview:self.temperatureLab];
         [self.temperatureLab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(20, 11));
+            make.size.mas_equalTo(CGSizeMake(40, 11));
             make.left.equalTo(self.temperatureIconView.mas_right).offset(5);
             make.centerY.equalTo(self.mas_centerY);
         }];
@@ -44,8 +44,9 @@
 - (UILabel *)temperatureLab{
     if (!_temperatureLab) {
         _temperatureLab  = [[UILabel alloc] init];
-        _temperatureLab.font = [UIFont systemFontOfSize:12];
+        _temperatureLab.font = [UIFont systemFontOfSize:10];
         _temperatureLab.textColor = [UIColor blackColor];
+        _temperatureLab.textAlignment = NSTextAlignmentLeft;
         _temperatureLab.text = @"18°";
     }
     return _temperatureLab;

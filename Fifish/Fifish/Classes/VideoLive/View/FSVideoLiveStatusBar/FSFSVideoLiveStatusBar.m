@@ -25,9 +25,6 @@
 
 @property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
 
-
-@property (nonatomic ,assign) RovInfo           * ROVinfo;//ROV信息
-
 @end
 
 @implementation FSFSVideoLiveStatusBar
@@ -64,7 +61,7 @@
         [self addSubview:self.TemperatureView];
         [self.TemperatureView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.batteryView.mas_left).offset(-10);
-            make.size.mas_equalTo(CGSizeMake(40, 10));
+            make.size.mas_equalTo(CGSizeMake(50, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
         
@@ -74,9 +71,8 @@
             make.size.mas_equalTo(CGSizeMake(100, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
-        
-        [self ObserverWithOSD];
     }
+    [self ObserverWithOSD];
     return self;
 }
 
@@ -140,22 +136,16 @@
 }
 //监听控制板信息
 - (void)ObserverWithOSD{
-    self.ROVinfo = [RovInfo sharedManager];
-    [self.ROVinfo addObserver:self forKeyPath:@"Temp" options:NSKeyValueObservingOptionNew context:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRovInfo:) name:@"RovInfoChange" object:nil];
 }
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"Temp"]) {
-        NSLog(@"--------%f<<<<<<<",self.ROVinfo.Pitch_angle);
-        self.TemperatureView.Tempera =self.ROVinfo.Temp;
-        self.FifishBattery.text = [NSString stringWithFormat:@"ROV电量:%f％",self.ROVinfo.Pitch_angle];
-
-    }
-    
+- (void)getRovInfo:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.FifishBattery.text = [NSString stringWithFormat:@"ROV电量:%.1f％",rovinfo.Remain_battery];
+        self.TemperatureView.Tempera = rovinfo.Temp;
+    });
 }
 -(void)dealloc{
-    [self.ROVinfo removeObserver:self forKeyPath:@"Temp"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

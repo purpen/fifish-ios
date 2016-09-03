@@ -87,15 +87,15 @@ NSInteger  const Fish_OSD_Port = 4321;
     }
     // 断线重连
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
-        [sock connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port withTimeout:60 error:nil];
+        [sock connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port withTimeout:-1 error:nil];
     }
 }
 #pragma mark - 消息发送成功 代理函数
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     NSLog(@"消息发送成功");
 }
+//收到消息
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"%@",data);
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
         [[RovInfo sharedManager] updataWithRovDataInfo:data];
     }
