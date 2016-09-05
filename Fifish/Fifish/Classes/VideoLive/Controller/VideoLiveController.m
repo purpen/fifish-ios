@@ -9,6 +9,7 @@
 #import "VideoLiveController.h"
 #import "FSTabBarController.h"
 #import "FSVideoPlayerController.h"
+#import "FSLiveSettingsViewController.h"
 
 //other
 #import "FifishH264Decoder.h"
@@ -102,7 +103,9 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     //解码，添加播放视图
-    [self.ViedoDecoder StardecodeFrame];
+    if (self.ViedoDecoder.isRunningDecode == NO) {
+       [self.ViedoDecoder StardecodeFrame];
+    }
     [self AddVideoView];
     
     //状态栏、录像栏拿到最前面
@@ -182,9 +185,12 @@
 
 //菜单
 - (void)VideoLiveMenuBtnClick{
-    self.ViedoDecoder.isRunningDecode = NO;
-    FSVideoPlayerController * player = [[FSVideoPlayerController alloc]init];
-    player.fileUrl = self.ViedoDecoder.OutputMp4FileUrl;
-    [self presentViewController:player animated:YES completion:nil];
+//    self.ViedoDecoder.isRunningDecode = NO;
+//    FSVideoPlayerController * player = [[FSVideoPlayerController alloc]init];
+//    player.fileUrl = self.ViedoDecoder.OutputMp4FileUrl;
+//    [self presentViewController:player animated:YES completion:nil];
+//    
+    FSLiveSettingsViewController * settingVc = [[FSLiveSettingsViewController alloc] init];
+    [self presentViewController:settingVc animated:YES completion:nil];
 }
 @end

@@ -84,6 +84,7 @@
     _pFormatContext = avformat_alloc_context();
     if (avformat_open_input(&_pFormatContext,[self.FileUrl UTF8String],NULL,NULL)!=0) {
         NSLog(@"打开文件失败");
+        self.isRunningDecode = NO;
         return -1;
     }
     
@@ -180,7 +181,7 @@
                 
                 if (avcodec_decode_video2(_pCodecContext,_pFrame,&GotPicPtr,_pAvpacket)<0) {
                     NSLog(@"解码失败");
-                    return;
+                    break;
                 }
                 
                 

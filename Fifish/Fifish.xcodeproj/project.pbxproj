@@ -43,6 +43,8 @@
 		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
+		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
+		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
 		1AA91B7C0B764D4165F33738 /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 267CF4431FD8067897EE3A0B /* libPods-Fifish.a */; };
 		1F0219A01D794E6E003A8A11 /* FSHeadImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */; };
 		1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199F1D794E6E003A8A11 /* FSUserModel.m */; };
@@ -401,6 +403,10 @@
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
 		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
 		04F20ED61D7D0B79009790EE /* FSBearingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBearingsView.m; sourceTree = "<group>"; };
+		04F20EE61D7D6971009790EE /* FSLiveSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLiveSettingsViewController.h; sourceTree = "<group>"; };
+		04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLiveSettingsViewController.m; sourceTree = "<group>"; };
+		04F20EEA1D7D6A3A009790EE /* FSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraManager.h; sourceTree = "<group>"; };
+		04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraManager.m; sourceTree = "<group>"; };
 		1F02199C1D794E6E003A8A11 /* FSHeadImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHeadImageModel.h; sourceTree = "<group>"; };
 		1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHeadImageModel.m; sourceTree = "<group>"; };
 		1F02199E1D794E6E003A8A11 /* FSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserModel.h; sourceTree = "<group>"; };
@@ -779,6 +785,7 @@
 		0434F2EB1D617E0600DBFFCE /* VideoLive */ = {
 			isa = PBXGroup;
 			children = (
+				04F20ED91D7D5882009790EE /* Business */,
 				0434F2FF1D61A16C00DBFFCE /* Tools */,
 				0434F2F51D6193C300DBFFCE /* Controller */,
 				0434F2F81D6193C300DBFFCE /* Model */,
@@ -1177,6 +1184,57 @@
 				04F20ED61D7D0B79009790EE /* FSBearingsView.m */,
 			);
 			path = FifishBearingsView;
+			sourceTree = "<group>";
+		};
+		04F20ED91D7D5882009790EE /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				04F20EE21D7D5969009790EE /* VideoLiveSettings */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		04F20EE21D7D5969009790EE /* VideoLiveSettings */ = {
+			isa = PBXGroup;
+			children = (
+				04F20EE91D7D69EE009790EE /* Tools */,
+				04F20EE31D7D5969009790EE /* Controller */,
+				04F20EE41D7D5969009790EE /* Model */,
+				04F20EE51D7D5969009790EE /* View */,
+			);
+			path = VideoLiveSettings;
+			sourceTree = "<group>";
+		};
+		04F20EE31D7D5969009790EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04F20EE61D7D6971009790EE /* FSLiveSettingsViewController.h */,
+				04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04F20EE41D7D5969009790EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04F20EE51D7D5969009790EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04F20EE91D7D69EE009790EE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04F20EEA1D7D6A3A009790EE /* FSCameraManager.h */,
+				04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		1F0219A21D795002003A8A11 /* DBModel */ = {
@@ -2350,6 +2408,7 @@
 				1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */,
 				0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */,
 				1F0423E81D51F38E0071A1D6 /* MJRefreshFooter.m in Sources */,
+				04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */,
 				1F0424571D51F3C30071A1D6 /* UIImageView+AFNetworking.m in Sources */,
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
@@ -2410,6 +2469,7 @@
 				1F0423F21D51F38E0071A1D6 /* MJRefreshStateHeader.m in Sources */,
 				1F0423F81D51F38E0071A1D6 /* UIView+MJExtension.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,
+				04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */,
 				1F0219C11D798567003A8A11 /* AddreesPickerViewController.m in Sources */,
 				1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */,
 				1F0424591D51F3C30071A1D6 /* UIRefreshControl+AFNetworking.m in Sources */,
