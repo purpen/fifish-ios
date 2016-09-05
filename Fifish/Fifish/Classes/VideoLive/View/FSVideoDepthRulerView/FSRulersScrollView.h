@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 typedef enum : NSUInteger {
-    RulerLeftType,
-    RulerRightType,
+    RulerLeftType,//左侧
+    RulerRightType,//右侧
+    RulerVorizontalType,//水平
 } RulerType;
 @interface FSRulersScrollView : UIScrollView
 /**

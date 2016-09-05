@@ -39,7 +39,12 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
         
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator= NO;
-        self.contentSize = CGSizeMake(0, (maxvalue-minvalue)*self.DISTANCEVALUE);
+        //判断是横向还是纵向
+        if (type == RulerVorizontalType)
+            self.contentSize = CGSizeMake((maxvalue-minvalue)*self.DISTANCEVALUE,0);
+        else
+            self.contentSize = CGSizeMake(0, (maxvalue-minvalue)*self.DISTANCEVALUE);
+        
         self.MaxValue = maxvalue;
         self.MinValue = minvalue;
         self.valueLenth = maxvalue-minvalue;
@@ -115,6 +120,45 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
             [self.layer addSublayer:shapeLayer1];
             [self.layer addSublayer:shapeLayer2];
             
+        }
+    }
+    if (self.type == RulerVorizontalType) {
+//        S            SW		   W		   NW		    N		     NE		    E		     SE		     S
+//        |------------|------------|-----------|------------|------------|----------|------------|-----------|
+//        360                      270		               180	   	                90		               	 0
+        NSArray * bearingsTitles = @[@"S",@"sw",@"W",@"nw",@"N",@"nw",@"E",@"se",@"S"];
+        for (int i = 0; i<=self.valueLenth; i++) {
+            CGPoint LabPiont = CGPointZero;
+            if (i % 10 == 0) {
+                CGPathMoveToPoint(pathRef2, NULL,self.DISTANCEVALUE * i,self.SelfHei);
+                CGPathAddLineToPoint(pathRef2, NULL,self.DISTANCEVALUE * i,self.SelfHei-14);
+                LabPiont = CGPointMake(self.DISTANCEVALUE * i-5, 0);
+            }
+            
+            else if (i % 5 == 0) {
+                CGPathMoveToPoint(pathRef1, NULL,self.DISTANCEVALUE * i,self.SelfHei);
+                CGPathAddLineToPoint(pathRef1, NULL,self.DISTANCEVALUE * i,self.SelfHei-10);
+                LabPiont = CGPointMake(self.DISTANCEVALUE * i-5, 0);
+            }
+            else
+            {
+                CGPathMoveToPoint(pathRef1, NULL,self.DISTANCEVALUE * i,self.SelfHei);
+                CGPathAddLineToPoint(pathRef1, NULL,self.DISTANCEVALUE * i,self.SelfHei-6);
+            }
+            
+            if (i%5==0) {
+                NSInteger idx = i/5;
+                NSString * title = bearingsTitles[idx];
+                UILabel * bearTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(LabPiont.x, LabPiont.y, 20, 10)];
+                bearTitleLab.font = [UIFont systemFontOfSize:10];
+                bearTitleLab.text = title;
+                [self addSubview:bearTitleLab];
+            }
+            shapeLayer1.path = pathRef1;
+            shapeLayer2.path = pathRef2;
+            
+            [self.layer addSublayer:shapeLayer1];
+            [self.layer addSublayer:shapeLayer2];
         }
     }
     
