@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Fifish";
-    UIBarButtonItem *cancelItem = [UIBarButtonItem itemWithImage:@"eq_cancel" highImage:nil target:self action:@selector(cancelClick)];
+    UIBarButtonItem *cancelItem = [UIBarButtonItem itemWithImage:@"eq_cancel" highImage:nil title:nil target:self action:@selector(cancelClick)];
     self.navigationItem.rightBarButtonItem = cancelItem;
     
     self.connectionBtn.layer.masksToBounds = YES;

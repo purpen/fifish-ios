@@ -75,7 +75,7 @@ static NSString * const CellId = @"home";
 }
 
 -(void)setupNav{
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil title:nil target:self action:@selector(searchClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
 }
 

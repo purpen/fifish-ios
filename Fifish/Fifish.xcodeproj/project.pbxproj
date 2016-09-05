@@ -205,6 +205,10 @@
 		1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEDF1D4700E500ABED5D /* IQToolbar.m */; };
 		1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDEE11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m */; };
 		1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDEE31D4700E500ABED5D /* IQKeyboardManager.bundle */; };
+		1FE087611D7D46D5007790E3 /* FSFindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */; };
+		1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087641D7D4B8E007790E3 /* InvitationModel.m */; };
+		1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */; };
+		1FE0876B1D7D4D8A007790E3 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -710,6 +714,14 @@
 		1F7EDEE01D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
 		1F7EDEE11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		1F7EDEE31D4700E500ABED5D /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFindFriendViewController.h; sourceTree = "<group>"; };
+		1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFindFriendViewController.m; sourceTree = "<group>"; };
+		1FE087631D7D4B8E007790E3 /* InvitationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationModel.h; sourceTree = "<group>"; };
+		1FE087641D7D4B8E007790E3 /* InvitationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationModel.m; sourceTree = "<group>"; };
+		1FE087661D7D4D04007790E3 /* FindeFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindeFriendTableViewCell.h; sourceTree = "<group>"; };
+		1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindeFriendTableViewCell.m; sourceTree = "<group>"; };
+		1FE087691D7D4D8A007790E3 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -1817,6 +1829,8 @@
 				1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */,
 				1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */,
 				1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */,
+				1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */,
+				1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1824,6 +1838,8 @@
 		1F7EDE841D45EF6900ABED5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FE087631D7D4B8E007790E3 /* InvitationModel.h */,
+				1FE087641D7D4B8E007790E3 /* InvitationModel.m */,
 				1F02199C1D794E6E003A8A11 /* FSHeadImageModel.h */,
 				1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */,
 				1F02199E1D794E6E003A8A11 /* FSUserModel.h */,
@@ -1837,6 +1853,10 @@
 		1F7EDE851D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FE087691D7D4D8A007790E3 /* FriendTableViewCell.h */,
+				1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */,
+				1FE087661D7D4D04007790E3 /* FindeFriendTableViewCell.h */,
+				1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */,
 				1F0424631D51F40F0071A1D6 /* FSZuoPinTableViewCell.h */,
 				1F0424641D51F40F0071A1D6 /* FSZuoPinTableViewCell.m */,
 				1F0424651D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib */,
@@ -2325,6 +2345,7 @@
 				0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */,
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
+				1FE0876B1D7D4D8A007790E3 /* FriendTableViewCell.m in Sources */,
 				1F0424151D51F3A00071A1D6 /* MJPropertyType.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
@@ -2405,6 +2426,7 @@
 				1F0423F41D51F38E0071A1D6 /* MJRefreshConst.m in Sources */,
 				1F0424491D51F3C30071A1D6 /* AFHTTPRequestOperationManager.m in Sources */,
 				1F7EDEE61D4700E500ABED5D /* IQUITextFieldView+Additions.m in Sources */,
+				1FE087611D7D46D5007790E3 /* FSFindFriendViewController.m in Sources */,
 				1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */,
 				0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */,
 				1F0423E81D51F38E0071A1D6 /* MJRefreshFooter.m in Sources */,
@@ -2432,6 +2454,7 @@
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
 				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
+				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
@@ -2445,6 +2468,7 @@
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
 				1F0423E71D51F38E0071A1D6 /* MJRefreshComponent.m in Sources */,
+				1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */,
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
@@ -2646,7 +2670,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2675,7 +2699,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
