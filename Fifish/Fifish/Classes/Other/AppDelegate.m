@@ -21,6 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //设置推送---------------------------------------------------
+    //创建UIUserNotificationSettings，并设置消息的显示类类型
+    UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+    
+    [application registerUserNotificationSettings:notiSettings];
+    //------------------------------------------------------
     
     [self setKeyBoard];
     [self windowShow];

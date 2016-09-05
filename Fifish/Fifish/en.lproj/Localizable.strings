@@ -23,3 +23,12 @@
 
 //错误处理
 
+//个人中心
+"findFriend" = "发现好友";
+"Invite WeChat friends" = "邀请微信好友";
+"Share with friends" = "分享给好友";
+"Connect the weibo" = "连接微博";
+"Connect the address book" = "连接通讯录";
+"Focus on what you know" = "关注你认识的好友";
+
+

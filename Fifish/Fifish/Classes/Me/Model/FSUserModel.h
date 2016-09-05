@@ -25,6 +25,8 @@
 @property (nonatomic, strong) FSHeadImageModel *avatar;
 /**  */
 @property(nonatomic,copy) NSString *imageUrl;
+/**  */
+@property (nonatomic, assign) BOOL isLogin;
 
 
 @end

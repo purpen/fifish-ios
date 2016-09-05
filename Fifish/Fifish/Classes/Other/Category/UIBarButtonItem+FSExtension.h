@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIBarButtonItem (FSExtension)
-+ (instancetype)itemWithImage:(NSString *)image highImage:(NSString *)highImage target:(id)target action:(SEL)action;
++ (instancetype)itemWithImage:(NSString *)image highImage:(NSString *)highImage title:(NSString*)title target:(id)target action:(SEL)action;
+
++ (instancetype)itemWithTitle:(NSString*)title target:(id)target action:(SEL)action;
+
 @end

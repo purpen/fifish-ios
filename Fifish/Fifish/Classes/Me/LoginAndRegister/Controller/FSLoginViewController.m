@@ -15,6 +15,7 @@
 #import "FSImproveViewController.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
+#import "FSUserModel.h"
 
 @interface FSLoginViewController ()<FBRequestDelegate>
 
@@ -151,10 +152,19 @@
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"用户登录  %@",result);
-        
+        FSUserModel *model = [[FSUserModel alloc] init];
+        model.isLogin = YES;
+        [model save];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        BOOL isNotFirst = [defaults objectForKey:@"isNotFirst"];
+        if (!isNotFirst) {
+            FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
     } failure:^(FBRequest *request, NSError *error) {
         NSLog(@"错误 %@",error.localizedDescription);
         [SVProgressHUD dismiss];

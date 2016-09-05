@@ -108,6 +108,7 @@
 - (IBAction)shareBtn:(id)sender {
 }
 - (IBAction)quiteBtn:(id)sender {
+    
 }
 
 -(void)resetNotificationState{

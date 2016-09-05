@@ -11,6 +11,9 @@
 #import "UIColor+FSExtension.h"
 #import "FSSettingViewController.h"
 #import "FSHomePageViewController.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+#import "FSFindFriendViewController.h"
 
 @interface FSMeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -23,6 +26,19 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    
+//    FBRequest *request = [FBAPI getWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
+//    [request startRequestSuccess:^(FBRequest *request, id result) {
+//    } failure:^(FBRequest *request, NSError *error) {
+//        
+//    }];
+    
+//    FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+//    [request2 startRequestSuccess:^(FBRequest *request, id result) {
+//        NSLog(@"个人信息 %@",result);
+//    } failure:^(FBRequest *request, NSError *error) {
+//        
+//    }];
 }
 
 - (void)viewDidLoad {
@@ -44,14 +60,15 @@
 }
 
 -(void)setupNav{
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil target:self action:@selector(searchClick)];
-    UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil target:self action:@selector(setClick)];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil title:nil target:self action:@selector(setClick)];
     self.navigationItem.rightBarButtonItem = setItem;
     self.navigationItem.leftBarButtonItem = searchItem;
 }
 
 -(void)searchClick{
-    
+    FSFindFriendViewController *vc = [[FSFindFriendViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)setClick{

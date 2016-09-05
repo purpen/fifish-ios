@@ -8,7 +8,8 @@
 
 #import "OptionViewController.h"
 #import "SVProgressHUD.h"
-
+#import "FBRequest.h"
+#import "FBAPI.h"
 
 @interface OptionViewController ()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *remindLabel;
@@ -18,7 +19,6 @@
 
 @end
 
-NSString *const feedbackUrl = @"/gateway/feedback";//意见反馈接口
 
 @implementation OptionViewController
 
@@ -38,26 +38,15 @@ NSString *const feedbackUrl = @"/gateway/feedback";//意见反馈接口
         [SVProgressHUD showInfoWithStatus:@"不能多于200个字"];
         return;
     }
-//    //封装参数
-//    NSDictionary *params = @{
-//                             @"content":self.optionTFV.text,
-//                             @"contact":self.phoneTF.text
-//                             };
-//    FBRequest *request = [FBAPI postWithUrlString:feedbackUrl requestDictionary:params delegate:self];
+    //封装参数
+    NSDictionary *params = @{
+                             @"content":self.optionTFV.text,
+                             @"contact":self.phoneTF.text
+                             };
+//    FBRequest *request = [FBAPI postWithUrlString:@"/feedback/submit" requestDictionary:params delegate:self];
 //    [request startRequestSuccess:^(FBRequest *request, id result) {
-//        //根据返回信息判断是否反馈成功
-//        NSNumber *successStr = [result objectForKey:@"success"];
-//        //反馈成功
-//        if ([successStr isEqualToNumber:@1]) {
-//            [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
-//            [self.navigationController popViewControllerAnimated:YES];
-//            return ;
-//        }
-//        //反馈失败
-//        else{
-//            [SVProgressHUD showErrorWithStatus:@"反馈失败"];
-//        }
-//        
+//        [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
+//        [self.navigationController popViewControllerAnimated:YES];
 //    } failure:^(FBRequest *request, NSError *error) {
 //        //发送请求失败
 //        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
@@ -83,19 +72,5 @@ NSString *const feedbackUrl = @"/gateway/feedback";//意见反馈接口
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
