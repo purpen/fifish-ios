@@ -136,6 +136,7 @@
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
     dispatch_async(dispatch_get_main_queue(), ^{
         CGPoint point = CGPointMake(0,(rovinfo.Depth*self.leftRulersScrowView.stpe)-(self.leftRulersScrowView.frame.size.height/2));
+//        NSLog(@">>>>>>>>heading:%.2f",rovinfo.Heading_angle);
         [self.leftRulersScrowView setContentOffset:point animated:YES];
         [self.rightRulersScrowView setContentOffset:point animated:YES];
         [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",rovinfo.Depth] forState:UIControlStateNormal];

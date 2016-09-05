@@ -42,6 +42,7 @@
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
+		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		1AA91B7C0B764D4165F33738 /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 267CF4431FD8067897EE3A0B /* libPods-Fifish.a */; };
 		1F0219A01D794E6E003A8A11 /* FSHeadImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */; };
 		1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199F1D794E6E003A8A11 /* FSUserModel.m */; };
@@ -402,6 +403,8 @@
 		04A1B6F21D6435E20008223E /* FSBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseView.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
+		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
+		04F20ED61D7D0B79009790EE /* FSBearingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBearingsView.m; sourceTree = "<group>"; };
 		1F02199C1D794E6E003A8A11 /* FSHeadImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHeadImageModel.h; sourceTree = "<group>"; };
 		1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHeadImageModel.m; sourceTree = "<group>"; };
 		1F02199E1D794E6E003A8A11 /* FSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserModel.h; sourceTree = "<group>"; };
@@ -1116,6 +1119,7 @@
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
+				04F20ED41D7D0B5E009790EE /* FifishBearingsView */,
 				046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */,
 				046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */,
 				046765151D63285800FFA743 /* FSBatteryView.h */,
@@ -1176,6 +1180,15 @@
 				04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */,
 			);
 			path = FSVideoLiveTabBar;
+			sourceTree = "<group>";
+		};
+		04F20ED41D7D0B5E009790EE /* FifishBearingsView */ = {
+			isa = PBXGroup;
+			children = (
+				04F20ED51D7D0B79009790EE /* FSBearingsView.h */,
+				04F20ED61D7D0B79009790EE /* FSBearingsView.m */,
+			);
+			path = FifishBearingsView;
 			sourceTree = "<group>";
 		};
 		1F0219A21D795002003A8A11 /* DBModel */ = {
@@ -2387,6 +2400,7 @@
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
 				1F0219BD1D797405003A8A11 /* Foundation+Log.m in Sources */,
+				04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */,
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F0219B81D79500A003A8A11 /* FMDatabaseQueue.m in Sources */,

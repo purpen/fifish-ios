@@ -9,6 +9,7 @@
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
+#import "FSBearingsView.h"
 
 #import "FSOSDManager.h"
 #import "RovInfo.h"
@@ -25,6 +26,7 @@
 
 @property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
 
+@property (nonatomic ,strong) FSBearingsView    * BearingsView;//方向
 @end
 
 @implementation FSFSVideoLiveStatusBar
@@ -39,16 +41,12 @@
             make.centerY.equalTo(self.mas_centerY);
         }];
         
-
-        
         [self addSubview:self.MenuBtn];
         [self.MenuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mas_right).offset(-10);
-            
             make.centerY.equalTo(self.mas_centerY);
             
         }];
-        
         
         [self addSubview:self.batteryView];
         [self.batteryView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,12 +55,18 @@
             make.centerY.equalTo(self.mas_centerY);
         }];
         
-        
         [self addSubview:self.TemperatureView];
         [self.TemperatureView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.batteryView.mas_left).offset(-10);
             make.size.mas_equalTo(CGSizeMake(50, 10));
             make.centerY.equalTo(self.mas_centerY);
+        }];
+        
+        [self addSubview:self.BearingsView];
+        [self.BearingsView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.mas_centerY);
+            make.centerX.equalTo(self.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(100,50));
         }];
         
         [self addSubview:self.FifishBattery];
@@ -114,6 +118,16 @@
     }
     return _FifishBattery;
 }
+
+- (FSBearingsView *)BearingsView{
+    if (!_BearingsView) {
+        _BearingsView = [[FSBearingsView alloc] init];
+    }
+    return _BearingsView;
+}
+
+
+
 - (void)menuBtnClick:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(VideoLiveMenuBtnClick)]) {
         [self.delegate VideoLiveMenuBtnClick];

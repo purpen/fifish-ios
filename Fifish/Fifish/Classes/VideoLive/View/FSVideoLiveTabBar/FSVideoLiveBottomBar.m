@@ -57,7 +57,7 @@
         
         [self addSubview:self.take_photoBtn];
         [self.take_photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(30, 30));
+            make.size.mas_equalTo(CGSizeMake(40, 40));
             make.left.equalTo(self.record_btn.mas_right).offset(10);
             make.centerY.equalTo(self.mas_centerY);
         }];
