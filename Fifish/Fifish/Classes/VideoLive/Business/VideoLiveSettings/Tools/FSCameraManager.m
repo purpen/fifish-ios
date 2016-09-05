@@ -24,7 +24,7 @@
     }
     return self;
 }
-//- (FBRequest *)cameraManger{
+- (FBRequest *)cameraManger{
 //    if (!_cameraManger) {
 //        _cameraManger = [FBRequest requestWithUrlString:@""
 //                                  requestDictionary:params
@@ -35,5 +35,6 @@
 //                                        requestType:HTTPRequestType
 //                                       responseType:JSONResponseType];
 //    }
-//}
+    return _cameraManger;
+}
 @end
