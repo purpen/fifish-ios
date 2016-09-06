@@ -96,7 +96,7 @@ NSInteger  const Fish_OSD_Port = 4321;
 }
 //收到消息
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"%@",data);
+//    NSLog(@"%@",data);
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
         [[RovInfo sharedManager] updataWithRovDataInfo:data];
     }

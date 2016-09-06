@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void(^RequestSuccessBlock)(NSDictionary * responseObject);
+typedef void(^RequestFailureBlock)(NSError * error);
+
 
 @interface FSCameraManager : NSObject
--(instancetype)init;
+- (instancetype)init;
+
+- (void)getCameraInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
+
+
 @end

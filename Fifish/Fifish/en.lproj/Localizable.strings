@@ -17,6 +17,13 @@
 "Video" = "Video";
 
 
+//camera设置
+"通用设置" = "General settings";
+
+"图像设置"= "Image setting";
+
+"编码设置"= "Encoding settings";
+
 //计量单位
 "unit"  = "unit";
 "metre" = "metre";

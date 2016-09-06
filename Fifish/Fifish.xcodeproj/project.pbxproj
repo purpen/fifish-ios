@@ -39,6 +39,7 @@
 		047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85801D79553800A88891 /* FSVideoDepthRulerView.m */; };
 		047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85831D795C6600A88891 /* FSRulersScrollView.m */; };
 		047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85861D79AB8300A88891 /* UIView+Toast.m */; };
+		047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */; };
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F21D6435E20008223E /* FSBaseView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
@@ -399,6 +400,8 @@
 		047A85831D795C6600A88891 /* FSRulersScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRulersScrollView.m; sourceTree = "<group>"; };
 		047A85851D79AB8300A88891 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		047A85861D79AB8300A88891 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		047BDBE41D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveSettingsTableViewCell.h; sourceTree = "<group>"; };
+		047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveSettingsTableViewCell.m; sourceTree = "<group>"; };
 		04903C4A1D6AFC6800E3E041 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
 		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		04A1B6F11D6435E20008223E /* FSBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseView.h; sourceTree = "<group>"; };
@@ -1236,6 +1239,8 @@
 		04F20EE51D7D5969009790EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				047BDBE41D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.h */,
+				047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2455,6 +2460,7 @@
 				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
+				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,

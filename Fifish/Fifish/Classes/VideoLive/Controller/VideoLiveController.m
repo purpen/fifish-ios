@@ -191,6 +191,7 @@
 //    [self presentViewController:player animated:YES completion:nil];
 //    
     FSLiveSettingsViewController * settingVc = [[FSLiveSettingsViewController alloc] init];
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;//推出的界面透明,不管用
     [self presentViewController:settingVc animated:YES completion:nil];
 }
 @end
