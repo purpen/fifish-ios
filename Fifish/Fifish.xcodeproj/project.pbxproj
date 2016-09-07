@@ -36,6 +36,11 @@
 		04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A741D7FBE28008D1DD5 /* FSGeneralSettingViewController.m */; };
 		04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A771D7FC27A008D1DD5 /* FSGeneralSettingsCell.m */; };
 		04596A7B1D7FC32B008D1DD5 /* FSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A7A1D7FC32B008D1DD5 /* FSBaseTableViewCell.m */; };
+		04596A841D801E10008D1DD5 /* FSImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A831D801E10008D1DD5 /* FSImageSettingViewController.m */; };
+		04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A8C1D802406008D1DD5 /* FSImageSettingTableViewCell.m */; };
+		04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A8F1D802EEE008D1DD5 /* FSsettingBaseViewController.m */; };
+		04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */; };
+		04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */; };
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
@@ -398,6 +403,16 @@
 		04596A791D7FC32B008D1DD5 /* FSBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseTableViewCell.h; sourceTree = "<group>"; };
 		04596A7A1D7FC32B008D1DD5 /* FSBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseTableViewCell.m; sourceTree = "<group>"; };
 		04596A7E1D7FE911008D1DD5 /* LiveVideoSettingMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveVideoSettingMacro.h; sourceTree = "<group>"; };
+		04596A821D801E10008D1DD5 /* FSImageSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSettingViewController.h; sourceTree = "<group>"; };
+		04596A831D801E10008D1DD5 /* FSImageSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageSettingViewController.m; sourceTree = "<group>"; };
+		04596A8B1D802406008D1DD5 /* FSImageSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSettingTableViewCell.h; sourceTree = "<group>"; };
+		04596A8C1D802406008D1DD5 /* FSImageSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageSettingTableViewCell.m; sourceTree = "<group>"; };
+		04596A8E1D802EEE008D1DD5 /* FSsettingBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSsettingBaseViewController.h; sourceTree = "<group>"; };
+		04596A8F1D802EEE008D1DD5 /* FSsettingBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSsettingBaseViewController.m; sourceTree = "<group>"; };
+		04596A911D8052FA008D1DD5 /* FSEncodingSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEncodingSettingViewController.h; sourceTree = "<group>"; };
+		04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEncodingSettingViewController.m; sourceTree = "<group>"; };
+		04596A981D805B58008D1DD5 /* FSFrameRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFrameRateViewController.h; sourceTree = "<group>"; };
+		04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFrameRateViewController.m; sourceTree = "<group>"; };
 		046765151D63285800FFA743 /* FSBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBatteryView.h; sourceTree = "<group>"; };
 		046765161D63285800FFA743 /* FSBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBatteryView.m; sourceTree = "<group>"; };
 		046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFSVideoLiveStatusBar.h; sourceTree = "<group>"; };
@@ -1142,6 +1157,8 @@
 				04596A671D7FBD66008D1DD5 /* EncodingSettings */,
 				04596A6B1D7FBD66008D1DD5 /* GeneralSettings */,
 				04596A6F1D7FBD66008D1DD5 /* ImageSetting */,
+				04596A8E1D802EEE008D1DD5 /* FSsettingBaseViewController.h */,
+				04596A8F1D802EEE008D1DD5 /* FSsettingBaseViewController.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1149,6 +1166,7 @@
 		04596A671D7FBD66008D1DD5 /* EncodingSettings */ = {
 			isa = PBXGroup;
 			children = (
+				04596A941D805ADC008D1DD5 /* FrameRate */,
 				04596A681D7FBD66008D1DD5 /* Controller */,
 				04596A691D7FBD66008D1DD5 /* Model */,
 				04596A6A1D7FBD66008D1DD5 /* VIew */,
@@ -1159,6 +1177,8 @@
 		04596A681D7FBD66008D1DD5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04596A911D8052FA008D1DD5 /* FSEncodingSettingViewController.h */,
+				04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1225,6 +1245,8 @@
 		04596A701D7FBD66008D1DD5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04596A821D801E10008D1DD5 /* FSImageSettingViewController.h */,
+				04596A831D801E10008D1DD5 /* FSImageSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1239,6 +1261,8 @@
 		04596A721D7FBD66008D1DD5 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				04596A8B1D802406008D1DD5 /* FSImageSettingTableViewCell.h */,
+				04596A8C1D802406008D1DD5 /* FSImageSettingTableViewCell.m */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -1249,6 +1273,39 @@
 				04596A7E1D7FE911008D1DD5 /* LiveVideoSettingMacro.h */,
 			);
 			path = macro;
+			sourceTree = "<group>";
+		};
+		04596A941D805ADC008D1DD5 /* FrameRate */ = {
+			isa = PBXGroup;
+			children = (
+				04596A951D805B3D008D1DD5 /* Controller */,
+				04596A961D805B3D008D1DD5 /* Model */,
+				04596A971D805B3D008D1DD5 /* View */,
+			);
+			path = FrameRate;
+			sourceTree = "<group>";
+		};
+		04596A951D805B3D008D1DD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04596A981D805B58008D1DD5 /* FSFrameRateViewController.h */,
+				04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04596A961D805B3D008D1DD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04596A971D805B3D008D1DD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
@@ -2533,6 +2590,7 @@
 				1F0424111D51F3A00071A1D6 /* MJExtensionConst.m in Sources */,
 				1F0423F71D51F38E0071A1D6 /* UIScrollView+MJRefresh.m in Sources */,
 				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
+				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
 				1F0219CC1D799027003A8A11 /* FSForgetViewController.m in Sources */,
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F0424581D51F3C30071A1D6 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2554,7 +2612,9 @@
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				1F4202031D48AE0100D3E6CB /* MASViewConstraint.m in Sources */,
+				04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */,
 				1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */,
+				04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */,
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
 				1F0219A81D795002003A8A11 /* JKDBModel.m in Sources */,
 				1F0423F41D51F38E0071A1D6 /* MJRefreshConst.m in Sources */,
@@ -2584,6 +2644,7 @@
 				1F0423EF1D51F38E0071A1D6 /* MJRefreshBackStateFooter.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
 				1F0424161D51F3A00071A1D6 /* NSObject+MJClass.m in Sources */,
+				04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */,
 				1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */,
 				1F0424541D51F3C30071A1D6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
@@ -2626,6 +2687,7 @@
 				1F0424611D51F3F20071A1D6 /* FBAPI.m in Sources */,
 				1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */,
 				1F0424661D51F40F0071A1D6 /* FSZuoPinTableViewCell.m in Sources */,
+				04596A841D801E10008D1DD5 /* FSImageSettingViewController.m in Sources */,
 				1F4202061D48AE0100D3E6CB /* View+MASAdditions.m in Sources */,
 				04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */,
 				1F0423F21D51F38E0071A1D6 /* MJRefreshStateHeader.m in Sources */,

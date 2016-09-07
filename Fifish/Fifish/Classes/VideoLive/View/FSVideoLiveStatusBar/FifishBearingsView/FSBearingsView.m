@@ -81,6 +81,9 @@
 //    *   90<X<=180：Y=180-X;
 //    *   180<X<=270：Y=X-180;
 //    *   270<X<=360：Y=360-X;
+    if (0<rovinfo.Heading_angle&&rovinfo.Heading_angle<=90) {
+        angel = rovinfo.Heading_angle;
+    }
     if (90<rovinfo.Heading_angle&&rovinfo.Heading_angle<=180) {
         angel = 180-rovinfo.Heading_angle;
     }
@@ -90,6 +93,7 @@
     if (270<rovinfo.Heading_angle&&rovinfo.Heading_angle<=360) {
         angel = 360-rovinfo.Heading_angle;
     }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.angleBtn setTitle:[NSString stringWithFormat:@"%02ld°",(long)angel] forState:UIControlStateNormal];
        CGPoint offset = CGPointMake(fabs(rovinfo.Heading_angle-360.0)-(self.BearingsScrollView.frame.size.width/2), 0);

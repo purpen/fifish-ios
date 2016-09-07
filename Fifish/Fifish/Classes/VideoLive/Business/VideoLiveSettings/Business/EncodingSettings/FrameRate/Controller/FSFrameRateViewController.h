@@ -1,5 +1,5 @@
 //
-//  FSGeneralSettingViewController.h
+//  FSFrameRateViewController.h
 //  Fifish
 //
 //  Created by macpro on 16/9/7.
@@ -8,6 +8,6 @@
 
 #import "FSsettingBaseViewController.h"
 
-@interface FSGeneralSettingViewController : FSsettingBaseViewController
+@interface FSFrameRateViewController : FSsettingBaseViewController
 
 @end

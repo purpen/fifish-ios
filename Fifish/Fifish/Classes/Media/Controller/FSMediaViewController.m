@@ -52,7 +52,7 @@
 - (UIScrollView *)ViewControllerScrowView{
     if (!_ViewControllerScrowView) {
         _ViewControllerScrowView = [[UIScrollView alloc] init];
-        _ViewControllerScrowView.backgroundColor = SETTING_GRAY_COLOR;
+        _ViewControllerScrowView.backgroundColor = SETTING_Gray_COLOR;
         _ViewControllerScrowView.delegate = self;
         _ViewControllerScrowView.pagingEnabled = YES;
         _ViewControllerScrowView.contentSize = CGSizeMake(self.childViewControllers.count*SCREEN_WIDTH, 0);

@@ -12,6 +12,8 @@
 
 #import "FSLiveSettingsViewController.h"
 #import "FSGeneralSettingViewController.h"
+#import "FSImageSettingViewController.h"
+#import "FSEncodingSettingViewController.h"
 
 #import "FSCameraManager.h"
 
@@ -23,20 +25,13 @@ static NSString * const tableViewCellIden = @"systemCell";
 
 @interface FSLiveSettingsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic ,strong)UIButton       * dissMissBtn;
-
 @property (nonatomic ,strong)UITableView    * MenuTableview;//菜单
 
 @property (nonatomic ,strong)NSArray        *MenuTitlesArr;//菜单标题
 
-@property (nonatomic ,strong)UILabel        * NavTitleLab;//nav
-
-@property (nonatomic ,strong)UIView         * containerView;//托盘
-
 @property (nonatomic ,strong)UIView         * CilpLineView;//分割线
 
-
-@property (nonatomic, strong)FSGeneralSettingViewController * generalSettingVc;//通用设置
+@property (nonatomic, assign)UINavigationController* currentViewController;//当前显示的VC
 
 @end
 
@@ -60,23 +55,31 @@ static NSString * const tableViewCellIden = @"systemCell";
     // Do any additional setup after loading the view.
 }
 - (void)loadChildViewControllers{
-    [self addChildViewController:self.generalSettingVc];
+    FSGeneralSettingViewController * FSGeneralSettingVc = [[FSGeneralSettingViewController alloc] init];
+    [FSGeneralSettingVc setdissMissBtn];
     
-    [self.containerView addSubview:self.generalSettingVc.view];
+    FSImageSettingViewController * FSImageSettingVc =[[FSImageSettingViewController alloc] init];
+    [FSImageSettingVc setdissMissBtn];
+    
+    FSEncodingSettingViewController * FSEncodingSettingVC =[[FSEncodingSettingViewController alloc] init];
+    
+    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:FSGeneralSettingVc]];
+    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:FSImageSettingVc]];
+    [self addChildViewController:[[UINavigationController alloc] initWithRootViewController:FSEncodingSettingVC]];
+    
+    self.currentViewController = self.childViewControllers[0];
+    
+    [self.view addSubview:self.currentViewController.view];
+    [self.currentViewController didMoveToParentViewController:self];
 
 }
 - (void)addChildViewController:(UIViewController *)childController{
     [super addChildViewController:childController];
-    childController.view.frame = CGRectMake(0, 0,self.containerView.bounds.size.width,self.containerView.bounds.size.height);
+    //跟aotulayout不兼容，不知道怎么解决
+    childController.view.frame = CGRectMake(CGRectGetWidth(self.view.frame)*0.3+0.5, 0,CGRectGetWidth(self.view.frame)-(CGRectGetWidth(self.view.frame)*0.3)-0.5,CGRectGetHeight(self.view.frame));
 }
 - (void)setUpUI{
     self.view.backgroundColor = [UIColor blackColor];
-    
-    [self.view addSubview:self.dissMissBtn];
-    [self.dissMissBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_right).offset(-10);
-        make.top.equalTo(self.view.mas_top).offset(10);
-    }];
     
     [self.view addSubview:self.MenuTableview];
     [self.MenuTableview mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,14 +89,6 @@ static NSString * const tableViewCellIden = @"systemCell";
         make.width.mas_equalTo(self.view.frame.size.width*0.3);
     }];
     
-    [self.view addSubview:self.NavTitleLab];
-    [self.NavTitleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.MenuTableview.mas_right);
-        make.right.equalTo(self.view.mas_right);
-        make.height.mas_equalTo(64);
-    }];
-    
     [self.view addSubview:self.CilpLineView];
     [self.CilpLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.MenuTableview.mas_right);
@@ -101,41 +96,18 @@ static NSString * const tableViewCellIden = @"systemCell";
         make.bottom.equalTo(self.view.mas_bottom);
         make.width.mas_equalTo(0.5);
     }];
-    
-    [self.view addSubview:self.containerView];
-    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.NavTitleLab.mas_bottom);
-        make.left.equalTo(self.CilpLineView.mas_right);
-        make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(self.view.mas_bottom);
-    }];
-    
 }
-
-#pragma mark VC
-- (FSGeneralSettingViewController *)generalSettingVc{
-    if (!_generalSettingVc) {
-        _generalSettingVc = [[FSGeneralSettingViewController alloc] init];
-    }
-    return _generalSettingVc;
-}
-
-
-
 #pragma mark UI
 //横屏
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscapeRight;
+    return UIInterfaceOrientationMaskLandscape;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
 
-- (UIButton *)dissMissBtn{
-    if (!_dissMissBtn) {
-        _dissMissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_dissMissBtn setImage:[UIImage imageNamed:@"VideoSetting_cancel"] forState:UIControlStateNormal];
-        [_dissMissBtn addTarget:self action:@selector(dissmissClick) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _dissMissBtn;
-}
+
 
 - (NSArray *)MenuTitlesArr{
     if (!_MenuTitlesArr) {
@@ -156,29 +128,17 @@ static NSString * const tableViewCellIden = @"systemCell";
     return _MenuTableview;
 }
 
--(UILabel *)NavTitleLab{
-    if (!_NavTitleLab) {
-        _NavTitleLab = [[UILabel alloc] init];
-        _NavTitleLab.textAlignment = NSTextAlignmentCenter;
-        _NavTitleLab.textColor = [UIColor whiteColor];
-    }
-    return _NavTitleLab;
-}
 - (UIView *)CilpLineView{
     if (!_CilpLineView) {
         _CilpLineView = [[UIView alloc] init];
-        _CilpLineView.backgroundColor = SETTING_GRAY_COLOR;
+        _CilpLineView.backgroundColor = SETTING_Gray_COLOR;
         
     }
+    
     return _CilpLineView;
 }
-- (UIView *)containerView{
-    if (!_containerView) {
-        _containerView = [[UIView alloc] init];
-    }
-    return _containerView;
-}
 #pragma mark MenuTableviewDelegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.MenuTitlesArr.count;
 }
@@ -192,12 +152,21 @@ static NSString * const tableViewCellIden = @"systemCell";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.NavTitleLab.text=self.MenuTitlesArr[indexPath.row];
+    //切换child view controller
+    UINavigationController * newvc = self.childViewControllers[indexPath.row];
+    newvc.viewControllers[0].title = self.MenuTitlesArr[indexPath.row];
+    
+    if (newvc == self.currentViewController) {
+        return;
+    }
+    [self transitionFromViewController:self.currentViewController toViewController:newvc duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+    }  completion:^(BOOL finished) {
+            [newvc didMoveToParentViewController:self];
+            [self.currentViewController willMoveToParentViewController:nil];
+            self.currentViewController = newvc;
+    }];
 }
 
-- (void)dissmissClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 /*
 #pragma mark - Navigation
 

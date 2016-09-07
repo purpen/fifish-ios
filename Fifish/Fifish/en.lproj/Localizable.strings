@@ -37,6 +37,17 @@
 
 "华氏度"="Fahrenheit(℉)";
 
+//图像设置
+"背光补偿"="Backlight compensation";
+
+"低照度"="Low illumination";
+
+"模式"="mode";
+
+//编码设置
+"尺寸"="size";
+"帧率"="frame rate";
+
 //计量单位
 "unit"  = "unit";
 "metre" = "metre";

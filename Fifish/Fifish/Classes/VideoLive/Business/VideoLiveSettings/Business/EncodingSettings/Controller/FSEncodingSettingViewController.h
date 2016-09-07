@@ -1,5 +1,5 @@
 //
-//  FSGeneralSettingViewController.h
+//  FSEncodingSettingViewController.h
 //  Fifish
 //
 //  Created by macpro on 16/9/7.
@@ -8,6 +8,6 @@
 
 #import "FSsettingBaseViewController.h"
 
-@interface FSGeneralSettingViewController : FSsettingBaseViewController
+@interface FSEncodingSettingViewController : FSsettingBaseViewController
 
 @end

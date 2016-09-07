@@ -18,7 +18,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor blackColor];
-        self.textLabel.textColor = SETTING_GRAY_COLOR;
+        self.textLabel.textColor = SETTING_Gray_COLOR;
     }
     return self;
 }

@@ -164,10 +164,15 @@
     [self.activityIndicatorView stopAnimating];
     [self.VideoGlView render:yuvFrame];
 }
--(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscapeRight;
-}
 
+//横屏
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscape;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
 #pragma OSDmannagerDelegate
 - (void)connectWithOSDsuccess{
     

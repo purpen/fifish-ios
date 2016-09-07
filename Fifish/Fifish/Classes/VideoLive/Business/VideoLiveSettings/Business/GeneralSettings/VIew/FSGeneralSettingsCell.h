@@ -7,7 +7,7 @@
 //
 
 #import "FSBaseTableViewCell.h"
-
+static NSString * const GeneralSettingsCellIden = @"GeneralSettingsCellIden";
 @interface FSGeneralSettingsCell : FSBaseTableViewCell
 
 @end

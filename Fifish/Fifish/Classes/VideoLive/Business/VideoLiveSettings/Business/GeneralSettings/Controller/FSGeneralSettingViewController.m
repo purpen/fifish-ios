@@ -9,7 +9,7 @@
 #import "FSGeneralSettingViewController.h"
 #import "FSGeneralSettingsCell.h"
 
-static NSString * const GeneralSettingsCellIden = @"GeneralSettingsCellIden";
+
 
 
 @interface FSGeneralSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -89,7 +89,7 @@ static NSString * const GeneralSettingsCellIden = @"GeneralSettingsCellIden";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UILabel * titleLab= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    titleLab.textColor = SETTING_GRAY_COLOR;
+    titleLab.textColor = SETTING_Gray_COLOR;
     titleLab.text = self.menuTitleArrs[section];
     return titleLab;
 }
