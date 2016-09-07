@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIColor+FSExtension.h"
+#import "LiveVideoSettingMacro.h"
 
 typedef enum {
     FSZuoPinTypePicture = 1,

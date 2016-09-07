@@ -21,7 +21,7 @@
         self.textLabel.textColor = [UIColor whiteColor];
     }
     else{
-        self.textLabel.textColor = [UIColor grayColor];
+        self.textLabel.textColor = SETTING_GRAY_COLOR;
     }
     // Configure the view for the selected state
 }

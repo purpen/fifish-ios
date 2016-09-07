@@ -33,6 +33,9 @@
 		0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CCFC1D77CA6A007694CC /* FSOSDManager.m */; };
 		0452CD011D77D429007694CC /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD001D77D429007694CC /* UIView+Toast.m */; };
 		0452CD041D77FFB6007694CC /* RovInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD031D77FFB6007694CC /* RovInfo.m */; };
+		04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A741D7FBE28008D1DD5 /* FSGeneralSettingViewController.m */; };
+		04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A771D7FC27A008D1DD5 /* FSGeneralSettingsCell.m */; };
+		04596A7B1D7FC32B008D1DD5 /* FSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A7A1D7FC32B008D1DD5 /* FSBaseTableViewCell.m */; };
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
@@ -388,6 +391,13 @@
 		0452CD001D77D429007694CC /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		0452CD021D77FFB6007694CC /* RovInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RovInfo.h; sourceTree = "<group>"; };
 		0452CD031D77FFB6007694CC /* RovInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RovInfo.m; sourceTree = "<group>"; };
+		04596A731D7FBE28008D1DD5 /* FSGeneralSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGeneralSettingViewController.h; sourceTree = "<group>"; };
+		04596A741D7FBE28008D1DD5 /* FSGeneralSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGeneralSettingViewController.m; sourceTree = "<group>"; };
+		04596A761D7FC27A008D1DD5 /* FSGeneralSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGeneralSettingsCell.h; sourceTree = "<group>"; };
+		04596A771D7FC27A008D1DD5 /* FSGeneralSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGeneralSettingsCell.m; sourceTree = "<group>"; };
+		04596A791D7FC32B008D1DD5 /* FSBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseTableViewCell.h; sourceTree = "<group>"; };
+		04596A7A1D7FC32B008D1DD5 /* FSBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseTableViewCell.m; sourceTree = "<group>"; };
+		04596A7E1D7FE911008D1DD5 /* LiveVideoSettingMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveVideoSettingMacro.h; sourceTree = "<group>"; };
 		046765151D63285800FFA743 /* FSBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBatteryView.h; sourceTree = "<group>"; };
 		046765161D63285800FFA743 /* FSBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBatteryView.m; sourceTree = "<group>"; };
 		046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFSVideoLiveStatusBar.h; sourceTree = "<group>"; };
@@ -1126,6 +1136,121 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		04596A661D7FBD66008D1DD5 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				04596A671D7FBD66008D1DD5 /* EncodingSettings */,
+				04596A6B1D7FBD66008D1DD5 /* GeneralSettings */,
+				04596A6F1D7FBD66008D1DD5 /* ImageSetting */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		04596A671D7FBD66008D1DD5 /* EncodingSettings */ = {
+			isa = PBXGroup;
+			children = (
+				04596A681D7FBD66008D1DD5 /* Controller */,
+				04596A691D7FBD66008D1DD5 /* Model */,
+				04596A6A1D7FBD66008D1DD5 /* VIew */,
+			);
+			path = EncodingSettings;
+			sourceTree = "<group>";
+		};
+		04596A681D7FBD66008D1DD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04596A691D7FBD66008D1DD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04596A6A1D7FBD66008D1DD5 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		04596A6B1D7FBD66008D1DD5 /* GeneralSettings */ = {
+			isa = PBXGroup;
+			children = (
+				04596A6C1D7FBD66008D1DD5 /* Controller */,
+				04596A6D1D7FBD66008D1DD5 /* Model */,
+				04596A6E1D7FBD66008D1DD5 /* VIew */,
+			);
+			path = GeneralSettings;
+			sourceTree = "<group>";
+		};
+		04596A6C1D7FBD66008D1DD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04596A731D7FBE28008D1DD5 /* FSGeneralSettingViewController.h */,
+				04596A741D7FBE28008D1DD5 /* FSGeneralSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04596A6D1D7FBD66008D1DD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04596A6E1D7FBD66008D1DD5 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				04596A761D7FC27A008D1DD5 /* FSGeneralSettingsCell.h */,
+				04596A771D7FC27A008D1DD5 /* FSGeneralSettingsCell.m */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		04596A6F1D7FBD66008D1DD5 /* ImageSetting */ = {
+			isa = PBXGroup;
+			children = (
+				04596A701D7FBD66008D1DD5 /* Controller */,
+				04596A711D7FBD66008D1DD5 /* Model */,
+				04596A721D7FBD66008D1DD5 /* VIew */,
+			);
+			path = ImageSetting;
+			sourceTree = "<group>";
+		};
+		04596A701D7FBD66008D1DD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04596A711D7FBD66008D1DD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04596A721D7FBD66008D1DD5 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		04596A7C1D7FE87E008D1DD5 /* macro */ = {
+			isa = PBXGroup;
+			children = (
+				04596A7E1D7FE911008D1DD5 /* LiveVideoSettingMacro.h */,
+			);
+			path = macro;
+			sourceTree = "<group>";
+		};
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,6 +1304,8 @@
 			children = (
 				04A1B6F11D6435E20008223E /* FSBaseView.h */,
 				04A1B6F21D6435E20008223E /* FSBaseView.m */,
+				04596A791D7FC32B008D1DD5 /* FSBaseTableViewCell.h */,
+				04596A7A1D7FC32B008D1DD5 /* FSBaseTableViewCell.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1212,6 +1339,7 @@
 		04F20EE21D7D5969009790EE /* VideoLiveSettings */ = {
 			isa = PBXGroup;
 			children = (
+				04596A661D7FBD66008D1DD5 /* Business */,
 				04F20EE91D7D69EE009790EE /* Tools */,
 				04F20EE31D7D5969009790EE /* Controller */,
 				04F20EE41D7D5969009790EE /* Model */,
@@ -1903,6 +2031,7 @@
 		1F7EDE8D1D45EF6900ABED5D /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				04596A7C1D7FE87E008D1DD5 /* macro */,
 				1F04245B1D51F3F20071A1D6 /* Tool */,
 				1F4202131D48D4A900D3E6CB /* Setting */,
 				1F4201DE1D48AC5200D3E6CB /* Guide */,
@@ -2436,6 +2565,7 @@
 				0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */,
 				1F0423E81D51F38E0071A1D6 /* MJRefreshFooter.m in Sources */,
 				04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */,
+				04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */,
 				1F0424571D51F3C30071A1D6 /* UIImageView+AFNetworking.m in Sources */,
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
@@ -2459,6 +2589,7 @@
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
 				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
+				04596A7B1D7FC32B008D1DD5 /* FSBaseTableViewCell.m in Sources */,
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
@@ -2496,6 +2627,7 @@
 				1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */,
 				1F0424661D51F40F0071A1D6 /* FSZuoPinTableViewCell.m in Sources */,
 				1F4202061D48AE0100D3E6CB /* View+MASAdditions.m in Sources */,
+				04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */,
 				1F0423F21D51F38E0071A1D6 /* MJRefreshStateHeader.m in Sources */,
 				1F0423F81D51F38E0071A1D6 /* UIView+MJExtension.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,

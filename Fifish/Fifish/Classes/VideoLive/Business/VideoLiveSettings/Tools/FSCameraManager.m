@@ -27,7 +27,7 @@ static NSString * const CameraUrlStr = @"http://192.168.2.158/cmd";
 }
 -(void)getCameraInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
     NSString * sttt = @"\"body\":\"null\",\"head\":{\"action\":\"CW_JSON_SnapPic\",\"code\":\"0\",\"message_id\":,\"token\":\"11\",\"type\":\"response\",\"version\":\"1.0\"}";
-    NSLog(@"%d",sttt.length);
+    NSLog(@"%lu",(unsigned long)sttt.length);
     
     NSDictionary * paams = @{@"head":@{@"action":@"CW_JSON_SnapPic",@"message_id":@"",@"type":@"request",@"token":@"11",@"version":@"1.0"},@"body":@{@"SnapPicCount":@"1",@"ChannelID":@"0",@"SnapPicFrequency":@"1"}};
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paams
