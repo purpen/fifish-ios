@@ -40,7 +40,12 @@ NSInteger  const Fish_OSD_Port = 4321;
 - (void)starConnectWithOSD{
     NSError * error;
     [self.OSDConnectSocket connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port error:&error];
-    if (error) [KEY_WINDOW makeToast:error.localizedDescription];
+    if (error){
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [KEY_WINDOW makeToast:error.localizedDescription];
+        });
+        
+    }
     else{
         [self.OSDConnectSocket readDataWithTimeout:3 tag:1];
         [self.OSDConnectSocket writeData:[@"app_connect" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:3 tag:1];
@@ -83,7 +88,9 @@ NSInteger  const Fish_OSD_Port = 4321;
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     NSLog(@"连接失败 %@", err.localizedDescription);
     if ([self.delegate respondsToSelector:@selector(connectWithOSDerror:)]) {
-        [self.delegate connectWithOSDerror:err];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate connectWithOSDerror:err];
+        });
     }
     // 断线重连
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
@@ -96,7 +103,7 @@ NSInteger  const Fish_OSD_Port = 4321;
 }
 //收到消息
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSLog(@"%@",data);
+//    NSLog(@"%@",data);
     if ([sock.connectedHost isEqualToString:Fish_OSD_Host]) {
         [[RovInfo sharedManager] updataWithRovDataInfo:data];
     }

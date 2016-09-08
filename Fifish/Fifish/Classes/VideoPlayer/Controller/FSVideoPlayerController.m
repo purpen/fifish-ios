@@ -32,6 +32,8 @@
     
 }
 - (void)play:(UIButton *)btn{
+    
+    //存入系统相册处理
 //    NSURL *playerURL = [NSURL URLWithString:self.fileUrl];
 //    
 //    UIWebView * web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];

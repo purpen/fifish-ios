@@ -126,7 +126,7 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
 //        S            SW		   W		   NW		    N		     NE		    E		     SE		     S
 //        |------------|------------|-----------|------------|------------|----------|------------|-----------|
 //        360                      270		               180	   	                90		               	 0
-        NSArray * bearingsTitles = @[@"S",@"sw",@"W",@"nw",@"N",@"nw",@"E",@"se",@"S"];
+        NSArray * bearingsTitles = @[@"S",@"sw",@"W",@"nw",@"N",@"ne",@"E",@"se",@"S"];
         for (int i = 0; i<=self.valueLenth; i++) {
             CGPoint LabPiont = CGPointZero;
             if (i % 10 == 0) {

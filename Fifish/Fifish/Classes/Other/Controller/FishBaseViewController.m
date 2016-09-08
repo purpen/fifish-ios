@@ -9,5 +9,14 @@
 #import "FishBaseViewController.h"
 
 @implementation FishBaseViewController
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+}
 
+- (void)setRightItem:(UIView *)view
+{
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    self.navigationItem.rightBarButtonItems = @[rightItem];
+}
 @end

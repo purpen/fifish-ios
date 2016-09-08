@@ -17,6 +17,37 @@
 "Video" = "Video";
 
 
+//camera设置
+"通用设置" = "General settings";
+
+"图像设置"= "Image settings";
+
+"编码设置"= "Encoding settings";
+
+//通用设置
+"度量单位"="Measure unit";
+
+"英尺"="Feet";
+
+"米"="metre";
+
+"温度"="Temperature";
+
+"摄氏度"="Celsius(℃)";
+
+"华氏度"="Fahrenheit(℉)";
+
+//图像设置
+"背光补偿"="Backlight compensation";
+
+"低照度"="Low illumination";
+
+"模式"="mode";
+
+//编码设置
+"尺寸"="size";
+"帧率"="frame rate";
+
 //计量单位
 "unit"  = "unit";
 "metre" = "metre";
