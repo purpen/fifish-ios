@@ -178,9 +178,13 @@
 + (instancetype)getWithUrlString:(NSString *)urlString
                requestDictionary:(NSDictionary *)requestDictionary
                         delegate:(id)delegate {
-    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:requestDictionary];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *token=[defaults objectForKey:@"token"];
+    params[@"token"] = token;
+    NSLog(@"字典 %@",params);
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
-                     requestDictionary:requestDictionary
+                     requestDictionary:params
                               delegate:delegate
                        timeoutInterval:nil
                                   flag:nil

@@ -27,18 +27,18 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     
-//    FBRequest *request = [FBAPI getWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
-//    [request startRequestSuccess:^(FBRequest *request, id result) {
-//    } failure:^(FBRequest *request, NSError *error) {
-//        
-//    }];
+    FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
     
-//    FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
-//    [request2 startRequestSuccess:^(FBRequest *request, id result) {
-//        NSLog(@"个人信息 %@",result);
-//    } failure:^(FBRequest *request, NSError *error) {
-//        
-//    }];
+    FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+    [request2 startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"个人信息 %@",result);
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 - (void)viewDidLoad {
