@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSBaseView.h"
+#import "FSBearingsView.h"
 @protocol FSVidoLiveStatusBarDelegate <NSObject>
 
 @required
@@ -20,7 +21,7 @@
 @end
 
 @interface FSFSVideoLiveStatusBar : FSBaseView
-
+@property (nonatomic ,strong) FSBearingsView    * BearingsView;//方向
 
 @property (nonatomic,assign)id<FSVidoLiveStatusBarDelegate>delegate;
 

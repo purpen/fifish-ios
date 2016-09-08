@@ -43,10 +43,9 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
         _menuTableView.dataSource =self;
         _menuTableView.backgroundColor = SETTING_Black_COLOR;
         _menuTableView.tableFooterView = [[UIView alloc] init];
-
     }
     return _menuTableView;
-}
+}   
 - (NSArray *)titleArr{
     if (!_titleArr) {
         _titleArr =@[[NSString stringWithFormat:@"%@/%@",NSLocalizedString(@"尺寸", nil),NSLocalizedString(@"帧率", nil)]];

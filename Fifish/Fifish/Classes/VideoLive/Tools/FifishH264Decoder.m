@@ -165,8 +165,14 @@
 
 - (void)StardecodeFrame{
     //开辟线程去解码
+    if (_pCodecContext) {
     [NSThread detachNewThreadSelector:@selector(decodeFrame) toTarget:self withObject:nil];
-    self.isRunningDecode = YES;
+        self.isRunningDecode = YES;
+    }
+    else{
+        self.isRunningDecode = NO;
+        
+    }
 }
 
 //解码

@@ -7,6 +7,11 @@
 //
 
 #import "FSVideoLiveBottomBar.h"
+
+#import "FSCameraManager.h"
+
+#import "UIView+Toast.h"
+
 #import<libkern/OSAtomic.h>
 @interface FSVideoLiveBottomBar ()
 
@@ -95,15 +100,61 @@
     if (!_take_photoBtn) {
         _take_photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_take_photoBtn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
+        [_take_photoBtn addTarget:self action:@selector(takePhotoClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _take_photoBtn;
 }
+
+//拍照
+- (void)takePhotoClick{
+    FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
+    [CameraManager RovTakePhotoSuccess:^(NSDictionary *responseObject) {
+        if ([responseObject[@"head"][@"code"] integerValue]==0) {
+            
+            [KEY_WINDOW makeToast:@"拍照成功"];
+        }
+    } WithFailureBlock:^(NSError *error) {
+        [KEY_WINDOW makeToast:error.localizedDescription];
+    }];
+}
+
+
+//录制
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
     [self starRecordUpdataLabWithStatus:sender.selected];
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveMp4File" object:nil userInfo:@{@"saveStatus":[NSNumber numberWithBool:self.isReciveVideo]}];
+    
+    
+    
+    //通知ROV录制
+    FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
+    if(self.isReciveVideo){
+    
+    [CameraManager RovStarRecordSuccess:^(NSDictionary *responseObject) {
+        if ([responseObject[@"head"][@"code"] integerValue]==0) {
+            
+            [KEY_WINDOW makeToast:@"同步录制中"];
+        }
+    } WithFailureBlock:^(NSError *error) {
+        [KEY_WINDOW makeToast:error.localizedDescription];
+    }];
+    }
+    //停止录制
+    else{
+        [CameraManager RovstopRecordSuccess:^(NSDictionary *responseObject) {
+            if ([responseObject[@"head"][@"code"] integerValue]==0) {
+                [KEY_WINDOW makeToast:@"停止录制"];
+            }
+        } WithFailureBlock:^(NSError *error) {
+            [KEY_WINDOW makeToast:error.localizedDescription];
+        }];
+    }
+    
 }
+
+//刷新录制时间
 - (void)starRecordUpdataLabWithStatus:(BOOL)isrecord{
     if (isrecord) {
         self.timeOutCount = 0;

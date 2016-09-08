@@ -7,7 +7,6 @@
 //
 
 #import "FishBaseViewController.h"
-
 @interface FSLiveSettingsViewController : FishBaseViewController
 
 @end
