@@ -119,55 +119,12 @@ static NSString * const CameraUrlStr = @"http://192.168.2.158/cmd";
 }
 
 
-
-
-
-
-
-
-
-
-//- (void)RovStarRecordVideoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
-//    
-//    [self RovControlRequestWithAction:GetRecordInfoAPI WithParams:@{@"StreamTypeId":@7,@"ChannelID":@0,@"VideoSize":@1,@"VideoQuality":@1,@"VideoFramerate":@1,@"VideoBitrate":@1,@"VideoEncodeFormat":@1,@"H264Profiles":@1} WithSuccessBlock:successblock WithErrorBlock:failBlock];
-//    
-//}
 - (void)getCameraInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
     [self RovControlRequestWithAction:GetRecordInfoAPI WithParams:@{@"StreamTypeId":@7,@"ChannelID":@0,@"VideoSize":@1,@"VideoQuality":@1,@"VideoFramerate":@1,@"VideoBitrate":@1,@"VideoEncodeFormat":@1,@"H264Profiles":@1} WithSuccessBlock:successblock WithErrorBlock:failBlock];
-    
-//    NSString * sttt = @"\"body\":\"null\",\"head\":{\"action\":\"CW_JSON_SnapPic\",\"code\":\"0\",\"message_id\":,\"token\":\"11\",\"type\":\"response\",\"version\":\"1.0\"}";
-//    NSLog(@"%lu",(unsigned long)sttt.length);
-//    
-//    NSDictionary * paams = @{@"head":@{@"action":@"CW_JSON_GetVideoEncode",@"message_id":@"",@"type":@"request",@"token":@"11",@"version":@"1.0"},@"body":@{@"StreamTypeId":@"7",@"ChannelID":@"1",@"VideoSize":@"1",@"VideoQuality":@"1",@"VideoFramerate":@"1",@"VideoBitrate":@"1",@"VideoEncodeFormat":@"1",@"H264Profiles":@"1"}};
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paams
-//                                                       options:NSJSONWritingPrettyPrinted
-//                                                         error:nil];
-//    NSString * str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    
-////    NSString * paramsstr = [NSString stringWithFormat:@"CWP%lu@%@",str.length-2,str];
-//    [FBRequest GET:CameraUrlStr parameters:@{@"CWPCmd":str} timeoutInterval:@10 requestType:HTTPRequestType responseType:HTTPResponseType success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-}
-- (void)s{
-    NSString * sttt = @"\"body\":\"null\",\"head\":{\"action\":\"CW_JSON_SnapPic\",\"code\":\"0\",\"message_id\":,\"token\":\"11\",\"type\":\"response\",\"version\":\"1.0\"}";
-    NSLog(@"%lu",(unsigned long)sttt.length);
-    
-    NSDictionary * paams = @{@"head":@{@"action":@"CW_JSON_SnapPic",@"message_id":@"",@"type":@"request",@"token":@"11",@"version":@"1.0"},@"body":@{@"SnapPicCount":@"1",@"ChannelID":@"0",@"SnapPicFrequency":@"1"}};
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paams
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:nil];
-    NSString * str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    [FBRequest GET:CameraUrlStr parameters:@{@"CWPCmd":str} timeoutInterval:@10 requestType:HTTPRequestType responseType:HTTPResponseType success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
 }
 
+- (void)RovSetEncodeingInfo:(NSDictionary *)endcodingInfo Success:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
+    
+    [self RovControlRequestWithAction:SetRecordInfoAPI WithParams:endcodingInfo WithSuccessBlock:successblock WithErrorBlock:failBlock];
+}
 @end

@@ -20,6 +20,7 @@
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSVideoDepthRulerView.h"
 #import "FSVideoLiveBottomBar.h"
+
 @interface VideoLiveController()<updataYUV_420FrameDelegate,FSVidoLiveStatusBarDelegate,FSOSDMannagrDelegate>
 
 
@@ -126,6 +127,10 @@
     [self.view bringSubviewToFront:self.statusBar];
     [self.view bringSubviewToFront:self.DetpthView];
     [self.view bringSubviewToFront:self.bottomBar];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.ViedoDecoder.isRunningDecode = NO;
 }
 - (UIActivityIndicatorView *)activityIndicatorView{
     if (!_activityIndicatorView) {

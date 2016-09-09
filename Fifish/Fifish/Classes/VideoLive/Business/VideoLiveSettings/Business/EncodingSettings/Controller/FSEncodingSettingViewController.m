@@ -42,7 +42,8 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
         if ([resobj isKindOfClass:[NSArray class]]) {
             self.encodingModel = [[FSEncodingInfoModel alloc] initWithDictory:resobj[0]];
         }
-        
+        NSLog(@"%@",responseObject);
+        [self.menuTableView reloadData];
     } WithFailureBlock:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -85,7 +86,7 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
     cell.backgroundColor = SETTING_Black_COLOR;
     cell.detailTextLabel.textColor = SETTING_Gray_COLOR;
     cell.textLabel.text = self.titleArr[indexPath.row];
-    cell.detailTextLabel.text = self.titleArr[indexPath.row];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@,%@fps",self.encodingModel.VideoSizeStr,self.encodingModel.VideoFramerate];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

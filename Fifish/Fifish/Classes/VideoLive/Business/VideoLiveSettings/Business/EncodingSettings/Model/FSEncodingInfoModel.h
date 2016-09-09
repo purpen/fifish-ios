@@ -8,6 +8,22 @@
 
 #import "FSBaseModel.h"
 
+typedef enum :NSUInteger{
+    AV_VIDEO_QSIF = 0,             // 176 x 120
+    AV_VIDEO_QCIF,                // 176 x 144
+    AV_VIDEO_QVGA,                // 320 x 240
+    AV_VIDEO_SIF,                // 352 x 240
+    AV_VIDEO_CIF,               // 352 x 288
+    AV_VIDEO_VGA,               // 640 x 480
+    AV_VIDEO_480P,              // 720 x 480
+    AV_VIDEO_576P,              // 720 x 576
+    AV_VIDEO_720P,              // 1280 x 720
+    AV_VIDEO_SXGA,              // 1280 x 960
+    AV_VIDEO_UXGA,              // 1600 x 1200
+    AV_VIDEO_1080P,             // 1920 x 1080
+    AV_VIDEO_INVALID,           // invalid size
+} AV_VIDEO_SIZE;
+
 @interface FSEncodingInfoModel : FSBaseModel
 @property (nonatomic , strong) NSString * VideoFramerate;
 
@@ -31,6 +47,8 @@
 @property (nonatomic , strong) NSString * VideoVBRMinBitrate;
 
 
-@property (nonatomic , strong) NSString * VideoSize;
+@property (nonatomic) AV_VIDEO_SIZE  VideoSize;
+
+@property (nonatomic , strong) NSString * VideoSizeStr;
 
 @end

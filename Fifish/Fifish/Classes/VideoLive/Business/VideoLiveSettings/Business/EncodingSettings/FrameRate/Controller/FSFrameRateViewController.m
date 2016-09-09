@@ -8,6 +8,7 @@
 
 #import "FSGeneralSettingsCell.h"
 #import "FSFrameRateViewController.h"
+#import "FSCameraManager.h"
 
 
 
@@ -19,8 +20,10 @@
 @property (nonatomic,strong)NSArray     * sectionTitleArr;
 
 
-@property (nonatomic,strong)       NSIndexPath  * currentsizeIdex;//当前选中单位
-@property (nonatomic,strong)       NSIndexPath  * currentFrameRateIdex;//当前选中温度
+@property (nonatomic,strong)       NSIndexPath  * currentsizeIdex;//当前选中视频大小
+@property (nonatomic,strong)       NSIndexPath  * currentFrameRateIdex;//当前选中帧率
+
+
 @end
 
 @implementation FSFrameRateViewController
@@ -55,7 +58,6 @@
     }
     return _sectionTitleArr;
 }
-
 //TODO:这个table要封装起来，每个设置页面都有
 - (UITableView *)menuTableView{
     if (!_menuTableView) {
@@ -108,6 +110,83 @@
     if (indexPath.section ==1) {
         self.currentFrameRateIdex = indexPath;
     }
+    
+    FSCameraManager * cameraManger = [[FSCameraManager  alloc] init];
+//    NSMutableDictionary * params = [@{@"ChannelID":@0,@"StreamTypeId":@7,@"StreamId":@0,@"VideoSize":@3,@"VideoFramerate":@25} mutableCopy];
+    NSNumber * Videosize=@112;
+    NSNumber * VideoFramerate = @25;
+    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                Videosize =@108;
+            }
+                break;
+            case 1:
+            {
+                Videosize =@112;
+            }
+                break;
+            case 2:
+            {
+                Videosize =@104;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                VideoFramerate = @25;
+            }
+                break;
+            case 1:
+            {
+                VideoFramerate = @30;
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    NSMutableDictionary *params = [@{@"ChannelTypeId":@1,@"StreamInfoListArray":@[@{@"StreamTypeId":@3,@"StreamInfoArray":@[@{@"H264Profiles": @2,
+                                                                                                                              @"StreamId": @1,
+                                                                                                                              @"VideoBitrateCtrlMode": @0,
+                                                                                                                              @"VideoCBRBitrate": @512,
+                                                                                                                              @"VideoEncodeFormat": @0,
+                                                                                                                              @"VideoFramerate": VideoFramerate,
+                                                                                                                              @"VideoGop": @25,
+                                                                                                                              @"VideoQuality": @50,
+                                                                                                                              @"VideoSize": Videosize,
+                                                                                                                              @"VideoType": @1,
+                                                                                                                              @"VideoVBRMaxBitrate": @1000,
+                                                                                                                              @"VideoVBRMinBitrate": @512
+},
+                                                                                                                            @{@"H264Profiles": @2,
+                                                                                                                                                                                         @"StreamId": @1,
+                                                                                                                                                                                         @"VideoBitrateCtrlMode": @0,
+                                                                                                                                                                                         @"VideoCBRBitrate": @512,
+                                                                                                                                                                                         @"VideoEncodeFormat": @0,
+                                                                                                                                                                                         @"VideoFramerate": @25,
+                                                                                                                                                                                         @"VideoGop": @25,
+                                                                                                                                                                                         @"VideoQuality": @50,
+                                                                                                                                                                                         @"VideoSize": @108,
+                                                                                                                                                                                         @"VideoType": @1,
+                                                                                                                                                                                         @"VideoVBRMaxBitrate": @1000,
+                                                                                                                                                                                         @"VideoVBRMinBitrate": @512
+}]}]} mutableCopy];
+    [cameraManger RovSetEncodeingInfo:params Success:^(NSDictionary *responseObject) {
+        NSLog(@"%@",responseObject);
+    } WithFailureBlock:^(NSError *error) {
+        NSLog(@"%@",error.localizedDescription);
+    }];
+    
     [tableView reloadData];
 }
 @end
