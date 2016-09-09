@@ -9,7 +9,7 @@
 #import "FSFSVideoLiveStatusBar.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
-#import "FSBearingsView.h"
+
 
 #import "FSOSDManager.h"
 #import "RovInfo.h"
@@ -26,7 +26,7 @@
 
 @property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
 
-@property (nonatomic ,strong) FSBearingsView    * BearingsView;//方向
+
 @end
 
 @implementation FSFSVideoLiveStatusBar

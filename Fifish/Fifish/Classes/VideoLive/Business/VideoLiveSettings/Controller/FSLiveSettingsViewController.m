@@ -40,13 +40,6 @@ static NSString * const tableViewCellIden = @"systemCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    FSCameraManager * manager = [[FSCameraManager alloc] init];
-//    [manager getCameraInfoWithSuccessBlock:^(NSDictionary *responseObject) {
-//        NSLog(@"%@",responseObject);
-//    } WithFailureBlock:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
-    
     [self setUpUI];
     
     [self loadChildViewControllers];
@@ -55,6 +48,7 @@ static NSString * const tableViewCellIden = @"systemCell";
     // Do any additional setup after loading the view.
 }
 - (void)loadChildViewControllers{
+    
     FSGeneralSettingViewController * FSGeneralSettingVc = [[FSGeneralSettingViewController alloc] init];
     [FSGeneralSettingVc setdissMissBtn];
     

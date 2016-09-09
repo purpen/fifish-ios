@@ -1322,6 +1322,13 @@
 			path = FSVideoLiveStatusBar;
 			sourceTree = "<group>";
 		};
+		0476A8C61D8253BE0009D10E /* FsBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FsBase;
+			sourceTree = "<group>";
+		};
 		047A857E1D79551700A88891 /* FSVideoDepthRulerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2077,6 +2084,7 @@
 		1F7EDE8D1D45EF6900ABED5D /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				0476A8C61D8253BE0009D10E /* FsBase */,
 				04596A7C1D7FE87E008D1DD5 /* macro */,
 				1F04245B1D51F3F20071A1D6 /* Tool */,
 				1F4202131D48D4A900D3E6CB /* Setting */,

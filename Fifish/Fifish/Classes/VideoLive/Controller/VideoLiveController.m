@@ -40,6 +40,10 @@
 @property (nonatomic, assign)FSOSDManager           * fishMannager;
 
 
+@property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;//点击手势
+@property (nonatomic)        BOOL                   HiddenOSD;//隐藏OSD
+
+
 //lodingView
 @property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
 
@@ -53,9 +57,17 @@
     [self SetUpUI];
     //获取设备信息，建立连接
     [self ConnectWithROV];
-    self.view.backgroundColor = [UIColor blackColor];
+    [self setGesture];
+    
+}
+//添加手势
+- (void)setGesture{
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    self.tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+//连接ROV
 - (void)ConnectWithROV{
     _fishMannager =  [FSOSDManager sharedManager];
     [_fishMannager starConnectWithOSD];
@@ -63,6 +75,8 @@
 }
 
 - (void)SetUpUI{
+    self.view.backgroundColor = [UIColor blackColor];
+    
     [self.view addSubview:self.statusBar];
     [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -173,6 +187,21 @@
 {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
+
+#pragma mark GestureMethd
+
+- (void)handleTap:(UITapGestureRecognizer*)tap{
+    self.HiddenOSD = !self.HiddenOSD;
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionTransitionNone
+                     animations:^{
+                         self.statusBar.BearingsView.alpha = !self.HiddenOSD;
+                         self.DetpthView.alpha = !self.HiddenOSD;
+                     }
+                     completion:nil];
+}
+
 #pragma OSDmannagerDelegate
 - (void)connectWithOSDsuccess{
     
