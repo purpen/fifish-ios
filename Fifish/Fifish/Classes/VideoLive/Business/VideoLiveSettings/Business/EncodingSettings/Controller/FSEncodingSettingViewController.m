@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-
+#import "FSEncodingInfoModel.h"
 #import "FSCameraManager.h"
 
 #import "FSEncodingSettingViewController.h"
@@ -20,6 +20,8 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
 @property (nonatomic, strong)UITableView * menuTableView;
 
 @property (nonatomic, strong)NSArray     * titleArr;
+
+@property (nonatomic, strong)FSEncodingInfoModel * encodingModel;
 
 
 
@@ -36,7 +38,11 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
 - (void)getCameraInfo{
     FSCameraManager * cameraManager = [[FSCameraManager alloc] init];
     [cameraManager getCameraInfoWithSuccessBlock:^(NSDictionary *responseObject) {
-        NSLog(@"%@",responseObject);
+        id resobj=responseObject[@"body"];
+        if ([resobj isKindOfClass:[NSArray class]]) {
+            self.encodingModel = [[FSEncodingInfoModel alloc] initWithDictory:resobj[0]];
+        }
+        
     } WithFailureBlock:^(NSError *error) {
         NSLog(@"%@",error);
     }];

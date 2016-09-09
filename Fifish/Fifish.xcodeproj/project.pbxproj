@@ -44,6 +44,8 @@
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
+		0476A8C91D8253F40009D10E /* FSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476A8C81D8253F40009D10E /* FSBaseModel.m */; };
+		0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476A8CB1D82540E0009D10E /* FSEncodingInfoModel.m */; };
 		047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85801D79553800A88891 /* FSVideoDepthRulerView.m */; };
 		047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85831D795C6600A88891 /* FSRulersScrollView.m */; };
 		047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85861D79AB8300A88891 /* UIView+Toast.m */; };
@@ -419,6 +421,10 @@
 		046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFSVideoLiveStatusBar.m; sourceTree = "<group>"; };
 		0467651B1D632A3A00FFA743 /* FSTemperatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTemperatureView.h; sourceTree = "<group>"; };
 		0467651C1D632A3A00FFA743 /* FSTemperatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTemperatureView.m; sourceTree = "<group>"; };
+		0476A8C71D8253F40009D10E /* FSBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseModel.h; sourceTree = "<group>"; };
+		0476A8C81D8253F40009D10E /* FSBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseModel.m; sourceTree = "<group>"; };
+		0476A8CA1D82540E0009D10E /* FSEncodingInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEncodingInfoModel.h; sourceTree = "<group>"; };
+		0476A8CB1D82540E0009D10E /* FSEncodingInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEncodingInfoModel.m; sourceTree = "<group>"; };
 		047A857F1D79553800A88891 /* FSVideoDepthRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoDepthRulerView.h; sourceTree = "<group>"; };
 		047A85801D79553800A88891 /* FSVideoDepthRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoDepthRulerView.m; sourceTree = "<group>"; };
 		047A85821D795C6600A88891 /* FSRulersScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRulersScrollView.h; sourceTree = "<group>"; };
@@ -1186,6 +1192,8 @@
 		04596A691D7FBD66008D1DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0476A8CA1D82540E0009D10E /* FSEncodingInfoModel.h */,
+				0476A8CB1D82540E0009D10E /* FSEncodingInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1325,6 +1333,8 @@
 		0476A8C61D8253BE0009D10E /* FsBase */ = {
 			isa = PBXGroup;
 			children = (
+				0476A8C71D8253F40009D10E /* FSBaseModel.h */,
+				0476A8C81D8253F40009D10E /* FSBaseModel.m */,
 			);
 			path = FsBase;
 			sourceTree = "<group>";
@@ -2659,6 +2669,7 @@
 				04A1B6F31D6435E20008223E /* FSBaseView.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
 				04596A7B1D7FC32B008D1DD5 /* FSBaseTableViewCell.m in Sources */,
+				0476A8C91D8253F40009D10E /* FSBaseModel.m in Sources */,
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
@@ -2681,6 +2692,7 @@
 				1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1F0423E61D51F38E0071A1D6 /* MJRefreshBackFooter.m in Sources */,
+				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
 				1F0423F01D51F38E0071A1D6 /* MJRefreshGifHeader.m in Sources */,
 				0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */,
 				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
