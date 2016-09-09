@@ -14,6 +14,8 @@ static NSString * const RecordAPI = @"CW_JSON_ManualRecord";//录制
 
 static NSString * const TakePhotoAPI = @"CW_JSON_SnapPic";//拍照
 
+static NSString * const GetRecordInfoAPI =@"CW_JSON_GetVideoEncode";
+
 
 typedef void(^RequestSuccessBlock)(NSDictionary * responseObject);
 typedef void(^RequestFailureBlock)(NSError * error);

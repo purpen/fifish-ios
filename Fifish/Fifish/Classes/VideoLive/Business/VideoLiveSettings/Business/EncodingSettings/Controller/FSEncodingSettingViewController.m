@@ -6,6 +6,9 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
+
+#import "FSCameraManager.h"
+
 #import "FSEncodingSettingViewController.h"
 #import "FSFrameRateViewController.h"
 
@@ -27,7 +30,16 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTable];
+    [self getCameraInfo];
     // Do any additional setup after loading the view.
+}
+- (void)getCameraInfo{
+    FSCameraManager * cameraManager = [[FSCameraManager alloc] init];
+    [cameraManager getCameraInfoWithSuccessBlock:^(NSDictionary *responseObject) {
+        NSLog(@"%@",responseObject);
+    } WithFailureBlock:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 - (void)setupTable{
     [self setdissMissBtn];

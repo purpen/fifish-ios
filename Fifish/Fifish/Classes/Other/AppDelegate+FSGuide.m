@@ -25,16 +25,16 @@
     
     NSArray *arr = [NSArray arrayWithObjects:@"guide_one",@"guide_two",@"guide_three", nil];
     
-    if (![currentVersion isEqualToString:sanboxVersion]) {
-        
-        self.window.rootViewController = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:[[FSTabBarController alloc] init]];
-        
-        // 存储版本号
-        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }else{
+//    if (![currentVersion isEqualToString:sanboxVersion]) {
+//        
+//        self.window.rootViewController = [[GuidePageViewController alloc] initWithPicArr:arr andRootVC:[[FSTabBarController alloc] init]];
+//        
+//        // 存储版本号
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }else{
         self.window.rootViewController = [FSTabBarController sharedManager];
-    }
+//    }
     [self.window makeKeyAndVisible];
 }
 
