@@ -21,8 +21,15 @@
 "通用设置" = "General settings";
 
 "图像设置"= "Image settings";
+"自动"    = "AUTO";
+"彩色"    = "Color";
+"黑白"    = "Blakc/White";
+"日"    = "day";
+"夜"    = "Night";
 
 "编码设置"= "Encoding settings";
+
+
 
 //通用设置
 "度量单位"="Measure unit";
@@ -42,7 +49,7 @@
 
 "低照度"="Low illumination";
 
-"模式"="mode";
+"模式"="Mode";
 
 //编码设置
 "尺寸"="size";

@@ -186,8 +186,8 @@
     return _ViedoDecoder;
 }
 - (void)updateH264FrameData:(YUV420Frame *)yuvFrame{
-    [self.activityIndicatorView stopAnimating];
     [self.VideoGlView render:yuvFrame];
+    [self.activityIndicatorView stopAnimating];
 }
 
 //横屏

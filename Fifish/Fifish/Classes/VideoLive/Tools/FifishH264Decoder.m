@@ -220,7 +220,7 @@ static  char * const FishDecoderQueueIden = "FishDecoderQueue";
                     unsigned int chroRLength= (_pCodecContext->height)/2 * (MIN(_pFrame->linesize[2], (_pCodecContext->width)/2));
                     
                     
-                    NSLog(@"%lld",_pAvpacket->pts);
+//                    NSLog(@"%lld",_pAvpacket->pts);
                     YUV420Frame   yuvFrame;
                     memset(&yuvFrame, 0, sizeof(YUV420Frame));
 

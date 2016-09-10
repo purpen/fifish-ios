@@ -102,7 +102,7 @@ static NSString * const CameraUrlStr = @"http://192.168.2.158/cmd";
 }
 
 
-
+#pragma make 录制
 
 - (void)RovStarRecordSuccess:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
     //type==1开始录制
@@ -119,12 +119,19 @@ static NSString * const CameraUrlStr = @"http://192.168.2.158/cmd";
 }
 
 
-- (void)getCameraInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
+#pragma mark 编码相关
+- (void)getVideoEncordeInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
     [self RovControlRequestWithAction:GetRecordInfoAPI WithParams:@{@"StreamTypeId":@7,@"ChannelID":@0,@"VideoSize":@1,@"VideoQuality":@1,@"VideoFramerate":@1,@"VideoBitrate":@1,@"VideoEncodeFormat":@1,@"H264Profiles":@1} WithSuccessBlock:successblock WithErrorBlock:failBlock];
 }
 
 - (void)RovSetEncodeingInfo:(NSDictionary *)endcodingInfo Success:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
     
     [self RovControlRequestWithAction:SetRecordInfoAPI WithParams:endcodingInfo WithSuccessBlock:successblock WithErrorBlock:failBlock];
+}
+
+#pragma mark camera相关
+- (void)RovGetCameraSuccess:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock
+{
+    [self RovControlRequestWithAction:GetVideoInfoAPI WithParams:@{@"ChannelID":@0,@"BackLight":@1,@"LowLumEnable":@1,@"DayToNightModel":@1} WithSuccessBlock:successblock WithErrorBlock:failBlock];
 }
 @end

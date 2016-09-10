@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042365631D8401A70095007A /* FSCameraInfoModel.m */; };
+		042365701D8431110095007A /* FSImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423656F1D8431110095007A /* FSImageTools.m */; };
 		042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */; };
 		042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */; };
 		0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F2F71D6193C300DBFFCE /* VideoLiveController.m */; };
@@ -256,6 +258,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042365621D8401A70095007A /* FSCameraInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraInfoModel.h; sourceTree = "<group>"; };
+		042365631D8401A70095007A /* FSCameraInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraInfoModel.m; sourceTree = "<group>"; };
+		0423656E1D8431110095007A /* FSImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTools.h; sourceTree = "<group>"; };
+		0423656F1D8431110095007A /* FSImageTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTools.m; sourceTree = "<group>"; };
 		042BEACF1D7015E00067FC16 /* FSBorswerImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBorswerImageCell.h; sourceTree = "<group>"; };
 		042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBorswerImageCell.m; sourceTree = "<group>"; };
 		042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSBorswerImageCell.xib; sourceTree = "<group>"; };
@@ -828,6 +834,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0423656D1D8431020095007A /* ImageTools */ = {
+			isa = PBXGroup;
+			children = (
+				0423656E1D8431110095007A /* FSImageTools.h */,
+				0423656F1D8431110095007A /* FSImageTools.m */,
+			);
+			path = ImageTools;
+			sourceTree = "<group>";
+		};
 		0434F2EB1D617E0600DBFFCE /* VideoLive */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,6 +886,7 @@
 		0434F2FF1D61A16C00DBFFCE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0423656D1D8431020095007A /* ImageTools */,
 				0452CCFA1D77CA4F007694CC /* OSDManager */,
 				0434F4241D61C8D400DBFFCE /* FifishH264Decoder.h */,
 				0434F4251D61C8D400DBFFCE /* FifishH264Decoder.m */,
@@ -1262,6 +1278,8 @@
 		04596A711D7FBD66008D1DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				042365621D8401A70095007A /* FSCameraInfoModel.h */,
+				042365631D8401A70095007A /* FSCameraInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2645,6 +2663,7 @@
 				04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */,
 				04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */,
 				1F0424571D51F3C30071A1D6 /* UIImageView+AFNetworking.m in Sources */,
+				042365701D8431110095007A /* FSImageTools.m in Sources */,
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
 				1F0423F61D51F38E0071A1D6 /* UIScrollView+MJExtension.m in Sources */,
@@ -2717,6 +2736,7 @@
 				1F0219C11D798567003A8A11 /* AddreesPickerViewController.m in Sources */,
 				1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */,
 				1F0424591D51F3C30071A1D6 /* UIRefreshControl+AFNetworking.m in Sources */,
+				042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

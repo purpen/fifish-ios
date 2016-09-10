@@ -11,4 +11,6 @@
 static NSString * const ImageSettingTableViewCellIden = @"ImageSettingTableViewCell";
 @interface FSImageSettingTableViewCell : FSBaseTableViewCell
 
+@property (nonatomic, strong)UISwitch * Cellswitch;//开关
+
 @end

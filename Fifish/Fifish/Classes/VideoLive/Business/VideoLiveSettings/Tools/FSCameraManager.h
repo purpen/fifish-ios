@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString * const GetRecordAPI = @"CW_JSON_GetRecordSnapParam";//查询录制状态
-
 static NSString * const RecordAPI = @"CW_JSON_ManualRecord";//录制
 
 static NSString * const TakePhotoAPI = @"CW_JSON_SnapPic";//拍照
@@ -18,16 +16,15 @@ static NSString * const GetRecordInfoAPI =@"CW_JSON_GetVideoEncodeEx";//查询�
 
 static NSString * const SetRecordInfoAPI =@"CW_JSON_SetVideoEncodeEx";//设置视频编码信息
 
+static NSString * const GetVideoInfoAPI =@"CW_JSON_GetVideo";//设置视频编码信息
+
 
 typedef void(^RequestSuccessBlock)(NSDictionary * responseObject);
 typedef void(^RequestFailureBlock)(NSError * error);
 
 
 @interface FSCameraManager : NSObject
-- (instancetype)init;
-
-- (void)getCameraInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
-
+#pragma mark 录制
 /**
  *  @author MC
  *
@@ -57,6 +54,19 @@ typedef void(^RequestFailureBlock)(NSError * error);
  */
 - (void)RovTakePhotoSuccess:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
 
+
+#pragma mark 编码信息
+/**
+ *  @author MC
+ *
+ *  获取编码信息
+ *
+ *  @param successblock 成功回调
+ *  @param failBlock    失败回调
+ */
+- (void)getVideoEncordeInfoWithSuccessBlock:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
+
+
 /**
  *  @author MC
  *
@@ -67,5 +77,16 @@ typedef void(^RequestFailureBlock)(NSError * error);
  *  @param failBlock     失败
  */
 - (void)RovSetEncodeingInfo:(NSDictionary *)endcodingInfo Success:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
+
+#pragma mark camera相关
+/**
+ *  @author MC
+ *
+ *  获取摄像机信息
+ *
+ *  @param successblock 成功回调
+ *  @param failBlock    失败回调
+ */
+- (void)RovGetCameraSuccess:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock;
 
 @end
