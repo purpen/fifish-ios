@@ -38,7 +38,8 @@ static NSString * const EncodingSettingCellIedn = @"EncodingSettingcellIden";
 - (void)getCameraInfo{
     FSCameraManager * cameraManager = [[FSCameraManager alloc] init];
     [cameraManager getCameraInfoWithSuccessBlock:^(NSDictionary *responseObject) {
-        id resobj=responseObject[@"body"];
+        //这是什么垃圾数据结构！
+        id resobj=responseObject[@"body"][@"StreamInfoListArray"][0][@"StreamInfoArray"];
         if ([resobj isKindOfClass:[NSArray class]]) {
             self.encodingModel = [[FSEncodingInfoModel alloc] initWithDictory:resobj[0]];
         }

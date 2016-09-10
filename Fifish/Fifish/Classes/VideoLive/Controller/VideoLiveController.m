@@ -117,9 +117,14 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //解码，添加播放视图
-    if (self.ViedoDecoder.isRunningDecode == NO) {
-       [self.ViedoDecoder StardecodeFrame];
+    
+    //解码，添加播放视图.从设置页面进来也会走这里。
+    if (self.ViedoDecoder.isRunningDecode == NO&&self.ViedoDecoder) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self.ViedoDecoder initWithInputUrl];
+            [self.ViedoDecoder StardecodeFrame];
+        });
+        
     }
     [self AddVideoView];
     
@@ -175,6 +180,7 @@
 - (FifishH264Decoder *)ViedoDecoder{
     if (!_ViedoDecoder) {
         _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
+        
         _ViedoDecoder.UpdataDelegate = self;
     }
     return _ViedoDecoder;

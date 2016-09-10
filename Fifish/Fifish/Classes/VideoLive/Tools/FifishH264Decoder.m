@@ -13,6 +13,10 @@
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
+
+static  char * const FishDecoderQueueIden = "FishDecoderQueue";
+
+
 @interface FifishH264Decoder()
 {
 
@@ -44,18 +48,28 @@
 //是否保存
 @property (nonatomic ,assign) BOOL      IsSaveMp4File;
 
+@property (nonatomic, strong)dispatch_queue_t Decoder_queue;//线程
+
+
 @end
 
 @implementation FifishH264Decoder
 - (instancetype)initWithUrl:(NSString *)Url{
     if (self= [super init]) {
         self.FileUrl = Url;
+        
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:@"SaveMp4File" object:nil];
     }
     return self;
+}
+- (dispatch_queue_t)Decoder_queue{
+    if (!_Decoder_queue) {
+        _Decoder_queue =dispatch_queue_create("FishDecoderQueueIden", NULL);
+    }
+    return _Decoder_queue;
 }
 
 - (void)Mp4fileNotice:(NSNotification *)text{
@@ -73,7 +87,7 @@
 
 //根据连接地址初始化
 - (NSInteger)initWithInputUrl{
-    
+ 
     //初始化所有组件
     av_register_all();
     
@@ -166,8 +180,13 @@
 - (void)StardecodeFrame{
     //开辟线程去解码
     if (_pCodecContext) {
-    [NSThread detachNewThreadSelector:@selector(decodeFrame) toTarget:self withObject:nil];
+        
+        dispatch_async(self.Decoder_queue, ^{
+            [self decodeFrame];
+        });
         self.isRunningDecode = YES;
+//    [NSThread detachNewThreadSelector:@selector(decodeFrame) toTarget:self withObject:nil];
+//        self.isRunningDecode = YES;
     }
     else{
         self.isRunningDecode = NO;
@@ -179,6 +198,7 @@
 - (void)decodeFrame{
     _pAvpacket = (AVPacket *)av_malloc(sizeof(AVPacket));
     int  GotPicPtr = 0;
+    NSLog(@"开始解码isdecord:%d",self.isRunningDecode);
     while (self.isRunningDecode) {
         
         if (av_read_frame(_pFormatContext,_pAvpacket)==0) {
@@ -187,6 +207,7 @@
                 
                 if (avcodec_decode_video2(_pCodecContext,_pFrame,&GotPicPtr,_pAvpacket)<0) {
                     NSLog(@"解码失败");
+                    //继续尝试解码
                     break;
                 }
                 
@@ -199,7 +220,7 @@
                     unsigned int chroRLength= (_pCodecContext->height)/2 * (MIN(_pFrame->linesize[2], (_pCodecContext->width)/2));
                     
                     
-                    
+                    NSLog(@"%lld",_pAvpacket->pts);
                     YUV420Frame   yuvFrame;
                     memset(&yuvFrame, 0, sizeof(YUV420Frame));
 

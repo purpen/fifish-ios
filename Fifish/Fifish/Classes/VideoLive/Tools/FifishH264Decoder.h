@@ -47,4 +47,9 @@
 
 //开始解码
 - (void)StardecodeFrame;
+
+- (NSInteger)initWithInputUrl;
+
+- (NSInteger) initDecodec;
+
 @end
