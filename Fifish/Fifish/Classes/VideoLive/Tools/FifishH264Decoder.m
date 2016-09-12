@@ -14,7 +14,7 @@
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
 
-static  char * const FishDecoderQueueIden = "FishDecoderQueue";
+//static  char * const FishDecoderQueueIden = "FishDecoderQueue";
 
 
 @interface FifishH264Decoder()

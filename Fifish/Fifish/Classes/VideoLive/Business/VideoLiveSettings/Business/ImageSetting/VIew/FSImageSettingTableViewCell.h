@@ -8,9 +8,17 @@
 
 #import "FSBaseTableViewCell.h"
 
+#import "FSCameraInfoModel.h"
+
 static NSString * const ImageSettingTableViewCellIden = @"ImageSettingTableViewCell";
 @interface FSImageSettingTableViewCell : FSBaseTableViewCell
 
 @property (nonatomic, strong)UISwitch * Cellswitch;//开关
+
+
+@property (nonatomic, assign)FSCameraInfoModel * cameraModel;//相机信息
+
+@property (nonatomic, assign)NSIndexPath*           indexPath;//位置
+
 
 @end

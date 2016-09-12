@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */; };
 		042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042365631D8401A70095007A /* FSCameraInfoModel.m */; };
 		042365701D8431110095007A /* FSImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423656F1D8431110095007A /* FSImageTools.m */; };
 		042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */; };
@@ -258,6 +259,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0411CF941D863CAE0021E055 /* FSRovMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovMediaViewController.h; sourceTree = "<group>"; };
+		0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMediaViewController.m; sourceTree = "<group>"; };
 		042365621D8401A70095007A /* FSCameraInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraInfoModel.h; sourceTree = "<group>"; };
 		042365631D8401A70095007A /* FSCameraInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraInfoModel.m; sourceTree = "<group>"; };
 		0423656E1D8431110095007A /* FSImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTools.h; sourceTree = "<group>"; };
@@ -834,6 +837,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0411CF901D863C6C0021E055 /* ROVMedia */ = {
+			isa = PBXGroup;
+			children = (
+				0411CF911D863C950021E055 /* Controller */,
+				0411CF921D863C950021E055 /* Model */,
+				0411CF931D863C950021E055 /* View */,
+			);
+			path = ROVMedia;
+			sourceTree = "<group>";
+		};
+		0411CF911D863C950021E055 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0411CF941D863CAE0021E055 /* FSRovMediaViewController.h */,
+				0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0411CF921D863C950021E055 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0411CF931D863C950021E055 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0423656D1D8431020095007A /* ImageTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -2095,6 +2131,7 @@
 				04903C481D6AFC1300E3E041 /* View */,
 				1F7EDE871D45EF6900ABED5D /* Controller */,
 				043CB28F1D6EC6950060B629 /* LocationMedia */,
+				0411CF901D863C6C0021E055 /* ROVMedia */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -2636,6 +2673,7 @@
 				1F0219A71D795002003A8A11 /* JKDBHelper.m in Sources */,
 				1F0424121D51F3A00071A1D6 /* MJFoundation.m in Sources */,
 				1F04246A1D51F4260071A1D6 /* NSString+FBMD5.m in Sources */,
+				0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
 				1FF36E811D4B3FB200EB3C93 /* FSZuoPinTableViewController.m in Sources */,
 				1F0423E91D51F38E0071A1D6 /* MJRefreshHeader.m in Sources */,

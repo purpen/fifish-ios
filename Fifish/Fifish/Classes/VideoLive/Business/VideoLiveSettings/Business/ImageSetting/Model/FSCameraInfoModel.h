@@ -14,14 +14,14 @@
  *
  *  背光
  */
-@property (nonatomic,assign)BOOL * LowLumEnable;
+@property (nonatomic,assign)BOOL  LowLumEnable;
 
 /**
  *  @author MC
  *
  *  低照度
  */
-@property (nonatomic,assign)BOOL * BackLight;
+@property (nonatomic,assign)BOOL  BackLight;
 
 /**
  *  @author MC

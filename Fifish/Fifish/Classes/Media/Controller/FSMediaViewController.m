@@ -13,6 +13,8 @@
 
 #import "FSlocalMediaViewController.h"
 
+#import "FSRovMediaViewController.h"
+
 
 #import "FSFileManager.h"
 @interface FSMediaViewController ()<UIImagePickerControllerDelegate,UINavigationBarDelegate,UIScrollViewDelegate>
@@ -66,7 +68,7 @@
     FSlocalMediaViewController * locaMediaVc = [[FSlocalMediaViewController alloc] init];
     [self addChildViewController:locaMediaVc];
     
-    FSlocalMediaViewController * RovMediaVc = [[FSlocalMediaViewController alloc] init];
+    FSRovMediaViewController * RovMediaVc = [[FSRovMediaViewController alloc] init];
     [self addChildViewController:RovMediaVc];
     
 }

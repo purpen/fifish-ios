@@ -78,46 +78,8 @@
     
     FSImageSettingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ImageSettingTableViewCellIden];
     cell.textLabel.text = self.menuTitleArrs[indexPath.row];
-    
-    switch (indexPath.row) {
-        case 0:
-        {
-            cell.Cellswitch.on = self.camearInfoModel.BackLight;
-        }
-            break;
-        case 1:
-        {
-            cell.Cellswitch.on = self.camearInfoModel.LowLumEnable;
-        }
-            break;
-        case 2:
-        {
-            
-            switch (self.camearInfoModel.DayToNightModel) {
-                case 0:
-                {
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@%@%@)",NSLocalizedString(@"自动", nil),NSLocalizedString(@"日", nil),NSLocalizedString(@"夜", nil),NSLocalizedString(@"模式", nil)];
-                    break;
-                }
-                case 1:
-                {
-                    cell.detailTextLabel.text = NSLocalizedString(@"彩色", nil);
-                    break;
-                }
-                case 2:
-                {
-                    cell.detailTextLabel.text = NSLocalizedString(@"黑白", nil);
-                    break;
-                }
-                default:
-                    break;
-            }
-            cell.Cellswitch.hidden = YES;
-        }
-            break;
-        default:
-            break;
-    }
+    cell.indexPath = indexPath;
+    cell.cameraModel = self.camearInfoModel;
     return cell;
 }
 

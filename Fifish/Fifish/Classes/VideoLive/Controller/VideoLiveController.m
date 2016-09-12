@@ -13,6 +13,7 @@
 
 //other
 #import "FifishH264Decoder.h"
+#import "FSCameraManager.h"
 #import "FSOSDManager.h"
 
 //view
@@ -56,11 +57,30 @@
     
     [super viewDidLoad];
     [self SetUpUI];
+    
+    [self calibrateCameraTime];//校准camera时间
+    
     //获取设备信息，建立连接
     [self ConnectWithROV];
+    
+    //初始化手势
     [self setGesture];
     
 }
+
+- (void)calibrateCameraTime{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[[FSCameraManager alloc] init] RovSetTimeZoneSuccess:^(NSDictionary *responseObject) {
+            NSLog(@"%@",responseObject);
+        } WithFailureBlock:^(NSError *error) {
+            NSLog(@"%@",error.localizedDescription);
+        }];
+    });
+    
+}
+
 //添加手势
 - (void)setGesture{
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
