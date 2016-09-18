@@ -37,22 +37,12 @@
         self.Roll_angle  = ((((info.roll_angle[0]&0xff)<<8)|(info.roll_angle[1]&0xff))/100.0)-90;
         self.Remain_battery = info.battery&0xff;
         
-//        NSLog(@"温度:%@",self.Temp);
-//        NSLog(@"深度:%f",self.Depth);
-//        NSLog(@"偏航角:%f",self.Heading_angle);
-//        NSLog(@"俯仰角:%f",self.Pitch_angle);
-//        NSLog(@"反转角度:%f",self.Roll_angle);
-//        NSLog(@"电量:%f",self.Remain_battery);
         NSNotification * notice = [NSNotification notificationWithName:@"RovInfoChange" object:nil userInfo:@{@"RVOINFO":self}];
         [[NSNotificationCenter defaultCenter] postNotification:notice];
-        
-        
-        
     }
     else{
         NSLog(@"%@",[[NSString alloc] initWithData:rovDataInfo encoding:NSUTF8StringEncoding]);
     }
-    
 }
 - (NSString *)convertDataToHexStr:(NSData *)data {
     if (!data || [data length] == 0) {

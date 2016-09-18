@@ -104,7 +104,7 @@ static NSString * const CameraUrlStr = @"http://192.168.2.158/cmd";
 }
 
 -(void)RovSetCameraBackLightWithON:(BOOL)isOn Success:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{
-    [self RovControlRequestWithAction:SetVideoInfoAPI WithParams:@{@"BackLight":@0,@"LowLumEnable":isOn?@1:@0} WithSuccessBlock:successblock WithErrorBlock:failBlock];
+    [self RovControlRequestWithAction:SetVideoInfoAPI WithParams:@{@"ChannelID":@0,@"BackLight":isOn?@1:@0} WithSuccessBlock:successblock WithErrorBlock:failBlock];
 }
 #pragma mark SD 卡相关
 - (void)RovGetSDCardInfoSuccess:(RequestSuccessBlock)successblock WithFailureBlock:(RequestFailureBlock)failBlock{

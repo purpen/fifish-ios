@@ -187,9 +187,12 @@
     }
     return _bottomBar;
 }
+
+//添加视频播放VIEW
 - (void)AddVideoView{ 
     [self.view addSubview:self.VideoGlView];
 }
+
 - (OpenGLFrameView *)VideoGlView{
     if (!_VideoGlView) {
         _VideoGlView = [[OpenGLFrameView alloc] initWithFrame:CGRectMake(0, 0,self.ViedoDecoder.width,self.ViedoDecoder.height)];
@@ -202,6 +205,7 @@
         _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
         
         _ViedoDecoder.UpdataDelegate = self;
+        
     }
     return _ViedoDecoder;
 }
