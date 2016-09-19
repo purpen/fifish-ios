@@ -82,38 +82,6 @@
 }
 
 
-////开始倒计时准备重新发送
-//-(void)startTime{
-//    __block int timeout = 30;//倒计时时间
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-//    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0*NSEC_PER_SEC, 0);//每秒执行
-//    dispatch_source_set_event_handler(_timer, ^{
-//        //倒计时结束，关闭
-//        if (timeout <= 0) {
-//            dispatch_source_cancel(_timer);
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                //时间到了后重新发送view消失
-//                self.getCodeBtn_register.hidden = NO;
-//                self.timeView.hidden = YES;
-//            });
-//        }//按钮显示剩余时间
-//        else{
-//            int seconds = timeout % 60;
-//            NSString *strTime = [NSString stringWithFormat:@"%.2d",seconds];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [UIView beginAnimations:nil context:nil];
-//                [UIView setAnimationDuration:1];
-//                self.timeLabel.text = strTime;
-//                [UIView commitAnimations];
-//            });
-//            timeout --;
-//        }
-//    });
-//    dispatch_resume(_timer);
-//}
-
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;

@@ -119,30 +119,30 @@ typedef enum {
         case FSTypeZuoPin:
         {
             // 参数
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            /*NSMutableDictionary *params = [NSMutableDictionary dictionary];
             params[@"a"] = @"list";
             params[@"c"] = @"data";
             self.params = params;
             // 发送请求
-//            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
-//            [request startRequestSuccess:^(FBRequest *request, id result) {
-//                if (self.params != params) return;
-//                
-//                // 字典 -> 模型
-//                self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
-//                self.zuoPin.zuoPins = self.zuoPins;
-//                
-//                // 结束刷新
-//                [self.contentTableView.mj_header endRefreshing];
-//                
-//                // 清空页码
-//                self.page = 0;
-//            } failure:^(FBRequest *request, NSError *error) {
-//                if (self.params != params) return;
-//                
-//                // 结束刷新
-//                [self.contentTableView.mj_header endRefreshing];
-//            }];
+            FBRequest *request = [FBAPI postWithUrlString:nil requestDictionary:params delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                if (self.params != params) return;
+                
+                // 字典 -> 模型
+                self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:result[@"list"]];
+                self.zuoPin.zuoPins = self.zuoPins;
+                
+                // 结束刷新
+                [self.contentTableView.mj_header endRefreshing];
+                
+                // 清空页码
+                self.page = 0;
+            } failure:^(FBRequest *request, NSError *error) {
+                if (self.params != params) return;
+                
+                // 结束刷新
+                [self.contentTableView.mj_header endRefreshing];
+            }];*/
         }
             break;
             

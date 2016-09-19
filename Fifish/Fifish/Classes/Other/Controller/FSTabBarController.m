@@ -88,11 +88,12 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-//    FSUserModel *model = [FSUserModel findAll][0];
+    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    NSLog(@"个人中心  %d",model.isLogin);
     //这里我判断的是当前点击的tabBarItem的标题
     if ([viewController.tabBarItem.title isEqualToString:NSLocalizedString(@"me", nil)]) {
         //如果没有登录
-        if (1) {
+        if (model.isLogin) {
             return YES;
         }else{
             //登录注册

@@ -14,10 +14,22 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 #import "FSFindFriendViewController.h"
+#import "FSUserModel.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
 
 @interface FSMeViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIButton *homePageBtn;
+/**  */
+@property (nonatomic, strong) FSUserModel *userModel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zuoPinNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *focusNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fansNumLabel;
 
 @end
 
@@ -27,19 +39,27 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     
-    FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-    } failure:^(FBRequest *request, NSError *error) {
-        
-    }];
-    
     FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
+        
         NSLog(@"个人信息 %@",result);
+        NSDictionary *dict = result[@"data"];
+        self.userModel = [[FSUserModel alloc] initWithDictionary:dict];
+        [self.userModel update];
+        
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar.small] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+        self.nameLabel.text = self.userModel.username;
+        self.addressLabel.text = self.userModel.zone;
+        self.summaryLabel.text = self.userModel.summary;
+        self.zuoPinNumLabel.text = self.userModel.stuff_count;
+        self.fansNumLabel.text = self.userModel.fans_count;
+        self.focusNumLabel.text = self.userModel.follow_count;
+        
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

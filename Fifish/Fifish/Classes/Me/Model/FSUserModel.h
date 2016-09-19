@@ -7,10 +7,12 @@
 //
 
 #import "JKDBModel.h"
-@class FSHeadImageModel;
+#import "FSHeadImageModel.h"
 
 @interface FSUserModel : JKDBModel
 
+/**  */
+@property(nonatomic,copy) NSString *summary;
 /**  */
 @property(nonatomic,copy) NSString *userId;
 /**  */
@@ -27,6 +29,15 @@
 @property(nonatomic,copy) NSString *imageUrl;
 /**  */
 @property (nonatomic, assign) BOOL isLogin;
+/**  */
+@property(nonatomic,copy) NSString *stuff_count;
+/**  */
+@property(nonatomic,copy) NSString *fans_count;
+/**  */
+@property(nonatomic,copy) NSString *follow_count;
+/**  */
+@property(nonatomic,copy) NSString *like_count;
 
+- (instancetype) initWithDictionary : (NSDictionary *) dictionary;
 
 @end

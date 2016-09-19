@@ -15,4 +15,6 @@
 /**  */
 @property(nonatomic,copy) NSString *large;
 
+-(instancetype)initWithDictionary:(NSDictionary *)dict;
+
 @end

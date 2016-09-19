@@ -90,26 +90,26 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(0) forKey:@"isNotFirst"];
+    [defaults setObject:@(1) forKey:@"isNotFirst"];
     [defaults synchronize];
-//
-//    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
-//                                                                                        @"username" : self.userNameTF.text,
-//                                                                                        @"job" : self.professionalTF.text,
-//                                                                                        @"zone" : self.addressTF.text
-//                                                                                        } delegate:self];
-//    [request startRequestSuccess:^(FBRequest *request, id result) {
-//        [SVProgressHUD dismiss];
-//        FSUserModel *model = [FSUserModel findAll][0];
-//        model.username = self.userNameTF.text;
-//        model.job = self.professionalTF.text;
-//        model.zone = self.addressTF.text;
-//        [model update];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    } failure:^(FBRequest *request, NSError *error) {
-//        [SVProgressHUD dismiss];
-//        NSLog(@"错误 %@",error.localizedDescription);
-//    }];
+
+    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
+                                                                                        @"username" : self.userNameTF.text,
+                                                                                        @"job" : self.professionalTF.text,
+                                                                                        @"zone" : self.addressTF.text
+                                                                                        } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        [SVProgressHUD dismiss];
+        FSUserModel *model = [FSUserModel findAll][0];
+        model.username = self.userNameTF.text;
+        model.job = self.professionalTF.text;
+        model.zone = self.addressTF.text;
+        [model update];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } failure:^(FBRequest *request, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"错误 %@",error.localizedDescription);
+    }];
     
 }
 
