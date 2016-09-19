@@ -48,6 +48,7 @@
     if (!data || [data length] == 0) {
         return @"";
     }
+    
     NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[data length]];
     
     [data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange, BOOL *stop) {
