@@ -8,7 +8,7 @@
 
 #import "FifishH264Decoder.h"
 
-
+#import "FSliveVideoConst.h"
 
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
@@ -61,10 +61,12 @@
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
         }
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:@"SaveMp4File" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:FSNoticSaveMp4File object:nil];
     }
     return self;
 }
+
+//解码线程
 - (dispatch_queue_t)Decoder_queue{
     if (!_Decoder_queue) {
         _Decoder_queue =dispatch_queue_create("FishDecoderQueueIden", NULL);
@@ -73,7 +75,7 @@
 }
 
 - (void)Mp4fileNotice:(NSNotification *)text{
-    if ([text.userInfo[@"saveStatus"] integerValue]==1) {
+    if ([text.userInfo[FSNoticSaveMp4FileStatus] integerValue]==1) {
         [self MakeOutFileUrl];
         [self starRecVideo];
         self.IsSaveMp4File = YES;

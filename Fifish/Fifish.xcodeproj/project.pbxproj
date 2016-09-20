@@ -54,6 +54,7 @@
 		047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */; };
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
+		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
 		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
@@ -434,6 +435,8 @@
 		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
+		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
+		04A52F001D90DC1000F9303D /* FSliveVideoConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveVideoConst.m; sourceTree = "<group>"; };
 		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
 		04F20ED61D7D0B79009790EE /* FSBearingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBearingsView.m; sourceTree = "<group>"; };
 		04F20EE61D7D6971009790EE /* FSLiveSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLiveSettingsViewController.h; sourceTree = "<group>"; };
@@ -1405,6 +1408,15 @@
 			path = FSVideoLiveTabBar;
 			sourceTree = "<group>";
 		};
+		04A52EFE1D90DBD800F9303D /* const */ = {
+			isa = PBXGroup;
+			children = (
+				04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */,
+				04A52F001D90DC1000F9303D /* FSliveVideoConst.m */,
+			);
+			path = const;
+			sourceTree = "<group>";
+		};
 		04F20ED41D7D0B5E009790EE /* FifishBearingsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2090,6 +2102,7 @@
 			isa = PBXGroup;
 			children = (
 				0476A8C61D8253BE0009D10E /* FsBase */,
+				04A52EFE1D90DBD800F9303D /* const */,
 				04596A7C1D7FE87E008D1DD5 /* macro */,
 				1F04245B1D51F3F20071A1D6 /* Tool */,
 				1F4202131D48D4A900D3E6CB /* Setting */,
@@ -2594,6 +2607,7 @@
 				1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */,
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
+				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
@@ -2810,7 +2824,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2849,7 +2863,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2879,8 +2893,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2910,8 +2924,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
