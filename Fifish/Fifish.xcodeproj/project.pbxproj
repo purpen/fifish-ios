@@ -125,7 +125,6 @@
 		1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424711D530DA80071A1D6 /* FSPictuerView.xib */; };
 		1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424741D5312690071A1D6 /* FSVideoView.m */; };
 		1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424761D5312780071A1D6 /* FSVideoView.xib */; };
-		1F0424851D542FA20071A1D6 /* FSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424841D542FA20071A1D6 /* FSHomeModel.m */; };
 		1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424871D542FD90071A1D6 /* FSHomePictuerView.m */; };
 		1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424891D542FD90071A1D6 /* FSHomeViewCell.m */; };
 		1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04248A1D542FD90071A1D6 /* FSHomeViewCell.xib */; };
@@ -226,6 +225,7 @@
 		48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */; };
 		48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */; };
 		48911F911D9177590042B96F /* FSListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F901D9177590042B96F /* FSListUserModel.m */; };
+		48911F941D918A410042B96F /* FSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F931D918A410042B96F /* FSHomeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -565,8 +565,6 @@
 		1F0424731D5312690071A1D6 /* FSVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoView.h; sourceTree = "<group>"; };
 		1F0424741D5312690071A1D6 /* FSVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoView.m; sourceTree = "<group>"; };
 		1F0424761D5312780071A1D6 /* FSVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSVideoView.xib; sourceTree = "<group>"; };
-		1F0424831D542FA20071A1D6 /* FSHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeModel.h; sourceTree = "<group>"; };
-		1F0424841D542FA20071A1D6 /* FSHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeModel.m; sourceTree = "<group>"; };
 		1F0424861D542FD90071A1D6 /* FSHomePictuerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomePictuerView.h; sourceTree = "<group>"; };
 		1F0424871D542FD90071A1D6 /* FSHomePictuerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomePictuerView.m; sourceTree = "<group>"; };
 		1F0424881D542FD90071A1D6 /* FSHomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeViewCell.h; sourceTree = "<group>"; };
@@ -752,6 +750,8 @@
 		48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSListUserTableViewCell.xib; sourceTree = "<group>"; };
 		48911F8F1D9177590042B96F /* FSListUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserModel.h; sourceTree = "<group>"; };
 		48911F901D9177590042B96F /* FSListUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserModel.m; sourceTree = "<group>"; };
+		48911F921D918A410042B96F /* FSHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeModel.h; sourceTree = "<group>"; };
+		48911F931D918A410042B96F /* FSHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeModel.m; sourceTree = "<group>"; };
 		4C71A91C545D23BF3CD5D83A /* Pods-Fifish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fifish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fifish/Pods-Fifish.release.xcconfig"; sourceTree = "<group>"; };
 		B5E534B92A3783A5447B9174 /* Pods-Fifish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fifish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fifish/Pods-Fifish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1962,8 +1962,8 @@
 		1F7EDE7D1D45EF6900ABED5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F0424831D542FA20071A1D6 /* FSHomeModel.h */,
-				1F0424841D542FA20071A1D6 /* FSHomeModel.m */,
+				48911F921D918A410042B96F /* FSHomeModel.h */,
+				48911F931D918A410042B96F /* FSHomeModel.m */,
 				1F04249F1D548A600071A1D6 /* FSCommentModel.h */,
 				1F0424A01D548A600071A1D6 /* FSCommentModel.m */,
 			);
@@ -2633,7 +2633,6 @@
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
 				1F0423F61D51F38E0071A1D6 /* UIScrollView+MJExtension.m in Sources */,
-				1F0424851D542FA20071A1D6 /* FSHomeModel.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
@@ -2699,6 +2698,7 @@
 				1F7EDEAE1D45FFCA00ABED5D /* UIColor+FSExtension.m in Sources */,
 				1F0424591D51F3C30071A1D6 /* UIRefreshControl+AFNetworking.m in Sources */,
 				042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */,
+				48911F941D918A410042B96F /* FSHomeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,6 @@
 
 @interface FSZuoPin : NSObject
 
-
 /**  */
 @property(nonatomic,copy) NSString *content;
 /**  */
@@ -31,5 +30,9 @@
 @property(nonatomic,copy) NSString *view_count;
 /**  */
 @property (nonatomic, assign) CGFloat cellHeight;
+/**  */
+@property(nonatomic,copy) NSString *user_id;
+/** 1是图片 2是视频 */
+@property(nonatomic,copy) NSString *kind;
 
 @end

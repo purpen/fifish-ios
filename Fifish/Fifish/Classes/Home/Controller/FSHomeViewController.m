@@ -10,16 +10,25 @@
 #import "UIBarButtonItem+FSExtension.h"
 #import "FSConst.h"
 #import "FSHomeViewCell.h"
-#import "FSHomeModel.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "FSHomeDetailViewController.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+#import "SVProgressHUD.h"
+#import "FSZuoPin.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+/**  */
+@property(nonatomic,assign) NSInteger current_page;
+/**  */
+@property(nonatomic,assign) NSInteger total_rows;
 /**  */
 @property (nonatomic, strong) UITableView *contenTableView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *modelAry;
+
 @end
 
 static NSString * const CellId = @"home";
@@ -29,8 +38,6 @@ static NSString * const CellId = @"home";
 -(NSMutableArray *)modelAry{
     if (!_modelAry) {
         _modelAry = [NSMutableArray array];
-        FSHomeModel *model = [[FSHomeModel alloc] init];
-        [_modelAry addObject:model];
     }
     return _modelAry;
 }
@@ -53,8 +60,38 @@ static NSString * const CellId = @"home";
 }
 
 -(void)loadNew{
-    // 结束上啦
     [self.contenTableView.mj_footer endRefreshing];
+    self.current_page = 1;
+    NSDictionary *params = @{
+                             @"page" : @(self.current_page),
+                             @"per_page" : @10
+                             };
+    FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"推荐的作品 %@",result);
+        self.current_page = [result[@"meta"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"total"] integerValue];
+        NSArray *rows = result[@"data"];
+         //self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+         [self.contenTableView reloadData];
+         [self.contenTableView.mj_header endRefreshing];
+         [self checkFooterState];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        // 让底部控件结束刷新
+        [self.contenTableView.mj_header endRefreshing];
+    }];
+}
+
+-(void)checkFooterState{
+    self.contenTableView.mj_footer.hidden = self.modelAry.count == 0;
+    if (self.modelAry.count == self.total_rows) {
+        self.contenTableView.mj_footer.hidden = YES;
+    }else{
+        [self.contenTableView.mj_footer endRefreshing];
+    }
 }
 
 -(void)loadMore{
@@ -96,8 +133,8 @@ static NSString * const CellId = @"home";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FSHomeModel *model = self.modelAry[indexPath.row];
-    return model.cellHeghit;
+    FSZuoPin *model = self.modelAry[indexPath.row];
+    return model.cellHeight;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
