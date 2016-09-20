@@ -14,6 +14,11 @@ NSString * const FSNoticSaveMp4File = @"SaveMp4File";
 //录制状态（开始录制，结束录制）
 NSString * const FSNoticSaveMp4FileStatus = @"saveStatus";
 
+//拍照通知
+NSString * const FSNoticeTakePhoto = @"TakePhoto";
+
+
+
 @implementation FSliveVideoConst
 
 @end

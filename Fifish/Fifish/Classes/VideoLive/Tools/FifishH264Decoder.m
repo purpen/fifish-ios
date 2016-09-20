@@ -10,6 +10,8 @@
 
 #import "FSliveVideoConst.h"
 
+#import "FSImageTools.h"
+
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
@@ -20,16 +22,19 @@
 @interface FifishH264Decoder()
 {
 
-    AVFormatContext * _pFormatContext;//封装格式上下文
-    AVCodec         * _pCodec;//解码器
-    AVCodecContext  * _pCodecContext;//解码上下文
-    AVPacket        * _pAvpacket;//帧包
-    AVFrame         * _pFrame;
+    AVFormatContext     * _pFormatContext;//封装格式上下文
+    AVCodec             * _pCodec;//解码器
+    AVCodecContext      * _pCodecContext;//解码上下文
+    AVPacket            * _pAvpacket;//帧包
+    AVFrame             * _pFrame;
     
     
-    AVFormatContext * _mp4outFormatContext;//输出
-    AVOutputFormat  *_mp4outFmt;//输出格式
-    AVStream        *_out_stream;//输出视频流
+    AVFormatContext     * _mp4outFormatContext;//输出
+    AVOutputFormat      *_mp4outFmt;//输出格式
+    AVStream            *_out_stream;//输出视频流
+    
+    struct SwsContext   * img_convert_ctx;//截图用
+    
     
     long  frame_index;
 }
@@ -45,8 +50,11 @@
 
 @property (nonatomic ,assign)NSInteger  videoIndex;//视频流在文件流中的位置
 
-//是否保存
+//是否录制
 @property (nonatomic ,assign) BOOL      IsSaveMp4File;
+
+//是否保存照片
+@property (nonatomic, assign) BOOL      IsSavePhoto;
 
 @property (nonatomic, strong)dispatch_queue_t Decoder_queue;//线程
 
@@ -61,7 +69,12 @@
         if ([self initWithInputUrl]==0) {
             [self initDecodec];
         }
+        
+        //监听录制通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:FSNoticSaveMp4File object:nil];
+        
+        //监听拍照通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
     }
     return self;
 }
@@ -173,12 +186,14 @@
         return -1;
     }
     
+    img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
     
     return 0;
     
     
 }
 
+#pragma mark 开始解码
 - (void)StardecodeFrame{
     //开辟线程去解码
     if (_pCodecContext) {
@@ -196,7 +211,7 @@
     }
 }
 
-//解码
+#pragma mark 解码
 - (void)decodeFrame{
     _pAvpacket = (AVPacket *)av_malloc(sizeof(AVPacket));
     int  GotPicPtr = 0;
@@ -215,7 +230,6 @@
                 
                 
                 if (GotPicPtr) {
-                    
                     
                     unsigned int lumaLength = (_pCodecContext->height) * (MIN(_pFrame->linesize[0], _pCodecContext->width));
                     unsigned int chroBLength= (_pCodecContext->height)/2 * (MIN(_pFrame->linesize[1], (_pCodecContext->width)/2));
@@ -252,6 +266,13 @@
                         [self saveMp4File:_pAvpacket IsKeyFlag:_pFrame->pict_type==AV_PICTURE_TYPE_I?YES:NO];
                         
                     }
+                    if (self.IsSavePhoto) {
+                        AVPicture picture;
+                        sws_scale(img_convert_ctx, (const uint8_t**)_pFrame->data, _pFrame->linesize, 0, _pCodecContext->height, picture.data, picture.linesize);
+                        [FSImageTools imageFromAVPicture:picture withWidth:_pFrame->width height:_pFrame->height];
+                        
+                            self.IsSavePhoto = NO;
+                    }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
                     free(yuvFrame.chromaR.dataBuffer);
@@ -285,6 +306,8 @@
         frame_index++;
     }
 }
+
+#pragma mark 结束录制
 - (void)closeMp4File{
     if (_mp4outFormatContext&&self.IsSaveMp4File == NO) {
         av_write_trailer( _mp4outFormatContext );
@@ -296,6 +319,8 @@
     NSLog(@"%llu",[[man attributesOfItemAtPath:self.OutputFileUrl error:nil] fileSize]);
     
 }
+
+#pragma mark 开始录制
 - (void)starRecVideo{
     _mp4outFormatContext = NULL;
     _mp4outFmt = NULL;
@@ -362,6 +387,14 @@
     
     
 }
+
+
+#pragma mark 拍照
+- (void)takePhoto{
+        self.IsSavePhoto = YES;
+}
+
+#pragma mark 初始化文件地址
 - (void)setOutputMp4FileUrl:(NSString *)OutputMp4FileUrl{
     _OutputMp4FileUrl = OutputMp4FileUrl;
 }

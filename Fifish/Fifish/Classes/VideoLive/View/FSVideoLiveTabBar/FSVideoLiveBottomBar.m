@@ -107,7 +107,7 @@
     return _take_photoBtn;
 }
 
-//拍照
+#pragma mark 拍照
 - (void)takePhotoClick{
     
 //    通知camera拍照
@@ -121,12 +121,12 @@
         [KEY_WINDOW makeToast:error.localizedDescription];
     }];
 //  本地截取一帧图片
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];
     
 }
 
 
-//录制
+#pragma mark 录制
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
     [self starRecordUpdataLabWithStatus:sender.selected];
