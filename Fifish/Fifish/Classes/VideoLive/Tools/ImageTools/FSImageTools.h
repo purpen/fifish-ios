@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "avformat.h"
 
 @interface FSImageTools : NSObject
-+(UIImage *)decodeIdrData:(NSData *)data data_size:(int)size;
++ (UIImage *)decodeIdrData:(NSData *)data data_size:(int)size;
+
++ (void)imageFromAVPicture:(AVPicture)pict withWidth:(int)width height:(int)height;
+
 
 @end

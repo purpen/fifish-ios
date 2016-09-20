@@ -11,6 +11,9 @@
 #import "libswscale/swscale.h"
 #import "libavcodec/avcodec.h"
 
+
+#import <Photos/Photos.h>
+
 @implementation FSImageTools
 +(UIImage *)decodeIdrData:(NSData *)data data_size:(int)size
 
@@ -187,9 +190,72 @@
     
     sws_freeContext(img_convert_ctx);
     
+    PHAssetCollection *createdCollection = nil;
+    NSString * title = @"Fifish";
+    // 获得所有的自定义相册
+    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    for (PHAssetCollection *collection in collections) {
+        if ([collection.localizedTitle isEqualToString:title]) {
+            createdCollection = collection;
+            break;
+        }
+    }
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+        
+        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+        
+        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } error:nil];
+    
     
     
     return image;
     
+}
+
++(void)imageFromAVPicture:(AVPicture)pict withWidth:(int)width height:(int)height{
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CFDataRef data = CFDataCreateWithBytesNoCopy(kCFAllocatorDefault, pict.data[0], pict.linesize[0]*height, kCFAllocatorNull);
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData(data);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGImageRef cgImage = CGImageCreate(width,
+                                       height,
+                                       8,
+                                       24,
+                                       pict.linesize[0],
+                                       colorSpace,
+                                       bitmapInfo,
+                                       provider,
+                                       NULL,
+                                       NO,
+                                       kCGRenderingIntentDefault);
+    CGColorSpaceRelease(colorSpace);
+    UIImage *image = [UIImage imageWithCGImage:cgImage];
+    CGImageRelease(cgImage);
+    CGDataProviderRelease(provider);
+    CFRelease(data);
+    
+    PHAssetCollection *createdCollection = nil;
+    NSString * title = @"Fifish";
+    // 获得所有的自定义相册
+    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    for (PHAssetCollection *collection in collections) {
+        if ([collection.localizedTitle isEqualToString:title]) {
+            createdCollection = collection;
+            break;
+        }
+    }
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+        
+        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+        
+        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } error:nil];
 }
 @end

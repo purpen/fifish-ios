@@ -190,17 +190,20 @@
 }
 
 //添加视频播放VIEW
-- (void)AddVideoView{ 
+- (void)AddVideoView{
+    
     [self.view addSubview:self.VideoGlView];
 }
 
 - (OpenGLFrameView *)VideoGlView{
+    
     if (!_VideoGlView) {
         _VideoGlView = [[OpenGLFrameView alloc] initWithFrame:CGRectMake(0, 0,self.ViedoDecoder.width,self.ViedoDecoder.height)];
     }
     return _VideoGlView;
     
 }
+
 - (FifishH264Decoder *)ViedoDecoder{
     if (!_ViedoDecoder) {
         //rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp
@@ -240,13 +243,16 @@
                      completion:nil];
 }
 
+
 #pragma OSDmannagerDelegate
 - (void)connectWithOSDsuccess{
     
 }
+
 - (void)connectWithOSDerror:(NSError *)error{
     [self.view makeToast:[NSString stringWithFormat:@"与设备连接异常:%@",error.localizedDescription]];
 }
+
 #pragma mark VideoStatusBarDelegate
 - (void)FifishBackBtnClick{
     //停止解码

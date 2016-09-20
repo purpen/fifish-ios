@@ -12,6 +12,8 @@
 
 #import "UIView+Toast.h"
 
+#import "FSliveVideoConst.h"
+
 #import<libkern/OSAtomic.h>
 @interface FSVideoLiveBottomBar ()
 
@@ -105,8 +107,10 @@
     return _take_photoBtn;
 }
 
-//拍照
+#pragma mark 拍照
 - (void)takePhotoClick{
+    
+//    通知camera拍照
     FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
     [CameraManager RovTakePhotoSuccess:^(NSDictionary *responseObject) {
         if ([responseObject[@"head"][@"code"] integerValue]==0) {
@@ -116,15 +120,18 @@
     } WithFailureBlock:^(NSError *error) {
         [KEY_WINDOW makeToast:error.localizedDescription];
     }];
+//  本地截取一帧图片
+    [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];
+    
 }
 
 
-//录制
+#pragma mark 录制
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
     [self starRecordUpdataLabWithStatus:sender.selected];
     //录制通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveMp4File" object:nil userInfo:@{@"saveStatus":[NSNumber numberWithBool:self.isReciveVideo]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticSaveMp4File object:nil userInfo:@{FSNoticSaveMp4FileStatus:[NSNumber numberWithBool:self.isReciveVideo]}];
     
     
     
