@@ -7,6 +7,7 @@
 //
 
 #import "FSUserModel.h"
+#import "MJExtension.h"
 
 @implementation FSUserModel
 

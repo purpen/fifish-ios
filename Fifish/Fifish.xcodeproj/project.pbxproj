@@ -136,7 +136,19 @@
 		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
-		1F3B62F71D8FF618005F619F /* MJExtension in Resources */ = {isa = PBXBuildFile; fileRef = 1F3B62F61D8FF618005F619F /* MJExtension */; };
+		1F3B63121D910376005F619F /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B62FF1D910376005F619F /* MJExtensionConst.m */; };
+		1F3B63131D910376005F619F /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63011D910376005F619F /* MJFoundation.m */; };
+		1F3B63141D910376005F619F /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63031D910376005F619F /* MJProperty.m */; };
+		1F3B63151D910376005F619F /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63051D910376005F619F /* MJPropertyKey.m */; };
+		1F3B63161D910376005F619F /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63071D910376005F619F /* MJPropertyType.m */; };
+		1F3B63171D910376005F619F /* NSObject+MJClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63091D910376005F619F /* NSObject+MJClass.m */; };
+		1F3B63181D910376005F619F /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B630B1D910376005F619F /* NSObject+MJCoding.m */; };
+		1F3B63191D910376005F619F /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B630D1D910376005F619F /* NSObject+MJKeyValue.m */; };
+		1F3B631A1D910376005F619F /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B630F1D910376005F619F /* NSObject+MJProperty.m */; };
+		1F3B631B1D910376005F619F /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63111D910376005F619F /* NSString+MJExtension.m */; };
+		1F3B631E1D912996005F619F /* FSListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B631D1D912996005F619F /* FSListUserModel.m */; };
+		1F3B63221D912A8D005F619F /* FSListUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B63201D912A8D005F619F /* FSListUserTableViewCell.m */; };
+		1F3B63231D912A8D005F619F /* FSListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3B63211D912A8D005F619F /* FSListUserTableViewCell.xib */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -209,7 +221,6 @@
 		1FE087611D7D46D5007790E3 /* FSFindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */; };
 		1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087641D7D4B8E007790E3 /* InvitationModel.m */; };
 		1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */; };
-		1FE0876B1D7D4D8A007790E3 /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */; };
 		1FE087901D8254EA007790E3 /* FSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0878D1D8254EA007790E3 /* FSTabBar.m */; };
 		1FE087961D825649007790E3 /* FSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087931D825649007790E3 /* FSBaseTableViewCell.m */; };
 		1FE087971D825649007790E3 /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087951D825649007790E3 /* FSBaseView.m */; };
@@ -221,12 +232,6 @@
 		1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */; };
 		1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */; };
 		1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */; };
-		1FF36E811D4B3FB200EB3C93 /* FSZuoPinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */; };
-		1FF36E821D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */; };
-		1FF36E861D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */; };
-		1FF36E871D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */; };
-		1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */; };
-		1FF36E8C1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */; };
 		1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */; };
 		1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */; };
 /* End PBXBuildFile section */
@@ -585,7 +590,32 @@
 		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
 		1F04249F1D548A600071A1D6 /* FSCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentModel.h; sourceTree = "<group>"; };
 		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
-		1F3B62F61D8FF618005F619F /* MJExtension */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MJExtension; sourceTree = "<group>"; };
+		1F3B62FD1D910376005F619F /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
+		1F3B62FE1D910376005F619F /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
+		1F3B62FF1D910376005F619F /* MJExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
+		1F3B63001D910376005F619F /* MJFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJFoundation.h; sourceTree = "<group>"; };
+		1F3B63011D910376005F619F /* MJFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJFoundation.m; sourceTree = "<group>"; };
+		1F3B63021D910376005F619F /* MJProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJProperty.h; sourceTree = "<group>"; };
+		1F3B63031D910376005F619F /* MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJProperty.m; sourceTree = "<group>"; };
+		1F3B63041D910376005F619F /* MJPropertyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
+		1F3B63051D910376005F619F /* MJPropertyKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPropertyKey.m; sourceTree = "<group>"; };
+		1F3B63061D910376005F619F /* MJPropertyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyType.h; sourceTree = "<group>"; };
+		1F3B63071D910376005F619F /* MJPropertyType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPropertyType.m; sourceTree = "<group>"; };
+		1F3B63081D910376005F619F /* NSObject+MJClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJClass.h"; sourceTree = "<group>"; };
+		1F3B63091D910376005F619F /* NSObject+MJClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJClass.m"; sourceTree = "<group>"; };
+		1F3B630A1D910376005F619F /* NSObject+MJCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJCoding.h"; sourceTree = "<group>"; };
+		1F3B630B1D910376005F619F /* NSObject+MJCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJCoding.m"; sourceTree = "<group>"; };
+		1F3B630C1D910376005F619F /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
+		1F3B630D1D910376005F619F /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
+		1F3B630E1D910376005F619F /* NSObject+MJProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJProperty.h"; sourceTree = "<group>"; };
+		1F3B630F1D910376005F619F /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
+		1F3B63101D910376005F619F /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
+		1F3B63111D910376005F619F /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		1F3B631C1D912996005F619F /* FSListUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserModel.h; sourceTree = "<group>"; };
+		1F3B631D1D912996005F619F /* FSListUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserModel.m; sourceTree = "<group>"; };
+		1F3B631F1D912A8D005F619F /* FSListUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserTableViewCell.h; sourceTree = "<group>"; };
+		1F3B63201D912A8D005F619F /* FSListUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserTableViewCell.m; sourceTree = "<group>"; };
+		1F3B63211D912A8D005F619F /* FSListUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSListUserTableViewCell.xib; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -726,8 +756,6 @@
 		1FE087641D7D4B8E007790E3 /* InvitationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationModel.m; sourceTree = "<group>"; };
 		1FE087661D7D4D04007790E3 /* FindeFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindeFriendTableViewCell.h; sourceTree = "<group>"; };
 		1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindeFriendTableViewCell.m; sourceTree = "<group>"; };
-		1FE087691D7D4D8A007790E3 /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
-		1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
 		1FE0878C1D8254EA007790E3 /* FSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTabBar.h; sourceTree = "<group>"; };
 		1FE0878D1D8254EA007790E3 /* FSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTabBar.m; sourceTree = "<group>"; };
 		1FE087921D825649007790E3 /* FSBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -746,15 +774,6 @@
 		1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeHeadTableViewCell.h; sourceTree = "<group>"; };
 		1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeHeadTableViewCell.m; sourceTree = "<group>"; };
 		1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeHeadTableViewCell.xib; sourceTree = "<group>"; };
-		1FF36E7E1D4B3FB200EB3C93 /* FSZuoPinTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSZuoPinTableViewController.h; sourceTree = "<group>"; };
-		1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSZuoPinTableViewController.m; sourceTree = "<group>"; };
-		1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSZuoPinTableViewController.xib; sourceTree = "<group>"; };
-		1FF36E831D4B3FC100EB3C93 /* FSGuanZhuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGuanZhuTableViewController.h; sourceTree = "<group>"; };
-		1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGuanZhuTableViewController.m; sourceTree = "<group>"; };
-		1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSGuanZhuTableViewController.xib; sourceTree = "<group>"; };
-		1FF36E881D4B3FCF00EB3C93 /* FSFenSiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFenSiTableViewController.h; sourceTree = "<group>"; };
-		1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFenSiTableViewController.m; sourceTree = "<group>"; };
-		1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFenSiTableViewController.xib; sourceTree = "<group>"; };
 		1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEditInformationViewController.h; sourceTree = "<group>"; };
 		1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEditInformationViewController.m; sourceTree = "<group>"; };
 		1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEditInformationViewController.xib; sourceTree = "<group>"; };
@@ -1683,6 +1702,34 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		1F3B62FC1D910376005F619F /* MJExtension */ = {
+			isa = PBXGroup;
+			children = (
+				1F3B62FD1D910376005F619F /* MJExtension.h */,
+				1F3B62FE1D910376005F619F /* MJExtensionConst.h */,
+				1F3B62FF1D910376005F619F /* MJExtensionConst.m */,
+				1F3B63001D910376005F619F /* MJFoundation.h */,
+				1F3B63011D910376005F619F /* MJFoundation.m */,
+				1F3B63021D910376005F619F /* MJProperty.h */,
+				1F3B63031D910376005F619F /* MJProperty.m */,
+				1F3B63041D910376005F619F /* MJPropertyKey.h */,
+				1F3B63051D910376005F619F /* MJPropertyKey.m */,
+				1F3B63061D910376005F619F /* MJPropertyType.h */,
+				1F3B63071D910376005F619F /* MJPropertyType.m */,
+				1F3B63081D910376005F619F /* NSObject+MJClass.h */,
+				1F3B63091D910376005F619F /* NSObject+MJClass.m */,
+				1F3B630A1D910376005F619F /* NSObject+MJCoding.h */,
+				1F3B630B1D910376005F619F /* NSObject+MJCoding.m */,
+				1F3B630C1D910376005F619F /* NSObject+MJKeyValue.h */,
+				1F3B630D1D910376005F619F /* NSObject+MJKeyValue.m */,
+				1F3B630E1D910376005F619F /* NSObject+MJProperty.h */,
+				1F3B630F1D910376005F619F /* NSObject+MJProperty.m */,
+				1F3B63101D910376005F619F /* NSString+MJExtension.h */,
+				1F3B63111D910376005F619F /* NSString+MJExtension.m */,
+			);
+			path = MJExtension;
+			sourceTree = "<group>";
+		};
 		1F4201C11D475C8A00D3E6CB /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -2007,15 +2054,6 @@
 				1F4202211D48DB8300D3E6CB /* FSHomePageViewController.h */,
 				1F4202221D48DB8300D3E6CB /* FSHomePageViewController.m */,
 				1F4202231D48DB8300D3E6CB /* FSHomePageViewController.xib */,
-				1FF36E7E1D4B3FB200EB3C93 /* FSZuoPinTableViewController.h */,
-				1FF36E7F1D4B3FB200EB3C93 /* FSZuoPinTableViewController.m */,
-				1FF36E801D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib */,
-				1FF36E831D4B3FC100EB3C93 /* FSGuanZhuTableViewController.h */,
-				1FF36E841D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m */,
-				1FF36E851D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib */,
-				1FF36E881D4B3FCF00EB3C93 /* FSFenSiTableViewController.h */,
-				1FF36E891D4B3FCF00EB3C93 /* FSFenSiTableViewController.m */,
-				1FF36E8A1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib */,
 				1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */,
 				1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */,
 				1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */,
@@ -2036,6 +2074,8 @@
 				1F02199F1D794E6E003A8A11 /* FSUserModel.m */,
 				1F04241B1D51F3BA0071A1D6 /* FSZuoPin.h */,
 				1F04241C1D51F3BA0071A1D6 /* FSZuoPin.m */,
+				1F3B631C1D912996005F619F /* FSListUserModel.h */,
+				1F3B631D1D912996005F619F /* FSListUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2043,8 +2083,6 @@
 		1F7EDE851D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1FE087691D7D4D8A007790E3 /* FriendTableViewCell.h */,
-				1FE0876A1D7D4D8A007790E3 /* FriendTableViewCell.m */,
 				1FE087661D7D4D04007790E3 /* FindeFriendTableViewCell.h */,
 				1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */,
 				1F0424631D51F40F0071A1D6 /* FSZuoPinTableViewCell.h */,
@@ -2059,6 +2097,9 @@
 				1F0424731D5312690071A1D6 /* FSVideoView.h */,
 				1F0424741D5312690071A1D6 /* FSVideoView.m */,
 				1F0424761D5312780071A1D6 /* FSVideoView.xib */,
+				1F3B631F1D912A8D005F619F /* FSListUserTableViewCell.h */,
+				1F3B63201D912A8D005F619F /* FSListUserTableViewCell.m */,
+				1F3B63211D912A8D005F619F /* FSListUserTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2192,7 +2233,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				1F3B62F61D8FF618005F619F /* MJExtension */,
+				1F3B62FC1D910376005F619F /* MJExtension */,
 				1F0219A91D79500A003A8A11 /* FMDB */,
 				1F0219A21D795002003A8A11 /* DBModel */,
 				0452CCFE1D77D429007694CC /* Toast */,
@@ -2439,7 +2480,6 @@
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
-				1FF36E871D4B3FC100EB3C93 /* FSGuanZhuTableViewController.xib in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1F0219CD1D799027003A8A11 /* FSForgetViewController.xib in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
@@ -2451,22 +2491,20 @@
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
-				1FF36E8C1D4B3FCF00EB3C93 /* FSFenSiTableViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
+				1F3B63231D912A8D005F619F /* FSListUserTableViewCell.xib in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
-				1F3B62F71D8FF618005F619F /* MJExtension in Resources */,
 				1F0423F31D51F38E0071A1D6 /* MJRefresh.bundle in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
 				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
 				1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */,
-				1FF36E821D4B3FB200EB3C93 /* FSZuoPinTableViewController.xib in Resources */,
 				1F0219C21D798567003A8A11 /* AddreesPickerViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
@@ -2548,12 +2586,10 @@
 				0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */,
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
-				1FE0876B1D7D4D8A007790E3 /* FriendTableViewCell.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
 				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
-				1FF36E861D4B3FC100EB3C93 /* FSGuanZhuTableViewController.m in Sources */,
 				1F0219B71D79500A003A8A11 /* FMDatabasePool.m in Sources */,
 				1F0423EB1D51F38E0071A1D6 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1F4201FE1D48AE0100D3E6CB /* MASCompositeConstraint.m in Sources */,
@@ -2573,6 +2609,7 @@
 				1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */,
 				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
 				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
+				1F3B63161D910376005F619F /* MJPropertyType.m in Sources */,
 				1F0423EA1D51F38E0071A1D6 /* MJRefreshAutoGifFooter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,
 				1F4202011D48AE0100D3E6CB /* MASLayoutConstraint.m in Sources */,
@@ -2591,12 +2628,13 @@
 				042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
 				1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */,
-				1FF36E8B1D4B3FCF00EB3C93 /* FSFenSiTableViewController.m in Sources */,
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
+				1F3B63141D910376005F619F /* MJProperty.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
+				1F3B63181D910376005F619F /* NSObject+MJCoding.m in Sources */,
 				1F0423F71D51F38E0071A1D6 /* UIScrollView+MJRefresh.m in Sources */,
 				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
 				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
@@ -2610,7 +2648,6 @@
 				1F04246A1D51F4260071A1D6 /* NSString+FBMD5.m in Sources */,
 				0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
-				1FF36E811D4B3FB200EB3C93 /* FSZuoPinTableViewController.m in Sources */,
 				1F0423E91D51F38E0071A1D6 /* MJRefreshHeader.m in Sources */,
 				1F0423EC1D51F38E0071A1D6 /* MJRefreshAutoStateFooter.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
@@ -2622,8 +2659,10 @@
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				1F4202031D48AE0100D3E6CB /* MASViewConstraint.m in Sources */,
 				04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */,
+				1F3B631A1D910376005F619F /* NSObject+MJProperty.m in Sources */,
 				1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */,
 				04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */,
+				1F3B63131D910376005F619F /* MJFoundation.m in Sources */,
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
 				1F0219A81D795002003A8A11 /* JKDBModel.m in Sources */,
 				1F0423F41D51F38E0071A1D6 /* MJRefreshConst.m in Sources */,
@@ -2633,6 +2672,7 @@
 				1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */,
 				0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */,
 				1F0423E81D51F38E0071A1D6 /* MJRefreshFooter.m in Sources */,
+				1F3B63151D910376005F619F /* MJPropertyKey.m in Sources */,
 				04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */,
 				04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */,
 				1F0424571D51F3C30071A1D6 /* UIImageView+AFNetworking.m in Sources */,
@@ -2643,6 +2683,7 @@
 				1F0424851D542FA20071A1D6 /* FSHomeModel.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
+				1F3B631E1D912996005F619F /* FSListUserModel.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
@@ -2650,6 +2691,8 @@
 				1FE087971D825649007790E3 /* FSBaseView.m in Sources */,
 				1F0423F11D51F38E0071A1D6 /* MJRefreshNormalHeader.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
+				1F3B631B1D910376005F619F /* NSString+MJExtension.m in Sources */,
+				1F3B63191D910376005F619F /* NSObject+MJKeyValue.m in Sources */,
 				1F0423EF1D51F38E0071A1D6 /* MJRefreshBackStateFooter.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
 				04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */,
@@ -2680,12 +2723,15 @@
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1F0423E61D51F38E0071A1D6 /* MJRefreshBackFooter.m in Sources */,
 				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
+				1F3B63171D910376005F619F /* NSObject+MJClass.m in Sources */,
 				1F0423F01D51F38E0071A1D6 /* MJRefreshGifHeader.m in Sources */,
 				0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */,
+				1F3B63121D910376005F619F /* MJExtensionConst.m in Sources */,
 				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
+				1F3B63221D912A8D005F619F /* FSListUserTableViewCell.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */,
@@ -2810,7 +2856,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2849,7 +2895,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2879,8 +2925,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2910,8 +2956,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;

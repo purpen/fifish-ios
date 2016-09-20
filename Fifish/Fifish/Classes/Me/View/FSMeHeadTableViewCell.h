@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FSUserModel;
 
 @interface FSMeHeadTableViewCell : UITableViewCell
 
@@ -26,4 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fenSiShuLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fenSiLabel;
 @property (weak, nonatomic) IBOutlet UIButton *fenSiBtn;
+/** 数据模型 */
+@property (nonatomic, strong) FSUserModel *model;
+
 @end

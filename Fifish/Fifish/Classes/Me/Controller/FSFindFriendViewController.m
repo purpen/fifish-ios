@@ -12,7 +12,6 @@
 #import "FBAPI.h"
 #import "InvitationModel.h"
 #import "FindeFriendTableViewCell.h"
-#import "FriendTableViewCell.h"
 
 static NSString *const ShareURlText = @"我在Fiu浮游™寻找同路人；希望和你一起用文字来记录内心情绪，用滤镜来表达情感色彩，用分享去变现原创价值；带你发现美学科技的力量和感性生活的温度！来吧，去Fiu一下 >>> http://m.taihuoniao.com/fiu";
 
@@ -84,7 +83,7 @@ static NSString *const ShareURlText = @"我在Fiu浮游™寻找同路人；希�
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+/*-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         static NSString *id = @"cellOne";
         FindeFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:id];
@@ -110,7 +109,7 @@ static NSString *const ShareURlText = @"我在Fiu浮游™寻找同路人；希�
         [cell.follow addTarget:self action:@selector(clickFocusBtn:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
-}
+}*/
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

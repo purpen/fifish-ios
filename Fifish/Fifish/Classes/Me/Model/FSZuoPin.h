@@ -12,12 +12,24 @@
 
 @interface FSZuoPin : NSObject
 
-/** cell的高度 */
-@property (nonatomic, assign, readonly) CGFloat cellHeight;
-/** 帖子的类型 */
-@property (nonatomic, assign) FSZuoPinType type;
-/** 图片控件的frame */
-@property (nonatomic, assign, readonly) CGRect pictureF;
-/** 视频控件的frame */
-@property (nonatomic, assign, readonly) CGRect videoF;
+
+/**  */
+@property(nonatomic,copy) NSString *content;
+/**  */
+@property(nonatomic,copy) NSString *like_count;
+/**  */
+@property(nonatomic,copy) NSString *idFeild;
+/**  */
+@property(nonatomic,copy) NSString *comment_count;
+/**  */
+@property(nonatomic,copy) NSString *fileurl;
+/**  */
+@property(nonatomic,copy) NSString *width;
+/**  */
+@property(nonatomic,copy) NSString *height;
+/**  */
+@property(nonatomic,copy) NSString *view_count;
+/**  */
+@property (nonatomic, assign) CGFloat cellHeight;
+
 @end
