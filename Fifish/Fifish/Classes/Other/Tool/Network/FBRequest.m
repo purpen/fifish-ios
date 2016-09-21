@@ -412,13 +412,14 @@ static BOOL                           _canSendMessage      = YES;
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            weakSelf.isRunning = NO;
                                            
-                                           NSString *token = responseObject[@"data"][@"token"];
+                                           /*NSString *token = responseObject[@"data"][@"token"];
                                            
                                            if (token.length != 0) {
                                                NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
                                                [defaults setObject:token forKey:@"token"];
                                                [defaults synchronize];
-                                           }
+                                           }*/
+                                            
                                            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
                                            if (status_code == 200) {
                                                
@@ -447,13 +448,14 @@ static BOOL                           _canSendMessage      = YES;
                                      parameters:[weakSelf transformRequestDictionary]
                                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                             weakSelf.isRunning = NO;
-                                            NSString *token = responseObject[@"data"][@"token"];
                                             
+                                            /*NSString *token = responseObject[@"data"][@"token"];
                                             if (token.length != 0) {
                                                 NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
                                                 [defaults setObject:token forKey:@"token"];
                                                 [defaults synchronize];
-                                            }
+                                            }*/
+                                            
                                             NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
                                             if (status_code == 200) {
                                                 

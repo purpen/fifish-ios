@@ -8,50 +8,40 @@
 
 #import "FSMeHeadTableViewCell.h"
 #import "FSConst.h"
+#import "UIImageView+WebCache.h"
+#import "FSUserModel.h"
+#import "FSHeadImageModel.h"
 
 @implementation FSMeHeadTableViewCell
 
 
-//-(instancetype)init{
-//    if (self = [super init]) {
-//        if (self.zuoPinBtn.selected) {
-//            self.zuoPinShu.textColor = DEFAULT_COLOR;
-//            self.zuoPinLabel.textColor = DEFAULT_COLOR;
-//            self.guanZhuBtn.selected = NO;
-//            self.fenSiBtn.selected = NO;
-//        }else{
-//            self.zuoPinShu.textColor = [UIColor whiteColor];
-//            self.zuoPinLabel.textColor = [UIColor whiteColor];
-//        }
-//        
-//        if (self.guanZhuBtn.selected) {
-//            self.guanZhuShuLabel.textColor = DEFAULT_COLOR;
-//            self.guanZhuLabel.textColor = DEFAULT_COLOR;
-//            self.zuoPinBtn.selected = NO;
-//            self.fenSiBtn.selected = NO;
-//        }else{
-//            self.guanZhuShuLabel.textColor = [UIColor whiteColor];
-//            self.guanZhuLabel.textColor = [UIColor whiteColor];
-//        }
-//        
-//        if (self.fenSiBtn.selected) {
-//            self.fenSiShuLabel.textColor = DEFAULT_COLOR;
-//            self.fenSiLabel.textColor = DEFAULT_COLOR;
-//            self.guanZhuBtn.selected = NO;
-//            self.zuoPinBtn.selected = NO;
-//        }else{
-//            self.fenSiShuLabel.textColor = [UIColor whiteColor];
-//            self.fenSiLabel.textColor = [UIColor whiteColor];
-//        }
-//    }
-//    return self;
-//}
-
 -(instancetype)init{
     if (self = [super init]) {
         self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
+        
+        CAGradientLayer *downShadow = [CAGradientLayer layer];
+        downShadow.startPoint = CGPointMake(0, 0);
+        downShadow.endPoint = CGPointMake(0, 1);
+        downShadow.opacity = 0.5;
+        downShadow.colors = @[(__bridge id)[UIColor clearColor].CGColor,
+                            (__bridge id)[UIColor blackColor].CGColor];
+        downShadow.frame = CGRectMake(0, 284 - 200 , SCREEN_WIDTH, 200);
+        [self.bg_imageView.layer addSublayer:downShadow];
     }
     return self;
 }
+
+-(void)setModel:(FSUserModel *)model{
+    _model = model;
+    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.large] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.small] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.nickName.text = model.username;
+    self.addressLabel.text = model.zone;
+    self.signatureLabel.text = model.summary;
+    self.zuoPinShu.text = model.stuff_count;
+    self.guanZhuShuLabel.text = model.follow_count;
+    self.fenSiShuLabel.text = model.fans_count;
+}
+
 
 @end

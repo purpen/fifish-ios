@@ -11,7 +11,6 @@
 
 @interface FSPictuerView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *imagView;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 /**  */
 @property (nonatomic, strong) FSZuoPin *zuoPin;
 @end
