@@ -411,6 +411,7 @@ static BOOL                           _canSendMessage      = YES;
                                     parameters:[weakSelf transformRequestDictionary]
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            weakSelf.isRunning = NO;
+                                           NSLog(@"请求  %@",responseObject);
                                            
                                            /*NSString *token = responseObject[@"data"][@"token"];
                                            
