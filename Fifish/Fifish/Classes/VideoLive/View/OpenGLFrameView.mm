@@ -494,7 +494,6 @@ exit:
     };
 	
     [EAGLContext setCurrentContext:_context];
-    
     glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
     glViewport(0, 0, _backingWidth, _backingHeight);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
