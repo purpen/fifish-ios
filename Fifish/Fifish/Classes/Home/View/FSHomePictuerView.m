@@ -8,6 +8,7 @@
 
 #import "FSHomePictuerView.h"
 #import "UIImageView+WebCache.h"
+#import "FSZuoPin.h"
 
 @interface FSHomePictuerView ()
 
@@ -18,9 +19,9 @@
 
 @implementation FSHomePictuerView
 
--(void)setModel:(FSHomeModel *)model{
+-(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.fileurl] placeholderImage:nil];
 }
 
 @end

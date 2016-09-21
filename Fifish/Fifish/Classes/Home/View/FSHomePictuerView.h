@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class FSHomeModel;
+@class FSZuoPin;
 
 @interface FSHomePictuerView : UIView
 
 /**  */
-@property (nonatomic, strong) FSHomeModel *model;
+@property (nonatomic, strong) FSZuoPin *model;
 
 @end

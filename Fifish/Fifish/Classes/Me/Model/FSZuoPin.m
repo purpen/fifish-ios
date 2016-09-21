@@ -18,7 +18,9 @@
              @"idFeild" : @"id",
              @"fileurl" : @"photo.fileurl",
              @"width" : @"photo.width",
-             @"height" : @"photo.height"
+             @"height" : @"photo.height",
+             @"userId" : @"user.id",
+             @"username" : @"user.username"
              };
 }
 

@@ -34,5 +34,7 @@
 @property(nonatomic,copy) NSString *user_id;
 /** 1是图片 2是视频 */
 @property(nonatomic,copy) NSString *kind;
+/**  */
+@property(nonatomic,copy) NSString *username;
 
 @end

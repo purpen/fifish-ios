@@ -7,7 +7,7 @@
 //
 
 #import "FSHomeVideoView.h"
-#import "FSHomeModel.h"
+#import "FSZuoPin.h"
 #import "UIImageView+WebCache.h"
 
 @interface FSHomeVideoView ()
@@ -20,11 +20,11 @@
 
 @implementation FSHomeVideoView
 
--(void)setModel:(FSHomeModel *)model{
+-(void)setModel:(FSZuoPin *)model{
     _model = model;
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.fileurl] placeholderImage:nil];
 }
 
 @end

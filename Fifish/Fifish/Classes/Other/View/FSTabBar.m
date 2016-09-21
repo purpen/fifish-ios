@@ -27,6 +27,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.frame = CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);
         // 设置tabbar的背景图片
         if (SCREEN_WIDTH <= 320) {
             self.backgroundImage = [UIImage imageNamed:@"tabBar_small"];
@@ -52,8 +53,7 @@
         [self addSubview:equipmentLabel];
         self.equipmentLabel = equipmentLabel;
         
-        self.shadowImage = [UIImage new];
-        self.translucent = YES;
+        self.translucent = NO;
     }
     return self;
 }

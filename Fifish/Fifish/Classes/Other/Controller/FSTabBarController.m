@@ -33,6 +33,7 @@
     });
     return sharedAccountManagerInstance;
 }
+
 + (void)initialize
 {
     // 通过appearance统一设置所有UITabBarItem的文字属性

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class FSHomeModel;
+@class FSZuoPin;
 
 
 @interface FSHomeViewCell : UITableViewCell
 
 /**  */
-@property (nonatomic, strong) FSHomeModel *model;
+@property (nonatomic, strong) FSZuoPin *model;
 
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class FSHomeModel;
+@class FSZuoPin;
 
 @interface FSHomeVideoView : UIView
 
 /**  */
-@property (nonatomic, strong) FSHomeModel *model;
+@property (nonatomic, strong) FSZuoPin *model;
 
 @end

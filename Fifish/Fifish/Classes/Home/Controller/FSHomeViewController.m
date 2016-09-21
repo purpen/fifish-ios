@@ -69,10 +69,10 @@ static NSString * const CellId = @"home";
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"推荐的作品 %@",result);
-        self.current_page = [result[@"meta"][@"current_page"] integerValue];
-        self.total_rows = [result[@"meta"][@"total"] integerValue];
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
-         //self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+         self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
          [self.contenTableView reloadData];
          [self.contenTableView.mj_header endRefreshing];
          [self checkFooterState];
@@ -95,8 +95,30 @@ static NSString * const CellId = @"home";
 }
 
 -(void)loadMore{
-    // 结束下拉
     [self.contenTableView.mj_header endRefreshing];
+    NSDictionary *params = @{
+                             @"page" : @(++ self.current_page),
+                             @"per_page" : @10
+                             };
+    FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"推荐的作品 %@",result);
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        NSArray *rows = result[@"data"];
+        NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        [self.modelAry addObjectsFromArray:ary];
+        [self.contenTableView reloadData];
+        [self.contenTableView.mj_footer endRefreshing];
+        [self checkFooterState];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        // 让底部控件结束刷新
+        [self.contenTableView.mj_footer endRefreshing];
+    }];
+
 }
 
 -(UITableView *)contenTableView{
@@ -107,6 +129,7 @@ static NSString * const CellId = @"home";
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
+        _contenTableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0);
     }
     return _contenTableView;
 }
@@ -121,25 +144,37 @@ static NSString * const CellId = @"home";
 }
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    self.contenTableView.mj_footer.hidden = (self.modelAry.count == 0);
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.modelAry.count;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-    cell.model = self.modelAry[indexPath.row];
+    cell.model = self.modelAry[indexPath.section];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FSZuoPin *model = self.modelAry[indexPath.row];
-    return model.cellHeight;
+    FSZuoPin *model = self.modelAry[indexPath.section];
+    // 文字的最大尺寸
+    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+    // 计算文字的高度
+    CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+    CGFloat gaoDu = model.cellHeight + 59 + 44 + textH + 20 + 44;
+    return gaoDu;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
-    vc.model = self.modelAry[indexPath.row];
+    vc.model = self.modelAry[indexPath.section];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
