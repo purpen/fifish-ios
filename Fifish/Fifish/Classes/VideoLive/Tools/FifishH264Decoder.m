@@ -53,9 +53,6 @@
 //是否录制
 @property (nonatomic ,assign) BOOL      IsSaveMp4File;
 
-//是否保存照片
-@property (nonatomic, assign) BOOL      IsSavePhoto;
-
 @property (nonatomic, strong)dispatch_queue_t Decoder_queue;//线程
 
 
@@ -72,9 +69,7 @@
         
         //监听录制通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Mp4fileNotice:) name:FSNoticSaveMp4File object:nil];
-        
-        //监听拍照通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
+
     }
     return self;
 }
@@ -186,7 +181,7 @@
         return -1;
     }
     
-    img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+    img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_RGB32, SWS_BICUBIC, NULL, NULL, NULL);
     
     return 0;
     
@@ -265,13 +260,6 @@
                     if (self.IsSaveMp4File&&_pAvpacket) {
                         [self saveMp4File:_pAvpacket IsKeyFlag:_pFrame->pict_type==AV_PICTURE_TYPE_I?YES:NO];
                         
-                    }
-                    if (self.IsSavePhoto) {
-                        AVPicture picture;
-                        sws_scale(img_convert_ctx, (const uint8_t**)_pFrame->data, _pFrame->linesize, 0, _pCodecContext->height, picture.data, picture.linesize);
-                        [FSImageTools imageFromAVPicture:picture withWidth:_pFrame->width height:_pFrame->height];
-                        
-                            self.IsSavePhoto = NO;
                     }
                     free(yuvFrame.luma.dataBuffer);
                     free(yuvFrame.chromaB.dataBuffer);
@@ -386,12 +374,6 @@
 
     
     
-}
-
-
-#pragma mark 拍照
-- (void)takePhoto{
-        self.IsSavePhoto = YES;
 }
 
 #pragma mark 初始化文件地址

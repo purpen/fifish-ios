@@ -120,6 +120,7 @@
     } WithFailureBlock:^(NSError *error) {
         [KEY_WINDOW makeToast:error.localizedDescription];
     }];
+    
 //  本地截取一帧图片
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];
     

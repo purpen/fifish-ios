@@ -16,6 +16,10 @@
 #import "FSCameraManager.h"
 #import "FSOSDManager.h"
 
+#import <Photos/Photos.h>
+#import "FSliveVideoConst.h"
+
+
 //view
 #import "OpenGLFrameView.h"
 #import "FSFSVideoLiveStatusBar.h"
@@ -66,8 +70,32 @@
     //初始化手势
     [self setGesture];
     
+    //test
+    //监听拍照通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
 }
-
+- (void)takePhoto{
+   UIImage * image = [self.VideoGlView snapshotPicture];
+    PHAssetCollection *createdCollection = nil;
+    NSString * title = @"Fifish";
+    // 获得所有的自定义相册
+    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    for (PHAssetCollection *collection in collections) {
+        if ([collection.localizedTitle isEqualToString:title]) {
+            createdCollection = collection;
+            break;
+        }
+    }
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+        
+        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+        
+        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } error:nil];
+}
 - (void)calibrateCameraTime{
     
     static dispatch_once_t onceToken;
