@@ -23,6 +23,7 @@
 #import "SVProgressHUD.h"
 #import "FSListUserModel.h"
 #import "FSListUserTableViewCell.h"
+#import "FSHomeDetailViewController.h"
 
 typedef enum {
     FSTypeZuoPin = 1,
@@ -524,6 +525,18 @@ static NSString * const fucosCellId = @"fucos";
         }
     }
     return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.model = self.zuoPins[indexPath.row];
+    vc.title = @"作品详情";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 #pragma mark - 点击关注按钮

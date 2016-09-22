@@ -18,6 +18,8 @@
 #import "FSTagTableViewCell.h"
 #import "FSUserModel.h"
 #import "FSUserTableViewCell.h"
+#import "FSZuoPin.h"
+#import "FSFoundStuffTableViewCell.h"
 
 @interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -30,7 +32,7 @@
 /**  */
 @property (nonatomic, strong) NSArray *tagsAry;
 /**  */
-@property (nonatomic, strong) NSArray *stuffAry;
+@property (nonatomic, strong) NSMutableArray *stuffAry;
 /**  */
 @property (nonatomic, strong) FSFoundHeaderView *headerView;
 /**  */
@@ -40,11 +42,23 @@
 
 @implementation FSFoundViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.contentTableView];
     // 添加刷新控件
     [self setupRefresh];
+}
+
+-(NSMutableArray *)stuffAry{
+    if (!_stuffAry) {
+        _stuffAry = [NSMutableArray array];
+    }
+    return _stuffAry;
 }
 
 -(void)setupRefresh{
@@ -60,6 +74,67 @@
     self.current_page = 1;
     [self tagRequest];
     [self userRequest];
+    [self stuffRequest];
+}
+
+-(void)loadMore{
+    [self.contentTableView.mj_header endRefreshing];
+    NSDictionary *params = @{
+                             @"page" : @(++ self.current_page),
+                             @"per_page" : @10
+                             };
+    FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        NSArray *rows = result[@"data"];
+        NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        [self.stuffAry addObjectsFromArray:ary];
+        [self.contentTableView reloadData];
+        [self.contentTableView.mj_footer endRefreshing];
+        [self checkFooterState];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        // 让底部控件结束刷新
+        [self.contentTableView.mj_footer endRefreshing];
+    }];
+    
+}
+
+#pragma mark - 获取推荐的作品
+-(void)stuffRequest{
+    NSDictionary *params = @{
+                             @"page" : @(self.current_page),
+                             @"per_page" : @10
+                             };
+    FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"推荐的作品 %@",result);
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        NSArray *rows = result[@"data"];
+        self.stuffAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        [self.contentTableView reloadData];
+        [self.contentTableView.mj_header endRefreshing];
+        [self checkFooterState];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        // 让底部控件结束刷新
+        [self.contentTableView.mj_header endRefreshing];
+    }];
+}
+
+-(void)checkFooterState{
+    self.contentTableView.mj_footer.hidden = self.stuffAry.count == 0;
+    if (self.stuffAry.count == self.total_rows) {
+        self.contentTableView.mj_footer.hidden = YES;
+    }else{
+        [self.contentTableView.mj_footer endRefreshing];
+    }
 }
 
 #pragma mark - 获取热门用户
@@ -85,7 +160,6 @@
         NSArray *rows = result[@"data"];
         self.tagsAry = [FSTageModel mj_objectArrayWithKeyValuesArray:rows];
         [self.contentTableView reloadData];
-        [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
@@ -97,16 +171,17 @@
 
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
-        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50)];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
+        [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSFoundStuffTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSFoundStuffTableViewCell"];
     }
     return _contentTableView;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -128,9 +203,15 @@
     if (indexPath.section == 0) {
         return 90;
     } else if (indexPath.section == 1) {
-        return 70;
+        return 90;
     }
-    return 300;
+    FSZuoPin *model = self.stuffAry[indexPath.row];
+    // 文字的最大尺寸
+    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+    // 计算文字的高度
+    CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+    CGFloat gaoDu = model.cellHeight + 59 + 44 + textH + 20 + 44;
+    return gaoDu;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -158,10 +239,15 @@
     } else if (indexPath.section == 1) {
         static NSString *cellId = @"FSUserTableViewCell";
         FSUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        cell.navi = self.navigationController;
         if (cell == nil) {
             cell = [[FSUserTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         cell.modelAry = self.userAry;
+        return cell;
+    } else if (indexPath.section == 2) {
+        FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
+        cell.model = self.stuffAry[indexPath.row];
         return cell;
     }
     return nil;

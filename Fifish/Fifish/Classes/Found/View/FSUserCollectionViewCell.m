@@ -21,8 +21,14 @@
 
 -(void)setModel:(FSUserModel *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.small] placeholderImage:nil];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.small] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 20;
 }
 
 @end

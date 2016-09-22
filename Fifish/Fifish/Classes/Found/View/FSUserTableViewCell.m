@@ -8,6 +8,8 @@
 
 #import "FSUserTableViewCell.h"
 #import "FSUserCollectionViewCell.h"
+#import "UIColor+FSExtension.h"
+#import "FSHomePageViewController.h"
 
 @interface FSUserTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -35,11 +37,11 @@
 -(UICollectionView *)myCollectionView{
     if (!_myCollectionView) {
         UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        flowLayout.minimumLineSpacing = 5.0f;
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        flowLayout.minimumLineSpacing = 0.0f;
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)
+        _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)
                                                collectionViewLayout:flowLayout];
         _myCollectionView.backgroundColor = [UIColor whiteColor];
         _myCollectionView.delegate = self;
@@ -60,16 +62,21 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(70, 70);
+    return CGSizeMake(60, 70);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FSUserCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FSUserCollectionViewCell"
                                                                               forIndexPath:indexPath];
     cell.model = self.modelAry[indexPath.row];
-    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    
+    [self.navi pushViewController:vc animated:YES];
+}
 
 @end

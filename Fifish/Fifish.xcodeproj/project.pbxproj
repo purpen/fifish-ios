@@ -227,6 +227,8 @@
 		1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28DE1D928D9600566A73 /* FSUserTableViewCell.m */; };
 		1FDE28E31D928F0600566A73 /* FSUserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */; };
 		1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */; };
+		1FDE28E81D93827D00566A73 /* FSFoundStuffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */; };
+		1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */; };
 		1FE087611D7D46D5007790E3 /* FSFindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */; };
 		1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087641D7D4B8E007790E3 /* InvitationModel.m */; };
 		1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */; };
@@ -775,6 +777,9 @@
 		1FDE28E01D928F0600566A73 /* FSUserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserCollectionViewCell.h; sourceTree = "<group>"; };
 		1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserCollectionViewCell.m; sourceTree = "<group>"; };
 		1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSUserCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FDE28E51D93827D00566A73 /* FSFoundStuffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundStuffTableViewCell.h; sourceTree = "<group>"; };
+		1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundStuffTableViewCell.m; sourceTree = "<group>"; };
+		1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFoundStuffTableViewCell.xib; sourceTree = "<group>"; };
 		1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFindFriendViewController.h; sourceTree = "<group>"; };
 		1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFindFriendViewController.m; sourceTree = "<group>"; };
 		1FE087631D7D4B8E007790E3 /* InvitationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationModel.h; sourceTree = "<group>"; };
@@ -2385,6 +2390,9 @@
 				1FDE28E01D928F0600566A73 /* FSUserCollectionViewCell.h */,
 				1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */,
 				1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */,
+				1FDE28E51D93827D00566A73 /* FSFoundStuffTableViewCell.h */,
+				1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */,
+				1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2558,6 +2566,7 @@
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
+				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
@@ -2703,6 +2712,7 @@
 				042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
 				1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */,
+				1FDE28E81D93827D00566A73 /* FSFoundStuffTableViewCell.m in Sources */,
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
@@ -2982,6 +2992,7 @@
 			baseConfigurationReference = B5E534B92A3783A5447B9174 /* Pods-Fifish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -3012,6 +3023,7 @@
 			baseConfigurationReference = 4C71A91C545D23BF3CD5D83A /* Pods-Fifish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;

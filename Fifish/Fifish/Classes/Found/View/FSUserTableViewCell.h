@@ -12,5 +12,7 @@
 
 /**  */
 @property (nonatomic, strong) NSArray *modelAry;
+/**  */
+@property (nonatomic, strong) UINavigationController *navi;
 
 @end

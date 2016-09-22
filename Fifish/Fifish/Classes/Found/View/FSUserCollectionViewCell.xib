@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfe-99-EMm">
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -30,10 +30,12 @@
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="xfe-99-EMm" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="N4C-pa-ipi" secondAttribute="trailing" constant="3" id="Ddq-Lf-QmG"/>
                 <constraint firstItem="N4C-pa-ipi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="IpM-vT-8hd"/>
                 <constraint firstItem="xfe-99-EMm" firstAttribute="top" secondItem="N4C-pa-ipi" secondAttribute="bottom" constant="5" id="MwA-Nf-LBl"/>
                 <constraint firstItem="N4C-pa-ipi" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="grW-T6-Vlp"/>
                 <constraint firstItem="xfe-99-EMm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jpg-Ul-qwY"/>
+                <constraint firstItem="xfe-99-EMm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N4C-pa-ipi" secondAttribute="leading" constant="-3" id="zB8-4F-DOv"/>
             </constraints>
             <size key="customSize" width="169" height="156"/>
             <connections>

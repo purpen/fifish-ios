@@ -36,5 +36,7 @@
 @property(nonatomic,copy) NSString *kind;
 /**  */
 @property(nonatomic,copy) NSString *username;
+/**  */
+@property (nonatomic, strong) NSArray *tags;
 
 @end

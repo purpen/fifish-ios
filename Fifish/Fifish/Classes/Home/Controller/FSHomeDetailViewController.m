@@ -43,7 +43,7 @@ static NSString * const FSCommentId = @"comment";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"评论";
+    self.navigationItem.title = self.title;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     // cell的高度设置
     self.commendTableView.estimatedRowHeight = 44;

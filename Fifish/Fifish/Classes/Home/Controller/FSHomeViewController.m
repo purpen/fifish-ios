@@ -68,7 +68,6 @@ static NSString * const CellId = @"home";
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"推荐的作品 %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
@@ -102,7 +101,6 @@ static NSString * const CellId = @"home";
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"推荐的作品 %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
@@ -124,7 +122,7 @@ static NSString * const CellId = @"home";
 -(UITableView *)contenTableView{
     if (!_contenTableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50)];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
@@ -175,6 +173,7 @@ static NSString * const CellId = @"home";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
     vc.model = self.modelAry[indexPath.section];
+    vc.title = @"评论";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
