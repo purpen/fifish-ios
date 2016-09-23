@@ -15,9 +15,11 @@
 @implementation FSMeHeadTableViewCell
 
 
--(instancetype)init{
-    if (self = [super init]) {
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
+        self.headImageView.layer.masksToBounds = YES;
+        self.headImageView.layer.cornerRadius = 30;
         
         CAGradientLayer *downShadow = [CAGradientLayer layer];
         downShadow.startPoint = CGPointMake(0, 0);
@@ -33,8 +35,8 @@
 
 -(void)setModel:(FSUserModel *)model{
     _model = model;
-    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.large] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.small] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.nickName.text = model.username;
     self.addressLabel.text = model.zone;
     self.signatureLabel.text = model.summary;

@@ -44,10 +44,10 @@
         
         NSLog(@"个人信息 %@",result);
         NSDictionary *dict = result[@"data"];
-        self.userModel = [[FSUserModel alloc] initWithDictionary:dict];
+        self.userModel = [FSUserModel mj_objectWithKeyValues:dict];
         [self.userModel update];
         
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar.small] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
         self.nameLabel.text = self.userModel.username;
         self.addressLabel.text = self.userModel.zone;
         self.summaryLabel.text = self.userModel.summary;

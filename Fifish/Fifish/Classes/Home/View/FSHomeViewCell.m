@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *commendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
@@ -41,6 +41,12 @@
 
 @implementation FSHomeViewCell
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 22;
+}
+
 -(FSHomePictuerView *)pictuerView{
     if (!_pictuerView) {
         _pictuerView = [FSHomePictuerView viewFromXib];
@@ -57,10 +63,10 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
-    self.timeLabel.text = @"";
-    self.addressLabel.text = @"";
+    self.timeLabel.text = model.created_at;
+    self.addressLabel.text = model.address;
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         [self.videoView removeFromSuperview];
@@ -69,7 +75,7 @@
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
             make.top.mas_equalTo(self.contentView.mas_top).offset(59);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-            make.height.mas_equalTo(model.cellHeight);
+            make.height.mas_equalTo(210);
         }];
         [self.contentView layoutIfNeeded];
         self.pictuerView.model = model;
@@ -93,6 +99,12 @@
         tagLabel.x = x;
         tagLabel.centerY = self.tagTag.centerY;
         [self.contentView addSubview:tagLabel];
+    }
+    
+    if (model.is_love == 0) {
+        self.likeBtn.selected = NO;
+    } else if (model.is_love == 1) {
+        self.likeBtn.selected = YES;
     }
     
     // 文字的最大尺寸

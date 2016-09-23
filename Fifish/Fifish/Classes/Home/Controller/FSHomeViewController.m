@@ -17,6 +17,7 @@
 #import "FBAPI.h"
 #import "SVProgressHUD.h"
 #import "FSZuoPin.h"
+#import "FSSearchViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -133,12 +134,13 @@ static NSString * const CellId = @"home";
 }
 
 -(void)setupNav{
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_search" highImage:nil title:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
 }
 
 -(void)searchClick{
-    
+    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 
@@ -157,7 +159,29 @@ static NSString * const CellId = @"home";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     cell.model = self.modelAry[indexPath.section];
+    cell.likeBtn.tag = indexPath.section;
+    [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+#pragma mark - 点击喜欢按钮
+-(void)likeClick:(UIButton*)sender{
+    NSString *idStr = ((FSZuoPin*)self.modelAry[sender.tag]).idFeild;
+    if (sender.selected) {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/cancelLike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    } else {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/dolike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = YES;
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -166,7 +190,7 @@ static NSString * const CellId = @"home";
     CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = model.cellHeight + 59 + 44 + textH + 20 + 44;
+    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
     return gaoDu;
 }
 

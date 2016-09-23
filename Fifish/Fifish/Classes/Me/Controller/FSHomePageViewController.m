@@ -279,7 +279,7 @@ static NSString * const fucosCellId = @"fucos";
         NSLog(@"个人信息 %@",result);
         NSDictionary *dict = result[@"data"];
         self.userModel = [[FSUserModel findAll] lastObject];
-        self.userModel = [[FSUserModel alloc] initWithDictionary:dict];
+        self.userModel = [FSUserModel mj_objectWithKeyValues:dict];
         [self.userModel update];
         [self.contentTableView reloadData];
         
@@ -434,7 +434,7 @@ static NSString * const fucosCellId = @"fucos";
             {
                 //作品高度
                 FSZuoPin *zuoPin = self.zuoPins[indexPath.row];
-                return zuoPin.cellHeight + 22;
+                return 210 + 22;
             }
                 break;
                 
@@ -465,7 +465,7 @@ static NSString * const fucosCellId = @"fucos";
         NSString *cellStr1 = @"cellStr1";
         FSMeHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr1];
         if (cell == nil) {
-            cell = [[FSMeHeadTableViewCell alloc] init];
+            cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
         cell.model = self.userModel;
         switch (self.type) {

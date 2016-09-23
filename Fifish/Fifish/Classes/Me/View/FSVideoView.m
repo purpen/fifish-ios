@@ -20,6 +20,7 @@
 @implementation FSVideoView
 
 -(void)awakeFromNib{
+    [super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
 }
 
