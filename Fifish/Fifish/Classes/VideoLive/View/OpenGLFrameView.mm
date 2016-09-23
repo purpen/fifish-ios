@@ -542,7 +542,7 @@ exit:
     
     
     glPixelStorei(GL_PACK_ALIGNMENT, 4);
-    glReadPixels(x, y, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    glReadPixels((GLint)x, (GLint)y, (GLint)width, (GLint)height, GL_RGBA, GL_UNSIGNED_BYTE, data);
     
     CGDataProviderRef ref = CGDataProviderCreateWithData(NULL, data, dataLength, NULL);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
@@ -552,22 +552,22 @@ exit:
     
     NSInteger widthInPoints, heightInPoints;
     
-    if (NULL != UIGraphicsBeginImageContextWithOptions)
-    {
-        
-        CGFloat scale = 1;
-        widthInPoints = width / scale;
-        heightInPoints = height / scale;
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(widthInPoints, heightInPoints), NO, scale);
-    }
-    else
-    {
-        
+//    if (NULL != UIGraphicsBeginImageContextWithOptions)
+//    {
+//        
+//        CGFloat scale = 1;
+//        widthInPoints = width / scale;
+//        heightInPoints = height / scale;
+//        UIGraphicsBeginImageContextWithOptions(CGSizeMake(widthInPoints, heightInPoints), NO, scale);
+//    }
+//    else
+//    {
+    
         widthInPoints = width;
         heightInPoints = height;
         UIGraphicsBeginImageContext(CGSizeMake(widthInPoints, heightInPoints));
         
-    }
+//    }
     CGContextRef cgcontext = UIGraphicsGetCurrentContext();
     
     CGContextSetBlendMode(cgcontext, kCGBlendModeCopy);
@@ -582,10 +582,30 @@ exit:
     CFRelease(colorspace);
     CGImageRelease(iref);
 
+    
+    //生成的图片存到本地沙盒中
+    [self writeImageDataTofile:retImage];
+    
     return retImage;
     
 }
 
+#pragma mark 图片存到本地
+- (void)writeImageDataTofile:(UIImage *)image{
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString* path = [paths objectAtIndex:0];
+    NSLog(@"MP4 PATH: %@",path);
+    
+    NSDateFormatter *dateFormatter0 = [[NSDateFormatter alloc] init];
+    [dateFormatter0 setDateFormat:@"yy-MM-dd HH:mm:ss:AA"];
+    NSString *currentDateStr = [dateFormatter0 stringFromDate:[NSDate date]];
+    //NSLog(@"Current DateFormat MP4 %@\n",currentDateStr);
+    
+    
+    NSString* outputImageName=[NSString stringWithFormat:@"%@.png",currentDateStr];
+    NSString *imageOutputPath=[path stringByAppendingPathComponent:outputImageName];
+    [UIImagePNGRepresentation(image) writeToFile:imageOutputPath atomically:YES];
+}
 
 
 @end
