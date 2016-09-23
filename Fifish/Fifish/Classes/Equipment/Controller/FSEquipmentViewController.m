@@ -7,6 +7,7 @@
 //
 
 #import "FSEquipmentViewController.h"
+#import "VideoLiveController.h"
 #import "UIBarButtonItem+FSExtension.h"
 #import "FSConst.h"
 #import "UIView+FSExtension.h"
@@ -106,6 +107,12 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     int index = fabs(scrollView.contentOffset.x/SCREEN_WIDTH);
     _pagrControl.currentPage = index;
+}
+- (IBAction)contentROV:(UIButton *)sender {
+    VideoLiveController * videoLiveVC = [[VideoLiveController alloc] init];
+    [self presentViewController:videoLiveVC animated:YES completion:^{
+        
+    }];
 }
 
 
