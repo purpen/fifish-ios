@@ -12,7 +12,7 @@
 + (instancetype)defaultManager;
 
 //获取Document里mp4文件数组
-- (NSMutableArray *)GetMp4FileArr;
+- (NSMutableArray *)GetMp4AndPngFileArr;
 
 
 //删除文件
@@ -20,6 +20,6 @@
 
 
 //从系统相册里面的fish
-- (NSMutableArray *)GetMediaWithFishSystemLibiary;
+//- (NSMutableArray *)GetMediaWithFishSystemLibiary;
 
 @end

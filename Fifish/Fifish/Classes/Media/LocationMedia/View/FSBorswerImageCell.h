@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
+
+@class FSMediaModel;
 static NSString  * const  FSBorswerImageCelliden = @"FSBorswerImageCellIden";
 
 @interface FSBorswerImageCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *borswerImageView;
+/**
+资源模型
+ */
+@property (nonatomic, assign) FSMediaModel   * mediaModel;
 
-@property (nonatomic , assign) AVURLAsset * videoAsset;
+@property (weak, nonatomic) IBOutlet UIImageView *videoIcon;
 
 @property (weak, nonatomic) IBOutlet UILabel *durationLab;
 @end

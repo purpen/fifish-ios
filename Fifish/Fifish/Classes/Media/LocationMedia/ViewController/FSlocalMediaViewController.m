@@ -15,6 +15,9 @@
 #import "FSlocalMediaViewController.h"
 #import "MJRefresh.h"
 
+#import "FSImageModel.h"
+#import "FSVideoModel.h"
+
 //资源管理器
 #import "FSFileManager.h"
 
@@ -46,11 +49,20 @@ CGFloat const Cellspecace = 1;
 }
 
 - (void)GetMediaData{
-    NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4FileArr];
+    NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4AndPngFileArr];
     self.sourceArr = [NSMutableArray array];
     for (NSString * str in dataArr) {
-        AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:str] options:nil];
-        [self.sourceArr addObject:asset];
+        FSMediaModel * mediaModel;
+        if ([str hasSuffix:@"mp4"]) {
+            mediaModel = [[FSVideoModel alloc] init];
+            mediaModel.fileUrl = str;
+        }
+        if ([str hasSuffix:@"png"]) {
+            mediaModel = [[FSImageModel alloc] init];
+            mediaModel.fileUrl = str;
+        }
+        
+        [self.sourceArr addObject:mediaModel];
     }
     [self.BroswerCollection reloadData];
 }
@@ -89,7 +101,7 @@ CGFloat const Cellspecace = 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSBorswerImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSBorswerImageCelliden forIndexPath:indexPath];
-    cell.videoAsset = self.sourceArr[indexPath.row];
+    cell.mediaModel = self.sourceArr[indexPath.row];
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -97,10 +109,12 @@ CGFloat const Cellspecace = 1;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    AVURLAsset  *asset = self.sourceArr[indexPath.row];
-    MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:asset.URL];
-    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    FSImageModel * model = self.sourceArr[indexPath.row];
     
+    if ([model isKindOfClass:[FSVideoModel class]]) {
+        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
+        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    }
 }
 
 @end
