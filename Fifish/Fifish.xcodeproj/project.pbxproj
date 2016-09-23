@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040995611D95173200BFEC92 /* FSMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040995601D95173200BFEC92 /* FSMediaModel.m */; };
+		040995641D95174600BFEC92 /* FSImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040995631D95174600BFEC92 /* FSImageModel.m */; };
+		040995671D95175400BFEC92 /* FSVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040995661D95175400BFEC92 /* FSVideoModel.m */; };
 		0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */; };
 		042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042365631D8401A70095007A /* FSCameraInfoModel.m */; };
 		042365701D8431110095007A /* FSImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423656F1D8431110095007A /* FSImageTools.m */; };
@@ -268,6 +271,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0409955F1D95173200BFEC92 /* FSMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaModel.h; sourceTree = "<group>"; };
+		040995601D95173200BFEC92 /* FSMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaModel.m; sourceTree = "<group>"; };
+		040995621D95174600BFEC92 /* FSImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageModel.h; sourceTree = "<group>"; };
+		040995631D95174600BFEC92 /* FSImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageModel.m; sourceTree = "<group>"; };
+		040995651D95175400BFEC92 /* FSVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoModel.h; sourceTree = "<group>"; };
+		040995661D95175400BFEC92 /* FSVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoModel.m; sourceTree = "<group>"; };
 		0411CF941D863CAE0021E055 /* FSRovMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovMediaViewController.h; sourceTree = "<group>"; };
 		0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMediaViewController.m; sourceTree = "<group>"; };
 		042365621D8401A70095007A /* FSCameraInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraInfoModel.h; sourceTree = "<group>"; };
@@ -1156,6 +1165,10 @@
 		043CB2901D6EC6950060B629 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				040995621D95174600BFEC92 /* FSImageModel.h */,
+				040995631D95174600BFEC92 /* FSImageModel.m */,
+				040995651D95175400BFEC92 /* FSVideoModel.h */,
+				040995661D95175400BFEC92 /* FSVideoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1430,6 +1443,8 @@
 		04903C471D6AFC1300E3E041 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0409955F1D95173200BFEC92 /* FSMediaModel.h */,
+				040995601D95173200BFEC92 /* FSMediaModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2681,6 +2696,7 @@
 				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
 				1F4202051D48AE0100D3E6CB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				1F0219A01D794E6E003A8A11 /* FSHeadImageModel.m in Sources */,
+				040995611D95173200BFEC92 /* FSMediaModel.m in Sources */,
 				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
 				1F7EDEEA1D4700E500ABED5D /* IQKeyboardManager.m in Sources */,
 				1F0423ED1D51F38E0071A1D6 /* MJRefreshBackGifFooter.m in Sources */,
@@ -2739,6 +2755,7 @@
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
 				1F0423E91D51F38E0071A1D6 /* MJRefreshHeader.m in Sources */,
 				1F0423EC1D51F38E0071A1D6 /* MJRefreshAutoStateFooter.m in Sources */,
+				040995641D95174600BFEC92 /* FSImageModel.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
 				1FDE28DB1D92864300566A73 /* FSTagCollectionViewCell.m in Sources */,
 				1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */,
@@ -2794,6 +2811,7 @@
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
 				1F0219BD1D797405003A8A11 /* Foundation+Log.m in Sources */,
+				040995671D95175400BFEC92 /* FSVideoModel.m in Sources */,
 				04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */,
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,
 				48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */,

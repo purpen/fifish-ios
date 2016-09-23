@@ -35,7 +35,7 @@
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSLog(@"%@",[[FSFileManager defaultManager] GetMp4FileArr]);
+    NSLog(@"%@",[[FSFileManager defaultManager] GetMp4AndPngFileArr]);
 //    for (NSString * str  in [[FSFileManager defaultManager] GetMp4FileArr]) {
 //        [[FSFileManager defaultManager] RemoveFilePath:str];
 //    }
