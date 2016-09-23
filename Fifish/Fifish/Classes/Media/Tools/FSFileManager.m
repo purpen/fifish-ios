@@ -38,7 +38,6 @@
             NSLog(@"%@",file);
             //NSLog(@"%@",filePathArray);
         }
-        
     }
     
     return filePathArray;

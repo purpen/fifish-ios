@@ -70,7 +70,7 @@
     //初始化手势
     [self setGesture];
     
-    //test
+    
     //监听拍照通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
 }
@@ -163,7 +163,13 @@
     _fishMannager.delegate = nil;
     _ViedoDecoder.isRunningDecode = NO;
     [_fishMannager stopConnectWithOSD];
+    
+    //移除监听通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //重置设备方向
     [UIApplication sharedApplication].idleTimerDisabled=NO;
+    
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
