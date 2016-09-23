@@ -14,6 +14,8 @@ static NSString * const FSPlacerholderColorKeyPath = @"_placeholderLabel.textCol
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     // 设置光标颜色和文字颜色一致
     self.tintColor = self.textColor;
     

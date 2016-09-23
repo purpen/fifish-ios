@@ -161,6 +161,7 @@
 - (void)dealloc{
     //终止连接
     _fishMannager.delegate = nil;
+    _ViedoDecoder.isRunningDecode = NO;
     [_fishMannager stopConnectWithOSD];
     [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
