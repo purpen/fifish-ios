@@ -10,7 +10,9 @@
 @class FSZuoPin;
 
 @interface FSPictuerView : UIView
+
 @property (weak, nonatomic) IBOutlet UIImageView *imagView;
 /**  */
 @property (nonatomic, strong) FSZuoPin *zuoPin;
+
 @end

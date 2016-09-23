@@ -35,8 +35,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="imagView" destination="hzB-le-Nva" id="Zxp-sj-ydz"/>
-                <outlet property="imageView" destination="hzB-le-Nva" id="mWl-uS-Y4b"/>
+                <outlet property="imageView" destination="hzB-le-Nva" id="I3Z-Vv-mDA"/>
                 <outlet property="timeLabel" destination="OZn-8n-bKO" id="d5S-xf-WKT"/>
             </connections>
             <point key="canvasLocation" x="248" y="260.5"/>

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class FSZuoPin;
+
 @interface FSVideoView : UIView
+
 /**  */
 @property (nonatomic, strong) FSZuoPin *zuoPin;
+
 @end

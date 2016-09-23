@@ -44,14 +44,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 22;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 -(FSHomePictuerView *)pictuerView{
     if (!_pictuerView) {
@@ -69,7 +65,7 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
     self.timeLabel.text = @"";
     self.addressLabel.text = @"";
@@ -81,7 +77,7 @@
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
             make.top.mas_equalTo(self.contentView.mas_top).offset(59);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-            make.height.mas_equalTo(model.cellHeight);
+            make.height.mas_equalTo(210);
         }];
         [self.contentView layoutIfNeeded];
         self.pictuerView.model = model;

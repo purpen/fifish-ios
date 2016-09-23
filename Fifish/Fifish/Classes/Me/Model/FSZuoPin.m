@@ -18,10 +18,12 @@
              @"idFeild" : @"id",
              @"userId" : @"user.id",
              @"username" : @"user.username",
-             @"avatar_url" : @"user.avatar.small",
+             @"avatar_small" : @"user.avatar.small",
+             @"avatar_large" : @"user.avatar.large",
              @"width" : @"photo.width",
              @"height" : @"photo.height",
-             @"file_small" : @"photo.file.small"
+             @"file_small" : @"photo.file.small",
+             @"file_large" : @"photo.file.large"
              };
 }
 

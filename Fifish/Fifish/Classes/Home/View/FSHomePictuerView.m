@@ -21,8 +21,8 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    NSLog(@"图片  %@",model.file_small);
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_small] placeholderImage:nil];
+    NSLog(@"图片  %@",model.file_large);
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil];
 }
 
 @end

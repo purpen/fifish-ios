@@ -41,6 +41,12 @@
 
 @implementation FSHomeViewCell
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 22;
+}
+
 -(FSHomePictuerView *)pictuerView{
     if (!_pictuerView) {
         _pictuerView = [FSHomePictuerView viewFromXib];
@@ -57,7 +63,7 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
     self.timeLabel.text = model.created_at;
     self.addressLabel.text = model.address;
@@ -69,7 +75,7 @@
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
             make.top.mas_equalTo(self.contentView.mas_top).offset(59);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-            make.height.mas_equalTo(model.cellHeight);
+            make.height.mas_equalTo(210);
         }];
         [self.contentView layoutIfNeeded];
         self.pictuerView.model = model;
