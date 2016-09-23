@@ -21,12 +21,6 @@
 /**  */
 @property(nonatomic,copy) NSString *comment_count;
 /**  */
-@property(nonatomic,copy) NSString *fileurl;
-/**  */
-@property(nonatomic,copy) NSString *width;
-/**  */
-@property(nonatomic,copy) NSString *height;
-/**  */
 @property(nonatomic,copy) NSString *view_count;
 /**  */
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -38,5 +32,15 @@
 @property(nonatomic,copy) NSString *username;
 /**  */
 @property (nonatomic, strong) NSArray *tags;
+/**  */
+@property (nonatomic, assign) NSInteger is_love;
+/**  */
+@property(nonatomic,copy) NSString *created_at;
+/**  */
+@property(nonatomic,copy) NSString *address;
+/**  */
+@property(nonatomic,copy) NSString *avatar_url;
+/**  */
+@property(nonatomic,copy) NSString *file_small;
 
 @end

@@ -14,6 +14,6 @@
 
 /**  */
 @property (nonatomic, strong) FSZuoPin *model;
-
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 
 @end

@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *commendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
@@ -57,10 +57,10 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
-    self.timeLabel.text = @"";
-    self.addressLabel.text = @"";
+    self.timeLabel.text = model.created_at;
+    self.addressLabel.text = model.address;
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         [self.videoView removeFromSuperview];
@@ -93,6 +93,12 @@
         tagLabel.x = x;
         tagLabel.centerY = self.tagTag.centerY;
         [self.contentView addSubview:tagLabel];
+    }
+    
+    if (model.is_love == 0) {
+        self.likeBtn.selected = NO;
+    } else if (model.is_love == 1) {
+        self.likeBtn.selected = YES;
     }
     
     // 文字的最大尺寸

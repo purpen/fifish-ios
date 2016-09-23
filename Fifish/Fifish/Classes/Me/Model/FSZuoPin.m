@@ -16,19 +16,14 @@
 {
     return @{
              @"idFeild" : @"id",
-             @"fileurl" : @"photo.fileurl",
+             @"userId" : @"user.id",
+             @"username" : @"user.username",
+             @"avatar_url" : @"user.avatar.small",
              @"width" : @"photo.width",
              @"height" : @"photo.height",
-             @"userId" : @"user.id",
-             @"username" : @"user.username"
+             @"file_small" : @"photo.file.small"
              };
 }
 
--(CGFloat)cellHeight{
-    
-    _cellHeight = [self.height floatValue] / ([self.width floatValue] / [UIScreen mainScreen].bounds.size.width);
-    return _cellHeight;
-    
-}
 
 @end
