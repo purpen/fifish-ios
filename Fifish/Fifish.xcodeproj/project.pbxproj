@@ -217,6 +217,18 @@
 		1FDE28C61D92241D00566A73 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28B91D92241D00566A73 /* NSObject+MJProperty.m */; };
 		1FDE28C71D92241D00566A73 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28BB1D92241D00566A73 /* NSString+MJExtension.m */; };
 		1FDE28C81D92241D00566A73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28BC1D92241D00566A73 /* README.md */; };
+		1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28CC1D92739700566A73 /* FSTageModel.m */; };
+		1FDE28D01D927DCB00566A73 /* FSFoundHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28CF1D927DCB00566A73 /* FSFoundHeaderView.m */; };
+		1FDE28D21D927DE000566A73 /* FSFoundHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28D11D927DE000566A73 /* FSFoundHeaderView.xib */; };
+		1FDE28D61D92823E00566A73 /* FSTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28D41D92823E00566A73 /* FSTagTableViewCell.m */; };
+		1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28D51D92823E00566A73 /* FSTagTableViewCell.xib */; };
+		1FDE28DB1D92864300566A73 /* FSTagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28D91D92864300566A73 /* FSTagCollectionViewCell.m */; };
+		1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28DA1D92864300566A73 /* FSTagCollectionViewCell.xib */; };
+		1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28DE1D928D9600566A73 /* FSUserTableViewCell.m */; };
+		1FDE28E31D928F0600566A73 /* FSUserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */; };
+		1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */; };
+		1FDE28E81D93827D00566A73 /* FSFoundStuffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */; };
+		1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */; };
 		1FE087611D7D46D5007790E3 /* FSFindFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */; };
 		1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087641D7D4B8E007790E3 /* InvitationModel.m */; };
 		1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087671D7D4D04007790E3 /* FindeFriendTableViewCell.m */; };
@@ -749,6 +761,25 @@
 		1FDE28BA1D92241D00566A73 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		1FDE28BB1D92241D00566A73 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
 		1FDE28BC1D92241D00566A73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1FDE28CB1D92739700566A73 /* FSTageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTageModel.h; sourceTree = "<group>"; };
+		1FDE28CC1D92739700566A73 /* FSTageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTageModel.m; sourceTree = "<group>"; };
+		1FDE28CE1D927DCB00566A73 /* FSFoundHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundHeaderView.h; sourceTree = "<group>"; };
+		1FDE28CF1D927DCB00566A73 /* FSFoundHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundHeaderView.m; sourceTree = "<group>"; };
+		1FDE28D11D927DE000566A73 /* FSFoundHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFoundHeaderView.xib; sourceTree = "<group>"; };
+		1FDE28D31D92823E00566A73 /* FSTagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagTableViewCell.h; sourceTree = "<group>"; };
+		1FDE28D41D92823E00566A73 /* FSTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagTableViewCell.m; sourceTree = "<group>"; };
+		1FDE28D51D92823E00566A73 /* FSTagTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagTableViewCell.xib; sourceTree = "<group>"; };
+		1FDE28D81D92864300566A73 /* FSTagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagCollectionViewCell.h; sourceTree = "<group>"; };
+		1FDE28D91D92864300566A73 /* FSTagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagCollectionViewCell.m; sourceTree = "<group>"; };
+		1FDE28DA1D92864300566A73 /* FSTagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FDE28DD1D928D9600566A73 /* FSUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserTableViewCell.h; sourceTree = "<group>"; };
+		1FDE28DE1D928D9600566A73 /* FSUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserTableViewCell.m; sourceTree = "<group>"; };
+		1FDE28E01D928F0600566A73 /* FSUserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserCollectionViewCell.h; sourceTree = "<group>"; };
+		1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserCollectionViewCell.m; sourceTree = "<group>"; };
+		1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSUserCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FDE28E51D93827D00566A73 /* FSFoundStuffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundStuffTableViewCell.h; sourceTree = "<group>"; };
+		1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundStuffTableViewCell.m; sourceTree = "<group>"; };
+		1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSFoundStuffTableViewCell.xib; sourceTree = "<group>"; };
 		1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFindFriendViewController.h; sourceTree = "<group>"; };
 		1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFindFriendViewController.m; sourceTree = "<group>"; };
 		1FE087631D7D4B8E007790E3 /* InvitationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationModel.h; sourceTree = "<group>"; };
@@ -1935,9 +1966,9 @@
 		1F7EDE711D45EF6900ABED5D /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				1FDE28C91D92738500566A73 /* Model */,
+				1FDE28CA1D92738500566A73 /* View */,
 				1F7EDE721D45EF6900ABED5D /* Controller */,
-				1F7EDE761D45EF6900ABED5D /* Model */,
-				1F7EDE771D45EF6900ABED5D /* View */,
 			);
 			path = Found;
 			sourceTree = "<group>";
@@ -1950,20 +1981,6 @@
 				1F7EDE751D45EF6900ABED5D /* FSFoundViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		1F7EDE761D45EF6900ABED5D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1F7EDE771D45EF6900ABED5D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1F7EDE781D45EF6900ABED5D /* Home */ = {
@@ -2347,6 +2364,39 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		1FDE28C91D92738500566A73 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE28CB1D92739700566A73 /* FSTageModel.h */,
+				1FDE28CC1D92739700566A73 /* FSTageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FDE28CA1D92738500566A73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE28CE1D927DCB00566A73 /* FSFoundHeaderView.h */,
+				1FDE28CF1D927DCB00566A73 /* FSFoundHeaderView.m */,
+				1FDE28D11D927DE000566A73 /* FSFoundHeaderView.xib */,
+				1FDE28D31D92823E00566A73 /* FSTagTableViewCell.h */,
+				1FDE28D41D92823E00566A73 /* FSTagTableViewCell.m */,
+				1FDE28D51D92823E00566A73 /* FSTagTableViewCell.xib */,
+				1FDE28D81D92864300566A73 /* FSTagCollectionViewCell.h */,
+				1FDE28D91D92864300566A73 /* FSTagCollectionViewCell.m */,
+				1FDE28DA1D92864300566A73 /* FSTagCollectionViewCell.xib */,
+				1FDE28DD1D928D9600566A73 /* FSUserTableViewCell.h */,
+				1FDE28DE1D928D9600566A73 /* FSUserTableViewCell.m */,
+				1FDE28E01D928F0600566A73 /* FSUserCollectionViewCell.h */,
+				1FDE28E11D928F0600566A73 /* FSUserCollectionViewCell.m */,
+				1FDE28E21D928F0600566A73 /* FSUserCollectionViewCell.xib */,
+				1FDE28E51D93827D00566A73 /* FSFoundStuffTableViewCell.h */,
+				1FDE28E61D93827D00566A73 /* FSFoundStuffTableViewCell.m */,
+				1FDE28E71D93827D00566A73 /* FSFoundStuffTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1FE087911D825649007790E3 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2499,6 +2549,7 @@
 				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
+				1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */,
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
@@ -2511,9 +2562,11 @@
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
+				1FDE28D21D927DE000566A73 /* FSFoundHeaderView.xib in Resources */,
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
+				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
@@ -2524,6 +2577,8 @@
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1F0423F31D51F38E0071A1D6 /* MJRefresh.bundle in Resources */,
+				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
+				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
 				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
@@ -2611,6 +2666,7 @@
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
+				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
 				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
@@ -2656,7 +2712,9 @@
 				042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */,
 				1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */,
 				1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */,
+				1FDE28E81D93827D00566A73 /* FSFoundStuffTableViewCell.m in Sources */,
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
+				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
@@ -2682,6 +2740,7 @@
 				1F0423E91D51F38E0071A1D6 /* MJRefreshHeader.m in Sources */,
 				1F0423EC1D51F38E0071A1D6 /* MJRefreshAutoStateFooter.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
+				1FDE28DB1D92864300566A73 /* FSTagCollectionViewCell.m in Sources */,
 				1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
@@ -2710,9 +2769,11 @@
 				1F0423F61D51F38E0071A1D6 /* UIScrollView+MJExtension.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
+				1FDE28E31D928F0600566A73 /* FSUserCollectionViewCell.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
+				1FDE28D01D927DCB00566A73 /* FSFoundHeaderView.m in Sources */,
 				0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */,
 				1FE087971D825649007790E3 /* FSBaseView.m in Sources */,
 				1F0423F11D51F38E0071A1D6 /* MJRefreshNormalHeader.m in Sources */,
@@ -2727,6 +2788,7 @@
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
 				0476A8C91D8253F40009D10E /* FSBaseModel.m in Sources */,
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
+				1FDE28D61D92823E00566A73 /* FSTagTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
@@ -2930,6 +2992,7 @@
 			baseConfigurationReference = B5E534B92A3783A5447B9174 /* Pods-Fifish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -2960,6 +3023,7 @@
 			baseConfigurationReference = 4C71A91C545D23BF3CD5D83A /* Pods-Fifish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;

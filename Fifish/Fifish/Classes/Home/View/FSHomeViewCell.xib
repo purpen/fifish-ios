@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="370" height="381"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="370" height="381"/>
+                <frame key="frameInset" width="370" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8q6-L9-6SG" userLabel="头像">
@@ -45,12 +45,6 @@
                                 <color key="textColor" red="0.5607843137254902" green="0.61568627450980395" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="摄影" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsB-3I-aP0" userLabel="标签">
-                                <frame key="frameInset" minX="26" minY="10" width="26" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.56078431370000004" green="0.61568627450000002" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zop-xS-Awu" userLabel="标签线">
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -61,8 +55,6 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zop-xS-Awu" firstAttribute="leading" secondItem="6go-S4-nWb" secondAttribute="leading" id="0fl-pS-6gx"/>
-                            <constraint firstItem="JsB-3I-aP0" firstAttribute="centerY" secondItem="6go-S4-nWb" secondAttribute="centerY" id="8KH-R5-1IC"/>
-                            <constraint firstItem="JsB-3I-aP0" firstAttribute="leading" secondItem="TtN-pd-vfC" secondAttribute="trailing" constant="7" id="AfV-qg-12Z"/>
                             <constraint firstItem="TtN-pd-vfC" firstAttribute="centerY" secondItem="6go-S4-nWb" secondAttribute="centerY" id="GRq-6u-zh1"/>
                             <constraint firstAttribute="height" constant="44" id="PR8-Th-oXH"/>
                             <constraint firstAttribute="trailing" secondItem="zop-xS-Awu" secondAttribute="trailing" id="RvI-md-sBX"/>
@@ -168,12 +160,12 @@
                 <outlet property="commendBtn" destination="Y0y-YR-RJZ" id="Ce8-ZA-PJc"/>
                 <outlet property="contentLabel" destination="UIH-Pn-eWK" id="Ge6-Qu-qCA"/>
                 <outlet property="headImageView" destination="8q6-L9-6SG" id="k2B-CY-0GV"/>
-                <outlet property="labelLabel" destination="JsB-3I-aP0" id="kk7-0k-Tja"/>
                 <outlet property="likeBtn" destination="DgV-e2-aFF" id="qAd-Bw-3w6"/>
                 <outlet property="moreBtn" destination="BWO-PK-qya" id="gOt-BH-ew9"/>
                 <outlet property="nameLabel" destination="WVY-gK-Fy5" id="tY6-cb-jFa"/>
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
                 <outlet property="shareBtn" destination="6KS-4W-Pb0" id="ec6-4J-RjQ"/>
+                <outlet property="tagTag" destination="TtN-pd-vfC" id="hTz-cb-3Yg"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
             </connections>
             <point key="canvasLocation" x="312" y="425.5"/>

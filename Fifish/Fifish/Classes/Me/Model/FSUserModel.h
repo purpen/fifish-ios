@@ -37,6 +37,10 @@
 @property(nonatomic,copy) NSString *follow_count;
 /**  */
 @property(nonatomic,copy) NSString *like_count;
+/**  */
+@property(nonatomic,copy) NSString *small;
+/**  */
+@property(nonatomic,copy) NSString *large;
 
 - (instancetype) initWithDictionary : (NSDictionary *) dictionary;
 

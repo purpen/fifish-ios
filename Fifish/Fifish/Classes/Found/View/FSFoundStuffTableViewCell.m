@@ -1,12 +1,12 @@
 //
-//  FSHomeViewCell.m
+//  FSFoundStuffTableViewCell.m
 //  Fifish
 //
-//  Created by THN-Dong on 16/8/4.
+//  Created by THN-Dong on 16/9/22.
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import "FSHomeViewCell.h"
+#import "FSFoundStuffTableViewCell.h"
 #import "FSZuoPin.h"
 #import "FSHomePictuerView.h"
 #import "UIView+FSExtension.h"
@@ -14,13 +14,13 @@
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 
-@interface FSHomeViewCell ()
+@interface FSFoundStuffTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagTag;
+@property (weak, nonatomic) IBOutlet UILabel *labelLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
@@ -39,7 +39,19 @@
 
 @end
 
-@implementation FSHomeViewCell
+
+@implementation FSFoundStuffTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
 
 -(FSHomePictuerView *)pictuerView{
     if (!_pictuerView) {
@@ -77,22 +89,6 @@
         [self.pictuerView removeFromSuperview];
         [self.contentView addSubview:self.videoView];
         self.videoView.model = model;
-    }
-    
-    for (int i = 0; i < model.tags.count; i ++) {
-        NSString *str = model.tags[i];
-        UILabel *tagLabel = [[UILabel alloc] init];
-        tagLabel.text = str;
-        tagLabel.font = [UIFont systemFontOfSize:13];
-        tagLabel.textColor = [UIColor colorWithHexString:@"#8f9dad"];
-        // 文字的最大尺寸
-        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-        // 计算文字的高度
-        CGFloat textW = [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.width;
-        CGFloat x = 15 + textW + 5;
-        tagLabel.x = x;
-        tagLabel.centerY = self.tagTag.centerY;
-        [self.contentView addSubview:tagLabel];
     }
     
     // 文字的最大尺寸

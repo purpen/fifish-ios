@@ -30,7 +30,25 @@
     
     [self setKeyBoard];
     [self windowShow];
+    
+    [[UITabBar appearance] setTranslucent:YES];
+    [[UITabBar appearance] setBackgroundColor:[UIColor clearColor]];
+    [[UITabBar appearance] setShadowImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
+    [[UITabBar appearance] setBackgroundImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
+    
     return YES;
+}
+
+-(UIImage*) createImageWithColor:(UIColor*) color
+{
+    CGRect rect=CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 -(void)setKeyBoard{

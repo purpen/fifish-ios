@@ -11,6 +11,14 @@
 
 @implementation FSUserModel
 
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"userId" : @"id",
+             @"small" : @"avatar.small",
+             @"large" : @"avatar.large"
+             };
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if(![dictionary[@"account"] isKindOfClass:[NSNull class]]){
