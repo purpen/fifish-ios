@@ -7,7 +7,6 @@
 //
 
 #import "JKDBModel.h"
-#import "FSHeadImageModel.h"
 
 @interface FSUserModel : JKDBModel
 
@@ -23,8 +22,6 @@
 @property(nonatomic,copy) NSString *job;
 /**  */
 @property(nonatomic,copy) NSString *zone;
-/**  */
-@property (nonatomic, strong) FSHeadImageModel *avatar;
 /**  */
 @property(nonatomic,copy) NSString *imageUrl;
 /**  */

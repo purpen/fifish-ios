@@ -119,10 +119,9 @@
                                                                                         @"password" : self.pwdTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"用户登录  %@",result);
-        FSUserModel *model = [[FSUserModel alloc] init];
+        FSUserModel *model = [[FSUserModel findAll] lastObject];
         model.isLogin = YES;
-        [model save];
+        [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
         BOOL isNotFirst = [defaults objectForKey:@"isNotFirst"];

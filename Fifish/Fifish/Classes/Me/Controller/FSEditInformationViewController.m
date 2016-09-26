@@ -10,8 +10,12 @@
 #import "UIImage+Helper.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
+#import "FSUserModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface FSEditInformationViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
 @end
 
@@ -21,6 +25,16 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"个人信息";
+    [self headImage];
+}
+
+-(void)headImage{
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 15;
+    self.headImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.headImageView.layer.borderWidth = 1;
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
 }
 
 - (IBAction)headClick:(UIButton *)sender {
@@ -57,13 +71,28 @@
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
     NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
     
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
+    [iconData writeToFile:fullPath atomically:NO];
+    
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/qiniuToken" requestDictionary:@{
-                                                                                           @"assetable_type" : @"User"
+                                                                                           @"assetable_type" : @"Stuff"
                                                                                            } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
-
+        
+        NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Docments"] stringByAppendingPathComponent:@"stuff.png"];
+        UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+        
+        FBRequest *stufRequest = [FBAPI requestWithUrlString:upload_url
+                                           requestDictionary:nil
+                                                    delegate:self
+                                             timeoutInterval:nil
+                                                        flag:nil
+                                               requestMethod:POST_METHOD
+                                                 requestType:HTTPRequestType
+                                                responseType:JSONResponseType]
+        
         
     } failure:^(FBRequest *request, NSError *error) {
         

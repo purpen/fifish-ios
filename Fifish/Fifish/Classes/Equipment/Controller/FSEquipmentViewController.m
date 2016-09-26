@@ -31,7 +31,7 @@
 
 -(NSArray *)pictuerAry{
     if (!_pictuerAry) {
-        _pictuerAry = [NSArray arrayWithObjects:@"",@"",@"",@"", nil];
+        _pictuerAry = [NSArray arrayWithObjects:@"eq_eqImage", nil];
     }
     return _pictuerAry;
 }

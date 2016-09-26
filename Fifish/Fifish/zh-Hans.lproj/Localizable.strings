@@ -12,6 +12,20 @@
 "me" = "我";
 "equipment" = "设备";
 
+"findFriend" = "发现好友";
+"Invite WeChat friends" = "邀请微信好友";
+"Share with friends" = "分享给好友";
+"Connect the weibo" = "连接微博";
+"Connect the address book" = "连接通讯录";
+"Focus on what you know" = "关注你认识的好友";
+
+"replaceHeadPortrait" = "更换头像";
+"takingPictures" = "拍照";
+"fromAlbumToChoose" = "从相册选择";
+"cancel" = "取消";
+
+
+
 //camera设置
 "通用设置" = "通用设置";
 

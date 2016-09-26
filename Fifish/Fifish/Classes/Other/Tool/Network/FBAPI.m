@@ -200,9 +200,8 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *token=[defaults objectForKey:@"token"];
     params[@"token"] = token;
-    NSLog(@"字典 %@",params);
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
-                     requestDictionary:params
+                     requestDictionary:requestDictionary
                               delegate:delegate
                        timeoutInterval:nil
                                   flag:nil

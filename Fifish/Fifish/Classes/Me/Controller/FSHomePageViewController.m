@@ -48,8 +48,6 @@ typedef enum {
 /** 类型 */
 @property (nonatomic, assign) FSType type;
 /**  */
-@property (nonatomic, strong) FSUserModel *userModel;
-/**  */
 @property(nonatomic,assign) NSInteger current_page;
 /**  */
 @property(nonatomic,assign) NSInteger total_rows;
@@ -229,7 +227,8 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 关注网络请求
 -(void)fucosRequset{
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userModel.userId] requestDictionary:nil delegate:self];
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",userModel.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"关注列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
@@ -251,7 +250,8 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 粉丝网络请求
 -(void)fansRequest{
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userModel.userId] requestDictionary:nil delegate:self];
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"粉丝列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
@@ -276,13 +276,12 @@ static NSString * const fucosCellId = @"fucos";
     FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
         
-        NSLog(@"个人信息 %@",result);
+        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
         NSDictionary *dict = result[@"data"];
-        self.userModel = [[FSUserModel findAll] lastObject];
-        self.userModel = [FSUserModel mj_objectWithKeyValues:dict];
-        [self.userModel update];
+        userModel = [FSUserModel mj_objectWithKeyValues:dict];
+        userModel.isLogin = YES;
+        [userModel saveOrUpdate];
         [self.contentTableView reloadData];
-        
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
@@ -322,7 +321,6 @@ static NSString * const fucosCellId = @"fucos";
                                                                                 @"per_page" : @(10)
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"作品  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -467,7 +465,9 @@ static NSString * const fucosCellId = @"fucos";
         if (cell == nil) {
             cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
-        cell.model = self.userModel;
+        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+        NSLog(@"用户的信息 %@",userModel);
+        cell.model = userModel;
         switch (self.type) {
             case FSTypeZuoPin:
                 cell.zuoPinShu.textColor = DEFAULT_COLOR;
@@ -541,11 +541,12 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 点击关注按钮
 -(void)fucosClick : (UIButton *) sender {
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
     if (sender.selected) {
         
     } else {
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:@{
-                                                                                                                                                                                    @"id" : self.userModel.userId
+                                                                                                                                                                                    @"id" : userModel.userId
                                                                                                                                                                                     } delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;

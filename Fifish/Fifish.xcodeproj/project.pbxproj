@@ -62,7 +62,6 @@
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
 		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
 		1AA91B7C0B764D4165F33738 /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 267CF4431FD8067897EE3A0B /* libPods-Fifish.a */; };
-		1F0219A01D794E6E003A8A11 /* FSHeadImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */; };
 		1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199F1D794E6E003A8A11 /* FSUserModel.m */; };
 		1F0219A71D795002003A8A11 /* JKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219A41D795002003A8A11 /* JKDBHelper.m */; };
 		1F0219A81D795002003A8A11 /* JKDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219A61D795002003A8A11 /* JKDBModel.m */; };
@@ -471,8 +470,6 @@
 		04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLiveSettingsViewController.m; sourceTree = "<group>"; };
 		04F20EEA1D7D6A3A009790EE /* FSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraManager.h; sourceTree = "<group>"; };
 		04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraManager.m; sourceTree = "<group>"; };
-		1F02199C1D794E6E003A8A11 /* FSHeadImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHeadImageModel.h; sourceTree = "<group>"; };
-		1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHeadImageModel.m; sourceTree = "<group>"; };
 		1F02199E1D794E6E003A8A11 /* FSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserModel.h; sourceTree = "<group>"; };
 		1F02199F1D794E6E003A8A11 /* FSUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserModel.m; sourceTree = "<group>"; };
 		1F0219A31D795002003A8A11 /* JKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBHelper.h; sourceTree = "<group>"; };
@@ -2003,8 +2000,6 @@
 				48911F901D9177590042B96F /* FSListUserModel.m */,
 				1FE087631D7D4B8E007790E3 /* InvitationModel.h */,
 				1FE087641D7D4B8E007790E3 /* InvitationModel.m */,
-				1F02199C1D794E6E003A8A11 /* FSHeadImageModel.h */,
-				1F02199D1D794E6E003A8A11 /* FSHeadImageModel.m */,
 				1F02199E1D794E6E003A8A11 /* FSUserModel.h */,
 				1F02199F1D794E6E003A8A11 /* FSUserModel.m */,
 				1F04241B1D51F3BA0071A1D6 /* FSZuoPin.h */,
@@ -2708,7 +2703,6 @@
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
 				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
 				1F4202051D48AE0100D3E6CB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				1F0219A01D794E6E003A8A11 /* FSHeadImageModel.m in Sources */,
 				040995611D95173200BFEC92 /* FSMediaModel.m in Sources */,
 				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
 				1F7EDEEA1D4700E500ABED5D /* IQKeyboardManager.m in Sources */,

@@ -10,7 +10,6 @@
 #import "FSConst.h"
 #import "UIImageView+WebCache.h"
 #import "FSUserModel.h"
-#import "FSHeadImageModel.h"
 
 @implementation FSMeHeadTableViewCell
 
@@ -36,7 +35,7 @@
 -(void)setModel:(FSUserModel *)model{
     _model = model;
     [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.nickName.text = model.username;
     self.addressLabel.text = model.zone;
     self.signatureLabel.text = model.summary;

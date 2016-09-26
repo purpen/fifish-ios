@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIButton *homePageBtn;
 /**  */
-@property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
@@ -44,16 +43,18 @@
         
         NSLog(@"个人信息 %@",result);
         NSDictionary *dict = result[@"data"];
-        self.userModel = [FSUserModel mj_objectWithKeyValues:dict];
-        [self.userModel update];
+        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+        userModel = [FSUserModel mj_objectWithKeyValues:dict];
+        userModel.isLogin = YES;
+        [userModel saveOrUpdate];
         
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
-        self.nameLabel.text = self.userModel.username;
-        self.addressLabel.text = self.userModel.zone;
-        self.summaryLabel.text = self.userModel.summary;
-        self.zuoPinNumLabel.text = self.userModel.stuff_count;
-        self.fansNumLabel.text = self.userModel.fans_count;
-        self.focusNumLabel.text = self.userModel.follow_count;
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+        self.nameLabel.text = userModel.username;
+        self.addressLabel.text = userModel.zone;
+        self.summaryLabel.text = userModel.summary;
+        self.zuoPinNumLabel.text = userModel.stuff_count;
+        self.fansNumLabel.text = userModel.fans_count;
+        self.focusNumLabel.text = userModel.follow_count;
         
     } failure:^(FBRequest *request, NSError *error) {
         
