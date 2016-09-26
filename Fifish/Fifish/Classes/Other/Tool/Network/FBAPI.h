@@ -33,9 +33,9 @@
  @param uploadUrl     上传地址
  @param token         token
  @param fileUrl       文件地址
- @param progressblock 上传进度
- @param success       成功
- @param failure       失败
+ @param progressblock 上传进度（上传过程中会循环调用这个block，progress值是进度,值范围：0-1）
+ @param success       成功block
+ @param failure       失败block
  */
 + (void)uploadFileWithURL:(NSString *)uploadUrl
                 WithToken:(NSString *)token
