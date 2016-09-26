@@ -75,23 +75,22 @@
     [iconData writeToFile:fullPath atomically:NO];
     
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/qiniuToken" requestDictionary:@{
-                                                                                           @"assetable_type" : @"Stuff"
+                                                                                           @"assetable_type" : @"User"
                                                                                            } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
         
-        NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Docments"] stringByAppendingPathComponent:@"stuff.png"];
-        UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-        
-        FBRequest *stufRequest = [FBAPI requestWithUrlString:upload_url
-                                           requestDictionary:nil
-                                                    delegate:self
-                                             timeoutInterval:nil
-                                                        flag:nil
-                                               requestMethod:POST_METHOD
-                                                 requestType:HTTPRequestType
-                                                responseType:JSONResponseType]
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+            
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            userModel.large = responseObject[@"file"][@"large"];
+            [userModel saveOrUpdate];
+            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
         
         
     } failure:^(FBRequest *request, NSError *error) {

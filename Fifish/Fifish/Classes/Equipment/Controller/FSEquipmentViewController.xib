@@ -23,6 +23,9 @@
                     <state key="normal" title="连接帮助">
                         <color key="titleColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="contenHelp:" destination="-1" eventType="touchUpInside" id="X61-PG-NxQ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dS-kW-ewQ">
                     <constraints>

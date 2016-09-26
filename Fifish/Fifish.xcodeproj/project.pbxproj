@@ -248,6 +248,8 @@
 		1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */; };
 		1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */; };
 		1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */; };
+		1FF783A81D9923AF00618245 /* FSContenHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */; };
+		1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */; };
 		48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */; };
 		48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */; };
 		48911F911D9177590042B96F /* FSListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F901D9177590042B96F /* FSListUserModel.m */; };
@@ -815,6 +817,9 @@
 		1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEditInformationViewController.h; sourceTree = "<group>"; };
 		1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEditInformationViewController.m; sourceTree = "<group>"; };
 		1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEditInformationViewController.xib; sourceTree = "<group>"; };
+		1FF783A51D9923AF00618245 /* FSContenHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSContenHelpViewController.h; sourceTree = "<group>"; };
+		1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSContenHelpViewController.m; sourceTree = "<group>"; };
+		1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSContenHelpViewController.xib; sourceTree = "<group>"; };
 		267CF4431FD8067897EE3A0B /* libPods-Fifish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fifish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48911F8A1D9177220042B96F /* FSListUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserTableViewCell.h; sourceTree = "<group>"; };
 		48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserTableViewCell.m; sourceTree = "<group>"; };
@@ -1859,9 +1864,9 @@
 		1F7EDE6A1D45EF6900ABED5D /* Equipment */ = {
 			isa = PBXGroup;
 			children = (
+				1FF783AA1D9923ED00618245 /* Model */,
+				1FF783AB1D9923ED00618245 /* View */,
 				1F7EDE6B1D45EF6900ABED5D /* Controller */,
-				1F7EDE6F1D45EF6900ABED5D /* Model */,
-				1F7EDE701D45EF6900ABED5D /* View */,
 			);
 			path = Equipment;
 			sourceTree = "<group>";
@@ -1872,22 +1877,11 @@
 				1F7EDE6C1D45EF6900ABED5D /* FSEquipmentViewController.h */,
 				1F7EDE6D1D45EF6900ABED5D /* FSEquipmentViewController.m */,
 				1F7EDE6E1D45EF6900ABED5D /* FSEquipmentViewController.xib */,
+				1FF783A51D9923AF00618245 /* FSContenHelpViewController.h */,
+				1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */,
+				1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		1F7EDE6F1D45EF6900ABED5D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1F7EDE701D45EF6900ABED5D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1F7EDE711D45EF6900ABED5D /* Found */ = {
@@ -2429,6 +2423,20 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		1FF783AA1D9923ED00618245 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FF783AB1D9923ED00618245 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2572,6 +2580,7 @@
 				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
+				1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */,
 				1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */,
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
@@ -2821,6 +2830,7 @@
 				040995671D95175400BFEC92 /* FSVideoModel.m in Sources */,
 				04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */,
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,
+				1FF783A81D9923AF00618245 /* FSContenHelpViewController.m in Sources */,
 				48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F0219B81D79500A003A8A11 /* FMDatabaseQueue.m in Sources */,

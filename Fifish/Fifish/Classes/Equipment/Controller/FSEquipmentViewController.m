@@ -12,11 +12,10 @@
 #import "FSConst.h"
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
+#import "FSContenHelpViewController.h"
 
 @interface FSEquipmentViewController ()<UIScrollViewDelegate>
-{
-    UIImageView *_showImageView;
-}
+
 @property (weak, nonatomic) IBOutlet UIButton *connectionBtn;
 /**  */
 @property (nonatomic, strong) UIScrollView *contentScrollview;
@@ -63,6 +62,17 @@
         make.top.mas_equalTo(self.contentScrollview.mas_bottom).offset(10);
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
+    if (self.pictuerAry.count == 1) {
+        self.pagrControl.hidden = YES;
+    } else if (self.pictuerAry.count > 1) {
+        self.pagrControl.hidden = NO;
+    }
+}
+
+#pragma mark - 连接帮助
+- (IBAction)contenHelp:(UIButton *)sender {
+    FSContenHelpViewController *vc = [[FSContenHelpViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(UIPageControl *)pagrControl{
@@ -78,16 +88,17 @@
 
 -(void)setImage{
     for (int i = 0; i < self.pictuerAry.count; i++) {
-        _showImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.pictuerAry[i]]];
-        _showImageView.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, self.contentScrollview.height);
-        [_contentScrollview addSubview:_showImageView];
+        UIImageView  *showImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.pictuerAry[i]]];
+        showImageView.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, 368.5);
+        showImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_contentScrollview addSubview:showImageView];
     }
 }
 
 -(UIScrollView *)contentScrollview{
     if (!_contentScrollview) {
         _contentScrollview = [[UIScrollView alloc] init];
-        _contentScrollview.backgroundColor = [UIColor yellowColor];
+        _contentScrollview.backgroundColor = [UIColor clearColor];
         _contentScrollview.delegate = self;
         _contentScrollview.contentSize = CGSizeMake(SCREEN_WIDTH * self.pictuerAry.count, 0);
         _contentScrollview.pagingEnabled = YES;
@@ -96,6 +107,7 @@
         _contentScrollview.alwaysBounceVertical = NO;
         _contentScrollview.alwaysBounceHorizontal = NO;
         _contentScrollview.bounces = NO;
+
     }
     return _contentScrollview;
 }
@@ -108,6 +120,8 @@
     int index = fabs(scrollView.contentOffset.x/SCREEN_WIDTH);
     _pagrControl.currentPage = index;
 }
+
+
 - (IBAction)contentROV:(UIButton *)sender {
     VideoLiveController * videoLiveVC = [[VideoLiveController alloc] init];
     [self presentViewController:videoLiveVC animated:YES completion:^{
