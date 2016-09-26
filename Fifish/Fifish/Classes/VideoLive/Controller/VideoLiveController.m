@@ -242,8 +242,8 @@
 - (FifishH264Decoder *)ViedoDecoder{
     if (!_ViedoDecoder) {
         //rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp
-        //_ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
-        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
+        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
+//        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
         
         _ViedoDecoder.UpdataDelegate = self;
         

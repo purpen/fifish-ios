@@ -26,4 +26,22 @@
                   requestDictionary:(NSDictionary *)requestDictionary
                            delegate:(id)delegate;
 
+
+/**
+ 上传文件
+
+ @param uploadUrl     上传地址
+ @param token         token
+ @param fileUrl       文件地址
+ @param progressblock 上传进度
+ @param success       成功
+ @param failure       失败
+ */
++ (void)uploadFileWithURL:(NSString *)uploadUrl
+                WithToken:(NSString *)token
+                WithFileUrl:(NSURL *)fileUrl
+                WihtProgressBlock:(void (^)(CGFloat progress))progressblock
+                WithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                WithFailureBlock:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 @end
