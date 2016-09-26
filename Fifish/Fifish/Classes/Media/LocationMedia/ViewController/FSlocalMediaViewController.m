@@ -7,7 +7,7 @@
 //
 
 #import <Photos/Photos.h>
- #import <MediaPlayer/MediaPlayer.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 
 #import "Masonry.h"
@@ -21,6 +21,7 @@
 //资源管理器
 #import "FSFileManager.h"
 
+#import "FBAPI.h"
 CGFloat const Cellspecace = 1;
 
 
@@ -112,9 +113,18 @@ CGFloat const Cellspecace = 1;
     FSImageModel * model = self.sourceArr[indexPath.row];
     
     if ([model isKindOfClass:[FSVideoModel class]]) {
-        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
-        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+//        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
+//        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+        [FBAPI uploadFileWithURL:@"http://up.qiniu.com" WithToken:@"lg_vCeWVeSr6uH-C1MStxcubFGDRsmnu29jkWq0J:zCnsXaIt1Z7p9vdId2pWx1u3T9Y=:eyJzYXZlS2V5IjoicGhvdG9cLzE2MDkyNlwvMDFlZGVhNTI1ZDg0NTU1OTZmMzE4OTNmN2NiY2JkZmUiLCJjYWxsYmFja1VybCI6Imh0dHA6XC9cL2Zpc2gudGFpaHVvbmlhby5jb21cL2FwaVwvdXBsb2FkXC9xaW5pdWJhY2siLCJjYWxsYmFja0JvZHkiOiJ7XCJmaWxlbmFtZVwiOlwiJChmbmFtZSlcIiwgXCJmaWxlcGF0aFwiOlwiJChrZXkpXCIsIFwic2l6ZVwiOlwiJChmc2l6ZSlcIiwgXCJ3aWR0aFwiOlwiJChpbWFnZUluZm8ud2lkdGgpXCIsIFwiaGVpZ2h0XCI6XCIkKGltYWdlSW5mby5oZWlnaHQpXCIsXCJtaW1lXCI6XCIkKG1pbWVUeXBlKVwiLFwiaGFzaFwiOlwiJChldGFnKVwiLFwiZGVzY1wiOlwiJCh4OmRlc2MpXCIsXCJhc3NldGFibGVfaWRcIjowLFwiYXNzZXRhYmxlX3R5cGVcIjpcIlN0dWZmXCIsIFwidXNlcl9pZFwiOjF9IiwicGVyc2lzdGVudE9wcyI6ImltYWdlVmlldzJcLzFcL3dcLzQ4MFwvaFwvMjcwXC9pbnRlcmxhY2VcLzFcL3FcLzkwfGltYWdlVmlldzJcLzFcL3dcLzEyMFwvaFwvNjdcL2ludGVybGFjZVwvMVwvcVwvMTAwIiwic2NvcGUiOiJmaWZpc2giLCJkZWFkbGluZSI6MTQ3NDg4MTIzMH0=" WithFileUrl:[NSURL fileURLWithPath:model.fileUrl] WihtProgressBlock:^(CGFloat progress) {
+            NSLog(@"%f",progress);
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error.localizedDescription);
+        }];
     }
+    
+    
 }
 
 @end

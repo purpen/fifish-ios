@@ -225,6 +225,21 @@
                           responseType:JSONResponseType];
 }
 
+
++ (void)uploadFileWithURL:(NSString *)uploadUrl WithToken:(NSString *)token WithFileUrl:(NSURL *)fileUrl WihtProgressBlock:(void (^)(CGFloat progress))progressblock WithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success WithFailureBlock:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
+    #warning afn3.0不能这么用
+    AFHTTPRequestOperation * uploadOperation =[FBRequest UploadDataWithUrlString:uploadUrl parameters:@{@"token":token} timeoutInterval:@60 requestType:HTTPRequestType responseType:JSONResponseType constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileURL:fileUrl name:@"file" error:nil];
+    } success:success failure:failure];
+    
+    if (progressblock) {
+        [uploadOperation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            CGFloat progress = (float)totalBytesWritten/totalBytesExpectedToWrite;
+            progressblock(progress);
+        }];
+    }
+    
+}
 // 从返回的URL中读取参数
 + (NSString *)getParamValueFromUrl:(NSString *)url paramName:(NSString *)paramName {
     if (![paramName hasSuffix:@"="]) {
