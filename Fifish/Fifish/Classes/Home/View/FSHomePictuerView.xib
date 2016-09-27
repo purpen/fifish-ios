@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -13,18 +13,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Di1-D9-OMC"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-ra-s9Z"/>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="5jg-ra-s9Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1w3-QM-Rkf"/>
                 <constraint firstAttribute="trailing" secondItem="Di1-D9-OMC" secondAttribute="trailing" id="4nC-x0-ZNm"/>
                 <constraint firstItem="Di1-D9-OMC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BNi-us-s1p"/>
+                <constraint firstAttribute="bottom" secondItem="5jg-ra-s9Z" secondAttribute="bottom" id="C5h-5a-aT9"/>
                 <constraint firstItem="Di1-D9-OMC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="esW-oh-31f"/>
+                <constraint firstItem="5jg-ra-s9Z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hfo-zo-gO8"/>
                 <constraint firstAttribute="bottom" secondItem="Di1-D9-OMC" secondAttribute="bottom" id="hwu-yE-7iP"/>
+                <constraint firstAttribute="trailing" secondItem="5jg-ra-s9Z" secondAttribute="trailing" id="kUj-TW-nz9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageView" destination="Di1-D9-OMC" id="Psb-hX-crY"/>
+                <outlet property="tapBTn" destination="5jg-ra-s9Z" id="gqP-4E-ide"/>
             </connections>
             <point key="canvasLocation" x="251" y="300.5"/>
         </view>

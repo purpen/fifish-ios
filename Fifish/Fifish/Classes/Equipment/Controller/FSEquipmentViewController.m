@@ -13,6 +13,8 @@
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
 #import "FSContenHelpViewController.h"
+#import "AFNetworkReachabilityManager.h"
+
 
 @interface FSEquipmentViewController ()<UIScrollViewDelegate>
 
@@ -24,15 +26,42 @@
 @property (nonatomic, strong) NSArray *pictuerAry;
 /**  */
 @property (nonatomic, strong) UIPageControl *pagrControl;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
 @end
 
 @implementation FSEquipmentViewController
+
 
 -(NSArray *)pictuerAry{
     if (!_pictuerAry) {
         _pictuerAry = [NSArray arrayWithObjects:@"eq_eqImage", nil];
     }
     return _pictuerAry;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager startMonitoring];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:
+                NSLog(@"AFNetworkReachability Not Reachable");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                NSLog(@"AFNetworkReachability Reachable via WWAN");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                NSLog(@"AFNetworkReachability Reachable via WiFi");  
+                break;
+            case AFNetworkReachabilityStatusUnknown:
+            default:
+                NSLog(@"AFNetworkReachability Unknown");
+                break;
+        }
+    }];
+    
 }
 
 - (void)viewDidLoad {

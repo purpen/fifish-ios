@@ -36,6 +36,7 @@ static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
 
+
 -(NSMutableArray *)modelAry{
     if (!_modelAry) {
         _modelAry = [NSMutableArray array];
@@ -172,7 +173,13 @@ static NSString * const CellId = @"home";
     [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+#pragma mark - 点击图片
+-(void)imageClick{
+    NSLog(@"点击了图片");
 }
 
 #pragma mark - 更多按钮

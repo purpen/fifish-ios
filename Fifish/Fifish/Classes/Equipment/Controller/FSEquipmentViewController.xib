@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="connectionBtn" destination="6dS-kW-ewQ" id="RV2-lK-Bdk"/>
                 <outlet property="nameLabel" destination="x3C-ql-8Et" id="5py-9N-ZEg"/>
+                <outlet property="statusLabel" destination="vOs-r8-xlr" id="cWK-FH-7FB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSHomePictuerView.h"
+#import "FSHomeVideoView.h"
+
 @class FSZuoPin;
 
 
@@ -17,5 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+/** FSHomePictuerView */
+@property (nonatomic, strong) FSHomePictuerView *pictuerView;
+/**  */
+@property (nonatomic, strong) FSHomeVideoView *videoView;
 
 @end
