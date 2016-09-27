@@ -24,13 +24,19 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kaj-ua-Zq6">
+                        <state key="normal" image="media_desseleted_icon"/>
+                        <state key="selected" image="media_seleted_icon"/>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Kaj-ua-Zq6" secondAttribute="trailing" id="28A-vE-hTc"/>
                 <constraint firstAttribute="trailing" secondItem="gsy-mk-Qgj" secondAttribute="trailing" id="3Bw-y0-tA2"/>
                 <constraint firstItem="gsy-mk-Qgj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8qG-zH-3eO"/>
                 <constraint firstItem="TRl-OG-btY" firstAttribute="centerY" secondItem="KNZ-to-JnU" secondAttribute="centerY" id="EjC-Ta-p5h"/>
                 <constraint firstAttribute="trailing" secondItem="TRl-OG-btY" secondAttribute="trailing" constant="8" id="K7N-1Z-S0t"/>
+                <constraint firstItem="Kaj-ua-Zq6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ocf-4T-Plg"/>
                 <constraint firstAttribute="bottom" secondItem="KNZ-to-JnU" secondAttribute="bottom" constant="8" id="cuY-4u-R71"/>
                 <constraint firstAttribute="bottom" secondItem="gsy-mk-Qgj" secondAttribute="bottom" id="hSZ-f4-UKS"/>
                 <constraint firstItem="gsy-mk-Qgj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="q17-sw-eUy"/>
@@ -40,6 +46,7 @@
             <connections>
                 <outlet property="borswerImageView" destination="gsy-mk-Qgj" id="9VD-F2-wt3"/>
                 <outlet property="durationLab" destination="TRl-OG-btY" id="W96-F4-Ehe"/>
+                <outlet property="seletedBtn" destination="Kaj-ua-Zq6" id="MI7-gm-O6o"/>
                 <outlet property="videoIcon" destination="KNZ-to-JnU" id="BQZ-Ad-O8n"/>
             </connections>
             <point key="canvasLocation" x="215.5" y="285.5"/>
@@ -47,5 +54,7 @@
     </objects>
     <resources>
         <image name="Media_Video_icon" width="12" height="8"/>
+        <image name="media_desseleted_icon" width="17" height="17"/>
+        <image name="media_seleted_icon" width="17" height="17"/>
     </resources>
 </document>

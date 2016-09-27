@@ -37,7 +37,7 @@
         [self addSubview:self.FifishBackBtn];
         [self.FifishBackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(100, 50));
-            make.left.equalTo(self.mas_left).offset(10);
+            make.left.equalTo(self.mas_left).offset(20);
             make.centerY.equalTo(self.mas_centerY);
         }];
         
@@ -84,7 +84,8 @@
 - (UIButton *)FifishBackBtn{
     if (!_FifishBackBtn) {
         _FifishBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_FifishBackBtn setTitle:@"FIFISH" forState:UIControlStateNormal];
+//        [_FifishBackBtn setTitle:@"FIFISH" forState:UIControlStateNormal];
+        [_FifishBackBtn setImage:[UIImage imageNamed:@"navi_back"] forState:UIControlStateNormal];
         [_FifishBackBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _FifishBackBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_FifishBackBtn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
