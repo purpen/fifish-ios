@@ -24,14 +24,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *commendBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
-@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
-
-
 /** FSHomePictuerView */
 @property (nonatomic, strong) FSHomePictuerView *pictuerView;
 /**  */
