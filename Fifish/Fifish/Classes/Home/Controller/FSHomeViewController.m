@@ -192,16 +192,18 @@ static NSString * const CellId = @"home";
 -(void)likeClick:(UIButton*)sender{
     NSString *idStr = ((FSZuoPin*)self.modelAry[sender.tag]).idFeild;
     if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/cancelLike",idStr] requestDictionary:nil delegate:self];
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = NO;
+            ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 0;
         } failure:^(FBRequest *request, NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"操作失败"];
         }];
     } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/dolike",idStr] requestDictionary:nil delegate:self];
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
+            ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 1;
         } failure:^(FBRequest *request, NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"操作失败"];
         }];

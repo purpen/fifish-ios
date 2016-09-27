@@ -27,9 +27,9 @@
 
 -(CGFloat)cellHeghit{
     
-    CGSize maxSize = CGSizeMake(SCREEN_WIDTH, MAXFLOAT);
+    CGSize maxSize = CGSizeMake(SCREEN_WIDTH - 55, MAXFLOAT);
     CGFloat textH = [self.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    _cellHeghit = 20 + textH + 10;
+    _cellHeghit = 39 + textH + 10;
     
     return _cellHeghit;
 }

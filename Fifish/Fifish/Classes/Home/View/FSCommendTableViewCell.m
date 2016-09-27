@@ -25,12 +25,21 @@
 
 @implementation FSCommendTableViewCell
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.headImageView.layer.masksToBounds = YES;
+    self.headImageView.layer.cornerRadius = 45 * 0.5;
+    self.headImageView.layer.borderColor = [UIColor colorWithHexString:@"#f5f5f5"].CGColor;
+    self.headImageView.layer.borderWidth = 1;
+}
+
 -(void)setModel:(FSCommentModel *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
-    self.timeLabel.text = @"";
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.user_avatar_large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.timeLabel.text = model.created_at;
     self.nameLabel.text = model.username;
     if (model.reply_user_Id.length == 0) {
+        self.commendLabel.hidden = NO;
         self.commendLabel.text = model.content;
         self.replyView.hidden = YES;
     } else if (model.reply_user_Id.length != 0) {
@@ -41,9 +50,5 @@
     }
 }
 
--(void)setFrame:(CGRect)frame{
-    frame.origin.y -= 13;
-    [super setFrame:frame];
-}
 
 @end

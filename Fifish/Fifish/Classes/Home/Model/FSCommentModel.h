@@ -28,5 +28,7 @@
 @property(nonatomic,copy) NSString *reply_user_name;
 /**  */
 @property(nonatomic,copy) NSString *reply_user_avatar_large;
+/**  */
+@property(nonatomic,copy) NSString *created_at;
 
 @end
