@@ -7,6 +7,8 @@
 //
 
 #import "FSCommendTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "FSCommentModel.h"
 
 @interface FSCommendTableViewCell ()
 
@@ -24,7 +26,19 @@
 @implementation FSCommendTableViewCell
 
 -(void)setModel:(FSCommentModel *)model{
-    
+    _model = model;
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.timeLabel.text = @"";
+    self.nameLabel.text = model.username;
+    if (model.reply_user_Id.length == 0) {
+        self.commendLabel.text = model.content;
+        self.replyView.hidden = YES;
+    } else if (model.reply_user_Id.length != 0) {
+        self.commendLabel.hidden = YES;
+        self.replyView.hidden = NO;
+        self.replyNameLabel.text = model.reply_user_name;
+        self.replyContentLabel.text = model.content;
+    }
 }
 
 -(void)setFrame:(CGRect)frame{

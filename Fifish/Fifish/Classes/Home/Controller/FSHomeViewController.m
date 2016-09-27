@@ -19,7 +19,7 @@
 #import "FSZuoPin.h"
 #import "FSSearchViewController.h"
 
-@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
 /**  */
 @property(nonatomic,assign) NSInteger current_page;
@@ -133,7 +133,7 @@ static NSString * const CellId = @"home";
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
-        _contenTableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0);
+        _contenTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     return _contenTableView;
 }
@@ -158,6 +158,9 @@ static NSString * const CellId = @"home";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0.01;
+    }
     return 10;
 }
 
@@ -165,8 +168,24 @@ static NSString * const CellId = @"home";
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     cell.model = self.modelAry[indexPath.section];
     cell.likeBtn.tag = indexPath.section;
+    cell.commendBtn.tag = indexPath.section;
     [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+#pragma mark - 更多按钮
+-(void)moreClick{
+    
+}
+
+#pragma mark - 评论按钮
+-(void)commendClick: (UIButton *) sender{
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.model = self.modelAry[sender.tag];
+    vc.title = @"评论";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 点击喜欢按钮
@@ -187,6 +206,21 @@ static NSString * const CellId = @"home";
             [SVProgressHUD showErrorWithStatus:@"操作失败"];
         }];
     }
+}
+
+#pragma mark - FSHomeDetailViewControllerDelegate
+-(void)lickClick:(BOOL)btnState :(NSString *)idFiled{
+    int n;
+    for (int i = 0; i < self.modelAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.modelAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            break;
+        }
+    }
+    FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:n]];
+    cell.commendBtn.selected = btnState;
+    cell.model.idFeild = idFiled;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

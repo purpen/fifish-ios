@@ -23,7 +23,8 @@
 "takingPictures" = "拍照";
 "fromAlbumToChoose" = "从相册选择";
 "cancel" = "取消";
-
+"The request failed" = "请求失败";
+"Comment is empty" = "评论内容为空";
 
 
 //camera设置

@@ -14,14 +14,24 @@
 #import "FSHomeViewCell.h"
 #import "UIView+FSExtension.h"
 #import "FSZuoPin.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+#import "SVProgressHUD.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (weak, nonatomic) IBOutlet UITextField *textTF;
 @property (weak, nonatomic) IBOutlet UITableView *commendTableView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *commentAry;
+/**  */
+@property (nonatomic, assign) NSInteger current_page;
+/**  */
+@property (nonatomic, assign) NSInteger total_rows;
 
 @end
 
@@ -59,6 +69,42 @@ static NSString * const FSCommentId = @"comment";
     self.sendBtn.layer.cornerRadius = 4;
     
     [self setupHeader];
+    [self setupRefresh];
+}
+
+#pragma mark - 设置刷新加载
+-(void)setupRefresh{
+    self.commendTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+    self.commendTableView.mj_header.automaticallyChangeAlpha = YES;
+    [self.commendTableView.mj_header beginRefreshing];
+    self.commendTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+}
+
+-(void)loadNew{
+    [self.commendTableView.mj_footer endRefreshing];
+    self.current_page = 1;
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/comments",self.model.idFeild] requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"评论列表 %@",result);
+        NSArray *dataAry = result[@"data"];
+        self.commentAry = [FSCommentModel mj_objectArrayWithKeyValuesArray:dataAry];
+        [self.commendTableView reloadData];
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        [self checkFooterState];
+        [self.commendTableView.mj_header endRefreshing];
+    } failure:^(FBRequest *request, NSError *error) {
+        [self.commendTableView.mj_header endRefreshing];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The request failed", nil)];
+    }];
+}
+
+-(void)checkFooterState{
+    if (self.commentAry.count == self.total_rows) {
+        self.commendTableView.mj_footer.hidden = YES;
+    }else{
+        [self.commendTableView.mj_footer endRefreshing];
+    }
 }
 
 -(void)setupHeader{
@@ -76,12 +122,45 @@ static NSString * const FSCommentId = @"comment";
     
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
+    [cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.model = self.model;
     cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
     [header addSubview:cell];
     
     // 设置header
     self.commendTableView.tableHeaderView = header;
+}
+
+#pragma mark - 评论按钮
+-(void)commentClick :(UIButton *)sender{
+    [self.textTF becomeFirstResponder];
+}
+
+#pragma mark - 点赞按钮
+-(void)lickClick:(UIButton *)sender{
+    NSString *idStr = self.model.idFeild;
+    if (sender.selected) {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/cancelLike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+            if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::)]) {
+                [self.homeDetailDelegate lickClick:sender.selected :idStr];
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    } else {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/:%@/dolike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = YES;
+            if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::)]) {
+                [self.homeDetailDelegate lickClick:sender.selected :idStr];
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    }
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)note
@@ -119,22 +198,29 @@ static NSString * const FSCommentId = @"comment";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu;
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSCommentModel *model = self.commentAry[indexPath.row];
     return model.cellHeghit;
 }
+
+#pragma mark - 发送按钮
 - (IBAction)SendMessageClick:(UIButton *)sender {
-    VideoLiveController * videoLiveVC = [[VideoLiveController alloc] init];
-    [self presentViewController:videoLiveVC animated:YES completion:^{
-       
+    
+    if (self.textTF.text.length == 0) {
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Comment is empty", nil)];
+        return;
+    }
+    
+    FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF} delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        self.textTF.text = @"";
+        [self.textTF resignFirstResponder];
+        [self.commendTableView.mj_header beginRefreshing];
+    } failure:^(FBRequest *request, NSError *error) {
+        
     }];
     
 }
