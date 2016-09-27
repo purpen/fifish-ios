@@ -13,6 +13,7 @@
 static NSString  * const  FSBorswerImageCelliden = @"FSBorswerImageCellIden";
 
 @interface FSBorswerImageCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIButton *seletedBtn;
 
 @property (weak, nonatomic) IBOutlet UIImageView *borswerImageView;
 /**

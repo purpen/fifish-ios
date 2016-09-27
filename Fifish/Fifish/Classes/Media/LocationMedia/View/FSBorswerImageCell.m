@@ -21,6 +21,10 @@
     
   
 }
+- (void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
+    self.seletedBtn.selected = selected;
+}
 - (void)setMediaModel:(FSMediaModel *)mediaModel{
     _mediaModel = mediaModel;
     if ([mediaModel isKindOfClass:[FSVideoModel class]]) {

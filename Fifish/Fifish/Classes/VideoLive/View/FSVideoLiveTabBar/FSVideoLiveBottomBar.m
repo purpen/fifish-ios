@@ -110,16 +110,16 @@
 #pragma mark 拍照
 - (void)takePhotoClick{
     
-//    通知camera拍照
-    FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
-    [CameraManager RovTakePhotoSuccess:^(NSDictionary *responseObject) {
-        if ([responseObject[@"head"][@"code"] integerValue]==0) {
-            
-            [KEY_WINDOW makeToast:@"拍照成功"];
-        }
-    } WithFailureBlock:^(NSError *error) {
-        [KEY_WINDOW makeToast:error.localizedDescription];
-    }];
+////    通知camera拍照
+//    FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
+//    [CameraManager RovTakePhotoSuccess:^(NSDictionary *responseObject) {
+//        if ([responseObject[@"head"][@"code"] integerValue]==0) {
+//            
+//            [KEY_WINDOW makeToast:@"拍照成功"];
+//        }
+//    } WithFailureBlock:^(NSError *error) {
+//        [KEY_WINDOW makeToast:error.localizedDescription];
+//    }];
     
 //  本地截取一帧图片
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];

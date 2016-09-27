@@ -46,7 +46,7 @@
     //添加视图scrowll
     [self.view addSubview:self.ViewControllerScrowView];
     [self.ViewControllerScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(Nav_Height,0, Tab_Height, 0));
+       make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0,0, 0, 0));
     }];
     
 }
