@@ -10,6 +10,10 @@
 #import "UIColor+FSExtension.h"
 #import "LiveVideoSettingMacro.h"
 
+//rov地址
+UIKIT_EXTERN NSString * const ROVAddress;
+
+
 typedef enum {
     FSZuoPinTypePicture = 1,
     FSZuoPinTypeVideo = 11
@@ -49,3 +53,5 @@ UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;
 
 
 #define NSLog(s, ... ) NSLog(@"#%s##%d# %@",strrchr(__FILE__,'/'),__LINE__ , [NSString stringWithFormat:(s), ##__VA_ARGS__]);
+
+

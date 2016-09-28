@@ -11,3 +11,7 @@
 /** tabBar被选中的通知名字 */
 NSString * const FSTabBarDidSelectNotification = @"FSTabBarDidSelectNotification";
 
+///ROV地址
+NSString * const ROVAddress = @"http://192.168.1.158";
+
+
