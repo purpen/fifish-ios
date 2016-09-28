@@ -44,4 +44,12 @@
                 WithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                 WithFailureBlock:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+
+/**
+ 判断是否能连接ROV
+
+ @return YES为成功，NO为失败
+ */
++ (void)isExistenceROVwithBlock:(void(^)(BOOL isconnect))requestBlock;
+
 @end

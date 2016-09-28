@@ -156,10 +156,17 @@ CGFloat const Cellspecace = 1;
     
     [self.view makeToast:model.fileUrl];
     
+
+    [FBAPI isExistenceROVwithBlock:^(BOOL isconnect) {
+        NSLog(@"%d",isconnect);
+    }];
+    
+    
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     [self.seletedCellIndexSet removeIndex:indexPath.item];
     
     [self UpdateDeletedBtn];
@@ -171,7 +178,9 @@ CGFloat const Cellspecace = 1;
     self.tabBarController.tabBar.hidden = self.seletedCellIndexSet.count;
     self.deletedBtn.hidden = !self.seletedCellIndexSet.count;
 }
+
 - (UIButton *)deletedBtn{
+    
     if (!_deletedBtn) {
         _deletedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _deletedBtn.hidden = YES;
@@ -179,6 +188,10 @@ CGFloat const Cellspecace = 1;
         [_deletedBtn setBackgroundColor:[UIColor colorWithHexString:@"121F27"]];
         [_deletedBtn setImage:[UIImage imageNamed:@"media_delete_icon"] forState:UIControlStateNormal];
     }
+    
     return _deletedBtn;
+}
+- (void)deleteMediaItem{
+    
 }
 @end

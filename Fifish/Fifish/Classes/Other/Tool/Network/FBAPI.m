@@ -10,6 +10,8 @@
 #import "FSConst.h"
 #import "NSString+FBMD5.h"
 
+
+
 @implementation FBAPI
 
 #pragma mark - Private Methods
@@ -263,5 +265,29 @@
     
     return str;
 }
-
++ (void)isExistenceROVwithBlock:(void (^)(BOOL))requestBlock{
+   
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:ROVAddress]];
+    [request setHTTPMethod:@"HEAD"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    request.timeoutInterval = 0.5;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"error %@",error);
+        if (error) {
+            if (requestBlock) {
+                requestBlock(NO);
+            }
+            NSLog(@"ROV未连接");
+            
+        }else{
+            NSLog(@"ROV已连接");
+            if (requestBlock) {
+                requestBlock(YES);
+            }
+        }
+    }];
+    
+    [task resume];
+    
+}
 @end

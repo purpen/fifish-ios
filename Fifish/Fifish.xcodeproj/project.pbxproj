@@ -49,6 +49,7 @@
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
+		0470C4F91D9BAE5100B13500 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0470C4F81D9BAE5100B13500 /* SystemConfiguration.framework */; };
 		0476A8C91D8253F40009D10E /* FSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476A8C81D8253F40009D10E /* FSBaseModel.m */; };
 		0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476A8CB1D82540E0009D10E /* FSEncodingInfoModel.m */; };
 		047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85801D79553800A88891 /* FSVideoDepthRulerView.m */; };
@@ -450,6 +451,7 @@
 		046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFSVideoLiveStatusBar.m; sourceTree = "<group>"; };
 		0467651B1D632A3A00FFA743 /* FSTemperatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTemperatureView.h; sourceTree = "<group>"; };
 		0467651C1D632A3A00FFA743 /* FSTemperatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTemperatureView.m; sourceTree = "<group>"; };
+		0470C4F81D9BAE5100B13500 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0476A8C71D8253F40009D10E /* FSBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseModel.h; sourceTree = "<group>"; };
 		0476A8C81D8253F40009D10E /* FSBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseModel.m; sourceTree = "<group>"; };
 		0476A8CA1D82540E0009D10E /* FSEncodingInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEncodingInfoModel.h; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0470C4F91D9BAE5100B13500 /* SystemConfiguration.framework in Frameworks */,
 				1F0219BB1D79506D003A8A11 /* libsqlite3.tbd in Frameworks */,
 				0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */,
 				0434F4231D61C89E00DBFFCE /* AVFoundation.framework in Frameworks */,
@@ -2448,6 +2451,7 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0470C4F81D9BAE5100B13500 /* SystemConfiguration.framework */,
 				1F0219BA1D79506D003A8A11 /* libsqlite3.tbd */,
 				0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */,
 				0434F39E1D61BBC700DBFFCE /* AVFoundation.framework */,
