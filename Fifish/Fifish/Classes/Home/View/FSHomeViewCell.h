@@ -24,5 +24,7 @@
 @property (nonatomic, strong) FSHomePictuerView *pictuerView;
 /**  */
 @property (nonatomic, strong) FSHomeVideoView *videoView;
+/**  */
+@property (nonatomic, strong) UINavigationController *navi;
 
 @end

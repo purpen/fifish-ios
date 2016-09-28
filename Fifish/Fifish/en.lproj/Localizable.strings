@@ -75,6 +75,9 @@
 "cancel" = "取消";
 "The request failed" = "请求失败";
 "Comment is empty" = "评论内容为空";
+"report" = "举报";
+"garbage content" = "垃圾内容";
+"inelegant content" = "内容不雅";
 
 
 

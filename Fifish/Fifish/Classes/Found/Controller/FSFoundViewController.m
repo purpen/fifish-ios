@@ -234,6 +234,7 @@
         if (cell == nil) {
             cell = [[FSTagTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
+        cell.controller = self;
         cell.modelAry = self.tagsAry;
         return cell;
     } else if (indexPath.section == 1) {
@@ -248,6 +249,7 @@
     } else if (indexPath.section == 2) {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.row];
+        cell.navi = self.navigationController;
         return cell;
     }
     return nil;

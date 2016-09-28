@@ -11,6 +11,7 @@
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
+#import "FSHomePageViewController.h"
 
 @interface FSHomeViewCell ()
 
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
+@property (weak, nonatomic) IBOutlet UIButton *headTapBtn;
 
 @end
 
@@ -35,6 +37,12 @@
     [super awakeFromNib];
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 22;
+}
+
+- (IBAction)headBtnClick:(UIButton *)sender {
+    FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    
+    [self.navi pushViewController:vc animated:YES];
 }
 
 -(FSHomePictuerView *)pictuerView{

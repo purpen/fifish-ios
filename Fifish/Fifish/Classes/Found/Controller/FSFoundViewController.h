@@ -10,4 +10,7 @@
 
 @interface FSFoundViewController : UIViewController
 
+/**  */
+@property (nonatomic, strong) UIViewController *controller;
+
 @end

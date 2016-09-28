@@ -7,31 +7,61 @@
 //
 
 #import "FSBigImageViewController.h"
+#import "FSImageScrollView.h"
 
 @interface FSBigImageViewController ()
+
+{
+    UIImage *_sceneImage;
+}
+/**  */
+@property (nonatomic, strong) FSImageScrollView *imageView;
 
 @end
 
 @implementation FSBigImageViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:(UIStatusBarAnimationFade)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setViewUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setViewUI {
+    self.view.backgroundColor = [UIColor blackColor];
+    _sceneImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]]];
+    [self addGestureRecognizer];
+    [self.view addSubview:self.imageView];
+    [self.imageView displayImage:_sceneImage];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 添加手势操作
+- (void)addGestureRecognizer {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissVC:)];
+    [self.view addGestureRecognizer:tap];
 }
-*/
+
+- (void)dismissVC:(UITapGestureRecognizer *)tap {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - 情境大图
+- (FSImageScrollView *)imageView {
+    if (!_imageView) {
+        _imageView = [[FSImageScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _imageView.clipsToBounds = YES;
+    }
+    return _imageView;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:(UIStatusBarAnimationFade)];
+}
 
 @end

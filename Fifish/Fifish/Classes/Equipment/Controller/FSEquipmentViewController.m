@@ -14,7 +14,7 @@
 #import "Masonry.h"
 #import "FSContenHelpViewController.h"
 #import "AFNetworkReachabilityManager.h"
-
+#import "Reachability.h"
 
 @interface FSEquipmentViewController ()<UIScrollViewDelegate>
 
@@ -42,7 +42,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    /*AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager managerForAddress:<#(nonnull const void *)#>];
     [manager startMonitoring];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
@@ -60,7 +60,30 @@
                 NSLog(@"AFNetworkReachability Unknown");
                 break;
         }
-    }];
+    }];*/
+    
+    
+    /*BOOL isExistenceNetwork = YES;
+    struct sockaddr_in a;
+    
+    a.sin_family=AF_INET;
+    a.sin_addr = in_addr("192.168.0.1");
+    
+    Reachability *reach = [Reachability reachabilityWithAddress:&a];
+    switch ([reach currentReachabilityStatus]) {
+        case NotReachable:
+            isExistenceNetwork = NO;
+            NSLog(@"notReachable");
+            break;
+        case ReachableViaWiFi:
+            isExistenceNetwork = YES;
+            NSLog(@"WIFI");
+            break;
+        case ReachableViaWWAN:
+            isExistenceNetwork = YES;
+            NSLog(@"3G");
+            break;
+    }*/
     
 }
 

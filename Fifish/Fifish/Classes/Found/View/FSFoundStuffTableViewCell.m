@@ -13,6 +13,7 @@
 #import "FSHomeVideoView.h"
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
+#import "FSHomePageViewController.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *labelLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *headTapBtn;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commendBtn;
@@ -46,6 +48,12 @@
     [super awakeFromNib];
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 22;
+}
+
+- (IBAction)headTapClick:(UIButton *)sender {
+    FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    
+    [self.navi pushViewController:vc animated:YES];
 }
 
 

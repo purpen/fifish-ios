@@ -18,6 +18,7 @@
 #import "SVProgressHUD.h"
 #import "FSZuoPin.h"
 #import "FSSearchViewController.h"
+#import "FSBigImageViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -167,24 +168,61 @@ static NSString * const CellId = @"home";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    cell.navi = self.navigationController;
     cell.model = self.modelAry[indexPath.section];
     cell.likeBtn.tag = indexPath.section;
     cell.commendBtn.tag = indexPath.section;
     [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick) forControlEvents:UIControlEventTouchUpInside];
+    cell.pictuerView.tapBTn.tag = indexPath.section;
+    [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 #pragma mark - 点击图片
--(void)imageClick{
-    NSLog(@"点击了图片");
+-(void)imageClick:(UIButton*)sender{
+    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    FSZuoPin *model = self.modelAry[sender.tag];
+    vc.imageUrl = model.file_large;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - 更多按钮
--(void)moreClick{
-    
+-(void)moreClick:(UIButton*)sender{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       //点击举报
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //垃圾内容的网络请求
+            
+        }];
+        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //内容不雅举报
+            
+        }];
+        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [reportAlertC addAction:garbageAction];
+        [reportAlertC addAction:indecentAction];
+        [reportAlertC addAction:reportCancelAction];
+        [self presentViewController:reportAlertC animated:YES completion:nil];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertC addAction:reportAction];
+    [alertC addAction:cancelAction];
+    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 #pragma mark - 评论按钮

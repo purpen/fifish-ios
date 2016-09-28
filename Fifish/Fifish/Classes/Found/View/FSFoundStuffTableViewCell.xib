@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -16,6 +16,11 @@
                 <frame key="frameInset" width="370" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3W-yb-uBu">
+                        <connections>
+                            <action selector="headTapClick:" destination="5rI-3S-zUN" eventType="touchUpInside" id="dYm-qn-6bs"/>
+                        </connections>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8RE-Gu-Zg0" userLabel="头像">
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="gF0-dk-JFe"/>
@@ -136,10 +141,13 @@
                     <constraint firstItem="skd-Cl-u7h" firstAttribute="top" secondItem="LKl-DC-bzU" secondAttribute="bottom" constant="3" id="7nw-vv-ZyU"/>
                     <constraint firstAttribute="trailing" secondItem="Obp-ym-9Pg" secondAttribute="trailing" id="8uv-8d-uSa"/>
                     <constraint firstItem="8RE-Gu-Zg0" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="3" id="9FG-ji-Tok"/>
+                    <constraint firstItem="Q3W-yb-uBu" firstAttribute="top" secondItem="8RE-Gu-Zg0" secondAttribute="top" id="Bur-65-Vie"/>
                     <constraint firstItem="Obp-ym-9Pg" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" id="O5M-Hk-5I6"/>
                     <constraint firstItem="kaa-L8-zxS" firstAttribute="leading" secondItem="skd-Cl-u7h" secondAttribute="trailing" constant="2" id="Ppd-kt-hqZ"/>
                     <constraint firstItem="eFj-mE-VvY" firstAttribute="top" secondItem="Fbz-dK-82f" secondAttribute="bottom" id="Q2Q-HE-KYT"/>
                     <constraint firstItem="LKl-DC-bzU" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="8" id="TiX-fZ-zrm"/>
+                    <constraint firstItem="Q3W-yb-uBu" firstAttribute="height" secondItem="8RE-Gu-Zg0" secondAttribute="height" id="WsE-Xm-qOZ"/>
+                    <constraint firstItem="Q3W-yb-uBu" firstAttribute="width" secondItem="8RE-Gu-Zg0" secondAttribute="width" id="XoZ-9F-cKO"/>
                     <constraint firstItem="e9O-hq-VTg" firstAttribute="trailing" secondItem="XEc-td-dUK" secondAttribute="trailing" id="YeO-Pl-Ayk"/>
                     <constraint firstItem="kaa-L8-zxS" firstAttribute="centerY" secondItem="skd-Cl-u7h" secondAttribute="centerY" id="a2e-aG-m4d"/>
                     <constraint firstItem="8RE-Gu-Zg0" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" constant="10" id="bnA-ok-5mn"/>
@@ -153,11 +161,12 @@
                     <constraint firstItem="XEc-td-dUK" firstAttribute="centerY" secondItem="8RE-Gu-Zg0" secondAttribute="centerY" id="whb-Yr-H2C"/>
                     <constraint firstAttribute="trailing" secondItem="Fbz-dK-82f" secondAttribute="trailing" id="whd-Y2-mHE"/>
                     <constraint firstAttribute="bottom" secondItem="eFj-mE-VvY" secondAttribute="bottom" id="xJ6-DW-8qG"/>
+                    <constraint firstItem="Q3W-yb-uBu" firstAttribute="leading" secondItem="8RE-Gu-Zg0" secondAttribute="leading" id="yoG-uW-MkV"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="cS6-wI-ZI8"/>
                         <exclude reference="11z-Cb-GnW"/>
+                        <exclude reference="cS6-wI-ZI8"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -167,6 +176,7 @@
                 <outlet property="commendBtn" destination="JOv-Gf-Zmm" id="5Sb-XW-slO"/>
                 <outlet property="contentLabel" destination="Bd8-Dd-eWH" id="suU-SS-JMV"/>
                 <outlet property="headImageView" destination="8RE-Gu-Zg0" id="WgV-y1-CvC"/>
+                <outlet property="headTapBtn" destination="Q3W-yb-uBu" id="AxD-bD-63a"/>
                 <outlet property="labelLabel" destination="Wem-eo-Z16" id="2Zn-3W-HM6"/>
                 <outlet property="likeBtn" destination="st4-mc-t8k" id="Zyf-ZN-FNg"/>
                 <outlet property="moreBtn" destination="e9O-hq-VTg" id="VXU-y8-IJv"/>

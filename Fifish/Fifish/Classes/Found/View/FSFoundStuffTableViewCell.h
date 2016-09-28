@@ -13,5 +13,7 @@
 
 /**  */
 @property (nonatomic, strong) FSZuoPin *model;
+/**  */
+@property (nonatomic, strong) UINavigationController *navi;
 
 @end

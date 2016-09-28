@@ -8,6 +8,7 @@
 
 #import "FSTagTableViewCell.h"
 #import "FSTagCollectionViewCell.h"
+#import "FSSearchViewController.h"
 
 @interface FSTagTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -69,6 +70,12 @@
     cell.model = self.modelAry[indexPath.row];
     cell.backgroundColor = [UIColor greenColor];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    
+    [self.controller presentViewController:vc animated:YES completion:nil];
 }
 
 @end

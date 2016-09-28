@@ -20,6 +20,7 @@
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "FSUserModel.h"
+#import "FSBigImageViewController.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -49,6 +50,11 @@ static NSString * const FSCommentId = @"comment";
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLoad {
@@ -140,8 +146,11 @@ static NSString * const FSCommentId = @"comment";
     
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
+    cell.navi = self.navigationController;
+    [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.model = self.model;
     cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
     [header addSubview:cell];
@@ -149,6 +158,52 @@ static NSString * const FSCommentId = @"comment";
     // 设置header
     self.commendTableView.tableHeaderView = header;
 }
+
+#pragma mark - 点击图片
+-(void)imageClick:(UIButton*)sender{
+    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    FSZuoPin *model = self.model;
+    vc.imageUrl = model.file_large;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - 更多按钮
+-(void)moreClick:(UIButton*)sender{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击举报
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //垃圾内容的网络请求
+            
+        }];
+        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //内容不雅举报
+            
+        }];
+        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [reportAlertC addAction:garbageAction];
+        [reportAlertC addAction:indecentAction];
+        [reportAlertC addAction:reportCancelAction];
+        [self presentViewController:reportAlertC animated:YES completion:nil];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertC addAction:reportAction];
+    [alertC addAction:cancelAction];
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+
 
 #pragma mark - 评论按钮
 -(void)commentClick :(UIButton *)sender{
