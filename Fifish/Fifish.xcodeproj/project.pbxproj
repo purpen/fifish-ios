@@ -254,7 +254,6 @@
 		1FF783BB1D9A855A00618245 /* FSBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783B91D9A855A00618245 /* FSBigImageViewController.m */; };
 		1FF783BC1D9A855A00618245 /* FSBigImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */; };
 		1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783BE1D9B585700618245 /* FSImageScrollView.m */; };
-		1FF783C21D9BA43700618245 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783C11D9BA43700618245 /* Reachability.m */; };
 		48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */; };
 		48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */; };
 		48911F911D9177590042B96F /* FSListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F901D9177590042B96F /* FSListUserModel.m */; };
@@ -831,8 +830,6 @@
 		1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSBigImageViewController.xib; sourceTree = "<group>"; };
 		1FF783BD1D9B585700618245 /* FSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageScrollView.h; sourceTree = "<group>"; };
 		1FF783BE1D9B585700618245 /* FSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageScrollView.m; sourceTree = "<group>"; };
-		1FF783C01D9BA43700618245 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		1FF783C11D9BA43700618245 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		267CF4431FD8067897EE3A0B /* libPods-Fifish.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fifish.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48911F8A1D9177220042B96F /* FSListUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserTableViewCell.h; sourceTree = "<group>"; };
 		48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserTableViewCell.m; sourceTree = "<group>"; };
@@ -2175,8 +2172,6 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				1FF783C01D9BA43700618245 /* Reachability.h */,
-				1FF783C11D9BA43700618245 /* Reachability.m */,
 				1FDE28A41D92241D00566A73 /* MJExtension */,
 				1F0219A91D79500A003A8A11 /* FMDB */,
 				1F0219A21D795002003A8A11 /* DBModel */,
@@ -2866,7 +2861,6 @@
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
-				1FF783C21D9BA43700618245 /* Reachability.m in Sources */,
 				1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1FDE28C41D92241D00566A73 /* NSObject+MJCoding.m in Sources */,

@@ -13,8 +13,7 @@
 #import "UIView+FSExtension.h"
 #import "Masonry.h"
 #import "FSContenHelpViewController.h"
-#import "AFNetworkReachabilityManager.h"
-#import "Reachability.h"
+#import "FBAPI.h"
 
 @interface FSEquipmentViewController ()<UIScrollViewDelegate>
 
@@ -42,49 +41,22 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    /*AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager managerForAddress:<#(nonnull const void *)#>];
-    [manager startMonitoring];
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        switch (status) {
-            case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"AFNetworkReachability Not Reachable");
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-                NSLog(@"AFNetworkReachability Reachable via WWAN");
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"AFNetworkReachability Reachable via WiFi");  
-                break;
-            case AFNetworkReachabilityStatusUnknown:
-            default:
-                NSLog(@"AFNetworkReachability Unknown");
-                break;
+    
+    [FBAPI isExistenceROVwithBlock:^(BOOL isconnect) {
+        if (isconnect) {
+            self.statusLabel.text = @"WIFI已连接";
+            [self.connectionBtn setTitle:@"已连接" forState:UIControlStateNormal];
+            self.connectionBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+            [self.connectionBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            self.connectionBtn.enabled = NO;
+        } else {
+            self.statusLabel.text = @"WIFI未连接";
+            [self.connectionBtn setTitle:@"连接WIFI" forState:UIControlStateNormal];
+            self.connectionBtn.layer.borderColor = DEFAULT_COLOR.CGColor;
+            [self.connectionBtn setTitleColor:DEFAULT_COLOR forState:UIControlStateNormal];
+            self.connectionBtn.enabled = YES;
         }
-    }];*/
-    
-    
-    /*BOOL isExistenceNetwork = YES;
-    struct sockaddr_in a;
-    
-    a.sin_family=AF_INET;
-    a.sin_addr = in_addr("192.168.0.1");
-    
-    Reachability *reach = [Reachability reachabilityWithAddress:&a];
-    switch ([reach currentReachabilityStatus]) {
-        case NotReachable:
-            isExistenceNetwork = NO;
-            NSLog(@"notReachable");
-            break;
-        case ReachableViaWiFi:
-            isExistenceNetwork = YES;
-            NSLog(@"WIFI");
-            break;
-        case ReachableViaWWAN:
-            isExistenceNetwork = YES;
-            NSLog(@"3G");
-            break;
-    }*/
-    
+    }];
 }
 
 - (void)viewDidLoad {

@@ -20,6 +20,7 @@
 #import "FSUserTableViewCell.h"
 #import "FSZuoPin.h"
 #import "FSFoundStuffTableViewCell.h"
+#import "FSBigImageViewController.h"
 
 @interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -250,9 +251,26 @@
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.row];
         cell.navi = self.navigationController;
+        cell.likeBtn.tag = indexPath.section;
+        cell.commendBtn.tag = indexPath.section;
+        [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.pictuerView.tapBTn.tag = indexPath.section;
+        [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
+}
+
+#pragma mark - 点击图片
+-(void)imageClick:(UIButton*)sender{
+    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    FSZuoPin *model = self.stuffAry[sender.tag];
+    vc.imageUrl = model.file_large;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

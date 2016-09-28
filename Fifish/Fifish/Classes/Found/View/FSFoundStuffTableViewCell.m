@@ -8,9 +8,9 @@
 
 #import "FSFoundStuffTableViewCell.h"
 #import "FSZuoPin.h"
-#import "FSHomePictuerView.h"
+
 #import "UIView+FSExtension.h"
-#import "FSHomeVideoView.h"
+
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 #import "FSHomePageViewController.h"
@@ -25,19 +25,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *headTapBtn;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *commendBtn;
-@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
-@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
-
-
-/** FSHomePictuerView */
-@property (nonatomic, strong) FSHomePictuerView *pictuerView;
-/**  */
-@property (nonatomic, strong) FSHomeVideoView *videoView;
 
 @end
 
