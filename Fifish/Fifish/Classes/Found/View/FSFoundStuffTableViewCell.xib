@@ -129,9 +129,25 @@
                             <constraint firstItem="JOv-Gf-Zmm" firstAttribute="centerY" secondItem="Obp-ym-9Pg" secondAttribute="centerY" id="s6U-UG-43a"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0k-G8-o34">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="BTz-Oo-0fA"/>
+                            <constraint firstAttribute="height" constant="26" id="P76-Le-nzR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="关注" image="me_path">
+                            <color key="titleColor" red="0.1333333333" green="0.53333333329999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" title="已关注" image="me_path_right">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="Fbz-dK-82f" secondAttribute="trailing" id="11z-Cb-GnW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="u0k-G8-o34" secondAttribute="trailing" constant="10" id="38C-fq-hrA"/>
                     <constraint firstItem="LKl-DC-bzU" firstAttribute="leading" secondItem="8RE-Gu-Zg0" secondAttribute="trailing" constant="10" id="5N1-bv-EMA"/>
                     <constraint firstItem="skd-Cl-u7h" firstAttribute="leading" secondItem="LKl-DC-bzU" secondAttribute="leading" id="5N7-bT-tNC"/>
                     <constraint firstItem="skd-Cl-u7h" firstAttribute="top" secondItem="LKl-DC-bzU" secondAttribute="bottom" constant="3" id="7nw-vv-ZyU"/>
@@ -148,6 +164,7 @@
                     <constraint firstItem="8RE-Gu-Zg0" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" constant="10" id="bnA-ok-5mn"/>
                     <constraint firstAttribute="trailing" secondItem="eFj-mE-VvY" secondAttribute="trailing" id="bnf-ja-ghS"/>
                     <constraint firstItem="eFj-mE-VvY" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" id="bnl-Iy-xol"/>
+                    <constraint firstItem="u0k-G8-o34" firstAttribute="centerY" secondItem="8RE-Gu-Zg0" secondAttribute="centerY" id="bpn-03-mXJ"/>
                     <constraint firstItem="Fbz-dK-82f" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leadingMargin" id="cS6-wI-ZI8"/>
                     <constraint firstItem="Fbz-dK-82f" firstAttribute="top" secondItem="Obp-ym-9Pg" secondAttribute="bottom" id="fPb-US-9Uh"/>
                     <constraint firstItem="Fbz-dK-82f" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" id="fQW-kv-vXx"/>
@@ -168,6 +185,7 @@
                 <outlet property="bottomSpace" destination="iBb-d1-VX8" id="FSc-e6-OlY"/>
                 <outlet property="commendBtn" destination="JOv-Gf-Zmm" id="5Sb-XW-slO"/>
                 <outlet property="contentLabel" destination="Bd8-Dd-eWH" id="suU-SS-JMV"/>
+                <outlet property="fucosBtn" destination="u0k-G8-o34" id="zjA-uE-Ljo"/>
                 <outlet property="headImageView" destination="8RE-Gu-Zg0" id="WgV-y1-CvC"/>
                 <outlet property="headTapBtn" destination="Q3W-yb-uBu" id="AxD-bD-63a"/>
                 <outlet property="labelLabel" destination="Wem-eo-Z16" id="2Zn-3W-HM6"/>
@@ -187,5 +205,7 @@
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="16" height="17"/>
         <image name="me_address" width="9" height="13"/>
+        <image name="me_path" width="9" height="9"/>
+        <image name="me_path_right" width="11" height="8"/>
     </resources>
 </document>

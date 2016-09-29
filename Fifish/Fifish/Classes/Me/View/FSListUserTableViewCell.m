@@ -26,14 +26,15 @@
     _model = model;
     self.userNameLabel.text = model.userName;
     self.summaryLabel.text = model.summary;
-    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
-    self.fucosBtn.layer.borderWidth = 1;
+    
 }
 
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.fucosBtn.layer.masksToBounds = YES;
     self.fucosBtn.layer.cornerRadius = 13;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+    self.fucosBtn.layer.borderWidth = 1;
 }
 
 @end

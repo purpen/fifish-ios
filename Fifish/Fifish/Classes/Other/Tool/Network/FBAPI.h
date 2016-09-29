@@ -22,6 +22,10 @@
                 requestDictionary:(NSDictionary *)requestDictionary
                          delegate:(id)delegate;
 
++ (instancetype)deleteWithUrlString:(NSString *)urlString
+                requestDictionary:(NSDictionary *)requestDictionary
+                         delegate:(id)delegate;
+
 + (instancetype)uploadWithUrlString:(NSString *)urlString
                   requestDictionary:(NSDictionary *)requestDictionary
                            delegate:(id)delegate;

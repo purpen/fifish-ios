@@ -10,4 +10,7 @@
 
 @interface FSSearchViewController : UIViewController
 
+/**  */
+@property(nonatomic,copy) NSString *placeString;
+
 @end

@@ -35,6 +35,7 @@ typedef void(^ConstructingBodyBlock)(id<AFMultipartFormData> formData);
 typedef enum : NSUInteger {
     GET_METHOD,                  // GET请求
     POST_METHOD,                 // POST请求
+    DELETE_METHOD,               // DELETE请求
     UPLOAD_DATA,                 // 上传文件的请求(POST请求)
     
 } AFNetworkingRequestMethod;

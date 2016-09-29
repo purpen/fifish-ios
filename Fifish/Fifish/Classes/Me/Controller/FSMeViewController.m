@@ -77,6 +77,7 @@
 
 -(void)clickHomePageBtn:(UIButton*)sender{
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    vc.isMyself = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

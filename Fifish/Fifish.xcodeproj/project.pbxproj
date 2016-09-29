@@ -72,7 +72,6 @@
 		1F0219B81D79500A003A8A11 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219B11D79500A003A8A11 /* FMDatabaseQueue.m */; };
 		1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219B41D79500A003A8A11 /* FMResultSet.m */; };
 		1F0219BB1D79506D003A8A11 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0219BA1D79506D003A8A11 /* libsqlite3.tbd */; };
-		1F0219BD1D797405003A8A11 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219BC1D797405003A8A11 /* Foundation+Log.m */; };
 		1F0219C11D798567003A8A11 /* AddreesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219BF1D798567003A8A11 /* AddreesPickerViewController.m */; };
 		1F0219C21D798567003A8A11 /* AddreesPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0219C01D798567003A8A11 /* AddreesPickerViewController.xib */; };
 		1F0219C61D798630003A8A11 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219C51D798630003A8A11 /* AreaModel.m */; };
@@ -495,7 +494,6 @@
 		1F0219B31D79500A003A8A11 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1F0219B41D79500A003A8A11 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1F0219BA1D79506D003A8A11 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		1F0219BC1D797405003A8A11 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		1F0219BE1D798567003A8A11 /* AddreesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddreesPickerViewController.h; sourceTree = "<group>"; };
 		1F0219BF1D798567003A8A11 /* AddreesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddreesPickerViewController.m; sourceTree = "<group>"; };
 		1F0219C01D798567003A8A11 /* AddreesPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddreesPickerViewController.xib; sourceTree = "<group>"; };
@@ -1672,7 +1670,6 @@
 		1F04245B1D51F3F20071A1D6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				1F0219BC1D797405003A8A11 /* Foundation+Log.m */,
 				1F04245C1D51F3F20071A1D6 /* Network */,
 			);
 			path = Tool;
@@ -2845,7 +2842,6 @@
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
-				1F0219BD1D797405003A8A11 /* Foundation+Log.m in Sources */,
 				040995671D95175400BFEC92 /* FSVideoModel.m in Sources */,
 				04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */,
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,

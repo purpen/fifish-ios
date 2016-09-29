@@ -283,7 +283,7 @@ static BOOL                           _canSendMessage      = YES;
                                             
                                         }];
         
-    } else if (self.RequestMethod == UPLOAD_DATA) {
+    }  else if (self.RequestMethod == UPLOAD_DATA) {
         
         if (self.constructingBodyBlock) {
             
@@ -477,6 +477,39 @@ static BOOL                           _canSendMessage      = YES;
                                                 failure(weakSelf, error);
                                             }
                                         }];
+        
+    } else if (self.RequestMethod == DELETE_METHOD) {
+        
+        __weak FBRequest *weakSelf = self;
+        self.httpOperation = [self.manager DELETE:self.urlString parameters:[weakSelf transformRequestDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+            weakSelf.isRunning = NO;
+            NSLog(@"post请求  %@",responseObject);
+            /*NSString *token = responseObject[@"data"][@"token"];
+             if (token.length != 0) {
+             NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+             [defaults setObject:token forKey:@"token"];
+             [defaults synchronize];
+             }*/
+            
+            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
+            if (status_code == 200) {
+                
+                success(weakSelf, responseObject);
+            } else {
+                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+            }
+        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+            weakSelf.isRunning = NO;
+            
+            if (self.cancelType == USER_CANCEL) {
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(userCanceledFailed:error:)]) {
+                    [weakSelf.delegate userCanceledFailed:weakSelf error:error];
+                    weakSelf.cancelType = DEALLOC_CANCEL;
+                }
+            } else {
+                failure(weakSelf, error);
+            }
+        }];
         
     } else if (self.RequestMethod == UPLOAD_DATA) {
         

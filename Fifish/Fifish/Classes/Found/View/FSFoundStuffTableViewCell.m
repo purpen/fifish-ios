@@ -39,6 +39,10 @@
     [super awakeFromNib];
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 22;
+    self.fucosBtn.layer.masksToBounds = YES;
+    self.fucosBtn.layer.cornerRadius = 13;
+    self.fucosBtn.layer.borderWidth = 1;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
 }
 
 - (IBAction)headTapClick:(UIButton *)sender {
@@ -84,6 +88,20 @@
         [self.pictuerView removeFromSuperview];
         [self.contentView addSubview:self.videoView];
         self.videoView.model = model;
+    }
+    
+    if (model.is_follow == 0) {
+        self.fucosBtn.backgroundColor = [UIColor whiteColor];
+        self.fucosBtn.selected = NO;
+    } else {
+        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+        self.fucosBtn.selected = YES;
+    }
+    
+    if (model.is_love == 0) {
+        self.likeBtn.selected = NO;
+    } else {
+        self.likeBtn.selected = YES;
     }
     
     // 文字的最大尺寸

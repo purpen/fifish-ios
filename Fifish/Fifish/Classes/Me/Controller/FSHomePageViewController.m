@@ -53,6 +53,8 @@ typedef enum {
 @property(nonatomic,assign) NSInteger total_rows;
 /**  */
 @property (nonatomic, strong) CAGradientLayer *shadow;
+/**  */
+@property (nonatomic, strong) UIView *naviView;
 
 @end
 
@@ -95,39 +97,86 @@ static NSString * const fucosCellId = @"fucos";
     return UIStatusBarStyleLightContent;
 }
 
+-(UIView *)naviView{
+    if (!_naviView) {
+        _naviView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+        if (self.isMyself) {
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake(15, 26, 0, 0);
+            [button setImage:[UIImage imageNamed:@"me_back"] forState:UIControlStateNormal];
+            [button sizeToFit];
+            [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+            [_naviView addSubview:button];
+            
+            UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [editBtn setImage:[UIImage imageNamed:@"me_edit"] forState:UIControlStateNormal];
+            [editBtn sizeToFit];
+            [editBtn addTarget:self action:@selector(editBtn) forControlEvents:UIControlEventTouchUpInside];
+            [_naviView addSubview:editBtn];
+            [editBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(_naviView.mas_right).offset(-15);
+                make.top.mas_equalTo(button.mas_top).offset(0);
+            }];
+            
+        } else {
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = CGRectMake(15, 26, 0, 0);
+            [button setImage:[UIImage imageNamed:@"me_back"] forState:UIControlStateNormal];
+            [button sizeToFit];
+            [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+            [_naviView addSubview:button];
+            
+            UIButton *fucosBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            fucosBtn.layer.masksToBounds = YES;
+            fucosBtn.layer.cornerRadius = 13;
+            fucosBtn.layer.borderWidth = 1;
+            fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+            [fucosBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
+            fucosBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+            [fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+            [fucosBtn setTitleColor:[UIColor colorWithHexString:@"#0995f8"] forState:UIControlStateSelected];
+            [fucosBtn setImage:[UIImage imageNamed:@"me_fucos_right"] forState:UIControlStateSelected];
+            fucosBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
+            fucosBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -2, 0, 0);
+            [fucosBtn addTarget:self action:@selector(fucosCenterClick:) forControlEvents:UIControlEventTouchUpInside];
+            [_naviView addSubview:fucosBtn];
+            [fucosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.mas_equalTo(_naviView.mas_right).offset(-15);
+                make.top.mas_equalTo(button.mas_top).offset(0);
+                make.width.mas_equalTo(72);
+                make.height.mas_equalTo(26);
+            }];
+            
+        }
+        _naviView.backgroundColor = [UIColor clearColor];
+    }
+    return _naviView;
+}
+
+#pragma mark - 导航右边关注
+-(void)fucosCenterClick:(UIButton*)sender{
+    
+}
+
 #pragma mark - 设置导航条
 -(void)setupNav{
     self.navigationController.navigationBarHidden = YES;
+    [self.view addSubview:self.naviView];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(15, 26, 0, 0);
-    [button setImage:[UIImage imageNamed:@"me_back"] forState:UIControlStateNormal];
-    [button sizeToFit];
-    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    
-    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [editBtn setImage:[UIImage imageNamed:@"me_edit"] forState:UIControlStateNormal];
-    [editBtn sizeToFit];
-    [editBtn addTarget:self action:@selector(editBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:editBtn];
-    [editBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.view.mas_right).offset(-15);
-        make.top.mas_equalTo(button.mas_top).offset(0);
-    }];
 }
 
 #pragma mark - 懒加载顶部渐变层
 -(CAGradientLayer *)shadow{
     if (!_shadow) {
-        /*_shadow = [CAGradientLayer layer];
-        _shadow.startPoint = CGPointMake(0, 1);
+        _shadow = [CAGradientLayer layer];
+        _shadow.startPoint = CGPointMake(0, 2);
         _shadow.endPoint = CGPointMake(0, 0);
-        _shadow.opacity = 0.5;
-        _shadow.colors = @[(__bridge id)[UIColor blackColor].CGColor,
-                              (__bridge id)[UIColor clearColor].CGColor];
+        _shadow.colors = @[(__bridge id)[UIColor clearColor].CGColor,
+                           (__bridge id)[UIColor blackColor].CGColor];
         _shadow.locations = @[@(0.5f), @(2.5f)];
-        _shadow.frame = CGRectMake(0, 0 , SCREEN_WIDTH, 64);*/
+        _shadow.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
     }
     return _shadow;
 }
@@ -272,20 +321,33 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 刷新个人信息
 -(void)updateUserInfo{
-    
-    FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
-    [request2 startRequestSuccess:^(FBRequest *request, id result) {
-        
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        NSDictionary *dict = result[@"data"];
-        userModel = [FSUserModel mj_objectWithKeyValues:dict];
-        userModel.isLogin = YES;
-        [userModel saveOrUpdate];
-        [self.contentTableView reloadData];
-    } failure:^(FBRequest *request, NSError *error) {
-        
-    }];
-    
+    if (self.isMyself) {
+        FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+        [request2 startRequestSuccess:^(FBRequest *request, id result) {
+            
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            NSDictionary *dict = result[@"data"];
+            userModel = [FSUserModel mj_objectWithKeyValues:dict];
+            userModel.isLogin = YES;
+            [userModel saveOrUpdate];
+            [self.contentTableView reloadData];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    } else if (!self.isMyself) {
+        FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+        [request2 startRequestSuccess:^(FBRequest *request, id result) {
+            
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            NSDictionary *dict = result[@"data"];
+            userModel = [FSUserModel mj_objectWithKeyValues:dict];
+            userModel.isLogin = YES;
+            [userModel saveOrUpdate];
+            [self.contentTableView reloadData];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 #pragma mark - 作品的网络请求
@@ -528,10 +590,12 @@ static NSString * const fucosCellId = @"fucos";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
-    vc.model = self.zuoPins[indexPath.row];
-    vc.title = @"作品详情";
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.section == 1) {
+        FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+        vc.model = self.zuoPins[indexPath.row];
+        vc.title = @"作品详情";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

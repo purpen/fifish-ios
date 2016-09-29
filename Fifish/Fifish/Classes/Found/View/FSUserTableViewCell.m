@@ -75,7 +75,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    
+    vc.isMyself = NO;
     [self.navi pushViewController:vc animated:YES];
 }
 

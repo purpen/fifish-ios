@@ -251,6 +251,8 @@
     } else if (indexPath.section == 2) {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.row];
+        cell.fucosBtn.tag = indexPath.row;
+        [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
         cell.likeBtn.tag = indexPath.row;
         cell.commendBtn.tag = indexPath.row;
@@ -262,6 +264,44 @@
         return cell;
     }
     return nil;
+}
+
+#pragma mark - 关注
+-(void)fucosClick:(UIButton*)sender{
+    if (sender.selected) {
+        //取消关注
+        FSZuoPin *model = self.stuffAry[sender.tag];
+        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 0;
+                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                }
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    } else {
+        //关注
+        FSZuoPin *model = self.stuffAry[sender.tag];
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
+                NSLog(@"cell的ID %@",cellModel.user_id);
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 1;
+                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                }
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 #pragma mark - 更多按钮

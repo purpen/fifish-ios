@@ -9,6 +9,7 @@
 #import "FSTagTableViewCell.h"
 #import "FSTagCollectionViewCell.h"
 #import "FSSearchViewController.h"
+#import "FSTageModel.h"
 
 @interface FSTagTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -73,8 +74,9 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FSTageModel *model = self.modelAry[indexPath.row];
     FSSearchViewController *vc = [[FSSearchViewController alloc] init];
-    
+    vc.placeString = model.name;
     [self.controller presentViewController:vc animated:YES completion:nil];
 }
 

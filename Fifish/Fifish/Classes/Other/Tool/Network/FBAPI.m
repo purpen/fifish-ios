@@ -195,6 +195,21 @@
                           responseType:JSONResponseType];
 }
 
++(instancetype)deleteWithUrlString:(NSString *)urlString requestDictionary:(NSDictionary *)requestDictionary delegate:(id)delegate{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:requestDictionary];
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *token=[defaults objectForKey:@"token"];
+    params[@"token"] = token;
+    return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
+                     requestDictionary:requestDictionary
+                              delegate:delegate
+                       timeoutInterval:nil
+                                  flag:nil
+                         requestMethod:DELETE_METHOD
+                           requestType:HTTPRequestType
+                          responseType:JSONResponseType];
+}
+
 + (instancetype)postWithUrlString:(NSString *)urlString
                 requestDictionary:(NSDictionary *)requestDictionary
                          delegate:(id)delegate {
