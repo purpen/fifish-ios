@@ -10,7 +10,7 @@
 
 #import "FSCameraManager.h"
 
-#import "UIView+Toast.h"
+#import "SVProgressHUD.h"
 
 #import "FSliveVideoConst.h"
 
@@ -142,21 +142,20 @@
     
     [CameraManager RovStarRecordSuccess:^(NSDictionary *responseObject) {
         if ([responseObject[@"head"][@"code"] integerValue]==0) {
-            
-            [KEY_WINDOW makeToast:@"同步录制中"];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Synchronous recording", nil)];
         }
     } WithFailureBlock:^(NSError *error) {
-        [KEY_WINDOW makeToast:error.localizedDescription];
+        [SVProgressHUD showWithStatus:error.localizedDescription];
     }];
     }
     //停止录制
     else{
         [CameraManager RovstopRecordSuccess:^(NSDictionary *responseObject) {
             if ([responseObject[@"head"][@"code"] integerValue]==0) {
-                [KEY_WINDOW makeToast:@"停止录制"];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Stop recording", nil)];
             }
         } WithFailureBlock:^(NSError *error) {
-            [KEY_WINDOW makeToast:error.localizedDescription];
+            [SVProgressHUD showWithStatus:error.localizedDescription];
         }];
     }
     

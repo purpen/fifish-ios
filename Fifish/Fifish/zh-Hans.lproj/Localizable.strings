@@ -57,6 +57,13 @@
 "华氏度"="华氏度(℉)";
 
 
+//错误消息
+
+"Equipment connection exception" = "设备连接异常";
+
+//提示消息
+"Synchronous recording" = "同步录制中";
+"Stop recording" = "停止录制";
 //图像设置
 "背光补偿"="背光补偿";
 

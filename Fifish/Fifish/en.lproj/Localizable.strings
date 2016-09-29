@@ -60,6 +60,12 @@
 "metre" = "metre";
 
 //错误处理
+"Equipment connection exception" = "Equipment connection exception";
+
+
+//提示消息
+"Synchronous recording" = "Synchronous recording";
+"Stop recording" = "Stop recording";
 
 //个人中心
 "findFriend" = "发现好友";
