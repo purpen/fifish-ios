@@ -28,9 +28,10 @@
 - (void)setMediaModel:(FSMediaModel *)mediaModel{
     _mediaModel = mediaModel;
     if ([mediaModel isKindOfClass:[FSVideoModel class]]) {
+        NSLog(@"视频");
         AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_mediaModel.fileUrl] options:nil];
         AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-        CMTimeShow(asset.duration);
+//        CMTimeShow(asset.duration);
         [generator generateCGImagesAsynchronouslyForTimes:@[[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0,1)]] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
             //获取图片
             UIImage *thumbImg = [UIImage imageWithCGImage:image];
@@ -51,12 +52,17 @@
         }];
     }
     
-    if ([mediaModel isKindOfClass:[FSImageModel class]]) {
+   else if ([mediaModel isKindOfClass:[FSImageModel class]]) {
+        NSLog(@"图片");
         self.durationLab.hidden = YES;
         self.videoIcon.hidden = YES;
         FSImageModel*  imagemediaModel = (FSImageModel *)mediaModel;
         self.borswerImageView.image = imagemediaModel.defaultImage;
         
     }
+   else{
+       NSLog(@"没有");
+       
+   }
 }
 @end

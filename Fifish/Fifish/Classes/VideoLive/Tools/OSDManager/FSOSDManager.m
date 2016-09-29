@@ -8,7 +8,7 @@
 
 #import "FSOSDManager.h"
 
-#import "UIView+Toast.h"
+#import "SVProgressHUD.h"
 
 #import "GCDAsyncSocket.h"
 
@@ -42,7 +42,7 @@ NSInteger  const Fish_OSD_Port = 4321;
     [self.OSDConnectSocket connectToHost:Fish_OSD_Host onPort:Fish_OSD_Port error:&error];
     if (error){
         dispatch_async(dispatch_get_main_queue(), ^{
-        [KEY_WINDOW makeToast:error.localizedDescription];
+            [SVProgressHUD showWithStatus:error.localizedDescription];
         });
         
     }

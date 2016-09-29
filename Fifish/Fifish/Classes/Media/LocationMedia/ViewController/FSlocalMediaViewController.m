@@ -14,7 +14,7 @@
 #import "FSlocalMediaViewController.h"
 #import "MJRefresh.h"
 
-#import "UIView+Toast.h"
+#import "FSFileManager.h"
 #import "FSImageModel.h"
 #import "FSVideoModel.h"
 
@@ -86,10 +86,14 @@ CGFloat const Cellspecace = 1;
     //添加collectionview
     [self.view addSubview:self.BroswerCollection];
     [self.BroswerCollection mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(Nav_Height,0, Tab_Height, 0));
+        make.top.equalTo(self.view.mas_top).offset(Nav_Height);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-Tab_Height);
     }];
     
     self.BroswerCollection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.sourceArr removeAllObjects];
         [self GetMediaData];
         [self.BroswerCollection.mj_header endRefreshing];
     }];
@@ -136,7 +140,9 @@ CGFloat const Cellspecace = 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSBorswerImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSBorswerImageCelliden forIndexPath:indexPath];
-    cell.mediaModel = self.sourceArr[indexPath.row];
+   FSMediaModel * model = cell.mediaModel = self.sourceArr[indexPath.row];
+   NSLog(@"%llu",[[[NSFileManager defaultManager] attributesOfItemAtPath:model.fileUrl error:nil] fileSize]);
+    
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -153,15 +159,6 @@ CGFloat const Cellspecace = 1;
     [self.seletedCellIndexSet addIndex:indexPath.item];
     
     [self UpdateDeletedBtn];
-    
-    [self.view makeToast:model.fileUrl];
-    
-
-    [FBAPI isExistenceROVwithBlock:^(BOOL isconnect) {
-        NSLog(@"%d",isconnect);
-    }];
-    
-    
 }
 
 
@@ -192,6 +189,35 @@ CGFloat const Cellspecace = 1;
     return _deletedBtn;
 }
 - (void)deleteMediaItem{
+    //删除操作！
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSUInteger currentIndex = [self.seletedCellIndexSet firstIndex];
+        NSMutableArray * deleteArr = [NSMutableArray array];
+        //遍历选中的index
+        while (currentIndex != NSNotFound) {
+            
+            FSMediaModel * model = self.sourceArr[currentIndex];
+            //1.根据文件地址删除文件
+            [[FSFileManager defaultManager] RemoveFilePath:model.fileUrl];
+            //2.删除数据源里的模型
+            [self.sourceArr removeObjectAtIndex:currentIndex];
+            //3.删除选中的状态
+            [self.seletedCellIndexSet removeIndex:currentIndex];
+            //4.添加到要删除的数组中
+            [deleteArr addObject:[NSIndexPath indexPathForRow:currentIndex inSection:0]];
+            //查找下一个元素
+            currentIndex = [self.seletedCellIndexSet indexGreaterThanIndex:currentIndex];
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //UI界面删除
+            [self.BroswerCollection deleteItemsAtIndexPaths:deleteArr];
+            
+            //更新删除按钮
+            [self UpdateDeletedBtn];
+        });
+        
+    });
     
 }
 @end

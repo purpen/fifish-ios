@@ -228,6 +228,7 @@
 - (void)AddVideoView{
     
     [self.view addSubview:self.VideoGlView];
+    
 }
 
 - (OpenGLFrameView *)VideoGlView{
@@ -285,7 +286,7 @@
 }
 
 - (void)connectWithOSDerror:(NSError *)error{
-    [self.view makeToast:[NSString stringWithFormat:@"与设备连接异常:%@",error.localizedDescription]];
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Equipment connection exception", nil),error.localizedDescription]];
 }
 
 #pragma mark VideoStatusBarDelegate

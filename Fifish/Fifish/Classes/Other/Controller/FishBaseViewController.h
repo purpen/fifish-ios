@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSConst.h"
-#import "UIView+Toast.h"
+#import "SVProgressHUD.h"
 #import "Masonry.h"
 @interface FishBaseViewController : UIViewController
 - (void)setRightItem:(UIView *)view;
