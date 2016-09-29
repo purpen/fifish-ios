@@ -14,8 +14,9 @@
 #import "Masonry.h"
 #import "FSContenHelpViewController.h"
 #import "FBAPI.h"
+#import "AppDelegate.h"
 
-@interface FSEquipmentViewController ()<UIScrollViewDelegate>
+@interface FSEquipmentViewController ()<UIScrollViewDelegate,reachableDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *connectionBtn;
 /**  */
@@ -42,6 +43,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    
+    
+}
+
+-(void)isReachAble{
     [FBAPI isExistenceROVwithBlock:^(BOOL isconnect) {
         if (isconnect) {
             self.statusLabel.text = @"WIFI已连接";
@@ -61,6 +67,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    appDelegate.reachDelegate = self;
     
     self.navigationItem.title = @"Fifish";
     UIBarButtonItem *cancelItem = [UIBarButtonItem itemWithImage:@"eq_cancel" highImage:nil title:nil target:self action:@selector(cancelClick)];
@@ -147,10 +156,8 @@
 
 
 - (IBAction)contentROV:(UIButton *)sender {
-    VideoLiveController * videoLiveVC = [[VideoLiveController alloc] init];
-    [self presentViewController:videoLiveVC animated:YES completion:^{
-        
-    }];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 
 

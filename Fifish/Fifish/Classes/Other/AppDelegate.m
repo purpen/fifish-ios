@@ -72,6 +72,10 @@
     if (_notiDelegate && [_notiDelegate respondsToSelector:@selector(resetNotificationState)]) {
         [_notiDelegate resetNotificationState];
     }
+    
+    if (_reachDelegate && [_reachDelegate respondsToSelector:@selector(isReachAble)]) {
+        [_reachDelegate isReachAble];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

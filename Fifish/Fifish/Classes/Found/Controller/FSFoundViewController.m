@@ -21,6 +21,7 @@
 #import "FSZuoPin.h"
 #import "FSFoundStuffTableViewCell.h"
 #import "FSBigImageViewController.h"
+#import "FSHomeDetailViewController.h"
 
 @interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -251,16 +252,82 @@
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.row];
         cell.navi = self.navigationController;
-        cell.likeBtn.tag = indexPath.section;
-        cell.commendBtn.tag = indexPath.section;
+        cell.likeBtn.tag = indexPath.row;
+        cell.commendBtn.tag = indexPath.row;
         [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.pictuerView.tapBTn.tag = indexPath.section;
+        cell.pictuerView.tapBTn.tag = indexPath.row;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
+}
+
+#pragma mark - 更多按钮
+-(void)moreClick:(UIButton*)sender{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击举报
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //垃圾内容的网络请求
+            
+        }];
+        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //内容不雅举报
+            
+        }];
+        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [reportAlertC addAction:garbageAction];
+        [reportAlertC addAction:indecentAction];
+        [reportAlertC addAction:reportCancelAction];
+        [self presentViewController:reportAlertC animated:YES completion:nil];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertC addAction:reportAction];
+    [alertC addAction:cancelAction];
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+
+
+#pragma mark - 评论按钮
+-(void)commendClick: (UIButton *) sender{
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.model = self.stuffAry[sender.tag];
+    vc.title = @"评论";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - 点击喜欢按钮
+-(void)likeClick:(UIButton*)sender{
+    NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
+    if (sender.selected) {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    } else {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = YES;
+            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+        }];
+    }
 }
 
 #pragma mark - 点击图片
