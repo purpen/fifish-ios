@@ -5,6 +5,9 @@
   Created by THN-Dong on 16/7/26.
   Copyright © 2016年 Dong. All rights reserved.
 */
+//Nav
+"Choose" = "选择";
+"Cancel" = "取消";
 
 "home" = "首页";
 "media" = "媒体";

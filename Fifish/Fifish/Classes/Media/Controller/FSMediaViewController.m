@@ -30,7 +30,8 @@
     [self addChileVC];
     [self setUpUI];
     self.title = @"媒体";
-//    self.navigationController.navigationBar.hidden = YES;
+    
+    [self setNavWithView:nil];
     // 默认显示第0个子控制器
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -45,16 +46,13 @@
 - (void)setUpUI{
     //添加视图scrowll
     [self.view addSubview:self.ViewControllerScrowView];
-    [self.ViewControllerScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.edges.mas_equalTo(self.view).with.insets(UIEdgeInsetsMake(0,0, 0, 0));
-    }];
+    self.ViewControllerScrowView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
 }
 
 - (UIScrollView *)ViewControllerScrowView{
     if (!_ViewControllerScrowView) {
         _ViewControllerScrowView = [[UIScrollView alloc] init];
-        _ViewControllerScrowView.backgroundColor = SETTING_Gray_COLOR;
         _ViewControllerScrowView.delegate = self;
         _ViewControllerScrowView.pagingEnabled = YES;
         _ViewControllerScrowView.contentSize = CGSizeMake(self.childViewControllers.count*SCREEN_WIDTH, 0);
@@ -62,10 +60,11 @@
     return _ViewControllerScrowView;
 }
 
-
+//添加字控制器
 - (void)addChileVC{
     
     FSlocalMediaViewController * locaMediaVc = [[FSlocalMediaViewController alloc] init];
+    locaMediaVc.parentsVC = self;
     [self addChildViewController:locaMediaVc];
     
     FSRovMediaViewController * RovMediaVc = [[FSRovMediaViewController alloc] init];

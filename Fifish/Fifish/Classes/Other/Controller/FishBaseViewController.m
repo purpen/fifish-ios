@@ -19,4 +19,11 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.rightBarButtonItems = @[rightItem];
 }
+
+-(void)setNavWithView:(UIView *)view{
+    UIView * titleView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, 90, 40)];
+    titleView.backgroundColor = [UIColor yellowColor];
+    [self.navigationController.navigationBar addSubview:titleView];
+}
+
 @end

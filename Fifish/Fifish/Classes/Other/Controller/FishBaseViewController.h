@@ -12,4 +12,8 @@
 #import "Masonry.h"
 @interface FishBaseViewController : UIViewController
 - (void)setRightItem:(UIView *)view;
+
+//设置导航
+- (void)setNavWithView:(UIView *)view;
+
 @end

@@ -27,27 +27,33 @@ CGFloat const Cellspecace = 1;
 
 @interface FSlocalMediaViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
 
+//导航右侧按钮
+@property (nonatomic,strong)    UIButton * RigthNavBtn;
 
+/**
+ 是否选择状态
+ */
+@property (nonatomic)           BOOL      isChooseState;
 /**
  删除按钮
  */
-@property (nonatomic ,strong) UIButton          * deletedBtn;
+@property (nonatomic ,strong)   UIButton          * deletedBtn;
 
 //浏览器
-@property (nonatomic , strong) UICollectionView * BroswerCollection;
+@property (nonatomic , strong)  UICollectionView * BroswerCollection;
 
 //cell大小
-@property (nonatomic)          CGFloat            cellSize;
+@property (nonatomic)           CGFloat            cellSize;
 
 //资源
-@property (nonatomic, strong) NSMutableArray    * sourceArr;
+@property (nonatomic, strong)   NSMutableArray    * sourceArr;
 /**
  记录点击cell
  */
-@property (nonatomic, strong) NSMutableIndexSet * seletedCellIndexSet;
+@property (nonatomic, strong)   NSMutableIndexSet * seletedCellIndexSet;
 
 
-@property (nonatomic ,strong)AVPlayer * player;
+@property (nonatomic ,strong)   AVPlayer * player;
 
 
 @end
@@ -56,7 +62,11 @@ CGFloat const Cellspecace = 1;
 @implementation FSlocalMediaViewController
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [self setNav];
+    
     [self setupUI];
+    
     //读取视频数据
     [self GetMediaData];
 }
@@ -78,6 +88,44 @@ CGFloat const Cellspecace = 1;
         [self.sourceArr addObject:mediaModel];
     }
     [self.BroswerCollection reloadData];
+}
+
+- (void)setNav{
+    
+    [self.parentsVC setRightItem:self.RigthNavBtn];
+}
+- (UIButton *)RigthNavBtn{
+    if (!_RigthNavBtn) {
+        _RigthNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _RigthNavBtn.frame = CGRectMake(0, 0, 60, 40);
+        [_RigthNavBtn addTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
+        _RigthNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_RigthNavBtn setTitle:NSLocalizedString(@"Choose", nil) forState:UIControlStateNormal];
+        [_RigthNavBtn setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateSelected];
+        [_RigthNavBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    return _RigthNavBtn;
+}
+
+//选择
+- (void)EditChoose:(UIButton *)sender{
+    
+    self.isChooseState = !self.isChooseState;
+    sender.selected = !sender.selected;
+    [self.BroswerCollection reloadData];
+    
+    //取消状态删除所有值钱记录的下标
+    if (!sender.isSelected) {
+        [self.seletedCellIndexSet removeAllIndexes];
+    }
+    
+    //更新删除按钮
+    [self UpdateDeletedBtn];
+}
+
+//下一步。编辑
+- (void)nextStpe:(UIButton *)sender{
+    NSLog(@"下一步");
 }
 
 - (void)setupUI{
@@ -140,9 +188,9 @@ CGFloat const Cellspecace = 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSBorswerImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSBorswerImageCelliden forIndexPath:indexPath];
-   FSMediaModel * model = cell.mediaModel = self.sourceArr[indexPath.row];
-   NSLog(@"%llu",[[[NSFileManager defaultManager] attributesOfItemAtPath:model.fileUrl error:nil] fileSize]);
-    
+    cell.mediaModel = self.sourceArr[indexPath.row];
+    cell.seletedBtn.hidden = !self.isChooseState;
+
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,9 +204,17 @@ CGFloat const Cellspecace = 1;
 //        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
 //        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
 //    }
-    [self.seletedCellIndexSet addIndex:indexPath.item];
+    //选择状态下
+    if (self.isChooseState) {
+        [self.seletedCellIndexSet addIndex:indexPath.item];
+        
+        [self UpdateDeletedBtn];
+    }
+    //普通状态下
+    else{
+        NSLog(@"点击了");
+    }
     
-    [self UpdateDeletedBtn];
 }
 
 
@@ -172,8 +228,26 @@ CGFloat const Cellspecace = 1;
 
 #pragma mark 刷新删除按钮
 - (void)UpdateDeletedBtn{
+    //更新删除按钮
     self.tabBarController.tabBar.hidden = self.seletedCellIndexSet.count;
     self.deletedBtn.hidden = !self.seletedCellIndexSet.count;
+    
+    //更新选择按钮
+    //如果选中一个单元可进行下一步操作
+    if (self.seletedCellIndexSet.count==1) {
+        //移除之前事件
+        [self.RigthNavBtn setTitle:@"NEXT" forState:UIControlStateSelected];
+        [self.RigthNavBtn removeTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
+        //添加编辑事件
+        [self.RigthNavBtn addTarget:self action:@selector(nextStpe:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else{
+        [self.RigthNavBtn setTitle:@"取消" forState:UIControlStateSelected];
+        //移除编辑事件
+        [self.RigthNavBtn removeTarget:self action:@selector(nextStpe:) forControlEvents:UIControlEventTouchUpInside];
+        //添加选择事件
+        [self.RigthNavBtn addTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (UIButton *)deletedBtn{

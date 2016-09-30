@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FSMediaViewController.h"
+
 @interface FSlocalMediaViewController :UIViewController
+
+
+/**
+ 父控制器
+ */
+@property (assign,nonatomic) FSMediaViewController  * parentsVC;
 
 @end

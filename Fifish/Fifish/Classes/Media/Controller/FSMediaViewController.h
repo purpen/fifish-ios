@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FSMediaViewController : UIViewController
+#import "FishBaseViewController.h"
+@interface FSMediaViewController : FishBaseViewController
 
 @end

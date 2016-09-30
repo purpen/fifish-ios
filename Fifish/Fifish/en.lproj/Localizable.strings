@@ -12,7 +12,9 @@
 "me" = "me";
 "equipment" = "equipment";
 
-
+//NAV
+"Choose" = "Choose";
+"Cancel" = "cancel";
 //视频直播页面
 "Video" = "Video";
 
