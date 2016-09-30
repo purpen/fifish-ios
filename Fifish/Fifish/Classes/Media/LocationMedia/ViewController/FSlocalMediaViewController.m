@@ -120,7 +120,7 @@ CGFloat const Cellspecace = 1;
     }
     
     //更新删除按钮
-//    [self UpdateDeletedBtn];
+    [self UpdateDeletedBtn];
 }
 
 

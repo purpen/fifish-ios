@@ -31,7 +31,6 @@
     [self setUpUI];
     self.title = @"媒体";
     
-    [self setNavWithView:nil];
     // 默认显示第0个子控制器
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];
     self.automaticallyAdjustsScrollViewInsets = NO;
