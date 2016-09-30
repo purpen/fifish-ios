@@ -120,13 +120,9 @@ CGFloat const Cellspecace = 1;
     }
     
     //更新删除按钮
-    [self UpdateDeletedBtn];
+//    [self UpdateDeletedBtn];
 }
 
-//下一步。编辑
-- (void)nextStpe:(UIButton *)sender{
-    NSLog(@"下一步");
-}
 
 - (void)setupUI{
 //    cell大小
@@ -152,8 +148,8 @@ CGFloat const Cellspecace = 1;
     [self.deletedBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view.mas_left);
         make.right.mas_equalTo(self.view.mas_right);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
-        make.height.mas_equalTo(self.tabBarController.tabBar.frame.size.height);
+        make.top.mas_equalTo(self.view.mas_bottom);
+        make.height.mas_equalTo(Tab_Height+20);
     }];
 }
 
@@ -229,32 +225,25 @@ CGFloat const Cellspecace = 1;
 #pragma mark 刷新删除按钮
 - (void)UpdateDeletedBtn{
     //更新删除按钮
-    self.tabBarController.tabBar.hidden = self.seletedCellIndexSet.count;
-    self.deletedBtn.hidden = !self.seletedCellIndexSet.count;
+    __block BOOL tabBarHidden = self.seletedCellIndexSet.count;
     
-    //更新选择按钮
-    //如果选中一个单元可进行下一步操作
-    if (self.seletedCellIndexSet.count==1) {
-        //移除之前事件
-        [self.RigthNavBtn setTitle:@"NEXT" forState:UIControlStateSelected];
-        [self.RigthNavBtn removeTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
-        //添加编辑事件
-        [self.RigthNavBtn addTarget:self action:@selector(nextStpe:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else{
-        [self.RigthNavBtn setTitle:@"取消" forState:UIControlStateSelected];
-        //移除编辑事件
-        [self.RigthNavBtn removeTarget:self action:@selector(nextStpe:) forControlEvents:UIControlEventTouchUpInside];
-        //添加选择事件
-        [self.RigthNavBtn addTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
-    }
+    self.tabBarController.tabBar.hidden = tabBarHidden;
+    
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:10 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        [self.deletedBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_bottom).offset(-(tabBarHidden*Tab_Height));
+        }];
+        [self.view layoutIfNeeded];//强制绘制
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (UIButton *)deletedBtn{
     
     if (!_deletedBtn) {
         _deletedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _deletedBtn.hidden = YES;
+        _deletedBtn.hidden = NO;
         [_deletedBtn addTarget:self action:@selector(deleteMediaItem) forControlEvents:UIControlEventTouchUpInside];
         [_deletedBtn setBackgroundColor:[UIColor colorWithHexString:@"121F27"]];
         [_deletedBtn setImage:[UIImage imageNamed:@"media_delete_icon"] forState:UIControlStateNormal];
