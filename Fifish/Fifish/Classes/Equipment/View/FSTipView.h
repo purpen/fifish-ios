@@ -1,5 +1,5 @@
 //
-//  FSBaseViewController.h
+//  FSTipView.h
 //  Fifish
 //
 //  Created by THN-Dong on 2016/10/8.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView+FSExtension.h"
 
-@interface FSBaseViewController : UIViewController
-
-
+@interface FSTipView : UIView
 
 @end

@@ -190,6 +190,12 @@
 		1F80112E1DA8859C00B320C7 /* FSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80112D1DA8859C00B320C7 /* FSBaseViewController.m */; };
 		1F8011321DA8861500B320C7 /* FSReleasePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011301DA8861500B320C7 /* FSReleasePictureViewController.m */; };
 		1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */; };
+		1F8011361DA8902000B320C7 /* FSTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011351DA8902000B320C7 /* FSTipView.m */; };
+		1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011371DA8902C00B320C7 /* FSTipView.xib */; };
+		1F8011401DA8E2FD00B320C7 /* FSReleaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */; };
+		1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011411DA8E30800B320C7 /* FSReleaseView.xib */; };
+		1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */; };
+		1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -718,6 +724,15 @@
 		1F80112F1DA8861500B320C7 /* FSReleasePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReleasePictureViewController.h; sourceTree = "<group>"; };
 		1F8011301DA8861500B320C7 /* FSReleasePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReleasePictureViewController.m; sourceTree = "<group>"; };
 		1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReleasePictureViewController.xib; sourceTree = "<group>"; };
+		1F8011341DA8902000B320C7 /* FSTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTipView.h; sourceTree = "<group>"; };
+		1F8011351DA8902000B320C7 /* FSTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTipView.m; sourceTree = "<group>"; };
+		1F8011371DA8902C00B320C7 /* FSTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTipView.xib; sourceTree = "<group>"; };
+		1F80113E1DA8E2FD00B320C7 /* FSReleaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReleaseView.h; sourceTree = "<group>"; };
+		1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReleaseView.m; sourceTree = "<group>"; };
+		1F8011411DA8E30800B320C7 /* FSReleaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReleaseView.xib; sourceTree = "<group>"; };
+		1F8011431DA8F89D00B320C7 /* FSAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddTagViewController.h; sourceTree = "<group>"; };
+		1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddTagViewController.m; sourceTree = "<group>"; };
+		1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddTagViewController.xib; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2288,6 +2303,9 @@
 				1F80112F1DA8861500B320C7 /* FSReleasePictureViewController.h */,
 				1F8011301DA8861500B320C7 /* FSReleasePictureViewController.m */,
 				1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */,
+				1F8011431DA8F89D00B320C7 /* FSAddTagViewController.h */,
+				1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */,
+				1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2302,6 +2320,9 @@
 		1F8011261DA8846C00B320C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F80113E1DA8E2FD00B320C7 /* FSReleaseView.h */,
+				1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */,
+				1F8011411DA8E30800B320C7 /* FSReleaseView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2491,6 +2512,9 @@
 		1FF783AB1D9923ED00618245 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F8011341DA8902000B320C7 /* FSTipView.h */,
+				1F8011351DA8902000B320C7 /* FSTipView.m */,
+				1F8011371DA8902C00B320C7 /* FSTipView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2637,6 +2661,7 @@
 				1FB4FBBF1D954EC400E236CF /* MJRefresh.bundle in Resources */,
 				1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */,
 				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
+				1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
 				1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */,
@@ -2659,6 +2684,7 @@
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
+				1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
@@ -2670,6 +2696,7 @@
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
+				1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */,
 				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
@@ -2841,6 +2868,7 @@
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
+				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				1F4202031D48AE0100D3E6CB /* MASViewConstraint.m in Sources */,
 				04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */,
@@ -2866,6 +2894,7 @@
 				1FB4FBBC1D954EC400E236CF /* MJRefreshGifHeader.m in Sources */,
 				1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */,
 				1FDE28E31D928F0600566A73 /* FSUserCollectionViewCell.m in Sources */,
+				1F8011401DA8E2FD00B320C7 /* FSReleaseView.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
@@ -2896,6 +2925,7 @@
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F0219B81D79500A003A8A11 /* FMDatabaseQueue.m in Sources */,
 				0452CD011D77D429007694CC /* UIView+Toast.m in Sources */,
+				1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */,
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
 				1FB4FBBA1D954EC400E236CF /* MJRefreshBackNormalFooter.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,

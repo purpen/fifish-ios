@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FSTipView">
+            <rect key="frame" x="0.0" y="0.0" width="301" height="170"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="请到系统界面进行Wi-Fi连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-uw-hE8">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9l-B4-Qcp">
+                    <state key="normal" image="eq_cancel"/>
+                    <connections>
+                        <action selector="cancelClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="J7p-iu-9kI"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="1.打开设置中的无线局域网" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeW-MV-Btk">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.选择以&quot;Fifish&quot;开头的热点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oM5-jb-429">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="3.回到App完成连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3v-VH-GYH">
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="h9l-B4-Qcp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="32K-Mz-5dm"/>
+                <constraint firstAttribute="trailing" secondItem="h9l-B4-Qcp" secondAttribute="trailing" constant="15" id="8aU-sP-BLC"/>
+                <constraint firstItem="FeW-MV-Btk" firstAttribute="top" secondItem="cYj-uw-hE8" secondAttribute="bottom" constant="20" id="BZJ-U7-5m5"/>
+                <constraint firstItem="oM5-jb-429" firstAttribute="top" secondItem="FeW-MV-Btk" secondAttribute="bottom" constant="20" id="HI8-CQ-ckb"/>
+                <constraint firstItem="W3v-VH-GYH" firstAttribute="top" secondItem="oM5-jb-429" secondAttribute="bottom" constant="20" id="Ngr-xj-krX"/>
+                <constraint firstItem="W3v-VH-GYH" firstAttribute="leading" secondItem="oM5-jb-429" secondAttribute="leading" id="SYy-3w-r7B"/>
+                <constraint firstItem="cYj-uw-hE8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Uev-dI-rsb"/>
+                <constraint firstItem="cYj-uw-hE8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YJ3-Pi-iyM"/>
+                <constraint firstItem="FeW-MV-Btk" firstAttribute="leading" secondItem="cYj-uw-hE8" secondAttribute="leading" constant="20" id="Yln-xv-6qJ"/>
+                <constraint firstAttribute="bottom" secondItem="W3v-VH-GYH" secondAttribute="bottom" constant="20" id="ciW-Ey-b17"/>
+                <constraint firstItem="oM5-jb-429" firstAttribute="leading" secondItem="FeW-MV-Btk" secondAttribute="leading" id="iVU-MS-yqx"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-2.5" y="305"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="eq_cancel" width="19" height="19"/>
+    </resources>
+</document>

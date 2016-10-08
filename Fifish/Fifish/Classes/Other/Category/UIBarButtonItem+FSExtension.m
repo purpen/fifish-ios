@@ -25,9 +25,10 @@
 
 +(instancetype)itemWithTitle:(NSString *)title target:(id)target action:(SEL)action{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 40, 40);
     [button setTitle:title forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:14];
-    [button setTitleColor:[UIColor colorWithHexString:@"#2288ff"] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithHexString:@"#298cff"] forState:UIControlStateNormal];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [[self alloc] initWithCustomView:button];
 }

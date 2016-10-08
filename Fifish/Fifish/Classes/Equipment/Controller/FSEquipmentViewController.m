@@ -15,6 +15,8 @@
 #import "FSContenHelpViewController.h"
 #import "FBAPI.h"
 #import "AppDelegate.h"
+#import "FSTipView.h"
+#import "UIView+FSExtension.h"
 
 @interface FSEquipmentViewController ()<UIScrollViewDelegate,reachableDelegate>
 
@@ -27,6 +29,8 @@
 /**  */
 @property (nonatomic, strong) UIPageControl *pagrControl;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+/**  */
+@property (nonatomic, strong) FSTipView *tipView;
 
 @end
 
@@ -43,7 +47,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    
+    self.tipView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 170);
+    [self.view addSubview:self.tipView];
     
 }
 
@@ -154,9 +159,24 @@
     _pagrControl.currentPage = index;
 }
 
+-(FSTipView *)tipView{
+    if (!_tipView) {
+        _tipView = [FSTipView viewFromXib];
+    }
+    return _tipView;
+}
 
 - (IBAction)contentROV:(UIButton *)sender {
-
+    
+    if ([self.statusLabel.text isEqualToString:@"WIFI未连接"]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tipView.y = SCREEN_HEIGHT - 170;
+        } completion:nil];
+    } else {
+        //跳到设备
+        
+    }
+    
 }
 
 
