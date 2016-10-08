@@ -10,6 +10,7 @@
 #import "UIView+FSExtension.h"
 
 @implementation UIBarButtonItem (FSExtension)
+
 + (instancetype)itemWithImage:(NSString *)image highImage:(NSString *)highImage title:(NSString*)title target:(id)target action:(SEL)action
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

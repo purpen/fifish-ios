@@ -19,6 +19,7 @@
 #import "FSZuoPin.h"
 #import "FSSearchViewController.h"
 #import "FSBigImageViewController.h"
+#import "FSReleasePictureViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -146,8 +147,12 @@ static NSString * const CellId = @"home";
 }
 
 -(void)searchClick{
-    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    
+    /*FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];*/
+    
+    FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
