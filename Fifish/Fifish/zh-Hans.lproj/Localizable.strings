@@ -33,6 +33,9 @@
 "inelegant content" = "内容不雅";
 
 "addTagVcTitle" = "添加标签";
+"WriteAddTag" = "请输入标签";
+"recommendTag" = "推荐标签";
+"# addTag" = "# 添加标签";
 
 
 //camera设置

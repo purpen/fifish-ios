@@ -62,25 +62,26 @@
                                 <constraint firstAttribute="height" constant="1" id="UbB-c0-tyx"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc5-YC-a3R">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="# 添加标签" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L18-WX-vNy">
+                            <color key="textColor" red="0.25098039220000001" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="# 添加标签">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-jS-a3y"/>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Lge-xh-CfB" firstAttribute="leading" secondItem="Ood-Hs-m0N" secondAttribute="leading" id="09q-4x-ccP"/>
                         <constraint firstAttribute="height" constant="45" id="8BR-8n-qln"/>
+                        <constraint firstItem="Lge-xh-CfB" firstAttribute="top" secondItem="L18-WX-vNy" secondAttribute="bottom" id="BiJ-kf-6Rd"/>
                         <constraint firstItem="Lge-xh-CfB" firstAttribute="top" secondItem="A3Q-jS-a3y" secondAttribute="bottom" id="Mf1-Ft-hKS"/>
-                        <constraint firstItem="Pc5-YC-a3R" firstAttribute="leading" secondItem="Ood-Hs-m0N" secondAttribute="leading" constant="15" id="Ro8-Dx-b3L"/>
                         <constraint firstItem="A3Q-jS-a3y" firstAttribute="leading" secondItem="Ood-Hs-m0N" secondAttribute="leading" id="XVR-Uo-J1B"/>
+                        <constraint firstAttribute="trailing" secondItem="L18-WX-vNy" secondAttribute="trailing" id="bBs-Qc-6Rf"/>
                         <constraint firstAttribute="trailing" secondItem="A3Q-jS-a3y" secondAttribute="trailing" id="lb2-4D-GeN"/>
-                        <constraint firstItem="Pc5-YC-a3R" firstAttribute="centerY" secondItem="Ood-Hs-m0N" secondAttribute="centerY" id="q6n-gx-RoV"/>
                         <constraint firstItem="A3Q-jS-a3y" firstAttribute="top" secondItem="Ood-Hs-m0N" secondAttribute="top" id="tZL-2i-lci"/>
+                        <constraint firstItem="L18-WX-vNy" firstAttribute="top" secondItem="Ood-Hs-m0N" secondAttribute="top" id="xjU-NG-p6z"/>
                         <constraint firstAttribute="bottom" secondItem="Lge-xh-CfB" secondAttribute="bottom" id="zYt-yB-mJj"/>
+                        <constraint firstItem="L18-WX-vNy" firstAttribute="leading" secondItem="Ood-Hs-m0N" secondAttribute="leading" constant="15" id="zdz-IH-SJP"/>
                         <constraint firstAttribute="trailing" secondItem="Lge-xh-CfB" secondAttribute="trailing" id="zun-HK-UgA"/>
                     </constraints>
                 </view>
@@ -336,6 +337,7 @@
                 <outlet property="instructionsTextView" destination="fHB-Re-7EK" id="5BU-uZ-xV2"/>
                 <outlet property="placeHolderLabel" destination="QB2-1m-mJV" id="vwG-Kn-SEv"/>
                 <outlet property="tagBtn" destination="A3Q-jS-a3y" id="ddl-Qv-SE0"/>
+                <outlet property="tagTextFiled" destination="L18-WX-vNy" id="KU0-aV-G3b"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>

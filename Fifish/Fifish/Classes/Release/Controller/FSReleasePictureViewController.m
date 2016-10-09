@@ -12,7 +12,7 @@
 #import "UIView+FSExtension.h"
 #import "FSAddTagViewController.h"
 
-@interface FSReleasePictureViewController () <UITextViewDelegate>
+@interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate>
 
 /**  */
 @property (nonatomic, strong) UIScrollView *myScrollview;
@@ -45,15 +45,33 @@
         _releaseView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
         _releaseView.instructionsTextView.delegate = self;
         [_releaseView.tagBtn addTarget:self action:@selector(tagClick) forControlEvents:UIControlEventTouchUpInside];
+        _releaseView.tagTextFiled.delegate = self;
     }
     return _releaseView;
 }
 
 -(void)tagClick{
     FSAddTagViewController *vc = [[FSAddTagViewController alloc] init];
+    vc.addTagDelegate = self;
+    vc.tags = self.releaseView.tagTextFiled.text;
     [self presentViewController:vc animated:YES completion:^{
-        
     }];
+}
+
+-(void)getTagName:(NSString *)tag andTagId:(NSString *)tagId{
+    if (tag.length == 0) {
+        self.releaseView.tagTextFiled.text = @"";
+    } else {
+        NSMutableString *newTag = [NSMutableString stringWithString:tag];
+        if ([tag rangeOfString:@"#"].location != NSNotFound) {
+            [newTag deleteCharactersInRange:NSMakeRange(0, 2)];
+        }
+        if (self.releaseView.tagTextFiled.text.length != 0) {
+            self.releaseView.tagTextFiled.text = [NSString stringWithFormat:@"%@, # %@", self.releaseView.tagTextFiled.text, newTag];
+        } else {
+            self.releaseView.tagTextFiled.text = [NSString stringWithFormat:@"# %@", newTag];
+        }
+    }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

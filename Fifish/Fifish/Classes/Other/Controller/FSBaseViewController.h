@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+FSExtension.h"
+#import "FBRequest.h"
+#import "FBAPI.h"
+#import "MJExtension.h"
 
 @interface FSBaseViewController : UIViewController
 
