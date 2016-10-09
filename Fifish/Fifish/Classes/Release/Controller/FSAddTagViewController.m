@@ -21,12 +21,23 @@
 @property (nonatomic, strong) FBRequest *hotTagsRequest;
 /**  */
 @property (nonatomic, strong) NSMutableArray *hotTagsMarr;
+/**  */
+@property (nonatomic, strong) FBRequest *searchRequest;
+/**  */
+@property (nonatomic, strong) NSMutableArray *searchTagsMarr;
 
 @end
 
 static NSString *const hotTagsCellID = @"HotTagsCellID";
 
 @implementation FSAddTagViewController
+
+-(NSMutableArray *)searchTagsMarr{
+    if (!_searchTagsMarr) {
+        _searchTagsMarr = [NSMutableArray array];
+    }
+    return _searchTagsMarr;
+}
 
 -(NSMutableArray *)hotTagsMarr{
     if (!_hotTagsMarr) {
@@ -61,7 +72,6 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
         self.hotTagsMarr = [FSTagModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.tagsList reloadData];
     } failure:^(FBRequest *request, NSError *error) {
-        NSLog(@"%@", error);
     }];
 }
 
@@ -69,12 +79,12 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
 - (void)setViewUI {
     [self.view addSubview:self.tagsTextField];
     [self.view addSubview:self.tagsList];
-    //[self.view addSubview:self.searchList];
+    [self.view addSubview:self.searchList];
 }
 
 - (UITableView *)tagsList {
     if (!_tagsList) {
-        _tagsList = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, SCREEN_WIDTH, SCREEN_HEIGHT - 94) style:(UITableViewStyleGrouped)];
+        _tagsList = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, SCREEN_WIDTH, SCREEN_HEIGHT - 44 - 64) style:(UITableViewStyleGrouped)];
         _tagsList.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
         _tagsList.delegate = self;
         _tagsList.dataSource = self;
@@ -85,7 +95,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
 
 - (UITableView *)searchList {
     if (!_searchList) {
-        _searchList = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - 84 - 44) style:(UITableViewStylePlain)];
+        _searchList = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44) style:(UITableViewStylePlain)];
         _searchList.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
         _searchList.delegate = self;
         _searchList.dataSource = self;
@@ -117,7 +127,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
 }
 
 - (void)beginSearchTag:(UITextField *)textField {
-    CGRect searchFrame = CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT - 94);
+    CGRect searchFrame = CGRectMake(0, 64 + 44, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44);
     [UIView animateWithDuration:.3
                           delay:0
          usingSpringWithDamping:10.0
@@ -134,8 +144,20 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
                      }];
     
     if (![textField.text isEqualToString:@""]) {
-        //[self networkSearchTag:textField.text];
+        [self networkSearchTag:textField.text];
     }
+}
+
+- (void)networkSearchTag:(NSString *)text {
+    self.searchRequest = [FBAPI getWithUrlString:@"/search/expanded" requestDictionary:@{@"q":text, @"size":@"20"} delegate:self];
+    [self.searchRequest startRequestSuccess:^(FBRequest *request, id result) {
+        NSArray *tagsArr = [[result valueForKey:@"data"] valueForKey:@"swords"];
+        self.searchTagsMarr = [NSMutableArray arrayWithArray:tagsArr];
+        [self.searchList reloadData];
+        
+    } failure:^(FBRequest *request, NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -160,7 +182,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
     if (tableView == self.tagsList) {
         return self.hotTagsMarr.count;
     } else if (tableView == self.searchList) {
-        //return self.searchTagsMarr.count;
+        return self.searchTagsMarr.count;
     }
     return 1;
 }
@@ -179,8 +201,8 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (tableView == self.searchList) {
-        /*UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:searchListCellID];
-        cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:searchListCellID];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchListCellID"];
+        cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"searchListCellID"];
         if (self.searchTagsMarr.count) {
             cell.textLabel.text = [NSString stringWithFormat:@"#%@ ", self.searchTagsMarr[indexPath.row]];
         }
@@ -188,7 +210,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
         cell.textLabel.textColor = [UIColor blackColor];
         cell.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;*/
+        return cell;
     }
     return nil;
 }
@@ -238,7 +260,11 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
                 [self.addTagDelegate getTagName:model.name andTagId:model.id];
             }
         } else if (tableView == self.searchList) {
-            //self.getAddTagsDataBlock([NSString stringWithFormat:@"%@ ", self.searchTagsMarr[indexPath.row]], @"");
+            if (self.tagsTextField.text.length == 0) {
+                if ([self.addTagDelegate respondsToSelector:@selector(getTagName:andTagId:)]) {
+                    [self.addTagDelegate getTagName:self.searchTagsMarr[indexPath.row] andTagId:@""];
+                }
+            }
         }
     }];
 }

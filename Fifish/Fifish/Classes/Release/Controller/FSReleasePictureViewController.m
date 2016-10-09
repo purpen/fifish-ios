@@ -11,6 +11,7 @@
 #import "FSReleaseView.h"
 #import "UIView+FSExtension.h"
 #import "FSAddTagViewController.h"
+#import "FSAddressViewController.h"
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate>
 
@@ -46,8 +47,14 @@
         _releaseView.instructionsTextView.delegate = self;
         [_releaseView.tagBtn addTarget:self action:@selector(tagClick) forControlEvents:UIControlEventTouchUpInside];
         _releaseView.tagTextFiled.delegate = self;
+        [_releaseView.addressBtn addTarget:self action:@selector(addressClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _releaseView;
+}
+
+-(void)addressClick{
+    FSAddressViewController *vc = [[FSAddressViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)tagClick{
