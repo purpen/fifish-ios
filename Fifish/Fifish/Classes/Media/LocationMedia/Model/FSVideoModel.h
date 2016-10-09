@@ -10,4 +10,6 @@
 
 @interface FSVideoModel : FSMediaModel
 //@property (nonatomic , strong)
+@property (nonatomic , strong) UIImage * VideoPicture;
+
 @end

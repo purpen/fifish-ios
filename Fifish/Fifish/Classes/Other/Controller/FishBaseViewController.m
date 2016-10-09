@@ -13,7 +13,15 @@
     [super viewDidLoad];
     
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setNavBackColor:[UIColor whiteColor]];
+}
+- (void)setNavBackColor:(UIColor *)backColor{
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.barTintColor = backColor;
+    self.navigationController.navigationBar.tintColor = backColor;
+}
 - (void)setRightItem:(UIView *)view
 {
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:view];
@@ -25,5 +33,4 @@
     titleView.backgroundColor = [UIColor yellowColor];
     [self.navigationController.navigationBar addSubview:titleView];
 }
-
 @end

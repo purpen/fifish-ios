@@ -62,6 +62,10 @@
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
 		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
+		04F584761DA9EFA0008FC43A /* FSMediaBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F584751DA9EFA0008FC43A /* FSMediaBrowseViewController.m */; };
+		04F5847C1DAA1288008FC43A /* FishBlackNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5847B1DAA1288008FC43A /* FishBlackNavViewController.m */; };
+		04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5847E1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m */; };
+		04F584821DAA4098008FC43A /* FSBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F584811DAA4098008FC43A /* FSBaseCollectionViewCell.m */; };
 		1AA91B7C0B764D4165F33738 /* libPods-Fifish.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 267CF4431FD8067897EE3A0B /* libPods-Fifish.a */; };
 		1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02199F1D794E6E003A8A11 /* FSUserModel.m */; };
 		1F0219A71D795002003A8A11 /* JKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219A41D795002003A8A11 /* JKDBHelper.m */; };
@@ -485,6 +489,14 @@
 		04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLiveSettingsViewController.m; sourceTree = "<group>"; };
 		04F20EEA1D7D6A3A009790EE /* FSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraManager.h; sourceTree = "<group>"; };
 		04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraManager.m; sourceTree = "<group>"; };
+		04F584741DA9EFA0008FC43A /* FSMediaBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaBrowseViewController.h; sourceTree = "<group>"; };
+		04F584751DA9EFA0008FC43A /* FSMediaBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaBrowseViewController.m; sourceTree = "<group>"; };
+		04F5847A1DAA1288008FC43A /* FishBlackNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishBlackNavViewController.h; sourceTree = "<group>"; };
+		04F5847B1DAA1288008FC43A /* FishBlackNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FishBlackNavViewController.m; sourceTree = "<group>"; };
+		04F5847D1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaBrowCollectionViewCell.h; sourceTree = "<group>"; };
+		04F5847E1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaBrowCollectionViewCell.m; sourceTree = "<group>"; };
+		04F584801DAA4098008FC43A /* FSBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		04F584811DAA4098008FC43A /* FSBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		1F02199E1D794E6E003A8A11 /* FSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserModel.h; sourceTree = "<group>"; };
 		1F02199F1D794E6E003A8A11 /* FSUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserModel.m; sourceTree = "<group>"; };
 		1F0219A31D795002003A8A11 /* JKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBHelper.h; sourceTree = "<group>"; };
@@ -1582,6 +1594,49 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		04F5846F1DA9EF7C008FC43A /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				04F584701DA9EF7C008FC43A /* MediaBrowse */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		04F584701DA9EF7C008FC43A /* MediaBrowse */ = {
+			isa = PBXGroup;
+			children = (
+				04F584711DA9EF7C008FC43A /* Controller */,
+				04F584721DA9EF7C008FC43A /* Model */,
+				04F584731DA9EF7C008FC43A /* View */,
+			);
+			path = MediaBrowse;
+			sourceTree = "<group>";
+		};
+		04F584711DA9EF7C008FC43A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04F584741DA9EFA0008FC43A /* FSMediaBrowseViewController.h */,
+				04F584751DA9EFA0008FC43A /* FSMediaBrowseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04F584721DA9EF7C008FC43A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04F584731DA9EF7C008FC43A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F5847D1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.h */,
+				04F5847E1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1F0219A21D795002003A8A11 /* DBModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2066,6 +2121,7 @@
 		1F7EDE861D45EF6900ABED5D /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				04F5846F1DA9EF7C008FC43A /* Business */,
 				04903C491D6AFC4300E3E041 /* Tools */,
 				04903C471D6AFC1300E3E041 /* Model */,
 				04903C481D6AFC1300E3E041 /* View */,
@@ -2119,6 +2175,8 @@
 				1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */,
 				1F80112C1DA8859C00B320C7 /* FSBaseViewController.h */,
 				1F80112D1DA8859C00B320C7 /* FSBaseViewController.m */,
+				04F5847A1DAA1288008FC43A /* FishBlackNavViewController.h */,
+				04F5847B1DAA1288008FC43A /* FishBlackNavViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2498,6 +2556,8 @@
 				1FE087931D825649007790E3 /* FSBaseTableViewCell.m */,
 				1FE087941D825649007790E3 /* FSBaseView.h */,
 				1FE087951D825649007790E3 /* FSBaseView.m */,
+				04F584801DAA4098008FC43A /* FSBaseCollectionViewCell.h */,
+				04F584811DAA4098008FC43A /* FSBaseCollectionViewCell.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2796,6 +2856,7 @@
 				1F4201FE1D48AE0100D3E6CB /* MASCompositeConstraint.m in Sources */,
 				1FDE28BF1D92241D00566A73 /* MJFoundation.m in Sources */,
 				1F4202241D48DB8300D3E6CB /* FSHomePageViewController.m in Sources */,
+				04F5847C1DAA1288008FC43A /* FishBlackNavViewController.m in Sources */,
 				1F0219C61D798630003A8A11 /* AreaModel.m in Sources */,
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
 				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
@@ -2859,6 +2920,7 @@
 				1FDE28C11D92241D00566A73 /* MJPropertyKey.m in Sources */,
 				1FDE28C01D92241D00566A73 /* MJProperty.m in Sources */,
 				0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */,
+				04F584761DA9EFA0008FC43A /* FSMediaBrowseViewController.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
 				040995641D95174600BFEC92 /* FSImageModel.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
@@ -2866,6 +2928,7 @@
 				1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */,
 				1FB4FBB91D954EC400E236CF /* MJRefreshBackGifFooter.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
+				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
@@ -2886,6 +2949,7 @@
 				04596A751D7FBE28008D1DD5 /* FSGeneralSettingViewController.m in Sources */,
 				1F0424571D51F3C30071A1D6 /* UIImageView+AFNetworking.m in Sources */,
 				042365701D8431110095007A /* FSImageTools.m in Sources */,
+				04F584821DAA4098008FC43A /* FSBaseCollectionViewCell.m in Sources */,
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1FB4FBBD1D954EC400E236CF /* MJRefreshNormalHeader.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,

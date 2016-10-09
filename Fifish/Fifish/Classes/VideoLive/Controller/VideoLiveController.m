@@ -247,7 +247,6 @@
         _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
         
         _ViedoDecoder.UpdataDelegate = self;
-        
     }
     return _ViedoDecoder;
 }
