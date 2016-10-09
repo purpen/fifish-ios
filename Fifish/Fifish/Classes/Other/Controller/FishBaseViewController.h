@@ -16,4 +16,7 @@
 //设置导航
 - (void)setNavWithView:(UIView *)view;
 
+//设置导航背景颜色
+- (void)setNavBackColor:(UIColor *)backColor;
+
 @end

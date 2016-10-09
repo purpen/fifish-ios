@@ -6,6 +6,10 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
+//vc
+#import "FSMediaBrowseViewController.h"
+
+
 #import <Photos/Photos.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -210,6 +214,11 @@ CGFloat const Cellspecace = 1;
     else{
         NSLog(@"点击了");
     }
+    
+    FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
+    fsmbvc.modelArr = self.sourceArr;
+    fsmbvc.seletedIndex = indexPath.row;
+    [self.navigationController pushViewController:fsmbvc animated:YES];
     
 }
 

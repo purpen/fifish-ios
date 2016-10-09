@@ -28,6 +28,8 @@
 - (void)setMediaModel:(FSMediaModel *)mediaModel{
     _mediaModel = mediaModel;
     if ([mediaModel isKindOfClass:[FSVideoModel class]]) {
+        //强转类型
+        FSVideoModel *  videoModel = (FSVideoModel *)mediaModel;
         NSLog(@"视频");
         AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_mediaModel.fileUrl] options:nil];
         AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
@@ -35,7 +37,7 @@
         [generator generateCGImagesAsynchronouslyForTimes:@[[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0,1)]] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
             //获取图片
             UIImage *thumbImg = [UIImage imageWithCGImage:image];
-            
+            videoModel.VideoPicture = thumbImg;
             //        时长
             NSInteger  duration =ceil(CMTimeGetSeconds(asset.duration));
             NSInteger minute = duration/60.0;

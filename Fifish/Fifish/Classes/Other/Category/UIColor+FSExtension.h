@@ -12,5 +12,5 @@
 
 + (UIColor *)colorWithHexString:(NSString *)color;
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
-
++ (UIColor *)colorWithRandom;
 @end
