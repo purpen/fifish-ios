@@ -196,6 +196,7 @@
 		1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011411DA8E30800B320C7 /* FSReleaseView.xib */; };
 		1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */; };
 		1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */; };
+		1F80114A1DA9E12800B320C7 /* FSTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011491DA9E12800B320C7 /* FSTagModel.m */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -733,6 +734,8 @@
 		1F8011431DA8F89D00B320C7 /* FSAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddTagViewController.h; sourceTree = "<group>"; };
 		1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddTagViewController.m; sourceTree = "<group>"; };
 		1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddTagViewController.xib; sourceTree = "<group>"; };
+		1F8011481DA9E12800B320C7 /* FSTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagModel.h; sourceTree = "<group>"; };
+		1F8011491DA9E12800B320C7 /* FSTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagModel.m; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2313,6 +2316,8 @@
 		1F8011251DA8846C00B320C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F8011481DA9E12800B320C7 /* FSTagModel.h */,
+				1F8011491DA9E12800B320C7 /* FSTagModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2851,6 +2856,7 @@
 				1F0424581D51F3C30071A1D6 /* UIProgressView+AFNetworking.m in Sources */,
 				1FDE28C81D92241D00566A73 /* README.md in Sources */,
 				1F0424481D51F3C30071A1D6 /* AFHTTPRequestOperation.m in Sources */,
+				1F80114A1DA9E12800B320C7 /* FSTagModel.m in Sources */,
 				1FB4FBB61D954EC400E236CF /* MJRefreshAutoGifFooter.m in Sources */,
 				047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */,
 				1F04244E1D51F3C30071A1D6 /* AFURLRequestSerialization.m in Sources */,

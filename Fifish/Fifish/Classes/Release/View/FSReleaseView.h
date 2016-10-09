@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *instructionsTextView;
 @property (weak, nonatomic) IBOutlet UILabel *placeHolderLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tagBtn;
+@property (weak, nonatomic) IBOutlet UITextField *tagTextFiled;
+
 
 @end
