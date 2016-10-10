@@ -58,6 +58,8 @@
 		047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */; };
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
 		049BBD5F1DAB4001006DD20D /* FSMediaBrowBottomEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD5E1DAB4001006DD20D /* FSMediaBrowBottomEditView.m */; };
+		049BBD631DAB840D006DD20D /* FSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD621DAB840D006DD20D /* FSAlertView.m */; };
+		049BBD6A1DAB8C2D006DD20D /* FSImageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD691DAB8C2D006DD20D /* FSImageEditViewController.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
@@ -486,6 +488,10 @@
 		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
 		049BBD5D1DAB4001006DD20D /* FSMediaBrowBottomEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaBrowBottomEditView.h; sourceTree = "<group>"; };
 		049BBD5E1DAB4001006DD20D /* FSMediaBrowBottomEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaBrowBottomEditView.m; sourceTree = "<group>"; };
+		049BBD611DAB840D006DD20D /* FSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAlertView.h; sourceTree = "<group>"; };
+		049BBD621DAB840D006DD20D /* FSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAlertView.m; sourceTree = "<group>"; };
+		049BBD681DAB8C2D006DD20D /* FSImageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageEditViewController.h; sourceTree = "<group>"; };
+		049BBD691DAB8C2D006DD20D /* FSImageEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageEditViewController.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
 		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
@@ -1527,6 +1533,48 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		049BBD601DAB83FB006DD20D /* FSAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				049BBD611DAB840D006DD20D /* FSAlertView.h */,
+				049BBD621DAB840D006DD20D /* FSAlertView.m */,
+			);
+			path = FSAlertView;
+			sourceTree = "<group>";
+		};
+		049BBD641DAB8BDE006DD20D /* ImageEdit */ = {
+			isa = PBXGroup;
+			children = (
+				049BBD651DAB8BDE006DD20D /* Controller */,
+				049BBD661DAB8BDE006DD20D /* Model */,
+				049BBD671DAB8BDE006DD20D /* View */,
+			);
+			path = ImageEdit;
+			sourceTree = "<group>";
+		};
+		049BBD651DAB8BDE006DD20D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				049BBD681DAB8C2D006DD20D /* FSImageEditViewController.h */,
+				049BBD691DAB8C2D006DD20D /* FSImageEditViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		049BBD661DAB8BDE006DD20D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		049BBD671DAB8BDE006DD20D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04A1B6F41D6444E90008223E /* FSVideoLiveTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,6 +1660,7 @@
 			isa = PBXGroup;
 			children = (
 				04F584701DA9EF7C008FC43A /* MediaBrowse */,
+				049BBD641DAB8BDE006DD20D /* ImageEdit */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -2200,6 +2249,7 @@
 		1F7EDE931D45EF6900ABED5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				049BBD601DAB83FB006DD20D /* FSAlertView */,
 				1FE087911D825649007790E3 /* BaseView */,
 				1FE0878C1D8254EA007790E3 /* FSTabBar.h */,
 				1FE0878D1D8254EA007790E3 /* FSTabBar.m */,
@@ -2997,6 +3047,7 @@
 				04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */,
 				1FB4FBB51D954EC400E236CF /* MJRefreshHeader.m in Sources */,
 				1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */,
+				049BBD631DAB840D006DD20D /* FSAlertView.m in Sources */,
 				1F0424541D51F3C30071A1D6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
@@ -3045,6 +3096,7 @@
 				1FF783BB1D9A855A00618245 /* FSBigImageViewController.m in Sources */,
 				1F0424661D51F40F0071A1D6 /* FSZuoPinTableViewCell.m in Sources */,
 				04596A841D801E10008D1DD5 /* FSImageSettingViewController.m in Sources */,
+				049BBD6A1DAB8C2D006DD20D /* FSImageEditViewController.m in Sources */,
 				1F4202061D48AE0100D3E6CB /* View+MASAdditions.m in Sources */,
 				04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,

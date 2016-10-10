@@ -50,6 +50,8 @@
         
         [_shareEditBtn setTitle:[NSString stringWithFormat:@"%@/%@",NSLocalizedString(@"edit", nil),NSLocalizedString(@"share", nil)] forState:UIControlStateNormal];
         
+        [_shareEditBtn addTarget:self action:@selector(editAndShare) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _shareEditBtn;
 }
@@ -59,7 +61,19 @@
     if (!_delegateBtn) {
         _delegateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_delegateBtn setImage:[UIImage imageNamed:@"media_delete_icon"] forState:UIControlStateNormal];
+        [_delegateBtn addTarget:self action:@selector(deleteItem) forControlEvents:UIControlEventTouchUpInside];
     }
     return _delegateBtn;
+}
+
+-(void)editAndShare{
+    if ([self.delegate respondsToSelector:@selector(MediaBrowViewEditAndShare)]) {
+        [self.delegate MediaBrowViewEditAndShare];
+    }
+}
+- (void)deleteItem{
+    if ([self.delegate respondsToSelector:@selector(MediaBrowViewDelete)]) {
+        [self.delegate MediaBrowViewDelete];
+    }
 }
 @end

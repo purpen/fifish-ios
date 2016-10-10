@@ -70,6 +70,9 @@
 //提示消息
 "Synchronous recording" = "Synchronous recording";
 "Stop recording" = "Stop recording";
+"Confirm delete?"= "Confirm delete?";
+"Confirm"= "Confirm";
+"Cancel"= "Cancel";
 
 //个人中心
 "findFriend" = "发现好友";

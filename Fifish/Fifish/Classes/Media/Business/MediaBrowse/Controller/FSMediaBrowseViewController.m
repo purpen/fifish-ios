@@ -6,15 +6,22 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
+//tools
+#import "FSFileManager.h"
+
+//model
 #import "FSImageModel.h"
 //view
+#import "FSAlertView.h"
 #import "FSMediaBrowBottomEditView.h"
+//vc
+#import "FSImageEditViewController.h"
 
 
 #import "FSMediaBrowseViewController.h"
 #import "FSMediaBrowCollectionViewCell.h"
 
-@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,FSMediaBrowBottomEditViewDelegate>
 /**
  浏览器
  */
@@ -97,6 +104,7 @@
 - (FSMediaBrowBottomEditView *)editView{
     if (!_editView) {
         _editView = [[FSMediaBrowBottomEditView alloc] init];
+        _editView.delegate = self;
         return _editView;
     }
     return _editView;
@@ -124,7 +132,9 @@
     return cell;
     
 }
-
+- (void)finalizeCollectionViewUpdates{
+    
+}
 #pragma mark ScrollviewDelegate
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
@@ -139,5 +149,39 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self scrollViewDidEndScrollingAnimation:scrollView];
+}
+
+#pragma mark FSMediaBrowBottomEditViewDelegate
+- (void)MediaBrowViewEditAndShare{
+    NSLog(@"分享");
+    FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
+    [self.navigationController pushViewController:imageEditVc animated:YES];
+    
+}
+- (void)MediaBrowViewDelete{
+    // 删除数据源
+    @synchronized (self.modelArr) {
+        if (!(self.seletedIndex<self.modelArr.count)) {
+            return;
+        }
+        
+        [[[FSAlertView alloc] init] showAlertView:self title:NSLocalizedString(@"Confirm delete?", nil) message:nil canceltitle:NSLocalizedString(@"Cancel", nil) oktitle:NSLocalizedString(@"Confirm", nil) confirmBlock:^{
+            //取出将要删除的模型
+            FSMediaModel * willDeleteModel = self.modelArr[self.seletedIndex];
+            
+            //判断是否删除源文件成功
+            if ([[FSFileManager defaultManager] RemoveFilePath:willDeleteModel.fileUrl]) {
+                [self.modelArr removeObjectAtIndex:self.seletedIndex];
+                
+                [self.BrowseCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.seletedIndex inSection:0]]];
+                
+                [self scrollViewDidEndScrollingAnimation:self.BrowseCollectionView];
+            }
+        } cancelBlock:^{
+            
+        }];
+        
+    }
+    
 }
 @end

@@ -73,6 +73,10 @@
 "Synchronous recording" = "同步录制中";
 "Stop recording" = "停止录制";
 
+"Confirm delete?"= "确定要删除？";
+"Confirm"= "确定";
+"Cancel"= "取消";
+
 //媒体浏览
 "edit" = "编辑";
 "share"= "分享";

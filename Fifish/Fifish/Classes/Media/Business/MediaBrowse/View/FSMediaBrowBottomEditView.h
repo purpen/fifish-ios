@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "FSBaseView.h"
+
+@protocol FSMediaBrowBottomEditViewDelegate <NSObject>
+
+/**
+ 分享编辑
+ */
+- (void)MediaBrowViewEditAndShare;
+
+/**
+ 删除
+ */
+- (void)MediaBrowViewDelete;
+
+
+@end
+
 @interface FSMediaBrowBottomEditView : FSBaseView
+
+@property (assign, nonatomic) id<FSMediaBrowBottomEditViewDelegate> delegate;
 
 @end

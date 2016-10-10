@@ -74,7 +74,10 @@ CGFloat const Cellspecace = 1;
     //读取视频数据
     [self GetMediaData];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self GetMediaData];
+}
 - (void)GetMediaData{
     NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4AndPngFileArr];
     self.sourceArr = [NSMutableArray array];
@@ -202,7 +205,7 @@ CGFloat const Cellspecace = 1;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    FSImageModel * model = self.sourceArr[indexPath.row];
+//    FSImageModel * model = self.sourceArr[indexPath.row];
 //
 //    if ([model isKindOfClass:[FSVideoModel class]]) {
 //        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
@@ -216,14 +219,12 @@ CGFloat const Cellspecace = 1;
     }
     //普通状态下
     else{
-        NSLog(@"点击了");
+        FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
+        fsmbvc.modelArr = self.sourceArr;
+        fsmbvc.seletedIndex = indexPath.row;
+        [self.navigationController pushViewController:fsmbvc animated:YES];
     }
-    
-    FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
-    fsmbvc.modelArr = self.sourceArr;
-    fsmbvc.seletedIndex = indexPath.row;
-    [self.navigationController pushViewController:fsmbvc animated:YES];
-    
+   
 }
 
 

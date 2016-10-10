@@ -15,7 +15,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    nav颜色
     [self setNavBackColor:[UIColor whiteColor]];
+    
+//    标题颜色
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,nil]];
     self.navigationController.navigationBar.translucent = YES;
 }
 - (void)setNavBackColor:(UIColor *)backColor{

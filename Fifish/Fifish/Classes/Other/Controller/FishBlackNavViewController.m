@@ -16,6 +16,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setNavBackColor:FishBlackColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
     
 }
 - (void)viewDidLoad {
@@ -24,6 +25,8 @@
     
     FSNavigationViewController * nav = (FSNavigationViewController *)self.navigationController;
     [nav.backBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
+    
+    
     
 }
 @end
