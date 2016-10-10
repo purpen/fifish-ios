@@ -54,7 +54,7 @@
 
 -(void)addressClick{
     FSAddressViewController *vc = [[FSAddressViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:vc animated:NO completion:nil];
 }
 
 -(void)tagClick{

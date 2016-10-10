@@ -30,7 +30,7 @@
     if (self) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         _searchBar.barStyle =  (style == LGLSearchBarStyleDefault) ? UISearchBarStyleDefault : ((style == LGLSearchBarStyleProminent) ? UISearchBarStyleProminent : UISearchBarStyleMinimal);
-        _searchBar.placeholder = @"请输入搜索内容";
+        _searchBar.placeholder = NSLocalizedString(@"Search nearby location", nil);
         
         /*
          UITextAutocapitalizationTypeNone,             除非自己点击大写,否则永不大写

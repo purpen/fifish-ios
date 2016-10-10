@@ -204,6 +204,8 @@
 		1F80114E1DAA481200B320C7 /* FSAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80114C1DAA481200B320C7 /* FSAddressViewController.m */; };
 		1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */; };
 		1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011511DAA555E00B320C7 /* FSSearchBar.m */; };
+		1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */; };
+		1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -756,6 +758,9 @@
 		1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddressViewController.xib; sourceTree = "<group>"; };
 		1F8011501DAA555E00B320C7 /* FSSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchBar.h; sourceTree = "<group>"; };
 		1F8011511DAA555E00B320C7 /* FSSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchBar.m; sourceTree = "<group>"; };
+		1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLocationTableViewCell.h; sourceTree = "<group>"; };
+		1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLocationTableViewCell.m; sourceTree = "<group>"; };
+		1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSLocationTableViewCell.xib; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2399,6 +2404,9 @@
 				1F8011411DA8E30800B320C7 /* FSReleaseView.xib */,
 				1F8011501DAA555E00B320C7 /* FSSearchBar.h */,
 				1F8011511DAA555E00B320C7 /* FSSearchBar.m */,
+				1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */,
+				1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */,
+				1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2754,6 +2762,7 @@
 				1F0219CD1D799027003A8A11 /* FSForgetViewController.xib in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
 				1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */,
+				1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */,
 				1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */,
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
@@ -2989,6 +2998,7 @@
 				1FDE28C31D92241D00566A73 /* NSObject+MJClass.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
+				1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */,
 				04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */,
 				1FB4FBB51D954EC400E236CF /* MJRefreshHeader.m in Sources */,
 				1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */,

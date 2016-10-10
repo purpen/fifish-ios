@@ -11,6 +11,7 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 #import "MJExtension.h"
+#import "SVProgressHUD.h"
 
 @interface FSBaseViewController : UIViewController
 

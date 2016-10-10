@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +15,50 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDS-1O-I2i">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navi_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xaT-00-YB5"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-DK-ElZ">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="378-uA-aJ1"/>
+                                <constraint firstAttribute="width" constant="30" id="TeJ-fG-wmg"/>
+                            </constraints>
+                            <state key="normal" image="navi_back"/>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="28Q-EH-8en"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加位置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwd-45-0tO">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="xaT-00-YB5" firstAttribute="top" secondItem="tDS-1O-I2i" secondAttribute="top" id="00h-tz-7za"/>
+                        <constraint firstItem="xaT-00-YB5" firstAttribute="leading" secondItem="tDS-1O-I2i" secondAttribute="leading" id="28g-tb-Sng"/>
+                        <constraint firstItem="X3n-DK-ElZ" firstAttribute="leading" secondItem="tDS-1O-I2i" secondAttribute="leading" constant="15" id="2vf-HW-pEa"/>
+                        <constraint firstItem="X3n-DK-ElZ" firstAttribute="centerY" secondItem="tDS-1O-I2i" secondAttribute="centerY" constant="10" id="4fC-iN-jLW"/>
+                        <constraint firstItem="Mwd-45-0tO" firstAttribute="centerY" secondItem="tDS-1O-I2i" secondAttribute="centerY" constant="10" id="88Y-tc-tdv"/>
+                        <constraint firstAttribute="bottom" secondItem="xaT-00-YB5" secondAttribute="bottom" id="Nvg-IW-gtx"/>
+                        <constraint firstAttribute="trailing" secondItem="xaT-00-YB5" secondAttribute="trailing" id="lNj-Lc-hFF"/>
+                        <constraint firstAttribute="height" constant="64" id="sZq-gQ-nCV"/>
+                        <constraint firstItem="Mwd-45-0tO" firstAttribute="centerX" secondItem="tDS-1O-I2i" secondAttribute="centerX" id="ylO-Q3-1vc"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tDS-1O-I2i" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9wH-KF-Zgr"/>
+                <constraint firstAttribute="trailing" secondItem="tDS-1O-I2i" secondAttribute="trailing" id="Bic-Cu-uuR"/>
+                <constraint firstItem="tDS-1O-I2i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r0o-Ur-4Hw"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="navi_back" width="10" height="18"/>
+        <image name="navi_bg" width="376" height="65"/>
+    </resources>
 </document>
