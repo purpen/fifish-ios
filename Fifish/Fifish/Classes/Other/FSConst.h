@@ -36,6 +36,7 @@ typedef enum {
 
 #pragma mark 颜色
 #define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]
+#define FishBlackColor   [UIColor colorWithHexString:@"#121F27"]
 
 #define RANDOM_COLOR(a) [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:a]
 

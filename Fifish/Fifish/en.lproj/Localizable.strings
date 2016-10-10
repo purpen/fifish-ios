@@ -31,7 +31,9 @@
 
 "编码设置"= "Encoding settings";
 
-
+//媒体浏览
+"edit" = "edit";
+"share"= "share";
 
 //通用设置
 "度量单位"="Measure unit";
@@ -68,6 +70,9 @@
 //提示消息
 "Synchronous recording" = "Synchronous recording";
 "Stop recording" = "Stop recording";
+"Confirm delete?"= "Confirm delete?";
+"Confirm"= "Confirm";
+"Cancel"= "Cancel";
 
 //个人中心
 "findFriend" = "发现好友";
