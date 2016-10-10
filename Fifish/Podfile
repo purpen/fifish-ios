@@ -4,4 +4,5 @@
 target 'Fifish' do
 pod 'CocoaAsyncSocket', '~> 7.5.0'
 pod 'SDWebImage', '~> 3.8.1'
+pod 'GPUImage', '~> 0.1.7'
 end
