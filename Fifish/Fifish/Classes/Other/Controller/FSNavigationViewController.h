@@ -10,4 +10,9 @@
 
 @interface FSNavigationViewController : UINavigationController
 
+/**
+ 返回按钮
+ */
+@property (nonatomic , strong) UIButton * backBtn;
+
 @end

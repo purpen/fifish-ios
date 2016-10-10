@@ -57,6 +57,7 @@
 		047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A85861D79AB8300A88891 /* UIView+Toast.m */; };
 		047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */; };
 		04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04903C4B1D6AFC6800E3E041 /* FSFileManager.m */; };
+		049BBD5F1DAB4001006DD20D /* FSMediaBrowBottomEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD5E1DAB4001006DD20D /* FSMediaBrowBottomEditView.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
@@ -483,6 +484,8 @@
 		047BDBE51D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveSettingsTableViewCell.m; sourceTree = "<group>"; };
 		04903C4A1D6AFC6800E3E041 /* FSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
 		04903C4B1D6AFC6800E3E041 /* FSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
+		049BBD5D1DAB4001006DD20D /* FSMediaBrowBottomEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaBrowBottomEditView.h; sourceTree = "<group>"; };
+		049BBD5E1DAB4001006DD20D /* FSMediaBrowBottomEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaBrowBottomEditView.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
 		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
@@ -1644,6 +1647,8 @@
 			children = (
 				04F5847D1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.h */,
 				04F5847E1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m */,
+				049BBD5D1DAB4001006DD20D /* FSMediaBrowBottomEditView.h */,
+				049BBD5E1DAB4001006DD20D /* FSMediaBrowBottomEditView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3051,6 +3056,7 @@
 				1F8011321DA8861500B320C7 /* FSReleasePictureViewController.m in Sources */,
 				042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */,
 				1FB4FBC11D954EC400E236CF /* UIScrollView+MJExtension.m in Sources */,
+				049BBD5F1DAB4001006DD20D /* FSMediaBrowBottomEditView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

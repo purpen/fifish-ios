@@ -16,11 +16,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setNavBackColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = YES;
 }
 - (void)setNavBackColor:(UIColor *)backColor{
-    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
     self.navigationController.navigationBar.barTintColor = backColor;
-    self.navigationController.navigationBar.tintColor = backColor;
+//    self.navigationController.hidesBarsOnTap = YES;
 }
 - (void)setRightItem:(UIView *)view
 {

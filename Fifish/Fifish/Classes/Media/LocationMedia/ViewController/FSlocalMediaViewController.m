@@ -91,7 +91,10 @@ CGFloat const Cellspecace = 1;
         
         [self.sourceArr addObject:mediaModel];
     }
-    [self.BroswerCollection reloadData];
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.BroswerCollection reloadData];
+    }];
+    
 }
 
 - (void)setNav{
@@ -129,6 +132,7 @@ CGFloat const Cellspecace = 1;
 
 
 - (void)setupUI{
+
 //    cell大小
     self.cellSize = (SCREEN_WIDTH-(Cellspecace*3.0))/4;
     //添加collectionview
@@ -256,6 +260,7 @@ CGFloat const Cellspecace = 1;
         [_deletedBtn addTarget:self action:@selector(deleteMediaItem) forControlEvents:UIControlEventTouchUpInside];
         [_deletedBtn setBackgroundColor:[UIColor colorWithHexString:@"121F27"]];
         [_deletedBtn setImage:[UIImage imageNamed:@"media_delete_icon"] forState:UIControlStateNormal];
+        _deletedBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 20, 0);
     }
     
     return _deletedBtn;

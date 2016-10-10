@@ -7,15 +7,29 @@
 //
 
 #import "FSImageModel.h"
+//view
+#import "FSMediaBrowBottomEditView.h"
+
 
 #import "FSMediaBrowseViewController.h"
 #import "FSMediaBrowCollectionViewCell.h"
 
-@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 /**
  浏览器
  */
-@property (nonatomic,strong)UICollectionView * BrowseCollectionView;
+@property (nonatomic,strong)UICollectionView                        * BrowseCollectionView;
+
+/**
+ 当前张数
+ */
+@property (nonatomic,strong)UILabel                                 * offsetLab;
+
+/**
+ 编辑分享view
+ */
+@property (nonatomic,strong)FSMediaBrowBottomEditView              * editView;
+
 
 @end
 
@@ -33,8 +47,26 @@
        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(Nav_Height, 0, Nav_Height, 0));
     }];
     
-    //滚动到点击位置
-    [self.BrowseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.seletedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    [self.view addSubview:self.editView];
+    [self.editView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(@44);
+    }];
+    
+    [self.view addSubview:self.offsetLab];
+    [self.offsetLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.editView.mas_centerX);
+        make.bottom.mas_equalTo(self.editView.mas_top).offset(-30);
+    }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.BrowseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.seletedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        self.offsetLab.text = [NSString stringWithFormat:@"%lu/%lu",self.seletedIndex+1,self.modelArr.count];
+    });
+    
+    
 }
 
 - (UICollectionView *)BrowseCollectionView{
@@ -49,8 +81,25 @@
         _BrowseCollectionView.dataSource = self;
         _BrowseCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
         [_BrowseCollectionView registerClass:[FSMediaBrowCollectionViewCell class] forCellWithReuseIdentifier:BrowCellIden];
+        
+        
     }
     return _BrowseCollectionView;
+}
+- (UILabel *)offsetLab{
+    if (!_offsetLab) {
+        _offsetLab = [[UILabel alloc] init];
+        _offsetLab.textColor = [UIColor whiteColor];
+        _offsetLab.font = [UIFont systemFontOfSize:14];
+    }
+    return _offsetLab;
+}
+- (FSMediaBrowBottomEditView *)editView{
+    if (!_editView) {
+        _editView = [[FSMediaBrowBottomEditView alloc] init];
+        return _editView;
+    }
+    return _editView;
 }
 #pragma mark UIcollectionviewdelegate
 
@@ -74,5 +123,21 @@
     
     return cell;
     
+}
+
+#pragma mark ScrollviewDelegate
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    CGPoint offset = scrollView.contentOffset;
+    self.seletedIndex = offset.x/SCREEN_WIDTH;
+    self.offsetLab.text = [NSString stringWithFormat:@"%lu/%lu",self.seletedIndex+1,self.modelArr.count];
+}
+
+/**
+ * 手指松开scrollView后，scrollView停止减速完毕就会调用这个
+ */
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self scrollViewDidEndScrollingAnimation:scrollView];
 }
 @end

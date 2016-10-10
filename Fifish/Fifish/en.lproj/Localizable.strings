@@ -31,7 +31,9 @@
 
 "编码设置"= "Encoding settings";
 
-
+//媒体浏览
+"edit" = "edit";
+"share"= "share";
 
 //通用设置
 "度量单位"="Measure unit";

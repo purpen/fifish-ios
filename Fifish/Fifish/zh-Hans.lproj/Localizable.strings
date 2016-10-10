@@ -72,6 +72,11 @@
 //提示消息
 "Synchronous recording" = "同步录制中";
 "Stop recording" = "停止录制";
+
+//媒体浏览
+"edit" = "编辑";
+"share"= "分享";
+
 //图像设置
 "背光补偿"="背光补偿";
 
