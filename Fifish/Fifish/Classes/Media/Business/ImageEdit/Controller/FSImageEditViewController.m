@@ -51,10 +51,10 @@
                      @"FSSierraFilter",
                      @"FSValenciaFilter",
                      @"FSWaldenFilter",
-                    
+                     @"FSXproIIFilter",
                      @"GPUImageBrightnessFilter",
                      @"GPUImageExposureFilter",
-                     
+                     @"GPUImageContrastFilter",
                      @"GPUImageLookupFilter",
                      @"GPUImageAmatorkaFilter",
                      @"GPUImageMissEtikateFilter",
@@ -62,7 +62,12 @@
                      @"GPUImageSaturationFilter",
                      @"GPUImageGammaFilter",
                      @"GPUImageColorInvertFilter",
-                     
+                     @"GPUImageSepiaFilter",
+                     @"GPUImageLevelsFilter",
+                     @"GPUImageHistogramFilter",
+                     @"GPUImageTransformFilter",
+                     @"GPUImageSharpenFilter",
+                     @"GPUImageUnsharpMaskFilter",
                      @"GPUImageFastBlurFilter",
                      @"GPUImageGaussianBlurFilter",
                      @"GPUImageGaussianSelectiveBlurFilter",
@@ -90,7 +95,7 @@
                      @"GPUImageNobleCornerDetectionFilter",
                      @"GPUImageShiTomasiFeatureDetectionFilter",
                      @"GPUImageMotionDetector",
-                   
+                     @"GPUImageHoughTransformLineDetector",
                      @"GPUImageParallelCoordinateLineTransformFilter",
                      @"GPUImageLocalBinaryPatternFilter",
                      @"GPUImageLowPassFilter",
@@ -99,7 +104,7 @@
                      @"GPUImageThresholdSketchFilter",
                      @"GPUImageToonFilter",
                      @"GPUImageSmoothToonFilter",
-                     
+                     @"GPUImageKuwaharaFilter",
                      @"GPUImageMosaicFilter",
                      @"GPUImagePixellateFilter",
                      @"GPUImagePolarPixellateFilter",
