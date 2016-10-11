@@ -11,8 +11,11 @@
 #import "FSLocationTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 
-@interface FSAddressViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface FSAddressViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, AMapSearchDelegate>
 
 /**  */
 @property (nonatomic, strong) FSSearchBar *searchBar;
@@ -21,11 +24,15 @@
 /**  */
 @property (nonatomic, strong) NSArray *locationAry;
 /**  */
-@property (nonatomic, strong) CLLocationManager *locMgr;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 /**  */
 @property (nonatomic, assign) BOOL flag;
 /**  */
 @property (nonatomic, strong) CLGeocoder *geocoder;
+/**  */
+@property (nonatomic, strong)  AMapSearchAPI *search;
+/**  */
+@property (nonatomic, assign) BOOL isInChina;
 
 @end
 
@@ -42,13 +49,41 @@
     return _geocoder;
 }
 
--(CLLocationManager *)locMgr{
-    if (!_locMgr) {
-        _locMgr = [[CLLocationManager alloc] init];
-        _locMgr.delegate = self;
-        [_locMgr requestWhenInUseAuthorization];
+
+/**
+ *得到本机现在用的语言
+ * en-CN 或en  英文  zh-Hans-CN或zh-Hans  简体中文   zh-Hant-CN或zh-Hant  繁体中文    ja-CN或ja  日本  ......
+ */
+- (NSString*)getPreferredLanguage
+{
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+    NSString* preferredLang = [languages objectAtIndex:0];
+    return preferredLang;
+}
+
+-(AMapSearchAPI *)search{
+    if (!_search) {
+        _search = [[AMapSearchAPI alloc] init];
+        _search.delegate = self;
+        NSString *lang = [self getPreferredLanguage];
+        if ([lang rangeOfString:@"en"].location != NSNotFound) {
+            _search.language = AMapSearchLanguageEn;
+        } else {
+            _search.language = AMapSearchLanguageZhCN;
+        }
     }
-    return _locMgr;
+    return _search;
+}
+
+-(AMapLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[AMapLocationManager alloc] init];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        _locationManager.locationTimeout = 2;
+        _locationManager.reGeocodeTimeout = 2;
+    }
+    return _locationManager;
 }
 
 -(FSSearchBar *)searchBar{
@@ -76,8 +111,20 @@
     [self startLocation];
     
     [self.searchBar searchBarTextSearchTextBlock:^(NSString *searchText) {
-        //请求附近地址
-        
+        [SVProgressHUD show];
+        if (self.isInChina) {
+            AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc] init];
+            
+            request.keywords            = searchText;
+            request.requireExtension    = YES;
+            
+            /*  搜索SDK 3.2.0 中新增加的功能，只搜索本城市的POI。*/
+            request.cityLimit           = YES;
+            request.requireSubPOIs      = YES;
+            [self.search AMapPOIKeywordsSearch:request];
+        } else {
+            
+        }
     }];
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.myTableView];
@@ -92,8 +139,25 @@
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"openGPS", nil)];
             _flag = NO;
         }else{
-            [self.locMgr startUpdatingLocation];
-            self.locMgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+            [SVProgressHUD show];
+            [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+                if (error)
+                {
+                    NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+                    
+                    if (error.code == AMapLocationErrorLocateFailed)
+                    {
+                        return;
+                    }
+                }
+                if ((location.coordinate.latitude >= 4 && location.coordinate.latitude <= 53) && (location.coordinate.longitude >= 73 && location.coordinate.longitude <= 135)) {
+                    [self searchPOIWithCoordinate:location.coordinate];
+                    self.isInChina = YES;
+                } else {
+                    self.isInChina = NO;
+                    [self appleMap:location.coordinate :@"景点"];
+                }
+            }];
             _flag = YES;
         }
         
@@ -102,28 +166,66 @@
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    CLLocation *loc = [locations firstObject];
-    NSLog(@"  %ld", locations.count);
-    NSLog(@"纬度=%f，经度=%f",loc.coordinate.latitude,loc.coordinate.longitude);
-    [self.locMgr stopUpdatingLocation];
-    //反向地理编码
-    [self.geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        for (CLPlacemark *placeMark in placemarks) {
-            NSLog(@"地址  %@", placeMark.name);
-        }
-        self.locationAry = placemarks;
+-(void)appleMap:(CLLocationCoordinate2D)coor :(NSString *)key{
+    //创建一个位置信息对象，第一个参数为经纬度，第二个为纬度检索范围，单位为米，第三个为经度检索范围，单位为米
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coor, 500, 500);
+    
+    //初始化一个检索请求对象
+    
+    MKLocalSearchRequest * req = [[MKLocalSearchRequest alloc]init];
+    
+    //设置检索参数
+    
+    req.region=region;
+    
+    //兴趣点关键字
+    
+    req.naturalLanguageQuery = key;
+    
+    //初始化检索
+    
+    MKLocalSearch * ser = [[MKLocalSearch alloc]initWithRequest:req];
+    
+    //开始检索，结果返回在block中
+    
+    [ser startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        
+        //兴趣点节点数组
+        
+        NSArray * array = [NSArray arrayWithArray:response.mapItems];
+        self.locationAry = array;
         [self.myTableView reloadData];
+        [SVProgressHUD dismiss];
     }];
 }
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"定位失败: %@", error);
+/*  POI 搜索.  */
+-  (void)searchPOIWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    //构造POI搜索对象
+    AMapPOIAroundSearchRequest  *place = [[AMapPOIAroundSearchRequest alloc] init];
+    
+    //设置关键字
+    place.keywords = NSLocalizedString(@"attractions", nil);
+    place.requireExtension = YES;//设置成YES，返回信息详细，较费流量
+    place.location = [AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    place.sortrule = 0;
+    //发起查询
+    [self.search  AMapPOIAroundSearch:place];
 }
 
--(void)dealloc{
-    self.locMgr.delegate = nil;
+/* POI 搜索回调. */
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response
+{
+    if (response.pois.count == 0)
+    {
+        return;
+    }
+    self.locationAry = response.pois;
+    [self.myTableView reloadData];
+    [SVProgressHUD dismiss];
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     if (_flag) {
@@ -152,12 +254,35 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSLocationTableViewCell"];
-    
+    if (self.isInChina) {
+        AMapPOI *obj = self.locationAry[indexPath.row];
+        cell.locationNameLabel.text = obj.name;
+        cell.locationLabel.text = obj.address;
+    } else {
+        MKMapItem *item = self.locationAry[indexPath.row];
+        cell.locationNameLabel.text = item.name;
+        cell.locationLabel.text = @"";
+    }
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 64;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.isInChina) {
+        AMapPOI *obj = self.locationAry[indexPath.row];
+        if ([self.addressDelegate respondsToSelector:@selector(getAddress:)]) {
+            [self.addressDelegate getAddress:obj.name];
+        }
+    } else {
+        MKMapItem *item = self.locationAry[indexPath.row];
+        if ([self.addressDelegate respondsToSelector:@selector(getAddress:)]) {
+            [self.addressDelegate getAddress:item.name];
+        }
+    }
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

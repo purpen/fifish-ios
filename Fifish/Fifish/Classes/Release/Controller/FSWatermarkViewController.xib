@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSWatermarkViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWB-7k-Dym">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navi_bg" translatesAutoresizingMaskIntoConstraints="NO" id="aXu-w4-pbP"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGg-3z-dSj">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="1Ap-6H-RW0"/>
+                                <constraint firstAttribute="width" constant="30" id="GbV-Zc-OJM"/>
+                            </constraints>
+                            <state key="normal" image="navi_back"/>
+                            <connections>
+                                <action selector="cancel:" destination="-1" eventType="touchUpInside" id="JI6-KJ-Jnm"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水印" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-Ac-qFA">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="bGg-3z-dSj" firstAttribute="leading" secondItem="hWB-7k-Dym" secondAttribute="leading" constant="15" id="JQG-jP-o2b"/>
+                        <constraint firstItem="fEM-Ac-qFA" firstAttribute="centerX" secondItem="hWB-7k-Dym" secondAttribute="centerX" id="KS7-Mc-YUt"/>
+                        <constraint firstItem="fEM-Ac-qFA" firstAttribute="centerY" secondItem="hWB-7k-Dym" secondAttribute="centerY" constant="10" id="bgf-QR-qRj"/>
+                        <constraint firstItem="aXu-w4-pbP" firstAttribute="leading" secondItem="hWB-7k-Dym" secondAttribute="leading" id="giA-UN-r9f"/>
+                        <constraint firstItem="bGg-3z-dSj" firstAttribute="centerY" secondItem="hWB-7k-Dym" secondAttribute="centerY" constant="10" id="h87-Mo-CrQ"/>
+                        <constraint firstItem="aXu-w4-pbP" firstAttribute="top" secondItem="hWB-7k-Dym" secondAttribute="top" id="hGh-xi-DAp"/>
+                        <constraint firstAttribute="trailing" secondItem="aXu-w4-pbP" secondAttribute="trailing" id="uOz-Gg-pnY"/>
+                        <constraint firstAttribute="height" constant="64" id="yRa-Nx-3AT"/>
+                        <constraint firstAttribute="bottom" secondItem="aXu-w4-pbP" secondAttribute="bottom" id="zbC-xR-YTT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hWB-7k-Dym" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="709-E4-WRB"/>
+                <constraint firstItem="hWB-7k-Dym" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J1m-w3-MJd"/>
+                <constraint firstAttribute="trailing" secondItem="hWB-7k-Dym" secondAttribute="trailing" id="lg5-if-WUv"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="navi_back" width="10" height="18"/>
+        <image name="navi_bg" width="376" height="65"/>
+    </resources>
+</document>
