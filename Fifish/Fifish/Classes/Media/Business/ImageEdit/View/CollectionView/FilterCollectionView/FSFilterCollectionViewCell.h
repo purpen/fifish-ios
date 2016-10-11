@@ -13,5 +13,5 @@ static NSString * const FilterCellIden = @"FSFilterCollectionViewCellIedn";
 
 
 @interface FSFilterCollectionViewCell : FSBaseCollectionViewCell
-
+@property (nonatomic,assign) NSInteger  index;
 @end

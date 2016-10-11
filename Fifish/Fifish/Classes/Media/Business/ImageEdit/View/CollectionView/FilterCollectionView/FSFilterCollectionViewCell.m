@@ -55,4 +55,8 @@
     }
     return _FilterNameLab;
 }
+- (void)setIndex:(NSInteger )index{
+    _index = index;
+    self.FilterNameLab.text = [NSString stringWithFormat:@"%lu",index];
+}
 @end

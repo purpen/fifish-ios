@@ -14,6 +14,8 @@ typedef NS_ENUM(NSUInteger, FSFilterType) {
 };
 @interface FSImageFilterManager : NSObject
 
-+ (UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image;
+- (UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image;
+
+- (UIImage *)randerImageWithIndex:(NSString *)filterName WithImage:(UIImage *)image;
 
 @end

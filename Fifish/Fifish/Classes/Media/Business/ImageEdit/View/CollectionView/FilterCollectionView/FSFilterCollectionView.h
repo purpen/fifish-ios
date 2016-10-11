@@ -19,6 +19,8 @@
 
 @property (nonatomic,assign) id<FSFilterCollectionViewDelegate> FilterDelegate;
 
+@property (nonatomic,assign) NSInteger collectionNumber;
+
 
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;
 @end

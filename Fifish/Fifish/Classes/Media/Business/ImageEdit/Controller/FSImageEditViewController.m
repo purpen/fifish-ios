@@ -25,6 +25,8 @@
 //底部切换view
 @property (nonatomic,strong) FSImageEditBottomView * bottomView;
 
+@property (nonatomic,strong) NSArray * testarr;
+
 @end
 
 @implementation FSImageEditViewController
@@ -32,10 +34,94 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self testarr];
+    
     [self makeUserInterface];
     
 }
-
+- (NSArray *)testarr{
+    if (!_testarr) {
+        _testarr = @[@"FS1977Filter",
+                     @"FSAmaroFilter",
+                     @"FSHudsonFilter",
+                     @"FSInkwellFilter",
+                     @"FSLomofiFilter",
+                     @"FSLordKelvinFilter",
+                     @"FSNashvilleFilter",
+                     @"FSSierraFilter",
+                     @"FSValenciaFilter",
+                     @"FSWaldenFilter",
+                    
+                     @"GPUImageBrightnessFilter",
+                     @"GPUImageExposureFilter",
+                     
+                     @"GPUImageLookupFilter",
+                     @"GPUImageAmatorkaFilter",
+                     @"GPUImageMissEtikateFilter",
+                     @"GPUImageSoftEleganceFilter",
+                     @"GPUImageSaturationFilter",
+                     @"GPUImageGammaFilter",
+                     @"GPUImageColorInvertFilter",
+                     
+                     @"GPUImageFastBlurFilter",
+                     @"GPUImageGaussianBlurFilter",
+                     @"GPUImageGaussianSelectiveBlurFilter",
+                     @"GPUImageBoxBlurFilter",
+                     @"GPUImageTiltShiftFilter",
+                     @"GPUImageMedianFilter",
+                     @"GPUImageBilateralFilter",
+                     @"GPUImageErosionFilter",
+                     @"GPUImageRGBErosionFilter",
+                     @"GPUImageDilationFilter",
+                     @"GPUImageRGBDilationFilter",
+                     @"GPUImageOpeningFilter",
+                     @"GPUImageRGBOpeningFilter",
+                     @"GPUImageClosingFilter",
+                     @"GPUImageRGBClosingFilter",
+                     @"GPUImageLanczosResamplingFilter",
+                     @"GPUImageNonMaximumSuppressionFilter",
+                     @"GPUImageThresholdedNonMaximumSuppressionFilter",
+                     @"GPUImageSobelEdgeDetectionFilter",
+                     @"GPUImageCannyEdgeDetectionFilter",
+                     @"GPUImageThresholdEdgeDetectionFilter",
+                     @"GPUImagePrewittEdgeDetectionFilter",
+                     @"GPUImageXYDerivativeFilter",
+                     @"GPUImageHarrisCornerDetectionFilter",
+                     @"GPUImageNobleCornerDetectionFilter",
+                     @"GPUImageShiTomasiFeatureDetectionFilter",
+                     @"GPUImageMotionDetector",
+                   
+                     @"GPUImageParallelCoordinateLineTransformFilter",
+                     @"GPUImageLocalBinaryPatternFilter",
+                     @"GPUImageLowPassFilter",
+                     @"GPUImageHighPassFilter",
+                     @"GPUImageSketchFilter",
+                     @"GPUImageThresholdSketchFilter",
+                     @"GPUImageToonFilter",
+                     @"GPUImageSmoothToonFilter",
+                     
+                     @"GPUImageMosaicFilter",
+                     @"GPUImagePixellateFilter",
+                     @"GPUImagePolarPixellateFilter",
+                     @"GPUImageCrosshatchFilter",
+                     @"GPUImageColorPackingFilter",
+                     @"GPUImageVignetteFilter",
+                     @"GPUImageSwirlFilter",
+                     @"GPUImageBulgeDistortionFilter",
+                     @"GPUImagePinchDistortionFilter",
+                     @"GPUImageStretchDistortionFilter",
+                     @"GPUImageGlassSphereFilter",
+                     @"GPUImageSphereRefractionFilter",
+                     @"GPUImagePosterizeFilter",
+                     @"GPUImageCGAColorspaceFilter",
+                     @"GPUImagePerlinNoiseFilter",
+                     @"GPUImage3x3ConvolutionFilter",
+                     @"GPUImageEmbossFilter",
+                     @"GPUImagePolkaDotFilter",
+                     @"GPUImageHalftoneFilter"];
+    }
+    return _testarr;
+}
 - (void)makeUserInterface{
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -76,6 +162,7 @@
     if (!_FilterCollectionView) {
         _FilterCollectionView = [[FSFilterCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:nil];
         _FilterCollectionView.FilterDelegate = self;
+        _FilterCollectionView.collectionNumber = self.testarr.count;
         
     }
     return _FilterCollectionView;
@@ -102,7 +189,7 @@
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
     UIImage * immmm = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
     
-   UIImage * image = [FSImageFilterManager randerImageWithFilter:0 WithImage:immmm];
+   UIImage * image = [[[FSImageFilterManager alloc] init] randerImageWithIndex:self.testarr[indexpath.row] WithImage:immmm];
     
     self.imageView.image = image;
     

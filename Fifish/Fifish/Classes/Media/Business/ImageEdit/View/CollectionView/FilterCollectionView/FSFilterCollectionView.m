@@ -39,7 +39,7 @@
 #pragma mark UIcollectionviewdelegate
 //个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return self.collectionNumber;
 }
 //单元大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -47,7 +47,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSFilterCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FilterCellIden forIndexPath:indexPath];
-    
+    cell.index = indexPath.row;
     return cell;
     
 }
