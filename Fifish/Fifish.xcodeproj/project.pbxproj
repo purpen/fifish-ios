@@ -34,6 +34,66 @@
 		0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F4251D61C8D400DBFFCE /* FifishH264Decoder.m */; };
 		0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */; };
 		0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */; };
+		0436AE671DAC8640001E6808 /* FSImageEditBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AE661DAC8640001E6808 /* FSImageEditBottomView.m */; };
+		0436AE6F1DACBA70001E6808 /* FSFilterCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AE6E1DACBA70001E6808 /* FSFilterCollectionView.m */; };
+		0436AE721DACBBC7001E6808 /* FSFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AE711DACBBC7001E6808 /* FSFilterCollectionViewCell.m */; };
+		0436AE761DACC5EF001E6808 /* FSImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AE751DACC5EF001E6808 /* FSImageFilterManager.m */; };
+		0436AEB41DACE30C001E6808 /* 1977blowout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8A1DACE30C001E6808 /* 1977blowout.png */; };
+		0436AEB51DACE30C001E6808 /* 1977map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8B1DACE30C001E6808 /* 1977map.png */; };
+		0436AEB61DACE30C001E6808 /* amaroMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8C1DACE30C001E6808 /* amaroMap.png */; };
+		0436AEB71DACE30C001E6808 /* blackboard1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8D1DACE30C001E6808 /* blackboard1024.png */; };
+		0436AEB81DACE30C001E6808 /* brannanBlowout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8E1DACE30C001E6808 /* brannanBlowout.png */; };
+		0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE8F1DACE30C001E6808 /* brannanContrast.png */; };
+		0436AEBA1DACE30C001E6808 /* brannanLuma.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE901DACE30C001E6808 /* brannanLuma.png */; };
+		0436AEBB1DACE30C001E6808 /* brannanProcess.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE911DACE30C001E6808 /* brannanProcess.png */; };
+		0436AEBC1DACE30C001E6808 /* brannanScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE921DACE30C001E6808 /* brannanScreen.png */; };
+		0436AEBD1DACE30C001E6808 /* earlybirdBlowout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE931DACE30C001E6808 /* earlybirdBlowout.png */; };
+		0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE941DACE30C001E6808 /* earlyBirdCurves.png */; };
+		0436AEBF1DACE30C001E6808 /* earlybirdMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE951DACE30C001E6808 /* earlybirdMap.png */; };
+		0436AEC01DACE30C001E6808 /* earlybirdOverlayMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE961DACE30C001E6808 /* earlybirdOverlayMap.png */; };
+		0436AEC11DACE30C001E6808 /* edgeBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE971DACE30C001E6808 /* edgeBurn.png */; };
+		0436AEC21DACE30C001E6808 /* hefeGradientMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE981DACE30C001E6808 /* hefeGradientMap.png */; };
+		0436AEC31DACE30C001E6808 /* hefeMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE991DACE30C001E6808 /* hefeMap.png */; };
+		0436AEC41DACE30C001E6808 /* hefeMetal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9A1DACE30C001E6808 /* hefeMetal.png */; };
+		0436AEC51DACE30C001E6808 /* hefeSoftLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9B1DACE30C001E6808 /* hefeSoftLight.png */; };
+		0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9C1DACE30C001E6808 /* hudsonBackground.png */; };
+		0436AEC71DACE30C001E6808 /* hudsonMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9D1DACE30C001E6808 /* hudsonMap.png */; };
+		0436AEC81DACE30C001E6808 /* inkwellMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9E1DACE30C001E6808 /* inkwellMap.png */; };
+		0436AEC91DACE30C001E6808 /* kelvinMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AE9F1DACE30C001E6808 /* kelvinMap.png */; };
+		0436AECA1DACE30C001E6808 /* lomoMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA01DACE30C001E6808 /* lomoMap.png */; };
+		0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA11DACE30C001E6808 /* nashvilleMap.png */; };
+		0436AECC1DACE30C001E6808 /* overlayMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA21DACE30C001E6808 /* overlayMap.png */; };
+		0436AECD1DACE30C001E6808 /* riseMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA31DACE30C001E6808 /* riseMap.png */; };
+		0436AECE1DACE30C001E6808 /* sierraMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA41DACE30C001E6808 /* sierraMap.png */; };
+		0436AECF1DACE30C001E6808 /* sierraVignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA51DACE30C001E6808 /* sierraVignette.png */; };
+		0436AED01DACE30C001E6808 /* softLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA61DACE30C001E6808 /* softLight.png */; };
+		0436AED11DACE30C001E6808 /* sutroCurves.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA71DACE30C001E6808 /* sutroCurves.png */; };
+		0436AED21DACE30C001E6808 /* sutroEdgeBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA81DACE30C001E6808 /* sutroEdgeBurn.png */; };
+		0436AED31DACE30C001E6808 /* sutroMetal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEA91DACE30C001E6808 /* sutroMetal.png */; };
+		0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAA1DACE30C001E6808 /* toasterColorShift.png */; };
+		0436AED51DACE30C001E6808 /* toasterCurves.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAB1DACE30C001E6808 /* toasterCurves.png */; };
+		0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAC1DACE30C001E6808 /* toasterMetal.png */; };
+		0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAD1DACE30C001E6808 /* toasterOverlayMapWarm.png */; };
+		0436AED81DACE30C001E6808 /* toasterSoftLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAE1DACE30C001E6808 /* toasterSoftLight.png */; };
+		0436AED91DACE30C001E6808 /* valenciaGradientMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEAF1DACE30C001E6808 /* valenciaGradientMap.png */; };
+		0436AEDA1DACE30C001E6808 /* valenciaMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEB01DACE30C001E6808 /* valenciaMap.png */; };
+		0436AEDB1DACE30C001E6808 /* vignetteMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEB11DACE30C001E6808 /* vignetteMap.png */; };
+		0436AEDC1DACE30C001E6808 /* waldenMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEB21DACE30C001E6808 /* waldenMap.png */; };
+		0436AEDD1DACE30C001E6808 /* xproMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0436AEB31DACE30C001E6808 /* xproMap.png */; };
+		0436AF3D1DACE5C2001E6808 /* FS1977Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF181DACE5C2001E6808 /* FS1977Filter.m */; };
+		0436AF3E1DACE5C2001E6808 /* FSAmaroFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF1A1DACE5C2001E6808 /* FSAmaroFilter.m */; };
+		0436AF411DACE5C2001E6808 /* FSFiveInputFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF201DACE5C2001E6808 /* FSFiveInputFilter.m */; };
+		0436AF431DACE5C2001E6808 /* FSHudsonFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF241DACE5C2001E6808 /* FSHudsonFilter.m */; };
+		0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF261DACE5C2001E6808 /* FSInkwellFilter.m */; };
+		0436AF451DACE5C2001E6808 /* FSLomofiFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF281DACE5C2001E6808 /* FSLomofiFilter.m */; };
+		0436AF461DACE5C2001E6808 /* FSLordKelvinFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF2A1DACE5C2001E6808 /* FSLordKelvinFilter.m */; };
+		0436AF471DACE5C2001E6808 /* FSNashvilleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF2C1DACE5C2001E6808 /* FSNashvilleFilter.m */; };
+		0436AF481DACE5C2001E6808 /* FSRiseFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF2E1DACE5C2001E6808 /* FSRiseFilter.m */; };
+		0436AF491DACE5C2001E6808 /* FSSierraFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF301DACE5C2001E6808 /* FSSierraFilter.m */; };
+		0436AF4D1DACE5C2001E6808 /* FSValenciaFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF381DACE5C2001E6808 /* FSValenciaFilter.m */; };
+		0436AF4E1DACE5C2001E6808 /* FSWaldenFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF3A1DACE5C2001E6808 /* FSWaldenFilter.m */; };
+		0436AF4F1DACE5C2001E6808 /* FSXproIIFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF3C1DACE5C2001E6808 /* FSXproIIFilter.m */; };
+		0436AF521DACEDDD001E6808 /* GPUImageFourInputFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF511DACEDDD001E6808 /* GPUImageFourInputFilter.m */; };
 		043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */; };
 		044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044167C31D66FE79002439E7 /* FSVideoPlayerController.m */; };
 		0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CCFC1D77CA6A007694CC /* FSOSDManager.m */; };
@@ -450,6 +510,85 @@
 		0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLFrameView.h; sourceTree = "<group>"; };
 		0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLFrameView.mm; sourceTree = "<group>"; };
 		0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		0436AE651DAC8640001E6808 /* FSImageEditBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageEditBottomView.h; sourceTree = "<group>"; };
+		0436AE661DAC8640001E6808 /* FSImageEditBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageEditBottomView.m; sourceTree = "<group>"; };
+		0436AE6D1DACBA70001E6808 /* FSFilterCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFilterCollectionView.h; sourceTree = "<group>"; };
+		0436AE6E1DACBA70001E6808 /* FSFilterCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFilterCollectionView.m; sourceTree = "<group>"; };
+		0436AE701DACBBC7001E6808 /* FSFilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFilterCollectionViewCell.h; sourceTree = "<group>"; };
+		0436AE711DACBBC7001E6808 /* FSFilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		0436AE741DACC5EF001E6808 /* FSImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageFilterManager.h; sourceTree = "<group>"; };
+		0436AE751DACC5EF001E6808 /* FSImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageFilterManager.m; sourceTree = "<group>"; };
+		0436AE791DACCC59001E6808 /* FSfilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSfilter.h; sourceTree = "<group>"; };
+		0436AE8A1DACE30C001E6808 /* 1977blowout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1977blowout.png; sourceTree = "<group>"; };
+		0436AE8B1DACE30C001E6808 /* 1977map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1977map.png; sourceTree = "<group>"; };
+		0436AE8C1DACE30C001E6808 /* amaroMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amaroMap.png; sourceTree = "<group>"; };
+		0436AE8D1DACE30C001E6808 /* blackboard1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackboard1024.png; sourceTree = "<group>"; };
+		0436AE8E1DACE30C001E6808 /* brannanBlowout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brannanBlowout.png; sourceTree = "<group>"; };
+		0436AE8F1DACE30C001E6808 /* brannanContrast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brannanContrast.png; sourceTree = "<group>"; };
+		0436AE901DACE30C001E6808 /* brannanLuma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brannanLuma.png; sourceTree = "<group>"; };
+		0436AE911DACE30C001E6808 /* brannanProcess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brannanProcess.png; sourceTree = "<group>"; };
+		0436AE921DACE30C001E6808 /* brannanScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brannanScreen.png; sourceTree = "<group>"; };
+		0436AE931DACE30C001E6808 /* earlybirdBlowout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earlybirdBlowout.png; sourceTree = "<group>"; };
+		0436AE941DACE30C001E6808 /* earlyBirdCurves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earlyBirdCurves.png; sourceTree = "<group>"; };
+		0436AE951DACE30C001E6808 /* earlybirdMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earlybirdMap.png; sourceTree = "<group>"; };
+		0436AE961DACE30C001E6808 /* earlybirdOverlayMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earlybirdOverlayMap.png; sourceTree = "<group>"; };
+		0436AE971DACE30C001E6808 /* edgeBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edgeBurn.png; sourceTree = "<group>"; };
+		0436AE981DACE30C001E6808 /* hefeGradientMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hefeGradientMap.png; sourceTree = "<group>"; };
+		0436AE991DACE30C001E6808 /* hefeMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hefeMap.png; sourceTree = "<group>"; };
+		0436AE9A1DACE30C001E6808 /* hefeMetal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hefeMetal.png; sourceTree = "<group>"; };
+		0436AE9B1DACE30C001E6808 /* hefeSoftLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hefeSoftLight.png; sourceTree = "<group>"; };
+		0436AE9C1DACE30C001E6808 /* hudsonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hudsonBackground.png; sourceTree = "<group>"; };
+		0436AE9D1DACE30C001E6808 /* hudsonMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hudsonMap.png; sourceTree = "<group>"; };
+		0436AE9E1DACE30C001E6808 /* inkwellMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inkwellMap.png; sourceTree = "<group>"; };
+		0436AE9F1DACE30C001E6808 /* kelvinMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kelvinMap.png; sourceTree = "<group>"; };
+		0436AEA01DACE30C001E6808 /* lomoMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lomoMap.png; sourceTree = "<group>"; };
+		0436AEA11DACE30C001E6808 /* nashvilleMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nashvilleMap.png; sourceTree = "<group>"; };
+		0436AEA21DACE30C001E6808 /* overlayMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlayMap.png; sourceTree = "<group>"; };
+		0436AEA31DACE30C001E6808 /* riseMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = riseMap.png; sourceTree = "<group>"; };
+		0436AEA41DACE30C001E6808 /* sierraMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sierraMap.png; sourceTree = "<group>"; };
+		0436AEA51DACE30C001E6808 /* sierraVignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sierraVignette.png; sourceTree = "<group>"; };
+		0436AEA61DACE30C001E6808 /* softLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = softLight.png; sourceTree = "<group>"; };
+		0436AEA71DACE30C001E6808 /* sutroCurves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sutroCurves.png; sourceTree = "<group>"; };
+		0436AEA81DACE30C001E6808 /* sutroEdgeBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sutroEdgeBurn.png; sourceTree = "<group>"; };
+		0436AEA91DACE30C001E6808 /* sutroMetal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sutroMetal.png; sourceTree = "<group>"; };
+		0436AEAA1DACE30C001E6808 /* toasterColorShift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toasterColorShift.png; sourceTree = "<group>"; };
+		0436AEAB1DACE30C001E6808 /* toasterCurves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toasterCurves.png; sourceTree = "<group>"; };
+		0436AEAC1DACE30C001E6808 /* toasterMetal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toasterMetal.png; sourceTree = "<group>"; };
+		0436AEAD1DACE30C001E6808 /* toasterOverlayMapWarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toasterOverlayMapWarm.png; sourceTree = "<group>"; };
+		0436AEAE1DACE30C001E6808 /* toasterSoftLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toasterSoftLight.png; sourceTree = "<group>"; };
+		0436AEAF1DACE30C001E6808 /* valenciaGradientMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valenciaGradientMap.png; sourceTree = "<group>"; };
+		0436AEB01DACE30C001E6808 /* valenciaMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valenciaMap.png; sourceTree = "<group>"; };
+		0436AEB11DACE30C001E6808 /* vignetteMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vignetteMap.png; sourceTree = "<group>"; };
+		0436AEB21DACE30C001E6808 /* waldenMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waldenMap.png; sourceTree = "<group>"; };
+		0436AEB31DACE30C001E6808 /* xproMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xproMap.png; sourceTree = "<group>"; };
+		0436AF171DACE5C2001E6808 /* FS1977Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FS1977Filter.h; sourceTree = "<group>"; };
+		0436AF181DACE5C2001E6808 /* FS1977Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FS1977Filter.m; sourceTree = "<group>"; };
+		0436AF191DACE5C2001E6808 /* FSAmaroFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAmaroFilter.h; sourceTree = "<group>"; };
+		0436AF1A1DACE5C2001E6808 /* FSAmaroFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAmaroFilter.m; sourceTree = "<group>"; };
+		0436AF1F1DACE5C2001E6808 /* FSFiveInputFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFiveInputFilter.h; sourceTree = "<group>"; };
+		0436AF201DACE5C2001E6808 /* FSFiveInputFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFiveInputFilter.m; sourceTree = "<group>"; };
+		0436AF231DACE5C2001E6808 /* FSHudsonFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHudsonFilter.h; sourceTree = "<group>"; };
+		0436AF241DACE5C2001E6808 /* FSHudsonFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHudsonFilter.m; sourceTree = "<group>"; };
+		0436AF251DACE5C2001E6808 /* FSInkwellFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSInkwellFilter.h; sourceTree = "<group>"; };
+		0436AF261DACE5C2001E6808 /* FSInkwellFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSInkwellFilter.m; sourceTree = "<group>"; };
+		0436AF271DACE5C2001E6808 /* FSLomofiFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLomofiFilter.h; sourceTree = "<group>"; };
+		0436AF281DACE5C2001E6808 /* FSLomofiFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLomofiFilter.m; sourceTree = "<group>"; };
+		0436AF291DACE5C2001E6808 /* FSLordKelvinFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLordKelvinFilter.h; sourceTree = "<group>"; };
+		0436AF2A1DACE5C2001E6808 /* FSLordKelvinFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLordKelvinFilter.m; sourceTree = "<group>"; };
+		0436AF2B1DACE5C2001E6808 /* FSNashvilleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNashvilleFilter.h; sourceTree = "<group>"; };
+		0436AF2C1DACE5C2001E6808 /* FSNashvilleFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNashvilleFilter.m; sourceTree = "<group>"; };
+		0436AF2D1DACE5C2001E6808 /* FSRiseFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRiseFilter.h; sourceTree = "<group>"; };
+		0436AF2E1DACE5C2001E6808 /* FSRiseFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRiseFilter.m; sourceTree = "<group>"; };
+		0436AF2F1DACE5C2001E6808 /* FSSierraFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSierraFilter.h; sourceTree = "<group>"; };
+		0436AF301DACE5C2001E6808 /* FSSierraFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSierraFilter.m; sourceTree = "<group>"; };
+		0436AF371DACE5C2001E6808 /* FSValenciaFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSValenciaFilter.h; sourceTree = "<group>"; };
+		0436AF381DACE5C2001E6808 /* FSValenciaFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSValenciaFilter.m; sourceTree = "<group>"; };
+		0436AF391DACE5C2001E6808 /* FSWaldenFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWaldenFilter.h; sourceTree = "<group>"; };
+		0436AF3A1DACE5C2001E6808 /* FSWaldenFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWaldenFilter.m; sourceTree = "<group>"; };
+		0436AF3B1DACE5C2001E6808 /* FSXproIIFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSXproIIFilter.h; sourceTree = "<group>"; };
+		0436AF3C1DACE5C2001E6808 /* FSXproIIFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSXproIIFilter.m; sourceTree = "<group>"; };
+		0436AF501DACEDDD001E6808 /* GPUImageFourInputFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFourInputFilter.h; sourceTree = "<group>"; };
+		0436AF511DACEDDD001E6808 /* GPUImageFourInputFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageFourInputFilter.m; sourceTree = "<group>"; };
 		043CB2991D6EE6040060B629 /* FSlocalMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSlocalMediaViewController.h; sourceTree = "<group>"; };
 		043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSlocalMediaViewController.m; sourceTree = "<group>"; };
 		044167C21D66FE79002439E7 /* FSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoPlayerController.h; sourceTree = "<group>"; };
@@ -1248,6 +1387,129 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		0436AE6B1DACBA3E001E6808 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0436AE6C1DACBA5F001E6808 /* FilterCollectionView */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		0436AE6C1DACBA5F001E6808 /* FilterCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0436AE6D1DACBA70001E6808 /* FSFilterCollectionView.h */,
+				0436AE6E1DACBA70001E6808 /* FSFilterCollectionView.m */,
+				0436AE701DACBBC7001E6808 /* FSFilterCollectionViewCell.h */,
+				0436AE711DACBBC7001E6808 /* FSFilterCollectionViewCell.m */,
+			);
+			path = FilterCollectionView;
+			sourceTree = "<group>";
+		};
+		0436AE731DACC5C0001E6808 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0436AE771DACCB6D001E6808 /* FSFilter */,
+				0436AE741DACC5EF001E6808 /* FSImageFilterManager.h */,
+				0436AE751DACC5EF001E6808 /* FSImageFilterManager.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		0436AE771DACCB6D001E6808 /* FSFilter */ = {
+			isa = PBXGroup;
+			children = (
+				0436AF501DACEDDD001E6808 /* GPUImageFourInputFilter.h */,
+				0436AF511DACEDDD001E6808 /* GPUImageFourInputFilter.m */,
+				0436AF171DACE5C2001E6808 /* FS1977Filter.h */,
+				0436AF181DACE5C2001E6808 /* FS1977Filter.m */,
+				0436AF191DACE5C2001E6808 /* FSAmaroFilter.h */,
+				0436AF1A1DACE5C2001E6808 /* FSAmaroFilter.m */,
+				0436AF1F1DACE5C2001E6808 /* FSFiveInputFilter.h */,
+				0436AF201DACE5C2001E6808 /* FSFiveInputFilter.m */,
+				0436AF231DACE5C2001E6808 /* FSHudsonFilter.h */,
+				0436AF241DACE5C2001E6808 /* FSHudsonFilter.m */,
+				0436AF251DACE5C2001E6808 /* FSInkwellFilter.h */,
+				0436AF261DACE5C2001E6808 /* FSInkwellFilter.m */,
+				0436AF271DACE5C2001E6808 /* FSLomofiFilter.h */,
+				0436AF281DACE5C2001E6808 /* FSLomofiFilter.m */,
+				0436AF291DACE5C2001E6808 /* FSLordKelvinFilter.h */,
+				0436AF2A1DACE5C2001E6808 /* FSLordKelvinFilter.m */,
+				0436AF2B1DACE5C2001E6808 /* FSNashvilleFilter.h */,
+				0436AF2C1DACE5C2001E6808 /* FSNashvilleFilter.m */,
+				0436AF2D1DACE5C2001E6808 /* FSRiseFilter.h */,
+				0436AF2E1DACE5C2001E6808 /* FSRiseFilter.m */,
+				0436AF2F1DACE5C2001E6808 /* FSSierraFilter.h */,
+				0436AF301DACE5C2001E6808 /* FSSierraFilter.m */,
+				0436AF371DACE5C2001E6808 /* FSValenciaFilter.h */,
+				0436AF381DACE5C2001E6808 /* FSValenciaFilter.m */,
+				0436AF391DACE5C2001E6808 /* FSWaldenFilter.h */,
+				0436AF3A1DACE5C2001E6808 /* FSWaldenFilter.m */,
+				0436AF3B1DACE5C2001E6808 /* FSXproIIFilter.h */,
+				0436AF3C1DACE5C2001E6808 /* FSXproIIFilter.m */,
+				0436AE891DACE30C001E6808 /* FSfilterImages */,
+				0436AE781DACCC33001E6808 /* header */,
+			);
+			path = FSFilter;
+			sourceTree = "<group>";
+		};
+		0436AE781DACCC33001E6808 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				0436AE791DACCC59001E6808 /* FSfilter.h */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		0436AE891DACE30C001E6808 /* FSfilterImages */ = {
+			isa = PBXGroup;
+			children = (
+				0436AE8A1DACE30C001E6808 /* 1977blowout.png */,
+				0436AE8B1DACE30C001E6808 /* 1977map.png */,
+				0436AE8C1DACE30C001E6808 /* amaroMap.png */,
+				0436AE8D1DACE30C001E6808 /* blackboard1024.png */,
+				0436AE8E1DACE30C001E6808 /* brannanBlowout.png */,
+				0436AE8F1DACE30C001E6808 /* brannanContrast.png */,
+				0436AE901DACE30C001E6808 /* brannanLuma.png */,
+				0436AE911DACE30C001E6808 /* brannanProcess.png */,
+				0436AE921DACE30C001E6808 /* brannanScreen.png */,
+				0436AE931DACE30C001E6808 /* earlybirdBlowout.png */,
+				0436AE941DACE30C001E6808 /* earlyBirdCurves.png */,
+				0436AE951DACE30C001E6808 /* earlybirdMap.png */,
+				0436AE961DACE30C001E6808 /* earlybirdOverlayMap.png */,
+				0436AE971DACE30C001E6808 /* edgeBurn.png */,
+				0436AE981DACE30C001E6808 /* hefeGradientMap.png */,
+				0436AE991DACE30C001E6808 /* hefeMap.png */,
+				0436AE9A1DACE30C001E6808 /* hefeMetal.png */,
+				0436AE9B1DACE30C001E6808 /* hefeSoftLight.png */,
+				0436AE9C1DACE30C001E6808 /* hudsonBackground.png */,
+				0436AE9D1DACE30C001E6808 /* hudsonMap.png */,
+				0436AE9E1DACE30C001E6808 /* inkwellMap.png */,
+				0436AE9F1DACE30C001E6808 /* kelvinMap.png */,
+				0436AEA01DACE30C001E6808 /* lomoMap.png */,
+				0436AEA11DACE30C001E6808 /* nashvilleMap.png */,
+				0436AEA21DACE30C001E6808 /* overlayMap.png */,
+				0436AEA31DACE30C001E6808 /* riseMap.png */,
+				0436AEA41DACE30C001E6808 /* sierraMap.png */,
+				0436AEA51DACE30C001E6808 /* sierraVignette.png */,
+				0436AEA61DACE30C001E6808 /* softLight.png */,
+				0436AEA71DACE30C001E6808 /* sutroCurves.png */,
+				0436AEA81DACE30C001E6808 /* sutroEdgeBurn.png */,
+				0436AEA91DACE30C001E6808 /* sutroMetal.png */,
+				0436AEAA1DACE30C001E6808 /* toasterColorShift.png */,
+				0436AEAB1DACE30C001E6808 /* toasterCurves.png */,
+				0436AEAC1DACE30C001E6808 /* toasterMetal.png */,
+				0436AEAD1DACE30C001E6808 /* toasterOverlayMapWarm.png */,
+				0436AEAE1DACE30C001E6808 /* toasterSoftLight.png */,
+				0436AEAF1DACE30C001E6808 /* valenciaGradientMap.png */,
+				0436AEB01DACE30C001E6808 /* valenciaMap.png */,
+				0436AEB11DACE30C001E6808 /* vignetteMap.png */,
+				0436AEB21DACE30C001E6808 /* waldenMap.png */,
+				0436AEB31DACE30C001E6808 /* xproMap.png */,
+			);
+			path = FSfilterImages;
+			sourceTree = "<group>";
+		};
 		043CB28F1D6EC6950060B629 /* LocationMedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -1573,6 +1835,7 @@
 		049BBD641DAB8BDE006DD20D /* ImageEdit */ = {
 			isa = PBXGroup;
 			children = (
+				0436AE731DACC5C0001E6808 /* Tools */,
 				049BBD651DAB8BDE006DD20D /* Controller */,
 				049BBD661DAB8BDE006DD20D /* Model */,
 				049BBD671DAB8BDE006DD20D /* View */,
@@ -1599,6 +1862,9 @@
 		049BBD671DAB8BDE006DD20D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0436AE6B1DACBA3E001E6808 /* CollectionView */,
+				0436AE651DAC8640001E6808 /* FSImageEditBottomView.h */,
+				0436AE661DAC8640001E6808 /* FSImageEditBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2829,54 +3095,96 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0436AEC11DACE30C001E6808 /* edgeBurn.png in Resources */,
+				0436AEBC1DACE30C001E6808 /* brannanScreen.png in Resources */,
+				0436AED51DACE30C001E6808 /* toasterCurves.png in Resources */,
 				1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */,
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
+				0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */,
 				1FB4FBBF1D954EC400E236CF /* MJRefresh.bundle in Resources */,
 				1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */,
 				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
 				1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
+				0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */,
+				0436AEC01DACE30C001E6808 /* earlybirdOverlayMap.png in Resources */,
+				0436AED81DACE30C001E6808 /* toasterSoftLight.png in Resources */,
+				0436AEC71DACE30C001E6808 /* hudsonMap.png in Resources */,
+				0436AECC1DACE30C001E6808 /* overlayMap.png in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
 				1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */,
 				1FF783BC1D9A855A00618245 /* FSBigImageViewController.xib in Resources */,
 				1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */,
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
+				0436AEBD1DACE30C001E6808 /* earlybirdBlowout.png in Resources */,
 				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
+				0436AECE1DACE30C001E6808 /* sierraMap.png in Resources */,
 				1FDE28BD1D92241D00566A73 /* LICENSE in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */,
+				0436AEB81DACE30C001E6808 /* brannanBlowout.png in Resources */,
+				0436AEB71DACE30C001E6808 /* blackboard1024.png in Resources */,
 				1F0219CD1D799027003A8A11 /* FSForgetViewController.xib in Resources */,
+				0436AED11DACE30C001E6808 /* sutroCurves.png in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
+				0436AEDC1DACE30C001E6808 /* waldenMap.png in Resources */,
 				1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */,
 				1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */,
 				1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */,
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
+				0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
+				0436AEBB1DACE30C001E6808 /* brannanProcess.png in Resources */,
+				0436AED01DACE30C001E6808 /* softLight.png in Resources */,
+				0436AEDB1DACE30C001E6808 /* vignetteMap.png in Resources */,
+				0436AED31DACE30C001E6808 /* sutroMetal.png in Resources */,
+				0436AEBF1DACE30C001E6808 /* earlybirdMap.png in Resources */,
+				0436AEDD1DACE30C001E6808 /* xproMap.png in Resources */,
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1FDE28D21D927DE000566A73 /* FSFoundHeaderView.xib in Resources */,
+				0436AED21DACE30C001E6808 /* sutroEdgeBurn.png in Resources */,
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
+				0436AEC21DACE30C001E6808 /* hefeGradientMap.png in Resources */,
+				0436AECA1DACE30C001E6808 /* lomoMap.png in Resources */,
+				0436AECD1DACE30C001E6808 /* riseMap.png in Resources */,
+				0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */,
+				0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */,
+				0436AEB51DACE30C001E6808 /* 1977map.png in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
 				1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */,
+				0436AEDA1DACE30C001E6808 /* valenciaMap.png in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
+				0436AECF1DACE30C001E6808 /* sierraVignette.png in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
+				0436AEC41DACE30C001E6808 /* hefeMetal.png in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
+				0436AED91DACE30C001E6808 /* valenciaGradientMap.png in Resources */,
+				0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */,
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
+				0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */,
 				1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
+				0436AEC91DACE30C001E6808 /* kelvinMap.png in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
+				0436AEBA1DACE30C001E6808 /* brannanLuma.png in Resources */,
 				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
 				1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */,
 				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
+				0436AEC31DACE30C001E6808 /* hefeMap.png in Resources */,
+				0436AEC81DACE30C001E6808 /* inkwellMap.png in Resources */,
+				0436AEB61DACE30C001E6808 /* amaroMap.png in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
+				0436AEB41DACE30C001E6808 /* 1977blowout.png in Resources */,
 				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
+				0436AEC51DACE30C001E6808 /* hefeSoftLight.png in Resources */,
 				1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */,
 				1F0219C21D798567003A8A11 /* AddreesPickerViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
@@ -2967,12 +3275,15 @@
 				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
 				1FDE28BE1D92241D00566A73 /* MJExtensionConst.m in Sources */,
+				0436AF451DACE5C2001E6808 /* FSLomofiFilter.m in Sources */,
 				1F0219B71D79500A003A8A11 /* FMDatabasePool.m in Sources */,
+				0436AE761DACC5EF001E6808 /* FSImageFilterManager.m in Sources */,
 				1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */,
 				1FB4FBC31D954EC400E236CF /* UIView+MJExtension.m in Sources */,
 				1F4201FE1D48AE0100D3E6CB /* MASCompositeConstraint.m in Sources */,
 				1FDE28BF1D92241D00566A73 /* MJFoundation.m in Sources */,
 				1F4202241D48DB8300D3E6CB /* FSHomePageViewController.m in Sources */,
+				0436AF491DACE5C2001E6808 /* FSSierraFilter.m in Sources */,
 				04F5847C1DAA1288008FC43A /* FishBlackNavViewController.m in Sources */,
 				1F0219C61D798630003A8A11 /* AreaModel.m in Sources */,
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
@@ -2989,7 +3300,10 @@
 				48911F911D9177590042B96F /* FSListUserModel.m in Sources */,
 				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
 				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
+				0436AF431DACE5C2001E6808 /* FSHudsonFilter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,
+				0436AF521DACEDDD001E6808 /* GPUImageFourInputFilter.m in Sources */,
+				0436AF481DACE5C2001E6808 /* FSRiseFilter.m in Sources */,
 				1F4202011D48AE0100D3E6CB /* MASLayoutConstraint.m in Sources */,
 				1F04244F1D51F3C30071A1D6 /* AFURLResponseSerialization.m in Sources */,
 				1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */,
@@ -2997,6 +3311,7 @@
 				1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
 				043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */,
+				0436AF3E1DACE5C2001E6808 /* FSAmaroFilter.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */,
@@ -3014,6 +3329,7 @@
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
+				0436AF461DACE5C2001E6808 /* FSLordKelvinFilter.m in Sources */,
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
@@ -3039,6 +3355,7 @@
 				1FDE28C01D92241D00566A73 /* MJProperty.m in Sources */,
 				0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */,
 				04F584761DA9EFA0008FC43A /* FSMediaBrowseViewController.m in Sources */,
+				0436AF4E1DACE5C2001E6808 /* FSWaldenFilter.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
 				040995641D95174600BFEC92 /* FSImageModel.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
@@ -3049,6 +3366,7 @@
 				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
+				0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */,
 				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				1F4202031D48AE0100D3E6CB /* MASViewConstraint.m in Sources */,
@@ -3080,10 +3398,12 @@
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
+				0436AE6F1DACBA70001E6808 /* FSFilterCollectionView.m in Sources */,
 				1FDE28D01D927DCB00566A73 /* FSFoundHeaderView.m in Sources */,
 				0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */,
 				1FE087971D825649007790E3 /* FSBaseView.m in Sources */,
 				1FDE28C31D92241D00566A73 /* NSObject+MJClass.m in Sources */,
+				0436AF411DACE5C2001E6808 /* FSFiveInputFilter.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
 				1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */,
@@ -3091,10 +3411,12 @@
 				1FB4FBB51D954EC400E236CF /* MJRefreshHeader.m in Sources */,
 				1F7EDEE41D4700E500ABED5D /* IQNSArray+Sort.m in Sources */,
 				049BBD631DAB840D006DD20D /* FSAlertView.m in Sources */,
+				0436AF3D1DACE5C2001E6808 /* FS1977Filter.m in Sources */,
 				1F0424541D51F3C30071A1D6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1F04244C1D51F3C30071A1D6 /* AFSecurityPolicy.m in Sources */,
 				1F4202041D48AE0100D3E6CB /* NSArray+MASAdditions.m in Sources */,
 				0476A8C91D8253F40009D10E /* FSBaseModel.m in Sources */,
+				0436AF4F1DACE5C2001E6808 /* FSXproIIFilter.m in Sources */,
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				1FDE28D61D92823E00566A73 /* FSTagTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
@@ -3106,6 +3428,7 @@
 				044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */,
 				1FF783A81D9923AF00618245 /* FSContenHelpViewController.m in Sources */,
 				48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */,
+				0436AF471DACE5C2001E6808 /* FSNashvilleFilter.m in Sources */,
 				1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */,
 				1F0219B81D79500A003A8A11 /* FMDatabaseQueue.m in Sources */,
 				0452CD011D77D429007694CC /* UIView+Toast.m in Sources */,
@@ -3114,6 +3437,7 @@
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
 				1FB4FBBA1D954EC400E236CF /* MJRefreshBackNormalFooter.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
+				0436AF4D1DACE5C2001E6808 /* FSValenciaFilter.m in Sources */,
 				1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */,
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
@@ -3142,6 +3466,7 @@
 				04596A841D801E10008D1DD5 /* FSImageSettingViewController.m in Sources */,
 				049BBD6A1DAB8C2D006DD20D /* FSImageEditViewController.m in Sources */,
 				1F4202061D48AE0100D3E6CB /* View+MASAdditions.m in Sources */,
+				0436AE671DAC8640001E6808 /* FSImageEditBottomView.m in Sources */,
 				04596A781D7FC27A008D1DD5 /* FSGeneralSettingsCell.m in Sources */,
 				1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */,
 				04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */,
@@ -3151,6 +3476,7 @@
 				1F0424591D51F3C30071A1D6 /* UIRefreshControl+AFNetworking.m in Sources */,
 				1F8011321DA8861500B320C7 /* FSReleasePictureViewController.m in Sources */,
 				042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */,
+				0436AE721DACBBC7001E6808 /* FSFilterCollectionViewCell.m in Sources */,
 				1FB4FBC11D954EC400E236CF /* UIScrollView+MJExtension.m in Sources */,
 				049BBD5F1DAB4001006DD20D /* FSMediaBrowBottomEditView.m in Sources */,
 			);

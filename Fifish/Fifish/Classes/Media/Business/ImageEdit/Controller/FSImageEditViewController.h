@@ -7,7 +7,9 @@
 //
 
 #import "FishBlackNavViewController.h"
+#import "FSImageModel.h"
 
 @interface FSImageEditViewController : FishBlackNavViewController
+@property (nonatomic , assign) FSImageModel * MainImageModel;
 
 @end

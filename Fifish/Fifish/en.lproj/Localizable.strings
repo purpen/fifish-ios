@@ -63,6 +63,10 @@
 "unit"  = "unit";
 "metre" = "metre";
 
+//图片滤镜
+"Filter"="Filter";
+"Adjustment" = "Adjustment";
+
 //错误处理
 "Equipment connection exception" = "Equipment connection exception";
 

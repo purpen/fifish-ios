@@ -154,7 +154,12 @@
 #pragma mark FSMediaBrowBottomEditViewDelegate
 - (void)MediaBrowViewEditAndShare{
     NSLog(@"分享");
+    
+    FSImageModel * imagemodel = self.modelArr[self.seletedIndex];
+    
     FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
+    imageEditVc.MainImageModel = imagemodel;
+    
     [self.navigationController pushViewController:imageEditVc animated:YES];
     
 }
