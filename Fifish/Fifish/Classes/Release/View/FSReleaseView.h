@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tagBtn;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextFiled;
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *accordingLabel;
+@property (weak, nonatomic) IBOutlet UIButton *addWaterBtn;
 
 
 @end

@@ -8,6 +8,15 @@
 
 #import "FSBaseViewController.h"
 
+@protocol FSAddressViewControllerDelegate <NSObject>
+
+-(void)getAddress:(NSString *)address;
+
+@end
+
 @interface FSAddressViewController : FSBaseViewController
+
+/**  */
+@property (nonatomic, weak) id<FSAddressViewControllerDelegate> addressDelegate;
 
 @end

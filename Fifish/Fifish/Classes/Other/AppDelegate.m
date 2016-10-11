@@ -11,6 +11,7 @@
 #import "IQKeyboardManager.h"
 #import "GuidePageViewController.h"
 #import "AppDelegate+FSGuide.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 
@@ -35,6 +36,9 @@
     [[UITabBar appearance] setBackgroundColor:[UIColor clearColor]];
     [[UITabBar appearance] setShadowImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
     [[UITabBar appearance] setBackgroundImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
+    
+    //----------------注册高德地图
+    [AMapServices sharedServices].apiKey =@"7dd6c9292619fb6fbdf34a1f5993a5aa";
     
     return YES;
 }

@@ -10,8 +10,7 @@
 
 @interface FSLocationTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
 
 
 @end

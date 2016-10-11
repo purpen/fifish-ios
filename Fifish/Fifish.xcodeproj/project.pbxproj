@@ -209,6 +209,14 @@
 		1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011511DAA555E00B320C7 /* FSSearchBar.m */; };
 		1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */; };
 		1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */; };
+		1F8011591DAC8AEB00B320C7 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8011581DAC8AEB00B320C7 /* AMapFoundationKit.framework */; };
+		1F80115B1DAC8B4000B320C7 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80115A1DAC8B4000B320C7 /* AMapLocationKit.framework */; };
+		1F80115D1DAC8B6B00B320C7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80115C1DAC8B6B00B320C7 /* JavaScriptCore.framework */; };
+		1F80115F1DAC8B8400B320C7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80115E1DAC8B8400B320C7 /* CoreTelephony.framework */; };
+		1F8011611DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8011601DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd */; };
+		1F8011631DAC969100B320C7 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8011621DAC969100B320C7 /* AMapSearchKit.framework */; };
+		1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */; };
+		1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -770,6 +778,15 @@
 		1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLocationTableViewCell.h; sourceTree = "<group>"; };
 		1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLocationTableViewCell.m; sourceTree = "<group>"; };
 		1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSLocationTableViewCell.xib; sourceTree = "<group>"; };
+		1F8011581DAC8AEB00B320C7 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		1F80115A1DAC8B4000B320C7 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
+		1F80115C1DAC8B6B00B320C7 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1F80115E1DAC8B8400B320C7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1F8011601DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		1F8011621DAC969100B320C7 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		1F8011A31DACE92600B320C7 /* FSWatermarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWatermarkViewController.h; sourceTree = "<group>"; };
+		1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWatermarkViewController.m; sourceTree = "<group>"; };
+		1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWatermarkViewController.xib; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -903,7 +920,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8011631DAC969100B320C7 /* AMapSearchKit.framework in Frameworks */,
+				1F8011611DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd in Frameworks */,
+				0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */,
+				1F80115F1DAC8B8400B320C7 /* CoreTelephony.framework in Frameworks */,
 				0470C4F91D9BAE5100B13500 /* SystemConfiguration.framework in Frameworks */,
+				1F80115D1DAC8B6B00B320C7 /* JavaScriptCore.framework in Frameworks */,
+				1F80115B1DAC8B4000B320C7 /* AMapLocationKit.framework in Frameworks */,
+				1F8011591DAC8AEB00B320C7 /* AMapFoundationKit.framework in Frameworks */,
 				1F0219BB1D79506D003A8A11 /* libsqlite3.tbd in Frameworks */,
 				0434F42C1D61D26E00DBFFCE /* OpenGLES.framework in Frameworks */,
 				0434F4231D61C89E00DBFFCE /* AVFoundation.framework in Frameworks */,
@@ -917,7 +941,6 @@
 				0434F41D1D61C59B00DBFFCE /* libswresample.a in Frameworks */,
 				0434F41C1D61C59B00DBFFCE /* libavutil.a in Frameworks */,
 				0434F4191D61C59B00DBFFCE /* libavdevice.a in Frameworks */,
-				0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */,
 				1F4202591D49B36000D3E6CB /* ImageIO.framework in Frameworks */,
 				0434F41E1D61C59B00DBFFCE /* libswscale.a in Frameworks */,
 				0434F4181D61C59B00DBFFCE /* libavcodec.a in Frameworks */,
@@ -1939,6 +1962,9 @@
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
+				1F8011621DAC969100B320C7 /* AMapSearchKit.framework */,
+				1F80115A1DAC8B4000B320C7 /* AMapLocationKit.framework */,
+				1F8011581DAC8AEB00B320C7 /* AMapFoundationKit.framework */,
 				1F4202581D49B36000D3E6CB /* ImageIO.framework */,
 				1F7EDE161D45E0D300ABED5D /* Fifish */,
 				1F7EDE301D45E0D300ABED5D /* FifishTests */,
@@ -2438,6 +2464,9 @@
 				1F80114B1DAA481200B320C7 /* FSAddressViewController.h */,
 				1F80114C1DAA481200B320C7 /* FSAddressViewController.m */,
 				1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */,
+				1F8011A31DACE92600B320C7 /* FSWatermarkViewController.h */,
+				1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */,
+				1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2663,6 +2692,9 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F8011601DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd */,
+				1F80115E1DAC8B8400B320C7 /* CoreTelephony.framework */,
+				1F80115C1DAC8B6B00B320C7 /* JavaScriptCore.framework */,
 				0470C4F81D9BAE5100B13500 /* SystemConfiguration.framework */,
 				1F0219BA1D79506D003A8A11 /* libsqlite3.tbd */,
 				0434F42B1D61D26E00DBFFCE /* OpenGLES.framework */,
@@ -2829,6 +2861,7 @@
 				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
 				1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
+				1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
@@ -3092,6 +3125,7 @@
 				1FB4FBB41D954EC400E236CF /* MJRefreshFooter.m in Sources */,
 				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
 				0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */,
+				1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */,
 				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
@@ -3282,7 +3316,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fifish/Fifish-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -3316,7 +3350,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fifish/Fifish-Prefix.pch";
 				HEADER_SEARCH_PATHS = (

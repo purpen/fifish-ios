@@ -12,8 +12,9 @@
 #import "UIView+FSExtension.h"
 #import "FSAddTagViewController.h"
 #import "FSAddressViewController.h"
+#import "FSWatermarkViewController.h"
 
-@interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate>
+@interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate>
 
 /**  */
 @property (nonatomic, strong) UIScrollView *myScrollview;
@@ -48,13 +49,31 @@
         [_releaseView.tagBtn addTarget:self action:@selector(tagClick) forControlEvents:UIControlEventTouchUpInside];
         _releaseView.tagTextFiled.delegate = self;
         [_releaseView.addressBtn addTarget:self action:@selector(addressClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.addWaterBtn addTarget:self action:@selector(waterClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _releaseView;
 }
 
+-(void)waterClick{
+    FSWatermarkViewController *vc = [[FSWatermarkViewController alloc] init];
+    [self presentViewController:vc animated:NO completion:nil];
+}
+
 -(void)addressClick{
     FSAddressViewController *vc = [[FSAddressViewController alloc] init];
+    vc.addressDelegate = self;
     [self presentViewController:vc animated:NO completion:nil];
+}
+
+-(void)getAddress:(NSString *)address{
+    if (address.length != 0) {
+        self.releaseView.accordingLabel.hidden = NO;
+        self.releaseView.addressLabel.hidden = YES;
+        self.releaseView.accordingLabel.text = address;
+    } else {
+        self.releaseView.accordingLabel.hidden = YES;
+        self.releaseView.addressLabel.hidden = NO;
+    }
 }
 
 -(void)tagClick{
