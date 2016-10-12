@@ -79,6 +79,7 @@ CGFloat const Cellspecace = 1;
     [self GetMediaData];
 }
 - (void)GetMediaData{
+    
     NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4AndPngFileArr];
     self.sourceArr = [NSMutableArray array];
     for (NSString * str in dataArr) {

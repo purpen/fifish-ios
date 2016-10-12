@@ -13,8 +13,7 @@
 //FSRiseFilter
 
 @interface FSImageFilterManager ()
-//滤镜数组
-@property (nonatomic,strong) NSArray * fsFilterArr;
+
 
 @end
 
@@ -61,28 +60,13 @@
                          @"FSWaldenFilter",
                          @"FSXproIIFilter",
                          @"GPUImageBrightnessFilter",
-                         @"GPUImageExposureFilter",
-                         @"GPUImageContrastFilter",
-                         @"GPUImageLookupFilter",
-                         @"GPUImageAmatorkaFilter",
-                         @"GPUImageMissEtikateFilter",
-                         @"GPUImageSoftEleganceFilter",
-                         @"GPUImageSaturationFilter",
-                         @"GPUImageGammaFilter",
                          @"GPUImageColorInvertFilter",
                          @"GPUImageSepiaFilter",
-                         @"GPUImageLevelsFilter",
-                         @"GPUImageHistogramFilter",
-                         @"GPUImageTransformFilter",
-                         @"GPUImageSharpenFilter",
-                         @"GPUImageUnsharpMaskFilter",
-                         @"GPUImageFastBlurFilter",
                          @"GPUImageGaussianBlurFilter",
                          @"GPUImageGaussianSelectiveBlurFilter",
                          @"GPUImageBoxBlurFilter",
                          @"GPUImageTiltShiftFilter",
                          @"GPUImageMedianFilter",
-                         @"GPUImageBilateralFilter",
                          @"GPUImageErosionFilter",
                          @"GPUImageRGBErosionFilter",
                          @"GPUImageDilationFilter",
@@ -91,7 +75,6 @@
                          @"GPUImageRGBOpeningFilter",
                          @"GPUImageClosingFilter",
                          @"GPUImageRGBClosingFilter",
-                         @"GPUImageLanczosResamplingFilter",
                          @"GPUImageNonMaximumSuppressionFilter",
                          @"GPUImageThresholdedNonMaximumSuppressionFilter",
                          @"GPUImageSobelEdgeDetectionFilter",
@@ -99,21 +82,14 @@
                          @"GPUImageThresholdEdgeDetectionFilter",
                          @"GPUImagePrewittEdgeDetectionFilter",
                          @"GPUImageXYDerivativeFilter",
-                         @"GPUImageHarrisCornerDetectionFilter",
-                         @"GPUImageNobleCornerDetectionFilter",
-                         @"GPUImageShiTomasiFeatureDetectionFilter",
                          @"GPUImageMotionDetector",
-                         @"GPUImageHoughTransformLineDetector",
-                         @"GPUImageParallelCoordinateLineTransformFilter",
                          @"GPUImageLocalBinaryPatternFilter",
                          @"GPUImageLowPassFilter",
-                         @"GPUImageHighPassFilter",
                          @"GPUImageSketchFilter",
                          @"GPUImageThresholdSketchFilter",
                          @"GPUImageToonFilter",
                          @"GPUImageSmoothToonFilter",
                          @"GPUImageKuwaharaFilter",
-                         @"GPUImageMosaicFilter",
                          @"GPUImagePixellateFilter",
                          @"GPUImagePolarPixellateFilter",
                          @"GPUImageCrosshatchFilter",

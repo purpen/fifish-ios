@@ -96,6 +96,10 @@
 		0436AF521DACEDDD001E6808 /* GPUImageFourInputFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF511DACEDDD001E6808 /* GPUImageFourInputFilter.m */; };
 		043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */; };
 		044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044167C31D66FE79002439E7 /* FSVideoPlayerController.m */; };
+		0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D50E1DADE294001ECC6B /* FSRegulateCollectionView.m */; };
+		0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D5111DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m */; };
+		0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */; };
+		0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D51E1DAE29A7001ECC6B /* FSRegulateSliderView.m */; };
 		0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CCFC1D77CA6A007694CC /* FSOSDManager.m */; };
 		0452CD011D77D429007694CC /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD001D77D429007694CC /* UIView+Toast.m */; };
 		0452CD041D77FFB6007694CC /* RovInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD031D77FFB6007694CC /* RovInfo.m */; };
@@ -593,6 +597,14 @@
 		043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSlocalMediaViewController.m; sourceTree = "<group>"; };
 		044167C21D66FE79002439E7 /* FSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoPlayerController.h; sourceTree = "<group>"; };
 		044167C31D66FE79002439E7 /* FSVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoPlayerController.m; sourceTree = "<group>"; };
+		0442D50D1DADE294001ECC6B /* FSRegulateCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegulateCollectionView.h; sourceTree = "<group>"; };
+		0442D50E1DADE294001ECC6B /* FSRegulateCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegulateCollectionView.m; sourceTree = "<group>"; };
+		0442D5101DADE8C6001ECC6B /* FSRegulateCollectionviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegulateCollectionviewCell.h; sourceTree = "<group>"; };
+		0442D5111DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegulateCollectionviewCell.m; sourceTree = "<group>"; };
+		0442D51A1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSFSImageRegulateBottomView.h; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSFSImageRegulateBottomView.h; sourceTree = SOURCE_ROOT; };
+		0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSFSImageRegulateBottomView.m; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSFSImageRegulateBottomView.m; sourceTree = SOURCE_ROOT; };
+		0442D51D1DAE29A7001ECC6B /* FSRegulateSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRegulateSliderView.h; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSRegulateSliderView.h; sourceTree = SOURCE_ROOT; };
+		0442D51E1DAE29A7001ECC6B /* FSRegulateSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRegulateSliderView.m; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSRegulateSliderView.m; sourceTree = SOURCE_ROOT; };
 		0452CCFB1D77CA6A007694CC /* FSOSDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOSDManager.h; sourceTree = "<group>"; };
 		0452CCFC1D77CA6A007694CC /* FSOSDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOSDManager.m; sourceTree = "<group>"; };
 		0452CCFF1D77D429007694CC /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
@@ -1390,6 +1402,7 @@
 		0436AE6B1DACBA3E001E6808 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0442D50C1DADE251001ECC6B /* RegulateCollectionView */,
 				0436AE6C1DACBA5F001E6808 /* FilterCollectionView */,
 			);
 			path = CollectionView;
@@ -1581,6 +1594,29 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0442D50C1DADE251001ECC6B /* RegulateCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0442D50D1DADE294001ECC6B /* FSRegulateCollectionView.h */,
+				0442D50E1DADE294001ECC6B /* FSRegulateCollectionView.m */,
+				0442D5101DADE8C6001ECC6B /* FSRegulateCollectionviewCell.h */,
+				0442D5111DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m */,
+			);
+			path = RegulateCollectionView;
+			sourceTree = "<group>";
+		};
+		0442D5161DAE1DF8001ECC6B /* RegulateSliderBottomView */ = {
+			isa = PBXGroup;
+			children = (
+				0442D51A1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.h */,
+				0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */,
+				0442D51D1DAE29A7001ECC6B /* FSRegulateSliderView.h */,
+				0442D51E1DAE29A7001ECC6B /* FSRegulateSliderView.m */,
+			);
+			name = RegulateSliderBottomView;
+			path = regulateSliderBottomView;
 			sourceTree = "<group>";
 		};
 		0452CCFA1D77CA4F007694CC /* OSDManager */ = {
@@ -1862,6 +1898,7 @@
 		049BBD671DAB8BDE006DD20D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0442D5161DAE1DF8001ECC6B /* RegulateSliderBottomView */,
 				0436AE6B1DACBA3E001E6808 /* CollectionView */,
 				0436AE651DAC8640001E6808 /* FSImageEditBottomView.h */,
 				0436AE661DAC8640001E6808 /* FSImageEditBottomView.m */,
@@ -3299,6 +3336,7 @@
 				1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */,
 				48911F911D9177590042B96F /* FSListUserModel.m in Sources */,
 				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
+				0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */,
 				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
 				0436AF431DACE5C2001E6808 /* FSHudsonFilter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,
@@ -3335,6 +3373,7 @@
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
+				0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */,
 				1FB4FBBB1D954EC400E236CF /* MJRefreshBackStateFooter.m in Sources */,
 				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
 				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
@@ -3366,6 +3405,7 @@
 				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
+				0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */,
 				0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */,
 				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
@@ -3442,6 +3482,7 @@
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F80112E1DA8859C00B320C7 /* FSBaseViewController.m in Sources */,
+				0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,

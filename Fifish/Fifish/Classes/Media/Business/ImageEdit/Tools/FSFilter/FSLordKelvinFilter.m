@@ -2,8 +2,8 @@
 //  FSLordKelvinFilter.m
 //  FSMeituApp
 //
-//  Created by hzkmn on 16/1/8.
-//  Copyright © 2016年 ForrestWoo co,.ltd. All rights reserved.
+//  Created by macpro on 16/10/11.
+//  Copyright © 2016年 Dong. All rights reserved.
 //
 #import "FSLordKelvinFilter.h"
 NSString *const kFSLordKelvinShaderString = SHADER_STRING

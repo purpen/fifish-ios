@@ -44,14 +44,14 @@
     if (!_FilterImageView) {
         _FilterImageView = [[UIImageView alloc] init];
         _FilterImageView.backgroundColor = RANDOM_COLOR(1);
-        
     }
     return _FilterImageView;
 }
 -(UILabel *)FilterNameLab{
     if (!_FilterNameLab) {
         _FilterNameLab = [[UILabel alloc] init];
-        _FilterNameLab.backgroundColor = RANDOM_COLOR(1);
+        _FilterNameLab.textColor = [UIColor whiteColor];
+        _FilterNameLab.textAlignment = NSTextAlignmentCenter;
     }
     return _FilterNameLab;
 }

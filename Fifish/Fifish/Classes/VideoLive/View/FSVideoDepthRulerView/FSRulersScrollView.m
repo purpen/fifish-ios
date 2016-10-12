@@ -161,7 +161,8 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
             [self.layer addSublayer:shapeLayer2];
         }
     }
-    
+    CGPathRelease(pathRef1);
+    CGPathRelease(pathRef2);
 }
 /*
 // Only override drawRect: if you perform custom drawing.

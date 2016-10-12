@@ -33,6 +33,7 @@
 - (UIImageView *)mainImageView{
     if (!_mainImageView) {
         _mainImageView = [[UIImageView alloc] init];
+        _mainImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _mainImageView;
 }
