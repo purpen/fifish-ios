@@ -9,6 +9,7 @@
 #import "FSSearchViewController.h"
 #import "SGTopTitleView.h"
 #import "UIColor+FSExtension.h"
+#import "UIView+FSExtension.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate>
 
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) NSNumber *type;
 /**  */
 @property (nonatomic, strong) NSMutableArray *modelAry;
+/**  */
+@property (nonatomic, strong) UITableView *myTableView;
 
 @end
 
@@ -34,6 +37,13 @@
         _modelAry = [NSMutableArray array];
     }
     return _modelAry;
+}
+
+-(UITableView *)myTableView{
+    if (!_myTableView) {
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.segmentedControl.y + self.segmentedControl.height, SCREEN_WIDTH, SCREEN_HEIGHT - _myTableView.y)];
+    }
+    return _myTableView;
 }
 
 - (void)viewDidLoad {
