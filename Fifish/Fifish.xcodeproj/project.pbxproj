@@ -329,6 +329,9 @@
 		1FE087901D8254EA007790E3 /* FSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0878D1D8254EA007790E3 /* FSTabBar.m */; };
 		1FE087961D825649007790E3 /* FSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087931D825649007790E3 /* FSBaseTableViewCell.m */; };
 		1FE087971D825649007790E3 /* FSBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE087951D825649007790E3 /* FSBaseView.m */; };
+		1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B21DAE275A000AE61D /* SGTopTitleView.m */; };
+		1FE564B61DAE275A000AE61D /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B41DAE275A000AE61D /* UIView+SGExtension.m */; };
+		1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B81DAE3867000AE61D /* UIColor+Extension.m */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1024,6 +1027,12 @@
 		1FE087931D825649007790E3 /* FSBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseTableViewCell.m; sourceTree = "<group>"; };
 		1FE087941D825649007790E3 /* FSBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseView.h; sourceTree = "<group>"; };
 		1FE087951D825649007790E3 /* FSBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseView.m; sourceTree = "<group>"; };
+		1FE564B11DAE275A000AE61D /* SGTopTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTopTitleView.h; sourceTree = "<group>"; };
+		1FE564B21DAE275A000AE61D /* SGTopTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTopTitleView.m; sourceTree = "<group>"; };
+		1FE564B31DAE275A000AE61D /* UIView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGExtension.h"; sourceTree = "<group>"; };
+		1FE564B41DAE275A000AE61D /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
+		1FE564B71DAE3867000AE61D /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		1FE564B81DAE3867000AE61D /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2560,6 +2569,8 @@
 		1F7EDEA31D45F41500ABED5D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1FE564B71DAE3867000AE61D /* UIColor+Extension.h */,
+				1FE564B81DAE3867000AE61D /* UIColor+Extension.m */,
 				1F0424681D51F4260071A1D6 /* NSString+FBMD5.h */,
 				1F0424691D51F4260071A1D6 /* NSString+FBMD5.m */,
 				1F4201DB1D48A1DD00D3E6CB /* UIImage+Helper.h */,
@@ -2621,6 +2632,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1FE564B01DAE275A000AE61D /* SGTopTitleView */,
 				1FDE28A41D92241D00566A73 /* MJExtension */,
 				1F0219A91D79500A003A8A11 /* FMDB */,
 				1F0219A21D795002003A8A11 /* DBModel */,
@@ -2941,6 +2953,17 @@
 				04F584811DAA4098008FC43A /* FSBaseCollectionViewCell.m */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		1FE564B01DAE275A000AE61D /* SGTopTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				1FE564B11DAE275A000AE61D /* SGTopTitleView.h */,
+				1FE564B21DAE275A000AE61D /* SGTopTitleView.m */,
+				1FE564B31DAE275A000AE61D /* UIView+SGExtension.h */,
+				1FE564B41DAE275A000AE61D /* UIView+SGExtension.m */,
+			);
+			path = SGTopTitleView;
 			sourceTree = "<group>";
 		};
 		1FF783AA1D9923ED00618245 /* Model */ = {
@@ -3267,6 +3290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F04244D1D51F3C30071A1D6 /* AFURLConnectionOperation.m in Sources */,
+				1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */,
 				1F7EDEEC1D4700E500ABED5D /* IQTextView.m in Sources */,
 				1FDE28C51D92241D00566A73 /* NSObject+MJKeyValue.m in Sources */,
 				1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */,
@@ -3339,6 +3363,7 @@
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
+				1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
 				1FB4FBBB1D954EC400E236CF /* MJRefreshBackStateFooter.m in Sources */,
@@ -3363,6 +3388,7 @@
 				04F584761DA9EFA0008FC43A /* FSMediaBrowseViewController.m in Sources */,
 				0436AF4E1DACE5C2001E6808 /* FSWaldenFilter.m in Sources */,
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
+				1FE564B61DAE275A000AE61D /* UIView+SGExtension.m in Sources */,
 				040995641D95174600BFEC92 /* FSImageModel.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
 				1FDE28DB1D92864300566A73 /* FSTagCollectionViewCell.m in Sources */,

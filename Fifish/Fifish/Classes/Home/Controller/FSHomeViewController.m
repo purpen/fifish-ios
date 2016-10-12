@@ -148,11 +148,11 @@ static NSString * const CellId = @"home";
 
 -(void)searchClick{
     
-    /*FSSearchViewController *vc = [[FSSearchViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];*/
+    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
     
-    FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    /*FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];*/
 }
 
 
