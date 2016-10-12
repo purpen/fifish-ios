@@ -352,6 +352,7 @@
                 <outlet property="addWaterBtn" destination="Y6z-1P-CON" id="7RF-pC-aZ3"/>
                 <outlet property="addressBtn" destination="4az-eU-6mH" id="uzf-7F-ekb"/>
                 <outlet property="addressLabel" destination="q3i-Cz-S4z" id="ujJ-ct-hc8"/>
+                <outlet property="flagLabel" destination="EUe-pw-wgg" id="9r8-I5-Q3R"/>
                 <outlet property="instructionsTextView" destination="fHB-Re-7EK" id="5BU-uZ-xV2"/>
                 <outlet property="placeHolderLabel" destination="QB2-1m-mJV" id="vwG-Kn-SEv"/>
                 <outlet property="tagBtn" destination="A3Q-jS-a3y" id="ddl-Qv-SE0"/>

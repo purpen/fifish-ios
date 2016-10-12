@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *accordingLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addWaterBtn;
+@property (weak, nonatomic) IBOutlet UILabel *flagLabel;
 
 
 @end

@@ -281,6 +281,7 @@
 		1F8011631DAC969100B320C7 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8011621DAC969100B320C7 /* AMapSearchKit.framework */; };
 		1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */; };
 		1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */; };
+		1F8011AA1DADDBB700B320C7 /* UIImage+FSWatermark.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -938,6 +939,8 @@
 		1F8011A31DACE92600B320C7 /* FSWatermarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWatermarkViewController.h; sourceTree = "<group>"; };
 		1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWatermarkViewController.m; sourceTree = "<group>"; };
 		1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWatermarkViewController.xib; sourceTree = "<group>"; };
+		1F8011A81DADDBB700B320C7 /* UIImage+FSWatermark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FSWatermark.h"; sourceTree = "<group>"; };
+		1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FSWatermark.m"; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2608,6 +2611,8 @@
 				1F7EDEAD1D45FFCA00ABED5D /* UIColor+FSExtension.m */,
 				1F42020B1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.h */,
 				1F42020C1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m */,
+				1F8011A81DADDBB700B320C7 /* UIImage+FSWatermark.h */,
+				1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -3337,6 +3342,7 @@
 				48911F911D9177590042B96F /* FSListUserModel.m in Sources */,
 				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
 				0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */,
+				1F8011AA1DADDBB700B320C7 /* UIImage+FSWatermark.m in Sources */,
 				1F04248B1D542FD90071A1D6 /* FSHomePictuerView.m in Sources */,
 				0436AF431DACE5C2001E6808 /* FSHudsonFilter.m in Sources */,
 				1F04245A1D51F3C30071A1D6 /* UIWebView+AFNetworking.m in Sources */,

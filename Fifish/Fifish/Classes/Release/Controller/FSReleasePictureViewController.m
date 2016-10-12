@@ -14,12 +14,14 @@
 #import "FSAddressViewController.h"
 #import "FSWatermarkViewController.h"
 
-@interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate>
+@interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
 
 /**  */
 @property (nonatomic, strong) UIScrollView *myScrollview;
 /**  */
 @property (nonatomic, strong) FSReleaseView *releaseView;
+/**  */
+@property(nonatomic,copy) NSString *str;
 
 @end
 
@@ -56,13 +58,32 @@
 
 -(void)waterClick{
     FSWatermarkViewController *vc = [[FSWatermarkViewController alloc] init];
-    [self presentViewController:vc animated:NO completion:nil];
+    vc.waterDelegate = self;
+    vc.str = self.str;
+    if ([self.releaseView.flagLabel.text isEqualToString:NSLocalizedString(@"open", nil)]) {
+        vc.switchSState = YES;
+    } else {
+        vc.switchSState = NO;
+    }
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)saveName:(NSString *)str{
+    self.str = str;
+}
+
+-(void)switch:(BOOL)flag{
+    if (flag) {
+        self.releaseView.flagLabel.text = NSLocalizedString(@"open", nil);
+    } else {
+        self.releaseView.flagLabel.text = NSLocalizedString(@"close", nil);
+    }
 }
 
 -(void)addressClick{
     FSAddressViewController *vc = [[FSAddressViewController alloc] init];
     vc.addressDelegate = self;
-    [self presentViewController:vc animated:NO completion:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)getAddress:(NSString *)address{
@@ -80,8 +101,7 @@
     FSAddTagViewController *vc = [[FSAddTagViewController alloc] init];
     vc.addTagDelegate = self;
     vc.tags = self.releaseView.tagTextFiled.text;
-    [self presentViewController:vc animated:YES completion:^{
-    }];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)getTagName:(NSString *)tag andTagId:(NSString *)tagId{

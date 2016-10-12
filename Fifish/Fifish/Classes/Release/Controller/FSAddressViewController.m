@@ -39,7 +39,7 @@
 @implementation FSAddressViewController
 
 - (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(CLGeocoder *)geocoder{
