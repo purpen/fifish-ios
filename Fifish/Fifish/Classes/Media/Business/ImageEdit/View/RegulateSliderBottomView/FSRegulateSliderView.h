@@ -8,6 +8,16 @@
 
 #import "FSBaseView.h"
 
+@protocol FSRegulateSliderViewDelegate <NSObject>
+
+- (void)FSRegulateSliderViewSliderValueChangeWithValue:(CGFloat)value;
+
+
+@end
+
 @interface FSRegulateSliderView : FSBaseView
 @property (nonatomic,strong)UISlider * MainSlider;
+
+@property (nonatomic,assign)id<FSRegulateSliderViewDelegate>delegate;
+
 @end

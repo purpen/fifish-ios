@@ -9,7 +9,7 @@
 #import "FSFSImageRegulateBottomView.h"
 #import "FSImageEditBottomView.h"
 #import "FSRegulateSliderView.h"
-@interface FSFSImageRegulateBottomView ()<FSImageEditBottomViewDelegate>
+@interface FSFSImageRegulateBottomView ()<FSImageEditBottomViewDelegate,FSRegulateSliderViewDelegate>
 
 @property (nonatomic,strong) FSImageEditBottomView  * bottomView;
 
@@ -58,6 +58,7 @@
 - (FSRegulateSliderView *)SliderView{
     if (!_SliderView) {
         _SliderView = [[FSRegulateSliderView alloc] init];
+        _SliderView.delegate =self;
     }
     return _SliderView;
 }
@@ -66,5 +67,11 @@
     if (index == 0) {
         [self.RegulateBottomViewDelegate FSFSImageRegulateBottomViewCancel];
     }
+}
+
+#pragma mark FSRegulateSliderViewDelegate
+-(void)FSRegulateSliderViewSliderValueChangeWithValue:(CGFloat)value{
+    
+    [self.RegulateBottomViewDelegate FSFSImageRegulateBottomViewSliderValuechange:value];
 }
 @end

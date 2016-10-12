@@ -42,6 +42,8 @@
 
 
 @property (nonatomic,strong) FSFSImageRegulateBottomView* ImageRegulateBottomView;
+
+
 @end
 
 @implementation FSImageEditViewController
@@ -168,7 +170,7 @@
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
     UIImage * immmm = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
     
-   UIImage * image = [[[FSImageFilterManager alloc] init] randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:immmm];
+   UIImage * image = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:immmm];
     
     self.imageView.image = image;
     
@@ -179,5 +181,9 @@
     NSLog(@"%@",indexPath);
     //显示参数调整滑动条
     self.ImageRegulateBottomView.hidden = NO;
+}
+-(void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value{
+   UIImage * image = [self.FilterManager randerImageWithLightProgress:value WithImage:[UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl]];
+    self.imageView.image = image;
 }
 @end

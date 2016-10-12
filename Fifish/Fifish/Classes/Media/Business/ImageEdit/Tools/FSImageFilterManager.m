@@ -9,12 +9,15 @@
 #import "FSImageFilterManager.h"
 #import "FSfilter.h"
 
+#import "GPUImageBrightnessFilter.h"
+
 //FSFiveInputFilter
 //FSRiseFilter
 
 @interface FSImageFilterManager ()
 
-
+//亮度
+@property (nonatomic,strong)GPUImageBrightnessFilter * BrightnessFilter;
 @end
 
 @implementation FSImageFilterManager
@@ -46,6 +49,24 @@
     return [filter imageFromCurrentFramebuffer];
 }
 
+- (UIImage *)randerImageWithLightProgress:(CGFloat)progressValue WithImage:(UIImage *)image{
+    [self.BrightnessFilter useNextFrameForImageCapture];
+    [self.BrightnessFilter forceProcessingAtSize:image.size];
+    GPUImagePicture * randerpic = [[GPUImagePicture alloc] initWithImage:image];
+    self.BrightnessFilter.brightness = progressValue;
+    [randerpic addTarget:self.BrightnessFilter];
+    [randerpic processImage];
+    
+    return [self.BrightnessFilter imageFromCurrentFramebuffer];
+}
+
+- (GPUImageBrightnessFilter *)BrightnessFilter{
+    if (!_BrightnessFilter) {
+        _BrightnessFilter = [[GPUImageBrightnessFilter alloc] init];
+        
+    }
+    return _BrightnessFilter;
+}
 - (NSArray *)fsFilterArr{
     if (!_fsFilterArr) {
         _fsFilterArr = @[@"FS1977Filter",

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 typedef NS_ENUM(NSUInteger, FSFilterType) {
     FSLOMOFilterType,
     FSMovieFilterType,
@@ -19,7 +20,16 @@ typedef NS_ENUM(NSUInteger, FSFilterType) {
 
 
 - (UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image;
-
+//TUDO: 改成枚举
 - (UIImage *)randerImageWithIndex:(NSString *)filterName WithImage:(UIImage *)image;
+
+/**
+ 调整亮度
+
+ @param progressValue 亮度值
+
+ @return 渲染完图片
+ */
+- (UIImage *)randerImageWithLightProgress:(CGFloat)progressValue WithImage:(UIImage *)image;
 
 @end

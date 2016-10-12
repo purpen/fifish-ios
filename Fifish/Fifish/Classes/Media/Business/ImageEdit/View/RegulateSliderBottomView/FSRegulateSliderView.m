@@ -41,15 +41,19 @@
         _MainSlider.backgroundColor = [UIColor clearColor];
         _MainSlider.tintColor = [UIColor blueColor];
         
-        _MainSlider.value=0.5;
-        _MainSlider.minimumValue=0.0;
+        _MainSlider.value=0;
+        _MainSlider.minimumValue=-1.0;
         _MainSlider.maximumValue=1.0;
         
         [_MainSlider setMaximumTrackTintColor:[UIColor blackColor]];
         [_MainSlider setMinimumTrackTintColor:[UIColor colorWithHexString:@"2288FF"]];
+        [_MainSlider addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];
 //        [_MainSlider setThumbImage:thumbImage forState:UIControlStateHighlighted];
 //        [_MainSlider setThumbImage:thumbImage forState:UIControlStateNormal];
     }
     return _MainSlider;
+}
+- (void)sliderValueChange:(UISlider *)sender{
+    [self.delegate FSRegulateSliderViewSliderValueChangeWithValue:sender.value];
 }
 @end

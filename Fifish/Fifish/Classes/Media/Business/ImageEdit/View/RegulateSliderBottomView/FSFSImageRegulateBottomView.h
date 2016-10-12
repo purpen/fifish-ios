@@ -21,6 +21,9 @@
  */
 - (void)FSFSImageRegulateBottomViewConfirm;
 
+//滚动条值改变
+- (void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value;
+
 @end
 
 @interface FSFSImageRegulateBottomView : FSBaseView
