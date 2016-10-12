@@ -108,6 +108,12 @@
 "Filter"="滤镜";
 "Adjustment" = "调整";
 
+"Light" = "亮度";
+"Contrast" = "对比度";
+"Saturation" = "饱和度";
+"Sharpness" = "锐度";
+"ColorTemperature" = "色温";
+
 
 //直播页面
 

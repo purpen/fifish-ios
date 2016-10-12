@@ -33,6 +33,8 @@ typedef enum {
 #define Nav_Height  64.0
 #define Tab_Height  49.0
 
+//图片编辑
+#define ImageEditBottomBarHei  44.0
 
 #pragma mark 颜色
 #define DEFAULT_COLOR    [UIColor colorWithHexString:@"#2F8FFF"]

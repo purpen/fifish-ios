@@ -67,6 +67,12 @@
 "Filter"="Filter";
 "Adjustment" = "Adjustment";
 
+"Light" = "Light";
+"Contrast" = "Sontrast";
+"Saturation" = "Saturation";
+"Sharpness" = "Sharpness";
+"ColorTemperature" = "ColorTemperature";
+
 //错误处理
 "Equipment connection exception" = "Equipment connection exception";
 
