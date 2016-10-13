@@ -11,12 +11,13 @@
 
 //model
 #import "FSImageModel.h"
+#import "FSVideoModel.h"
 //view
 #import "FSAlertView.h"
 #import "FSMediaBrowBottomEditView.h"
 //vc
 #import "FSImageEditViewController.h"
-
+#import <MediaPlayer/MediaPlayer.h>
 
 #import "FSMediaBrowseViewController.h"
 #import "FSMediaBrowCollectionViewCell.h"
@@ -131,6 +132,13 @@
     
     return cell;
     
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FSImageModel * model = self.modelArr[indexPath.row];
+    if ([model isKindOfClass:[FSVideoModel class]]) {
+        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
+                [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    }
 }
 - (void)finalizeCollectionViewUpdates{
     

@@ -14,6 +14,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 #import "Masonry.h"
+#import "SVProgressHUD.h"
 #import "FSBorswerImageCell.h"
 #import "FSlocalMediaViewController.h"
 #import "MJRefresh.h"
@@ -22,6 +23,8 @@
 #import "FSImageModel.h"
 #import "FSVideoModel.h"
 
+
+#import "FBAPI.h"
 //资源管理器
 #import "FSFileManager.h"
 
@@ -71,39 +74,53 @@ CGFloat const Cellspecace = 1;
     
     [self setupUI];
     
-    //读取视频数据
-    [self GetMediaData];
+    [SVProgressHUD show];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     [self GetMediaData];
+    
+    
 }
 - (void)GetMediaData{
-    
     NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4AndPngFileArr];
-    self.sourceArr = [NSMutableArray array];
+    [self.sourceArr removeAllObjects];
+    [self.BroswerCollection reloadData];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     for (NSString * str in dataArr) {
         FSMediaModel * mediaModel;
         if ([str hasSuffix:@"mp4"]) {
             mediaModel = [[FSVideoModel alloc] init];
             mediaModel.fileUrl = str;
         }
-        if ([str hasSuffix:@"png"]) {
+        if ([str hasSuffix:@"png"]||[str hasSuffix:@"jpg"]) {
             mediaModel = [[FSImageModel alloc] init];
             mediaModel.fileUrl = str;
         }
         
         [self.sourceArr addObject:mediaModel];
+        
     }
-    [UIView animateWithDuration:0.25 animations:^{
-        [self.BroswerCollection reloadData];
-    }];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.BroswerCollection reloadData];
+            [SVProgressHUD dismiss];
+        });
+        });
+    
+    
     
 }
 
 - (void)setNav{
     
     [self.parentsVC setRightItem:self.RigthNavBtn];
+}
+- (NSMutableArray *)sourceArr{
+    if (!_sourceArr) {
+        _sourceArr = [NSMutableArray array];
+    }
+    return _sourceArr;
 }
 - (UIButton *)RigthNavBtn{
     if (!_RigthNavBtn) {
@@ -147,12 +164,7 @@ CGFloat const Cellspecace = 1;
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom).offset(-Tab_Height);
     }];
-    
-    self.BroswerCollection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.sourceArr removeAllObjects];
-        [self GetMediaData];
-        [self.BroswerCollection.mj_header endRefreshing];
-    }];
+
     
     //添加删除按钮
     [self.view addSubview:self.deletedBtn];
@@ -207,11 +219,19 @@ CGFloat const Cellspecace = 1;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    FSImageModel * model = self.sourceArr[indexPath.row];
+//    [FBAPI uploadFileWithURL:@"http://up-z2.qiniu.com" WithToken:@"x9Ys5weZ-B6-qKywyX2N34bhFIT3XQLpxz0g9vZU:2MafOwgjdCj6t8F7l9T_ibXhUv0=:eyJzYXZlS2V5IjoidmlkZW9cLzE2MTAxM1wvYTA1OGUyNmMxNzUwMjljZTAyMTllYWM4MGQ0YmE4MmEkKGV4dCkiLCJjYWxsYmFja1VybCI6Imh0dHA6XC9cL2FwaS5xeXNlYS5jb21cL3VwbG9hZFwvcWluaXViYWNrIiwiY2FsbGJhY2tCb2R5Ijoie1wiZmlsZW5hbWVcIjpcIiQoZm5hbWUpXCIsIFwiZmlsZXBhdGhcIjpcIiQoa2V5KVwiLCBcInNpemVcIjpcIiQoZnNpemUpXCIsIFwid2lkdGhcIjpcIiQoaW1hZ2VJbmZvLndpZHRoKVwiLCBcImhlaWdodFwiOlwiJChpbWFnZUluZm8uaGVpZ2h0KVwiLFwibWltZVwiOlwiJChtaW1lVHlwZSlcIixcImhhc2hcIjpcIiQoZXRhZylcIixcImRlc2NcIjpcIiQoeDpkZXNjKVwiLFwiYXNzZXRhYmxlX2lkXCI6MCxcImFzc2V0YWJsZV90eXBlXCI6XCJTdHVmZlwiLCBcImtpbmRcIjoyLFwidXNlcl9pZFwiOjF9IiwicGVyc2lzdGVudE9wcyI6InZmcmFtZVwvanBnXC9vZmZzZXRcLzFcL3dcLzQ4MFwvaFwvMjcwfHZmcmFtZVwvanBnXC9vZmZzZXRcLzFcL3dcLzEyMFwvaFwvNjciLCJzY29wZSI6ImZpZmlzaCIsImRlYWRsaW5lIjoxNDc2MzU0MjE2fQ==" WithFileUrl:[NSURL fileURLWithPath:model.fileUrl] WihtProgressBlock:^(CGFloat progress) {
+//        NSLog(@"%f",progress);
+//    } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error.localizedDescription);
+//    }];
 //
 //    if ([model isKindOfClass:[FSVideoModel class]]) {
 //        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
 //        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
 //    }
+    
     //选择状态下
     if (self.isChooseState) {
         [self.seletedCellIndexSet addIndex:indexPath.item];

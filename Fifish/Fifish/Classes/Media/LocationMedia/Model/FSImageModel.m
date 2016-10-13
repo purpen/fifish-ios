@@ -11,11 +11,7 @@
 @implementation FSImageModel
 -(void)setFileUrl:(NSString *)fileUrl{
     [super setFileUrl:fileUrl];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        UIImage * defaultimage = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithContentsOfFile:fileUrl], 0.1)];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.defaultImage = defaultimage;
-        });
-    });
+    UIImage * defaultimage = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithContentsOfFile:fileUrl], 0.1)];
+        self.defaultImage = defaultimage;
 }
 @end
