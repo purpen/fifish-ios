@@ -32,7 +32,7 @@
     
     while((file=[myDirectoryEnumerator nextObject]))     //遍历当前目录
     {
-        if([[file pathExtension] isEqualToString:@"mp4"]||[[file pathExtension] isEqualToString:@"png"])   //取得后缀名这.mp4的文件名
+        if([[file pathExtension] isEqualToString:@"mp4"]||[[file pathExtension] isEqualToString:@"png"]||[[file pathExtension] isEqualToString:@"jpg"])   //取得后缀名这.mp4的文件名
         {
             [filePathArray addObject:[docPath stringByAppendingPathComponent:file]]; //存到数组
             NSLog(@"%@",file);

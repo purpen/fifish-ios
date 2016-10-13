@@ -13,7 +13,6 @@
 static NSString * const BrowCellIden = @"FSMediaBrowCollectionViewCellIedn";
 
 
-
 @interface FSMediaBrowCollectionViewCell : FSBaseCollectionViewCell
 
 
