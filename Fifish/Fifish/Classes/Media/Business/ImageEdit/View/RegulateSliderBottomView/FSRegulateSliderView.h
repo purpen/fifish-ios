@@ -7,7 +7,7 @@
 //
 
 #import "FSBaseView.h"
-
+@class FSFliterImage;
 @protocol FSRegulateSliderViewDelegate <NSObject>
 
 - (void)FSRegulateSliderViewSliderValueChangeWithValue:(CGFloat)value;
@@ -16,8 +16,14 @@
 @end
 
 @interface FSRegulateSliderView : FSBaseView
-@property (nonatomic,strong)UISlider * MainSlider;
+
+
+
 
 @property (nonatomic,assign)id<FSRegulateSliderViewDelegate>delegate;
 
+@property (nonatomic)   CGFloat sliderCurrentValue;
+
+//- (void)setSliederMinValue:(CGFloat)min MaxValue:(CGFloat)Max CurrentValue:(CGFloat)current;
+- (void)setSliederWithType:(NSInteger)type AndImage:(FSFliterImage *)fsimage;
 @end
