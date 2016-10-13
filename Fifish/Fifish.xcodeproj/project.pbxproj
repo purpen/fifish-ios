@@ -125,6 +125,7 @@
 		049BBD631DAB840D006DD20D /* FSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD621DAB840D006DD20D /* FSAlertView.m */; };
 		049BBD6A1DAB8C2D006DD20D /* FSImageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BBD691DAB8C2D006DD20D /* FSImageEditViewController.m */; };
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
+		04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A23B851DAF2997001BD636 /* FSFliterImage.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
@@ -663,6 +664,8 @@
 		049BBD691DAB8C2D006DD20D /* FSImageEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageEditViewController.m; sourceTree = "<group>"; };
 		04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoLiveBottomBar.h; sourceTree = "<group>"; };
 		04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoLiveBottomBar.m; sourceTree = "<group>"; };
+		04A23B841DAF2997001BD636 /* FSFliterImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFliterImage.h; sourceTree = "<group>"; };
+		04A23B851DAF2997001BD636 /* FSFliterImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFliterImage.m; sourceTree = "<group>"; };
 		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
 		04A52F001D90DC1000F9303D /* FSliveVideoConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveVideoConst.m; sourceTree = "<group>"; };
 		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
@@ -1913,6 +1916,8 @@
 		049BBD661DAB8BDE006DD20D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04A23B841DAF2997001BD636 /* FSFliterImage.h */,
+				04A23B851DAF2997001BD636 /* FSFliterImage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3453,6 +3458,7 @@
 				1FB4FBB91D954EC400E236CF /* MJRefreshBackGifFooter.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
 				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
+				04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */,

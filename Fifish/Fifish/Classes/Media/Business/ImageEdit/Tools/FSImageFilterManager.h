@@ -13,6 +13,23 @@ typedef NS_ENUM(NSUInteger, FSFilterType) {
     FSMovieFilterType,
     FSBlackAndWhiteType,
 };
+
+/**
+ 图片参数值
+
+ - FSImageParamOfLight:            亮度
+ - FSImageParamOfcontrast:         对比度
+ - FSImageParamOfstauration:       饱和度
+ - FSImageParamOfsharpness:        锐度
+ - FSImageParamOfcolorTemperature: 色温
+ */
+typedef NS_ENUM(NSInteger,FSImageParamType) {
+    FSImageParamOfLight,
+    FSImageParamOfcontrast,
+    FSImageParamOfstauration,
+    FSImageParamOfsharpness,
+    FSImageParamOfcolorTemperature,
+};
 @interface FSImageFilterManager : NSObject
 
 //滤镜数组
@@ -26,10 +43,11 @@ typedef NS_ENUM(NSUInteger, FSFilterType) {
 /**
  调整亮度
 
- @param progressValue 亮度值
+ @param progressValue 亮度值调整
 
  @return 渲染完图片
  */
-- (UIImage *)randerImageWithLightProgress:(CGFloat)progressValue WithImage:(UIImage *)image;
+- (UIImage *)randerImageWithProgress:(CGFloat)progressValue WithImage:(UIImage *)image WithImageParamType:(FSImageParamType)paramType;
+
 
 @end

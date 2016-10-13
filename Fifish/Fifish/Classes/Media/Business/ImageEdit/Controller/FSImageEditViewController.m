@@ -17,9 +17,20 @@
 #import "FSFilterCollectionView.h"
 #import "FSRegulateCollectionView.h"
 
+//model
+#import "FSFliterImage.h"
+
 @interface FSImageEditViewController ()<FSImageEditBottomViewDelegate,FSFilterCollectionViewDelegate,FSRegulateCollectionViewDelegate,FSFSImageRegulateBottomViewDelegate>
 
 @property (nonatomic,strong) UIImageView * imageView;
+
+//TODO:如果图片过大此处三个图片变量会耗费很大内存，后期需要优化处理
+//原始图片 第一级处理
+@property (nonatomic,strong) UIImage     * originalImage;
+//经过滤镜处理的图片  二级处理
+@property (nonatomic,strong) UIImage     * FliterImage;
+//经过参数调整的图片 三级处理
+@property (nonatomic,strong) FSFliterImage     * ParamsImage;
 
 /**
  滤镜CollectionView
@@ -41,8 +52,13 @@
 @property (nonatomic,strong) FSImageFilterManager       * FilterManager;
 
 
+/**
+ 参数调整
+ */
 @property (nonatomic,strong) FSFSImageRegulateBottomView* ImageRegulateBottomView;
 
+//中间变量，记录编辑参数类型
+@property (nonatomic)        NSInteger            editType;
 
 @end
 
@@ -99,6 +115,10 @@
         make.bottom.equalTo(self.view.mas_bottom);
     }];
 }
+- (void)setMainImageModel:(FSImageModel *)MainImageModel{
+    _MainImageModel = MainImageModel;
+    self.originalImage = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
+}
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
@@ -106,6 +126,13 @@
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imageView;
+}
+
+-(FSFliterImage *)ParamsImage{
+    if (!_ParamsImage) {
+        _ParamsImage = [[FSFliterImage alloc] init];
+    }
+    return _ParamsImage;
 }
 
 - (FSFilterCollectionView *)FilterCollectionView{
@@ -160,30 +187,45 @@
         self.RegulateCollectionView.hidden = YES;
     }
 }
+
+#pragma FsfilterCollectionDelegate
+
+-(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
+   self.FliterImage = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
+    
+    self.imageView.image = self.FliterImage;
+}
+#pragma mark FSFilterCollectionViewDelegate
+-(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{
+    
+    //点击参数值设定，显示参数调整滑动条
+    self.ImageRegulateBottomView.hidden = NO;
+    [self.ImageRegulateBottomView.SliderView setSliederWithType:indexPath.row AndImage:self.ParamsImage];
+    
+    //记录编辑类型
+    self.editType = indexPath.row;
+    
+    self.ParamsImage.image = self.imageView.image;
+}
+
 #pragma mark FSFSImageRegulateBottomViewDelegate
 - (void)FSFSImageRegulateBottomViewCancel{
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
+    self.imageView.image = self.FliterImage?self.FliterImage:self.originalImage;
+    
+    
 }
-#pragma FsfilterCollectionDelegate
+- (void)FSFSImageRegulateBottomViewConfirm{
+    self.ImageRegulateBottomView.hidden = YES;
+    
+    //记录参数值
+    [self.ParamsImage updataParamsWithIndex:self.editType WithValue:self.ImageRegulateBottomView.SliderView.sliderCurrentValue];
+    
+}
 
--(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
-    UIImage * immmm = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
-    
-   UIImage * image = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:immmm];
-    
-    self.imageView.image = image;
-    
-}
-
-#pragma mark FSFilterCollectionViewDelegate
--(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{
-    NSLog(@"%@",indexPath);
-    //显示参数调整滑动条
-    self.ImageRegulateBottomView.hidden = NO;
-}
 -(void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value{
-   UIImage * image = [self.FilterManager randerImageWithLightProgress:value WithImage:[UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl]];
-    self.imageView.image = image;
+
+    self.imageView.image = [self.FilterManager randerImageWithProgress:value WithImage:self.FliterImage?self.FliterImage:self.originalImage WithImageParamType:self.editType];
 }
 @end

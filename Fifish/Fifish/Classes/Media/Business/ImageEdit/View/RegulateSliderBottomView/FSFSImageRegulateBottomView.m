@@ -8,12 +8,12 @@
 
 #import "FSFSImageRegulateBottomView.h"
 #import "FSImageEditBottomView.h"
-#import "FSRegulateSliderView.h"
+
 @interface FSFSImageRegulateBottomView ()<FSImageEditBottomViewDelegate,FSRegulateSliderViewDelegate>
 
 @property (nonatomic,strong) FSImageEditBottomView  * bottomView;
 
-@property (nonatomic,strong) FSRegulateSliderView   * SliderView;
+
 @end
 
 
@@ -66,6 +66,9 @@
 - (void)FSImageEditBottomViewChooseWithIndex:(NSInteger)index{
     if (index == 0) {
         [self.RegulateBottomViewDelegate FSFSImageRegulateBottomViewCancel];
+    }
+    else{
+        [self.RegulateBottomViewDelegate FSFSImageRegulateBottomViewConfirm];
     }
 }
 

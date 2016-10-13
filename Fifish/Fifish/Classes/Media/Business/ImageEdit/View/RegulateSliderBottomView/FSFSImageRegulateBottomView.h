@@ -7,7 +7,7 @@
 //
 
 #import "FSBaseView.h"
-
+#import "FSRegulateSliderView.h"
 
 @protocol FSFSImageRegulateBottomViewDelegate <NSObject>
 
@@ -30,5 +30,6 @@
 
 @property (nonatomic,assign) id<FSFSImageRegulateBottomViewDelegate>RegulateBottomViewDelegate;
 
+@property (nonatomic,strong) FSRegulateSliderView   * SliderView;
 
 @end

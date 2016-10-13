@@ -9,8 +9,12 @@
 #import "FSImageFilterManager.h"
 #import "FSfilter.h"
 
+#import "GPUImageFilter.h"
 #import "GPUImageBrightnessFilter.h"
-
+#import "GPUImageContrastFilter.h"
+#import "GPUImageSaturationFilter.h"
+#import "GPUImageSharpenFilter.h"
+#import "GPUImageWhiteBalanceFilter.h"
 //FSFiveInputFilter
 //FSRiseFilter
 
@@ -18,9 +22,24 @@
 
 //亮度
 @property (nonatomic,strong)GPUImageBrightnessFilter * BrightnessFilter;
+
+//对比度
+@property (nonatomic,strong)GPUImageContrastFilter   * ContrastFilter;
+
+//饱和度
+@property (nonatomic,strong)GPUImageSaturationFilter * SaturationFilter;
+
+//锐度
+@property (nonatomic,strong)GPUImageSharpenFilter    *SharpenFilter;
+
+//色温
+@property (nonatomic,strong)GPUImageWhiteBalanceFilter * WhiteBalanceFilter;
+
 @end
 
 @implementation FSImageFilterManager
+
+//test
 -(UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image{
     GPUImageFilterGroup * filter =(GPUImageFilterGroup*) [[NSClassFromString(@"GPUImageColorInvertFilter") alloc] init];
     
@@ -49,15 +68,54 @@
     return [filter imageFromCurrentFramebuffer];
 }
 
-- (UIImage *)randerImageWithLightProgress:(CGFloat)progressValue WithImage:(UIImage *)image{
-    [self.BrightnessFilter useNextFrameForImageCapture];
-    [self.BrightnessFilter forceProcessingAtSize:image.size];
-    GPUImagePicture * randerpic = [[GPUImagePicture alloc] initWithImage:image];
-    self.BrightnessFilter.brightness = progressValue;
-    [randerpic addTarget:self.BrightnessFilter];
-    [randerpic processImage];
+- (UIImage *)randerImageWithProgress:(CGFloat)progressValue WithImage:(UIImage *)image WithImageParamType:(FSImageParamType)paramType{
     
-    return [self.BrightnessFilter imageFromCurrentFramebuffer];
+    GPUImagePicture * randerpic = [[GPUImagePicture alloc] initWithImage:image];
+    GPUImageFilter * fiter;
+    
+    switch (paramType) {
+        case FSImageParamOfLight:
+        {
+            fiter = self.BrightnessFilter;
+            self.BrightnessFilter.brightness = progressValue;
+        }
+            break;
+        case FSImageParamOfcontrast:
+        {
+            fiter = self.ContrastFilter;
+            self.ContrastFilter.contrast = progressValue;
+        }
+            break;
+        case FSImageParamOfstauration:
+        {
+            fiter = self.SaturationFilter;
+            self.SaturationFilter.saturation = progressValue;
+        }
+            break;
+        case FSImageParamOfsharpness:
+        {
+            fiter = self.SharpenFilter;
+            self.SharpenFilter.sharpness = progressValue;
+        }
+            break;
+        case FSImageParamOfcolorTemperature:
+        {
+            fiter = self.WhiteBalanceFilter;
+            self.WhiteBalanceFilter.temperature = progressValue;
+        }
+            break;
+        default:
+            
+            break;
+    }
+    
+    [fiter useNextFrameForImageCapture];
+    [fiter forceProcessingAtSize:image.size];
+    [randerpic addTarget:fiter];
+    [randerpic processImage];
+    return [fiter imageFromCurrentFramebuffer];
+    
+    return nil;
 }
 
 - (GPUImageBrightnessFilter *)BrightnessFilter{
@@ -67,6 +125,43 @@
     }
     return _BrightnessFilter;
 }
+- (GPUImageContrastFilter *)ContrastFilter{
+    if (!_ContrastFilter) {
+        _ContrastFilter = [[GPUImageContrastFilter alloc] init];
+        
+    }
+    return _ContrastFilter;
+}
+
+- (GPUImageSaturationFilter *)SaturationFilter{
+    if (!_SaturationFilter) {
+        _SaturationFilter = [[GPUImageSaturationFilter alloc] init];
+    }
+    return _SaturationFilter;
+}
+- (GPUImageSharpenFilter *)SharpenFilter{
+    if (!_SharpenFilter) {
+        _SharpenFilter =[[GPUImageSharpenFilter alloc] init];
+        
+    }
+    return _SharpenFilter;
+}
+- (GPUImageWhiteBalanceFilter *)WhiteBalanceFilter{
+    if (!_WhiteBalanceFilter) {
+        _WhiteBalanceFilter = [[GPUImageWhiteBalanceFilter alloc] init];
+    }
+    return _WhiteBalanceFilter;
+}
+
+
+
+
+
+
+
+
+
+
 - (NSArray *)fsFilterArr{
     if (!_fsFilterArr) {
         _fsFilterArr = @[@"FS1977Filter",
