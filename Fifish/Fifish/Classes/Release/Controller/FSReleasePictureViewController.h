@@ -10,4 +10,7 @@
 
 @interface FSReleasePictureViewController : FSBaseViewController
 
+/**  */
+@property (nonatomic, strong) UIImage *bigImage;
+
 @end
