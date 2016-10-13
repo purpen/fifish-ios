@@ -20,6 +20,7 @@
 #import "FSSearchViewController.h"
 #import "FSBigImageViewController.h"
 #import "FSReleasePictureViewController.h"
+#import "FSNavigationViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -121,7 +122,6 @@ static NSString * const CellId = @"home";
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        
         // 让底部控件结束刷新
         [self.contenTableView.mj_footer endRefreshing];
     }];
@@ -143,16 +143,20 @@ static NSString * const CellId = @"home";
 
 -(void)setupNav{
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *tempItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(tempClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
+    self.navigationItem.rightBarButtonItem = tempItem;
+}
+
+-(void)tempClick{
+    FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)searchClick{
-    
     FSSearchViewController *vc = [[FSSearchViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
-    
-    /*FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];*/
+    FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
+    [self presentViewController:navi animated:YES completion:nil];
 }
 
 

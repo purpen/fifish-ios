@@ -41,9 +41,11 @@
 "open" = "开启";
 "close" = "关闭";
 
+//搜索
 "video" = "视频";
 "picture" = "图片";
 "user" = "用户";
+"Can't find the content" = "找不到内容";
 
 
 //camera设置

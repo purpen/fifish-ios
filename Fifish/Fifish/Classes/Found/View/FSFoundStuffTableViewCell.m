@@ -70,8 +70,8 @@
     _model = model;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
-    self.timeLabel.text = @"";
-    self.addressLabel.text = @"";
+    self.timeLabel.text = model.created_at;
+    self.addressLabel.text = model.address;
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         [self.videoView removeFromSuperview];

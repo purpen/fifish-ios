@@ -336,6 +336,10 @@
 		1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B21DAE275A000AE61D /* SGTopTitleView.m */; };
 		1FE564B61DAE275A000AE61D /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B41DAE275A000AE61D /* UIView+SGExtension.m */; };
 		1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564B81DAE3867000AE61D /* UIColor+Extension.m */; };
+		1FE564BF1DAF82A1000AE61D /* FSMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564BE1DAF82A1000AE61D /* FSMoreView.m */; };
+		1FE564C11DAF82AF000AE61D /* FSMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C01DAF82AF000AE61D /* FSMoreView.xib */; };
+		1FE564C41DAF849B000AE61D /* FSReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564C31DAF849B000AE61D /* FSReportView.m */; };
+		1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C51DAF84A7000AE61D /* FSReportView.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1045,6 +1049,12 @@
 		1FE564B41DAE275A000AE61D /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
 		1FE564B71DAE3867000AE61D /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
 		1FE564B81DAE3867000AE61D /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		1FE564BD1DAF82A1000AE61D /* FSMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreView.h; sourceTree = "<group>"; };
+		1FE564BE1DAF82A1000AE61D /* FSMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreView.m; sourceTree = "<group>"; };
+		1FE564C01DAF82AF000AE61D /* FSMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMoreView.xib; sourceTree = "<group>"; };
+		1FE564C21DAF849B000AE61D /* FSReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReportView.h; sourceTree = "<group>"; };
+		1FE564C31DAF849B000AE61D /* FSReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReportView.m; sourceTree = "<group>"; };
+		1FE564C51DAF84A7000AE61D /* FSReportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportView.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2457,6 +2467,12 @@
 				1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */,
 				1FF783BD1D9B585700618245 /* FSImageScrollView.h */,
 				1FF783BE1D9B585700618245 /* FSImageScrollView.m */,
+				1FE564BD1DAF82A1000AE61D /* FSMoreView.h */,
+				1FE564BE1DAF82A1000AE61D /* FSMoreView.m */,
+				1FE564C01DAF82AF000AE61D /* FSMoreView.xib */,
+				1FE564C21DAF849B000AE61D /* FSReportView.h */,
+				1FE564C31DAF849B000AE61D /* FSReportView.m */,
+				1FE564C51DAF84A7000AE61D /* FSReportView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3197,6 +3213,7 @@
 				1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */,
 				1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */,
 				1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */,
+				1FE564C11DAF82AF000AE61D /* FSMoreView.xib in Resources */,
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
@@ -3240,6 +3257,7 @@
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				0436AEBA1DACE30C001E6808 /* brannanLuma.png in Resources */,
 				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
+				1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */,
 				1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */,
 				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
 				0436AEC31DACE30C001E6808 /* hefeMap.png in Resources */,
@@ -3447,6 +3465,8 @@
 				04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */,
 				1F7EDEEF1D4700E500ABED5D /* IQTitleBarButtonItem.m in Sources */,
 				1FB4FBB71D954EC400E236CF /* MJRefreshAutoNormalFooter.m in Sources */,
+				1FE564C41DAF849B000AE61D /* FSReportView.m in Sources */,
+				1FE564BF1DAF82A1000AE61D /* FSMoreView.m in Sources */,
 				1F0219A81D795002003A8A11 /* JKDBModel.m in Sources */,
 				1F0424491D51F3C30071A1D6 /* AFHTTPRequestOperationManager.m in Sources */,
 				1F7EDEE61D4700E500ABED5D /* IQUITextFieldView+Additions.m in Sources */,

@@ -22,6 +22,16 @@
 
 @implementation FSListUserTableViewCell
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.fucosBtn.layer.masksToBounds = YES;
+        self.fucosBtn.layer.cornerRadius = 13;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+        self.fucosBtn.layer.borderWidth = 1;
+    }
+    return self;
+}
+
 -(void)setModel:(FSListUserModel *)model{
     _model = model;
     self.userNameLabel.text = model.userName;
