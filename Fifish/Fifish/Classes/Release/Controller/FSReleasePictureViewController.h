@@ -17,7 +17,11 @@
  媒体模型
  */
 @property (nonatomic,assign) FSMediaModel * mediaModel;
-
+/**
+ 1 图片
+ 2 视频
+ */
+@property (nonatomic, strong) NSNumber *type;
 
 /**  */
 @property (nonatomic, strong) UIImage *bigImage;

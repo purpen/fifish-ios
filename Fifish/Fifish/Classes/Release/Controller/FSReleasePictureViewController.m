@@ -63,6 +63,7 @@
         _releaseView.tagTextFiled.delegate = self;
         [_releaseView.addressBtn addTarget:self action:@selector(addressClick) forControlEvents:UIControlEventTouchUpInside];
         [_releaseView.addWaterBtn addTarget:self action:@selector(waterClick) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _releaseView;
 }
@@ -82,9 +83,11 @@
 -(void)saveName:(NSString *)str{
     self.str = str;
 }
+
 - (void)setMediaModel:(FSMediaModel *)mediaModel{
     _mediaModel = mediaModel;
 }
+
 -(void)switch:(BOOL)flag{
     if (flag) {
         self.releaseView.flagLabel.text = NSLocalizedString(@"open", nil);
@@ -161,27 +164,50 @@
 }
 
 -(void)releaseClick{
-   NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 0.5);
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
-    [iconData writeToFile:fullPath atomically:NO];
-    FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSString *upload_url = result[@"data"][@"upload_url"];
-        NSString *token = result[@"data"][@"token"];
-        
-        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 0.5);
+        NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
+        [iconData writeToFile:fullPath atomically:NO];
+        FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSString *upload_url = result[@"data"][@"upload_url"];
+            NSString *token = result[@"data"][@"token"];
             
-        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSString *stuffId = responseObject[@"id"];
-            [self newStuff:stuffId];
-        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+                
+            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSString *stuffId = responseObject[@"id"];
+                [self newStuff:stuffId];
+            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+            }];
+            
+            
+        } failure:^(FBRequest *request, NSError *error) {
             
         }];
-        
-        
-    } failure:^(FBRequest *request, NSError *error) {
-        
-    }];
+    } else {
+        //视频
+        FBRequest *request = [FBAPI getWithUrlString:@"/upload/videoToken" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSString *upload_url = result[@"data"][@"upload_url"];
+            NSString *token = result[@"data"][@"token"];
+            
+            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WihtProgressBlock:^(CGFloat progress) {
+                
+            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSString *stuffId = responseObject[@"id"];
+                [self newStuff:stuffId];
+            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+            }];
+            
+            
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 -(void)newStuff:(NSString *)stuffId{
@@ -193,7 +219,7 @@
                                                                                        @"tags" : self.tagsAry
                                                                                        } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"上传 %@", result);
+        [SVProgressHUD showSuccessWithStatus:@"发布成功"];
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
