@@ -7,7 +7,15 @@
 //
 
 #import "FSBaseViewController.h"
+#import "FSMediaModel.h"
 
 @interface FSReleasePictureViewController : FSBaseViewController
+
+
+/**
+ 媒体模型
+ */
+@property (nonatomic,assign) FSMediaModel * mediaModel;
+
 
 @end

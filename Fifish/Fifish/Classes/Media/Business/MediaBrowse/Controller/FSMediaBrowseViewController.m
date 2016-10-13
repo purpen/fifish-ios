@@ -17,6 +17,7 @@
 #import "FSMediaBrowBottomEditView.h"
 //vc
 #import "FSImageEditViewController.h"
+#import "FSReleasePictureViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 #import "FSMediaBrowseViewController.h"
@@ -148,7 +149,7 @@
 {
     CGPoint offset = scrollView.contentOffset;
     self.seletedIndex = offset.x/SCREEN_WIDTH;
-    self.offsetLab.text = [NSString stringWithFormat:@"%lu/%lu",self.seletedIndex+1,self.modelArr.count];
+    self.offsetLab.text = [NSString stringWithFormat:@"%lu/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
 }
 
 /**
@@ -163,12 +164,20 @@
 - (void)MediaBrowViewEditAndShare{
     NSLog(@"分享");
     
-    FSImageModel * imagemodel = self.modelArr[self.seletedIndex];
-    
+    FSImageModel * model = self.modelArr[self.seletedIndex];
+    if ([model isKindOfClass:[FSVideoModel class]]){
+        FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
+        
+        PictureViewVC.mediaModel = model;
+        [self.navigationController pushViewController:PictureViewVC animated:YES];
+        
+    }
+    else{
     FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
-    imageEditVc.MainImageModel = imagemodel;
+    imageEditVc.MainImageModel = model;
     
-    [self.navigationController pushViewController:imageEditVc animated:YES];
+        [self.navigationController pushViewController:imageEditVc animated:YES];
+    }
     
 }
 - (void)MediaBrowViewDelete{

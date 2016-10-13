@@ -71,7 +71,9 @@
 -(void)saveName:(NSString *)str{
     self.str = str;
 }
-
+- (void)setMediaModel:(FSMediaModel *)mediaModel{
+    _mediaModel = mediaModel;
+}
 -(void)switch:(BOOL)flag{
     if (flag) {
         self.releaseView.flagLabel.text = NSLocalizedString(@"open", nil);
