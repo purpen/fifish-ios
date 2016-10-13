@@ -183,12 +183,9 @@
                          @"GPUImageRGBErosionFilter",
                          @"GPUImageDilationFilter",
                          @"GPUImageRGBDilationFilter",
-                         @"GPUImageOpeningFilter",
                          @"GPUImageRGBOpeningFilter",
-                         @"GPUImageClosingFilter",
                          @"GPUImageRGBClosingFilter",
                          @"GPUImageSmoothToonFilter",
-                         @"GPUImageColorPackingFilter",
                          @"GPUImageVignetteFilter",
                          @"GPUImagePinchDistortionFilter",
                          ];
