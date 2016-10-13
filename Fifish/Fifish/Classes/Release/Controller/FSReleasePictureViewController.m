@@ -13,6 +13,7 @@
 #import "FSAddTagViewController.h"
 #import "FSAddressViewController.h"
 #import "FSWatermarkViewController.h"
+#import "UIImage+Helper.h"
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
 
@@ -22,15 +23,25 @@
 @property (nonatomic, strong) FSReleaseView *releaseView;
 /**  */
 @property(nonatomic,copy) NSString *str;
+/**  */
+@property (nonatomic, strong) NSMutableArray *tagsAry;
 
 @end
 
 @implementation FSReleasePictureViewController
 
+-(NSMutableArray *)tagsAry{
+    if (!_tagsAry) {
+        _tagsAry = [NSMutableArray array];
+    }
+    return _tagsAry;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavi];
     [self.view addSubview:self.myScrollview];
+    self.bigImage = [UIImage imageNamed:@"release_default"];
 }
 
 -(UIScrollView *)myScrollview{
@@ -119,6 +130,7 @@
         } else {
             self.releaseView.tagTextFiled.text = [NSString stringWithFormat:@"# %@", newTag];
         }
+        [self.tagsAry addObject:tagId];
     }
 }
 
@@ -149,8 +161,42 @@
 }
 
 -(void)releaseClick{
-    
+   NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 0.5);
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
+    [iconData writeToFile:fullPath atomically:NO];
+    FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSString *upload_url = result[@"data"][@"upload_url"];
+        NSString *token = result[@"data"][@"token"];
+        
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+            
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *stuffId = responseObject[@"id"];
+            [self newStuff:stuffId];
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        
+        
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
+-(void)newStuff:(NSString *)stuffId{
+    FBRequest *request = [FBAPI postWithUrlString:@"/stuffs/store" requestDictionary:@{
+                                                                                       @"content" : self.releaseView.instructionsTextView.text,
+                                                                                       @"asset_id" : stuffId,
+                                                                                       @"address" : self.releaseView.addressLabel.text,
+                                                                                       @"kind" : @(1),
+                                                                                       @"tags" : self.tagsAry
+                                                                                       } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"上传 %@", result);
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+}
 
 @end

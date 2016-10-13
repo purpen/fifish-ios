@@ -12,10 +12,14 @@
 @interface FSReleasePictureViewController : FSBaseViewController
 
 
+
 /**
  媒体模型
  */
 @property (nonatomic,assign) FSMediaModel * mediaModel;
 
+
+/**  */
+@property (nonatomic, strong) UIImage *bigImage;
 
 @end
