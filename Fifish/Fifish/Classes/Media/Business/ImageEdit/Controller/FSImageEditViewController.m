@@ -87,7 +87,8 @@
     
     FSReleasePictureViewController * vc = [[FSReleasePictureViewController alloc] init];
     vc.type = @1;
-    vc.bigImage = self.imageView.image;
+    self.MainImageModel.flietrImage = self.imageView.image;
+    vc.mediaModel= self.MainImageModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)makeUserInterface{
