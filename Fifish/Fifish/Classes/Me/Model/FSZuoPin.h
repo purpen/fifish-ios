@@ -48,5 +48,7 @@
 @property(nonatomic,copy) NSString *file_large;
 /**  */
 @property (nonatomic, assign) NSInteger is_follow;
+/**  */
+@property(nonatomic,copy) NSString *filepath;
 
 @end
