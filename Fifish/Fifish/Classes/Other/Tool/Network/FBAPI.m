@@ -242,10 +242,16 @@
 }
 
 
-+ (void)uploadFileWithURL:(NSString *)uploadUrl WithToken:(NSString *)token WithFileUrl:(NSURL *)fileUrl WihtProgressBlock:(void (^)(CGFloat progress))progressblock WithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success WithFailureBlock:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
++ (void)uploadFileWithURL:(NSString *)uploadUrl WithToken:(NSString *)token WithFileUrl:(NSURL *)fileUrl WithFileData:(NSData *)filedata WihtProgressBlock:(void (^)(CGFloat))progressblock WithSuccessBlock:(void (^)(AFHTTPRequestOperation *, id))success WithFailureBlock:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     #warning afn3.0不能这么用
     AFHTTPRequestOperation * uploadOperation =[FBRequest UploadDataWithUrlString:uploadUrl parameters:@{@"token":token} timeoutInterval:@60 requestType:HTTPRequestType responseType:JSONResponseType constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileURL:fileUrl name:@"file" error:nil];
+        if (fileUrl) {
+         [formData appendPartWithFileURL:fileUrl name:@"file" error:nil];
+        }
+        if (filedata) {
+            [formData appendPartWithFormData:filedata name:@"flie"];
+        }
+        
     } success:success failure:failure];
     
     if (progressblock) {
