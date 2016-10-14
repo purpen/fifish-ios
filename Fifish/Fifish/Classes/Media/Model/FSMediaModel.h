@@ -13,4 +13,10 @@
  文件地址
  */
 @property (nonatomic , strong) NSString * fileUrl;
+
+
+/**
+ 处理完的图片
+ */
+@property (nonatomic ,strong ) UIImage  * flietrImage;
 @end
