@@ -8,6 +8,7 @@
 
 //vc
 #import "FSMediaBrowseViewController.h"
+#import "FSMcBaseNavViewController.h"
 
 
 #import <Photos/Photos.h>
@@ -76,16 +77,16 @@ CGFloat const Cellspecace = 1;
     
     [self setupUI];
     
-    [SVProgressHUD show];
+    
+    
+    [self GetMediaData];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self GetMediaData];
-    
-    
+    [self.BroswerCollection reloadData];
 }
 - (void)GetMediaData{
+    [SVProgressHUD show];
     NSArray * dataArr =  [[FSFileManager defaultManager] GetMp4AndPngFileArr];
     [self.sourceArr removeAllObjects];
     [self.BroswerCollection reloadData];
@@ -109,9 +110,6 @@ CGFloat const Cellspecace = 1;
             [SVProgressHUD dismiss];
         });
         });
-    
-    
-    
 }
 
 - (void)setNav{
@@ -140,6 +138,7 @@ CGFloat const Cellspecace = 1;
     if (!_RigthNavBtn) {
         _RigthNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _RigthNavBtn.frame = CGRectMake(0, 0, 60, 40);
+        _RigthNavBtn.contentMode = UIViewContentModeRight;
         [_RigthNavBtn addTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
         _RigthNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_RigthNavBtn setTitle:NSLocalizedString(@"Choose", nil) forState:UIControlStateNormal];
@@ -255,7 +254,8 @@ CGFloat const Cellspecace = 1;
         FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
         fsmbvc.modelArr = self.sourceArr;
         fsmbvc.seletedIndex = indexPath.row;
-        [self.navigationController pushViewController:fsmbvc animated:YES];
+        FSMcBaseNavViewController * nav = [[FSMcBaseNavViewController alloc] initWithRootViewController:fsmbvc];
+        [self presentViewController:nav animated:YES completion:nil];
     }
    
 }
@@ -353,6 +353,7 @@ CGFloat const Cellspecace = 1;
             [[FSFileManager defaultManager] SaveVideoWithFilePath:url];
         });
     }
+    [self GetMediaData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

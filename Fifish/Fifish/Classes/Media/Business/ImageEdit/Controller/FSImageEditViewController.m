@@ -9,7 +9,9 @@
 //tools
 #import "FSImageFilterManager.h"
 
+//vc
 #import "FSImageEditViewController.h"
+#import "FSReleasePictureViewController.h"
 
 //view
 #import "FSFSImageRegulateBottomView.h"
@@ -70,8 +72,24 @@
     
     [self makeUserInterface];
     
+    [self setNavView];
+    
 }
 
+- (void)setNavView{
+    UIButton * nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextBtn.frame = CGRectMake(0, 0, 40, 40);
+    [nextBtn setTitle:NSLocalizedString(@"Next", nil) forState:UIControlStateNormal];
+    [nextBtn addTarget:self action:@selector(gotoshareVC) forControlEvents:UIControlEventTouchUpInside];
+    [self setRightItem:nextBtn];
+}
+- (void)gotoshareVC{
+    
+    FSReleasePictureViewController * vc = [[FSReleasePictureViewController alloc] init];
+    vc.type = @1;
+    vc.bigImage = self.imageView.image;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 - (void)makeUserInterface{
     self.view.backgroundColor = [UIColor blackColor];
     

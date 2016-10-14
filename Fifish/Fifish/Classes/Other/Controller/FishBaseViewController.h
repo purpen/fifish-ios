@@ -11,6 +11,17 @@
 #import "SVProgressHUD.h"
 #import "Masonry.h"
 @interface FishBaseViewController : UIViewController
+
+@property (nonatomic,strong) UIButton * NavLeftBtn;
+
+@property (nonatomic,strong) UIButton * NavRightBtn;
+
+//返回
+- (void)NavBack;
+
+//设置左边导航
+- (void)setDefaultLeftNav;
+
 - (void)setRightItem:(UIView *)view;
 
 - (void)setLeftItem:(UIView *)view;

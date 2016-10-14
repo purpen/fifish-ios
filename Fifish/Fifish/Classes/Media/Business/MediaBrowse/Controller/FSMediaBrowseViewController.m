@@ -48,6 +48,10 @@
     [super viewDidLoad];
     [self setUpUI];
 }
+- (void)NavBack{
+    [super NavBack];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)setUpUI{
     self.view.backgroundColor = [UIColor blackColor];
     
