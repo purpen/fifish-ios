@@ -80,8 +80,7 @@
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
-        
-        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
             
         } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
             FSUserModel *userModel = [[FSUserModel findAll] lastObject];
@@ -91,6 +90,16 @@
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];
+//        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+//            
+//        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+//            userModel.large = responseObject[@"file"][@"large"];
+//            [userModel saveOrUpdate];
+//            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+//        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            
+//        }];
         
         
     } failure:^(FBRequest *request, NSError *error) {

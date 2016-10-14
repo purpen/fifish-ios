@@ -229,8 +229,7 @@
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSString *upload_url = result[@"data"][@"upload_url"];
             NSString *token = result[@"data"][@"token"];
-            
-            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
                 
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
@@ -239,6 +238,15 @@
             } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
                 
             }];
+//            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
+//                
+//            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSString *stuffId = responseObject[@"id"];
+//                self.kind = @"1";
+//                [self newStuff:stuffId];
+//            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                
+//            }];
             
             
         } failure:^(FBRequest *request, NSError *error) {
@@ -250,8 +258,7 @@
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSString *upload_url = result[@"data"][@"upload_url"];
             NSString *token = result[@"data"][@"token"];
-            
-            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WihtProgressBlock:^(CGFloat progress) {
+            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WithFileData:nil WihtProgressBlock:^(CGFloat progress) {
                 
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
@@ -260,6 +267,15 @@
             } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
                 
             }];
+//            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WihtProgressBlock:^(CGFloat progress) {
+//                
+//            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSString *stuffId = responseObject[@"id"];
+//                self.kind = @"2";
+//                [self newStuff:stuffId];
+//            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                
+//            }];
             
             
         } failure:^(FBRequest *request, NSError *error) {
