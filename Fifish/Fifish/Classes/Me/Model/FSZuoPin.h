@@ -50,5 +50,7 @@
 @property (nonatomic, assign) NSInteger is_follow;
 /**  */
 @property(nonatomic,copy) NSString *filepath;
+/**  */
+@property(nonatomic,copy) NSString *duration;
 
 @end

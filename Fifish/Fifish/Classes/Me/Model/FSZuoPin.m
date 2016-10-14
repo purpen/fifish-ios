@@ -25,7 +25,8 @@
              @"file_small" : @"photo.file.small",
              @"file_large" : @"photo.file.large",
              @"srcfile" : @"photo.file.srcfile",
-             @"filepath" : @"photo.filepath"
+             @"filepath" : @"photo.filepath",
+             @"duration" : @"photo.duration"
              };
 }
 
