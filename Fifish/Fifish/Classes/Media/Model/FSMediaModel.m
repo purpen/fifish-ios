@@ -9,5 +9,10 @@
 #import "FSMediaModel.h"
 
 @implementation FSMediaModel
-
+- (UIImage *)flietrImage{
+    if (!_flietrImage) {
+        _flietrImage = [UIImage imageWithContentsOfFile:self.fileUrl];
+    }
+    return _flietrImage;
+}
 @end
