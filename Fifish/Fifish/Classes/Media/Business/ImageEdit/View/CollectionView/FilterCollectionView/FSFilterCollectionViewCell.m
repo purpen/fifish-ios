@@ -43,7 +43,7 @@
 -(UIImageView *)FilterImageView{
     if (!_FilterImageView) {
         _FilterImageView = [[UIImageView alloc] init];
-        _FilterImageView.backgroundColor = RANDOM_COLOR(1);
+        _FilterImageView.backgroundColor = [UIColor whiteColor];
     }
     return _FilterImageView;
 }
@@ -57,6 +57,6 @@
 }
 - (void)setIndex:(NSInteger )index{
     _index = index;
-    self.FilterNameLab.text = [NSString stringWithFormat:@"%lu",index];
+    self.FilterNameLab.text = [NSString stringWithFormat:@"%lu",(long)index];
 }
 @end

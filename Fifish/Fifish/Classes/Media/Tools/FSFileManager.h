@@ -18,6 +18,11 @@
 //删除文件
 - (BOOL)RemoveFilePath:(NSString *)path;
 
+//存储照片
+- (void)SaveImageWithImage:(UIImage *)image;
+
+//存储视频
+- (void)SaveVideoWithFilePath:(NSURL *)filePath;
 
 //从系统相册里面的fish
 //- (NSMutableArray *)GetMediaWithFishSystemLibiary;

@@ -100,6 +100,7 @@
 		0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D5111DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m */; };
 		0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */; };
 		0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D51E1DAE29A7001ECC6B /* FSRegulateSliderView.m */; };
+		0450122D1DB0B0F0003129CA /* FSMcBaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450122C1DB0B0F0003129CA /* FSMcBaseNavViewController.m */; };
 		0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CCFC1D77CA6A007694CC /* FSOSDManager.m */; };
 		0452CD011D77D429007694CC /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD001D77D429007694CC /* UIView+Toast.m */; };
 		0452CD041D77FFB6007694CC /* RovInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452CD031D77FFB6007694CC /* RovInfo.m */; };
@@ -614,6 +615,8 @@
 		0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSFSImageRegulateBottomView.m; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSFSImageRegulateBottomView.m; sourceTree = SOURCE_ROOT; };
 		0442D51D1DAE29A7001ECC6B /* FSRegulateSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRegulateSliderView.h; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSRegulateSliderView.h; sourceTree = SOURCE_ROOT; };
 		0442D51E1DAE29A7001ECC6B /* FSRegulateSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRegulateSliderView.m; path = Fifish/Classes/Media/Business/ImageEdit/View/RegulateSliderBottomView/FSRegulateSliderView.m; sourceTree = SOURCE_ROOT; };
+		0450122B1DB0B0F0003129CA /* FSMcBaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMcBaseNavViewController.h; sourceTree = "<group>"; };
+		0450122C1DB0B0F0003129CA /* FSMcBaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMcBaseNavViewController.m; sourceTree = "<group>"; };
 		0452CCFB1D77CA6A007694CC /* FSOSDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOSDManager.h; sourceTree = "<group>"; };
 		0452CCFC1D77CA6A007694CC /* FSOSDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOSDManager.m; sourceTree = "<group>"; };
 		0452CCFF1D77D429007694CC /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
@@ -2605,6 +2608,8 @@
 				1F7EDE921D45EF6900ABED5D /* FSTabBarController.m */,
 				1F7EDEAF1D46167400ABED5D /* FSNavigationViewController.h */,
 				1F7EDEB01D46167400ABED5D /* FSNavigationViewController.m */,
+				0450122B1DB0B0F0003129CA /* FSMcBaseNavViewController.h */,
+				0450122C1DB0B0F0003129CA /* FSMcBaseNavViewController.m */,
 				1F80112C1DA8859C00B320C7 /* FSBaseViewController.h */,
 				1F80112D1DA8859C00B320C7 /* FSBaseViewController.m */,
 				04F5847A1DAA1288008FC43A /* FishBlackNavViewController.h */,
@@ -3410,6 +3415,7 @@
 				1F0424531D51F3C30071A1D6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1F4202001D48AE0100D3E6CB /* MASConstraintMaker.m in Sources */,
 				1FDE28C61D92241D00566A73 /* NSObject+MJProperty.m in Sources */,
+				0450122D1DB0B0F0003129CA /* FSMcBaseNavViewController.m in Sources */,
 				1F7EDEE71D4700E500ABED5D /* IQUIView+Hierarchy.m in Sources */,
 				1FDE28C21D92241D00566A73 /* MJPropertyType.m in Sources */,
 				042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */,
@@ -3685,7 +3691,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3726,7 +3732,7 @@
 				INSTALL_OWNER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3759,7 +3765,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
@@ -3793,7 +3799,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
 				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};

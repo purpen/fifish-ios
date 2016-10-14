@@ -169,9 +169,11 @@
 - (IBAction)contentROV:(UIButton *)sender {
     
     if ([self.statusLabel.text isEqualToString:@"WIFI未连接"]) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.tipView.y = SCREEN_HEIGHT - 170;
-        } completion:nil];
+//        [UIView animateWithDuration:0.3 animations:^{
+//            self.tipView.y = SCREEN_HEIGHT - 170;
+//        } completion:nil];
+        VideoLiveController * videoLive = [[VideoLiveController alloc] init];
+        [self presentViewController:videoLive animated:YES completion:nil];
     } else {
         //跳到设备
         

@@ -32,9 +32,36 @@
     self.navigationItem.rightBarButtonItems = @[rightItem];
 }
 
+-(void)setLeftItem:(UIView *)view{
+    UIBarButtonItem *LeftItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    self.navigationItem.leftBarButtonItems = @[LeftItem];
+}
+
 -(void)setNavWithView:(UIView *)view{
     UIView * titleView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, 90, 40)];
     titleView.backgroundColor = [UIColor yellowColor];
     [self.navigationController.navigationBar addSubview:titleView];
+}
+-(void)NavBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)setDefaultLeftNav{
+    [self setLeftItem:self.NavLeftBtn];
+    [self.NavLeftBtn addTarget:self action:@selector(NavBack) forControlEvents:UIControlEventTouchUpInside];
+}
+-(UIButton *)NavLeftBtn{
+    if (!_NavLeftBtn) {
+        _NavLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _NavLeftBtn.frame = CGRectMake(0, 0, 20, 40);
+    }
+    return _NavLeftBtn;
+}
+
+- (UIButton *)NavRightBtn{
+    if (!_NavRightBtn) {
+        _NavRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _NavRightBtn;
+    
 }
 @end
