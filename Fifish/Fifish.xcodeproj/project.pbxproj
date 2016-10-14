@@ -343,6 +343,8 @@
 		1FE564C41DAF849B000AE61D /* FSReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564C31DAF849B000AE61D /* FSReportView.m */; };
 		1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C51DAF84A7000AE61D /* FSReportView.xib */; };
 		1FE564CE1DB0D2B2000AE61D /* FSPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */; };
+		1FE564D11DB0DC56000AE61D /* FSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564D01DB0DC56000AE61D /* FSProgressView.m */; };
+		1FE564D31DB0DC6C000AE61D /* FSProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564D21DB0DC6C000AE61D /* FSProgressView.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1064,6 +1066,9 @@
 		1FE564C51DAF84A7000AE61D /* FSReportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportView.xib; sourceTree = "<group>"; };
 		1FE564CC1DB0D2B2000AE61D /* FSPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlayViewController.h; sourceTree = "<group>"; };
 		1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlayViewController.m; sourceTree = "<group>"; };
+		1FE564CF1DB0DC56000AE61D /* FSProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProgressView.h; sourceTree = "<group>"; };
+		1FE564D01DB0DC56000AE61D /* FSProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProgressView.m; sourceTree = "<group>"; };
+		1FE564D21DB0DC6C000AE61D /* FSProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSProgressView.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2842,6 +2847,9 @@
 				1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */,
 				1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */,
 				1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */,
+				1FE564CF1DB0DC56000AE61D /* FSProgressView.h */,
+				1FE564D01DB0DC56000AE61D /* FSProgressView.m */,
+				1FE564D21DB0DC6C000AE61D /* FSProgressView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3261,6 +3269,7 @@
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
 				0436AEC41DACE30C001E6808 /* hefeMetal.png in Resources */,
+				1FE564D31DB0DC6C000AE61D /* FSProgressView.xib in Resources */,
 				1F4201CE1D475C8A00D3E6CB /* SVProgressHUD.bundle in Resources */,
 				0436AED91DACE30C001E6808 /* valenciaGradientMap.png in Resources */,
 				0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */,
@@ -3363,6 +3372,7 @@
 				1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */,
 				1F7EDEEC1D4700E500ABED5D /* IQTextView.m in Sources */,
 				1FDE28C51D92241D00566A73 /* NSObject+MJKeyValue.m in Sources */,
+				1FE564D11DB0DC56000AE61D /* FSProgressView.m in Sources */,
 				1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */,
 				1F4202071D48AE0100D3E6CB /* ViewController+MASAdditions.m in Sources */,
 				1FE564CE1DB0D2B2000AE61D /* FSPlayViewController.m in Sources */,

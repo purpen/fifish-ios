@@ -25,7 +25,7 @@
     [super viewDidLoad];
     _session = [AVAudioSession sharedInstance];
     [_session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    _player = [AVPlayer playerWithURL:[NSURL URLWithString:self.videoUrl]];
+    _player = [AVPlayer playerWithURL:self.videoUrl];
     self.player = _player;
     self.videoGravity = AVLayerVideoGravityResizeAspect;
     self.showsPlaybackControls = true;

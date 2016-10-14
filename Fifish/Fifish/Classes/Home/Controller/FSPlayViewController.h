@@ -11,6 +11,6 @@
 @interface FSPlayViewController : AVPlayerViewController
 
 /**  */
-@property(nonatomic,copy) NSString *videoUrl;
+@property(nonatomic,strong) NSURL *videoUrl;
 
 @end

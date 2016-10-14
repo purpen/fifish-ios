@@ -17,6 +17,8 @@
 #import "FishBlackNavViewController.h"
 #import "FSPlayViewController.h"
 #import "FSBigImageViewController.h"
+#import "FSTabBarController.h"
+#import "FSMediaViewController.h"
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
 
@@ -116,8 +118,8 @@
 -(void)play{
     //开始播放视频
     FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
-    mvPlayer.videoUrl = self.mediaModel.fileUrl;
-    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    mvPlayer.videoUrl = [NSURL fileURLWithPath:self.mediaModel.fileUrl];
+    [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 -(void)waterClick{
@@ -220,18 +222,22 @@
 }
 
 -(void)releaseClick{
-    [SVProgressHUD show];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[FSTabBarController sharedManager] setSelectedIndex:0];
+    }];
+    
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
-        NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 0.5);
-        NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
-        [iconData writeToFile:fullPath atomically:NO];
+        NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 1);
+        //NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
+        //[iconData writeToFile:fullPath atomically:NO];
         FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSString *upload_url = result[@"data"][@"upload_url"];
             NSString *token = result[@"data"][@"token"];
             [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
-                
+                NSLog(@"上传经度  %f", progress);
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
                 self.kind = @"1";
@@ -260,7 +266,8 @@
             NSString *upload_url = result[@"data"][@"upload_url"];
             NSString *token = result[@"data"][@"token"];
             [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WithFileData:nil WihtProgressBlock:^(CGFloat progress) {
-                
+                FSTabBarController *tab = [[FSTabBarController alloc] init];
+                [tab setSelectedIndex:0];
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
                 self.kind = @"2";

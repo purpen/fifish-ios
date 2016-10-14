@@ -192,7 +192,7 @@ static NSString * const CellId = @"home";
     //开始播放视频
     FSZuoPin *model = self.modelAry[sender.tag];
     FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
-    mvPlayer.videoUrl = model.srcfile;
+    mvPlayer.videoUrl = [NSURL URLWithString:model.srcfile];
     [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
