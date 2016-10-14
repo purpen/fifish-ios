@@ -249,9 +249,8 @@
          [formData appendPartWithFileURL:fileUrl name:@"file" error:nil];
         }
         if (filedata) {
-            [formData appendPartWithFormData:filedata name:@"flie"];
+            [formData appendPartWithFormData:filedata name:@"file"];
         }
-        
     } success:success failure:failure];
     
     if (progressblock) {
