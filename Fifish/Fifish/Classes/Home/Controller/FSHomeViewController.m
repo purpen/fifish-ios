@@ -21,7 +21,7 @@
 #import "FSBigImageViewController.h"
 #import "FSReleasePictureViewController.h"
 #import "FSNavigationViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "FSPlayViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -144,16 +144,9 @@ static NSString * const CellId = @"home";
 
 -(void)setupNav{
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
-    UIBarButtonItem *tempItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(tempClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
-    self.navigationItem.rightBarButtonItem = tempItem;
 }
 
--(void)tempClick{
-    FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
-    vc.type = @(1);
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 -(void)searchClick{
     FSSearchViewController *vc = [[FSSearchViewController alloc] init];
@@ -193,13 +186,14 @@ static NSString * const CellId = @"home";
     return cell;
 }
 
+
 #pragma mark - 视频播放
 -(void)videoClick:(UIButton*)sender{
     //开始播放视频
     FSZuoPin *model = self.modelAry[sender.tag];
-    MPMoviePlayerViewController *mvPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.srcfile]];
-    NSLog(@"播放地址 %@", model.srcfile);
-    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
+    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
+    mvPlayer.videoUrl = model.srcfile;
+    [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 #pragma mark - 点击图片

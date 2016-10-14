@@ -15,7 +15,7 @@
 #import "FSWatermarkViewController.h"
 #import "UIImage+Helper.h"
 #import "FishBlackNavViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import "FSPlayViewController.h"
 #import "FSBigImageViewController.h"
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
@@ -64,12 +64,12 @@
     [self.view addSubview:self.myScrollview];
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
-        self.mediaModel = ((FSImageModel*)self.mediaModel);
+        [self.releaseView.smallBtn setImage:((FSImageModel*)self.mediaModel).defaultImage forState:UIControlStateNormal];
+        self.bigImage = self.mediaModel.flietrImage;
     } else {
         // 视频
-        self.mediaModel = ((FSVideoModel*)self.mediaModel);
+        [self.releaseView.smallBtn setImage:((FSVideoModel*)self.mediaModel).VideoPicture forState:UIControlStateNormal];
     }
-    self.bigImage = self.mediaModel.flietrImage;
 }
 
 -(UIScrollView *)myScrollview{
@@ -115,7 +115,8 @@
 
 -(void)play{
     //开始播放视频
-    MPMoviePlayerViewController *mvPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:self.mediaModel.fileUrl]];
+    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
+    mvPlayer.videoUrl = self.mediaModel.fileUrl;
     [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
 }
 

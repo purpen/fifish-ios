@@ -342,6 +342,7 @@
 		1FE564C11DAF82AF000AE61D /* FSMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C01DAF82AF000AE61D /* FSMoreView.xib */; };
 		1FE564C41DAF849B000AE61D /* FSReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564C31DAF849B000AE61D /* FSReportView.m */; };
 		1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C51DAF84A7000AE61D /* FSReportView.xib */; };
+		1FE564CE1DB0D2B2000AE61D /* FSPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1061,6 +1062,8 @@
 		1FE564C21DAF849B000AE61D /* FSReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReportView.h; sourceTree = "<group>"; };
 		1FE564C31DAF849B000AE61D /* FSReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReportView.m; sourceTree = "<group>"; };
 		1FE564C51DAF84A7000AE61D /* FSReportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportView.xib; sourceTree = "<group>"; };
+		1FE564CC1DB0D2B2000AE61D /* FSPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlayViewController.h; sourceTree = "<group>"; };
+		1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlayViewController.m; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2445,6 +2448,8 @@
 				1FF783B81D9A855A00618245 /* FSBigImageViewController.h */,
 				1FF783B91D9A855A00618245 /* FSBigImageViewController.m */,
 				1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */,
+				1FE564CC1DB0D2B2000AE61D /* FSPlayViewController.h */,
+				1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3360,6 +3365,7 @@
 				1FDE28C51D92241D00566A73 /* NSObject+MJKeyValue.m in Sources */,
 				1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */,
 				1F4202071D48AE0100D3E6CB /* ViewController+MASAdditions.m in Sources */,
+				1FE564CE1DB0D2B2000AE61D /* FSPlayViewController.m in Sources */,
 				0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */,
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
