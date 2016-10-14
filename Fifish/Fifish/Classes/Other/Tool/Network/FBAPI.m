@@ -250,9 +250,7 @@
         }
         if (filedata) {
             [formData appendPartWithFormData:filedata name:@"file"];
-            NSLog(@"%d",filedata.length);
         }
-        
     } success:success failure:failure];
     
     if (progressblock) {
