@@ -62,7 +62,7 @@
     [super viewDidLoad];
     [self setUpNavi];
     [self.view addSubview:self.myScrollview];
-    self.bigImage = [UIImage imageNamed:@"release_default"];
+    self.bigImage = self.mediaModel.flietrImage;
 }
 
 -(UIScrollView *)myScrollview{
