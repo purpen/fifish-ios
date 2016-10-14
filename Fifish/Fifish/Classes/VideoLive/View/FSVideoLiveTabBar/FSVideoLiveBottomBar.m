@@ -143,9 +143,11 @@
     [CameraManager RovStarRecordSuccess:^(NSDictionary *responseObject) {
         if ([responseObject[@"head"][@"code"] integerValue]==0) {
             [SVProgressHUD showWithStatus:NSLocalizedString(@"Synchronous recording", nil)];
+            [SVProgressHUD dismissWithDelay:2];
         }
     } WithFailureBlock:^(NSError *error) {
         [SVProgressHUD showWithStatus:error.localizedDescription];
+        [SVProgressHUD dismissWithDelay:2];
     }];
     }
     //停止录制
