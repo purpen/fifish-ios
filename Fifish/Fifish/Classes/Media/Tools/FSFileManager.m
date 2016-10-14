@@ -32,7 +32,7 @@
     
     while((file=[myDirectoryEnumerator nextObject]))     //遍历当前目录
     {
-        if([[file pathExtension] isEqualToString:@"mp4"]||[[file pathExtension] isEqualToString:@"png"]||[[file pathExtension] isEqualToString:@"jpg"])   //取得后缀名这.mp4的文件名
+        if([[file pathExtension] isEqualToString:@"mp4"]||[[file pathExtension] isEqualToString:@"png"]||[[file pathExtension] isEqualToString:@"jpg"]||[[file pathExtension] isEqualToString:@"MOV"])   //取得后缀名这.mp4的文件名
         {
             [filePathArray addObject:[docPath stringByAppendingPathComponent:file]]; //存到数组
             NSLog(@"%@",file);
@@ -50,7 +50,35 @@
     //[NSBundle mainBundle] resourcePath
 }
 
+-(void)SaveImageWithImage:(UIImage *)image{
+//    NSData *imgData = UIImagePNGRepresentation(image);
+    NSString* ImageSavePath=[NSString stringWithFormat:@"%@.png",[self getFileName]];
+    BOOL isok =   [UIImagePNGRepresentation(image) writeToFile:ImageSavePath atomically:YES];
+    
+    NSLog(@"%d",isok);
+}
+-(void)SaveVideoWithFilePath:(NSURL *)filePath{
+    NSString* SavePathstr=[NSString stringWithFormat:@"%@.MOV",[self getFileName]];
+    NSFileManager*fileManager =[NSFileManager defaultManager];
+    NSError * error;
+    
+    [fileManager copyItemAtPath:[filePath path] toPath:SavePathstr error:&error];
+    
+    NSLog(@"%@",error);
+}
+//获取当前时间
+- (NSString *)getFileName{
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString* path = [paths objectAtIndex:0];
+    NSLog(@"MP4 PATH: %@",path);
+    
+    NSDateFormatter *dateFormatter0 = [[NSDateFormatter alloc] init];
+    [dateFormatter0 setDateFormat:@"yy-MM-dd HH:mm:ss:AA"];
+    NSString *currentDateStr = [dateFormatter0 stringFromDate:[NSDate date]];
 
+    NSString *SavePath=[path stringByAppendingPathComponent:currentDateStr];
+    return SavePath;
+}
 //获得项目中同一级文件中目录名字
 -(NSString *)documentsPath:(NSString *)fileName {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

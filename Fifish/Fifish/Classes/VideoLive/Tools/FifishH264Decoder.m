@@ -365,7 +365,7 @@
     //NSLog(@"Current DateFormat MP4 %@\n",currentDateStr);
     
     
-    NSString* outputVideoName=[NSString stringWithFormat:@"%@.mp4",currentDateStr];
+    NSString* outputVideoName=[NSString stringWithFormat:@"%@.MOV",currentDateStr];
     NSString *videoOutputPath=[path stringByAppendingPathComponent:outputVideoName];
     
     self.OutputFileUrl = videoOutputPath;

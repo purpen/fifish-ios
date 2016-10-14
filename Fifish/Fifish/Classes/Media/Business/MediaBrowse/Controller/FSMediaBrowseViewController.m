@@ -23,7 +23,7 @@
 #import "FSMediaBrowseViewController.h"
 #import "FSMediaBrowCollectionViewCell.h"
 
-@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,FSMediaBrowBottomEditViewDelegate>
+@interface FSMediaBrowseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,FSMediaBrowBottomEditViewDelegate,UIVideoEditorControllerDelegate,UINavigationControllerDelegate>
 /**
  浏览器
  */
@@ -166,10 +166,16 @@
     
     FSImageModel * model = self.modelArr[self.seletedIndex];
     if ([model isKindOfClass:[FSVideoModel class]]){
-        FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
+//        FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
         
-        PictureViewVC.mediaModel = model;
-        [self.navigationController pushViewController:PictureViewVC animated:YES];
+//        PictureViewVC.mediaModel = model;
+//        [self.navigationController pushViewController:PictureViewVC animated:YES];
+        
+        UIVideoEditorController * editVc = [[UIVideoEditorController alloc] init];
+        editVc.delegate = self;
+        editVc.videoPath = model.fileUrl;
+        
+        [self presentViewController:editVc animated:YES completion:nil];
         
     }
     else{

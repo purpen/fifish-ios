@@ -13,6 +13,8 @@
 @interface FishBaseViewController : UIViewController
 - (void)setRightItem:(UIView *)view;
 
+- (void)setLeftItem:(UIView *)view;
+
 //设置导航
 - (void)setNavWithView:(UIView *)view;
 

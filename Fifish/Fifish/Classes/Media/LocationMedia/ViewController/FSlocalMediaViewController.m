@@ -11,7 +11,6 @@
 
 
 #import <Photos/Photos.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 #import "Masonry.h"
 #import "SVProgressHUD.h"
@@ -32,11 +31,13 @@
 CGFloat const Cellspecace = 1;
 
 
-@interface FSlocalMediaViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface FSlocalMediaViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //导航右侧按钮
 @property (nonatomic,strong)    UIButton * RigthNavBtn;
 
+//左侧导航按钮
+@property (nonatomic,strong)    UIButton * LeftNavBtn;
 /**
  是否选择状态
  */
@@ -61,6 +62,7 @@ CGFloat const Cellspecace = 1;
 
 
 @property (nonatomic ,strong)   AVPlayer * player;
+
 
 
 @end
@@ -90,7 +92,7 @@ CGFloat const Cellspecace = 1;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
     for (NSString * str in dataArr) {
         FSMediaModel * mediaModel;
-        if ([str hasSuffix:@"mp4"]) {
+        if ([str hasSuffix:@"mp4"]||[str hasSuffix:@"MOV"]) {
             mediaModel = [[FSVideoModel alloc] init];
             mediaModel.fileUrl = str;
         }
@@ -115,12 +117,24 @@ CGFloat const Cellspecace = 1;
 - (void)setNav{
     
     [self.parentsVC setRightItem:self.RigthNavBtn];
+    
+    [self.parentsVC setLeftItem:self.LeftNavBtn];
 }
 - (NSMutableArray *)sourceArr{
     if (!_sourceArr) {
         _sourceArr = [NSMutableArray array];
     }
     return _sourceArr;
+}
+- (UIButton *)LeftNavBtn{
+    if (!_LeftNavBtn) {
+        _LeftNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _LeftNavBtn.frame = CGRectMake(0, 0, 17, 40);
+        [_LeftNavBtn addTarget:self action:@selector(chooseLocalMedia) forControlEvents:UIControlEventTouchUpInside];
+        [_LeftNavBtn setImage:[UIImage imageNamed:@"import_icon"] forState:UIControlStateNormal];
+        _LeftNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    }
+    return _LeftNavBtn;
 }
 - (UIButton *)RigthNavBtn{
     if (!_RigthNavBtn) {
@@ -135,6 +149,16 @@ CGFloat const Cellspecace = 1;
     return _RigthNavBtn;
 }
 
+//选择本地媒体
+- (void)chooseLocalMedia{
+    UIImagePickerController * pickerVc = [[UIImagePickerController alloc] init];
+    pickerVc.delegate = self;
+    pickerVc.allowsEditing = YES;
+    pickerVc.mediaTypes = @[(NSString *)kUTTypeMovie,(NSString *)kUTTypeVideo,(NSString *)kUTTypeImage];
+    pickerVc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:pickerVc animated:YES completion:nil];
+}
 //选择
 - (void)EditChoose:(UIButton *)sender{
     
@@ -219,18 +243,6 @@ CGFloat const Cellspecace = 1;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    FSImageModel * model = self.sourceArr[indexPath.row];
-//    [FBAPI uploadFileWithURL:@"http://up-z2.qiniu.com" WithToken:@"x9Ys5weZ-B6-qKywyX2N34bhFIT3XQLpxz0g9vZU:2MafOwgjdCj6t8F7l9T_ibXhUv0=:eyJzYXZlS2V5IjoidmlkZW9cLzE2MTAxM1wvYTA1OGUyNmMxNzUwMjljZTAyMTllYWM4MGQ0YmE4MmEkKGV4dCkiLCJjYWxsYmFja1VybCI6Imh0dHA6XC9cL2FwaS5xeXNlYS5jb21cL3VwbG9hZFwvcWluaXViYWNrIiwiY2FsbGJhY2tCb2R5Ijoie1wiZmlsZW5hbWVcIjpcIiQoZm5hbWUpXCIsIFwiZmlsZXBhdGhcIjpcIiQoa2V5KVwiLCBcInNpemVcIjpcIiQoZnNpemUpXCIsIFwid2lkdGhcIjpcIiQoaW1hZ2VJbmZvLndpZHRoKVwiLCBcImhlaWdodFwiOlwiJChpbWFnZUluZm8uaGVpZ2h0KVwiLFwibWltZVwiOlwiJChtaW1lVHlwZSlcIixcImhhc2hcIjpcIiQoZXRhZylcIixcImRlc2NcIjpcIiQoeDpkZXNjKVwiLFwiYXNzZXRhYmxlX2lkXCI6MCxcImFzc2V0YWJsZV90eXBlXCI6XCJTdHVmZlwiLCBcImtpbmRcIjoyLFwidXNlcl9pZFwiOjF9IiwicGVyc2lzdGVudE9wcyI6InZmcmFtZVwvanBnXC9vZmZzZXRcLzFcL3dcLzQ4MFwvaFwvMjcwfHZmcmFtZVwvanBnXC9vZmZzZXRcLzFcL3dcLzEyMFwvaFwvNjciLCJzY29wZSI6ImZpZmlzaCIsImRlYWRsaW5lIjoxNDc2MzU0MjE2fQ==" WithFileUrl:[NSURL fileURLWithPath:model.fileUrl] WihtProgressBlock:^(CGFloat progress) {
-//        NSLog(@"%f",progress);
-//    } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@",responseObject);
-//    } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",error.localizedDescription);
-//    }];
-//
-//    if ([model isKindOfClass:[FSVideoModel class]]) {
-//        MPMoviePlayerViewController * mvPlayer =  [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.fileUrl]];
-//        [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
-//    }
     
     //选择状态下
     if (self.isChooseState) {
@@ -318,5 +330,29 @@ CGFloat const Cellspecace = 1;
         
     });
     
+}
+
+
+#pragma mark imagePickerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
+    //判断资源类型
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
+        //如果是图片
+        UIImage * image  = info[UIImagePickerControllerEditedImage];
+//        //保存图片至本地
+        [[FSFileManager defaultManager] SaveImageWithImage:image];
+        NSLog(@"%@",info);
+        
+    }else{
+        //如果是视频
+        NSURL *url = info[UIImagePickerControllerMediaURL];
+        NSLog(@"%@",url);
+        //保存视频至相册（异步线程
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[FSFileManager defaultManager] SaveVideoWithFilePath:url];
+        });
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
