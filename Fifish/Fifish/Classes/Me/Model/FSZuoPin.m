@@ -23,7 +23,8 @@
              @"width" : @"photo.width",
              @"height" : @"photo.height",
              @"file_small" : @"photo.file.small",
-             @"file_large" : @"photo.file.large"
+             @"file_large" : @"photo.file.large",
+             @"srcfile" : @"photo.file.srcfile"
              };
 }
 

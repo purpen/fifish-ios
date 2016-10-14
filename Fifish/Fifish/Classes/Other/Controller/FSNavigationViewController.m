@@ -23,9 +23,9 @@
 {
     // 当导航栏用在XMGNavigationController中, appearance设置才会生效
     //    UINavigationBar *bar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
-//    UINavigationBar *bar = [UINavigationBar appearance];
-//    [bar setBackgroundImage:[UIImage imageNamed:@"navi_bg"] forBarMetrics:UIBarMetricsDefault];
-//    [bar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:17]}];
+    //UINavigationBar *bar = [UINavigationBar appearance];
+    //[bar setBackgroundImage:[UIImage imageNamed:@"navi_bg"] forBarMetrics:UIBarMetricsDefault];
+    //[bar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:17]}];
     
 //    // 设置item
 //    UIBarButtonItem *item = [UIBarButtonItem appearance];

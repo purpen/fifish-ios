@@ -24,7 +24,7 @@
     _model = model;
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_small] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil];
 }
 
 @end

@@ -32,11 +32,17 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加图片说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB2-1m-mJV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说点什么吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB2-1m-mJV">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="release_play" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-0t-Kc9">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="8ep-Vl-hK2"/>
+                                <constraint firstAttribute="height" constant="30" id="dwE-xM-EGT"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -46,10 +52,12 @@
                         <constraint firstAttribute="trailing" secondItem="fHB-Re-7EK" secondAttribute="trailing" constant="10" id="7Vw-HG-ywD"/>
                         <constraint firstItem="fZw-OA-wwM" firstAttribute="top" secondItem="fHB-Re-7EK" secondAttribute="bottom" constant="10" id="IBg-Uw-F7X"/>
                         <constraint firstAttribute="bottom" secondItem="fZw-OA-wwM" secondAttribute="bottom" id="Ll8-WA-ego"/>
+                        <constraint firstItem="V1b-0t-Kc9" firstAttribute="centerX" secondItem="MfL-2c-gP0" secondAttribute="centerX" id="P7t-Mk-gpL"/>
                         <constraint firstItem="fHB-Re-7EK" firstAttribute="top" secondItem="HWH-Lo-TTP" secondAttribute="top" constant="10" id="Rvr-CG-fWx"/>
                         <constraint firstItem="fZw-OA-wwM" firstAttribute="leading" secondItem="HWH-Lo-TTP" secondAttribute="leading" id="SqQ-iq-PjR"/>
                         <constraint firstItem="QB2-1m-mJV" firstAttribute="leading" secondItem="fHB-Re-7EK" secondAttribute="leading" constant="10" id="XX7-s8-dfw"/>
                         <constraint firstItem="fHB-Re-7EK" firstAttribute="leading" secondItem="MfL-2c-gP0" secondAttribute="trailing" constant="10" id="YtJ-Fh-9AH"/>
+                        <constraint firstItem="V1b-0t-Kc9" firstAttribute="centerY" secondItem="MfL-2c-gP0" secondAttribute="centerY" id="bzl-7q-TOZ"/>
                         <constraint firstItem="MfL-2c-gP0" firstAttribute="leading" secondItem="HWH-Lo-TTP" secondAttribute="leading" constant="15" id="vZk-3W-PUu"/>
                         <constraint firstItem="MfL-2c-gP0" firstAttribute="centerY" secondItem="HWH-Lo-TTP" secondAttribute="centerY" id="xNc-Hy-PC3"/>
                     </constraints>
@@ -355,6 +363,8 @@
                 <outlet property="flagLabel" destination="EUe-pw-wgg" id="9r8-I5-Q3R"/>
                 <outlet property="instructionsTextView" destination="fHB-Re-7EK" id="5BU-uZ-xV2"/>
                 <outlet property="placeHolderLabel" destination="QB2-1m-mJV" id="vwG-Kn-SEv"/>
+                <outlet property="playImageView" destination="V1b-0t-Kc9" id="tq9-d0-g4k"/>
+                <outlet property="smallBtn" destination="MfL-2c-gP0" id="2BA-Ua-3Di"/>
                 <outlet property="tagBtn" destination="A3Q-jS-a3y" id="ddl-Qv-SE0"/>
                 <outlet property="tagTextFiled" destination="L18-WX-vNy" id="KU0-aV-G3b"/>
             </connections>
@@ -365,6 +375,7 @@
         <image name="release_address" width="9" height="12"/>
         <image name="release_bg" width="80" height="80"/>
         <image name="release_facebook" width="28" height="28"/>
+        <image name="release_play" width="50" height="50"/>
         <image name="release_qq" width="28" height="28"/>
         <image name="release_sina" width="27" height="28"/>
         <image name="release_tumblr" width="28" height="27"/>

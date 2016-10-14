@@ -41,6 +41,8 @@
 /**  */
 @property(nonatomic,copy) NSString *avatar_large;
 /**  */
+@property(nonatomic,copy) NSString *srcfile;
+/**  */
 @property(nonatomic,copy) NSString *file_small;
 /**  */
 @property(nonatomic,copy) NSString *file_large;

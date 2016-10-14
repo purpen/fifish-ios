@@ -12,5 +12,7 @@
 
 /**  */
 @property (nonatomic, strong) NSString *imageUrl;
+/**  */
+@property (nonatomic, strong) UIImage *showImage;
 
 @end

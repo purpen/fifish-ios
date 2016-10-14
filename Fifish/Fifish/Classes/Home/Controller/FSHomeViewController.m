@@ -21,6 +21,7 @@
 #import "FSBigImageViewController.h"
 #import "FSReleasePictureViewController.h"
 #import "FSNavigationViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -131,7 +132,7 @@ static NSString * const CellId = @"home";
 -(UITableView *)contenTableView{
     if (!_contenTableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50)];
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStylePlain]; 
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
@@ -150,6 +151,7 @@ static NSString * const CellId = @"home";
 
 -(void)tempClick{
     FSReleasePictureViewController *vc = [[FSReleasePictureViewController alloc] init];
+    vc.type = @(1);
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -186,7 +188,18 @@ static NSString * const CellId = @"home";
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.pictuerView.tapBTn.tag = indexPath.section;
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.videoView.tapBtn.tag = indexPath.section;
+    [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+#pragma mark - 视频播放
+-(void)videoClick:(UIButton*)sender{
+    //开始播放视频
+    FSZuoPin *model = self.modelAry[sender.tag];
+    MPMoviePlayerViewController *mvPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:model.srcfile]];
+    NSLog(@"播放地址 %@", model.srcfile);
+    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 #pragma mark - 点击图片

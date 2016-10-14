@@ -15,6 +15,7 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 
+
 @interface FSAddressViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, AMapSearchDelegate>
 
 /**  */
@@ -273,13 +274,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.isInChina) {
         AMapPOI *obj = self.locationAry[indexPath.row];
-        if ([self.addressDelegate respondsToSelector:@selector(getAddress:)]) {
-            [self.addressDelegate getAddress:obj.name];
+        if ([self.addressDelegate respondsToSelector:@selector(getAddress:andLat:andLon:)]) {
+            [self.addressDelegate getAddress:obj.name andLat:obj.location.latitude andLon:obj.location.longitude];
         }
     } else {
         MKMapItem *item = self.locationAry[indexPath.row];
         if ([self.addressDelegate respondsToSelector:@selector(getAddress:)]) {
-            [self.addressDelegate getAddress:item.name];
+            [self.addressDelegate getAddress:item.name andLat:item.placemark.location.coordinate.latitude andLon:item.placemark.location.coordinate.longitude];
         }
     }
     [self dismissViewControllerAnimated:NO completion:nil];

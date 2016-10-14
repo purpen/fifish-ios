@@ -10,7 +10,7 @@
 
 @protocol FSAddressViewControllerDelegate <NSObject>
 
--(void)getAddress:(NSString *)address;
+-(void)getAddress:(NSString *)address andLat:(CGFloat)lat andLon:(CGFloat)lon;
 
 @end
 

@@ -341,8 +341,6 @@
 		1FE564C11DAF82AF000AE61D /* FSMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C01DAF82AF000AE61D /* FSMoreView.xib */; };
 		1FE564C41DAF849B000AE61D /* FSReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564C31DAF849B000AE61D /* FSReportView.m */; };
 		1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C51DAF84A7000AE61D /* FSReportView.xib */; };
-		1FE564CA1DAFA225000AE61D /* FSVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564C81DAFA225000AE61D /* FSVideoViewController.m */; };
-		1FE564CB1DAFA225000AE61D /* FSVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564C91DAFA225000AE61D /* FSVideoViewController.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1060,9 +1058,6 @@
 		1FE564C21DAF849B000AE61D /* FSReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReportView.h; sourceTree = "<group>"; };
 		1FE564C31DAF849B000AE61D /* FSReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReportView.m; sourceTree = "<group>"; };
 		1FE564C51DAF84A7000AE61D /* FSReportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportView.xib; sourceTree = "<group>"; };
-		1FE564C71DAFA225000AE61D /* FSVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoViewController.h; sourceTree = "<group>"; };
-		1FE564C81DAFA225000AE61D /* FSVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoViewController.m; sourceTree = "<group>"; };
-		1FE564C91DAFA225000AE61D /* FSVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSVideoViewController.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2813,9 +2808,6 @@
 				1F8011A31DACE92600B320C7 /* FSWatermarkViewController.h */,
 				1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */,
 				1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */,
-				1FE564C71DAFA225000AE61D /* FSVideoViewController.h */,
-				1FE564C81DAFA225000AE61D /* FSVideoViewController.m */,
-				1FE564C91DAFA225000AE61D /* FSVideoViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3232,7 +3224,6 @@
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
 				0436AEBB1DACE30C001E6808 /* brannanProcess.png in Resources */,
 				0436AED01DACE30C001E6808 /* softLight.png in Resources */,
-				1FE564CB1DAFA225000AE61D /* FSVideoViewController.xib in Resources */,
 				0436AEDB1DACE30C001E6808 /* vignetteMap.png in Resources */,
 				0436AED31DACE30C001E6808 /* sutroMetal.png in Resources */,
 				0436AEBF1DACE30C001E6808 /* earlybirdMap.png in Resources */,
@@ -3555,7 +3546,6 @@
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1FDE28C41D92241D00566A73 /* NSObject+MJCoding.m in Sources */,
 				1FB4FBB41D954EC400E236CF /* MJRefreshFooter.m in Sources */,
-				1FE564CA1DAFA225000AE61D /* FSVideoViewController.m in Sources */,
 				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
 				0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */,
 				1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */,

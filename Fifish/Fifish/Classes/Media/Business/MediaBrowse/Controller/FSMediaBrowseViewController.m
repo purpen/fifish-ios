@@ -167,7 +167,7 @@
     FSImageModel * model = self.modelArr[self.seletedIndex];
     if ([model isKindOfClass:[FSVideoModel class]]){
         FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
-        
+        PictureViewVC.type = @(2);
         PictureViewVC.mediaModel = model;
         [self.navigationController pushViewController:PictureViewVC animated:YES];
         

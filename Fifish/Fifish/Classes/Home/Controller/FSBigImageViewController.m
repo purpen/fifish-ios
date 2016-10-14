@@ -34,7 +34,11 @@
 
 - (void)setViewUI {
     self.view.backgroundColor = [UIColor blackColor];
-    _sceneImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]]];
+    if (self.imageUrl.length != 0) {
+        _sceneImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]]];
+    } else {
+        _sceneImage = self.showImage;
+    }
     [self addGestureRecognizer];
     [self.view addSubview:self.imageView];
     [self.imageView displayImage:_sceneImage];

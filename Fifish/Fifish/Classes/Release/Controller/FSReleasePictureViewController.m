@@ -14,6 +14,9 @@
 #import "FSAddressViewController.h"
 #import "FSWatermarkViewController.h"
 #import "UIImage+Helper.h"
+#import "FishBlackNavViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "FSBigImageViewController.h"
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
 
@@ -25,10 +28,28 @@
 @property(nonatomic,copy) NSString *str;
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagsAry;
+/**  */
+@property (nonatomic, assign) CGFloat lat;
+/**  */
+@property (nonatomic, assign) CGFloat lon;
+/**  */
+@property(nonatomic,copy) NSString *kind;
 
 @end
 
 @implementation FSReleasePictureViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,nil]];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBar.barTintColor = FishBlackColor;
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
+}
 
 -(NSMutableArray *)tagsAry{
     if (!_tagsAry) {
@@ -63,9 +84,32 @@
         _releaseView.tagTextFiled.delegate = self;
         [_releaseView.addressBtn addTarget:self action:@selector(addressClick) forControlEvents:UIControlEventTouchUpInside];
         [_releaseView.addWaterBtn addTarget:self action:@selector(waterClick) forControlEvents:UIControlEventTouchUpInside];
-        
+        if ([self.type isEqualToNumber:@(1)]) {
+            //图片
+            self.releaseView.playImageView.hidden = YES;
+            [self.releaseView.smallBtn addTarget:self action:@selector(watchImage) forControlEvents:UIControlEventTouchUpInside];
+        } else if ([self.type isEqualToNumber:@(2)]) {
+            //视频
+            self.releaseView.playImageView.hidden = NO;
+            [self.releaseView.smallBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     return _releaseView;
+}
+
+-(void)watchImage{
+    //查看大图
+    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.showImage = self.bigImage;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)play{
+    //开始播放视频
+    MPMoviePlayerViewController *mvPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:self.mediaModel.fileUrl]];
+    [self.navigationController presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 -(void)waterClick{
@@ -102,14 +146,18 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
--(void)getAddress:(NSString *)address{
+-(void)getAddress:(NSString *)address andLat:(CGFloat)lat andLon:(CGFloat)lon{
     if (address.length != 0) {
         self.releaseView.accordingLabel.hidden = NO;
         self.releaseView.addressLabel.hidden = YES;
         self.releaseView.accordingLabel.text = address;
+        self.lat = lat;
+        self.lon = lon;
     } else {
         self.releaseView.accordingLabel.hidden = YES;
         self.releaseView.addressLabel.hidden = NO;
+        self.lat = 0;
+        self.lon = 0;
     }
 }
 
@@ -164,6 +212,7 @@
 }
 
 -(void)releaseClick{
+    [SVProgressHUD show];
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
         NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 0.5);
@@ -178,6 +227,7 @@
                 
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
+                self.kind = @"1";
                 [self newStuff:stuffId];
             } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
                 
@@ -198,6 +248,7 @@
                 
             } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *stuffId = responseObject[@"id"];
+                self.kind = @"2";
                 [self newStuff:stuffId];
             } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
                 
@@ -214,12 +265,15 @@
     FBRequest *request = [FBAPI postWithUrlString:@"/stuffs/store" requestDictionary:@{
                                                                                        @"content" : self.releaseView.instructionsTextView.text,
                                                                                        @"asset_id" : stuffId,
-                                                                                       @"address" : self.releaseView.addressLabel.text,
-                                                                                       @"kind" : @(1),
-                                                                                       @"tags" : self.tagsAry
+                                                                                       @"address" : self.releaseView.accordingLabel.text,
+                                                                                       @"kind" : self.kind,
+                                                                                       @"tags" : self.tagsAry,
+                                                                                       @"lat" : @(self.lat),
+                                                                                       @"lng" : @(self.lon)
                                                                                        } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
