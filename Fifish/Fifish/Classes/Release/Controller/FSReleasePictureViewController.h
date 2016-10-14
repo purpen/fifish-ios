@@ -7,7 +7,8 @@
 //
 
 #import "FSBaseViewController.h"
-#import "FSMediaModel.h"
+#import "FSImageModel.h"
+#import "FSVideoModel.h"
 
 @interface FSReleasePictureViewController : FSBaseViewController
 

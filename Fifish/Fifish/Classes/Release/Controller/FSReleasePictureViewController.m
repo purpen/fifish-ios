@@ -62,6 +62,13 @@
     [super viewDidLoad];
     [self setUpNavi];
     [self.view addSubview:self.myScrollview];
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        self.mediaModel = ((FSImageModel*)self.mediaModel);
+    } else {
+        // 视频
+        self.mediaModel = ((FSVideoModel*)self.mediaModel);
+    }
     self.bigImage = self.mediaModel.flietrImage;
 }
 
