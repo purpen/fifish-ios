@@ -34,7 +34,7 @@
  */
 @property (nonatomic) CGFloat  colorTemperatureValue;
 
-@property (nonatomic , assign) UIImage * image;
+@property (nonatomic , copy) UIImage * image;
 
 - (void)updataParamsWithIndex:(NSInteger)type WithValue:(CGFloat)value;
 

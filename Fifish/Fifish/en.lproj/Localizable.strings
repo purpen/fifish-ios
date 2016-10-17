@@ -84,6 +84,10 @@
 "Confirm delete?"= "Confirm delete?";
 "Confirm"= "Confirm";
 "Cancel"= "Cancel";
+"Give up editing?" = "Give up editing?";
+"If you return now, the picture editor will be cancelled." = "If you return now, the picture editor will be cancelled.";
+"Retain" = "Retain";
+"Give up" = "Give up";
 
 //个人中心
 "findFriend" = "发现好友";
