@@ -277,6 +277,7 @@ static NSString * const CellId = @"home";
         self.automaticallyAdjustsScrollViewInsets = NO;
         _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStylePlain]; 
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _contenTableView.showsVerticalScrollIndicator = NO;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;

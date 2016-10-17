@@ -29,7 +29,8 @@
     if (self = [super initWithFrame:frame]) {
         
         self.frame = CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);
-        
+        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor colorWithHexString:@"#8a98a9"], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -38,7 +39,7 @@
     if (!_equipmentLabel) {
         _equipmentLabel = [[UILabel alloc] init];
         _equipmentLabel.text = NSLocalizedString(@"equipment", nil);
-        _equipmentLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        _equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
         _equipmentLabel.font = [UIFont systemFontOfSize:12];
         _equipmentLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -50,7 +51,7 @@
         _equipmentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateNormal)];
         [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateHighlighted)];
-        [_equipmentBtn addTarget:self action:@selector(equipmentBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_equipmentBtn addTarget:self action:@selector(equipmentBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         _equipmentBtn.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8" alpha:0.9];
     }
     return _equipmentBtn;
@@ -59,7 +60,13 @@
 /**
  *  点击设备按钮
  */
--(void)equipmentBtnClick{
+-(void)equipmentBtnClick:(UIButton*)sender{
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
+    } else {
+        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#121f27"];
+    }
     FSEquipmentViewController *vc = [[FSEquipmentViewController alloc] init];
     FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navi animated:YES completion:nil];

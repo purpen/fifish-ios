@@ -47,7 +47,6 @@
 
 - (IBAction)headTapClick:(UIButton *)sender {
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    
     [self.navi pushViewController:vc animated:YES];
 }
 
@@ -87,6 +86,13 @@
     }else if ([model.kind intValue] == 2){
         [self.pictuerView removeFromSuperview];
         [self.contentView addSubview:self.videoView];
+        [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.contentView.mas_left).offset(0);
+            make.top.mas_equalTo(self.contentView.mas_top).offset(59);
+            make.right.mas_equalTo(self.contentView.mas_right).offset(0);
+            make.height.mas_equalTo(210);
+        }];
+        [self.contentView layoutIfNeeded];
         self.videoView.model = model;
     }
     
