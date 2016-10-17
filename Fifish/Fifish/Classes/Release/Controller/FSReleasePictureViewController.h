@@ -12,8 +12,6 @@
 
 @interface FSReleasePictureViewController : FSBaseViewController
 
-
-
 /**
  媒体模型
  */
@@ -26,5 +24,6 @@
 
 /**  */
 @property (nonatomic, strong) UIImage *bigImage;
+
 
 @end

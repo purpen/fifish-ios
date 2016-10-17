@@ -25,7 +25,29 @@
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil];
-    NSString *str = [NSString stringWithFormat:@"%@:00",model.duration];
+    NSInteger duration = [model.duration integerValue];
+    NSString *str;
+    if (duration > 60) {
+        NSInteger minutes = duration / 60;
+        NSString *str2;
+        if (minutes > 10) {
+            str2 = [NSString stringWithFormat:@"%ld",minutes];
+        } else {
+            str2 = [NSString stringWithFormat:@"0%ld",minutes];
+        }
+        NSInteger seconds = duration - minutes * 60;
+        if (seconds > 10) {
+            str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
+        } else {
+            str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
+        }
+    } else {
+        if (duration > 10) {
+            str = [NSString stringWithFormat:@"00:%ld",duration];
+        } else {
+            str = [NSString stringWithFormat:@"00:0%ld",duration];
+        }
+    }
     [self.timeBtn setTitle:str forState:UIControlStateNormal];
 }
 

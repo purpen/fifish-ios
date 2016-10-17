@@ -22,6 +22,9 @@
 #import "FSReleasePictureViewController.h"
 #import "FSNavigationViewController.h"
 #import "FSPlayViewController.h"
+#import "FSReleasePictureViewController.h"
+#import "FSProgressView.h"
+#import "Masonry.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -33,6 +36,10 @@
 @property (nonatomic, strong) UITableView *contenTableView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *modelAry;
+/**  */
+@property (nonatomic, strong) FSProgressView *progressView;
+/**  */
+@property (nonatomic, strong) NSNotification *notification;
 
 @end
 
@@ -40,6 +47,12 @@ static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
 
+-(FSProgressView *)progressView{
+    if (!_progressView) {
+        _progressView = [FSProgressView viewFromXib];
+    }
+    return _progressView;
+}
 
 -(NSMutableArray *)modelAry{
     if (!_modelAry) {
@@ -60,6 +73,136 @@ static NSString * const CellId = @"home";
     [self.contenTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSHomeViewCell class]) bundle:nil] forCellReuseIdentifier:CellId];
     // 添加刷新控件
     [self setupRefresh];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadVideo:) name:@"progress" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadPictuer:) name:@"pictuer" object:nil];
+    [self.view addSubview:self.progressView];
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).offset(0);
+        make.height.mas_equalTo(44);
+        make.right.mas_equalTo(self.view.mas_right).offset(0);
+        make.bottom.mas_equalTo(self.contenTableView.mas_top).offset(0);
+    }];
+}
+
+-(void)uploadPictuer:(NSNotification*)not{
+    NSDictionary *dict = not.userInfo;
+    FSImageModel *model = dict[@"model"];
+    FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSString *upload_url = result[@"data"][@"upload_url"];
+        NSString *token = result[@"data"][@"token"];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.contenTableView.y += 44;
+            [self.view layoutIfNeeded];
+        }];
+        self.progressView.imageView.image = model.defaultImage;
+        self.progressView.repeatBtn.hidden = YES;
+        self.progressView.deleteBtn.hidden = YES;
+        self.progressView.stateLabel.text = NSLocalizedString(@"uploading", nil);
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:dict[@"iconData"] WihtProgressBlock:^(CGFloat progress) {
+            self.progressView.progress.progress = progress;
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *stuffId = responseObject[@"id"];
+            FBRequest *request = [FBAPI postWithUrlString:@"/stuffs/store" requestDictionary:@{
+                                                                                               @"content" : dict[@"content"],
+                                                                                               @"asset_id" : stuffId,
+                                                                                               @"address" :dict[@"address"],
+                                                                                               @"kind" : dict[@"kind"],
+                                                                                               @"tags" : dict[@"tags"],
+                                                                                               @"lat" : dict[@"lat"],
+                                                                                               @"lng" : dict[@"lng"]
+                                                                                               } delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.contenTableView.y -= 44;
+                    [self.view layoutIfNeeded];
+                }];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            self.progressView.repeatBtn.hidden = NO;
+            self.progressView.deleteBtn.hidden = NO;
+            [self.progressView.repeatBtn addTarget:self action:@selector(repeat2) forControlEvents:UIControlEventTouchUpInside];
+            [self.progressView.deleteBtn addTarget:self action:@selector(delete) forControlEvents:UIControlEventTouchUpInside];
+            self.progressView.stateLabel.text = NSLocalizedString(@"Upload failed", nil);
+        }];
+        
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+}
+
+-(void)uploadVideo:(NSNotification*)not{
+    self.notification = not;
+    NSDictionary *dict = not.userInfo;
+    FSVideoModel *model = dict[@"model"];
+    FBRequest *request = [FBAPI getWithUrlString:@"/upload/videoToken" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSString *upload_url = result[@"data"][@"upload_url"];
+        NSString *token = result[@"data"][@"token"];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.contenTableView.y += 44;
+            [self.view layoutIfNeeded];
+        }];
+        self.progressView.imageView.image = model.VideoPicture;
+        self.progressView.repeatBtn.hidden = YES;
+        self.progressView.deleteBtn.hidden = YES;
+        self.progressView.stateLabel.text = NSLocalizedString(@"uploading", nil);
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:model.fileUrl] WithFileData:nil WihtProgressBlock:^(CGFloat progress) {
+            self.progressView.progress.progress = progress;
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *stuffId = responseObject[@"id"];
+            FBRequest *request = [FBAPI postWithUrlString:@"/stuffs/store" requestDictionary:@{
+                                                                                               @"content" : dict[@"content"],
+                                                                                               @"asset_id" : stuffId,
+                                                                                               @"address" :dict[@"address"],
+                                                                                               @"kind" : dict[@"kind"],
+                                                                                               @"tags" : dict[@"tags"],
+                                                                                               @"lat" : dict[@"lat"],
+                                                                                               @"lng" : dict[@"lng"]
+                                                                                               } delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.contenTableView.y -= 44;
+                    [self.view layoutIfNeeded];
+                }];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            self.progressView.repeatBtn.hidden = NO;
+            self.progressView.deleteBtn.hidden = NO;
+            [self.progressView.repeatBtn addTarget:self action:@selector(repeat) forControlEvents:UIControlEventTouchUpInside];
+            [self.progressView.deleteBtn addTarget:self action:@selector(delete) forControlEvents:UIControlEventTouchUpInside];
+            self.progressView.stateLabel.text = NSLocalizedString(@"Upload failed", nil);
+        }];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+}
+
+#pragma mark - 删除
+-(void)delete{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.contenTableView.y -= 44;
+        [self.view layoutIfNeeded];
+    }];
+}
+
+-(void)repeat2{
+    [self uploadPictuer:self.notification];
+}
+
+#pragma mark - 重新上传
+-(void)repeat{
+    [self uploadVideo:self.notification];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:@"progress"];
 }
 
 -(void)setupRefresh{

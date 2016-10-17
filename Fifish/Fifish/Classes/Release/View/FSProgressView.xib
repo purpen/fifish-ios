@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FSProgressView">
-            <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="LNO-qK-7FH"/>
@@ -39,7 +39,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="qxN-U6-fV0" firstAttribute="leading" secondItem="bpk-IU-Hea" secondAttribute="trailing" constant="8" id="1p4-J2-IR6"/>
+                <constraint firstItem="qxN-U6-fV0" firstAttribute="leading" secondItem="bpk-IU-Hea" secondAttribute="trailing" constant="15" id="1p4-J2-IR6"/>
                 <constraint firstItem="bpk-IU-Hea" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4Y7-OG-9PS"/>
                 <constraint firstItem="tB1-mW-aXj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BIs-vQ-hgX"/>
                 <constraint firstItem="4eh-jH-sgh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="IBI-0U-3IU"/>
@@ -48,7 +48,7 @@
                 <constraint firstItem="qxN-U6-fV0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UV9-ov-9Nd"/>
                 <constraint firstItem="4eh-jH-sgh" firstAttribute="leading" secondItem="Nph-hJ-PdA" secondAttribute="trailing" constant="10" id="Vif-Px-q0p"/>
                 <constraint firstItem="Nph-hJ-PdA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="epd-ew-go1"/>
-                <constraint firstAttribute="bottom" secondItem="LNO-qK-7FH" secondAttribute="bottom" id="rjS-Hi-OTN"/>
+                <constraint firstAttribute="bottom" secondItem="LNO-qK-7FH" secondAttribute="bottom" constant="1" id="rjS-Hi-OTN"/>
                 <constraint firstAttribute="bottom" secondItem="tB1-mW-aXj" secondAttribute="bottom" id="sIY-SS-6IR"/>
                 <constraint firstAttribute="trailing" secondItem="LNO-qK-7FH" secondAttribute="trailing" id="vBS-8C-Iaa"/>
                 <constraint firstAttribute="trailing" secondItem="4eh-jH-sgh" secondAttribute="trailing" constant="15" id="ziu-UQ-2fk"/>

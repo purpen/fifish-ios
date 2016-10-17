@@ -42,6 +42,9 @@
 "open" = "开启";
 "close" = "关闭";
 
+"uploading" = "正在上传";
+"Upload failed" = "上传失败";
+
 
 //搜索
 "video" = "视频";

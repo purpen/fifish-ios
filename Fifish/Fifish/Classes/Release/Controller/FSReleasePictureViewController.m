@@ -41,6 +41,7 @@
 
 @implementation FSReleasePictureViewController
 
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
@@ -222,92 +223,50 @@
 }
 
 -(void)releaseClick{
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[FSTabBarController sharedManager] setSelectedIndex:0];
-    }];
-    
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
-        NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 1);
+        if (self.releaseView.instructionsTextView.text.length < 5) {
+            [SVProgressHUD showInfoWithStatus:@"请添加作品内容"];
+        } else {
+            self.kind = @"1";
+            NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 1);
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            dict[@"kind"] = self.kind;
+            dict[@"content"] = self.releaseView.instructionsTextView.text;
+            dict[@"address"] = self.releaseView.accordingLabel.text;
+            dict[@"tags"] = self.tagsAry;
+            dict[@"lat"] = @(self.lat);
+            dict[@"lng"] = @(self.lon);
+            dict[@"model"] = self.mediaModel;
+            dict[@"iconData"] = iconData;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"pictuer" object:self userInfo:dict];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[FSTabBarController sharedManager] setSelectedIndex:0];
+            }];
+        }
         //NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
         //[iconData writeToFile:fullPath atomically:NO];
-        FBRequest *request = [FBAPI getWithUrlString:@"/upload/photoToken" requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            NSString *upload_url = result[@"data"][@"upload_url"];
-            NSString *token = result[@"data"][@"token"];
-            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
-                NSLog(@"上传经度  %f", progress);
-            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSString *stuffId = responseObject[@"id"];
-                self.kind = @"1";
-                [self newStuff:stuffId];
-            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
-            }];
-//            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
-//                
-//            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSString *stuffId = responseObject[@"id"];
-//                self.kind = @"1";
-//                [self newStuff:stuffId];
-//            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                
-//            }];
-            
-            
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
     } else {
         //视频
-        FBRequest *request = [FBAPI getWithUrlString:@"/upload/videoToken" requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            NSString *upload_url = result[@"data"][@"upload_url"];
-            NSString *token = result[@"data"][@"token"];
-            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WithFileData:nil WihtProgressBlock:^(CGFloat progress) {
-                FSTabBarController *tab = [[FSTabBarController alloc] init];
-                [tab setSelectedIndex:0];
-            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSString *stuffId = responseObject[@"id"];
-                self.kind = @"2";
-                [self newStuff:stuffId];
-            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
+        if (self.releaseView.instructionsTextView.text.length < 5) {
+            [SVProgressHUD showInfoWithStatus:@"请添加作品内容"];
+        } else {
+            self.kind = @"2";
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            dict[@"kind"] = self.kind;
+            dict[@"content"] = self.releaseView.instructionsTextView.text;
+            dict[@"address"] = self.releaseView.accordingLabel.text;
+            dict[@"tags"] = self.tagsAry;
+            dict[@"lat"] = @(self.lat);
+            dict[@"lng"] = @(self.lon);
+            dict[@"model"] = self.mediaModel;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"progress" object:self userInfo:dict];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[FSTabBarController sharedManager] setSelectedIndex:0];
             }];
-//            [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:self.mediaModel.fileUrl] WihtProgressBlock:^(CGFloat progress) {
-//                
-//            } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSString *stuffId = responseObject[@"id"];
-//                self.kind = @"2";
-//                [self newStuff:stuffId];
-//            } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                
-//            }];
-            
-            
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
+        }
     }
 }
 
--(void)newStuff:(NSString *)stuffId{
-    FBRequest *request = [FBAPI postWithUrlString:@"/stuffs/store" requestDictionary:@{
-                                                                                       @"content" : self.releaseView.instructionsTextView.text,
-                                                                                       @"asset_id" : stuffId,
-                                                                                       @"address" : self.releaseView.accordingLabel.text,
-                                                                                       @"kind" : self.kind,
-                                                                                       @"tags" : self.tagsAry,
-                                                                                       @"lat" : @(self.lat),
-                                                                                       @"lng" : @(self.lon)
-                                                                                       } delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        [SVProgressHUD showSuccessWithStatus:@"发布成功"];
-        [self.navigationController popViewControllerAnimated:YES];
-    } failure:^(FBRequest *request, NSError *error) {
-        
-    }];
-}
 
 @end
