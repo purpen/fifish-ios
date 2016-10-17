@@ -22,8 +22,10 @@
 #import "FSFoundStuffTableViewCell.h"
 #import "FSBigImageViewController.h"
 #import "FSHomeDetailViewController.h"
+#import "FSPlayViewController.h"
+#import "SDCycleScrollView.h"
 
-@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate>
 
 /**  */
 @property (nonatomic, strong) UITableView *contentTableView;
@@ -39,10 +41,23 @@
 @property (nonatomic, strong) FSFoundHeaderView *headerView;
 /**  */
 @property (nonatomic, strong) NSArray *userAry;
+/**  */
+@property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
+/**  */
+@property (nonatomic, strong) NSArray *imageUrlAry;
 
 @end
 
 @implementation FSFoundViewController
+
+-(SDCycleScrollView *)cycleScrollView{
+    if (!_cycleScrollView) {
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+        _cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"found_current"];
+        _cycleScrollView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+    }
+    return _cycleScrollView;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -73,10 +88,20 @@
 
 -(void)loadNew{
     [self.contentTableView.mj_footer endRefreshing];
+    [self imageUrlsRequest];
     self.current_page = 1;
     [self tagRequest];
     [self userRequest];
     [self stuffRequest];
+}
+
+-(void)imageUrlsRequest{
+    FBRequest *request = [FBAPI getWithUrlString:@"" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        self.cycleScrollView.imageURLStringsGroup = self.imageUrlAry;
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 -(void)loadMore{
@@ -175,9 +200,11 @@
     if (!_contentTableView) {
         _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50)];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _contentTableView.showsVerticalScrollIndicator = NO;
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSFoundStuffTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSFoundStuffTableViewCell"];
+        _contentTableView.tableHeaderView = self.cycleScrollView;
     }
     return _contentTableView;
 }
@@ -261,9 +288,20 @@
         [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.pictuerView.tapBTn.tag = indexPath.row;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.videoView.tapBtn.tag = indexPath.row;
+        [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
+}
+
+#pragma mark - 视频播放
+-(void)videoClick:(UIButton*)sender{
+    //开始播放视频
+    FSZuoPin *model = self.stuffAry[sender.tag];
+    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
+    mvPlayer.videoUrl = [NSURL URLWithString:model.srcfile];
+    [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 #pragma mark - 关注

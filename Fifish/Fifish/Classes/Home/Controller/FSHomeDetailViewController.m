@@ -21,8 +21,9 @@
 #import "MJExtension.h"
 #import "FSUserModel.h"
 #import "FSBigImageViewController.h"
+#import "FSPlayViewController.h"
 
-@interface FSHomeDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
@@ -151,12 +152,22 @@ static NSString * const FSCommentId = @"comment";
     [cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.model = self.model;
     cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
     [header addSubview:cell];
     
     // 设置header
     self.commendTableView.tableHeaderView = header;
+}
+
+#pragma mark - 视频播放
+-(void)videoClick:(UIButton*)sender{
+    //开始播放视频
+    FSZuoPin *model = self.model;
+    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
+    mvPlayer.videoUrl = [NSURL URLWithString:model.srcfile];
+    [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 #pragma mark - 点击图片
