@@ -52,7 +52,7 @@
 
 -(SDCycleScrollView *)cycleScrollView{
     if (!_cycleScrollView) {
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@"cycle_default"]];
         _cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"found_current"];
         _cycleScrollView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
     }
