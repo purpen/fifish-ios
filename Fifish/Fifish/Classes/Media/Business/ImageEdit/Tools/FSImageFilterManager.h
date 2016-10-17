@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger,FSImageParamType) {
 
 
 - (UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image;
-//TUDO: 改成枚举
+// TUDO: 改成枚举
 - (UIImage *)randerImageWithIndex:(NSString *)filterName WithImage:(UIImage *)image;
 
 /**
