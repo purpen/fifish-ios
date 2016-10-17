@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self addChileVC];
     [self setUpUI];
-    self.title = @"媒体";
+    self.title = NSLocalizedString(@"media", nil);
     
     // 默认显示第0个子控制器
     [self scrollViewDidEndScrollingAnimation:self.ViewControllerScrowView];

@@ -18,6 +18,7 @@
 #import "FSImageEditBottomView.h"
 #import "FSFilterCollectionView.h"
 #import "FSRegulateCollectionView.h"
+#import "FSAlertView.h"
 
 //model
 #import "FSFliterImage.h"
@@ -62,6 +63,7 @@
 //中间变量，记录编辑参数类型
 @property (nonatomic)        NSInteger            editType;
 
+
 @end
 
 @implementation FSImageEditViewController
@@ -82,6 +84,13 @@
     [nextBtn setTitle:NSLocalizedString(@"Next", nil) forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(gotoshareVC) forControlEvents:UIControlEventTouchUpInside];
     [self setRightItem:nextBtn];
+}
+- (void)NavBack{
+    [[[FSAlertView alloc] init] showAlertView:self title:NSLocalizedString(@"Give up editing?", nil) message:NSLocalizedString(@"If you return now, the picture editor will be cancelled.", nil) canceltitle:NSLocalizedString(@"Give up", nil) oktitle:NSLocalizedString(@"Retain", nil) confirmBlock:^{
+        
+    } cancelBlock:^{
+        [super NavBack];
+    }];
 }
 - (void)gotoshareVC{
     
@@ -150,6 +159,7 @@
 -(FSFliterImage *)ParamsImage{
     if (!_ParamsImage) {
         _ParamsImage = [[FSFliterImage alloc] init];
+
     }
     return _ParamsImage;
 }
@@ -210,9 +220,8 @@
 #pragma FsfilterCollectionDelegate
 
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
-   self.FliterImage = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
-    
-    self.imageView.image = self.FliterImage;
+   self.imageView.image = self.ParamsImage.image  = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
+
 }
 #pragma mark FSFilterCollectionViewDelegate
 -(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{
@@ -223,28 +232,32 @@
     
     //记录编辑类型
     self.editType = indexPath.row;
-    
-    self.ParamsImage.image = self.imageView.image;
+    NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
 }
 
 #pragma mark FSFSImageRegulateBottomViewDelegate
 - (void)FSFSImageRegulateBottomViewCancel{
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
-    self.imageView.image = self.FliterImage?self.FliterImage:self.originalImage;
+    self.imageView.image = self.ParamsImage.image?self.ParamsImage.image:self.originalImage;
     
     
 }
 - (void)FSFSImageRegulateBottomViewConfirm{
     self.ImageRegulateBottomView.hidden = YES;
-    
+    NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
     //记录参数值
     [self.ParamsImage updataParamsWithIndex:self.editType WithValue:self.ImageRegulateBottomView.SliderView.sliderCurrentValue];
+    
+    
+    self.ParamsImage.image = self.imageView.image;
     
 }
 
 -(void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value{
 
-    self.imageView.image = [self.FilterManager randerImageWithProgress:value WithImage:self.FliterImage?self.FliterImage:self.originalImage WithImageParamType:self.editType];
+    self.imageView.image = [self.FilterManager randerImageWithProgress:value WithImage:self.ParamsImage.image?self.ParamsImage.image:self.originalImage WithImageParamType:self.editType];
+    
+    
 }
 @end

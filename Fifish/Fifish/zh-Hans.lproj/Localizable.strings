@@ -93,6 +93,11 @@
 "Confirm"= "确定";
 "Cancel"= "取消";
 
+"Give up editing?" = "放弃编辑？";
+"If you return now, the picture editor will be cancelled." = "如果现在返回，图片编辑将被取消";
+"Retain" = "保留";
+"Give up" = "放弃";
+
 //媒体浏览
 "edit" = "编辑";
 "share"= "分享";
