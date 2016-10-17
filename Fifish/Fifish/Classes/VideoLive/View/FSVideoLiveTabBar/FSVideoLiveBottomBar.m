@@ -158,6 +158,7 @@
             }
         } WithFailureBlock:^(NSError *error) {
             [SVProgressHUD showWithStatus:error.localizedDescription];
+            [SVProgressHUD dismissWithDelay:2];
         }];
     }
     

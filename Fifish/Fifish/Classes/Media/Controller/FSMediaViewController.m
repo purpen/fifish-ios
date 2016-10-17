@@ -65,9 +65,9 @@
     FSlocalMediaViewController * locaMediaVc = [[FSlocalMediaViewController alloc] init];
     locaMediaVc.parentsVC = self;
     [self addChildViewController:locaMediaVc];
-    
-    FSRovMediaViewController * RovMediaVc = [[FSRovMediaViewController alloc] init];
-    [self addChildViewController:RovMediaVc];
+//    
+//    FSRovMediaViewController * RovMediaVc = [[FSRovMediaViewController alloc] init];
+//    [self addChildViewController:RovMediaVc];
     
 }
 
