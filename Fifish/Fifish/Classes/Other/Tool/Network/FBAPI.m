@@ -244,7 +244,7 @@
 
 + (void)uploadFileWithURL:(NSString *)uploadUrl WithToken:(NSString *)token WithFileUrl:(NSURL *)fileUrl WithFileData:(NSData *)filedata WihtProgressBlock:(void (^)(CGFloat))progressblock WithSuccessBlock:(void (^)(AFHTTPRequestOperation *, id))success WithFailureBlock:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     #warning afn3.0不能这么用
-    AFHTTPRequestOperation * uploadOperation =[FBRequest UploadDataWithUrlString:uploadUrl parameters:@{@"token":token} timeoutInterval:@60 requestType:HTTPRequestType responseType:JSONResponseType constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    AFHTTPRequestOperation * uploadOperation =[FBRequest UploadDataWithUrlString:uploadUrl parameters:@{@"token":token} timeoutInterval:@120 requestType:HTTPRequestType responseType:JSONResponseType constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if (fileUrl) {
          [formData appendPartWithFileURL:fileUrl name:@"file" error:nil];
         }
