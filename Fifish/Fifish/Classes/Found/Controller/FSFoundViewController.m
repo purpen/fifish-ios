@@ -201,6 +201,7 @@
 -(void)tagRequest{
     FBRequest *request = [FBAPI getWithUrlString:@"/tags/sticks" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"标签  %@",result);
         NSArray *rows = result[@"data"];
         self.tagsAry = [FSTageModel mj_objectArrayWithKeyValuesArray:rows];
         [self.contentTableView reloadData];

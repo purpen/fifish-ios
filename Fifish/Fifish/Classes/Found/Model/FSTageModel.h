@@ -16,5 +16,7 @@
 @property(nonatomic,copy) NSString *name;
 /**  */
 @property(nonatomic,copy) NSString *display_name;
+/**  */
+@property(nonatomic,copy) NSString *cover;
 
 @end

@@ -21,12 +21,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.bgImageView.layer.masksToBounds = YES;
+    self.bgImageView.layer.cornerRadius = 3;
 }
 
 -(void)setModel:(FSTageModel *)model{
     _model = model;
-    [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
+    [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:model.cover] placeholderImage:nil];
     self.titleLabel.text = model.name;
 }
 

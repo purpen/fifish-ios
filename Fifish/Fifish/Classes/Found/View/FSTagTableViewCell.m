@@ -69,7 +69,6 @@
     FSTagCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FSTagCollectionViewCell"
                                                                                   forIndexPath:indexPath];
     cell.model = self.modelAry[indexPath.row];
-    cell.backgroundColor = [UIColor greenColor];
     return cell;
 }
 
