@@ -13,7 +13,8 @@
 
 +(NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{
-             @"tagId" : @"id"
+             @"tagId" : @"id",
+             @"cover" : @"cover.file.small"
              };
 }
 

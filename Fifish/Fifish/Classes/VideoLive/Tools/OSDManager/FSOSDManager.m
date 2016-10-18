@@ -84,6 +84,7 @@ NSInteger  const Fish_OSD_Port = 4321;
     }
 
 }
+
 // 如果对象关闭了 这里也会调用
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     NSLog(@"连接失败 %@", err.localizedDescription);
