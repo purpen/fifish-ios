@@ -352,6 +352,12 @@
 		1FE564E81DB4D1E8000AE61D /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564DF1DB4D1E8000AE61D /* SDCollectionViewCell.m */; };
 		1FE564E91DB4D1E8000AE61D /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564E11DB4D1E8000AE61D /* SDCycleScrollView.m */; };
 		1FE564EA1DB4D1E8000AE61D /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564E31DB4D1E8000AE61D /* UIView+SDExtension.m */; };
+		1FE564EE1DB5B95F000AE61D /* FSStuffCountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564EC1DB5B95F000AE61D /* FSStuffCountTableViewCell.m */; };
+		1FE564EF1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564ED1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib */; };
+		1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564F11DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m */; };
+		1FE564F41DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564F31DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib */; };
+		1FE564F81DB5FC61000AE61D /* FSStuffCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */; };
+		1FE564F91DB5FC61000AE61D /* FSStuffCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1090,6 +1096,15 @@
 		1FE564E11DB4D1E8000AE61D /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		1FE564E21DB4D1E8000AE61D /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		1FE564E31DB4D1E8000AE61D /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		1FE564EB1DB5B95F000AE61D /* FSStuffCountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStuffCountTableViewCell.h; sourceTree = "<group>"; };
+		1FE564EC1DB5B95F000AE61D /* FSStuffCountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStuffCountTableViewCell.m; sourceTree = "<group>"; };
+		1FE564ED1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSStuffCountTableViewCell.xib; sourceTree = "<group>"; };
+		1FE564F01DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSZuoPinGroupTableViewCell.h; sourceTree = "<group>"; };
+		1FE564F11DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSZuoPinGroupTableViewCell.m; sourceTree = "<group>"; };
+		1FE564F31DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSZuoPinGroupTableViewCell.xib; sourceTree = "<group>"; };
+		1FE564F51DB5FC61000AE61D /* FSStuffCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStuffCollectionViewCell.h; sourceTree = "<group>"; };
+		1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStuffCollectionViewCell.m; sourceTree = "<group>"; };
+		1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSStuffCollectionViewCell.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2580,6 +2595,15 @@
 				1F0424731D5312690071A1D6 /* FSVideoView.h */,
 				1F0424741D5312690071A1D6 /* FSVideoView.m */,
 				1F0424761D5312780071A1D6 /* FSVideoView.xib */,
+				1FE564EB1DB5B95F000AE61D /* FSStuffCountTableViewCell.h */,
+				1FE564EC1DB5B95F000AE61D /* FSStuffCountTableViewCell.m */,
+				1FE564ED1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib */,
+				1FE564F01DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.h */,
+				1FE564F11DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m */,
+				1FE564F31DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib */,
+				1FE564F51DB5FC61000AE61D /* FSStuffCollectionViewCell.h */,
+				1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */,
+				1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3318,6 +3342,7 @@
 				0436AECF1DACE30C001E6808 /* sierraVignette.png in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1FE564F41DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
 				0436AEC41DACE30C001E6808 /* hefeMetal.png in Resources */,
 				1FE564D31DB0DC6C000AE61D /* FSProgressView.xib in Resources */,
@@ -3335,9 +3360,11 @@
 				1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */,
 				1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */,
 				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
+				1FE564EF1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib in Resources */,
 				0436AEC31DACE30C001E6808 /* hefeMap.png in Resources */,
 				0436AEC81DACE30C001E6808 /* inkwellMap.png in Resources */,
 				0436AEB61DACE30C001E6808 /* amaroMap.png in Resources */,
+				1FE564F91DB5FC61000AE61D /* FSStuffCollectionViewCell.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
 				0436AEB41DACE30C001E6808 /* 1977blowout.png in Resources */,
@@ -3438,6 +3465,7 @@
 				1FDE28BE1D92241D00566A73 /* MJExtensionConst.m in Sources */,
 				0436AF451DACE5C2001E6808 /* FSLomofiFilter.m in Sources */,
 				1F0219B71D79500A003A8A11 /* FMDatabasePool.m in Sources */,
+				1FE564EE1DB5B95F000AE61D /* FSStuffCountTableViewCell.m in Sources */,
 				1FE564E41DB4D1E8000AE61D /* TAAbstractDotView.m in Sources */,
 				0436AE761DACC5EF001E6808 /* FSImageFilterManager.m in Sources */,
 				1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */,
@@ -3498,6 +3526,7 @@
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
+				1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */,
 				1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
@@ -3633,6 +3662,7 @@
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
+				1FE564F81DB5FC61000AE61D /* FSStuffCollectionViewCell.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */,
 				1F04244A1D51F3C30071A1D6 /* AFHTTPSessionManager.m in Sources */,

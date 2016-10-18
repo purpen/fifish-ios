@@ -24,6 +24,8 @@
 #import "FSListUserModel.h"
 #import "FSListUserTableViewCell.h"
 #import "FSHomeDetailViewController.h"
+#import "FSStuffCountTableViewCell.h"
+#import "FSZuoPinGroupTableViewCell.h"
 
 typedef enum {
     FSTypeZuoPin = 1,
@@ -55,6 +57,8 @@ typedef enum {
 @property (nonatomic, strong) CAGradientLayer *shadow;
 /**  */
 @property (nonatomic, strong) UIView *naviView;
+/**  */
+@property (nonatomic, assign) BOOL arrangementFlag;
 
 @end
 
@@ -443,6 +447,7 @@ static NSString * const fucosCellId = @"fucos";
         _contentTableView.dataSource = self;
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSZuoPinTableViewCell class]) bundle:nil] forCellReuseIdentifier:zuoPinCellId];
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSListUserTableViewCell class]) bundle:nil] forCellReuseIdentifier:fucosCellId];
+        [_contentTableView registerNib:[UINib nibWithNibName:@"FSStuffCountTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSStuffCountTableViewCell"];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _contentTableView;
@@ -460,7 +465,11 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeZuoPin:
             {
                 //作品数量
-                return self.zuoPins.count;
+                if (self.arrangementFlag) {
+                    return 1 + 1;
+                } else {
+                    return self.zuoPins.count + 1;
+                }
             }
                 break;
                 
@@ -493,8 +502,20 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeZuoPin:
             {
                 //作品高度
-                FSZuoPin *zuoPin = self.zuoPins[indexPath.row];
-                return 210 + 22;
+                if (indexPath.row == 0) {
+                    return 30;
+                } else {
+                    if (self.arrangementFlag) {
+                        NSInteger n1 = self.zuoPins.count / 3;
+                        NSInteger n2 = self.zuoPins.count % 3;
+                        if (n2 > 0) {
+                            n1 ++;
+                        }
+                        return n1 * ((SCREEN_WIDTH - 5 * 2) / 3 + 10);
+                    } else {
+                        return 210 + 40;
+                    }
+                }
             }
                 break;
                 
@@ -528,7 +549,6 @@ static NSString * const fucosCellId = @"fucos";
             cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
         FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        NSLog(@"用户的信息 %@",userModel);
         cell.model = userModel;
         switch (self.type) {
             case FSTypeZuoPin:
@@ -558,9 +578,30 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeZuoPin:
             {
                 //作品cell
-                FSZuoPinTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:zuoPinCellId];
-                cell.zuopin = self.zuoPins[indexPath.row];
-                return cell;
+                if (indexPath.row == 0) {
+                    FSStuffCountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSStuffCountTableViewCell"];
+                    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                    cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",userModel.stuff_count];
+                    [cell.arrangementBtn addTarget:self action:@selector(changeArrangment:) forControlEvents:UIControlEventTouchUpInside];
+                    return cell;
+                } else {
+                    if (self.arrangementFlag) {
+                        //组式排列
+                        static NSString *cellId = @"cellOne";
+                        FSZuoPinGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+                        if (cell == nil) {
+                            cell = [[FSZuoPinGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                        }
+                        cell.groupAry = self.zuoPins;
+                        cell.navc = self.navigationController;
+                        return cell;
+                    } else {
+                        //正常排列
+                        FSZuoPinTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:zuoPinCellId];
+                        cell.zuopin = self.zuoPins[indexPath.row - 1];
+                        return cell;
+                    }
+                }
             }
                 break;
                 
@@ -589,8 +630,18 @@ static NSString * const fucosCellId = @"fucos";
     return nil;
 }
 
+#pragma mark - 改变排列方式
+-(void)changeArrangment:(UIButton*)sender{
+    sender.selected = !sender.selected;
+    self.arrangementFlag = sender.selected;
+    [self.contentTableView reloadData];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            return;
+        }
         FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
         vc.model = self.zuoPins[indexPath.row];
         vc.title = @"作品详情";

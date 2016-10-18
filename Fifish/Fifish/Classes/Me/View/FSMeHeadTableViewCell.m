@@ -18,7 +18,9 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
         self.headImageView.layer.masksToBounds = YES;
-        self.headImageView.layer.cornerRadius = 30;
+        self.headImageView.layer.cornerRadius = 40;
+        self.headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.headImageView.layer.borderWidth = 1;
         
         CAGradientLayer *downShadow = [CAGradientLayer layer];
         downShadow.startPoint = CGPointMake(0, 0);

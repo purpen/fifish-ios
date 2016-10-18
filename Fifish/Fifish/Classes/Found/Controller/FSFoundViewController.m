@@ -44,17 +44,24 @@
 /**  */
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 /**  */
-@property (nonatomic, strong) NSArray *imageUrlAry;
+@property (nonatomic, strong) NSMutableArray *imageUrlAry;
 
 @end
 
 @implementation FSFoundViewController
 
+-(NSMutableArray *)imageUrlAry{
+    if (!_imageUrlAry) {
+        _imageUrlAry = [NSMutableArray array];
+    }
+    return _imageUrlAry;
+}
+
 -(SDCycleScrollView *)cycleScrollView{
     if (!_cycleScrollView) {
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@"cycle_default"]];
         _cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"found_current"];
-        _cycleScrollView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+        _cycleScrollView.pageDotImage = [UIImage imageNamed:@"found_default"];
     }
     return _cycleScrollView;
 }
@@ -96,8 +103,18 @@
 }
 
 -(void)imageUrlsRequest{
-    FBRequest *request = [FBAPI getWithUrlString:@"" requestDictionary:nil delegate:self];
+    FBRequest *request = [FBAPI getWithUrlString:@"/gateway/columns" requestDictionary:@{
+                                                                                         @"name" : @"app_discover_slide"
+                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        [self.imageUrlAry removeAllObjects];
+        NSArray *dataAry = result[@"data"];
+        for (NSDictionary *dict in dataAry) {
+            NSDictionary *coverDict = dict[@"cover"];
+            NSDictionary *fileDict = coverDict[@"file"];
+            NSString *large = fileDict[@"large"];
+            [self.imageUrlAry addObject:large];
+        }
         self.cycleScrollView.imageURLStringsGroup = self.imageUrlAry;
     } failure:^(FBRequest *request, NSError *error) {
         
