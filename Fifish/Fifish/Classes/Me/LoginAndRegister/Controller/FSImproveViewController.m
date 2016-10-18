@@ -100,7 +100,7 @@
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD dismiss];
-        FSUserModel *model = [FSUserModel findAll][0];
+        FSUserModel *model = [[FSUserModel findAll] lastObject];
         model.username = self.userNameTF.text;
         model.job = self.professionalTF.text;
         model.zone = self.addressTF.text;

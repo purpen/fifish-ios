@@ -119,7 +119,7 @@
                                                                                         @"password" : self.pwdTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel *model = [[FSUserModel alloc] init];
         model.isLogin = YES;
         [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
