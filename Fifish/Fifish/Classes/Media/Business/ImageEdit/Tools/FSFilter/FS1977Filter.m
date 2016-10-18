@@ -7,7 +7,7 @@
 //
 
 #import "FS1977Filter.h"
-
+//1977滤镜
 NSString *const kFS1977ShaderString = SHADER_STRING
 (
  precision lowp float;
