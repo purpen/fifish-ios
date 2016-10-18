@@ -232,7 +232,6 @@ static NSString * const CellId = @"home";
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        
         // 让底部控件结束刷新
         [self.contenTableView.mj_header endRefreshing];
     }];
