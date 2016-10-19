@@ -153,7 +153,7 @@
 {
     CGPoint offset = scrollView.contentOffset;
     self.seletedIndex = offset.x/SCREEN_WIDTH;
-    self.offsetLab.text = [NSString stringWithFormat:@"%lu/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
+    self.offsetLab.text = [NSString stringWithFormat:@"%d/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
 }
 
 /**

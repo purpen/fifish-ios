@@ -133,17 +133,13 @@
     [self starRecordUpdataLabWithStatus:sender.selected];
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticSaveMp4File object:nil userInfo:@{FSNoticSaveMp4FileStatus:[NSNumber numberWithBool:self.isReciveVideo]}];
-    
-    
-    
     //通知ROV录制
     FSCameraManager * CameraManager = [[FSCameraManager alloc] init];
     if(self.isReciveVideo){
     
     [CameraManager RovStarRecordSuccess:^(NSDictionary *responseObject) {
         if ([responseObject[@"head"][@"code"] integerValue]==0) {
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Synchronous recording", nil)];
-            [SVProgressHUD dismissWithDelay:2];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Synchronous recording", nil)];
         }
     } WithFailureBlock:^(NSError *error) {
         [SVProgressHUD showWithStatus:error.localizedDescription];
@@ -154,14 +150,12 @@
     else{
         [CameraManager RovstopRecordSuccess:^(NSDictionary *responseObject) {
             if ([responseObject[@"head"][@"code"] integerValue]==0) {
-                [SVProgressHUD showWithStatus:NSLocalizedString(@"Stop recording", nil)];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Stop recording", nil)];
             }
         } WithFailureBlock:^(NSError *error) {
-            [SVProgressHUD showWithStatus:error.localizedDescription];
-            [SVProgressHUD dismissWithDelay:2];
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }
-    
 }
 
 //刷新录制时间
@@ -189,7 +183,6 @@
             NSString *str_second = [NSString stringWithFormat:@"%02lu",self.timeOutCount%60];
             NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
             self.record_TimeLab.text = format_time;
-            
         });
         
         dispatch_source_set_cancel_handler(self.timer, ^{
