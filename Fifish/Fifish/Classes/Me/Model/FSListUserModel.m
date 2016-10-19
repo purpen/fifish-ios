@@ -16,7 +16,9 @@
              
              @"userId" : @"follower.id",
              @"userName" : @"follower.username",
-             @"summary" : @"follower.summary"
+             @"summary" : @"follower.summary",
+             @"userHeadImage" : @"follower.avatar.large",
+             @"followFlag" : @"is_follow"
              
              };
 }

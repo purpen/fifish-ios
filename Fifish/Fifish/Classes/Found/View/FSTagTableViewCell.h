@@ -13,6 +13,6 @@
 /**  */
 @property (nonatomic, strong) NSArray *modelAry;
 /**  */
-@property (nonatomic, strong) UIViewController *controller;
+@property (nonatomic, strong) UINavigationController *navc;
 
 @end

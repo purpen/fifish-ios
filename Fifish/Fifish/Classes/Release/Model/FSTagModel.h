@@ -11,7 +11,7 @@
 @interface FSTagModel : NSObject
 
 /**  */
-@property(nonatomic,copy) NSString *id;
+@property(nonatomic,copy) NSString *tagId;
 /**  */
 @property(nonatomic,copy) NSString *name;
 /**  */

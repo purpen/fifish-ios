@@ -16,5 +16,9 @@
 @property(nonatomic,copy) NSString *userName;
 /**  */
 @property(nonatomic,copy) NSString *summary;
+/**  */
+@property(nonatomic,copy) NSString *userHeadImage;
+/**  */
+@property (nonatomic, assign) NSInteger followFlag;
 
 @end

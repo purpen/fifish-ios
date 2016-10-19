@@ -8,7 +8,7 @@
 
 #import "FSTagTableViewCell.h"
 #import "FSTagCollectionViewCell.h"
-#import "FSSearchViewController.h"
+#import "FSTagSearchViewController.h"
 #import "FSTageModel.h"
 
 @interface FSTagTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
@@ -37,8 +37,8 @@
 -(UICollectionView *)myCollectionView{
     if (!_myCollectionView) {
         UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        flowLayout.minimumLineSpacing = 5.0f;
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        flowLayout.minimumInteritemSpacing = 5;
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)
@@ -74,9 +74,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSTageModel *model = self.modelAry[indexPath.row];
-    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    FSTagSearchViewController *vc = [[FSTagSearchViewController alloc] init];
     vc.placeString = model.name;
-    [self.controller presentViewController:vc animated:YES completion:nil];
+    [self.navc pushViewController:vc animated:YES];
 }
 
 @end

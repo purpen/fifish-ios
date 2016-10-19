@@ -218,6 +218,7 @@
     if (!_contentTableView) {
         _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50)];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _contentTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contentTableView.showsVerticalScrollIndicator = NO;
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
@@ -258,7 +259,7 @@
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu;
+    return gaoDu + 20;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -281,7 +282,7 @@
         if (cell == nil) {
             cell = [[FSTagTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
-        cell.controller = self;
+        cell.navc = self.navigationController;
         cell.modelAry = self.tagsAry;
         return cell;
     } else if (indexPath.section == 1) {
@@ -347,7 +348,6 @@
         [request startRequestSuccess:^(FBRequest *request, id result) {
             for (int i = 0; i < self.stuffAry.count; i ++) {
                 FSZuoPin *cellModel = self.stuffAry[i];
-                NSLog(@"cell的ID %@",cellModel.user_id);
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 1;
                     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];

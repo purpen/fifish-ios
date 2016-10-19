@@ -22,7 +22,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.bgImageView.layer.masksToBounds = YES;
-    self.bgImageView.layer.cornerRadius = 3;
+    self.bgImageView.layer.cornerRadius = 5;
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 5;
 }
 
 -(void)setModel:(FSTageModel *)model{

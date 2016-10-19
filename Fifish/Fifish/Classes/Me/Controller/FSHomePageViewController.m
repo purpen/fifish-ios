@@ -168,7 +168,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)setupNav{
     self.navigationController.navigationBarHidden = YES;
     [self.view addSubview:self.naviView];
-    
 }
 
 #pragma mark - 懒加载顶部渐变层
@@ -310,7 +309,7 @@ static NSString * const fucosCellId = @"fucos";
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        self.guanZhuPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        self.fenSiPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
@@ -422,14 +421,24 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeGuanZhu:
         {
             //关注
-            
+            self.contentTableView.mj_footer.hidden = self.guanZhuPersons.count == 0;
+            if (self.guanZhuPersons.count == self.total_rows) {
+                self.contentTableView.mj_footer.hidden = YES;
+            }else{
+                [self.contentTableView.mj_footer endRefreshing];
+            }
         }
             break;
             
         case FSTypeFenSi:
         {
             //粉丝
-            
+            self.contentTableView.mj_footer.hidden = self.fenSiPersons.count == 0;
+            if (self.fenSiPersons.count == self.total_rows) {
+                self.contentTableView.mj_footer.hidden = YES;
+            }else{
+                [self.contentTableView.mj_footer endRefreshing];
+            }
         }
             break;
             
@@ -619,7 +628,11 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeFenSi:
             {
                 //粉丝
-                return nil;
+                FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:fucosCellId];
+                cell.model = self.fenSiPersons[indexPath.row];
+                cell.fucosBtn.tag = indexPath.row;
+                [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
             }
                 break;
                 
@@ -639,34 +652,47 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            return;
+        switch (self.type) {
+            case FSTypeZuoPin:
+            {
+                if (indexPath.row == 0) {
+                    return;
+                }
+                FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+                vc.model = self.zuoPins[indexPath.row - 1];
+                vc.title = @"作品详情";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case FSTypeGuanZhu:
+            {
+                FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+                
+            default:
+                break;
         }
-        FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
-        vc.model = self.zuoPins[indexPath.row];
-        vc.title = @"作品详情";
-        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
 
 #pragma mark - 点击关注按钮
 -(void)fucosClick : (UIButton *) sender {
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
     if (sender.selected) {
-        
+       FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+            sender.backgroundColor = [UIColor whiteColor];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
     } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:@{
-                                                                                                                                                                                    @"id" : userModel.userId
-                                                                                                                                                                                    } delegate:self];
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            sender.layer.borderColor = [UIColor blueColor].CGColor;
-            sender.layer.borderWidth = 1;
+            sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

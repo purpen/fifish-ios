@@ -14,7 +14,7 @@
 +(NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{
              @"tagId" : @"id",
-             @"cover" : @"cover.file.small"
+             @"cover" : @"cover.file.thumb"
              };
 }
 

@@ -170,6 +170,7 @@
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
                 <outlet property="shareBtn" destination="6KS-4W-Pb0" id="ec6-4J-RjQ"/>
                 <outlet property="tagTag" destination="TtN-pd-vfC" id="hTz-cb-3Yg"/>
+                <outlet property="tagView" destination="6go-S4-nWb" id="zKM-d7-Xii"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
             </connections>
             <point key="canvasLocation" x="312" y="425.5"/>

@@ -358,6 +358,8 @@
 		1FE564F41DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564F31DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib */; };
 		1FE564F81DB5FC61000AE61D /* FSStuffCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */; };
 		1FE564F91DB5FC61000AE61D /* FSStuffCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */; };
+		1FE564FD1DB75DBE000AE61D /* FSTagSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE564FB1DB75DBE000AE61D /* FSTagSearchViewController.m */; };
+		1FE564FE1DB75DBE000AE61D /* FSTagSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564FC1DB75DBE000AE61D /* FSTagSearchViewController.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1105,6 +1107,9 @@
 		1FE564F51DB5FC61000AE61D /* FSStuffCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSStuffCollectionViewCell.h; sourceTree = "<group>"; };
 		1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSStuffCollectionViewCell.m; sourceTree = "<group>"; };
 		1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSStuffCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FE564FA1DB75DBE000AE61D /* FSTagSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagSearchViewController.h; sourceTree = "<group>"; };
+		1FE564FB1DB75DBE000AE61D /* FSTagSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagSearchViewController.m; sourceTree = "<group>"; };
+		1FE564FC1DB75DBE000AE61D /* FSTagSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagSearchViewController.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2460,6 +2465,9 @@
 				1F7EDE731D45EF6900ABED5D /* FSFoundViewController.h */,
 				1F7EDE741D45EF6900ABED5D /* FSFoundViewController.m */,
 				1F7EDE751D45EF6900ABED5D /* FSFoundViewController.xib */,
+				1FE564FA1DB75DBE000AE61D /* FSTagSearchViewController.h */,
+				1FE564FB1DB75DBE000AE61D /* FSTagSearchViewController.m */,
+				1FE564FC1DB75DBE000AE61D /* FSTagSearchViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3366,6 +3374,7 @@
 				0436AEB61DACE30C001E6808 /* amaroMap.png in Resources */,
 				1FE564F91DB5FC61000AE61D /* FSStuffCollectionViewCell.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
+				1FE564FE1DB75DBE000AE61D /* FSTagSearchViewController.xib in Resources */,
 				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
 				0436AEB41DACE30C001E6808 /* 1977blowout.png in Resources */,
 				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
@@ -3651,6 +3660,7 @@
 				0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */,
+				1FE564FD1DB75DBE000AE61D /* FSTagSearchViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1FDE28C41D92241D00566A73 /* NSObject+MJCoding.m in Sources */,
 				1FB4FBB41D954EC400E236CF /* MJRefreshFooter.m in Sources */,

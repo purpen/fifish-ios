@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="100"/>
+                <frame key="frameInset" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_listUser_bg" translatesAutoresizingMaskIntoConstraints="NO" id="EMi-Me-CGG"/>
@@ -50,7 +50,9 @@
                         <state key="normal" title="关注" image="me_path">
                             <color key="titleColor" red="0.1333333333" green="0.53333333329999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                        <state key="selected" title="已关注" image="me_path_right"/>
+                        <state key="selected" title="已关注" image="me_path_right">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>

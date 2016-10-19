@@ -84,7 +84,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
 
 - (UITableView *)tagsList {
     if (!_tagsList) {
-        _tagsList = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, SCREEN_WIDTH, SCREEN_HEIGHT - 44 - 64) style:(UITableViewStyleGrouped)];
+        _tagsList = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44) style:(UITableViewStyleGrouped)];
         _tagsList.backgroundColor = [UIColor colorWithHexString:@"#F7F7F7"];
         _tagsList.delegate = self;
         _tagsList.dataSource = self;
@@ -257,7 +257,7 @@ static NSString *const hotTagsCellID = @"HotTagsCellID";
             }
             FSTagModel *model = self.hotTagsMarr[indexPath.row];
             if ([self.addTagDelegate respondsToSelector:@selector(getTagName:andTagId:)]) {
-                [self.addTagDelegate getTagName:model.name andTagId:model.id];
+                [self.addTagDelegate getTagName:model.name andTagId:model.tagId];
             }
         } else if (tableView == self.searchList) {
             if (self.tagsTextField.text.length == 0) {

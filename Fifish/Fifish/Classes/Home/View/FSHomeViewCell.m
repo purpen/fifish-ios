@@ -22,8 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-
-
+@property (weak, nonatomic) IBOutlet UIView *tagView;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
@@ -90,21 +89,21 @@
         self.videoView.model = model;
     }
     
-    for (int i = 0; i < model.tags.count; i ++) {
-        NSString *str = model.tags[i];
-        UILabel *tagLabel = [[UILabel alloc] init];
-        tagLabel.text = str;
-        tagLabel.font = [UIFont systemFontOfSize:13];
-        tagLabel.textColor = [UIColor colorWithHexString:@"#8f9dad"];
-        // 文字的最大尺寸
-        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-        // 计算文字的高度
-        CGFloat textW = [str boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.width;
-        CGFloat x = 15 + textW + 5;
-        tagLabel.x = x;
-        tagLabel.centerY = self.tagTag.centerY;
-        [self.contentView addSubview:tagLabel];
+    if (model.tags.count > 0) {
+        NSString *str;
+        for (int i = 0; i < model.tags.count; i ++) {
+            NSDictionary *dict = model.tags[i];
+            if (i == 0) {
+                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
+            } else {
+                str = [NSString stringWithFormat:@"%@ #%@", str, dict[@"name"]];
+            }
+        }
+        self.tagTag.text = str;
+    } else {
+        self.tagTag.text = @"";
     }
+    
     
     if (model.is_love == 0) {
         self.likeBtn.selected = NO;

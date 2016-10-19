@@ -192,19 +192,17 @@
         } else {
             self.releaseView.tagTextFiled.text = [NSString stringWithFormat:@"# %@", newTag];
         }
-        [self.tagsAry addObject:tagId];
+        NSLog(@"tag  %@",tag);
+        [self.tagsAry addObject:tag];
     }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    
     if ([text isEqualToString:@"\n"]) {
-        
         [textView resignFirstResponder];
         return NO;
     }
-    
     return YES;
 }
 

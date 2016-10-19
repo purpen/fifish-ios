@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
+@property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
 @end
 
@@ -108,6 +109,21 @@
         self.likeBtn.selected = NO;
     } else {
         self.likeBtn.selected = YES;
+    }
+    
+    if (model.tags.count > 0) {
+        NSString *str;
+        for (int i = 0; i < model.tags.count; i ++) {
+            NSDictionary *dict = model.tags[i];
+            if (i == 0) {
+                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
+            } else {
+                str = [NSString stringWithFormat:@"%@ #%@", str, dict[@"name"]];
+            }
+        }
+        self.tagTag.text = str;
+    } else {
+        self.tagTag.text = @"";
     }
     
     // 文字的最大尺寸

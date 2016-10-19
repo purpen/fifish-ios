@@ -7,7 +7,14 @@
 //
 
 #import "FSTagModel.h"
+#import "MJExtension.h"
 
 @implementation FSTagModel
+
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"tagId" : @"id"
+             };
+}
 
 @end

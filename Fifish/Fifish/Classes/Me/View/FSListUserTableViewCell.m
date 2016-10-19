@@ -9,6 +9,7 @@
 #import "FSListUserTableViewCell.h"
 #import "FSListUserModel.h"
 #import "UIColor+FSExtension.h"
+#import "UIImageView+WebCache.h"
 
 @interface FSListUserTableViewCell ()
 
@@ -28,6 +29,8 @@
         self.fucosBtn.layer.cornerRadius = 13;
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
         self.fucosBtn.layer.borderWidth = 1;
+        self.headInageView.layer.masksToBounds = YES;
+        self.headInageView.layer.cornerRadius = 20;
     }
     return self;
 }
@@ -36,7 +39,14 @@
     _model = model;
     self.userNameLabel.text = model.userName;
     self.summaryLabel.text = model.summary;
-    
+    [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
+    if (model.followFlag == 1) {
+        self.fucosBtn.selected = YES;
+        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+    } else {
+        self.fucosBtn.selected = NO;
+        self.fucosBtn.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 -(void)awakeFromNib{
@@ -45,6 +55,8 @@
     self.fucosBtn.layer.cornerRadius = 13;
     self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
     self.fucosBtn.layer.borderWidth = 1;
+    self.headInageView.layer.masksToBounds = YES;
+    self.headInageView.layer.cornerRadius = 20;
 }
 
 @end
