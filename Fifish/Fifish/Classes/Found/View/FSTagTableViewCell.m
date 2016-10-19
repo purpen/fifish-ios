@@ -76,6 +76,7 @@
     FSTageModel *model = self.modelAry[indexPath.row];
     FSTagSearchViewController *vc = [[FSTagSearchViewController alloc] init];
     vc.placeString = model.name;
+    vc.headImageUrl = model.cover;
     [self.navc pushViewController:vc animated:YES];
 }
 
