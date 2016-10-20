@@ -57,12 +57,13 @@
     //[NSBundle mainBundle] resourcePath
 }
 
--(void)SaveImageWithImage:(UIImage *)image{
+-(NSString *)SaveImageWithImage:(UIImage *)image{
 //    NSData *imgData = UIImagePNGRepresentation(image);
     NSString* ImageSavePath=[NSString stringWithFormat:@"%@.png",[self getFileName]];
     BOOL isok =   [UIImagePNGRepresentation(image) writeToFile:ImageSavePath atomically:YES];
     
     NSLog(@"%d",isok);
+    return ImageSavePath;
 }
 -(void)SaveVideoWithFilePath:(NSString *)filePath{
     NSString* SavePathstr=[NSString stringWithFormat:@"%@.%@",[self getFileName],[NSURL fileURLWithPath:filePath].pathExtension];

@@ -335,14 +335,21 @@ CGFloat const Cellspecace = 1;
 
 #pragma mark imagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    NSLog(@"%lu",self.sourceArr.count);
+    NSLog(@"%@",info);
     NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
         UIImage * image  = info[UIImagePickerControllerEditedImage];
-//        //保存图片至本地
-        [[FSFileManager defaultManager] SaveImageWithImage:image];
+        //保存图片至本地
+      NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
+        //添加到本地
+        FSImageModel * imageModel = [[FSImageModel alloc] initWithFilePath:imageurlStr];
+        [self.sourceArr addObject:imageModel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.BroswerCollection reloadData];
+        });
+        
         NSLog(@"%@",info);
         
     }else{
@@ -352,8 +359,7 @@ CGFloat const Cellspecace = 1;
         //保存视频至相册（异步线程
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[FSFileManager defaultManager] SaveVideoWithFilePath:url.path];
-            FSVideoModel * model = [[FSVideoModel alloc] init];
-            model.fileUrl = url.path;
+            FSVideoModel * model = [[FSVideoModel alloc] initWithFilePath:url.path];
             [self.sourceArr addObject:model];
             NSLog(@"%lu",self.sourceArr.count);
             dispatch_async(dispatch_get_main_queue(), ^{
