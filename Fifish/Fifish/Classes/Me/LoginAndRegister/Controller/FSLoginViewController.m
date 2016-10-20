@@ -132,7 +132,6 @@
         }else{
             [self dismissViewControllerAnimated:YES completion:nil];
         }
-        
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];
     }];
