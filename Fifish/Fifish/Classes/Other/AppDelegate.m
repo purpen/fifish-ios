@@ -12,6 +12,8 @@
 #import "GuidePageViewController.h"
 #import "AppDelegate+FSGuide.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import "FBAPI.h"
+#import "FBRequest.h"
 
 @interface AppDelegate ()
 
@@ -79,6 +81,18 @@
     
     if (_reachDelegate && [_reachDelegate respondsToSelector:@selector(isReachAble)]) {
         [_reachDelegate isReachAble];
+    }
+    //更新Token
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults objectForKey:@"token"];
+    if (token.length != 0) {
+        FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
+            [defaults synchronize];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
     }
 }
 

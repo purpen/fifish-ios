@@ -74,9 +74,7 @@
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD showSuccessWithStatus:@"注册成功"];
         [self registerNowBtn:self.registerBtn];
-        
     } failure:^(FBRequest *request, NSError *error) {
-        NSLog(@"错误 %@",error.localizedDescription);
         [SVProgressHUD dismiss];
     }];
 }
@@ -119,12 +117,15 @@
                                                                                         @"password" : self.pwdTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        FSUserModel *model = [[FSUserModel alloc] init];
+        NSString *token = result[@"data"][@"token"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+       [defaults setObject:token forKey:@"token"];
+       [defaults synchronize];
+        FSUserModel *model = [[FSUserModel findAll] lastObject];
         model.isLogin = YES;
         [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-        BOOL isNotFirst = [defaults objectForKey:@"isNotFirst"];
+        BOOL isNotFirst = [defaults boolForKey:@"isNotFirst"];
         if (!isNotFirst) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
@@ -133,7 +134,6 @@
         }
         
     } failure:^(FBRequest *request, NSError *error) {
-        NSLog(@"错误 %@",error.localizedDescription);
         [SVProgressHUD dismiss];
     }];
 

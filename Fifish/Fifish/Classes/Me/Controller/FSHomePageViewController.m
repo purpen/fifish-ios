@@ -473,6 +473,9 @@ static NSString * const fucosCellId = @"fucos";
         switch (self.type) {
             case FSTypeZuoPin:
             {
+                if (self.zuoPins.count == 0) {
+                    self.contentTableView.mj_footer.hidden = YES;
+                }
                 //作品数量
                 if (self.arrangementFlag) {
                     return 1 + 1;
@@ -485,6 +488,9 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeGuanZhu:
             {
                 //关注数量
+                if (self.guanZhuPersons.count == 0) {
+                    self.contentTableView.mj_footer.hidden = YES;
+                }
                 return self.guanZhuPersons.count;
             }
                 break;

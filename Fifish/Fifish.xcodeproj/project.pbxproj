@@ -362,6 +362,8 @@
 		1FE564FE1DB75DBE000AE61D /* FSTagSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE564FC1DB75DBE000AE61D /* FSTagSearchViewController.xib */; };
 		1FE565021DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565001DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m */; };
 		1FE565031DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */; };
+		1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */; };
+		1FE565081DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1115,6 +1117,9 @@
 		1FE564FF1DB77DC0000AE61D /* FSTagSearchCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagSearchCollectionViewCell.h; sourceTree = "<group>"; };
 		1FE565001DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagSearchCollectionViewCell.m; sourceTree = "<group>"; };
 		1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagSearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		1FE565041DB855B9000AE61D /* FSTagSearchOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagSearchOneTableViewCell.h; sourceTree = "<group>"; };
+		1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagSearchOneTableViewCell.m; sourceTree = "<group>"; };
+		1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagSearchOneTableViewCell.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -3076,6 +3081,9 @@
 				1FE564FF1DB77DC0000AE61D /* FSTagSearchCollectionViewCell.h */,
 				1FE565001DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m */,
 				1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */,
+				1FE565041DB855B9000AE61D /* FSTagSearchOneTableViewCell.h */,
+				1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */,
+				1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3348,6 +3356,7 @@
 				0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */,
 				0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */,
 				0436AEB51DACE30C001E6808 /* 1977map.png in Resources */,
+				1FE565081DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
 				1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */,
@@ -3474,6 +3483,7 @@
 				1FE564CE1DB0D2B2000AE61D /* FSPlayViewController.m in Sources */,
 				0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */,
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
+				1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,

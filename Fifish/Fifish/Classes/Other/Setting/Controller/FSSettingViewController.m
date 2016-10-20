@@ -14,6 +14,8 @@
 #import "GuidePageViewController.h"
 #import "OptionViewController.h"
 #import "AboutViewController.h"
+#import "FSUserModel.h"
+#import "FSTabBarController.h"
 
 @interface FSSettingViewController ()<NotificationDelege>
 
@@ -107,8 +109,14 @@
 }
 - (IBAction)shareBtn:(id)sender {
 }
+
 - (IBAction)quiteBtn:(id)sender {
-    
+    [FSUserModel clearTable];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"" forKey:@"token"];
+    [defaults synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[FSTabBarController sharedManager] setSelectedIndex:3];
 }
 
 -(void)resetNotificationState{

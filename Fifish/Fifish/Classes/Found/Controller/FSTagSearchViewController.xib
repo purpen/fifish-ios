@@ -8,11 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSTagSearchViewController">
             <connections>
-                <outlet property="countLabel" destination="m3V-ZI-8k0" id="krX-5Y-Ng0"/>
-                <outlet property="defaultImageView" destination="J3p-MA-kLS" id="wHa-3S-rbO"/>
-                <outlet property="headImageView" destination="MRt-7M-K3y" id="hYG-pQ-XEm"/>
-                <outlet property="shadowView" destination="KJh-8T-iGT" id="rnG-QO-8ZM"/>
-                <outlet property="tagLabel" destination="r63-ja-zoz" id="ZSK-S9-1aW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,51 +15,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag_search_default" translatesAutoresizingMaskIntoConstraints="NO" id="J3p-MA-kLS">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="165" id="Xff-wO-hJY"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MRt-7M-K3y">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="BMe-z5-PBH"/>
-                        <constraint firstAttribute="width" constant="50" id="igw-BN-xjd"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r63-ja-zoz">
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJh-8T-iGT">
-                    <color key="backgroundColor" white="0.0" alpha="0.16320633561643835" colorSpace="calibratedWhite"/>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3V-ZI-8k0">
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="r63-ja-zoz" firstAttribute="top" secondItem="MRt-7M-K3y" secondAttribute="top" constant="3" id="6on-NB-b1K"/>
-                <constraint firstItem="MRt-7M-K3y" firstAttribute="top" secondItem="J3p-MA-kLS" secondAttribute="top" constant="50" id="AFs-eY-NHo"/>
-                <constraint firstItem="J3p-MA-kLS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Puv-rQ-krw"/>
-                <constraint firstItem="KJh-8T-iGT" firstAttribute="leading" secondItem="MRt-7M-K3y" secondAttribute="leading" id="RXQ-93-RnK"/>
-                <constraint firstItem="m3V-ZI-8k0" firstAttribute="top" secondItem="r63-ja-zoz" secondAttribute="bottom" constant="5" id="TV7-1q-Kaq"/>
-                <constraint firstItem="J3p-MA-kLS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WJN-Sq-VKx"/>
-                <constraint firstAttribute="trailing" secondItem="J3p-MA-kLS" secondAttribute="trailing" id="Xdb-XX-ntw"/>
-                <constraint firstItem="MRt-7M-K3y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="goT-lD-Wls"/>
-                <constraint firstItem="KJh-8T-iGT" firstAttribute="bottom" secondItem="MRt-7M-K3y" secondAttribute="bottom" id="grs-F8-gN0"/>
-                <constraint firstItem="KJh-8T-iGT" firstAttribute="trailing" secondItem="MRt-7M-K3y" secondAttribute="trailing" id="gz2-bA-Jhl"/>
-                <constraint firstItem="r63-ja-zoz" firstAttribute="leading" secondItem="MRt-7M-K3y" secondAttribute="trailing" constant="10" id="hKx-At-afk"/>
-                <constraint firstItem="KJh-8T-iGT" firstAttribute="top" secondItem="MRt-7M-K3y" secondAttribute="top" id="jLl-NO-qan"/>
-                <constraint firstItem="m3V-ZI-8k0" firstAttribute="leading" secondItem="r63-ja-zoz" secondAttribute="leading" id="s35-xe-lfa"/>
-            </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="tag_search_default" width="375" height="170"/>
-    </resources>
 </document>

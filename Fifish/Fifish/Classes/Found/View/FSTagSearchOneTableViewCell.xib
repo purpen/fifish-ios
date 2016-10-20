@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="KGk-i7-Jjw" customClass="FSTagSearchOneTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="179"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="340" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag_search_default" translatesAutoresizingMaskIntoConstraints="NO" id="2kz-xx-HMN"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVT-Ng-sv5">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7JX-z6-98r">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="soA-BE-IFG"/>
+                            <constraint firstAttribute="height" constant="50" id="y1K-0q-8ob"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtM-mc-Pji">
+                        <color key="backgroundColor" white="0.0" alpha="0.1632063356" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeL-xY-Dqo">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DVT-Ng-sv5" firstAttribute="top" secondItem="7JX-z6-98r" secondAttribute="top" constant="3" id="8x2-0c-q1h"/>
+                    <constraint firstItem="7JX-z6-98r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gif-Iz-6bg"/>
+                    <constraint firstItem="qtM-mc-Pji" firstAttribute="trailing" secondItem="7JX-z6-98r" secondAttribute="trailing" id="H1c-BX-rEf"/>
+                    <constraint firstItem="7JX-z6-98r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="MeT-hj-gWs"/>
+                    <constraint firstItem="DVT-Ng-sv5" firstAttribute="leading" secondItem="7JX-z6-98r" secondAttribute="trailing" constant="10" id="NfV-5b-cI6"/>
+                    <constraint firstAttribute="trailing" secondItem="2kz-xx-HMN" secondAttribute="trailing" id="NoC-0s-wdL"/>
+                    <constraint firstAttribute="bottom" secondItem="2kz-xx-HMN" secondAttribute="bottom" id="RlW-vf-7gT"/>
+                    <constraint firstItem="jeL-xY-Dqo" firstAttribute="top" secondItem="DVT-Ng-sv5" secondAttribute="bottom" constant="5" id="VRB-Ge-u3P"/>
+                    <constraint firstItem="qtM-mc-Pji" firstAttribute="bottom" secondItem="7JX-z6-98r" secondAttribute="bottom" id="XHi-1d-li8"/>
+                    <constraint firstItem="qtM-mc-Pji" firstAttribute="leading" secondItem="7JX-z6-98r" secondAttribute="leading" id="eJ9-Wh-NyM"/>
+                    <constraint firstItem="2kz-xx-HMN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fb8-r1-dch"/>
+                    <constraint firstItem="qtM-mc-Pji" firstAttribute="top" secondItem="7JX-z6-98r" secondAttribute="top" id="kOH-t7-enL"/>
+                    <constraint firstItem="2kz-xx-HMN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sCX-Ju-ZKq"/>
+                    <constraint firstItem="jeL-xY-Dqo" firstAttribute="leading" secondItem="DVT-Ng-sv5" secondAttribute="leading" id="vfC-3l-jza"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="countLabel" destination="jeL-xY-Dqo" id="He9-Lz-Ibs"/>
+                <outlet property="defaultImageView" destination="2kz-xx-HMN" id="1NN-Hw-fac"/>
+                <outlet property="headImageView" destination="7JX-z6-98r" id="TR5-16-blV"/>
+                <outlet property="shadowView" destination="qtM-mc-Pji" id="XXf-tj-pe6"/>
+                <outlet property="tagLabel" destination="DVT-Ng-sv5" id="hQ7-hz-J1C"/>
+            </connections>
+            <point key="canvasLocation" x="40" y="30.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="tag_search_default" width="375" height="170"/>
+    </resources>
+</document>

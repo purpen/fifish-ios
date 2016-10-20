@@ -377,7 +377,6 @@ static BOOL                           _canSendMessage      = YES;
         for (NSString *headerField in allKeys) {
             
             NSString *value = [self.HTTPHeaderFieldsWithValues valueForKey:headerField];
-            NSLog(@"value  %@",value);
             [self.manager.requestSerializer setValue:value forHTTPHeaderField:headerField];
         }
     }
@@ -411,16 +410,6 @@ static BOOL                           _canSendMessage      = YES;
                                     parameters:[weakSelf transformRequestDictionary]
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            weakSelf.isRunning = NO;
-                                           NSLog(@"get请求  %@",responseObject);
-                                           
-                                           /*NSString *token = responseObject[@"data"][@"token"];
-                                           
-                                           if (token.length != 0) {
-                                               NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-                                               [defaults setObject:token forKey:@"token"];
-                                               [defaults synchronize];
-                                           }*/
-                                            
                                            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
                                            if (status_code == 200) {
                                                
@@ -449,14 +438,6 @@ static BOOL                           _canSendMessage      = YES;
                                      parameters:[weakSelf transformRequestDictionary]
                                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                             weakSelf.isRunning = NO;
-                                            NSLog(@"post请求  %@",responseObject);
-                                            /*NSString *token = responseObject[@"data"][@"token"];
-                                            if (token.length != 0) {
-                                                NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-                                                [defaults setObject:token forKey:@"token"];
-                                                [defaults synchronize];
-                                            }*/
-                                            
                                             NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
                                             if (status_code == 200) {
                                                 
@@ -483,14 +464,6 @@ static BOOL                           _canSendMessage      = YES;
         __weak FBRequest *weakSelf = self;
         self.httpOperation = [self.manager DELETE:self.urlString parameters:[weakSelf transformRequestDictionary] success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
             weakSelf.isRunning = NO;
-            NSLog(@"post请求  %@",responseObject);
-            /*NSString *token = responseObject[@"data"][@"token"];
-             if (token.length != 0) {
-             NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-             [defaults setObject:token forKey:@"token"];
-             [defaults synchronize];
-             }*/
-            
             NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
             if (status_code == 200) {
                 
@@ -526,10 +499,8 @@ static BOOL                           _canSendMessage      = YES;
                           }
                                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                 weakSelf.isRunning = NO;
-                                                NSLog(@"upload请求  %@",responseObject);
                                                 NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
                                                 if (status_code == 200) {
-                                                    
                                                     success(weakSelf, responseObject);
                                                 } else {
                                                     [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];

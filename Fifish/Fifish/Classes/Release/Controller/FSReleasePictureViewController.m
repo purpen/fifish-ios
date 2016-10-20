@@ -253,11 +253,7 @@
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"kind"] = self.kind;
             dict[@"content"] = self.releaseView.instructionsTextView.text;
-            if (self.releaseView.accordingLabel.text.length == 0) {
-                dict[@"address"] = @"";
-            } else {
-                dict[@"address"] = self.releaseView.accordingLabel.text;
-            }
+            dict[@"address"] = self.releaseView.accordingLabel.text;
             dict[@"tags"] = self.tagsAry;
             dict[@"lat"] = @(self.lat);
             dict[@"lng"] = @(self.lon);

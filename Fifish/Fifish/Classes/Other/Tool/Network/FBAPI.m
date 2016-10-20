@@ -184,7 +184,6 @@
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     NSString *token=[defaults objectForKey:@"token"];
     params[@"token"] = token;
-    NSLog(@"字典 %@",params);
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
                      requestDictionary:params
                               delegate:delegate
@@ -201,7 +200,7 @@
     NSString *token=[defaults objectForKey:@"token"];
     params[@"token"] = token;
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
-                     requestDictionary:requestDictionary
+                     requestDictionary:params
                               delegate:delegate
                        timeoutInterval:nil
                                   flag:nil
@@ -214,11 +213,11 @@
                 requestDictionary:(NSDictionary *)requestDictionary
                          delegate:(id)delegate {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:requestDictionary];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    NSString *token=[defaults objectForKey:@"token"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults objectForKey:@"token"];
     params[@"token"] = token;
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
-                     requestDictionary:requestDictionary
+                     requestDictionary:params
                               delegate:delegate
                        timeoutInterval:nil
                                   flag:nil
@@ -230,9 +229,12 @@
 + (instancetype)uploadWithUrlString:(NSString *)urlString
                   requestDictionary:(NSDictionary *)requestDictionary
                            delegate:(id)delegate {
-    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:requestDictionary];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults objectForKey:@"token"];
+    params[@"token"] = token;
     return [FBAPI requestWithUrlString:[kDomainBaseUrl stringByAppendingString:urlString]
-                     requestDictionary:requestDictionary
+                     requestDictionary:params
                               delegate:delegate
                        timeoutInterval:nil
                                   flag:nil

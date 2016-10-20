@@ -84,15 +84,6 @@
 //    [SVProgressHUD show];
 //    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     //网络请求
-    if (self.userNameTF.text.length == 0) {
-        [SVProgressHUD showInfoWithStatus:@"用户名不能为空"];
-        return;
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(1) forKey:@"isNotFirst"];
-    [defaults synchronize];
-
     FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
                                                                                         @"job" : self.professionalTF.text,
@@ -104,11 +95,10 @@
         model.username = self.userNameTF.text;
         model.job = self.professionalTF.text;
         model.zone = self.addressTF.text;
-        [model update];
+        [model saveOrUpdate];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];
-        NSLog(@"错误 %@",error.localizedDescription);
     }];
     
 }
