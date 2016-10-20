@@ -101,6 +101,12 @@
 "Retain" = "保留";
 "Give up" = "放弃";
 
+//--->视频时长
+"Seconds" = "秒";
+"Please control the duration of time in 60 seconds, when the length of" = "请控制时长在60秒内，此时时长为";
+"Duration too long" = "视频过长，请截取后分享";
+"Please control the Duration of time in 60 seconds" = "控制视频时长在60秒内";
+
 //媒体浏览
 "edit" = "编辑";
 "share"= "分享";

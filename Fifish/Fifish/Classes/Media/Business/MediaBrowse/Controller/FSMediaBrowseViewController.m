@@ -8,7 +8,7 @@
 
 //tools
 #import "FSFileManager.h"
-
+#import <Photos/Photos.h>
 //model
 #import "FSImageModel.h"
 #import "FSVideoModel.h"
@@ -153,7 +153,7 @@
 {
     CGPoint offset = scrollView.contentOffset;
     self.seletedIndex = offset.x/SCREEN_WIDTH;
-    self.offsetLab.text = [NSString stringWithFormat:@"%d/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
+    self.offsetLab.text = [NSString stringWithFormat:@"%ld/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
 }
 
 /**
@@ -168,25 +168,35 @@
 - (void)MediaBrowViewEditAndShare{
     NSLog(@"分享");
     
-    FSImageModel * model = self.modelArr[self.seletedIndex];
+    FSMediaModel * model = self.modelArr[self.seletedIndex];
     if ([model isKindOfClass:[FSVideoModel class]]){
-        FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
+        //判断时长
+        FSVideoModel * videoModel = (FSVideoModel*)model;
+        NSInteger  duration =ceil(CMTimeGetSeconds(videoModel.videoAsset.duration));
+        if (duration>0&&duration<=60){
+            FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
+            PictureViewVC.mediaModel = model;
+            PictureViewVC.type =@2;
+            [self.navigationController pushViewController:PictureViewVC animated:YES];
+        }
         
-        PictureViewVC.mediaModel = model;
-        PictureViewVC.type =@2;
-        [self.navigationController pushViewController:PictureViewVC animated:YES];
+        else{
+            [[FSAlertView alloc] showAlertView:self title:NSLocalizedString(@"Duration too long", nil) message:NSLocalizedString(@"Please control the Duration of time in 60 seconds", nil) canceltitle:NSLocalizedString(@"Cancel", nil) oktitle:NSLocalizedString(@"Confirm", nil) confirmBlock:^{
+                UIVideoEditorController * editVc = [[UIVideoEditorController alloc] init];
+                editVc.delegate = self;
+                editVc.videoPath = model.fileUrl;
+                
+                [self presentViewController:editVc animated:YES completion:nil];
+            } cancelBlock:^{
+                
+            }];
         
-//        UIVideoEditorController * editVc = [[UIVideoEditorController alloc] init];
-//        editVc.delegate = self;
-//        editVc.videoPath = model.fileUrl;
-//        
-//        [self presentViewController:editVc animated:YES completion:nil];
+        }
         
     }
     else{
-    FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
-    imageEditVc.MainImageModel = model;
-    
+        FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
+        imageEditVc.MainImageModel = (FSImageModel *)model;
         [self.navigationController pushViewController:imageEditVc animated:YES];
     }
     
@@ -215,6 +225,38 @@
         }];
         
     }
+    
+}
+#pragma mark UIVideoEditorControllerDelegate
+- (void)videoEditorControllerDidCancel:(UIVideoEditorController *)editor{
+    [editor dismissViewControllerAnimated:YES completion:nil];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Canacel", nil)];
+    
+}
+- (void)videoEditorController:(UIVideoEditorController *)editor didFailWithError:(NSError *)error{
+    [editor dismissViewControllerAnimated:YES completion:nil];
+    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+}
+- (void)videoEditorController:(UIVideoEditorController *)editor didSaveEditedVideoToPath:(NSString *)editedVideoPath
+{
+    [SVProgressHUD showSuccessWithStatus:nil];
+    //不存
+//    [[FSFileManager defaultManager] SaveVideoWithFilePath:editedVideoPath];
+    
+    AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:editedVideoPath] options:nil];
+    NSInteger  duration =ceil(CMTimeGetSeconds(asset.duration));
+    if (duration>60) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %ld %@",NSLocalizedString(@"Please control the duration of time in 60 seconds, when the length of", nil),duration,NSLocalizedString(@"Seconds", nil)]];
+        return;
+    }
+    
+        FSReleasePictureViewController * PictureViewVC = [[FSReleasePictureViewController alloc] init];
+        FSVideoModel * model = [[FSVideoModel alloc] initWithFilePath:editedVideoPath];
+        PictureViewVC.mediaModel = model;
+        PictureViewVC.type =@2;
+        [self.navigationController pushViewController:PictureViewVC animated:YES];
+    [editor dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"%@",editedVideoPath);
     
 }
 @end

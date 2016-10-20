@@ -79,7 +79,6 @@
     }
     // 将刚才添加到【相机胶卷】的图片，引用（添加）到【自定义相册】
     NSError *error = nil;
-
     [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
         PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
         // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面

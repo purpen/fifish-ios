@@ -22,8 +22,10 @@
 - (void)SaveImageWithImage:(UIImage *)image;
 
 //存储视频
-- (void)SaveVideoWithFilePath:(NSURL *)filePath;
+- (void)SaveVideoWithFilePath:(NSString *)filePath;
 
+//拷贝文件
+- (void)CopyFilePath:(NSString *)path ToPath:(NSString *)toPath;
 //从系统相册里面的fish
 //- (NSMutableArray *)GetMediaWithFishSystemLibiary;
 

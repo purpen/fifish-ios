@@ -15,4 +15,12 @@
     }
     return _flietrImage;
 }
+-(instancetype)initWithFilePath:(NSString *)filePath{
+    self = [super init];
+    if (self) {
+        self.fileUrl = filePath;
+    }
+    return self;
+    
+}
 @end

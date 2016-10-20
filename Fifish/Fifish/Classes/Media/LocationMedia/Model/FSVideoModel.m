@@ -9,5 +9,11 @@
 #import "FSVideoModel.h"
 
 @implementation FSVideoModel
-
+- (instancetype)initWithFilePath:(NSString *)filePath{
+    self = [super initWithFilePath:filePath];
+    if (self) {
+        self.videoAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filePath] options:nil];
+    }
+    return self;
+}
 @end

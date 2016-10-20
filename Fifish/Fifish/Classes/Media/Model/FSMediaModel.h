@@ -19,4 +19,7 @@
  处理完的图片
  */
 @property (nonatomic ,strong ) UIImage  * flietrImage;
+
+//初始化文件
+- (instancetype)initWithFilePath:(NSString *)filePath;
 @end
