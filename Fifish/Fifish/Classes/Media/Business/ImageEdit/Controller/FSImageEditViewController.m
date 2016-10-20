@@ -121,7 +121,7 @@
     
     [self.view addSubview:self.FilterCollectionView];
     [self.FilterCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom);
+        make.height.mas_equalTo(@110);
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.bottomView.mas_top);
@@ -140,7 +140,7 @@
         make.top.equalTo(self.imageView.mas_bottom);
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(self.view.mas_bottom);
+        make.bottom.equalTo(self.bottomView.mas_bottom);
     }];
 }
 - (void)setMainImageModel:(FSImageModel *)MainImageModel{
@@ -152,6 +152,7 @@
         _imageView = [[UIImageView alloc] init];
         _imageView.image = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.backgroundColor = [UIColor clearColor];
     }
     return _imageView;
 }
@@ -169,7 +170,6 @@
         _FilterCollectionView = [[FSFilterCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:nil];
         _FilterCollectionView.FilterDelegate = self;
         _FilterCollectionView.collectionNumber = self.FilterManager.fsFilterArr.count;
-        
     }
     return _FilterCollectionView;
 }

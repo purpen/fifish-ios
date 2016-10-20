@@ -19,7 +19,7 @@
 - (BOOL)RemoveFilePath:(NSString *)path;
 
 //存储照片
-- (void)SaveImageWithImage:(UIImage *)image;
+- (NSString *)SaveImageWithImage:(UIImage *)image;
 
 //存储视频
 - (void)SaveVideoWithFilePath:(NSString *)filePath;
