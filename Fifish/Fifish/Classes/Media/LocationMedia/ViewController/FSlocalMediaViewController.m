@@ -302,7 +302,8 @@ CGFloat const Cellspecace = 1;
 - (void)deleteMediaItem{
     //删除操作！
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSUInteger currentIndex = [self.seletedCellIndexSet firstIndex];
+//        取出最后一个元素，倒着删除
+        NSUInteger currentIndex = [self.seletedCellIndexSet lastIndex];
         NSMutableArray * deleteArr = [NSMutableArray array];
         //遍历选中的index
         while (currentIndex != NSNotFound) {
@@ -317,7 +318,7 @@ CGFloat const Cellspecace = 1;
             //4.添加到要删除的数组中
             [deleteArr addObject:[NSIndexPath indexPathForRow:currentIndex inSection:0]];
             //查找下一个元素
-            currentIndex = [self.seletedCellIndexSet indexGreaterThanIndex:currentIndex];
+            currentIndex = [self.seletedCellIndexSet indexLessThanIndex:currentIndex];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{
