@@ -8,6 +8,7 @@
 
 //tools
 #import "FSFileManager.h"
+#import "FSUserModel.h"
 #import <Photos/Photos.h>
 //model
 #import "FSImageModel.h"
@@ -17,6 +18,7 @@
 #import "FSMediaBrowBottomEditView.h"
 //vc
 #import "FSImageEditViewController.h"
+#import "FSLoginViewController.h"
 #import "FSReleasePictureViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -167,7 +169,12 @@
 #pragma mark FSMediaBrowBottomEditViewDelegate
 - (void)MediaBrowViewEditAndShare{
     NSLog(@"分享");
-    
+    FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
+    if (!usermodel.isLogin) {
+        FSLoginViewController *vc = [[FSLoginViewController alloc] init];
+        [self presentViewController:vc animated:YES completion:nil];
+    } else {
+       //登录了，可以进行后续操作
     FSMediaModel * model = self.modelArr[self.seletedIndex];
     if ([model isKindOfClass:[FSVideoModel class]]){
         //判断时长
@@ -198,6 +205,7 @@
         FSImageEditViewController * imageEditVc = [[FSImageEditViewController alloc] init];
         imageEditVc.MainImageModel = (FSImageModel *)model;
         [self.navigationController pushViewController:imageEditVc animated:YES];
+    }
     }
     
 }
