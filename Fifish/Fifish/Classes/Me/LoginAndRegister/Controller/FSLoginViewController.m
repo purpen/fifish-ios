@@ -121,7 +121,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
        [defaults setObject:token forKey:@"token"];
        [defaults synchronize];
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel *model = [[FSUserModel alloc] init];
         model.isLogin = YES;
         [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
