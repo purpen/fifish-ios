@@ -25,6 +25,8 @@
 #import "FSReleasePictureViewController.h"
 #import "FSProgressView.h"
 #import "Masonry.h"
+#import "FSUserModel.h"
+#import "FSLoginViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -394,23 +396,30 @@ static NSString * const CellId = @"home";
 
 #pragma mark - 点击喜欢按钮
 -(void)likeClick:(UIButton*)sender{
-    NSString *idStr = ((FSZuoPin*)self.modelAry[sender.tag]).idFeild;
-    if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 0;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    if (model.isLogin) {
+        //登录了，可以进行后续操作
+        NSString *idStr = ((FSZuoPin*)self.modelAry[sender.tag]).idFeild;
+        if (sender.selected) {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = NO;
+                ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 0;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        } else {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = YES;
+                ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 1;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        }
     } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 1;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+        FSLoginViewController *vc = [[FSLoginViewController alloc] init];
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 
