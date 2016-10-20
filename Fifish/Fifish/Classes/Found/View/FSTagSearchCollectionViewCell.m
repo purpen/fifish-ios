@@ -7,6 +7,7 @@
 //
 
 #import "FSTagSearchCollectionViewCell.h"
+#import "FSTagSearchViewController.h"
 
 @interface FSTagSearchCollectionViewCell ()
 
@@ -22,6 +23,14 @@
     self.tagBtn.layer.cornerRadius = 9;
     self.tagBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     self.tagBtn.layer.borderWidth = 1;
+    [self.tagBtn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)tagClick:(UIButton*)sender{
+    FSTagSearchViewController *vc = [[FSTagSearchViewController alloc] init];
+    NSString *str = [sender.titleLabel.text substringFromIndex:2];
+    vc.placeString = str;
+    [self.navc pushViewController:vc animated:YES];
 }
 
 -(void)setTagText:(NSString *)tagText{

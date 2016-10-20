@@ -92,7 +92,6 @@
                                                                                      } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [self.myTableView.mj_header endRefreshing];
-        NSLog(@"搜索  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
         if (self.total == 0) {
@@ -201,8 +200,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         FSTagSearchOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSTagSearchOneTableViewCell"];
-        cell.headImageUrl = self.headImageUrl;
         cell.placeString = self.placeString;
+        cell.navc = self.navigationController;
         return cell;
     } else if (indexPath.row == 1) {
         static NSString *cellId = @"cellTwo";

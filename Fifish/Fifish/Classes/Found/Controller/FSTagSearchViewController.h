@@ -12,7 +12,5 @@
 
 /**  */
 @property(nonatomic,copy) NSString *placeString;
-/**  */
-@property(nonatomic,copy) NSString *headImageUrl;
 
 @end
