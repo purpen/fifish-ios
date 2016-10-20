@@ -15,7 +15,7 @@
 /**
  媒体模型
  */
-@property (nonatomic,assign) FSMediaModel * mediaModel;
+@property (nonatomic,strong) FSMediaModel * mediaModel;
 /**
  1 图片
  2 视频

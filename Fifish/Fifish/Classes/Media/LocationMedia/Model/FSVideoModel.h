@@ -7,9 +7,12 @@
 //
 
 #import "FSMediaModel.h"
-
+#import <Photos/Photos.h>
 @interface FSVideoModel : FSMediaModel
 //@property (nonatomic , strong)
 @property (nonatomic , strong) UIImage * VideoPicture;
+
+@property (nonatomic , strong) AVURLAsset * videoAsset;
+
 
 @end

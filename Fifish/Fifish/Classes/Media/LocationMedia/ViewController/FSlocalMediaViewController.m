@@ -55,7 +55,7 @@ CGFloat const Cellspecace = 1;
 @property (nonatomic)           CGFloat            cellSize;
 
 //资源
-@property (nonatomic, strong)   NSMutableArray    * sourceArr;
+@property (nonatomic, strong)  __block NSMutableArray    * sourceArr;
 /**
  记录点击cell
  */
@@ -94,12 +94,10 @@ CGFloat const Cellspecace = 1;
     for (NSString * str in dataArr) {
         FSMediaModel * mediaModel;
         if ([str hasSuffix:@"mp4"]||[str hasSuffix:@"MOV"]) {
-            mediaModel = [[FSVideoModel alloc] init];
-            mediaModel.fileUrl = str;
+            mediaModel = [[FSVideoModel alloc] initWithFilePath:str];
         }
         if ([str hasSuffix:@"png"]||[str hasSuffix:@"jpg"]) {
-            mediaModel = [[FSImageModel alloc] init];
-            mediaModel.fileUrl = str;
+            mediaModel = [[FSImageModel alloc] initWithFilePath:str];
         }
         
         [self.sourceArr addObject:mediaModel];
@@ -231,6 +229,7 @@ CGFloat const Cellspecace = 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSBorswerImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FSBorswerImageCelliden forIndexPath:indexPath];
+    
     cell.mediaModel = self.sourceArr[indexPath.row];
     cell.seletedBtn.hidden = !self.isChooseState;
 
@@ -336,6 +335,7 @@ CGFloat const Cellspecace = 1;
 
 #pragma mark imagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    NSLog(@"%lu",self.sourceArr.count);
     NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
@@ -351,10 +351,16 @@ CGFloat const Cellspecace = 1;
         NSLog(@"%@",url);
         //保存视频至相册（异步线程
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[FSFileManager defaultManager] SaveVideoWithFilePath:url];
+            [[FSFileManager defaultManager] SaveVideoWithFilePath:url.path];
+            FSVideoModel * model = [[FSVideoModel alloc] init];
+            model.fileUrl = url.path;
+            [self.sourceArr addObject:model];
+            NSLog(@"%lu",self.sourceArr.count);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.BroswerCollection reloadData];
+            });
         });
     }
-    [self GetMediaData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

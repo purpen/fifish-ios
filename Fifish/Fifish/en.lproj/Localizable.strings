@@ -16,6 +16,7 @@
 "Choose" = "Choose";
 "Cancel" = "cancel";
 "Next"   = "Next";
+"Confirm"= "Confirm";
 //视频直播页面
 "Video" = "Video";
 
@@ -88,6 +89,12 @@
 "If you return now, the picture editor will be cancelled." = "If you return now, the picture editor will be cancelled.";
 "Retain" = "Retain";
 "Give up" = "Give up";
+//--->视频时长
+"Seconds" = "seconds";
+
+"Please control the duration of time in 60 seconds, when the length of " = "Please control the length of time in 60 seconds, when the length of";
+"Duration too long" = "Duration too long,Please cut duration to share";
+"Please control the Duration of time in 60 seconds" = "Please control the length of time in 60 seconds";
 
 //个人中心
 "findFriend" = "发现好友";

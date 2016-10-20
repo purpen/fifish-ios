@@ -42,7 +42,14 @@
     
     return filePathArray;
 }
-
+#pragma mark 拷贝文件
+- (void)CopyFilePath:(NSString *)path ToPath:(NSString *)toPath{
+    NSError * error;
+    NSFileManager*fileManager =[NSFileManager defaultManager];
+    [fileManager copyItemAtPath:path toPath:toPath error:&error];
+    
+    NSLog(@"%@",error);
+}
 //获得项目中当前文件名里的内容
 -(NSString *)bundlePath:(NSString *)fileName {
     return [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:fileName];
@@ -57,14 +64,14 @@
     
     NSLog(@"%d",isok);
 }
--(void)SaveVideoWithFilePath:(NSURL *)filePath{
-    NSString* SavePathstr=[NSString stringWithFormat:@"%@.MOV",[self getFileName]];
-    NSFileManager*fileManager =[NSFileManager defaultManager];
-    NSError * error;
-    
-    [fileManager copyItemAtPath:[filePath path] toPath:SavePathstr error:&error];
-    
-    NSLog(@"%@",error);
+-(void)SaveVideoWithFilePath:(NSString *)filePath{
+    NSString* SavePathstr=[NSString stringWithFormat:@"%@.%@",[self getFileName],[NSURL fileURLWithPath:filePath].pathExtension];
+//    NSFileManager*fileManager =[NSFileManager defaultManager];
+//    NSError * error;
+//    
+//    [fileManager copyItemAtPath:[filePath path] toPath:SavePathstr error:&error];
+//    NSLog(@"%@",error);
+    [self CopyFilePath:filePath  ToPath:SavePathstr];
 }
 //获取当前时间
 - (NSString *)getFileName{
