@@ -240,8 +240,7 @@
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
     self.imageView.image = self.ParamsImage.image?self.ParamsImage.image:self.originalImage;
-    
-    
+
 }
 - (void)FSFSImageRegulateBottomViewConfirm{
     self.ImageRegulateBottomView.hidden = YES;
