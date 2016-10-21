@@ -10,7 +10,7 @@
 
 @interface FSHomePageViewController : UIViewController
 
-/** 自己或别人的个人中心 */
-@property (nonatomic, assign) BOOL isMyself;
+/**  */
+@property(nonatomic,copy) NSString *userId;
 
 @end
