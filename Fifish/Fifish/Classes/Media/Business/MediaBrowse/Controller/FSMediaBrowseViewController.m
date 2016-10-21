@@ -254,7 +254,7 @@
     AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:editedVideoPath] options:nil];
     NSInteger  duration =ceil(CMTimeGetSeconds(asset.duration));
     if (duration>60) {
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %ld %@",NSLocalizedString(@"Please control the duration of time in 60 seconds, when the length of", nil),duration,NSLocalizedString(@"Seconds", nil)]];
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %ld %@",NSLocalizedString(@"Please control the duration of time in 60 seconds, when the length of", nil),(long)duration,NSLocalizedString(@"Seconds", nil)]];
         return;
     }
     

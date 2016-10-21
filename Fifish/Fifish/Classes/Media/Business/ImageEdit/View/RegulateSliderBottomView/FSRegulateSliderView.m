@@ -43,7 +43,6 @@
         make.centerX.equalTo(self.mas_centerX);
     }];
 }
-
 - (UISlider *)MainSlider{
     if (!_MainSlider) {
         _MainSlider = [[UISlider alloc] init];
@@ -53,7 +52,7 @@
         _MainSlider.value=50;
         _MainSlider.minimumValue=0;
         _MainSlider.maximumValue=100;
-        
+        _MainSlider.userInteractionEnabled = YES;
         [_MainSlider setMaximumTrackTintColor:[UIColor blackColor]];
         [_MainSlider setMinimumTrackTintColor:[UIColor colorWithHexString:@"2288FF"]];
         [_MainSlider addTarget:self action:@selector(sliderValueChange:) forControlEvents:UIControlEventValueChanged];

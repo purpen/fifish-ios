@@ -57,7 +57,7 @@
 
 - (FSRegulateSliderView *)SliderView{
     if (!_SliderView) {
-        _SliderView = [[FSRegulateSliderView alloc] init];
+        _SliderView = [[FSRegulateSliderView alloc] initWithFrame:CGRectZero];
         _SliderView.delegate =self;
     }
     return _SliderView;
