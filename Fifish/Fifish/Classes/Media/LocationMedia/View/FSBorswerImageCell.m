@@ -31,29 +31,12 @@
         //强转类型
         FSVideoModel *  videoModel = (FSVideoModel *)mediaModel;
         NSLog(@"视频");
-        AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_mediaModel.fileUrl] options:nil];
-        AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-        
-        //截图方向纠正
-        generator.appliesPreferredTrackTransform = YES;
-//        CMTimeShow(asset.duration);
-        [generator generateCGImagesAsynchronouslyForTimes:@[[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0,1)]] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
-            //获取图片
-            UIImage *thumbImg = [UIImage imageWithCGImage:image];
-            videoModel.VideoPicture = thumbImg;
-            //        时长
-            NSInteger  duration =ceil(CMTimeGetSeconds(asset.duration));
-            NSInteger minute = duration/60.0;
-            NSInteger second = duration%60;
-            
-            //回调主线程
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                self.durationLab.hidden = NO;
-                self.videoIcon.hidden = NO;
-                self.borswerImageView.image = thumbImg;
-                self.durationLab.text = [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
-            });
-        }];
+        self.durationLab.hidden = NO;
+        self.videoIcon.hidden = NO;
+        self.borswerImageView.image = videoModel.VideoPicture;
+        NSInteger minute = videoModel.duration/60.0;
+        NSInteger second = videoModel.duration%60;
+        self.durationLab.text = [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
     }
     
    else if ([mediaModel isKindOfClass:[FSImageModel class]]) {

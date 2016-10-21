@@ -20,6 +20,11 @@
  */
 @property (nonatomic ,strong ) UIImage  * flietrImage;
 
+/**
+ 缩略图
+ */
+@property (nonatomic , strong) UIImage * defaultImage;
+
 //初始化文件
 - (instancetype)initWithFilePath:(NSString *)filePath;
 @end

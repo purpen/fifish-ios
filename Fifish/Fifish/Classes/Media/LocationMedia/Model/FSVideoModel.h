@@ -14,5 +14,7 @@
 
 @property (nonatomic , strong) AVURLAsset * videoAsset;
 
+@property (nonatomic)           NSInteger  duration;
+
 
 @end

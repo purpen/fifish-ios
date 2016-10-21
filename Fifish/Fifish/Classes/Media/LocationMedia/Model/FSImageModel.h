@@ -10,9 +10,6 @@
 
 @interface FSImageModel : FSMediaModel
 
-/**
- 缩略图
- */
-@property (nonatomic , strong) UIImage * defaultImage;
+
 
 @end

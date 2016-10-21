@@ -9,9 +9,13 @@
 #import "FSImageModel.h"
 
 @implementation FSImageModel
--(void)setFileUrl:(NSString *)fileUrl{
-    [super setFileUrl:fileUrl];
-    UIImage * defaultimage = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithContentsOfFile:fileUrl], 0.1)];
+
+-(instancetype)initWithFilePath:(NSString *)filePath{
+    self = [super initWithFilePath:filePath];
+    if (self) {
+        UIImage * defaultimage = [UIImage imageWithData:UIImageJPEGRepresentation([UIImage imageWithContentsOfFile:filePath], 0.1)];
         self.defaultImage = defaultimage;
+    }
+    return self;
 }
 @end
