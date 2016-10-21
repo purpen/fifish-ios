@@ -117,6 +117,7 @@
                                                                                         @"password" : self.pwdTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSString *first_login = result[@"data"][@"first_login"];
         NSString *token = result[@"data"][@"token"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
        [defaults setObject:token forKey:@"token"];
@@ -125,11 +126,10 @@
         model.isLogin = YES;
         [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        BOOL isNotFirst = [defaults boolForKey:@"isNotFirst"];
-        if (!isNotFirst) {
+        if ([first_login isEqualToString:@"0"]) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
-        }else{
+        } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     } failure:^(FBRequest *request, NSError *error) {
