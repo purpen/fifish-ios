@@ -137,7 +137,7 @@
     
     [self.view addSubview:self.ImageRegulateBottomView];
     [self.ImageRegulateBottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom);
+        make.height.mas_equalTo(@150);
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.bottomView.mas_bottom);
@@ -197,7 +197,7 @@
 }
 -(FSFSImageRegulateBottomView *)ImageRegulateBottomView{
     if (!_ImageRegulateBottomView) {
-        _ImageRegulateBottomView = [[FSFSImageRegulateBottomView alloc] init];
+        _ImageRegulateBottomView = [[FSFSImageRegulateBottomView alloc] initWithFrame:CGRectZero];
         _ImageRegulateBottomView.RegulateBottomViewDelegate = self;
         _ImageRegulateBottomView.hidden = YES;
     }
