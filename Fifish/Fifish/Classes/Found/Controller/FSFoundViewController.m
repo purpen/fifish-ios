@@ -216,7 +216,7 @@
 
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
-        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50)];
+        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contentTableView.showsVerticalScrollIndicator = NO;
@@ -247,6 +247,10 @@
     }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return 90;
@@ -259,7 +263,7 @@
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 20;
+    return gaoDu + 10;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
