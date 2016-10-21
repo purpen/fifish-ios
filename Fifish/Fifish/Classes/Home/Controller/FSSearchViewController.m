@@ -30,15 +30,10 @@
 /**  */
 @property (nonatomic, strong) SGTopTitleView *segmentedControl;
 /**
-    1、图片
-    2、视频
-    3、用户 
+    1、作品
+    2、用户
  */
 @property (nonatomic, strong) NSNumber *type;
-/**  */
-@property (nonatomic, strong) NSMutableArray *videoAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *pictureAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *userAry;
 /**  */
@@ -47,18 +42,30 @@
 @property (nonatomic, assign) NSInteger current_page;
 /**  */
 @property (nonatomic, assign) NSInteger total;
-/**  */
-@property(nonatomic,copy) NSString *tid;
+/**
+ 1、图片
+ 2、视频
+ */
+@property(nonatomic,strong) NSNumber *tid;
 /**  */
 @property (nonatomic, strong) UIView *lineView;
 /**  */
 @property (nonatomic, strong) FSMoreView *moreView;
 /**  */
 @property (nonatomic, strong) FSReportView *reportView;
+/**  */
+@property (nonatomic, strong) NSMutableArray *stuffAry;
 
 @end
 
 @implementation FSSearchViewController
+
+-(NSMutableArray *)stuffAry{
+    if (!_stuffAry) {
+        _stuffAry = [NSMutableArray array];
+    }
+    return _stuffAry;
+}
 
 -(FSMoreView *)moreView{
     if (!_moreView) {
@@ -70,20 +77,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-}
-
--(NSMutableArray *)videoAry{
-    if (!_videoAry) {
-        _videoAry = [NSMutableArray array];
-    }
-    return _videoAry;
-}
-
--(NSMutableArray *)pictureAry{
-    if (!_pictureAry) {
-        _pictureAry = [NSMutableArray array];
-    }
-    return _pictureAry;
 }
 
 -(NSMutableArray *)userAry{
@@ -106,21 +99,20 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if ([self.tid isEqualToString:@"0"]) {
+    if ([self.type isEqualToNumber:@(2)]) {
         //用户
         return self.userAry.count;
-    } else if ([self.tid isEqualToString:@"1"]) {
-        //图片
-        return self.pictureAry.count;
-    } else if ([self.tid isEqualToString:@"2"]) {
-        //视频
-        return self.videoAry.count;
+    } else if ([self.type isEqualToNumber:@(1)]) {
+        if (self.stuffAry.count == 0) {
+            self.myTableView.mj_footer.hidden = YES;
+        }
+        return self.stuffAry.count;
     }
     return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.tid isEqualToString:@"0"]) {
+    if ([self.type isEqualToNumber:@(2)]) {
         //用户
         static NSString *userCell = @"userCell";
         FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCell];
@@ -129,11 +121,10 @@
         }
         //传入模型
         return cell;
-    } else if ([self.tid isEqualToString:@"1"]) {
-        //图片
+    } else if ([self.type isEqualToNumber:@(1)]) {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         //传入模型
-        FSZuoPin *model = self.pictureAry[indexPath.row];
+        FSZuoPin *model = self.stuffAry[indexPath.row];
         cell.model = model;
         cell.fucosBtn.tag = indexPath.row;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -147,9 +138,6 @@
         cell.pictuerView.tapBTn.tag = indexPath.row;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
-    } else if ([self.tid isEqualToString:@"2"]) {
-        //视频
-        
     }
     return nil;
 }
@@ -159,7 +147,7 @@
     FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    FSZuoPin *model = self.pictureAry[sender.tag];
+    FSZuoPin *model = self.stuffAry[sender.tag];
     vc.imageUrl = model.file_large;
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -203,19 +191,19 @@
 #pragma mark - 评论按钮
 -(void)commendClick: (UIButton *) sender{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
-    vc.model = self.pictureAry[sender.tag];
+    vc.model = self.stuffAry[sender.tag];
     vc.title = @"评论";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 点击喜欢按钮
 -(void)likeClick:(UIButton*)sender{
-    NSString *idStr = ((FSZuoPin*)self.pictureAry[sender.tag]).idFeild;
+    NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
     if (sender.selected) {
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = NO;
-            ((FSZuoPin*)self.pictureAry[sender.tag]).is_love = 0;
+            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
         } failure:^(FBRequest *request, NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"操作失败"];
         }];
@@ -223,7 +211,7 @@
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            ((FSZuoPin*)self.pictureAry[sender.tag]).is_love = 1;
+            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
         } failure:^(FBRequest *request, NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"操作失败"];
         }];
@@ -234,11 +222,11 @@
 -(void)fucosClick:(UIButton*)sender{
     if (sender.selected) {
         //取消关注
-        FSZuoPin *model = self.pictureAry[sender.tag];
+        FSZuoPin *model = self.stuffAry[sender.tag];
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.pictureAry.count; i ++) {
-                FSZuoPin *cellModel = self.pictureAry[i];
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 0;
                     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:0];
@@ -250,11 +238,11 @@
         }];
     } else {
         //关注
-        FSZuoPin *model = self.pictureAry[sender.tag];
+        FSZuoPin *model = self.stuffAry[sender.tag];
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.pictureAry.count; i ++) {
-                FSZuoPin *cellModel = self.pictureAry[i];
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
                 NSLog(@"cell的ID %@",cellModel.user_id);
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 1;
@@ -270,19 +258,14 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.tid isEqualToString:@"0"]) {
-        //用户
-        return self.userAry.count;
-    } else if ([self.tid isEqualToString:@"1"]) {
-        //图片
-        FSZuoPin *model = self.pictureAry[indexPath.row];
+    if ([self.type isEqualToNumber:@(2)]) {
+        return 44;
+    } else if ([self.type isEqualToNumber:@(1)]) {
+        FSZuoPin *model = self.stuffAry[indexPath.row];
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
         CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-        return gaoDu;
-    } else if ([self.tid isEqualToString:@"2"]) {
-        //视频
-        return self.videoAry.count;
+        return gaoDu + 10;
     }
     return 0;
 }
@@ -291,7 +274,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar.delegate = self;
-    self.type = @(2);
+    self.type = @(1);
+    self.tid = @(2);
     [self.view addSubview:self.myTableView];
     [self setupRefresh];
 }
@@ -306,27 +290,11 @@
 -(void)loadNew{
     [self.myTableView.mj_footer endRefreshing];
     self.current_page = 1;
-    NSString *type2;
-    if ([self.type isEqualToNumber:@(2)]) {
-        //type = 2 tid = 0
-        type2 = @"2";
-        self.tid = @"0";//用户
-    } else {
-        //type = 1
-        type2 = @"1";
-        if ([self.type isEqualToNumber:@(1)]) {
-            //tid = 1
-            self.tid = @"1";//图片
-        } else {
-            //tid = 2
-            self.tid = @"2";//视频
-        }
-    }
     FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
                                                                                      @"page" : @(self.current_page),
                                                                                      @"per_page" : @(10),
                                                                                      @"str" : self.searchBar.text,
-                                                                                     @"type" : type2,
+                                                                                     @"type" : self.type,
                                                                                      @"tid" : self.tid,
                                                                                      @"evt" : @(1),
                                                                                      @"sort" : @(1)
@@ -340,21 +308,17 @@
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
         }
         NSArray *dataAry = result[@"data"];
-        if ([self.tid isEqualToString:@"0"]) {
+        
+        if ([self.type isEqualToNumber:@(2)]) {
             //用户
-            
-        } else if ([self.tid isEqualToString:@"1"]) {
-            //图片
-            [self.pictureAry removeAllObjects];
+        } else if ([self.type isEqualToNumber:@(1)]) {
+            [self.stuffAry removeAllObjects];
             for (int i = 0; i < dataAry.count; i ++) {
                 NSDictionary *dict = dataAry[i];
                 NSDictionary *stuff = dict[@"stuff"];
                 FSZuoPin *model = [FSZuoPin mj_objectWithKeyValues:stuff];
-                [self.pictureAry addObject:model];
+                [self.stuffAry addObject:model];
             }
-        } else if ([self.tid isEqualToString:@"2"]) {
-            //视频
-            
         }
         [self.myTableView reloadData];
         [self checkFooterState];
@@ -364,7 +328,7 @@
 }
 
 -(void)checkFooterState{
-    if ([self.tid isEqualToString:@"0"]) {
+    if ([self.type isEqualToNumber:@(2)]) {
         //用户
         self.myTableView.mj_footer.hidden = self.userAry.count == 0;
         if (self.userAry.count == self.total) {
@@ -372,18 +336,9 @@
         }else{
             [self.myTableView.mj_footer endRefreshing];
         }
-    } else if ([self.tid isEqualToString:@"1"]) {
-        //图片
-        self.myTableView.mj_footer.hidden = self.pictureAry.count == 0;
-        if (self.pictureAry.count == self.total) {
-            self.myTableView.mj_footer.hidden = YES;
-        }else{
-            [self.myTableView.mj_footer endRefreshing];
-        }
-    } else if ([self.tid isEqualToString:@"2"]) {
-        //视频
-        self.myTableView.mj_footer.hidden = self.videoAry.count == 0;
-        if (self.videoAry.count == self.total) {
+    } else if ([self.type isEqualToNumber:@(1)]) {
+        self.myTableView.mj_footer.hidden = self.stuffAry.count == 0;
+        if (self.stuffAry.count == self.total) {
             self.myTableView.mj_footer.hidden = YES;
         }else{
             [self.myTableView.mj_footer endRefreshing];
@@ -393,27 +348,11 @@
 
 -(void)loadMore{
     [self.myTableView.mj_header endRefreshing];
-    NSString *type2;
-    if ([self.type isEqualToNumber:@(2)]) {
-        //type = 2 tid = 0
-        type2 = @"2";
-        self.tid = @"0";//用户
-    } else {
-        //type = 1
-        type2 = @"1";
-        if ([self.type isEqualToNumber:@(1)]) {
-            //tid = 1
-            self.tid = @"1";//图片
-        } else {
-            //tid = 2
-            self.tid = @"2";//视频
-        }
-    }
     FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
                                                                                      @"page" : @(++self.current_page),
                                                                                      @"per_page" : @(10),
                                                                                      @"str" : self.searchBar.text,
-                                                                                     @"type" : type2,
+                                                                                     @"type" : self.type,
                                                                                      @"tid" : self.tid,
                                                                                      @"evt" : @(1),
                                                                                      @"sort" : @(1)
@@ -427,15 +366,8 @@
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
         }
         NSArray *rows = result[@"data"];
-        if ([self.tid isEqualToString:@"0"]) {
-            //用户
-            
-        } else if ([self.tid isEqualToString:@"1"]) {
-            //图片
-            
-        } else if ([self.tid isEqualToString:@"2"]) {
-            //视频
-            
+        if ([self.type isEqualToNumber:@(2)]) {
+        } else if ([self.type isEqualToNumber:@(1)]) {
         }
         //self.pictureAry = [];
         [self.myTableView reloadData];
@@ -477,7 +409,16 @@
 
 #pragma mark - - - SGTopScrollMenu代理方法
 - (void)SGTopTitleView:(SGTopTitleView *)topTitleView didSelectTitleAtIndex:(NSInteger)index {
-    self.type = [NSNumber numberWithInteger:index];
+    if (index == 0) {
+        self.type = @(1);
+        self.tid = @(2);
+    } else if (index == 1) {
+        self.type = @(1);
+        self.tid = @(1);
+    } else if (index == 2) {
+        self.type = @(2);
+        self.type = @(0);
+    }
     //进行网络请求
     [self.myTableView.mj_header beginRefreshing];
 }
