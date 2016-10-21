@@ -112,7 +112,7 @@
         for (NSDictionary *dict in dataAry) {
             NSDictionary *coverDict = dict[@"cover"];
             NSDictionary *fileDict = coverDict[@"file"];
-            NSString *large = fileDict[@"large"];
+            NSString *large = fileDict[@"adpic"];
             [self.imageUrlAry addObject:large];
         }
         self.cycleScrollView.imageURLStringsGroup = self.imageUrlAry;

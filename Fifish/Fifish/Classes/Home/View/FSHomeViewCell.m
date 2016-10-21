@@ -89,6 +89,21 @@
         self.videoView.model = model;
     }
     
+//    if (model.tags.count > 0) {
+//        CGFloat btnX = 0;
+//        CGFloat btnY = 0;
+//        CGFloat btnW = 0;
+//        CGFloat btnH = 0;
+//        for (int i = 0; i < model.tags.count; i ++) {
+//            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
+//            self.tagView addSubview:<#(nonnull UIView *)#>
+//        }
+//    } else {
+//        self.tagView
+//    }
+
+    
     if (model.tags.count > 0) {
         NSString *str;
         for (int i = 0; i < model.tags.count; i ++) {
@@ -96,7 +111,7 @@
             if (i == 0) {
                 str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
             } else {
-                str = [NSString stringWithFormat:@"%@ #%@", str, dict[@"name"]];
+                str = [NSString stringWithFormat:@"%@, #%@", str, dict[@"name"]];
             }
         }
         self.tagTag.text = str;

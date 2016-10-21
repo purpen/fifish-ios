@@ -26,5 +26,8 @@
 @property (nonatomic, strong) FSHomeVideoView *videoView;
 /**  */
 @property (nonatomic, strong) UINavigationController *navi;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHegiht;
+@property (weak, nonatomic) IBOutlet UIButton *tagBtn;
 
 @end

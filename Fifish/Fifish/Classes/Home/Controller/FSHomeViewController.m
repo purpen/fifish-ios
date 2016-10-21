@@ -27,6 +27,7 @@
 #import "Masonry.h"
 #import "FSUserModel.h"
 #import "FSLoginViewController.h"
+#import "FSTagSearchViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
