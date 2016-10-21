@@ -27,6 +27,7 @@
 #import "Masonry.h"
 #import "FSUserModel.h"
 #import "FSLoginViewController.h"
+#import "FSTagSearchViewController.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
 
@@ -290,6 +291,12 @@ static NSString * const CellId = @"home";
 -(void)setupNav{
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
+    UIBarButtonItem *quick_releaseItem = [UIBarButtonItem itemWithImage:@"quick_release" highImage:nil title:nil target:self action:@selector(quickReleaseClick:)];
+    self.navigationItem.rightBarButtonItem = quick_releaseItem;
+}
+
+-(void)quickReleaseClick:(UIButton*)sender{
+    
 }
 
 
@@ -308,12 +315,6 @@ static NSString * const CellId = @"home";
     return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 0.01;
-    }
-    return 10;
-}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
@@ -445,7 +446,7 @@ static NSString * const CellId = @"home";
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu;
+    return gaoDu + 10;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

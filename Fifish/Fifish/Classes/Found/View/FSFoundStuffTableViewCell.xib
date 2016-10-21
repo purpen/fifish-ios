@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="370" height="454"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5rI-3S-zUN" id="XJP-N1-5mB">
-                <frame key="frameInset" width="370" height="454"/>
+                <frame key="frameInset" width="370" height="453"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3W-yb-uBu">
@@ -138,9 +138,9 @@
                         </state>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ah-oF-V1b">
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="xEK-xi-GXm"/>
+                            <constraint firstAttribute="height" constant="10" id="xEK-xi-GXm"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -137,7 +137,7 @@ static NSString * const FSCommentId = @"comment";
     CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
     // 计算文字的高度
     CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
+    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44 + 10;
     
     // 创建header
     UIView *header = [[UIView alloc] init];
@@ -155,6 +155,8 @@ static NSString * const FSCommentId = @"comment";
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.model = self.model;
     cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+    cell.bottomViewHegiht = 0;
+    [cell.contentView layoutIfNeeded];
     [header addSubview:cell];
     
     // 设置header
@@ -303,35 +305,35 @@ static NSString * const FSCommentId = @"comment";
 
 #pragma mark - 发送按钮
 - (IBAction)SendMessageClick:(UIButton *)sender {
-    
-    if (self.textTF.text.length == 0) {
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Comment is empty", nil)];
-        return;
+    if ([self isLoginAndPresentLoginVc]) {
+        if (self.textTF.text.length == 0) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Comment is empty", nil)];
+            return;
+        }
+        
+        if ([self.textTF.placeholder isEqualToString:@"评论一下"]) {
+            //评论
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text} delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.textTF.text = @"";
+                [self.textTF resignFirstResponder];
+                [self.commendTableView.mj_header beginRefreshing];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //回复某人
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.textTF.text = @"";
+                [self.textTF resignFirstResponder];
+                [self.commendTableView.mj_header beginRefreshing];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
-    
-    if ([self.textTF.placeholder isEqualToString:@"评论一下"]) {
-        //评论
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text} delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            self.textTF.text = @"";
-            [self.textTF resignFirstResponder];
-            [self.commendTableView.mj_header beginRefreshing];
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    } else {
-        //回复某人
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            self.textTF.text = @"";
-            [self.textTF resignFirstResponder];
-            [self.commendTableView.mj_header beginRefreshing];
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    }
-    
 }
 
 @end

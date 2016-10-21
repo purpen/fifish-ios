@@ -11,8 +11,8 @@
 @interface FSTagSearchOneTableViewCell : UITableViewCell
 
 /**  */
-@property(nonatomic,copy) NSString *headImageUrl;
-/**  */
 @property(nonatomic,copy) NSString *placeString;
+/**  */
+@property (nonatomic, strong) UINavigationController *navc;
 
 @end

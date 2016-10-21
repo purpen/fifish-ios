@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -100,6 +100,7 @@
                         <constraint firstItem="Q7V-n7-zf9" firstAttribute="leading" secondItem="GTn-UB-nIT" secondAttribute="leading" id="mUX-1h-r1R"/>
                         <constraint firstItem="DVt-sh-gWB" firstAttribute="centerX" secondItem="La4-SU-CuI" secondAttribute="centerX" id="onD-GM-zEz"/>
                         <constraint firstItem="Yad-OI-o93" firstAttribute="top" secondItem="HXH-nH-kCX" secondAttribute="bottom" constant="48" id="pyp-ZW-9Rk"/>
+                        <constraint firstAttribute="trailing" secondItem="DVt-sh-gWB" secondAttribute="trailing" constant="40" id="q0b-Gk-t0K"/>
                         <constraint firstItem="DVt-sh-gWB" firstAttribute="leading" secondItem="La4-SU-CuI" secondAttribute="leading" constant="39" id="sHP-nQ-jNQ"/>
                         <constraint firstAttribute="height" constant="277" id="uhN-OO-p6X"/>
                         <constraint firstItem="dd0-sy-u2d" firstAttribute="leading" secondItem="GTn-UB-nIT" secondAttribute="leading" id="w1i-ap-jGl"/>
@@ -127,7 +128,7 @@
                             </constraints>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zO5-lO-oyu" userLabel="白色线2">
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -296,6 +297,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="La4-SU-CuI" firstAttribute="width" secondItem="B62-Sc-ulc" secondAttribute="width" id="3f3-bO-zPb"/>
                 <constraint firstItem="ita-gq-Vzn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3nO-eN-tOv"/>
                 <constraint firstItem="8Ti-1W-Bzz" firstAttribute="top" secondItem="B62-Sc-ulc" secondAttribute="bottom" constant="69" id="8IP-Vr-rCu"/>
                 <constraint firstAttribute="trailing" secondItem="Mzt-Wb-TJs" secondAttribute="trailing" constant="15" id="9cR-eu-1fr"/>

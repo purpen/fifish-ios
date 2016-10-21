@@ -15,6 +15,6 @@
 
 @interface FSBaseViewController : UIViewController
 
-
+-(BOOL)isLoginAndPresentLoginVc;
 
 @end

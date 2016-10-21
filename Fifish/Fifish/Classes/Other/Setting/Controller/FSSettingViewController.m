@@ -115,8 +115,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     [defaults synchronize];
+    [[FSTabBarController sharedManager] setSelectedIndex:0];
     [self.navigationController popViewControllerAnimated:YES];
-    [[FSTabBarController sharedManager] setSelectedIndex:3];
 }
 
 -(void)resetNotificationState{

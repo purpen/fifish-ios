@@ -59,7 +59,7 @@
 
 -(SDCycleScrollView *)cycleScrollView{
     if (!_cycleScrollView) {
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@"cycle_default"]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 211) delegate:self placeholderImage:[UIImage imageNamed:@"shuffling_default"]];
         _cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"found_current"];
         _cycleScrollView.pageDotImage = [UIImage imageNamed:@"found_default"];
     }
@@ -112,7 +112,7 @@
         for (NSDictionary *dict in dataAry) {
             NSDictionary *coverDict = dict[@"cover"];
             NSDictionary *fileDict = coverDict[@"file"];
-            NSString *large = fileDict[@"large"];
+            NSString *large = fileDict[@"adpic"];
             [self.imageUrlAry addObject:large];
         }
         self.cycleScrollView.imageURLStringsGroup = self.imageUrlAry;
@@ -216,7 +216,7 @@
 
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
-        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50)];
+        _contentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contentTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         _contentTableView.showsVerticalScrollIndicator = NO;
@@ -247,11 +247,15 @@
     }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return 90;
     } else if (indexPath.section == 1) {
-        return 90;
+        return 100;
     }
     FSZuoPin *model = self.stuffAry[indexPath.row];
     // 文字的最大尺寸
@@ -259,7 +263,7 @@
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 20;
+    return gaoDu + 10;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -325,38 +329,40 @@
 
 #pragma mark - 关注
 -(void)fucosClick:(UIButton*)sender{
-    if (sender.selected) {
-        //取消关注
-        FSZuoPin *model = self.stuffAry[sender.tag];
-        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 0;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    if ([self isLoginAndPresentLoginVc]) {
+        if (sender.selected) {
+            //取消关注
+            FSZuoPin *model = self.stuffAry[sender.tag];
+            FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.stuffAry.count; i ++) {
+                    FSZuoPin *cellModel = self.stuffAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 0;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    } else {
-        //关注
-        FSZuoPin *model = self.stuffAry[sender.tag];
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 1;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //关注
+            FSZuoPin *model = self.stuffAry[sender.tag];
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.stuffAry.count; i ++) {
+                    FSZuoPin *cellModel = self.stuffAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 1;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
 }
 
@@ -406,23 +412,25 @@
 
 #pragma mark - 点击喜欢按钮
 -(void)likeClick:(UIButton*)sender{
-    NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
-    if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
-    } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+    if ([self isLoginAndPresentLoginVc]) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
+        if (sender.selected) {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = NO;
+                ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        } else {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = YES;
+                ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        }
     }
 }
 

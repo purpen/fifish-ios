@@ -12,5 +12,7 @@
 
 /**  */
 @property(nonatomic,copy) NSString *tagText;
+/**  */
+@property (nonatomic, strong) UINavigationController *navc;
 
 @end

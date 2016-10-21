@@ -34,12 +34,6 @@
     self.headImageView.layer.cornerRadius = 5;
     self.shadowView.layer.masksToBounds = YES;
     self.shadowView.layer.cornerRadius = 5;
-    [self.contentView addSubview:self.myCollectionView];
-}
-
--(void)setHeadImageUrl:(NSString *)headImageUrl{
-    _headImageUrl = headImageUrl;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.headImageUrl] placeholderImage:[UIImage imageNamed:@""]];
 }
 
 -(void)setPlaceString:(NSString *)placeString{
@@ -52,9 +46,12 @@
     NSString *encodedString = [[NSString stringWithFormat:@"/tags/%@",self.placeString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     FBRequest *request = [FBAPI getWithUrlString:encodedString requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:result[@"data"][@"cover"][@"file"][@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
         self.countLabel.text = [NSString stringWithFormat:@"使用次数:%@",result[@"data"][@"total_count"]];
-        self.tagAry = result[@"data"][@"related_words"];
-        [self.myCollectionView reloadData];
+        if ([result[@"data"][@"related_words"] isKindOfClass:[NSArray class]]) {
+            self.tagAry = result[@"data"][@"related_words"];
+        }
+        [self.contentView addSubview:self.myCollectionView];
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
@@ -77,10 +74,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.tagAry.count > 0) {
-        return self.tagAry.count;
-    }
-    return 0;
+    return self.tagAry.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,6 +90,7 @@
     FSTagSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FSTagSearchCollectionViewCell" forIndexPath:indexPath];
     NSString *str = self.tagAry[indexPath.row];
     cell.tagText = str;
+    cell.navc = self.navc;
     return cell;
 }
 
