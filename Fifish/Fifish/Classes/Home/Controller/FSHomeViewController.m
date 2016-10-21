@@ -28,8 +28,11 @@
 #import "FSUserModel.h"
 #import "FSLoginViewController.h"
 #import "FSTagSearchViewController.h"
+#import "FSFileManager.h"
+#import "FSMediaBrowseViewController.h"
+#import "FSMcBaseNavViewController.h"
 
-@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate>
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 /**  */
 @property(nonatomic,assign) NSInteger current_page;
@@ -295,8 +298,53 @@ static NSString * const CellId = @"home";
     self.navigationItem.rightBarButtonItem = quick_releaseItem;
 }
 
+#pragma mark - 快捷发布
 -(void)quickReleaseClick:(UIButton*)sender{
+    UIImagePickerController * pickerVc = [[UIImagePickerController alloc] init];
+    pickerVc.delegate = self;
+    pickerVc.allowsEditing = YES;
+    pickerVc.mediaTypes = @[(NSString *)kUTTypeMovie,(NSString *)kUTTypeVideo,(NSString *)kUTTypeImage];
+    pickerVc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
+    [self presentViewController:pickerVc animated:YES completion:nil];
+}
+
+#pragma mark imagePickerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
+    //判断资源类型
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
+        //如果是图片
+        UIImage * image  = info[UIImagePickerControllerEditedImage];
+        //保存图片至本地
+        NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
+        //添加到本地
+        FSImageModel * imageModel = [[FSImageModel alloc] initWithFilePath:imageurlStr];
+        NSLog(@"%@",info);
+        NSMutableArray *ary = [NSMutableArray arrayWithObject:imageModel];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
+        fsmbvc.modelArr = ary;
+        FSMcBaseNavViewController * nav = [[FSMcBaseNavViewController alloc] initWithRootViewController:fsmbvc];
+        [self presentViewController:nav animated:YES completion:nil];
+    } else {
+        //如果是视频
+        NSURL *url = info[UIImagePickerControllerMediaURL];
+        NSLog(@"%@",url);
+        //保存视频至相册（异步线程
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[FSFileManager defaultManager] SaveVideoWithFilePath:url.path];
+            FSVideoModel * model = [[FSVideoModel alloc] initWithFilePath:url.path];
+            NSMutableArray *ary = [NSMutableArray arrayWithObject:model];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+                FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
+                fsmbvc.modelArr = ary;
+                FSMcBaseNavViewController * nav = [[FSMcBaseNavViewController alloc] initWithRootViewController:fsmbvc];
+                [self presentViewController:nav animated:YES completion:nil];
+            });
+        });
+    }
 }
 
 

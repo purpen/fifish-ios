@@ -40,7 +40,7 @@
 
 - (IBAction)headBtnClick:(UIButton *)sender {
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    
+    vc.userId = self.model.user_id;
     [self.navi pushViewController:vc animated:YES];
 }
 

@@ -77,7 +77,8 @@
 
 -(void)clickHomePageBtn:(UIButton*)sender{
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    vc.isMyself = YES;
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    vc.userId = userModel.userId;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

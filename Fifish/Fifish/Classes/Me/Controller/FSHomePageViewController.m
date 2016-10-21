@@ -59,6 +59,10 @@ typedef enum {
 @property (nonatomic, strong) UIView *naviView;
 /**  */
 @property (nonatomic, assign) BOOL arrangementFlag;
+/** 自己或别人的个人中心 */
+@property (nonatomic, assign) BOOL isMyself;
+/**  */
+@property (nonatomic, strong) FSUserModel *user_model;
 
 @end
 
@@ -92,6 +96,12 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    if ([userModel.userId isEqualToString:self.userId]) {
+        self.isMyself = YES;
+    } else {
+        self.isMyself = NO;
+    }
     // 设置导航栏
     [self setupNav];
 }
@@ -223,14 +233,14 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeGuanZhu:
         {
             //关注网络请求
-            
+            [self fucosRequsetMore];
         }
             break;
             
         case FSTypeFenSi:
         {
             //粉丝网络请求
-            [self fansRequest];
+            [self fansRequestMore];
         }
             break;
             
@@ -277,16 +287,15 @@ static NSString * const fucosCellId = @"fucos";
     
 }
 
-#pragma mark - 关注网络请求
--(void)fucosRequset{
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",userModel.userId] requestDictionary:nil delegate:self];
+-(void)fucosRequsetMore{
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"关注列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        self.guanZhuPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        [self.guanZhuPersons addObjectsFromArray:ary];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
@@ -299,11 +308,50 @@ static NSString * const fucosCellId = @"fucos";
     }];
 }
 
+#pragma mark - 关注网络请求
+-(void)fucosRequset{
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"关注列表  %@",result);
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        NSArray *dataAry = result[@"data"];
+        self.guanZhuPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        [self.contentTableView reloadData];
+        [self checkFooterState];
+        [self.contentTableView.mj_header endRefreshing];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        // 让底部控件结束刷新
+        [self.contentTableView.mj_header endRefreshing];
+    }];
+}
+
+-(void)fansRequestMore{
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userId] requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"粉丝列表  %@",result);
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        NSArray *dataAry = result[@"data"];
+        NSArray *ary = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        [self.fenSiPersons addObjectsFromArray:ary];
+        [self.contentTableView reloadData];
+        [self checkFooterState];
+        [self.contentTableView.mj_header endRefreshing];
+    } failure:^(FBRequest *request, NSError *error) {
+        // 提醒
+        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        
+        // 让底部控件结束刷新
+        [self.contentTableView.mj_header endRefreshing];
+    }];
+}
 
 #pragma mark - 粉丝网络请求
 -(void)fansRequest{
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:nil delegate:self];
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"粉丝列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
@@ -327,7 +375,6 @@ static NSString * const fucosCellId = @"fucos";
     if (self.isMyself) {
         FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
-            
             FSUserModel *userModel = [[FSUserModel findAll] lastObject];
             NSDictionary *dict = result[@"data"];
             userModel = [FSUserModel mj_objectWithKeyValues:dict];
@@ -337,15 +384,11 @@ static NSString * const fucosCellId = @"fucos";
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
-    } else if (!self.isMyself) {
-        FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+    } else {
+        FBRequest *request2 = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@",self.userId] requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
-            
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
             NSDictionary *dict = result[@"data"];
-            userModel = [FSUserModel mj_objectWithKeyValues:dict];
-            userModel.isLogin = YES;
-            [userModel saveOrUpdate];
+            self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
             
@@ -355,10 +398,10 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 作品的网络请求
 -(void)zuoPinRequest{
-    
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:@{
                                                                                 @"page" : @(self.current_page),
-                                                                                @"per_page" : @(10)
+                                                                                @"per_page" : @(10),
+                                                                                @"user_id" : self.userId
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSLog(@"作品  %@",result);
@@ -372,18 +415,17 @@ static NSString * const fucosCellId = @"fucos";
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
     }];
-    
 }
 
 #pragma mark - 作品网络请求更多
 -(void)zuoPinRequestMore{
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:@{
                                                                                 @"page" : @(++ self.current_page),
-                                                                                @"per_page" : @(10)
+                                                                                @"per_page" : @(10),
+                                                                                @"user_id" : self.userId
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
@@ -564,7 +606,11 @@ static NSString * const fucosCellId = @"fucos";
             cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
         FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        cell.model = userModel;
+        if (self.isMyself) {
+           cell.model = userModel;
+        } else {
+            cell.model = self.user_model;
+        }
         switch (self.type) {
             case FSTypeZuoPin:
                 cell.zuoPinShu.textColor = DEFAULT_COLOR;
@@ -595,8 +641,12 @@ static NSString * const fucosCellId = @"fucos";
                 //作品cell
                 if (indexPath.row == 0) {
                     FSStuffCountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSStuffCountTableViewCell"];
-                    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-                    cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",userModel.stuff_count];
+                    if (self.isMyself) {
+                        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",userModel.stuff_count];
+                    } else {
+                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",self.user_model.stuff_count];
+                    }
                     [cell.arrangementBtn addTarget:self action:@selector(changeArrangment:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
                 } else {
@@ -673,6 +723,7 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeGuanZhu:
             {
                 FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+                vc.userId = self.userId;
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

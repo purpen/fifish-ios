@@ -12,7 +12,7 @@
 /**
  model数组
  */
-@property (assign, nonatomic)NSMutableArray * modelArr;
+@property (strong, nonatomic)NSMutableArray * modelArr;
 
 /**
  进入页面时的下标

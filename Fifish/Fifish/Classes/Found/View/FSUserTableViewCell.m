@@ -10,6 +10,7 @@
 #import "FSUserCollectionViewCell.h"
 #import "UIColor+FSExtension.h"
 #import "FSHomePageViewController.h"
+#import "FSUserModel.h"
 
 @interface FSUserTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -75,7 +76,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    vc.isMyself = NO;
+    FSUserModel *userModel = self.modelAry[indexPath.row];
+    vc.userId = userModel.userId;
     [self.navi pushViewController:vc animated:YES];
 }
 
