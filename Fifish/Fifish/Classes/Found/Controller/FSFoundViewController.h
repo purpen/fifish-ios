@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 
-@interface FSFoundViewController : UIViewController
+@interface FSFoundViewController : FSBaseViewController
 
 /**  */
 @property (nonatomic, strong) UIViewController *controller;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 @class FSZuoPin;
 
 @protocol FSHomeDetailViewControllerDelegate <NSObject>
@@ -15,7 +16,7 @@
 
 @end
 
-@interface FSHomeDetailViewController : UIViewController
+@interface FSHomeDetailViewController : FSBaseViewController
 
 /**  */
 @property (nonatomic, strong) FSZuoPin *model;

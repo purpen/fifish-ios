@@ -329,38 +329,40 @@
 
 #pragma mark - 关注
 -(void)fucosClick:(UIButton*)sender{
-    if (sender.selected) {
-        //取消关注
-        FSZuoPin *model = self.stuffAry[sender.tag];
-        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 0;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    if ([self isLoginAndPresentLoginVc]) {
+        if (sender.selected) {
+            //取消关注
+            FSZuoPin *model = self.stuffAry[sender.tag];
+            FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.stuffAry.count; i ++) {
+                    FSZuoPin *cellModel = self.stuffAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 0;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    } else {
-        //关注
-        FSZuoPin *model = self.stuffAry[sender.tag];
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 1;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                    [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //关注
+            FSZuoPin *model = self.stuffAry[sender.tag];
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.stuffAry.count; i ++) {
+                    FSZuoPin *cellModel = self.stuffAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 1;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
 }
 
@@ -410,23 +412,25 @@
 
 #pragma mark - 点击喜欢按钮
 -(void)likeClick:(UIButton*)sender{
-    NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
-    if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
-    } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+    if ([self isLoginAndPresentLoginVc]) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
+        if (sender.selected) {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = NO;
+                ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        } else {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = YES;
+                ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            }];
+        }
     }
 }
 

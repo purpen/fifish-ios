@@ -305,35 +305,35 @@ static NSString * const FSCommentId = @"comment";
 
 #pragma mark - 发送按钮
 - (IBAction)SendMessageClick:(UIButton *)sender {
-    
-    if (self.textTF.text.length == 0) {
-        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Comment is empty", nil)];
-        return;
+    if ([self isLoginAndPresentLoginVc]) {
+        if (self.textTF.text.length == 0) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Comment is empty", nil)];
+            return;
+        }
+        
+        if ([self.textTF.placeholder isEqualToString:@"评论一下"]) {
+            //评论
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text} delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.textTF.text = @"";
+                [self.textTF resignFirstResponder];
+                [self.commendTableView.mj_header beginRefreshing];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //回复某人
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.textTF.text = @"";
+                [self.textTF resignFirstResponder];
+                [self.commendTableView.mj_header beginRefreshing];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
-    
-    if ([self.textTF.placeholder isEqualToString:@"评论一下"]) {
-        //评论
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text} delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            self.textTF.text = @"";
-            [self.textTF resignFirstResponder];
-            [self.commendTableView.mj_header beginRefreshing];
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    } else {
-        //回复某人
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            self.textTF.text = @"";
-            [self.textTF resignFirstResponder];
-            [self.commendTableView.mj_header beginRefreshing];
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
-    }
-    
 }
 
 @end
