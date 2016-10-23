@@ -38,24 +38,19 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6go-S4-nWb" userLabel="标签">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6go-S4-nWb" userLabel="标签" customClass="CTDisplayView">
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtN-pd-vfC">
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.5607843137254902" green="0.61568627450980395" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7up-c2-fpn"/>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7up-c2-fpn" firstAttribute="leading" secondItem="6go-S4-nWb" secondAttribute="leading" id="C67-Aj-dao"/>
                             <constraint firstItem="TtN-pd-vfC" firstAttribute="centerY" secondItem="6go-S4-nWb" secondAttribute="centerY" id="GRq-6u-zh1"/>
                             <constraint firstAttribute="height" constant="44" id="PR8-Th-oXH"/>
-                            <constraint firstAttribute="bottom" secondItem="7up-c2-fpn" secondAttribute="bottom" id="aor-sj-HHr"/>
-                            <constraint firstAttribute="trailing" secondItem="7up-c2-fpn" secondAttribute="trailing" id="gXw-f2-H6d"/>
                             <constraint firstItem="TtN-pd-vfC" firstAttribute="leading" secondItem="6go-S4-nWb" secondAttribute="leading" constant="10" id="urS-32-SiH"/>
-                            <constraint firstItem="7up-c2-fpn" firstAttribute="top" secondItem="6go-S4-nWb" secondAttribute="top" id="zeD-Da-qUo"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw0-GZ-nvv">
@@ -186,9 +181,8 @@
                 <outlet property="nameLabel" destination="WVY-gK-Fy5" id="tY6-cb-jFa"/>
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
                 <outlet property="shareBtn" destination="6KS-4W-Pb0" id="ec6-4J-RjQ"/>
-                <outlet property="tagBtn" destination="7up-c2-fpn" id="e0O-Np-Dbq"/>
                 <outlet property="tagTag" destination="TtN-pd-vfC" id="hTz-cb-3Yg"/>
-                <outlet property="tagView" destination="6go-S4-nWb" id="zKM-d7-Xii"/>
+                <outlet property="tagView" destination="6go-S4-nWb" id="j9D-fu-HWO"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
             </connections>
             <point key="canvasLocation" x="312" y="414.5"/>

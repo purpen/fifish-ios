@@ -382,6 +382,15 @@
 		48911F8D1D9177220042B96F /* FSListUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F8B1D9177220042B96F /* FSListUserTableViewCell.m */; };
 		48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */; };
 		48911F911D9177590042B96F /* FSListUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48911F901D9177590042B96F /* FSListUserModel.m */; };
+		48FC207A1DBC4A08001D71F4 /* CoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20681DBC4A08001D71F4 /* CoreTextData.m */; };
+		48FC207B1DBC4A08001D71F4 /* CoreTextImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC206A1DBC4A08001D71F4 /* CoreTextImageData.m */; };
+		48FC207C1DBC4A08001D71F4 /* CoreTextLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC206C1DBC4A08001D71F4 /* CoreTextLinkData.m */; };
+		48FC207D1DBC4A08001D71F4 /* CoreTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC206E1DBC4A08001D71F4 /* CoreTextUtils.m */; };
+		48FC207E1DBC4A08001D71F4 /* CTFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20701DBC4A08001D71F4 /* CTFrameParser.m */; };
+		48FC207F1DBC4A08001D71F4 /* CTFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20721DBC4A08001D71F4 /* CTFrameParserConfig.m */; };
+		48FC20801DBC4A08001D71F4 /* CTDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20751DBC4A08001D71F4 /* CTDisplayView.m */; };
+		48FC20811DBC4A08001D71F4 /* MagnifiterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20771DBC4A08001D71F4 /* MagnifiterView.m */; };
+		48FC20821DBC4A08001D71F4 /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC20791DBC4A08001D71F4 /* UIView+frameAdjust.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1149,6 +1158,24 @@
 		48911F8C1D9177220042B96F /* FSListUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSListUserTableViewCell.xib; sourceTree = "<group>"; };
 		48911F8F1D9177590042B96F /* FSListUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSListUserModel.h; sourceTree = "<group>"; };
 		48911F901D9177590042B96F /* FSListUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSListUserModel.m; sourceTree = "<group>"; };
+		48FC20671DBC4A08001D71F4 /* CoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextData.h; sourceTree = "<group>"; };
+		48FC20681DBC4A08001D71F4 /* CoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextData.m; sourceTree = "<group>"; };
+		48FC20691DBC4A08001D71F4 /* CoreTextImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextImageData.h; sourceTree = "<group>"; };
+		48FC206A1DBC4A08001D71F4 /* CoreTextImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextImageData.m; sourceTree = "<group>"; };
+		48FC206B1DBC4A08001D71F4 /* CoreTextLinkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextLinkData.h; sourceTree = "<group>"; };
+		48FC206C1DBC4A08001D71F4 /* CoreTextLinkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextLinkData.m; sourceTree = "<group>"; };
+		48FC206D1DBC4A08001D71F4 /* CoreTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextUtils.h; sourceTree = "<group>"; };
+		48FC206E1DBC4A08001D71F4 /* CoreTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextUtils.m; sourceTree = "<group>"; };
+		48FC206F1DBC4A08001D71F4 /* CTFrameParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFrameParser.h; sourceTree = "<group>"; };
+		48FC20701DBC4A08001D71F4 /* CTFrameParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFrameParser.m; sourceTree = "<group>"; };
+		48FC20711DBC4A08001D71F4 /* CTFrameParserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFrameParserConfig.h; sourceTree = "<group>"; };
+		48FC20721DBC4A08001D71F4 /* CTFrameParserConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFrameParserConfig.m; sourceTree = "<group>"; };
+		48FC20741DBC4A08001D71F4 /* CTDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDisplayView.h; sourceTree = "<group>"; };
+		48FC20751DBC4A08001D71F4 /* CTDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDisplayView.m; sourceTree = "<group>"; };
+		48FC20761DBC4A08001D71F4 /* MagnifiterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnifiterView.h; sourceTree = "<group>"; };
+		48FC20771DBC4A08001D71F4 /* MagnifiterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagnifiterView.m; sourceTree = "<group>"; };
+		48FC20781DBC4A08001D71F4 /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
+		48FC20791DBC4A08001D71F4 /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
 		4C71A91C545D23BF3CD5D83A /* Pods-Fifish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fifish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fifish/Pods-Fifish.release.xcconfig"; sourceTree = "<group>"; };
 		B5E534B92A3783A5447B9174 /* Pods-Fifish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fifish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fifish/Pods-Fifish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2768,6 +2795,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				48FC20651DBC4A08001D71F4 /* CoreText */,
 				1FE564D41DB4D1E8000AE61D /* SDCycleScrollView */,
 				1FE564B01DAE275A000AE61D /* SGTopTitleView */,
 				1FDE28A41D92241D00566A73 /* MJExtension */,
@@ -3180,6 +3208,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		48FC20651DBC4A08001D71F4 /* CoreText */ = {
+			isa = PBXGroup;
+			children = (
+				48FC20661DBC4A08001D71F4 /* Models */,
+				48FC20731DBC4A08001D71F4 /* Views */,
+			);
+			path = CoreText;
+			sourceTree = "<group>";
+		};
+		48FC20661DBC4A08001D71F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				48FC20671DBC4A08001D71F4 /* CoreTextData.h */,
+				48FC20681DBC4A08001D71F4 /* CoreTextData.m */,
+				48FC20691DBC4A08001D71F4 /* CoreTextImageData.h */,
+				48FC206A1DBC4A08001D71F4 /* CoreTextImageData.m */,
+				48FC206B1DBC4A08001D71F4 /* CoreTextLinkData.h */,
+				48FC206C1DBC4A08001D71F4 /* CoreTextLinkData.m */,
+				48FC206D1DBC4A08001D71F4 /* CoreTextUtils.h */,
+				48FC206E1DBC4A08001D71F4 /* CoreTextUtils.m */,
+				48FC206F1DBC4A08001D71F4 /* CTFrameParser.h */,
+				48FC20701DBC4A08001D71F4 /* CTFrameParser.m */,
+				48FC20711DBC4A08001D71F4 /* CTFrameParserConfig.h */,
+				48FC20721DBC4A08001D71F4 /* CTFrameParserConfig.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		48FC20731DBC4A08001D71F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48FC20741DBC4A08001D71F4 /* CTDisplayView.h */,
+				48FC20751DBC4A08001D71F4 /* CTDisplayView.m */,
+				48FC20761DBC4A08001D71F4 /* MagnifiterView.h */,
+				48FC20771DBC4A08001D71F4 /* MagnifiterView.m */,
+				48FC20781DBC4A08001D71F4 /* UIView+frameAdjust.h */,
+				48FC20791DBC4A08001D71F4 /* UIView+frameAdjust.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		72BA8D14CCB72347F8FB9DA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3474,6 +3543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F04244D1D51F3C30071A1D6 /* AFURLConnectionOperation.m in Sources */,
+				48FC207D1DBC4A08001D71F4 /* CoreTextUtils.m in Sources */,
 				1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */,
 				1F7EDEEC1D4700E500ABED5D /* IQTextView.m in Sources */,
 				1FDE28C51D92241D00566A73 /* NSObject+MJKeyValue.m in Sources */,
@@ -3508,8 +3578,10 @@
 				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
 				1F4202051D48AE0100D3E6CB /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				040995611D95173200BFEC92 /* FSMediaModel.m in Sources */,
+				48FC20801DBC4A08001D71F4 /* CTDisplayView.m in Sources */,
 				1F7EDEA61D45F4AD00ABED5D /* UIView+FSExtension.m in Sources */,
 				1F7EDEEA1D4700E500ABED5D /* IQKeyboardManager.m in Sources */,
+				48FC20811DBC4A08001D71F4 /* MagnifiterView.m in Sources */,
 				1FE087901D8254EA007790E3 /* FSTabBar.m in Sources */,
 				1F4201C01D4755C400D3E6CB /* NSString+Helper.m in Sources */,
 				046765171D63285800FFA743 /* FSBatteryView.m in Sources */,
@@ -3527,6 +3599,7 @@
 				1F4202011D48AE0100D3E6CB /* MASLayoutConstraint.m in Sources */,
 				1F04244F1D51F3C30071A1D6 /* AFURLResponseSerialization.m in Sources */,
 				1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */,
+				48FC207B1DBC4A08001D71F4 /* CoreTextImageData.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
 				1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -3535,6 +3608,7 @@
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */,
+				48FC207A1DBC4A08001D71F4 /* CoreTextData.m in Sources */,
 				1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */,
 				1F0424531D51F3C30071A1D6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1F4202001D48AE0100D3E6CB /* MASConstraintMaker.m in Sources */,
@@ -3561,6 +3635,7 @@
 				0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */,
 				1FB4FBBB1D954EC400E236CF /* MJRefreshBackStateFooter.m in Sources */,
 				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
+				48FC207E1DBC4A08001D71F4 /* CTFrameParser.m in Sources */,
 				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
 				1FDE28C71D92241D00566A73 /* NSString+MJExtension.m in Sources */,
 				1F0219CC1D799027003A8A11 /* FSForgetViewController.m in Sources */,
@@ -3618,6 +3693,7 @@
 				1F7EDEE91D4700E500ABED5D /* IQUIWindow+Hierarchy.m in Sources */,
 				1FB4FBBD1D954EC400E236CF /* MJRefreshNormalHeader.m in Sources */,
 				1F7EDE961D45EF6900ABED5D /* FSFoundViewController.m in Sources */,
+				48FC207C1DBC4A08001D71F4 /* CoreTextLinkData.m in Sources */,
 				1FB4FBC01D954EC400E236CF /* MJRefreshConst.m in Sources */,
 				1F4201FF1D48AE0100D3E6CB /* MASConstraint.m in Sources */,
 				1FB4FBBC1D954EC400E236CF /* MJRefreshGifHeader.m in Sources */,
@@ -3654,6 +3730,7 @@
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				1FDE28D61D92823E00566A73 /* FSTagTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
+				48FC207F1DBC4A08001D71F4 /* CTFrameParserConfig.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,
@@ -3679,6 +3756,7 @@
 				0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */,
 				1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */,
 				1F0219B91D79500A003A8A11 /* FMResultSet.m in Sources */,
+				48FC20821DBC4A08001D71F4 /* UIView+frameAdjust.m in Sources */,
 				1FE564FD1DB75DBE000AE61D /* FSTagSearchViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
 				1FDE28C41D92241D00566A73 /* NSObject+MJCoding.m in Sources */,
@@ -3825,7 +3903,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3866,7 +3944,7 @@
 				INSTALL_OWNER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3899,7 +3977,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
@@ -3933,7 +4011,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7da8b6ca-f4e0-4d99-9a33-b9bd066821f4";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
