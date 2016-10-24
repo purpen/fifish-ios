@@ -30,7 +30,7 @@
             [self.delegate UpdataNewInfoWithRovInfo:info];
         }
         
-        self.Temp = [NSString stringWithFormat:@"%.1f",((info.temp[0]&0xff<<8)|(info.temp[1]&0xff))/10.0];
+        self.Temp = [NSString stringWithFormat:@"%.1f",((info.temp[0]&0xff<<8)|(info.temp[1]&0xff))/1.0];
         self.Depth= (((info.depth[0]&0xff)<<8)|(info.depth[1]&0xff))/10.0;
         self.Heading_angle = ((((info.heading_angle[0]&0xff)<<8)|(info.heading_angle[1]&0xff))/100.0);
         self.Pitch_angle = ((((info.pitch_angle[0]&0xff)<<8)|(info.pitch_angle[1]&0xff))/100.0)-90.0;

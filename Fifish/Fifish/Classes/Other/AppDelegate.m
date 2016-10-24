@@ -6,6 +6,16 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
+//app
+//1.视频返回键不明显（户外完全看不清）
+//2.录制 提醒框停留过久
+//3.长时间使用  媒体菜单下 没有视频和图片显示（实际有录拍到）
+//4.画面仍有卡顿出现
+//5.需要加入方位箭头/2d显示
+//6.rov低电量显示提醒
+//7.led灯级别显示
+//8.全部参数显示黑色时在户外看不清楚
+
 #import "AppDelegate.h"
 #import "FSTabBarController.h"
 #import "IQKeyboardManager.h"

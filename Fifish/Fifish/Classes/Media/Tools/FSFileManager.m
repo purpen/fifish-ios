@@ -7,7 +7,7 @@
 //
 
 #import "FSFileManager.h"
-
+#import <Photos/Photos.h>
 @implementation FSFileManager
 + (instancetype)defaultManager{
     static FSFileManager *sharedAccountManagerInstance = nil;
@@ -67,11 +67,6 @@
 }
 -(void)SaveVideoWithFilePath:(NSString *)filePath{
     NSString* SavePathstr=[NSString stringWithFormat:@"%@.%@",[self getFileName],[NSURL fileURLWithPath:filePath].pathExtension];
-//    NSFileManager*fileManager =[NSFileManager defaultManager];
-//    NSError * error;
-//    
-//    [fileManager copyItemAtPath:[filePath path] toPath:SavePathstr error:&error];
-//    NSLog(@"%@",error);
     [self CopyFilePath:filePath  ToPath:SavePathstr];
 }
 //获取当前时间
@@ -112,5 +107,81 @@
         }
     }
     return bRet;
+}
+
+#pragma mark 系统
+- (void)SaveMediaToSysLabWithFilePath:(NSString *)filePath WithMediaType:(FSmediaType)type{
+    // 已经创建的自定义相册
+    PHAssetCollection *createdCollection = nil;
+    NSString * title = @"Fifish";
+    // 获得所有的自定义相册
+    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    for (PHAssetCollection *collection in collections) {
+        if ([collection.localizedTitle isEqualToString:title]) {
+            createdCollection = collection;
+            break;
+        }
+    }
+    
+    if (!createdCollection) { // 没有创建过相册
+        __block NSString *createdCollectionId = nil;
+        // 创建一个新的相册
+        [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+            createdCollectionId = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:title].placeholderForCreatedAssetCollection.localIdentifier;
+        } error:nil];
+        
+        // 创建完毕后再取出相册
+        createdCollection = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[createdCollectionId] options:nil].firstObject;
+    }
+    
+    if ( createdCollection == nil) {
+        NSLog(@"失败");
+        return;
+    }
+    // 将刚才添加到【相机胶卷】的图片，引用（添加）到【自定义相册】
+    NSError *error = nil;
+    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+        PHAssetChangeRequest * assetRequest;
+        if (type == ImageType) {
+            assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:[NSURL fileURLWithPath:filePath]];
+        }
+        else{
+            assetRequest = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:[NSURL fileURLWithPath:filePath]];
+        }
+        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+        
+        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+    } error:&error];
+    
+    
+    // 保存结果
+    if (error) {
+        NSLog(@"保存失败！");
+        NSLog(@"%@",error.localizedDescription);
+    } else {
+        NSLog(@"成功！");
+    }
+    
+//    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+//        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+//        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+//        PHAssetChangeRequest * assetRequest;
+//        if (type == ImageType) {
+//            assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:[NSURL fileURLWithPath:filePath]];
+//        }
+//        else{
+//            assetRequest = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:[NSURL fileURLWithPath:filePath]];
+//        }
+//        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+//    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+//        if (success) {
+//            NSLog(@"存入系统成功");
+//        }
+//        else{
+//            NSLog(@"%@",error.localizedDescription);
+//        }
+//    }];
 }
 @end

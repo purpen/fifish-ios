@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef enum : NSUInteger {
+    ImageType,
+    VideoType,
+} FSmediaType;
 
 @interface FSFileManager : NSObject
 + (instancetype)defaultManager;
@@ -26,6 +30,10 @@
 
 //拷贝文件
 - (void)CopyFilePath:(NSString *)path ToPath:(NSString *)toPath;
+
+//存入系统相册
+- (void)SaveMediaToSysLabWithFilePath:(NSString *)filePath WithMediaType:(FSmediaType)type;
+
 //从系统相册里面的fish
 //- (NSMutableArray *)GetMediaWithFishSystemLibiary;
 

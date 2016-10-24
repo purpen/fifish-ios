@@ -8,6 +8,7 @@
 
 
 #define PT_DELAY 1.5
+#import "FSFileManager.h"
 
 #import "OpenGLFrameView.h"
 #import <QuartzCore/QuartzCore.h>
@@ -605,6 +606,11 @@ exit:
     NSString* outputImageName=[NSString stringWithFormat:@"%@.png",currentDateStr];
     NSString *imageOutputPath=[path stringByAppendingPathComponent:outputImageName];
     [UIImagePNGRepresentation(image) writeToFile:imageOutputPath atomically:YES];
+    
+    #warning 存入系统相册，测试用
+    [[FSFileManager defaultManager] SaveMediaToSysLabWithFilePath:imageOutputPath WithMediaType:ImageType];
+    
+    
 }
 
 

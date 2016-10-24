@@ -12,6 +12,8 @@
 
 #import "FSImageTools.h"
 
+#import "FSFileManager.h"
+
 #include <libavcodec/avcodec.h>
 #import <libavformat/avformat.h>
 #import <libswscale/swscale.h>
@@ -301,8 +303,10 @@
         av_write_trailer( _mp4outFormatContext );
         frame_index = 0;
         av_dump_format(_mp4outFormatContext, 0,[self.OutputFileUrl UTF8String], 1);
+#warning 存入系统相册，测试用
+        [[FSFileManager defaultManager] SaveMediaToSysLabWithFilePath:self.OutputMp4FileUrl WithMediaType:VideoType];
     }
-    
+
     NSFileManager * man = [NSFileManager defaultManager];
     NSLog(@"%llu",[[man attributesOfItemAtPath:self.OutputFileUrl error:nil] fileSize]);
     
