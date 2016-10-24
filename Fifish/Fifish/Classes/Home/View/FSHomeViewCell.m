@@ -12,6 +12,11 @@
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 #import "FSHomePageViewController.h"
+#import "CTDisplayView.h"
+#import "CTFrameParser.h"
+#import "CTFrameParserConfig.h"
+#import "CoreTextLinkData.h"
+#import "FSTagSearchViewController.h"
 
 @interface FSHomeViewCell ()
 
@@ -22,11 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIView *tagView;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UIButton *headTapBtn;
+@property (weak, nonatomic) IBOutlet CTDisplayView *tagView;
 
 @end
 
@@ -60,6 +65,7 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
+    self.tagView.navc = self.navi;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
     self.timeLabel.text = model.created_at;
@@ -88,37 +94,40 @@
         [self.contentView layoutIfNeeded];
         self.videoView.model = model;
     }
-    
-//    if (model.tags.count > 0) {
-//        CGFloat btnX = 0;
-//        CGFloat btnY = 0;
-//        CGFloat btnW = 0;
-//        CGFloat btnH = 0;
-//        for (int i = 0; i < model.tags.count; i ++) {
-//            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//            btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-//            self.tagView addSubview:<#(nonnull UIView *)#>
-//        }
-//    } else {
-//        self.tagView
-//    }
 
-    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm createFileAtPath:filename contents:nil attributes:nil];
+    NSMutableArray *tagMAry = [NSMutableArray array];
     if (model.tags.count > 0) {
         NSString *str;
         for (int i = 0; i < model.tags.count; i ++) {
             NSDictionary *dict = model.tags[i];
-            if (i == 0) {
-                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
-            } else {
-                str = [NSString stringWithFormat:@"%@, #%@", str, dict[@"name"]];
-            }
+            NSDictionary *cellDict = @{
+                                       @"color" : @"blue",
+                                       @"content" : [NSString stringWithFormat:@" # %@",dict[@"name"]],
+                                       @"url" : @"hh",
+                                       @"type" : @"link"
+                                       };
+            [tagMAry addObject:cellDict];
+//            if (i == 0) {
+//                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
+//            } else {
+//                str = [NSString stringWithFormat:@"%@, #%@", str, dict[@"name"]];
+//            }
         }
-        self.tagTag.text = str;
     } else {
-        self.tagTag.text = @"";
+        [tagMAry removeAllObjects];
     }
-    
+    [tagMAry writeToFile:filename atomically:YES];
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    config.width = 200;
+    CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+    self.tagView.data = data;
+    self.tagView.height = data.height;
+    self.tagView.backgroundColor = [UIColor whiteColor];
     
     if (model.is_love == 0) {
         self.likeBtn.selected = NO;
