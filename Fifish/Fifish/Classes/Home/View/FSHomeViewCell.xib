@@ -40,17 +40,19 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6go-S4-nWb" userLabel="标签" customClass="CTDisplayView">
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtN-pd-vfC">
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.5607843137254902" green="0.61568627450980395" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikg-qs-7wT" customClass="CTDisplayView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="X9p-6m-v8E"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TtN-pd-vfC" firstAttribute="centerY" secondItem="6go-S4-nWb" secondAttribute="centerY" id="GRq-6u-zh1"/>
                             <constraint firstAttribute="height" constant="44" id="PR8-Th-oXH"/>
-                            <constraint firstItem="TtN-pd-vfC" firstAttribute="leading" secondItem="6go-S4-nWb" secondAttribute="leading" constant="10" id="urS-32-SiH"/>
+                            <constraint firstAttribute="trailing" secondItem="Ikg-qs-7wT" secondAttribute="trailing" id="RuC-ji-U4v"/>
+                            <constraint firstItem="Ikg-qs-7wT" firstAttribute="leading" secondItem="6go-S4-nWb" secondAttribute="leading" id="dq3-N8-DV5"/>
+                            <constraint firstItem="Ikg-qs-7wT" firstAttribute="centerY" secondItem="6go-S4-nWb" secondAttribute="centerY" id="tFE-PU-nR4"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw0-GZ-nvv">
@@ -181,8 +183,7 @@
                 <outlet property="nameLabel" destination="WVY-gK-Fy5" id="tY6-cb-jFa"/>
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
                 <outlet property="shareBtn" destination="6KS-4W-Pb0" id="ec6-4J-RjQ"/>
-                <outlet property="tagTag" destination="TtN-pd-vfC" id="hTz-cb-3Yg"/>
-                <outlet property="tagView" destination="6go-S4-nWb" id="j9D-fu-HWO"/>
+                <outlet property="tagView" destination="Ikg-qs-7wT" id="zSO-ye-Qed"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
             </connections>
             <point key="canvasLocation" x="312" y="414.5"/>

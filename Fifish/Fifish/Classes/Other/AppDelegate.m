@@ -14,6 +14,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "FBAPI.h"
 #import "FBRequest.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface AppDelegate ()
 
@@ -41,8 +42,21 @@
     
     //----------------注册高德地图
     [AMapServices sharedServices].apiKey =@"7dd6c9292619fb6fbdf34a1f5993a5aa";
+    //------------------注册友盟等社交平台
+    [[UMSocialManager defaultManager] openLog:YES];
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"580dbf76717c1916cb0043ed"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"163101587483903" appSecret:nil redirectURL:@"http://api.qysea.com"];
     
     return YES;
+}
+
+#pragma mark - 设置 U-Share SDK回调
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        
+    }
+    return result;
 }
 
 #pragma mark - 强制竖屏

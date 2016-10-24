@@ -37,8 +37,13 @@
 }
 
 -(void)setPlaceString:(NSString *)placeString{
-    _placeString = placeString;
-    self.tagLabel.text = [NSString stringWithFormat:@"# %@",self.placeString];
+    if ([placeString rangeOfString:@"#"].location != NSNotFound) {
+        _placeString = [placeString substringFromIndex:2];
+        NSLog(@"adhausdhuasdh  %@",self.placeString);
+    } else {
+        _placeString = placeString;
+    }
+    self.tagLabel.text = [NSString stringWithFormat:@"# %@", self.placeString];
     [self tagRequest];
 }
 

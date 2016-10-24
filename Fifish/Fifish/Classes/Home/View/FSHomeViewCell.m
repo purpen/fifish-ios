@@ -123,10 +123,10 @@
     }
     [tagMAry writeToFile:filename atomically:YES];
     CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-    config.width = 200;
+    config.width = SCREEN_WIDTH;
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     self.tagView.data = data;
-    self.tagView.height = data.height;
+//    self.tagView.height = data.height;
     self.tagView.backgroundColor = [UIColor whiteColor];
     
     if (model.is_love == 0) {

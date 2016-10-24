@@ -23,6 +23,8 @@
 
 #import <AssertMacros.h>
 
+#import "AFHTTPSessionManager.h"
+
 #if !TARGET_OS_IOS && !TARGET_OS_WATCH
 static NSData * AFSecKeyGetData(SecKeyRef key) {
     CFDataRef data = NULL;
@@ -228,6 +230,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(NSString *)domain
 {
+    
     if (domain && self.allowInvalidCertificates && self.validatesDomainName && (self.SSLPinningMode == AFSSLPinningModeNone || [self.pinnedCertificates count] == 0)) {
         // https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/NetworkingTopics/Articles/OverridingSSLChainValidationCorrectly.html
         //  According to the docs, you should only trust your provided certs for evaluation.
