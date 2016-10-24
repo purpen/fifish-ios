@@ -257,12 +257,28 @@
 }
 
 //横屏
--(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscape;
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+- (BOOL)shouldAutorotate
+
 {
-    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+    
+    return NO;
+    
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+    
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+
+{
+    
+    return UIInterfaceOrientationLandscapeRight;
+    
 }
 
 #pragma mark GestureMethd
