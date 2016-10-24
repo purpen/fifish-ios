@@ -75,26 +75,27 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
 }
 - (void)takePhoto{
-   UIImage * image = [self.VideoGlView snapshotPicture];
-    PHAssetCollection *createdCollection = nil;
-    NSString * title = @"Fifish";
-    // 获得所有的自定义相册
-    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    for (PHAssetCollection *collection in collections) {
-        if ([collection.localizedTitle isEqualToString:title]) {
-            createdCollection = collection;
-            break;
-        }
-    }
-    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
-        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
-        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
-        
-        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
-        
-        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
-    } error:nil];
+    [self.VideoGlView snapshotPicture];
+//   UIImage * image = [self.VideoGlView snapshotPicture];
+//    PHAssetCollection *createdCollection = nil;
+//    NSString * title = @"Fifish";
+//    // 获得所有的自定义相册
+//    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+//    for (PHAssetCollection *collection in collections) {
+//        if ([collection.localizedTitle isEqualToString:title]) {
+//            createdCollection = collection;
+//            break;
+//        }
+//    }
+//    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
+//        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
+//        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
+//        
+//        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+//        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
+//        
+//        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
+//    } error:nil];
 }
 - (void)calibrateCameraTime{
     
@@ -243,10 +244,10 @@
 - (FifishH264Decoder *)ViedoDecoder{
     if (!_ViedoDecoder) {
         //rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp
-//        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
+        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1476687770278362.flv"];
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1476690710257396.flv"];
-        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
+//        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
         _ViedoDecoder.UpdataDelegate = self;
     }
     return _ViedoDecoder;
@@ -320,7 +321,7 @@
 //    FSVideoPlayerController * player = [[FSVideoPlayerController alloc]init];
 //    player.fileUrl = self.ViedoDecoder.OutputMp4FileUrl;
 //    [self presentViewController:player animated:YES completion:nil];
-//    
+//
     FSLiveSettingsViewController * settingVc = [[FSLiveSettingsViewController alloc] init];
     self.modalPresentationStyle = UIModalPresentationCurrentContext;//推出的界面透明,不管用
     [self presentViewController:settingVc animated:YES completion:nil];

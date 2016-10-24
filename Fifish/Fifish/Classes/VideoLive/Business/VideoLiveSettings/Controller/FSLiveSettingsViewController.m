@@ -100,7 +100,9 @@ static NSString * const tableViewCellIden = @"systemCell";
 {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
-
+- (BOOL)shouldAutorotate{
+    return NO;
+}
 
 
 - (NSArray *)MenuTitlesArr{
