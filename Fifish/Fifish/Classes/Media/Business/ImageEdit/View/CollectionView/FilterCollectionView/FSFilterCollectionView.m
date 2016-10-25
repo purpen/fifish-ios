@@ -51,6 +51,7 @@
     return cell;
     
 }
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.FilterDelegate&&[self.FilterDelegate respondsToSelector:@selector(SeletedFilterWithIndex:)]) {
         [self.FilterDelegate SeletedFilterWithIndex:indexPath];

@@ -35,6 +35,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
     
     //设置推送---------------------------------------------------
     //创建UIUserNotificationSettings，并设置消息的显示类类型
