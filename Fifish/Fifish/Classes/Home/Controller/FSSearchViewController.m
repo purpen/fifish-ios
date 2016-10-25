@@ -20,15 +20,14 @@
 #import "MJExtension.h"
 #import "FSHomeDetailViewController.h"
 #import "FSBigImageViewController.h"
-#import "FSMoreView.h"
 #import "FSReportView.h"
 #import "FSUserModel.h"
 #import "FSHomePageViewController.h"
 #import "FSPlayViewController.h"
+#import "Masonry.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIButton *cancelBTn;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 /**  */
 @property (nonatomic, strong) SGTopTitleView *segmentedControl;
@@ -53,8 +52,6 @@
 /**  */
 @property (nonatomic, strong) UIView *lineView;
 /**  */
-@property (nonatomic, strong) FSMoreView *moreView;
-/**  */
 @property (nonatomic, strong) FSReportView *reportView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *stuffAry;
@@ -70,13 +67,7 @@
     return _stuffAry;
 }
 
--(FSMoreView *)moreView{
-    if (!_moreView) {
-        _moreView = [FSMoreView viewFromXib];
-        _moreView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 88);
-    }
-    return _moreView;
-}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -158,7 +149,7 @@
         cell.commendBtn.tag = indexPath.row;
         [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.moreBtn.hidden = YES;
         cell.pictuerView.tapBTn.tag = indexPath.row;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.videoView.tapBtn.tag = indexPath.row;
@@ -183,6 +174,11 @@
         FSUserModel *model = self.userAry[indexPath.row];
         vc.userId = model.userId;
         [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+        vc.model = self.stuffAry[indexPath.row];
+        vc.title = @"评论";
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -194,13 +190,6 @@
     FSZuoPin *model = self.stuffAry[sender.tag];
     vc.imageUrl = model.file_large;
     [self presentViewController:vc animated:YES completion:nil];
-}
-
-#pragma mark - 更多按钮
--(void)moreClick:(UIButton*)sender{
-    [UIView animateWithDuration:0.25 animations:^{
-        self.moreView.y = SCREEN_HEIGHT - 88;
-    }];
 }
 
 
@@ -291,10 +280,6 @@
     self.searchBar.delegate = self;
     self.type = @(1);
     self.tid = @(2);
-    [self.view addSubview:self.myTableView];
-    [self setupRefresh];
-    
-    [self.view addSubview:self.moreView];
 }
 
 
@@ -443,6 +428,8 @@
         [self.view addSubview:self.segmentedControl];
         [self.view addSubview:self.lineView];
         [self.view endEditing:YES];
+        [self.view addSubview:self.myTableView];
+        [self setupRefresh];
         //进行网络请求
         [self.myTableView.mj_header beginRefreshing];
     }
@@ -464,11 +451,8 @@
     [self.myTableView.mj_header beginRefreshing];
 }
 
-
-- (IBAction)cancelClick:(UIButton *)sender {
-    
+- (IBAction)cancelClick:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 @end

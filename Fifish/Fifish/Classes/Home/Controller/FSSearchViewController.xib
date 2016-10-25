@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSSearchViewController">
             <connections>
-                <outlet property="cancelBTn" destination="bdQ-7E-dQO" id="qWO-Oh-kvO"/>
                 <outlet property="searchBar" destination="5pj-az-lnN" id="ZnF-DV-8zS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,7 +31,7 @@
                         <color key="titleColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="cancelClick:" destination="-1" eventType="touchUpInside" id="ees-4V-iHx"/>
+                        <action selector="cancelClick:" destination="-1" eventType="touchUpInside" id="t5y-Vj-pnP"/>
                     </connections>
                 </button>
             </subviews>
