@@ -22,6 +22,8 @@
 #import "FSBigImageViewController.h"
 #import "FSMoreView.h"
 #import "FSReportView.h"
+#import "FSUserModel.h"
+#import "FSHomePageViewController.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -94,6 +96,7 @@
         _myTableView.dataSource = self;
         _myTableView.showsVerticalScrollIndicator = NO;
         [_myTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSFoundStuffTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSFoundStuffTableViewCell"];
+        [_myTableView registerNib:[UINib nibWithNibName:@"FSListUserTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSListUserTableViewCell"];
     }
     return _myTableView;
 }
@@ -111,15 +114,35 @@
     return 0;
 }
 
+-(void)userFcousClick:(UIButton*)sender{
+    if (sender.selected) {
+        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSUserModel*)self.userAry[sender.tag]).userId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+            sender.backgroundColor = [UIColor whiteColor];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    } else {
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSUserModel*)self.userAry[sender.tag]).userId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = YES;
+            sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.type isEqualToNumber:@(2)]) {
         //用户
-        static NSString *userCell = @"userCell";
-        FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCell];
-        if (cell == nil) {
-            cell = [[FSListUserTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userCell];
-        }
+        FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSListUserTableViewCell"];
         //传入模型
+        FSUserModel *model = self.userAry[indexPath.row];
+        cell.userModel = model;
+        cell.fucosBtn.tag = indexPath.row;
+        [cell.fucosBtn addTarget:self action:@selector(userFcousClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else if ([self.type isEqualToNumber:@(1)]) {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
@@ -140,6 +163,15 @@
         return cell;
     }
     return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.type isEqualToNumber:@(2)]) {
+        FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+        FSUserModel *model = self.userAry[indexPath.row];
+        vc.userId = model.userId;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - 点击图片
@@ -243,7 +275,6 @@
         [request startRequestSuccess:^(FBRequest *request, id result) {
             for (int i = 0; i < self.stuffAry.count; i ++) {
                 FSZuoPin *cellModel = self.stuffAry[i];
-                NSLog(@"cell的ID %@",cellModel.user_id);
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 1;
                     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:0];
@@ -259,7 +290,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.type isEqualToNumber:@(2)]) {
-        return 44;
+        return 60;
     } else if ([self.type isEqualToNumber:@(1)]) {
         FSZuoPin *model = self.stuffAry[indexPath.row];
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
@@ -301,7 +332,6 @@
                                                                                      } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [self.myTableView.mj_header endRefreshing];
-        NSLog(@"搜索  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
         if (self.total == 0) {
@@ -311,6 +341,15 @@
         
         if ([self.type isEqualToNumber:@(2)]) {
             //用户
+            [self.userAry removeAllObjects];
+            NSArray *dataAry = result[@"data"];
+            for (NSDictionary *dict in dataAry) {
+                NSDictionary *userDict = dict[@"user"];
+                FSUserModel *model = [FSUserModel mj_objectWithKeyValues:userDict];
+                [self.userAry addObject:model];
+            }
+            [self.myTableView reloadData];
+            [self checkFooterState];
         } else if ([self.type isEqualToNumber:@(1)]) {
             [self.stuffAry removeAllObjects];
             for (int i = 0; i < dataAry.count; i ++) {
@@ -324,6 +363,51 @@
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         [self.myTableView.mj_header endRefreshing];
+    }];
+}
+
+-(void)loadMore{
+    [self.myTableView.mj_header endRefreshing];
+    FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
+                                                                                     @"page" : @(++self.current_page),
+                                                                                     @"per_page" : @(10),
+                                                                                     @"str" : self.searchBar.text,
+                                                                                     @"type" : self.type,
+                                                                                     @"tid" : self.tid,
+                                                                                     @"evt" : @(1),
+                                                                                     @"sort" : @(1)
+                                                                                     } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        [self.myTableView.mj_footer endRefreshing];
+        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
+        self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
+        if (self.total == 0) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
+        }
+        NSArray *dataAry = result[@"data"];
+        
+        if ([self.type isEqualToNumber:@(2)]) {
+            //用户
+            NSArray *dataAry = result[@"data"];
+            for (NSDictionary *dict in dataAry) {
+                NSDictionary *userDict = dict[@"user"];
+                FSUserModel *model = [FSUserModel mj_objectWithKeyValues:userDict];
+                [self.userAry addObject:model];
+            }
+            [self.myTableView reloadData];
+            [self checkFooterState];
+        } else if ([self.type isEqualToNumber:@(1)]) {
+            for (int i = 0; i < dataAry.count; i ++) {
+                NSDictionary *dict = dataAry[i];
+                NSDictionary *stuff = dict[@"stuff"];
+                FSZuoPin *model = [FSZuoPin mj_objectWithKeyValues:stuff];
+                [self.stuffAry addObject:model];
+            }
+        }
+        [self.myTableView reloadData];
+        [self checkFooterState];
+    } failure:^(FBRequest *request, NSError *error) {
+        [self.myTableView.mj_footer endRefreshing];
     }];
 }
 
@@ -344,37 +428,6 @@
             [self.myTableView.mj_footer endRefreshing];
         }
     }
-}
-
--(void)loadMore{
-    [self.myTableView.mj_header endRefreshing];
-    FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
-                                                                                     @"page" : @(++self.current_page),
-                                                                                     @"per_page" : @(10),
-                                                                                     @"str" : self.searchBar.text,
-                                                                                     @"type" : self.type,
-                                                                                     @"tid" : self.tid,
-                                                                                     @"evt" : @(1),
-                                                                                     @"sort" : @(1)
-                                                                                     } delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        [self.myTableView.mj_footer endRefreshing];
-        NSLog(@"搜索  %@",result);
-        self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
-        self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
-        if (self.total == 0) {
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
-        }
-        NSArray *rows = result[@"data"];
-        if ([self.type isEqualToNumber:@(2)]) {
-        } else if ([self.type isEqualToNumber:@(1)]) {
-        }
-        //self.pictureAry = [];
-        [self.myTableView reloadData];
-        [self checkFooterState];
-    } failure:^(FBRequest *request, NSError *error) {
-        [self.myTableView.mj_footer endRefreshing];
-    }];
 }
 
 -(SGTopTitleView *)segmentedControl{
@@ -417,7 +470,7 @@
         self.tid = @(1);
     } else if (index == 2) {
         self.type = @(2);
-        self.type = @(0);
+        self.tid = @(0);
     }
     //进行网络请求
     [self.myTableView.mj_header beginRefreshing];

@@ -35,6 +35,20 @@
     return self;
 }
 
+-(void)setUserModel:(FSUserModel *)userModel{
+    _userModel = userModel;
+    self.userNameLabel.text = userModel.username;
+    self.summaryLabel.text = userModel.summary;
+    [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];
+//    if (userModel.followFlag == 1) {
+//        self.fucosBtn.selected = YES;
+//        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+//    } else {
+//        self.fucosBtn.selected = NO;
+//        self.fucosBtn.backgroundColor = [UIColor whiteColor];
+//    }
+}
+
 -(void)setModel:(FSListUserModel *)model{
     _model = model;
     self.userNameLabel.text = model.userName;

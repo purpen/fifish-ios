@@ -332,7 +332,6 @@ static NSString * const CellId = @"home";
         NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地
         FSImageModel * imageModel = [[FSImageModel alloc] initWithFilePath:imageurlStr];
-        NSLog(@"%@",info);
         NSMutableArray *ary = [NSMutableArray arrayWithObject:imageModel];
         [self dismissViewControllerAnimated:YES completion:nil];
         FSMediaBrowseViewController * fsmbvc = [[FSMediaBrowseViewController alloc] init];
@@ -342,7 +341,6 @@ static NSString * const CellId = @"home";
     } else {
         //如果是视频
         NSURL *url = info[UIImagePickerControllerMediaURL];
-        NSLog(@"%@",url);
         //保存视频至相册（异步线程
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[FSFileManager defaultManager] SaveVideoWithFilePath:url.path];

@@ -25,6 +25,7 @@
 #import "FBAPI.h"
 #import "FBRequest.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "SVProgressHUD.h"
 
 @interface AppDelegate ()
 
@@ -56,6 +57,8 @@
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"580dbf76717c1916cb0043ed"];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"163101587483903" appSecret:nil redirectURL:@"http://api.qysea.com"];
+    //------------------设置hud
+    [SVProgressHUD setMinimumDismissTimeInterval:2];
     
     return YES;
 }
