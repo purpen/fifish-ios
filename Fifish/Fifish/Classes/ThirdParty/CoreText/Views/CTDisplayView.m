@@ -197,9 +197,9 @@ typedef enum CTDisplayViewState : NSInteger {
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    if (self.data == nil) {
-        return;
-    }
+//    if (self.data == nil) {
+//        return;
+//    }
 
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
@@ -367,14 +367,14 @@ typedef enum CTDisplayViewState : NSInteger {
 }
 
 - (void)drawSelectionArea {
-    if (_selectionStartPosition < 0 || _selectionEndPosition > self.data.content.length) {
-        return;
-    }
+//    if (_selectionStartPosition < 0 || _selectionEndPosition > self.data.content.length) {
+//        return;
+//    }
     CTFrameRef textFrame = self.data.ctFrame;
     CFArrayRef lines = CTFrameGetLines(self.data.ctFrame);
-    if (!lines) {
-        return;
-    }
+//    if (!lines) {
+//        return;
+//    }
     CFIndex count = CFArrayGetCount(lines);
     // 获得每一行的origin坐标
     CGPoint origins[count];

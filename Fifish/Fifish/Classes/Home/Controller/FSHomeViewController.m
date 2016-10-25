@@ -46,6 +46,8 @@
 @property (nonatomic, strong) FSProgressView *progressView;
 /**  */
 @property (nonatomic, strong) NSNotification *notification;
+/**  */
+@property (nonatomic, assign) BOOL repeatFlag;
 
 @end
 
@@ -97,10 +99,14 @@ static NSString * const CellId = @"home";
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
-        [UIView animateWithDuration:0.25 animations:^{
-            self.contenTableView.y += 44;
-            [self.view layoutIfNeeded];
-        }];
+        if (self.repeatFlag) {
+            
+        } else {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.contenTableView.y += 44;
+                [self.view layoutIfNeeded];
+            }];
+        }
         self.progressView.imageView.image = model.defaultImage;
         self.progressView.repeatBtn.hidden = YES;
         self.progressView.deleteBtn.hidden = YES;
@@ -148,10 +154,14 @@ static NSString * const CellId = @"home";
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
-        [UIView animateWithDuration:0.25 animations:^{
-            self.contenTableView.y += 44;
-            [self.view layoutIfNeeded];
-        }];
+        if (self.repeatFlag) {
+            
+        } else {
+            [UIView animateWithDuration:0.25 animations:^{
+                self.contenTableView.y += 44;
+                [self.view layoutIfNeeded];
+            }];
+        }
         self.progressView.imageView.image = model.VideoPicture;
         self.progressView.repeatBtn.hidden = YES;
         self.progressView.deleteBtn.hidden = YES;
@@ -199,11 +209,13 @@ static NSString * const CellId = @"home";
 }
 
 -(void)repeat2{
+    self.repeatFlag = YES;
     [self uploadPictuer:self.notification];
 }
 
 #pragma mark - 重新上传
 -(void)repeat{
+    self.repeatFlag = YES;
     [self uploadVideo:self.notification];
 }
 

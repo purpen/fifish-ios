@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UIButton *headTapBtn;
 @property (weak, nonatomic) IBOutlet CTDisplayView *tagView;
+/**  */
+@property (nonatomic, strong) NSMutableArray *tagMAry;
 
 @end
 
@@ -41,6 +43,13 @@
     [super awakeFromNib];
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.cornerRadius = 22;
+}
+
+-(NSMutableArray *)tagMAry{
+    if (!_tagMAry) {
+        _tagMAry = [NSMutableArray array];
+    }
+    return _tagMAry;
 }
 
 - (IBAction)headBtnClick:(UIButton *)sender {
@@ -95,14 +104,19 @@
         self.videoView.model = model;
     }
 
+    CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
+    view.userInteractionEnabled = YES;
+    view.navc = self.tagView.navc;
+    view.backgroundColor = [UIColor whiteColor];
+    [self.tagView addSubview:view];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *path = [paths objectAtIndex:0];
     NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
     NSFileManager *fm = [NSFileManager defaultManager];
     [fm createFileAtPath:filename contents:nil attributes:nil];
-    NSMutableArray *tagMAry = [NSMutableArray array];
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    [self.tagMAry removeAllObjects];
     if (model.tags.count > 0) {
-        NSString *str;
         for (int i = 0; i < model.tags.count; i ++) {
             NSDictionary *dict = model.tags[i];
             NSDictionary *cellDict = @{
@@ -111,23 +125,14 @@
                                        @"url" : @"hh",
                                        @"type" : @"link"
                                        };
-            [tagMAry addObject:cellDict];
-//            if (i == 0) {
-//                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
-//            } else {
-//                str = [NSString stringWithFormat:@"%@, #%@", str, dict[@"name"]];
-//            }
+            [self.tagMAry addObject:cellDict];
         }
-    } else {
-        [tagMAry removeAllObjects];
+        config.width = SCREEN_WIDTH;
+        [self.tagMAry writeToFile:filename atomically:YES];
     }
-    [tagMAry writeToFile:filename atomically:YES];
-    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-    config.width = SCREEN_WIDTH;
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-    self.tagView.data = data;
-//    self.tagView.height = data.height;
-    self.tagView.backgroundColor = [UIColor whiteColor];
+    view.data = data;
+    
     
     if (model.is_love == 0) {
         self.likeBtn.selected = NO;
