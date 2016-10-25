@@ -104,12 +104,15 @@ CGFloat const Cellspecace = 1;
         
     }
         dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.BroswerCollection reloadData];
-            [SVProgressHUD dismiss];
+            [self performSelector:@selector(browCollectionRoload) withObject:nil afterDelay:1];
+            [self.BroswerCollection.mj_header endRefreshing];
         });
         });
 }
-
+- (void)browCollectionRoload{
+    [self.BroswerCollection reloadData];
+    [SVProgressHUD dismiss];
+}
 - (void)setNav{
     
     [self.parentsVC setRightItem:self.RigthNavBtn];
@@ -210,6 +213,9 @@ CGFloat const Cellspecace = 1;
         _BroswerCollection.allowsMultipleSelection = YES;//允许多选
         _BroswerCollection.backgroundColor = [UIColor whiteColor];
         [_BroswerCollection registerNib:[UINib nibWithNibName:@"FSBorswerImageCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:FSBorswerImageCelliden];
+        _BroswerCollection.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self GetMediaData];
+        }];
     }
     return _BroswerCollection;
 }

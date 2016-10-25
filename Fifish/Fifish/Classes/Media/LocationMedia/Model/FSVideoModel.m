@@ -12,6 +12,7 @@
 - (instancetype)initWithFilePath:(NSString *)filePath{
     self = [super initWithFilePath:filePath];
     if (self) {
+        
         self.videoAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filePath] options:nil];
         AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:self.videoAsset];
         
