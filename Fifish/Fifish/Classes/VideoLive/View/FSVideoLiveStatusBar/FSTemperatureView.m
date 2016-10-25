@@ -7,7 +7,7 @@
 //
 
 #import "FSTemperatureView.h"
-
+#import "LiveVideoMacro.h"
 @interface FSTemperatureView ()
 
 @property (nonatomic ,strong) UIImageView * temperatureIconView;
@@ -45,7 +45,7 @@
     if (!_temperatureLab) {
         _temperatureLab  = [[UILabel alloc] init];
         _temperatureLab.font = [UIFont systemFontOfSize:10];
-        _temperatureLab.textColor = [UIColor blackColor];
+        _temperatureLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
         _temperatureLab.textAlignment = NSTextAlignmentLeft;
         _temperatureLab.text = @"18°";
     }

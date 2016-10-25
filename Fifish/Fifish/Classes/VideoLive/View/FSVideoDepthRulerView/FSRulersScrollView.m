@@ -62,14 +62,14 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
     CGMutablePathRef pathRef2 = CGPathCreateMutable();
     
     CAShapeLayer *shapeLayer1 = [CAShapeLayer layer];
-    shapeLayer1.strokeColor = [UIColor blackColor].CGColor;
-    shapeLayer1.fillColor = [UIColor blackColor].CGColor;
+    shapeLayer1.strokeColor = LIVEVIDEO_DEFAULT_COLOR.CGColor;
+    shapeLayer1.fillColor = LIVEVIDEO_DEFAULT_COLOR.CGColor;
     shapeLayer1.lineWidth = 1.f;
     shapeLayer1.lineCap = kCALineCapButt;
     
     CAShapeLayer *shapeLayer2 = [CAShapeLayer layer];
-    shapeLayer2.strokeColor = [UIColor blackColor].CGColor;
-    shapeLayer2.fillColor = [UIColor blackColor].CGColor;
+    shapeLayer2.strokeColor = LIVEVIDEO_DEFAULT_COLOR.CGColor;
+    shapeLayer2.fillColor = LIVEVIDEO_DEFAULT_COLOR.CGColor;
     shapeLayer2.lineWidth = 1.f;
     shapeLayer2.lineCap = kCALineCapButt;
     //左边
@@ -152,6 +152,7 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
                 UILabel * bearTitleLab = [[UILabel alloc] initWithFrame:CGRectMake(LabPiont.x, LabPiont.y, 20, 10)];
                 bearTitleLab.font = [UIFont systemFontOfSize:10];
                 bearTitleLab.text = title;
+                bearTitleLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
                 [self addSubview:bearTitleLab];
             }
             shapeLayer1.path = pathRef1;

@@ -138,8 +138,8 @@
         _depthLab = [[UILabel alloc] init];
         _depthLab.font = [UIFont systemFontOfSize:10];
         _depthLab.textAlignment = NSTextAlignmentLeft;
-        _depthLab.textColor = [UIColor blackColor];
-        _depthLab.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"unit", nil),NSLocalizedString(@"metre", nil)];
+        _depthLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
+        _depthLab.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Depth", nil),NSLocalizedString(@"metre", nil)];
     }
     return _depthLab;
 }
@@ -156,7 +156,7 @@
 - (UIView *)currentLineView{
     if (!_currentLineView) {
         _currentLineView = [[UIView alloc] init];
-        _currentLineView.backgroundColor = [UIColor blackColor];
+        _currentLineView.backgroundColor = LIVEVIDEO_DEFAULT_COLOR;
     }
     return _currentLineView;
 }

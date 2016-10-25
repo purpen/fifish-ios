@@ -64,6 +64,7 @@
 //计量单位
 "unit"  = "unit";
 "metre" = "metre";
+"Depth" = "Depth";
 
 //图片滤镜
 "Filter"="Filter";

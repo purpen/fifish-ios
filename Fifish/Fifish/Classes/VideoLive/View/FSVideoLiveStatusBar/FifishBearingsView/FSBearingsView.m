@@ -61,7 +61,7 @@
         _angleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _angleBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [_angleBtn setTitle:@"12°" forState:UIControlStateNormal];
-        [_angleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_angleBtn setTitleColor:LIVEVIDEO_DEFAULT_COLOR forState:UIControlStateNormal];
     }
     return _angleBtn;
 }

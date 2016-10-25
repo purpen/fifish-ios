@@ -49,6 +49,8 @@
 @property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;//点击手势
 @property (nonatomic)        BOOL                   HiddenOSD;//隐藏OSD
 
+@property (nonatomic)       CGFloat                 currentLight ;//获取当前屏幕亮度
+
 
 //lodingView
 @property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
@@ -58,6 +60,11 @@
 - (void)viewDidLoad{
     //禁止休眠
     [UIApplication sharedApplication].idleTimerDisabled=YES;
+    
+    //屏幕亮度，先保存当前亮度
+    self.currentLight = [[UIScreen mainScreen] brightness];
+    //设置为最亮
+    [[UIScreen mainScreen] setBrightness: 1];
     
     [super viewDidLoad];
     [self SetUpUI];
@@ -171,6 +178,9 @@
     //重置设备方向
     [UIApplication sharedApplication].idleTimerDisabled=NO;
     
+    //还原亮度
+    [[UIScreen mainScreen] setBrightness: self.currentLight];
+    
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -244,10 +254,10 @@
 - (FifishH264Decoder *)ViedoDecoder{
     if (!_ViedoDecoder) {
         //rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp
-        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
+//        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1476687770278362.flv"];
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1476690710257396.flv"];
-//        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
+        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp"];
         _ViedoDecoder.UpdataDelegate = self;
     }
     return _ViedoDecoder;

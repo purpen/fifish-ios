@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LiveVideoMacro.h"
 typedef enum : NSUInteger {
     RulerLeftType,//左侧
     RulerRightType,//右侧
