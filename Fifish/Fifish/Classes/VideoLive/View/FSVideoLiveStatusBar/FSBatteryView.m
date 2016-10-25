@@ -8,6 +8,8 @@
 
 #import "FSBatteryView.h"
 
+#import "LiveVideoMacro.h"
+
 @interface FSBatteryView()
 
 //电量
@@ -54,12 +56,12 @@
     
     CGContextSetLineWidth(bgContextRef, 0.5);
     
-    [[UIColor blackColor] setStroke];
+    [LIVEVIDEO_DEFAULT_COLOR setStroke];
     
     CGContextStrokePath(bgContextRef);
     
     
-    
+   [LIVEVIDEO_DEFAULT_COLOR setFill];
     CGFloat pointWidth  = 2.0;
     CGFloat pointHeight = 1.0;
     CGContextMoveToPoint(bgContextRef, edgeframe.size.width+1, (edgeframe.size.height-pointHeight)/2);
@@ -71,14 +73,13 @@
     CGContextStrokePath(bgContextRef);
     
     
-    [[UIColor yellowColor] setStroke];
+    
     CGContextFillRect(bgContextRef,CGRectMake(1, 1,(edgeframe.size.width-2)*_currentNum, edgeframe.size.height-2));//填充框
     
     CGContextDrawPath(bgContextRef, kCGPathFillStroke);//绘画路径
     
     NSString * ste = [NSString stringWithFormat:@"%.f％",_currentNum*100];
-    
-    //    [ste drawAtPoint:CGPointMake(edgeframe.size.width+5,0) withAttributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:10]}];
-    [ste drawInRect:CGRectMake(edgeframe.size.width+5,-1.5, 40, edgeframe.size.height) withAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:10]}];
+
+    [ste drawInRect:CGRectMake(edgeframe.size.width+5,-1.5, 40, edgeframe.size.height) withAttributes:@{NSForegroundColorAttributeName:LIVEVIDEO_DEFAULT_COLOR,NSFontAttributeName:[UIFont systemFontOfSize:10]}];
 }
 @end

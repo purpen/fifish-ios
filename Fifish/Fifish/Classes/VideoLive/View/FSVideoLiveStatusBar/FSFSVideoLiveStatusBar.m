@@ -11,6 +11,8 @@
 #import "FSTemperatureView.h"
 
 
+#import "LiveVideoMacro.h"
+
 #import "FSOSDManager.h"
 #import "RovInfo.h"
 
@@ -85,7 +87,7 @@
     if (!_FifishBackBtn) {
         _FifishBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [_FifishBackBtn setTitle:@"FIFISH" forState:UIControlStateNormal];
-        [_FifishBackBtn setImage:[UIImage imageNamed:@"navi_back"] forState:UIControlStateNormal];
+        [_FifishBackBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
         [_FifishBackBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _FifishBackBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_FifishBackBtn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -113,7 +115,7 @@
 -(UILabel *)FifishBattery{
     if (!_FifishBattery) {
         _FifishBattery = [[UILabel alloc] init];
-        _FifishBattery.textColor = [UIColor blackColor];
+        _FifishBattery.textColor = LIVEVIDEO_DEFAULT_COLOR;
         _FifishBattery.textAlignment = NSTextAlignmentRight;
         _FifishBattery.font = [UIFont systemFontOfSize:10];
     }

@@ -683,6 +683,7 @@
 		0452CD001D77D429007694CC /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		0452CD021D77FFB6007694CC /* RovInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RovInfo.h; sourceTree = "<group>"; };
 		0452CD031D77FFB6007694CC /* RovInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RovInfo.m; sourceTree = "<group>"; };
+		04577F371DBEEBB100EBB2E1 /* LiveVideoMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveVideoMacro.h; sourceTree = "<group>"; };
 		04596A731D7FBE28008D1DD5 /* FSGeneralSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGeneralSettingViewController.h; sourceTree = "<group>"; };
 		04596A741D7FBE28008D1DD5 /* FSGeneralSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGeneralSettingViewController.m; sourceTree = "<group>"; };
 		04596A761D7FC27A008D1DD5 /* FSGeneralSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGeneralSettingsCell.h; sourceTree = "<group>"; };
@@ -1980,6 +1981,7 @@
 			isa = PBXGroup;
 			children = (
 				04596A7E1D7FE911008D1DD5 /* LiveVideoSettingMacro.h */,
+				04577F371DBEEBB100EBB2E1 /* LiveVideoMacro.h */,
 			);
 			path = macro;
 			sourceTree = "<group>";
