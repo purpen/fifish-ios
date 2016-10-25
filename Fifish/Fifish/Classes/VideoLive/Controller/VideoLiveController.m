@@ -49,6 +49,8 @@
 @property (nonatomic,strong)UITapGestureRecognizer * tapGestureRecognizer;//点击手势
 @property (nonatomic)        BOOL                   HiddenOSD;//隐藏OSD
 
+@property (nonatomic)       CGFloat                 currentLight ;//获取当前屏幕亮度
+
 
 //lodingView
 @property (nonatomic, strong)UIActivityIndicatorView * activityIndicatorView;
@@ -58,6 +60,11 @@
 - (void)viewDidLoad{
     //禁止休眠
     [UIApplication sharedApplication].idleTimerDisabled=YES;
+    
+    //屏幕亮度，先保存当前亮度
+    self.currentLight = [[UIScreen mainScreen] brightness];
+    //设置为最亮
+    [[UIScreen mainScreen] setBrightness: 1];
     
     [super viewDidLoad];
     [self SetUpUI];
@@ -170,6 +177,9 @@
     
     //重置设备方向
     [UIApplication sharedApplication].idleTimerDisabled=NO;
+    
+    //还原亮度
+    [[UIScreen mainScreen] setBrightness: self.currentLight];
     
 }
 - (void)viewDidAppear:(BOOL)animated{
