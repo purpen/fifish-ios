@@ -24,6 +24,7 @@
 #import "FSReportView.h"
 #import "FSUserModel.h"
 #import "FSHomePageViewController.h"
+#import "FSPlayViewController.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -72,6 +73,7 @@
 -(FSMoreView *)moreView{
     if (!_moreView) {
         _moreView = [FSMoreView viewFromXib];
+        _moreView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 88);
     }
     return _moreView;
 }
@@ -158,11 +160,21 @@
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.pictuerView.tapBTn.tag = indexPath.row;
-        cell.pictuerView.tapBTn.tag = indexPath.row;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.videoView.tapBtn.tag = indexPath.row;
+        [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
+}
+
+#pragma mark - 视频播放
+-(void)videoClick:(UIButton*)sender{
+    //开始播放视频
+    FSZuoPin *model = self.stuffAry[sender.tag];
+    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
+    mvPlayer.videoUrl = [NSURL URLWithString:model.srcfile];
+    [self presentViewController:mvPlayer animated:YES completion:nil];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -186,37 +198,9 @@
 
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击举报
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //垃圾内容的网络请求
-            
-        }];
-        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //内容不雅举报
-            
-        }];
-        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [reportAlertC addAction:garbageAction];
-        [reportAlertC addAction:indecentAction];
-        [reportAlertC addAction:reportCancelAction];
-        [self presentViewController:reportAlertC animated:YES completion:nil];
-        
+    [UIView animateWithDuration:0.25 animations:^{
+        self.moreView.y = SCREEN_HEIGHT - 88;
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alertC addAction:reportAction];
-    [alertC addAction:cancelAction];
-    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 
@@ -309,7 +293,11 @@
     self.tid = @(2);
     [self.view addSubview:self.myTableView];
     [self setupRefresh];
+    
+    [self.view addSubview:self.moreView];
 }
+
+
 
 -(void)setupRefresh{
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
