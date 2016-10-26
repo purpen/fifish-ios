@@ -47,7 +47,11 @@
 "tag" = "标签";
 "latest" = "最新";
 "hottest" = "最热";
-
+"Modify the nickname" = "修改昵称";
+"The user is null" = "用户名为空";
+"Individuality signature" = "个性签名";
+"done" = "完成";
+"The summary is null" = "个性签名为空";
 
 //搜索
 "video" = "视频";

@@ -11,6 +11,12 @@
 #import "UIImageView+WebCache.h"
 #import "FSUserModel.h"
 
+@interface FSMeHeadTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *addressIconImageView;
+
+@end
+
 @implementation FSMeHeadTableViewCell
 
 
@@ -18,7 +24,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
         self.headImageView.layer.masksToBounds = YES;
-        self.headImageView.layer.cornerRadius = 40;
+        self.headImageView.layer.cornerRadius = 30;
         self.headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
         self.headImageView.layer.borderWidth = 1;
         
@@ -44,6 +50,11 @@
     self.zuoPinShu.text = model.stuff_count;
     self.guanZhuShuLabel.text = model.follow_count;
     self.fenSiShuLabel.text = model.fans_count;
+    if (model.zone.length == 0) {
+        self.addressIconImageView.hidden = YES;
+    } else {
+        self.addressIconImageView.hidden = NO;
+    }
 }
 
 

@@ -81,8 +81,6 @@
 
 
 -(void)sureBtnClick:(UIButton*)sender{
-//    [SVProgressHUD show];
-//    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     //网络请求
     FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,

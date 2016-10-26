@@ -12,20 +12,60 @@
 #import "FBAPI.h"
 #import "FSUserModel.h"
 #import "UIImageView+WebCache.h"
+#import "FSUserNameViewController.h"
+#import "AddreesPickerViewController.h"
 
 @interface FSEditInformationViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property(nonatomic,strong) AddreesPickerViewController *addreesPickerVC;
+@property (weak, nonatomic) IBOutlet UILabel *zoneLabel;
 
 @end
 
 @implementation FSEditInformationViewController
+
+-(AddreesPickerViewController *)addreesPickerVC{
+    if (!_addreesPickerVC) {
+        _addreesPickerVC = [[AddreesPickerViewController alloc] init];
+    }
+    return _addreesPickerVC;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"个人信息";
     [self headImage];
+    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    self.zoneLabel.text = model.zone;
+}
+
+#pragma mark - 更改地区
+- (IBAction)zone:(id)sender {
+    self.addreesPickerVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:_addreesPickerVC animated:NO completion:nil];
+    [_addreesPickerVC.pickerBtn addTarget:self action:@selector(clickAddreesPickerBtn:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)clickAddreesPickerBtn:(UIButton*)sender{
+    self.zoneLabel.text = [NSString stringWithFormat:@"%@ %@",self.addreesPickerVC.provinceStr,self.addreesPickerVC.cityStr];
+    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
+                                                                                        @"zone" : self.zoneLabel.text
+                                                                                        } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        model.zone = self.zoneLabel.text;
+        [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+}
+
+#pragma mark - 更改用户名
+- (IBAction)changeUserName:(id)sender {
+    FSUserNameViewController *vc = [[FSUserNameViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)headImage{
@@ -74,9 +114,7 @@
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
     [iconData writeToFile:fullPath atomically:NO];
     
-    FBRequest *request = [FBAPI getWithUrlString:@"/upload/qiniuToken" requestDictionary:@{
-                                                                                           @"assetable_type" : @"User"
-                                                                                           } delegate:self];
+    FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
         NSString *token = result[@"data"][@"token"];
@@ -90,18 +128,6 @@
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];
-//        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:[NSURL fileURLWithPath:fullPath] WihtProgressBlock:^(CGFloat progress) {
-//            
-//        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-//            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-//            userModel.large = responseObject[@"file"][@"large"];
-//            [userModel saveOrUpdate];
-//            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
-//        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-//            
-//        }];
-        
-        
     } failure:^(FBRequest *request, NSError *error) {
         
     }];

@@ -308,6 +308,9 @@ static NSString * const CellId = @"home";
     self.navigationItem.leftBarButtonItem = searchItem;
     UIBarButtonItem *quick_releaseItem = [UIBarButtonItem itemWithImage:@"quick_release" highImage:nil title:nil target:self action:@selector(quickReleaseClick:)];
     self.navigationItem.rightBarButtonItem = quick_releaseItem;
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_logo"]];
+    image.y -= 10;
+    self.navigationItem.titleView = image;
 }
 
 #pragma mark - 快捷发布
@@ -504,7 +507,7 @@ static NSString * const CellId = @"home";
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 10;
+    return gaoDu + 10 + 9;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

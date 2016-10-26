@@ -19,8 +19,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ian-v7-Ka4" userLabel="背景图"/>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wo0-1o-jPq" userLabel="头像">
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="Iht-c6-tzo"/>
-                            <constraint firstAttribute="width" constant="80" id="fdh-n3-xgf"/>
+                            <constraint firstAttribute="height" constant="60" id="Iht-c6-tzo"/>
+                            <constraint firstAttribute="width" constant="60" id="fdh-n3-xgf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YF-ML-Ifg" userLabel="昵称">
@@ -176,6 +176,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressIconImageView" destination="ppV-6L-IAg" id="xaB-Tb-FsX"/>
                 <outlet property="addressLabel" destination="zIl-Qw-9X8" id="Bs4-TT-9IE"/>
                 <outlet property="bg_imageView" destination="Ian-v7-Ka4" id="99I-fw-8mG"/>
                 <outlet property="fenSiBtn" destination="oyl-HK-5ZD" id="HFy-0d-KXE"/>

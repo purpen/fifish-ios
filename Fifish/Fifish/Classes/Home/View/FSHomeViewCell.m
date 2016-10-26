@@ -85,7 +85,7 @@
         [self.contentView addSubview:self.pictuerView];
         [_pictuerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.contentView.mas_top).offset(59);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
@@ -96,7 +96,7 @@
         [self.contentView addSubview:self.videoView];
         [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.contentView.mas_top).offset(59);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
