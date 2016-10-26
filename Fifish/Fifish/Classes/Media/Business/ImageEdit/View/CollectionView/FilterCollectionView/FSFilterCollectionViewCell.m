@@ -10,7 +10,7 @@
 
 @interface FSFilterCollectionViewCell ()
 
-@property (nonatomic,strong) UIImageView * FilterImageView;
+
 
 @property (nonatomic,strong) UILabel * FilterNameLab;
 
@@ -44,6 +44,7 @@
     if (!_FilterImageView) {
         _FilterImageView = [[UIImageView alloc] init];
         _FilterImageView.backgroundColor = [UIColor whiteColor];
+        _FilterImageView.contentMode = UIViewContentModeScaleToFill;
     }
     return _FilterImageView;
 }

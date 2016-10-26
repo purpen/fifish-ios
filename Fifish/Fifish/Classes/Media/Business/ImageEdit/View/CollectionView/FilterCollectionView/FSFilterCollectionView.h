@@ -21,6 +21,11 @@
 
 @property (nonatomic,assign) NSInteger collectionNumber;
 
+@property (nonatomic ,assign) UIImage * originalImage;
+
+
+
+
 
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;
 @end

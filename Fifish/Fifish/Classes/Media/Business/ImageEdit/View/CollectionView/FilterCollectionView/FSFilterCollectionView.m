@@ -8,9 +8,21 @@
 
 #import "FSFilterCollectionView.h"
 #import "FSFilterCollectionViewCell.h"
+#import "FSImageFilterManager.h"
 
+static NSInteger const CellHei = 90;
+static NSInteger const CellWei = 70;
 
 @interface FSFilterCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+//原始图片压缩后的图片
+@property (nonatomic ,strong)UIImage * MainImage;
+
+/**
+ 滤镜预览图片数组
+ */
+@property (nonatomic ,strong)NSMutableArray * FilerPreviewPicturArr;
+
 
 @end
 
@@ -31,10 +43,25 @@
         self.delegate = self;
         self.dataSource = self;
         [self registerClass:[FSFilterCollectionViewCell class] forCellWithReuseIdentifier:FilterCellIden];
-        
-        
     }
     return self;
+}
+#pragma mark Filter数组
+- (void)randerFilterImage{
+    self.FilerPreviewPicturArr = [NSMutableArray arrayWithCapacity:self.collectionNumber];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (int i = 0; i<self.collectionNumber; i++) {
+            FSImageFilterManager  * FilterManager = [[FSImageFilterManager alloc] init];
+            UIImage * image = [FilterManager randerImageWithIndex:FilterManager.fsFilterArr[i] WithImage:self.MainImage];
+            [self.FilerPreviewPicturArr addObject:image];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadData];
+        });
+        
+    });
+    
 }
 #pragma mark UIcollectionviewdelegate
 //个数
@@ -43,11 +70,14 @@
 }
 //单元大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(70, 90);
+    return CGSizeMake(CellWei, CellHei);
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSFilterCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FilterCellIden forIndexPath:indexPath];
     cell.index = indexPath.row;
+    
+//  滤镜预览图片数组是异步加载，判断是否加载完再取值
+    cell.FilterImageView.image =self.FilerPreviewPicturArr.count == self.collectionNumber ? self.FilerPreviewPicturArr[indexPath.row]:nil;
     return cell;
     
 }
@@ -56,5 +86,20 @@
     if (self.FilterDelegate&&[self.FilterDelegate respondsToSelector:@selector(SeletedFilterWithIndex:)]) {
         [self.FilterDelegate SeletedFilterWithIndex:indexPath];
     }
+}
+#pragma mark originalImage
+- (void)setOriginalImage:(UIImage *)originalImage{
+    _originalImage = originalImage;
+    UIGraphicsBeginImageContext(CGSizeMake(CellWei*2, (originalImage.size.height/(_originalImage.size.width/CellWei))*2));  //size 为CGSize类型，即你所需要的图片尺寸
+    
+    [_originalImage drawInRect:CGRectMake(0, 0, CellWei*2, (originalImage.size.height/(_originalImage.size.width/CellWei))*2)];
+    
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    self.MainImage = scaledImage;
+    
+     [self randerFilterImage];
 }
 @end
