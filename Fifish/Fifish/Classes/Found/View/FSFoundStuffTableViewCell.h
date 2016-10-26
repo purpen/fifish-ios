@@ -26,5 +26,7 @@
 /**  */
 @property (nonatomic, strong) FSHomeVideoView *videoView;
 @property (weak, nonatomic) IBOutlet UIButton *fucosBtn;
+/**  */
+@property (nonatomic, strong) UINavigationController *navc;
 
 @end

@@ -63,6 +63,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL isMyself;
 /**  */
 @property (nonatomic, strong) FSUserModel *user_model;
+/**  */
+@property (nonatomic, strong) UIButton *fucosBtn;
 
 @end
 
@@ -142,36 +144,60 @@ static NSString * const fucosCellId = @"fucos";
             [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
             [_naviView addSubview:button];
             
-            UIButton *fucosBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            fucosBtn.layer.masksToBounds = YES;
-            fucosBtn.layer.cornerRadius = 13;
-            fucosBtn.layer.borderWidth = 1;
-            fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
-            [fucosBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
-            fucosBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-            [fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
-            [fucosBtn setTitleColor:[UIColor colorWithHexString:@"#0995f8"] forState:UIControlStateSelected];
-            [fucosBtn setImage:[UIImage imageNamed:@"me_fucos_right"] forState:UIControlStateSelected];
-            fucosBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
-            fucosBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -2, 0, 0);
-            [fucosBtn addTarget:self action:@selector(fucosCenterClick:) forControlEvents:UIControlEventTouchUpInside];
-            [_naviView addSubview:fucosBtn];
-            [fucosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            [_naviView addSubview:self.fucosBtn];
+            [_fucosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(_naviView.mas_right).offset(-15);
                 make.top.mas_equalTo(button.mas_top).offset(0);
                 make.width.mas_equalTo(72);
                 make.height.mas_equalTo(26);
             }];
-            
         }
         _naviView.backgroundColor = [UIColor clearColor];
     }
     return _naviView;
 }
 
+-(UIButton *)fucosBtn{
+    if (!_fucosBtn) {
+        _fucosBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _fucosBtn.layer.masksToBounds = YES;
+        _fucosBtn.layer.cornerRadius = 13;
+        _fucosBtn.layer.borderWidth = 1;
+        _fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+        [_fucosBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
+        [_fucosBtn setTitle:@"已关注" forState:UIControlStateSelected];
+        _fucosBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+        [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#0995f8"] forState:UIControlStateSelected];
+        [_fucosBtn setImage:[UIImage imageNamed:@"me_fucos_right"] forState:UIControlStateSelected];
+        _fucosBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
+        _fucosBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -2, 0, 0);
+        [_fucosBtn addTarget:self action:@selector(fucosCenterClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _fucosBtn;
+}
+
 #pragma mark - 导航右边关注
 -(void)fucosCenterClick:(UIButton*)sender{
-    
+    if (sender.selected) {
+        //取消关注
+        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.user_model.userId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = NO;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    } else {
+        //关注
+        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.user_model.userId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            sender.selected = YES;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#0995f8"].CGColor;
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 #pragma mark - 设置导航条
@@ -389,6 +415,7 @@ static NSString * const fucosCellId = @"fucos";
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
+//            self.fucosBtn.selected = self.user_model.
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
             

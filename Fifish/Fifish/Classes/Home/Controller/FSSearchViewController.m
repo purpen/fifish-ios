@@ -139,6 +139,7 @@
         return cell;
     } else if ([self.type isEqualToNumber:@(1)]) {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
+        cell.navc = self.navigationController;
         //传入模型
         FSZuoPin *model = self.stuffAry[indexPath.row];
         cell.model = model;
@@ -269,7 +270,7 @@
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
         CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-        return gaoDu + 10;
+        return gaoDu + 10 + 9;
     }
     return 0;
 }

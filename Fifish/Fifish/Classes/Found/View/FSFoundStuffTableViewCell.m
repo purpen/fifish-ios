@@ -8,12 +8,14 @@
 
 #import "FSFoundStuffTableViewCell.h"
 #import "FSZuoPin.h"
-
 #import "UIView+FSExtension.h"
-
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 #import "FSHomePageViewController.h"
+#import "CTDisplayView.h"
+#import "CTFrameParserConfig.h"
+#import "CoreTextData.h"
+#import "CTFrameParser.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -30,11 +32,21 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
+@property (weak, nonatomic) IBOutlet UIView *tagView;
+/**  */
+@property (nonatomic, strong) NSMutableArray *tagMAry;
 
 @end
 
 
 @implementation FSFoundStuffTableViewCell
+
+-(NSMutableArray *)tagMAry{
+    if (!_tagMAry) {
+        _tagMAry = [NSMutableArray array];
+    }
+    return _tagMAry;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -79,7 +91,7 @@
         [self.contentView addSubview:self.pictuerView];
         [_pictuerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.contentView.mas_top).offset(59);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
@@ -90,7 +102,7 @@
         [self.contentView addSubview:self.videoView];
         [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.contentView.mas_top).offset(59);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
@@ -112,21 +124,36 @@
         self.likeBtn.selected = YES;
     }
     
+    CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, -5, SCREEN_WIDTH, self.tagView.height)];
+    view.userInteractionEnabled = YES;
+    view.navc = self.navc;
+    view.backgroundColor = [UIColor whiteColor];
+    [self.tagView addSubview:view];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm createFileAtPath:filename contents:nil attributes:nil];
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    [self.tagMAry removeAllObjects];
     if (model.tags.count > 0) {
-        NSString *str;
         for (int i = 0; i < model.tags.count; i ++) {
             NSDictionary *dict = model.tags[i];
-            if (i == 0) {
-                str = [NSString stringWithFormat:@"#%@",dict[@"name"]];
-            } else {
-                str = [NSString stringWithFormat:@"%@ #%@", str, dict[@"name"]];
-            }
+            NSDictionary *cellDict = @{
+                                       @"color" : @"blue",
+                                       @"content" : [NSString stringWithFormat:@" # %@",dict[@"name"]],
+                                       @"url" : @"hh",
+                                       @"type" : @"link"
+                                       };
+            [self.tagMAry addObject:cellDict];
         }
-        self.tagTag.text = str;
-    } else {
-        self.tagTag.text = @"";
+        config.width = SCREEN_WIDTH;
+        [self.tagMAry writeToFile:filename atomically:YES];
     }
-    
+    CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+    view.data = data;
+
+
     // 文字的最大尺寸
     CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
     // 计算文字的高度

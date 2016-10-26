@@ -391,6 +391,10 @@
 		1FE565621DBDF0C4000AE61D /* UMSocialUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565471DBDF0C4000AE61D /* UMSocialUIManager.m */; };
 		1FE565641DBDF219000AE61D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE565631DBDF219000AE61D /* libc++.tbd */; };
 		1FE565661DBDF279000AE61D /* TwitterKitResources.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */; };
+		1FE565AF1DC041D5000AE61D /* FSUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */; };
+		1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */; };
+		1FE565B41DC050F4000AE61D /* FSSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */; };
+		1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1208,6 +1212,12 @@
 		1FE565471DBDF0C4000AE61D /* UMSocialUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSocialUIManager.m; sourceTree = "<group>"; };
 		1FE565631DBDF219000AE61D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Twitter/TwitterKit.framework/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		1FE565AC1DC041D5000AE61D /* FSUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserNameViewController.h; sourceTree = "<group>"; };
+		1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserNameViewController.m; sourceTree = "<group>"; };
+		1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSUserNameViewController.xib; sourceTree = "<group>"; };
+		1FE565B11DC050F4000AE61D /* FSSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSummaryViewController.h; sourceTree = "<group>"; };
+		1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSummaryViewController.m; sourceTree = "<group>"; };
+		1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSummaryViewController.xib; sourceTree = "<group>"; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -2696,8 +2706,14 @@
 				1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */,
 				1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */,
 				1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */,
+				1FE565AC1DC041D5000AE61D /* FSUserNameViewController.h */,
+				1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */,
+				1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */,
 				1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */,
 				1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */,
+				1FE565B11DC050F4000AE61D /* FSSummaryViewController.h */,
+				1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */,
+				1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3663,6 +3679,7 @@
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				0436AEC21DACE30C001E6808 /* hefeGradientMap.png in Resources */,
 				0436AECA1DACE30C001E6808 /* lomoMap.png in Resources */,
+				1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */,
 				0436AECD1DACE30C001E6808 /* riseMap.png in Resources */,
 				0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */,
 				0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */,
@@ -3688,6 +3705,7 @@
 				0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */,
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
 				0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */,
+				1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */,
 				1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				0436AEC91DACE30C001E6808 /* kelvinMap.png in Resources */,
@@ -3801,6 +3819,7 @@
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
+				1FE565B41DC050F4000AE61D /* FSSummaryViewController.m in Sources */,
 				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
 				1FDE28BE1D92241D00566A73 /* MJExtensionConst.m in Sources */,
@@ -3874,6 +3893,7 @@
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */,
+				1FE565AF1DC041D5000AE61D /* FSUserNameViewController.m in Sources */,
 				1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,

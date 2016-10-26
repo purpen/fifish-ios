@@ -248,6 +248,9 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section == 0 || section == 1) {
+        return 15;
+    }
     return 0.01;
 }
 
@@ -263,7 +266,7 @@
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 10;
+    return gaoDu + 10 + 9;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -302,6 +305,7 @@
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.row];
         cell.fucosBtn.tag = indexPath.row;
+        cell.navc = self.navigationController;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
         cell.likeBtn.tag = indexPath.row;

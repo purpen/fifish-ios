@@ -40,11 +40,6 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFj-mE-VvY" userLabel="标签">
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gep-HA-hiV">
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.56078431370000004" green="0.61568627450000002" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZT-0c-YA1" userLabel="标签线">
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -54,19 +49,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gep-HA-hiV" firstAttribute="centerY" secondItem="eFj-mE-VvY" secondAttribute="centerY" id="7Dv-9f-Ws1"/>
                             <constraint firstItem="4ZT-0c-YA1" firstAttribute="leading" secondItem="eFj-mE-VvY" secondAttribute="leading" id="AdB-Pw-THp"/>
-                            <constraint firstItem="4ZT-0c-YA1" firstAttribute="leading" secondItem="gep-HA-hiV" secondAttribute="trailing" id="MDP-TG-IjF"/>
                             <constraint firstItem="4ZT-0c-YA1" firstAttribute="top" secondItem="eFj-mE-VvY" secondAttribute="top" id="Y0f-4y-0wK"/>
                             <constraint firstAttribute="trailing" secondItem="4ZT-0c-YA1" secondAttribute="trailing" id="lf0-OE-EJ7"/>
                             <constraint firstAttribute="height" constant="44" id="syn-0n-M5R"/>
-                            <constraint firstItem="gep-HA-hiV" firstAttribute="leading" secondItem="eFj-mE-VvY" secondAttribute="leading" constant="10" id="wEw-Vk-SsP"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="MDP-TG-IjF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-dK-82f" userLabel="内容">
                         <subviews>
@@ -151,7 +138,7 @@
                     <constraint firstItem="skd-Cl-u7h" firstAttribute="leading" secondItem="LKl-DC-bzU" secondAttribute="leading" id="5N7-bT-tNC"/>
                     <constraint firstItem="skd-Cl-u7h" firstAttribute="top" secondItem="LKl-DC-bzU" secondAttribute="bottom" constant="3" id="7nw-vv-ZyU"/>
                     <constraint firstAttribute="trailing" secondItem="Obp-ym-9Pg" secondAttribute="trailing" id="8uv-8d-uSa"/>
-                    <constraint firstItem="8RE-Gu-Zg0" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="3" id="9FG-ji-Tok"/>
+                    <constraint firstItem="8RE-Gu-Zg0" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="12" id="9FG-ji-Tok"/>
                     <constraint firstItem="Q3W-yb-uBu" firstAttribute="top" secondItem="8RE-Gu-Zg0" secondAttribute="top" id="Bur-65-Vie"/>
                     <constraint firstAttribute="bottom" secondItem="2ah-oF-V1b" secondAttribute="bottom" id="Huw-xu-oJD"/>
                     <constraint firstItem="Obp-ym-9Pg" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" id="O5M-Hk-5I6"/>
@@ -159,7 +146,7 @@
                     <constraint firstItem="eFj-mE-VvY" firstAttribute="top" secondItem="Fbz-dK-82f" secondAttribute="bottom" id="Q2Q-HE-KYT"/>
                     <constraint firstItem="2ah-oF-V1b" firstAttribute="top" secondItem="eFj-mE-VvY" secondAttribute="bottom" id="RXq-bY-stO"/>
                     <constraint firstAttribute="trailing" secondItem="2ah-oF-V1b" secondAttribute="trailing" id="S4O-3D-k5v"/>
-                    <constraint firstItem="LKl-DC-bzU" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="8" id="TiX-fZ-zrm"/>
+                    <constraint firstItem="LKl-DC-bzU" firstAttribute="top" secondItem="XJP-N1-5mB" secondAttribute="top" constant="17" id="TiX-fZ-zrm"/>
                     <constraint firstItem="2ah-oF-V1b" firstAttribute="leading" secondItem="XJP-N1-5mB" secondAttribute="leading" id="V4T-VR-MG5"/>
                     <constraint firstItem="Q3W-yb-uBu" firstAttribute="height" secondItem="8RE-Gu-Zg0" secondAttribute="height" id="WsE-Xm-qOZ"/>
                     <constraint firstItem="Q3W-yb-uBu" firstAttribute="width" secondItem="8RE-Gu-Zg0" secondAttribute="width" id="XoZ-9F-cKO"/>
@@ -195,7 +182,7 @@
                 <outlet property="nameLabel" destination="LKl-DC-bzU" id="SJE-JC-Ef4"/>
                 <outlet property="neiRongView" destination="Fbz-dK-82f" id="GQb-pZ-e8h"/>
                 <outlet property="shareBtn" destination="qLR-Rb-YdQ" id="7ue-TM-YqQ"/>
-                <outlet property="tagTag" destination="gep-HA-hiV" id="Sj1-Ox-eDX"/>
+                <outlet property="tagView" destination="eFj-mE-VvY" id="l2x-e4-Bnw"/>
             </connections>
             <point key="canvasLocation" x="312" y="462"/>
         </tableViewCell>
