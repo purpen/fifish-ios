@@ -29,7 +29,7 @@
 
 //TODO:如果图片过大此处三个图片变量会耗费很大内存，后期需要优化处理
 //原始图片 第一级处理
-@property (nonatomic,strong) UIImage     * originalImage;
+@property (nonatomic,strong,readonly) UIImage     * originalImage;
 //经过滤镜处理的图片  二级处理
 @property (nonatomic,strong) UIImage     * FliterImage;
 //经过参数调整的图片 三级处理
@@ -145,7 +145,7 @@
 }
 - (void)setMainImageModel:(FSImageModel *)MainImageModel{
     _MainImageModel = MainImageModel;
-    self.originalImage = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
+    _originalImage = [UIImage imageWithContentsOfFile:self.MainImageModel.fileUrl];
 }
 - (UIImageView *)imageView{
     if (!_imageView) {
@@ -168,8 +168,9 @@
 - (FSFilterCollectionView *)FilterCollectionView{
     if (!_FilterCollectionView) {
         _FilterCollectionView = [[FSFilterCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:nil];
-        _FilterCollectionView.FilterDelegate = self;
         _FilterCollectionView.collectionNumber = self.FilterManager.fsFilterArr.count;
+        _FilterCollectionView.FilterDelegate = self;
+        _FilterCollectionView.originalImage = self.originalImage;
     }
     return _FilterCollectionView;
 }
