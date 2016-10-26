@@ -67,9 +67,11 @@
     [[UIScreen mainScreen] setBrightness: 1];
     
     [super viewDidLoad];
+    
     [self SetUpUI];
     
-    [self calibrateCameraTime];//校准camera时间
+    //校准camera时间
+    [self calibrateCameraTime];
     
     //获取设备信息，建立连接
     [self ConnectWithROV];
@@ -83,26 +85,6 @@
 }
 - (void)takePhoto{
     [self.VideoGlView snapshotPicture];
-//   UIImage * image = [self.VideoGlView snapshotPicture];
-//    PHAssetCollection *createdCollection = nil;
-//    NSString * title = @"Fifish";
-//    // 获得所有的自定义相册
-//    PHFetchResult<PHAssetCollection *> *collections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-//    for (PHAssetCollection *collection in collections) {
-//        if ([collection.localizedTitle isEqualToString:title]) {
-//            createdCollection = collection;
-//            break;
-//        }
-//    }
-//    [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
-//        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];
-//        // 自定义相册封面默认保存第一张图,所以使用以下方法把最新保存照片设为封面
-//        
-//        PHAssetChangeRequest * assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-//        [request addAssets:@[assetRequest.placeholderForCreatedAsset]];
-//        
-//        //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
-//    } error:nil];
 }
 - (void)calibrateCameraTime{
     
@@ -262,6 +244,8 @@
     }
     return _ViedoDecoder;
 }
+
+//解码后的视频数据送到openGl渲染
 - (void)updateH264FrameData:(YUV420Frame *)yuvFrame{
     [self.VideoGlView render:yuvFrame];
     [self.activityIndicatorView stopAnimating];
@@ -327,11 +311,6 @@
 
 //菜单
 - (void)VideoLiveMenuBtnClick{
-//    self.ViedoDecoder.isRunningDecode = NO;
-//    FSVideoPlayerController * player = [[FSVideoPlayerController alloc]init];
-//    player.fileUrl = self.ViedoDecoder.OutputMp4FileUrl;
-//    [self presentViewController:player animated:YES completion:nil];
-//
     FSLiveSettingsViewController * settingVc = [[FSLiveSettingsViewController alloc] init];
     self.modalPresentationStyle = UIModalPresentationCurrentContext;//推出的界面透明,不管用
     [self presentViewController:settingVc animated:YES completion:nil];

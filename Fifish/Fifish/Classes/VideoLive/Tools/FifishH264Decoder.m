@@ -345,6 +345,7 @@
     
     _out_stream->r_frame_rate.num=25;
     _out_stream->r_frame_rate.den=1;
+    
     if (_mp4outFormatContext->oformat->flags & AVFMT_GLOBALHEADER)
         _out_stream->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
     
