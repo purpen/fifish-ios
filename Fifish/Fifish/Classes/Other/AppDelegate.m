@@ -58,6 +58,8 @@
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@"580dbf76717c1916cb0043ed"];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"163101587483903" appSecret:nil redirectURL:@"http://api.qysea.com"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Instagram appKey:@"1c54a1a8da6b4b5e939501d1cfdb3a93" appSecret:@"ce739bb3302c4261a39e29d623428317" redirectURL:@"http://api.qysea.com"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
     //------------------设置hud
     [SVProgressHUD setMinimumDismissTimeInterval:2];
     

@@ -360,13 +360,19 @@
                 <outlet property="addWaterBtn" destination="Y6z-1P-CON" id="7RF-pC-aZ3"/>
                 <outlet property="addressBtn" destination="4az-eU-6mH" id="uzf-7F-ekb"/>
                 <outlet property="addressLabel" destination="q3i-Cz-S4z" id="ujJ-ct-hc8"/>
+                <outlet property="facebookBtn" destination="qDH-Oi-wN7" id="hGh-TS-Le5"/>
                 <outlet property="flagLabel" destination="EUe-pw-wgg" id="9r8-I5-Q3R"/>
+                <outlet property="instagramBtn" destination="Vh3-fX-efP" id="kCY-RT-vNn"/>
                 <outlet property="instructionsTextView" destination="fHB-Re-7EK" id="5BU-uZ-xV2"/>
                 <outlet property="placeHolderLabel" destination="QB2-1m-mJV" id="vwG-Kn-SEv"/>
                 <outlet property="playImageView" destination="V1b-0t-Kc9" id="tq9-d0-g4k"/>
+                <outlet property="qqBtn" destination="d1C-Xg-Ac2" id="88k-gN-z4m"/>
                 <outlet property="smallBtn" destination="MfL-2c-gP0" id="2BA-Ua-3Di"/>
                 <outlet property="tagBtn" destination="A3Q-jS-a3y" id="ddl-Qv-SE0"/>
                 <outlet property="tagTextFiled" destination="L18-WX-vNy" id="KU0-aV-G3b"/>
+                <outlet property="teitterBtn" destination="ht0-PK-vgW" id="VUY-vR-3h4"/>
+                <outlet property="weiboBtn" destination="Bol-uD-F3C" id="guL-Tw-Msx"/>
+                <outlet property="weixinBtn" destination="B1e-lV-Khc" id="RBG-Ng-7N0"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>

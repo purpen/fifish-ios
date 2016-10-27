@@ -21,6 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *flagLabel;
 @property (weak, nonatomic) IBOutlet UIButton *smallBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *playImageView;
+@property (weak, nonatomic) IBOutlet UIButton *weixinBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weiboBtn;
+@property (weak, nonatomic) IBOutlet UIButton *qqBtn;
+@property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
+@property (weak, nonatomic) IBOutlet UIButton *instagramBtn;
+@property (weak, nonatomic) IBOutlet UIButton *teitterBtn;
 
 
 @end

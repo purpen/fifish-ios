@@ -16,6 +16,9 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 #import "FSUserModel.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
 
 @interface FSLoginViewController ()<FBRequestDelegate>
 
@@ -24,9 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
+@property (weak, nonatomic) IBOutlet UIButton *instagramBtn;
 @property (weak, nonatomic) IBOutlet UIButton *weiXinBtn;
-@property (weak, nonatomic) IBOutlet UIButton *weiBoBtn;
-@property (weak, nonatomic) IBOutlet UIButton *qqBtn;
 @property (weak, nonatomic) IBOutlet UIButton *registerNowBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginViewLeftMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginViewLeft;
@@ -53,7 +56,17 @@
     [self.registerBtn addTarget:self action:@selector(clickRegisterBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.timeView.layer.masksToBounds = YES;
     self.timeView.layer.cornerRadius = 20;
+    [self judge];
 }
+
+#pragma mark -判断手机是否安装了相应的客户端
+-(void)judge{
+    //隐藏未安装的第三方登录平台
+    if ([WXApi isWXAppInstalled] == FALSE) {
+        self.weiXinBtn.hidden = true;
+    }
+}
+
 
 -(void)clickRegisterBtn:(UIButton*)sender{
     [SVProgressHUD show];
@@ -137,12 +150,90 @@
     }];
 
 }
-- (IBAction)weixinBtn:(UIButton *)sender {
+
+- (IBAction)facebookClick:(id)sender {
+    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Facebook currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialAuthResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"Facebook uid: %@", resp.uid);
+            NSLog(@"Facebook accessToken: %@", resp.accessToken);
+            NSLog(@"Facebook expiration: %@", resp.expiration);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Facebook currentViewController:nil completion:^(id result, NSError *error) {
+                if (error) {
+                    
+                } else {
+                    UMSocialUserInfoResponse *resp = result;
+                    
+                    // 授权信息
+                    NSLog(@"Facebook uid: %@", resp.uid);
+                    NSLog(@"Facebook accessToken: %@", resp.accessToken);
+                    NSLog(@"Facebook expiration: %@", resp.expiration);
+                    
+                    // 用户信息
+                    NSLog(@"Facebook name: %@", resp.name);
+                    
+                    // 第三方平台SDK源数据
+                    NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+                }
+            }];
+        }
+    }];
 }
-- (IBAction)weiboBtn:(id)sender {
+
+- (IBAction)instagramClick:(id)sender {
+    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Instagram currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialAuthResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"Facebook uid: %@", resp.uid);
+            NSLog(@"Facebook accessToken: %@", resp.accessToken);
+            NSLog(@"Facebook expiration: %@", resp.expiration);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Instagram currentViewController:nil completion:^(id result, NSError *error) {
+                if (error) {
+                    
+                } else {
+                    UMSocialUserInfoResponse *resp = result;
+                    
+                    // 授权信息
+                    NSLog(@"Facebook uid: %@", resp.uid);
+                    NSLog(@"Facebook accessToken: %@", resp.accessToken);
+                    NSLog(@"Facebook expiration: %@", resp.expiration);
+                    
+                    // 用户信息
+                    NSLog(@"Facebook name: %@", resp.name);
+                    
+                    // 第三方平台SDK源数据
+                    NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+                }
+            }];
+        }
+    }];
 }
-- (IBAction)qqBtn:(UIButton *)sender {
+
+- (IBAction)weixinClick:(id)sender {
+    [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+        UMSocialAuthResponse *authresponse = result;
+        NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.uid,authresponse.accessToken];
+        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+            UMSocialUserInfoResponse *userinfo =result;
+            NSString *message2 = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
+        }];
+    }];
 }
+
 - (IBAction)registerNowBtn:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {

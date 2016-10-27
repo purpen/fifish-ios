@@ -9,20 +9,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSLoginViewController">
             <connections>
                 <outlet property="cancelBtn" destination="Mzt-Wb-TJs" id="5oT-Hg-1O8"/>
+                <outlet property="facebookBtn" destination="HZ4-3t-wff" id="Tyk-mm-ZKf"/>
                 <outlet property="forgetBtn" destination="Btb-8y-TvJ" id="kA6-5O-sQO"/>
+                <outlet property="instagramBtn" destination="AnA-Cs-s2q" id="31t-P6-BLB"/>
                 <outlet property="loginBtn" destination="73H-QE-NgH" id="D72-KG-RkV"/>
                 <outlet property="loginViewLeft" destination="L7W-gL-peV" id="m9i-Li-bVp"/>
                 <outlet property="phoneTF" destination="y0s-fV-ciq" id="Gdn-85-Vuw"/>
                 <outlet property="phone_register" destination="GTn-UB-nIT" id="vaH-WH-WKd"/>
                 <outlet property="pwdTF" destination="cgb-5w-LdR" id="RE0-cB-wva"/>
                 <outlet property="pwd_register" destination="Q7V-n7-zf9" id="e1i-3H-TA7"/>
-                <outlet property="qqBtn" destination="3R8-3s-9RQ" id="8E0-0u-0zw"/>
                 <outlet property="registerBtn" destination="DVt-sh-gWB" id="u0R-vG-gAV"/>
                 <outlet property="registerNowBtn" destination="MSt-Uh-vwl" id="tFd-RD-qOD"/>
                 <outlet property="tipLabel" destination="ZvY-4J-pYg" id="qr8-P9-Qp7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="weiBoBtn" destination="AnA-Cs-s2q" id="bfm-tT-yMJ"/>
-                <outlet property="weiXinBtn" destination="HZ4-3t-wff" id="vtI-ez-kh4"/>
+                <outlet property="weiXinBtn" destination="3R8-3s-9RQ" id="A3R-e1-Mxz"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -104,20 +104,18 @@
                         <constraint firstItem="Q7V-n7-zf9" firstAttribute="centerY" secondItem="Yad-OI-o93" secondAttribute="centerY" id="G3U-f5-upn"/>
                         <constraint firstItem="wSf-5t-ZXh" firstAttribute="bottom" secondItem="dpH-RX-EDd" secondAttribute="bottom" id="IVO-vP-jze"/>
                         <constraint firstItem="dpH-RX-EDd" firstAttribute="leading" secondItem="Q7V-n7-zf9" secondAttribute="leading" id="Og0-cU-TIG"/>
+                        <constraint firstItem="DVt-sh-gWB" firstAttribute="leading" secondItem="QOa-TJ-inv" secondAttribute="leading" id="TIJ-uU-MtR"/>
                         <constraint firstItem="Q7V-n7-zf9" firstAttribute="top" secondItem="GTn-UB-nIT" secondAttribute="bottom" constant="48" id="Zzo-qD-BZg"/>
                         <constraint firstAttribute="trailing" secondItem="wSf-5t-ZXh" secondAttribute="trailing" constant="23" id="at9-TP-Kw8"/>
                         <constraint firstItem="QOa-TJ-inv" firstAttribute="bottom" secondItem="dd0-sy-u2d" secondAttribute="bottom" id="c99-Y0-WHK"/>
+                        <constraint firstItem="DVt-sh-gWB" firstAttribute="trailing" secondItem="QOa-TJ-inv" secondAttribute="trailing" id="cO2-q8-NeC"/>
                         <constraint firstItem="dd0-sy-u2d" firstAttribute="top" secondItem="GTn-UB-nIT" secondAttribute="bottom" id="eI1-bC-LsI"/>
-                        <constraint firstAttribute="trailing" secondItem="DVt-sh-gWB" secondAttribute="trailing" constant="40" id="f6B-eZ-UKq"/>
                         <constraint firstItem="GTn-UB-nIT" firstAttribute="centerY" secondItem="HXH-nH-kCX" secondAttribute="centerY" id="gq3-rF-wy0"/>
-                        <constraint firstAttribute="trailing" secondItem="QOa-TJ-inv" secondAttribute="trailing" constant="23" id="kua-RR-T5n"/>
                         <constraint firstItem="dd0-sy-u2d" firstAttribute="width" secondItem="GTn-UB-nIT" secondAttribute="width" id="lL9-Ht-uIQ"/>
                         <constraint firstItem="Q7V-n7-zf9" firstAttribute="leading" secondItem="GTn-UB-nIT" secondAttribute="leading" id="mUX-1h-r1R"/>
                         <constraint firstItem="DVt-sh-gWB" firstAttribute="centerX" secondItem="La4-SU-CuI" secondAttribute="centerX" id="onD-GM-zEz"/>
                         <constraint firstItem="Yad-OI-o93" firstAttribute="top" secondItem="HXH-nH-kCX" secondAttribute="bottom" constant="48" id="pyp-ZW-9Rk"/>
-                        <constraint firstAttribute="trailing" secondItem="DVt-sh-gWB" secondAttribute="trailing" constant="40" id="q0b-Gk-t0K"/>
                         <constraint firstItem="QOa-TJ-inv" firstAttribute="leading" secondItem="La4-SU-CuI" secondAttribute="leading" constant="23" id="rcr-LX-F7Q"/>
-                        <constraint firstItem="DVt-sh-gWB" firstAttribute="leading" secondItem="La4-SU-CuI" secondAttribute="leading" constant="39" id="sHP-nQ-jNQ"/>
                         <constraint firstAttribute="height" constant="277" id="uhN-OO-p6X"/>
                         <constraint firstItem="dd0-sy-u2d" firstAttribute="leading" secondItem="GTn-UB-nIT" secondAttribute="leading" id="w1i-ap-jGl"/>
                         <constraint firstItem="DVt-sh-gWB" firstAttribute="top" secondItem="Q7V-n7-zf9" secondAttribute="bottom" constant="28" id="zFr-ug-ekr"/>
@@ -201,7 +199,6 @@
                         <constraint firstAttribute="height" constant="257" id="D8Q-b3-0Ow"/>
                         <constraint firstItem="y0s-fV-ciq" firstAttribute="leading" secondItem="tJF-Vx-R0b" secondAttribute="trailing" constant="10" id="DyM-4X-aXZ"/>
                         <constraint firstItem="zO5-lO-oyu" firstAttribute="width" secondItem="cgb-5w-LdR" secondAttribute="width" id="EUZ-Rf-j8h"/>
-                        <constraint firstAttribute="trailing" secondItem="Ltk-9k-0BQ" secondAttribute="trailing" constant="23" id="GBf-9R-gXS"/>
                         <constraint firstItem="cgb-5w-LdR" firstAttribute="leading" secondItem="y0s-fV-ciq" secondAttribute="leading" id="IYN-g0-wHy"/>
                         <constraint firstItem="zO5-lO-oyu" firstAttribute="leading" secondItem="cgb-5w-LdR" secondAttribute="leading" id="OOx-GR-aJZ"/>
                         <constraint firstItem="73H-QE-NgH" firstAttribute="centerX" secondItem="B62-Sc-ulc" secondAttribute="centerX" id="PPl-uv-8Fv"/>
@@ -211,10 +208,10 @@
                         <constraint firstAttribute="trailing" secondItem="Btb-8y-TvJ" secondAttribute="trailing" constant="50" id="Uyk-Qh-hHg"/>
                         <constraint firstItem="cgb-5w-LdR" firstAttribute="width" secondItem="y0s-fV-ciq" secondAttribute="width" id="YRh-ev-0xc"/>
                         <constraint firstItem="Ltk-9k-0BQ" firstAttribute="leading" secondItem="B62-Sc-ulc" secondAttribute="leading" constant="23" id="aNu-63-y2g"/>
-                        <constraint firstItem="73H-QE-NgH" firstAttribute="leading" secondItem="B62-Sc-ulc" secondAttribute="leading" constant="39" id="ieq-Vx-T2s"/>
+                        <constraint firstItem="73H-QE-NgH" firstAttribute="leading" secondItem="Ltk-9k-0BQ" secondAttribute="leading" id="d7k-84-af5"/>
+                        <constraint firstItem="73H-QE-NgH" firstAttribute="trailing" secondItem="Ltk-9k-0BQ" secondAttribute="trailing" id="eWL-E1-FUD"/>
                         <constraint firstItem="y0s-fV-ciq" firstAttribute="centerY" secondItem="tJF-Vx-R0b" secondAttribute="centerY" id="lVy-Mn-Rtl"/>
                         <constraint firstItem="73H-QE-NgH" firstAttribute="top" secondItem="cgb-5w-LdR" secondAttribute="bottom" constant="28" id="lgV-5e-VaR"/>
-                        <constraint firstAttribute="trailing" secondItem="73H-QE-NgH" secondAttribute="trailing" constant="40" id="mfQ-P1-gA6"/>
                         <constraint firstItem="cgb-5w-LdR" firstAttribute="top" secondItem="y0s-fV-ciq" secondAttribute="bottom" constant="48" id="plA-O7-Zvi"/>
                         <constraint firstItem="Btb-8y-TvJ" firstAttribute="top" secondItem="73H-QE-NgH" secondAttribute="bottom" constant="15" id="qHM-Im-wnH"/>
                         <constraint firstItem="QJc-Aa-KVF" firstAttribute="top" secondItem="y0s-fV-ciq" secondAttribute="bottom" id="ryc-Id-PsE"/>
@@ -234,19 +231,19 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnA-Cs-s2q" userLabel="weibo">
                             <state key="normal" image="login_insgram"/>
                             <connections>
-                                <action selector="weiboBtn:" destination="-1" eventType="touchUpInside" id="Zwv-PE-FEd"/>
+                                <action selector="instagramClick:" destination="-1" eventType="touchUpInside" id="uFx-Vv-LD4"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ4-3t-wff" userLabel="weixin">
                             <state key="normal" image="login_faceBook"/>
                             <connections>
-                                <action selector="weixinBtn:" destination="-1" eventType="touchUpInside" id="o03-Uy-c59"/>
+                                <action selector="facebookClick:" destination="-1" eventType="touchUpInside" id="0Lj-s0-zTA"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3R8-3s-9RQ" userLabel="qq">
                             <state key="normal" image="login_weixin"/>
                             <connections>
-                                <action selector="qqBtn:" destination="-1" eventType="touchUpInside" id="UwK-3O-Ui0"/>
+                                <action selector="weixinClick:" destination="-1" eventType="touchUpInside" id="hEg-4s-AU2"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awe-Lo-LPD" userLabel="去注册">

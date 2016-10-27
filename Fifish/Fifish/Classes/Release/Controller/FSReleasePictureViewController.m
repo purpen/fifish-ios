@@ -19,6 +19,7 @@
 #import "FSBigImageViewController.h"
 #import "FSTabBarController.h"
 #import "FSMediaViewController.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface FSReleasePictureViewController () <UITextViewDelegate, FSAddTagViewControllerDelegate, UITextFieldDelegate, FSAddressViewControllerDelegate, FSWatermarkViewControllerDelegate>
 
@@ -103,8 +104,124 @@
             self.releaseView.playImageView.hidden = NO;
             [self.releaseView.smallBtn addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
         }
+        [_releaseView.weixinBtn addTarget:self action:@selector(weixinClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.weiboBtn addTarget:self action:@selector(weiboClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.qqBtn addTarget:self action:@selector(qqClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.facebookBtn addTarget:self action:@selector(facebookClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.instagramBtn addTarget:self action:@selector(instagramClick) forControlEvents:UIControlEventTouchUpInside];
+        [_releaseView.teitterBtn addTarget:self action:@selector(twitterClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _releaseView;
+}
+
+-(void)weixinClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_WechatSession];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_WechatSession];
+    }
+}
+
+-(void)weiboClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_Sina];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_Sina];
+    }
+}
+
+-(void)qqClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_QQ];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_QQ];
+    }
+}
+
+-(void)facebookClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_Facebook];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_Facebook];
+    }
+}
+
+-(void)instagramClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_Instagram];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_Instagram];
+    }
+}
+
+-(void)twitterClick{
+    if ([self.type isEqualToNumber:@(1)]) {
+        //图片
+        [self shareImageToPlatformType:UMSocialPlatformType_Twitter];
+    } else if ([self.type isEqualToNumber:@(2)]) {
+        //视频
+        [self shareVedioToPlatformType:UMSocialPlatformType_Twitter];
+    }
+}
+
+#pragma mark - 分享视频
+- (void)shareVedioToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建视频内容对象
+    UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:@"" descr:self.releaseView.accordingLabel.text thumImage:((FSVideoModel*)self.mediaModel).VideoPicture];
+    //设置视频网页播放地址
+    shareObject.videoUrl = self.mediaModel.fileUrl;
+    //            shareObject.videoStreamUrl = @"这里设置视频数据流地址（如果有的话，而且也要看所分享的平台支不支持）";
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
+}
+
+#pragma mark - 分享图片
+- (void)shareImageToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    messageObject.text = self.releaseView.accordingLabel.text;
+    //创建图片内容对象
+    UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+    //如果有缩略图，则设置缩略图
+    shareObject.thumbImage = ((FSImageModel*)self.mediaModel).defaultImage;
+    [shareObject setShareImage:((FSImageModel*)self.mediaModel).flietrImage];
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
 }
 
 -(void)watchImage{
