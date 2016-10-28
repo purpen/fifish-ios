@@ -9,12 +9,13 @@
 #import "FSHomeVideoView.h"
 #import "FSZuoPin.h"
 #import "UIImageView+WebCache.h"
+#import "FSProgressViewProgress.h"
 
 @interface FSHomeVideoView ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *timeBtn;
-
+@property (weak, nonatomic) IBOutlet FSProgressViewProgress *progressView;
 
 @end
 
@@ -24,7 +25,13 @@
     _model = model;
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        self.progressView.hidden = NO;
+        _model.pictureProgress = 1.0 * receivedSize / expectedSize;
+        [self.progressView setProgress:_model.pictureProgress animated:NO];
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.progressView.hidden = YES;
+    }];
     NSInteger duration = [model.duration integerValue];
     NSString *str;
     if (duration > 60) {

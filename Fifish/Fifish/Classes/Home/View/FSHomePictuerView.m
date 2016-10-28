@@ -9,10 +9,12 @@
 #import "FSHomePictuerView.h"
 #import "UIImageView+WebCache.h"
 #import "FSZuoPin.h"
+#import "FSProgressViewProgress.h"
 
 @interface FSHomePictuerView ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet FSProgressViewProgress *progressView;
 
 
 @end
@@ -21,7 +23,13 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        self.progressView.hidden = NO;
+        _model.pictureProgress = 1.0 * receivedSize / expectedSize;
+        [self.progressView setProgress:_model.pictureProgress animated:NO];
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.progressView.hidden = YES;
+    }];
 }
 
 @end

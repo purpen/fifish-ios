@@ -25,6 +25,13 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_video" translatesAutoresizingMaskIntoConstraints="NO" id="kVn-uO-p1O"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXf-ww-mDH"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqh-Xr-3lb" customClass="FSProgressViewProgress">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="bq4-ee-HZq"/>
+                        <constraint firstAttribute="height" constant="100" id="eBg-74-bDC"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -32,6 +39,7 @@
                 <constraint firstItem="kVn-uO-p1O" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2Sa-fo-o3k"/>
                 <constraint firstAttribute="trailing" secondItem="MXf-ww-mDH" secondAttribute="trailing" id="59B-fh-AEw"/>
                 <constraint firstItem="MXf-ww-mDH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5kx-BQ-Aq4"/>
+                <constraint firstItem="Pqh-Xr-3lb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6H2-bk-WwP"/>
                 <constraint firstAttribute="trailing" secondItem="lqs-iB-fJW" secondAttribute="trailing" constant="10" id="6Mj-gM-sDa"/>
                 <constraint firstAttribute="bottom" secondItem="eRt-IF-U9g" secondAttribute="bottom" id="8uQ-KS-pmZ"/>
                 <constraint firstItem="kVn-uO-p1O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AwB-Qc-AOu"/>
@@ -39,12 +47,14 @@
                 <constraint firstAttribute="bottom" secondItem="MXf-ww-mDH" secondAttribute="bottom" id="fEN-5W-rik"/>
                 <constraint firstItem="eRt-IF-U9g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gFh-tn-pbK"/>
                 <constraint firstAttribute="trailing" secondItem="eRt-IF-U9g" secondAttribute="trailing" id="h5a-kB-PKP"/>
+                <constraint firstItem="Pqh-Xr-3lb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="iNd-6B-aqA"/>
                 <constraint firstItem="lqs-iB-fJW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="nwC-hZ-tcq"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageView" destination="eRt-IF-U9g" id="n1k-k4-InZ"/>
+                <outlet property="progressView" destination="Pqh-Xr-3lb" id="vUK-tF-ldZ"/>
                 <outlet property="tapBtn" destination="MXf-ww-mDH" id="bRV-Ci-smF"/>
                 <outlet property="timeBtn" destination="lqs-iB-fJW" id="p9o-6A-UVA"/>
             </connections>

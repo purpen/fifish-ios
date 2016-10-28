@@ -395,6 +395,12 @@
 		1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */; };
 		1FE565B41DC050F4000AE61D /* FSSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */; };
 		1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */; };
+		1FE566031DC2E9C4000AE61D /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565FE1DC2E9C4000AE61D /* DACircularProgressView.m */; };
+		1FE566041DC2E9C4000AE61D /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566001DC2E9C4000AE61D /* DALabeledCircularProgressView.m */; };
+		1FE566051DC2E9C4000AE61D /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566011DC2E9C4000AE61D /* LICENSE.md */; };
+		1FE566061DC2E9C4000AE61D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566021DC2E9C4000AE61D /* README.md */; };
+		1FE566091DC2EA30000AE61D /* FSProgressViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566081DC2EA30000AE61D /* FSProgressViewProgress.m */; };
+		1FE5660B1DC2EF02000AE61D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE5660A1DC2EF02000AE61D /* QuartzCore.framework */; };
 		1FF36E631D49F3A100EB3C93 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */; };
 		1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */; };
 		1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E611D49F3A100EB3C93 /* ChanePwdViewController.m */; };
@@ -1218,6 +1224,15 @@
 		1FE565B11DC050F4000AE61D /* FSSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSummaryViewController.h; sourceTree = "<group>"; };
 		1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSummaryViewController.m; sourceTree = "<group>"; };
 		1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSummaryViewController.xib; sourceTree = "<group>"; };
+		1FE565FD1DC2E9C4000AE61D /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		1FE565FE1DC2E9C4000AE61D /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		1FE565FF1DC2E9C4000AE61D /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		1FE566001DC2E9C4000AE61D /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		1FE566011DC2E9C4000AE61D /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		1FE566021DC2E9C4000AE61D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1FE566071DC2EA30000AE61D /* FSProgressViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSProgressViewProgress.h; sourceTree = "<group>"; };
+		1FE566081DC2EA30000AE61D /* FSProgressViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSProgressViewProgress.m; sourceTree = "<group>"; };
+		1FE5660A1DC2EF02000AE61D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1FF36E5D1D49F3A100EB3C93 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		1FF36E5E1D49F3A100EB3C93 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		1FF36E5F1D49F3A100EB3C93 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -1274,6 +1289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE5660B1DC2EF02000AE61D /* QuartzCore.framework in Frameworks */,
 				1FE565661DBDF279000AE61D /* TwitterKitResources.bundle in Frameworks */,
 				1FE565641DBDF219000AE61D /* libc++.tbd in Frameworks */,
 				1F8011631DAC969100B320C7 /* AMapSearchKit.framework in Frameworks */,
@@ -2679,6 +2695,8 @@
 				1FE564C21DAF849B000AE61D /* FSReportView.h */,
 				1FE564C31DAF849B000AE61D /* FSReportView.m */,
 				1FE564C51DAF84A7000AE61D /* FSReportView.xib */,
+				1FE566071DC2EA30000AE61D /* FSProgressViewProgress.h */,
+				1FE566081DC2EA30000AE61D /* FSProgressViewProgress.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2908,6 +2926,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1FE565FB1DC2E9C4000AE61D /* DACircularProgress */,
 				1FE565091DBDF0C4000AE61D /* UMSocial */,
 				48FC20651DBC4A08001D71F4 /* CoreText */,
 				1FE564D41DB4D1E8000AE61D /* SDCycleScrollView */,
@@ -3422,6 +3441,27 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		1FE565FB1DC2E9C4000AE61D /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				1FE565FC1DC2E9C4000AE61D /* DACircularProgress */,
+				1FE566011DC2E9C4000AE61D /* LICENSE.md */,
+				1FE566021DC2E9C4000AE61D /* README.md */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
+		1FE565FC1DC2E9C4000AE61D /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				1FE565FD1DC2E9C4000AE61D /* DACircularProgressView.h */,
+				1FE565FE1DC2E9C4000AE61D /* DACircularProgressView.m */,
+				1FE565FF1DC2E9C4000AE61D /* DALabeledCircularProgressView.h */,
+				1FE566001DC2E9C4000AE61D /* DALabeledCircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
 		1FF783AA1D9923ED00618245 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3442,6 +3482,7 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FE5660A1DC2EF02000AE61D /* QuartzCore.framework */,
 				1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */,
 				1FE565631DBDF219000AE61D /* libc++.tbd */,
 				1F8011601DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd */,
@@ -3807,6 +3848,7 @@
 				48FC207D1DBC4A08001D71F4 /* CoreTextUtils.m in Sources */,
 				1FE564B91DAE3867000AE61D /* UIColor+Extension.m in Sources */,
 				1F7EDEEC1D4700E500ABED5D /* IQTextView.m in Sources */,
+				1FE566051DC2E9C4000AE61D /* LICENSE.md in Sources */,
 				1FDE28C51D92241D00566A73 /* NSObject+MJKeyValue.m in Sources */,
 				1FE564D11DB0DC56000AE61D /* FSProgressView.m in Sources */,
 				1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */,
@@ -3816,6 +3858,7 @@
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
+				1FE566061DC2E9C4000AE61D /* README.md in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
@@ -3828,6 +3871,7 @@
 				1FE564EE1DB5B95F000AE61D /* FSStuffCountTableViewCell.m in Sources */,
 				1FE564E41DB4D1E8000AE61D /* TAAbstractDotView.m in Sources */,
 				0436AE761DACC5EF001E6808 /* FSImageFilterManager.m in Sources */,
+				1FE566031DC2E9C4000AE61D /* DACircularProgressView.m in Sources */,
 				1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */,
 				1FB4FBC31D954EC400E236CF /* UIView+MJExtension.m in Sources */,
 				1F4201FE1D48AE0100D3E6CB /* MASCompositeConstraint.m in Sources */,
@@ -4028,6 +4072,7 @@
 				1FDE28C41D92241D00566A73 /* NSObject+MJCoding.m in Sources */,
 				1FB4FBB41D954EC400E236CF /* MJRefreshFooter.m in Sources */,
 				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
+				1FE566041DC2E9C4000AE61D /* DALabeledCircularProgressView.m in Sources */,
 				0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */,
 				1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */,
 				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
@@ -4035,6 +4080,7 @@
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
+				1FE566091DC2EA30000AE61D /* FSProgressViewProgress.m in Sources */,
 				1FE564F81DB5FC61000AE61D /* FSStuffCollectionViewCell.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */,

@@ -50,31 +50,36 @@
         self.pushStateLabel.text = @"已开启";
     }
 
-    CGFloat size = [SDImageCache sharedImageCache].getSize / 1000.0 / 1000;
-    self.cacheLabel.text = [NSString stringWithFormat:@"%.2fMB", size];
+    NSString * cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    self.cacheLabel.text = [NSString stringWithFormat:@"%.1fM", [self folderSizeAtPath:cachesPath]];
 }
 
-- (void)getSize
+#pragma mark - 计算缓存大小
+//遍历文件夹获得文件夹大小，返回多少M
+- (float)folderSizeAtPath:(NSString*) folderPath
 {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    
-    NSString *caches = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *cachePath = [caches stringByAppendingPathComponent:@"default/com.hackemist.SDWebImageCache.default"];
-    
-    NSDirectoryEnumerator *fileEnumerator = [manager enumeratorAtPath:cachePath];
-    NSInteger totalSize = 0;
-    for (NSString *fileName in fileEnumerator) {
-        NSString *filepath = [cachePath stringByAppendingPathComponent:fileName];
-        
-        //        BOOL dir = NO;
-        // 判断文件的类型：文件\文件夹
-        //        [manager fileExistsAtPath:filepath isDirectory:&dir];
-        //        if (dir) continue;
-        NSDictionary *attrs = [manager attributesOfItemAtPath:filepath error:nil];
-        if ([attrs[NSFileType] isEqualToString:NSFileTypeDirectory]) continue;
-        
-        totalSize += [attrs[NSFileSize] integerValue];
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath:folderPath]) {
+        return 0;
     }
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    NSString* fileName;
+    long long folderSize = 0;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    return folderSize/(1024.0 * 1024.0);
+}
+
+//单个文件的大小
+- (long long)fileSizeAtPath:(NSString*) filePath
+{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:filePath]) {
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+    }
+    return 0;
 }
 
 - (IBAction)changePasswordBtn:(id)sender {
@@ -86,8 +91,32 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
 }
 - (IBAction)clearCacheBtn:(id)sender {
-    [[SDImageCache sharedImageCache] clearDisk];
-    [SVProgressHUD showInfoWithStatus:@"缓存已清空"];
+    //清空缓存
+    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *files = [manager subpathsAtPath:cachesPath];
+    if (files.count == 0) {
+        [SVProgressHUD showInfoWithStatus:@"缓存已清空"];
+        
+        return;
+    }
+    //如果数组里有内容需要遍历清空
+    for (NSString *fileName in files) {
+        NSError *error = nil;
+        NSString *filePath = [cachesPath stringByAppendingPathComponent:fileName];
+        if ([manager fileExistsAtPath:filePath]) {
+            [manager removeItemAtPath:filePath error:&error];
+            if (error) {
+                //本来就是空的
+                [SVProgressHUD showInfoWithStatus:@"缓存已清空"];
+            }else{
+                //提示清空，改变显示的内存大小
+                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"清理缓存成功"]];
+                
+            }
+        }
+    }
+    self.cacheLabel.text = @"0.0M";
 }
 - (IBAction)evaluationBtn:(id)sender {
     NSString *urlStr = @"itms-apps://itunes.apple.com/app/id1089442815";
@@ -115,7 +144,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     [defaults synchronize];
-    [[FSTabBarController sharedManager] setSelectedIndex:0];
+    [[FSTabBarController sharedManager] setSelectedIndex:3];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

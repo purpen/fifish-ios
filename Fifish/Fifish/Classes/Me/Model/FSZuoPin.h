@@ -52,5 +52,7 @@
 @property(nonatomic,copy) NSString *filepath;
 /**  */
 @property(nonatomic,copy) NSString *duration;
+/**  */
+@property (nonatomic, assign) CGFloat pictureProgress;
 
 @end

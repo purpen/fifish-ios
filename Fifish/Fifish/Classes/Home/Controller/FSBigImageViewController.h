@@ -10,9 +10,10 @@
 
 @interface FSBigImageViewController : UIViewController
 
-/**  */
-@property (nonatomic, strong) NSString *imageUrl;
+
 /**  */
 @property (nonatomic, strong) UIImage *showImage;
+/**  */
+@property (nonatomic, strong) NSString *imageUrl;
 
 @end
