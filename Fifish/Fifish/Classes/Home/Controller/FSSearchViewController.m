@@ -68,7 +68,6 @@
 }
 
 
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
@@ -97,12 +96,12 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if ([self.type isEqualToNumber:@(2)]) {
         //用户
-        return self.userAry.count;
+        return self.userAry.count > 0 ? self.userAry.count : 1;
     } else if ([self.type isEqualToNumber:@(1)]) {
         if (self.stuffAry.count == 0) {
             self.myTableView.mj_footer.hidden = YES;
         }
-        return self.stuffAry.count;
+        return self.stuffAry.count > 0 ? self.stuffAry.count : 1;
     }
     return 0;
 }
@@ -129,6 +128,21 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.type isEqualToNumber:@(2)]) {
+        if (self.userAry.count == 0) {
+            static NSString *cellId = @"emptyShow";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search_empty"]];
+                [cell.contentView addSubview:imageView];
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
+                    make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                }];
+            }
+            return cell;
+        }
         //用户
         FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSListUserTableViewCell"];
         //传入模型
@@ -138,6 +152,22 @@
         [cell.fucosBtn addTarget:self action:@selector(userFcousClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else if ([self.type isEqualToNumber:@(1)]) {
+        if (self.stuffAry.count == 0) {
+            static NSString *cellId = @"emptyShow";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search_empty"]];
+                [cell.contentView addSubview:imageView];
+                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
+                    make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                }];
+            }
+            return cell;
+        }
+
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.navc = self.navigationController;
         //传入模型
@@ -264,8 +294,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.type isEqualToNumber:@(2)]) {
+        if (self.userAry.count == 0) {
+            return SCREEN_HEIGHT - 109;
+        }
         return 60;
     } else if ([self.type isEqualToNumber:@(1)]) {
+        if (self.stuffAry.count == 0) {
+            return SCREEN_HEIGHT - 109;
+        }
         FSZuoPin *model = self.stuffAry[indexPath.row];
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
@@ -308,9 +344,7 @@
         [self.myTableView.mj_header endRefreshing];
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
-        if (self.total == 0) {
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
-        }
+       
         NSArray *dataAry = result[@"data"];
         
         if ([self.type isEqualToNumber:@(2)]) {

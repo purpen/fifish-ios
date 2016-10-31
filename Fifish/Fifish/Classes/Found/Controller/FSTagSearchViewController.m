@@ -18,8 +18,9 @@
 #import "FSPlayViewController.h"
 #import "FSUserModel.h"
 #import "FSListUserTableViewCell.h"
+#import "Masonry.h"
 
-@interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 /**
  1、作品
@@ -74,6 +75,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = NSLocalizedString(@"tag", nil);
     self.type = @(1);
     self.tid = @(1);
@@ -105,9 +107,6 @@
         [self.myTableView.mj_header endRefreshing];
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
-        if (self.total == 0) {
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Can't find the content", nil)];
-        }
         NSArray *dataAry = result[@"data"];
         if ([self.type isEqualToNumber:@(2)]) {
             //用户
@@ -204,7 +203,7 @@
 
 -(UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -236,7 +235,7 @@
         self.tid = @(2);
     } else if (index == 2) {
         self.type = @(2);
-        self.type = @(0);
+        self.tid = @(0);
     }
     //进行网络请求
     [self.myTableView.mj_header beginRefreshing];
@@ -244,12 +243,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if ([self.type isEqualToNumber:@(2)]) {
-        return 0;
+        return self.userAry.count > 0 ? self.userAry.count + 2 : 1 + 2;
     } else if ([self.type isEqualToNumber:@(1)]) {
         if (self.stuffAry.count == 0) {
             self.myTableView.mj_footer.hidden = YES;
         }
-        return 2 + self.stuffAry.count;
+        return self.stuffAry.count > 0 ? self.stuffAry.count +2 : 1 + 2;
     }
     return 2;
 }
@@ -261,8 +260,14 @@
         return 44 + 10;
     } else {
         if ([self.type isEqualToNumber:@(2)]) {
+            if (self.userAry.count == 0) {
+                return SCREEN_HEIGHT - 288;
+            }
             return 60;
         } else if ([self.type isEqualToNumber:@(1)]) {
+            if (self.stuffAry.count == 0) {
+                return SCREEN_HEIGHT - 288;
+            }
             FSZuoPin *model = self.stuffAry[indexPath.row];
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
@@ -284,12 +289,28 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell.contentView addSubview:self.segmentedControl];
+            [cell.contentView addSubview:self.lineView];
         }
-        [cell.contentView addSubview:self.segmentedControl];
-        [cell.contentView addSubview:self.lineView];
         return cell;
     } else {
         if ([self.type isEqualToNumber:@(2)]) {
+            if (self.userAry.count == 0) {
+                static NSString *emptyCell = @"emptyShow";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:emptyCell];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:emptyCell];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search_empty"]];
+                    [cell.contentView addSubview:imageView];
+                    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
+                        make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                    }];
+                }
+                return cell;
+            }
             //用户
             FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSListUserTableViewCell"];
             //传入模型
@@ -299,6 +320,21 @@
             [cell.fucosBtn addTarget:self action:@selector(userFcousClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         } else if ([self.type isEqualToNumber:@(1)]) {
+            if (self.stuffAry.count == 0) {
+                static NSString *cellId = @"emptyShow";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"home_search_empty"]];
+                    [cell.contentView addSubview:imageView];
+                    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
+                        make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                    }];
+                }
+                return cell;
+            }
+            
             FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSHomeViewCell"];
             cell.navi = self.navigationController;
             cell.model = self.stuffAry[indexPath.row - 2];
