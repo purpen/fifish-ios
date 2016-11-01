@@ -82,7 +82,7 @@
 
 -(void)sureBtnClick:(UIButton*)sender{
     //网络请求
-    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
                                                                                         @"job" : self.professionalTF.text,
                                                                                         @"zone" : self.addressTF.text

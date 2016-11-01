@@ -15,7 +15,8 @@
     return @{
              @"userId" : @"id",
              @"small" : @"avatar.small",
-             @"large" : @"avatar.large"
+             @"large" : @"avatar.large",
+             @"gender" : @"sex"
              };
 }
 

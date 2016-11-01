@@ -46,7 +46,17 @@
 
 
 - (IBAction)clickSubmitBtn:(UIButton *)sender {
-
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/updatePassword" requestDictionary:@{
+                                                                                              @"old_password" : self.oldPwdTF.text,
+                                                                                              @"new_password" :  self.pwdTF.text,
+                                                                                              @"confrim_password" : self.confirmTF.text
+                                                                                              } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Change the password successfully", nil)];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 

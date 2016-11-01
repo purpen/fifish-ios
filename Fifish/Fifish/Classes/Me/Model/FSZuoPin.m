@@ -20,13 +20,13 @@
              @"username" : @"user.username",
              @"avatar_small" : @"user.avatar.small",
              @"avatar_large" : @"user.avatar.large",
-             @"width" : @"photo.width",
-             @"height" : @"photo.height",
-             @"file_small" : @"photo.file.small",
-             @"file_large" : @"photo.file.large",
-             @"srcfile" : @"photo.file.srcfile",
-             @"filepath" : @"photo.filepath",
-             @"duration" : @"photo.duration"
+             @"width" : @"cover.width",
+             @"height" : @"cover.height",
+             @"file_small" : @"cover.file.small",
+             @"file_large" : @"cover.file.large",
+             @"srcfile" : @"cover.file.srcfile",
+             @"filepath" : @"cover.filepath",
+             @"duration" : @"cover.duration"
              };
 }
 

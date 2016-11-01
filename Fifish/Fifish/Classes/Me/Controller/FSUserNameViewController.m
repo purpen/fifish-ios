@@ -38,8 +38,8 @@
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The user is null", nil)];
         return;
     }
-    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
-                                                                                        @"useranme" : self.nameTF.text
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
+                                                                                        @"username" : self.nameTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         FSUserModel *model = [[FSUserModel findAll] lastObject];

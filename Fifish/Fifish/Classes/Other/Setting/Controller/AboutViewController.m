@@ -18,22 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
-    //self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.title = @"关于太火鸟";
-//    [self addBarItemLeftBarButton:nil image:@"icon_back"];
+    self.aboutWebView.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = NSLocalizedString(@"about Fifish", nil);
     
     //地址
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@""]];
+    NSURL *url = [NSURL URLWithString:@"https://api.qysea.com/h5/about"];
     //在网页上加载
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.aboutWebView loadRequest:request];
     self.aboutWebView.delegate = self;
-}
-
--(void)leftBarItemSelected{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -55,19 +49,5 @@
     [SVProgressHUD showInfoWithStatus:error.localizedDescription];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -26,7 +26,7 @@
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressView.hidden = NO;
         _model.pictureProgress = 1.0 * receivedSize / expectedSize;
-        [self.progressView setProgress:_model.pictureProgress animated:NO];
+        [self.progressView setProgress:_model.pictureProgress animated:YES];
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         self.progressView.hidden = YES;
     }];

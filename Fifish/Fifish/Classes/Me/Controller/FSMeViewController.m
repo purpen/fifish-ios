@@ -17,6 +17,7 @@
 #import "FSUserModel.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
+#import "FSPraisedViewController.h"
 
 @interface FSMeViewController ()
 
@@ -38,7 +39,7 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     
-    FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+    FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
         
         NSLog(@"个人信息 %@",result);
@@ -61,6 +62,10 @@
     }];
 }
 
+- (IBAction)praisedClick:(id)sender {
+    FSPraisedViewController *vc = [[FSPraisedViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

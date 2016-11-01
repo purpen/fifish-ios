@@ -7,8 +7,12 @@
 //
 
 #import "FSChangeSexViewController.h"
+#import "FSUserModel.h"
 
 @interface FSChangeSexViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *manBtn;
+@property (weak, nonatomic) IBOutlet UIButton *womenBtn;
 
 @end
 
@@ -16,22 +20,68 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = NSLocalizedString(@"Modify the gender", nil);
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    switch (userModel.gender) {
+        case 0:
+        {
+        //默认
+        }
+            break;
+        case 1:
+        {
+            //男
+            self.manBtn.selected = YES;
+        }
+            break;
+        case 2:
+        {
+            //女
+            self.womenBtn.selected = YES;
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)menClick:(UIButton *)sender {
+    if (sender.selected) {
+    } else {
+        //选中
+        FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
+                                                                                            @"sex" : @(1)
+                                                                                            } delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            userModel.gender = 1;
+            sender.selected = YES;
+            self.womenBtn.selected = NO;
+            [userModel saveOrUpdate];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)womenClick:(UIButton *)sender {
+    if (sender.selected) {
+    } else {
+        //选中
+        FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
+                                                                                            @"sex" : @(2)
+                                                                                            } delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            userModel.gender = 2;
+            sender.selected = YES;
+            self.manBtn.selected = NO;
+            [userModel saveOrUpdate];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
-*/
 
 @end

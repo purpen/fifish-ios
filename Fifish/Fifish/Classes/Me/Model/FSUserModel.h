@@ -38,6 +38,14 @@
 @property(nonatomic,copy) NSString *small;
 /**  */
 @property(nonatomic,copy) NSString *large;
+/** 
+ 0代表默认
+ 1代表男
+ 2：女
+ */
+@property (nonatomic, assign) NSInteger gender;
+/**  */
+@property (nonatomic, assign) NSInteger following;
 
 
 @end

@@ -56,7 +56,7 @@
 
 -(void)clickAddreesPickerBtn:(UIButton*)sender{
     self.zoneLabel.text = [NSString stringWithFormat:@"%@ %@",self.addreesPickerVC.provinceStr,self.addreesPickerVC.cityStr];
-    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"zone" : self.zoneLabel.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {

@@ -287,6 +287,8 @@
 		1F8011AA1DADDBB700B320C7 /* UIImage+FSWatermark.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */; };
 		1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */; };
 		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
+		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
+		1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -1031,6 +1033,9 @@
 		1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChangeSexViewController.h; sourceTree = "<group>"; };
 		1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChangeSexViewController.m; sourceTree = "<group>"; };
 		1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSChangeSexViewController.xib; sourceTree = "<group>"; };
+		1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPraisedViewController.h; sourceTree = "<group>"; };
+		1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPraisedViewController.m; sourceTree = "<group>"; };
+		1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPraisedViewController.xib; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2744,6 +2749,9 @@
 				1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */,
 				1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */,
 				1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */,
+				1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */,
+				1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */,
+				1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3783,6 +3791,7 @@
 				0436AEC51DACE30C001E6808 /* hefeSoftLight.png in Resources */,
 				1F0424721D530DA80071A1D6 /* FSPictuerView.xib in Resources */,
 				1F0219C21D798567003A8A11 /* AddreesPickerViewController.xib in Resources */,
+				1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
 				1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
@@ -4092,6 +4101,7 @@
 				1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */,
 				0434F42A1D61D21000DBFFCE /* OpenGLFrameView.mm in Sources */,
 				1F7EDEF01D4700E500ABED5D /* IQToolbar.m in Sources */,
+				1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */,
 				1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */,
 				1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */,
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,

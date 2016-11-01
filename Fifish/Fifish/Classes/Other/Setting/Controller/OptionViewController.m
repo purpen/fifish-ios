@@ -11,11 +11,9 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 
-@interface OptionViewController ()<UITextFieldDelegate,UITextViewDelegate>
+@interface OptionViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *remindLabel;
 @property (weak, nonatomic) IBOutlet UITextView *optionTFV;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
-@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 @end
 
@@ -25,38 +23,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"意见反馈";
-    self.phoneTF.delegate = self;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 40, 40);
+    [button setTitle:@"发送" forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    [button setTitleColor:[UIColor colorWithHexString:@"#298cff"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = sendItem;
+    
     self.optionTFV.delegate = self;
-    self.submitBtn.layer.masksToBounds = YES;
-    self.submitBtn.layer.cornerRadius = 3;
 }
 
-
-
-- (IBAction)clickSubmitBtn:(UIButton *)sender {
+-(void)sendClick{
     if (self.optionTFV.text.length > 200) {
         [SVProgressHUD showInfoWithStatus:@"不能多于200个字"];
         return;
     }
     //封装参数
     NSDictionary *params = @{
-                             @"content":self.optionTFV.text,
-                             @"contact":self.phoneTF.text
+                             @"content":self.optionTFV.text
                              };
-//    FBRequest *request = [FBAPI postWithUrlString:@"/feedback/submit" requestDictionary:params delegate:self];
-//    [request startRequestSuccess:^(FBRequest *request, id result) {
-//        [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    } failure:^(FBRequest *request, NSError *error) {
-//        //发送请求失败
-//        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-//    }];
-
-}
-
-
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    [textField resignFirstResponder];
+    FBRequest *request = [FBAPI postWithUrlString:@"/feedback/submit" requestDictionary:params delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
+    } failure:^(FBRequest *request, NSError *error) {
+        //发送请求失败
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+    }];
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{

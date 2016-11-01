@@ -399,7 +399,7 @@ static NSString * const fucosCellId = @"fucos";
 #pragma mark - 刷新个人信息
 -(void)updateUserInfo{
     if (self.isMyself) {
-        FBRequest *request2 = [FBAPI getWithUrlString:@"/user/profile" requestDictionary:nil delegate:self];
+        FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             FSUserModel *userModel = [[FSUserModel findAll] lastObject];
             NSDictionary *dict = result[@"data"];
@@ -415,7 +415,7 @@ static NSString * const fucosCellId = @"fucos";
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
-//            self.fucosBtn.selected = self.user_model.
+            self.fucosBtn.selected = self.user_model.following == 1;
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
             

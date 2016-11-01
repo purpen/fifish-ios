@@ -6,8 +6,8 @@
 //  Copyright © 2016年 taihuoniao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 
-@interface ChanePwdViewController : UIViewController
+@interface ChanePwdViewController : FSBaseViewController
 
 @end
