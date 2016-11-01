@@ -23,6 +23,12 @@ static NSInteger const CellWei = 70;
  */
 @property (nonatomic ,strong)NSMutableArray * FilerPreviewPicturArr;
 
+/**
+ 滤镜名字
+ */
+@property (nonatomic ,strong)NSArray * FilteraNameArr;
+
+
 
 @end
 
@@ -57,6 +63,9 @@ static NSInteger const CellWei = 70;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"FSfilterName" ofType:@"plist"];
+            self.FilteraNameArr = [NSArray arrayWithContentsOfFile:path];
+            
             [self reloadData];
         });
         
@@ -75,6 +84,7 @@ static NSInteger const CellWei = 70;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSFilterCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:FilterCellIden forIndexPath:indexPath];
     cell.index = indexPath.row;
+    cell.FilterNameLab.text = self.FilteraNameArr[indexPath.row];
     
 //  滤镜预览图片数组是异步加载，判断是否加载完再取值
     cell.FilterImageView.image =self.FilerPreviewPicturArr.count == self.collectionNumber ? self.FilerPreviewPicturArr[indexPath.row]:nil;
@@ -84,6 +94,7 @@ static NSInteger const CellWei = 70;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.FilterDelegate&&[self.FilterDelegate respondsToSelector:@selector(SeletedFilterWithIndex:)]) {
+        
         [self.FilterDelegate SeletedFilterWithIndex:indexPath];
     }
 }

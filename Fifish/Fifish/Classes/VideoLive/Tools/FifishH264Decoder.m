@@ -119,7 +119,6 @@
         NSLog(@"找不到视频中的流信息，或者封装格式不支持解码");
         return -1;
     }
-    
     return 0;
 }
 
@@ -184,7 +183,7 @@
     }
     
     img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_RGB32, SWS_BICUBIC, NULL, NULL, NULL);
-    
+
     return 0;
     
     
