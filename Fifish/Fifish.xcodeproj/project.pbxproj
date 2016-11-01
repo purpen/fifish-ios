@@ -96,6 +96,7 @@
 		0436AF521DACEDDD001E6808 /* GPUImageFourInputFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436AF511DACEDDD001E6808 /* GPUImageFourInputFilter.m */; };
 		043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */; };
 		044167C41D66FE79002439E7 /* FSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044167C31D66FE79002439E7 /* FSVideoPlayerController.m */; };
+		044175341DC8277100D170E6 /* FSfilterName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044175361DC8277100D170E6 /* FSfilterName.plist */; };
 		0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D50E1DADE294001ECC6B /* FSRegulateCollectionView.m */; };
 		0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D5111DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m */; };
 		0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442D51B1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m */; };
@@ -677,6 +678,8 @@
 		043CB29A1D6EE6040060B629 /* FSlocalMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSlocalMediaViewController.m; sourceTree = "<group>"; };
 		044167C21D66FE79002439E7 /* FSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVideoPlayerController.h; sourceTree = "<group>"; };
 		044167C31D66FE79002439E7 /* FSVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoPlayerController.m; sourceTree = "<group>"; };
+		044175351DC8277100D170E6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/FSfilterName.plist"; sourceTree = "<group>"; };
+		044175371DC8277400D170E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/FSfilterName.plist; sourceTree = "<group>"; };
 		0442D50D1DADE294001ECC6B /* FSRegulateCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegulateCollectionView.h; sourceTree = "<group>"; };
 		0442D50E1DADE294001ECC6B /* FSRegulateCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRegulateCollectionView.m; sourceTree = "<group>"; };
 		0442D5101DADE8C6001ECC6B /* FSRegulateCollectionviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRegulateCollectionviewCell.h; sourceTree = "<group>"; };
@@ -1714,6 +1717,7 @@
 			isa = PBXGroup;
 			children = (
 				0436AE791DACCC59001E6808 /* FSfilter.h */,
+				044175361DC8277100D170E6 /* FSfilterName.plist */,
 			);
 			path = header;
 			sourceTree = "<group>";
@@ -3675,6 +3679,7 @@
 				0436AEBC1DACE30C001E6808 /* brannanScreen.png in Resources */,
 				0436AED51DACE30C001E6808 /* toasterCurves.png in Resources */,
 				1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */,
+				044175341DC8277100D170E6 /* FSfilterName.plist in Resources */,
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
 				0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */,
 				1FB4FBBF1D954EC400E236CF /* MJRefresh.bundle in Resources */,
@@ -4153,6 +4158,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		044175361DC8277100D170E6 /* FSfilterName.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				044175351DC8277100D170E6 /* zh-Hans */,
+				044175371DC8277400D170E6 /* en */,
+			);
+			name = FSfilterName.plist;
+			sourceTree = "<group>";
+		};
 		1F42018C1D47389700D3E6CB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

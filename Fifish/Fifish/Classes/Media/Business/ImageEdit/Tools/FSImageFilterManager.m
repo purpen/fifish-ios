@@ -41,6 +41,7 @@
 
 //test
 -(UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image{
+    
     GPUImageFilterGroup * filter =(GPUImageFilterGroup*) [[NSClassFromString(@"GPUImageColorInvertFilter") alloc] init];
     
     [filter forceProcessingAtSize:image.size];
@@ -55,6 +56,10 @@
 }
 
 -(UIImage *)randerImageWithIndex:(NSString *)filterName WithImage:(UIImage *)image{
+    //原图
+    if([filterName isEqualToString:@"original"]){
+        return image;
+    }
     GPUImageFilterGroup * filter =(GPUImageFilterGroup*) [[NSClassFromString(filterName) alloc] init];
     
     [filter forceProcessingAtSize:image.size];
@@ -164,7 +169,8 @@
 
 - (NSArray *)fsFilterArr{
     if (!_fsFilterArr) {
-        _fsFilterArr = @[@"FS1977Filter",
+        _fsFilterArr = @[@"original",
+                         @"FS1977Filter",
                          @"FSAmaroFilter",
                          @"FSHudsonFilter",
                          @"FSInkwellFilter",
@@ -194,7 +200,14 @@
     return _fsFilterArr;
     
 }
-
+- (NSArray *)fsFilterNameArr{
+    if (!_fsFilterNameArr) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"FSfilterName" ofType:@"plist"];
+       _fsFilterNameArr = [NSArray arrayWithContentsOfFile:path];
+        
+    }
+    return _fsFilterNameArr;
+}
 //  @[@"FS1977Filter",
 //@"FSAmaroFilter",
 //@"FSHudsonFilter",

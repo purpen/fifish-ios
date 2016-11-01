@@ -222,7 +222,7 @@
 
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
    self.imageView.image = self.ParamsImage.image  = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
-
+    self.title = self.FilterManager.fsFilterNameArr[indexpath.row];
 }
 #pragma mark FSFilterCollectionViewDelegate
 -(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{

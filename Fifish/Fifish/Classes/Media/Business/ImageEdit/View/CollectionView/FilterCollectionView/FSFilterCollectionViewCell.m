@@ -12,7 +12,7 @@
 
 
 
-@property (nonatomic,strong) UILabel * FilterNameLab;
+
 
 @end
 
@@ -53,11 +53,12 @@
         _FilterNameLab = [[UILabel alloc] init];
         _FilterNameLab.textColor = [UIColor whiteColor];
         _FilterNameLab.textAlignment = NSTextAlignmentCenter;
+        _FilterNameLab.font = [UIFont systemFontOfSize:12];
     }
     return _FilterNameLab;
 }
 - (void)setIndex:(NSInteger )index{
     _index = index;
-    self.FilterNameLab.text = [NSString stringWithFormat:@"%lu",(long)index];
+//    self.FilterNameLab.text = [NSString stringWithFormat:@"%lu",(long)index];
 }
 @end

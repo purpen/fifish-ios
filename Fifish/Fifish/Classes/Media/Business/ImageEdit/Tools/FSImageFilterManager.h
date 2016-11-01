@@ -35,6 +35,8 @@ typedef NS_ENUM(NSInteger,FSImageParamType) {
 //滤镜数组
 @property (nonatomic,strong) NSArray * fsFilterArr;
 
+//滤镜名字数组
+@property (nonatomic,strong) NSArray * fsFilterNameArr;
 
 - (UIImage *)randerImageWithFilter:(FSFilterType)filtertype WithImage:(UIImage *)image;
 // TUDO: 改成枚举
