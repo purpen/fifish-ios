@@ -8,6 +8,7 @@
 
 #import "FSBigImageViewController.h"
 #import "FSImageScrollView.h"
+#import "AFNetworking.h"
 
 @interface FSBigImageViewController ()
 
@@ -36,6 +37,11 @@
     self.view.backgroundColor = [UIColor blackColor];
     if (self.imageUrl.length != 0) {
         _sceneImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]]];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        NSURL *URL = [NSURL URLWithString:self.imageUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//        NSURLSessionDownloadTask *downloadTask
     } else {
         _sceneImage = self.showImage;
     }

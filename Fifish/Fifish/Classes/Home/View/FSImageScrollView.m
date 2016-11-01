@@ -63,10 +63,11 @@
     
     self.imageView = [[UIImageView alloc] initWithImage:image];
     self.imageView.clipsToBounds = NO;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:self.imageView];
     
     CGRect frame = self.imageView.frame;
-    frame.size.height = 210;
+//    frame.size.height = 210;
     frame.size.width = self.bounds.size.width;
     self.imageView.frame = frame;
     [self configureForImageSize:self.imageView.bounds.size];

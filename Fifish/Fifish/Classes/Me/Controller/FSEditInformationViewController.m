@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "FSUserNameViewController.h"
 #import "AddreesPickerViewController.h"
+#import "FSChangeSexViewController.h"
 
 @interface FSEditInformationViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -39,6 +40,11 @@
     [self headImage];
     FSUserModel *model = [[FSUserModel findAll] lastObject];
     self.zoneLabel.text = model.zone;
+}
+
+- (IBAction)sexClick:(id)sender {
+    FSChangeSexViewController *vc = [[FSChangeSexViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 更改地区

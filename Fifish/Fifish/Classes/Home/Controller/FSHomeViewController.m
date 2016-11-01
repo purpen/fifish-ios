@@ -131,7 +131,7 @@ static NSString * const CellId = @"home";
                     [self.view layoutIfNeeded];
                 }];
             } failure:^(FBRequest *request, NSError *error) {
-                
+                NSLog(@"错误信息  %@", error.localizedDescription);
             }];
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             self.progressView.repeatBtn.hidden = NO;
@@ -139,6 +139,7 @@ static NSString * const CellId = @"home";
             [self.progressView.repeatBtn addTarget:self action:@selector(repeat2) forControlEvents:UIControlEventTouchUpInside];
             [self.progressView.deleteBtn addTarget:self action:@selector(delete) forControlEvents:UIControlEventTouchUpInside];
             self.progressView.stateLabel.text = NSLocalizedString(@"Upload failed", nil);
+            NSLog(@"错误信息  %@", error.localizedDescription);
         }];
         
     } failure:^(FBRequest *request, NSError *error) {
@@ -409,7 +410,7 @@ static NSString * const CellId = @"home";
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     FSZuoPin *model = self.modelAry[sender.tag];
-    vc.imageUrl = model.file_large;
+    vc.imageUrl = model.srcfile;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

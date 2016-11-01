@@ -152,27 +152,7 @@
     }
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     view.data = data;
-
-
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [self.contentLabel.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    if ((int)textH == 46) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:@"展开" forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.neiRongView addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.contentLabel.mas_bottom).offset(3);
-            make.height.mas_equalTo(20);
-            make.width.mas_equalTo(28);
-            make.right.mas_equalTo(self.neiRongView.mas_right).offset(-10);
-        }];
-        self.bottomSpace.constant = 30;
-        [self layoutIfNeeded];
-    }
+    
 }
 
 @end
