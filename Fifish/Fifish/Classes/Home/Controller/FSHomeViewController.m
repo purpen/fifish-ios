@@ -130,6 +130,7 @@ static NSString * const CellId = @"home";
                     self.contenTableView.y -= 44;
                     [self.view layoutIfNeeded];
                 }];
+                [self.contenTableView.mj_header beginRefreshing];
             } failure:^(FBRequest *request, NSError *error) {
                 NSLog(@"错误信息  %@", error.localizedDescription);
             }];
@@ -186,6 +187,7 @@ static NSString * const CellId = @"home";
                     self.contenTableView.y -= 44;
                     [self.view layoutIfNeeded];
                 }];
+                [self.contenTableView.mj_header beginRefreshing];
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
@@ -398,6 +400,7 @@ static NSString * const CellId = @"home";
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.videoView.tapBtn.tag = indexPath.section;
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.fucosBtn.tag = indexPath.section;
     [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
@@ -414,9 +417,8 @@ static NSString * const CellId = @"home";
                     FSZuoPin *cellModel = self.modelAry[i];
                     if ([cellModel.user_id isEqualToString:model.user_id]) {
                         cellModel.is_follow = 0;
-                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                        [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
                     }
+                    [self.contenTableView reloadData];
                 }
             } failure:^(FBRequest *request, NSError *error) {
                 
@@ -430,9 +432,8 @@ static NSString * const CellId = @"home";
                     FSZuoPin *cellModel = self.modelAry[i];
                     if ([cellModel.user_id isEqualToString:model.user_id]) {
                         cellModel.is_follow = 1;
-                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                        [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
                     }
+                    [self.contenTableView reloadData];
                 }
             } failure:^(FBRequest *request, NSError *error) {
                 
@@ -555,7 +556,7 @@ static NSString * const CellId = @"home";
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 9 ;
+    return gaoDu + 9 - 18;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

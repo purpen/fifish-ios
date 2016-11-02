@@ -768,7 +768,7 @@ static NSString * const fucosCellId = @"fucos";
        FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = NO;
-            sender.backgroundColor = [UIColor whiteColor];
+            sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

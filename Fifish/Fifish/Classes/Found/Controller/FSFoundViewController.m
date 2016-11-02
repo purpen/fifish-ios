@@ -258,14 +258,16 @@
         return 90;
     } else if (indexPath.section == 1) {
         return 100;
+    } else if (indexPath.section > 1) {
+        FSZuoPin *model = self.stuffAry[indexPath.section - 2];
+        // 文字的最大尺寸
+        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+        // 计算文字的高度
+        CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+        CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
+        return gaoDu + 9 - 18;
     }
-    FSZuoPin *model = self.stuffAry[indexPath.row];
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 9;
+    return 0;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

@@ -42,10 +42,10 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];
 //    if (userModel.followFlag == 1) {
 //        self.fucosBtn.selected = YES;
-//        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
 //    } else {
 //        self.fucosBtn.selected = NO;
-//        self.fucosBtn.backgroundColor = [UIColor whiteColor];
+//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
 //    }
 }
 
@@ -56,10 +56,8 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (model.followFlag == 1) {
         self.fucosBtn.selected = YES;
-        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
     } else {
         self.fucosBtn.selected = NO;
-        self.fucosBtn.backgroundColor = [UIColor whiteColor];
     }
 }
 

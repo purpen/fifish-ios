@@ -16,6 +16,7 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
+#import "FSUserModel.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -51,11 +52,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.headImageView.layer.masksToBounds = YES;
-    self.headImageView.layer.cornerRadius = 22;
+    self.headImageView.layer.cornerRadius = 17;
     self.fucosBtn.layer.masksToBounds = YES;
     self.fucosBtn.layer.cornerRadius = 13;
     self.fucosBtn.layer.borderWidth = 1;
-    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
 }
 
 - (IBAction)headTapClick:(UIButton *)sender {
@@ -81,6 +82,12 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    if ([_model.user_id isEqualToString:userModel.userId]) {
+        self.fucosBtn.hidden = YES;
+    } else {
+        self.fucosBtn.hidden = NO;
+    }
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
     self.timeLabel.text = model.created_at;
@@ -96,7 +103,7 @@
         [self.contentView addSubview:self.pictuerView];
         [_pictuerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
@@ -107,7 +114,7 @@
         [self.contentView addSubview:self.videoView];
         [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(12);
+            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
             make.right.mas_equalTo(self.contentView.mas_right).offset(0);
             make.height.mas_equalTo(210);
         }];
@@ -116,10 +123,10 @@
     }
     
     if (model.is_follow == 0) {
-        self.fucosBtn.backgroundColor = [UIColor whiteColor];
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
         self.fucosBtn.selected = NO;
     } else {
-        self.fucosBtn.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995F8"].CGColor;
         self.fucosBtn.selected = YES;
     }
     

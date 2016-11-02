@@ -48,10 +48,10 @@
                         <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-2" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <state key="normal" title="关注" image="me_path">
-                            <color key="titleColor" red="0.1333333333" green="0.53333333329999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.49803921568627452" green="0.5607843137254902" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <state key="selected" title="已关注" image="me_path_right">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" red="0.035294117647058823" green="0.58431372549019611" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                 </subviews>
@@ -81,7 +81,7 @@
     </objects>
     <resources>
         <image name="me_listUser_bg" width="359" height="55"/>
-        <image name="me_path" width="9" height="9"/>
-        <image name="me_path_right" width="11" height="8"/>
+        <image name="me_path" width="9" height="10"/>
+        <image name="me_path_right" width="11" height="9"/>
     </resources>
 </document>
