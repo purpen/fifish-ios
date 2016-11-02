@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
 
 @end
 
@@ -85,6 +86,9 @@
     self.nameLabel.text = model.username;
     self.timeLabel.text = model.created_at;
     self.addressLabel.text = model.address;
+    if (model.address.length == 0) {
+        self.addressIcon.hidden = YES;
+    }
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         [self.videoView removeFromSuperview];

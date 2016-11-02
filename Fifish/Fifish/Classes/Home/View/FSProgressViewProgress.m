@@ -13,7 +13,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.roundedCorners = 2;
-    self.progressLabel.textColor = [UIColor whiteColor];
+    self.progressLabel.textColor = [UIColor blackColor];
 }
 
 -(void)setProgress:(CGFloat)progress animated:(BOOL)animated{
@@ -25,7 +25,8 @@
 -(instancetype)init{
     if (self = [super init]) {
         self.roundedCorners = 2;
-        self.progressLabel.textColor = [UIColor whiteColor];
+        self.progressLabel.textColor = [UIColor blackColor];
+        self.progressTintColor = [UIColor blackColor];
     }
     return self;
 }

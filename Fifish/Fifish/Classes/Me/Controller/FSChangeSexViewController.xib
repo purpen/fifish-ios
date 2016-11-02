@@ -38,16 +38,25 @@
                                 <action selector="menClick:" destination="-1" eventType="touchUpInside" id="eEq-im-Bus"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-YG-JoK">
+                            <connections>
+                                <action selector="manClickClick:" destination="-1" eventType="touchUpInside" id="KMO-cW-MZw"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="XvV-AH-bML" secondAttribute="trailing" id="2Jt-uI-spk"/>
                         <constraint firstItem="Dvd-Sa-K3p" firstAttribute="centerY" secondItem="gaG-xh-EsW" secondAttribute="centerY" id="6qY-ua-YHE"/>
+                        <constraint firstItem="R5T-YG-JoK" firstAttribute="top" secondItem="gaG-xh-EsW" secondAttribute="top" id="7cf-xW-vNF"/>
+                        <constraint firstItem="R5T-YG-JoK" firstAttribute="leading" secondItem="gaG-xh-EsW" secondAttribute="leading" id="7pK-Cx-PTz"/>
                         <constraint firstAttribute="trailing" secondItem="Zdn-Nd-zxQ" secondAttribute="trailing" constant="22" id="92G-el-Pcz"/>
                         <constraint firstItem="Zdn-Nd-zxQ" firstAttribute="centerY" secondItem="gaG-xh-EsW" secondAttribute="centerY" id="CDi-Cn-bdL"/>
+                        <constraint firstAttribute="trailing" secondItem="R5T-YG-JoK" secondAttribute="trailing" id="EUI-JF-v8U"/>
                         <constraint firstItem="Dvd-Sa-K3p" firstAttribute="leading" secondItem="gaG-xh-EsW" secondAttribute="leading" constant="20" id="FJB-aY-xeH"/>
                         <constraint firstAttribute="height" constant="44" id="J16-YK-qxP"/>
                         <constraint firstAttribute="bottom" secondItem="XvV-AH-bML" secondAttribute="bottom" id="kSV-rd-gan"/>
+                        <constraint firstItem="XvV-AH-bML" firstAttribute="top" secondItem="R5T-YG-JoK" secondAttribute="bottom" id="kh4-Cp-CgB"/>
                         <constraint firstItem="XvV-AH-bML" firstAttribute="leading" secondItem="gaG-xh-EsW" secondAttribute="leading" id="pCe-Dc-fYm"/>
                     </constraints>
                 </view>
@@ -65,14 +74,23 @@
                                 <action selector="womenClick:" destination="-1" eventType="touchUpInside" id="nhc-m1-tpm"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTn-mh-u1i">
+                            <connections>
+                                <action selector="womenClickClick:" destination="-1" eventType="touchUpInside" id="Ggy-MI-Yfo"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Eg9-b7-0Au" firstAttribute="centerY" secondItem="P3u-9T-n8V" secondAttribute="centerY" id="5Px-iO-sl3"/>
+                        <constraint firstItem="XTn-mh-u1i" firstAttribute="top" secondItem="P3u-9T-n8V" secondAttribute="top" id="E0G-bE-8Lw"/>
+                        <constraint firstAttribute="bottom" secondItem="XTn-mh-u1i" secondAttribute="bottom" id="EOF-lh-Jxc"/>
                         <constraint firstItem="45v-DQ-8ns" firstAttribute="leading" secondItem="P3u-9T-n8V" secondAttribute="leading" constant="20" id="JVk-Jk-8ei"/>
+                        <constraint firstItem="XTn-mh-u1i" firstAttribute="leading" secondItem="P3u-9T-n8V" secondAttribute="leading" id="Oqm-aW-eER"/>
                         <constraint firstAttribute="trailing" secondItem="Eg9-b7-0Au" secondAttribute="trailing" constant="22" id="PjW-2Z-gM2"/>
                         <constraint firstItem="45v-DQ-8ns" firstAttribute="centerY" secondItem="P3u-9T-n8V" secondAttribute="centerY" id="W7H-vH-HjX"/>
                         <constraint firstAttribute="height" constant="44" id="cAZ-DX-qCP"/>
+                        <constraint firstAttribute="trailing" secondItem="XTn-mh-u1i" secondAttribute="trailing" id="fuy-wJ-g9e"/>
                     </constraints>
                 </view>
             </subviews>

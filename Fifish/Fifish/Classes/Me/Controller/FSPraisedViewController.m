@@ -99,7 +99,7 @@
     self.current_page = 1;
     NSDictionary *params = @{
                              @"page" : @(self.current_page),
-                             @"per_page" : @10,
+                             @"per_page" : @12,
                              @"kind" : @(self.kind)
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/me/likeStuffs" requestDictionary:params delegate:self];
@@ -128,7 +128,7 @@
     [self.myTableView.mj_header endRefreshing];
     NSDictionary *params = @{
                              @"page" : @(++ self.current_page),
-                             @"per_page" : @10,
+                             @"per_page" : @12,
                              @"kind" : @(self.kind)
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/me/likeStuffs" requestDictionary:params delegate:self];
@@ -163,7 +163,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.stuffAry.count;
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

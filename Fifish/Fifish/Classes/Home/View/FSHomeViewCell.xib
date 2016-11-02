@@ -119,39 +119,46 @@
                             <action selector="headBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yP9-Ih-1fw"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Dd-dV-wjH" userLabel="底部条">
-                        <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPt-oB-vQu">
                         <constraints>
-                            <constraint firstAttribute="height" constant="10" id="WtL-a9-cE3"/>
+                            <constraint firstAttribute="height" constant="26" id="eXH-Je-ZbU"/>
+                            <constraint firstAttribute="width" constant="72" id="yEo-77-cB1"/>
                         </constraints>
-                    </view>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-2" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="关注" image="me_path">
+                            <color key="titleColor" red="0.1333333333" green="0.53333333329999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" title="已关注" image="me_path_right">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pbF-do-7rp" firstAttribute="centerY" secondItem="8q6-L9-6SG" secondAttribute="centerY" id="2sI-mS-cZO"/>
                     <constraint firstItem="VDQ-gf-VVk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Bw-ej-pfo"/>
                     <constraint firstItem="P49-wD-gfe" firstAttribute="leading" secondItem="8q6-L9-6SG" secondAttribute="leading" id="68u-xK-4e4"/>
-                    <constraint firstItem="8Dd-dV-wjH" firstAttribute="top" secondItem="Xw0-GZ-nvv" secondAttribute="bottom" id="6fY-xj-Zzf"/>
                     <constraint firstAttribute="trailing" secondItem="pbF-do-7rp" secondAttribute="trailing" constant="10" id="6h9-Jc-oVb"/>
-                    <constraint firstAttribute="bottom" secondItem="8Dd-dV-wjH" secondAttribute="bottom" id="8Qj-Dv-EfM"/>
+                    <constraint firstItem="bPt-oB-vQu" firstAttribute="centerY" secondItem="8q6-L9-6SG" secondAttribute="centerY" id="7rd-8F-zj2"/>
                     <constraint firstItem="8q6-L9-6SG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="BAu-Io-IJz"/>
-                    <constraint firstItem="8Dd-dV-wjH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="C6f-Vj-VPb"/>
                     <constraint firstItem="gYU-YG-39Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ccp-We-JOn"/>
-                    <constraint firstAttribute="bottom" secondItem="6go-S4-nWb" secondAttribute="bottom" constant="10" id="DP1-IE-ZAp"/>
+                    <constraint firstAttribute="bottom" secondItem="6go-S4-nWb" secondAttribute="bottom" id="DP1-IE-ZAp"/>
                     <constraint firstItem="WVY-gK-Fy5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="FCI-Jo-3Vs"/>
                     <constraint firstItem="VDQ-gf-VVk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ISb-6R-QWB"/>
                     <constraint firstItem="BWJ-0p-Rho" firstAttribute="top" secondItem="WVY-gK-Fy5" secondAttribute="bottom" constant="3" id="MNM-v7-1Gq"/>
                     <constraint firstItem="6go-S4-nWb" firstAttribute="top" secondItem="VDQ-gf-VVk" secondAttribute="bottom" id="ORw-jh-cPe"/>
                     <constraint firstItem="6go-S4-nWb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QV7-Q8-9ZO"/>
                     <constraint firstItem="8q6-L9-6SG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QlZ-XN-eHR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bPt-oB-vQu" secondAttribute="trailing" constant="10" id="TRI-1a-9iS"/>
                     <constraint firstItem="P49-wD-gfe" firstAttribute="top" secondItem="8q6-L9-6SG" secondAttribute="top" id="VZV-bd-9dI"/>
                     <constraint firstAttribute="trailing" secondItem="6go-S4-nWb" secondAttribute="trailing" id="WtI-wi-vxp"/>
                     <constraint firstItem="BWJ-0p-Rho" firstAttribute="leading" secondItem="WVY-gK-Fy5" secondAttribute="leading" id="YuL-hg-OPz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="VDQ-gf-VVk" secondAttribute="trailing" id="dAN-ph-1Kz"/>
                     <constraint firstAttribute="trailing" secondItem="gYU-YG-39Z" secondAttribute="trailing" id="hKk-W1-ZSR"/>
                     <constraint firstItem="WVY-gK-Fy5" firstAttribute="leading" secondItem="8q6-L9-6SG" secondAttribute="trailing" constant="10" id="hYB-oa-V1c"/>
-                    <constraint firstAttribute="trailing" secondItem="8Dd-dV-wjH" secondAttribute="trailing" id="iNi-JN-Xlg"/>
                     <constraint firstAttribute="trailing" secondItem="Xw0-GZ-nvv" secondAttribute="trailing" id="igj-a7-Wa5"/>
-                    <constraint firstAttribute="bottom" secondItem="Xw0-GZ-nvv" secondAttribute="bottom" constant="10" id="mE7-CS-jNO"/>
+                    <constraint firstAttribute="bottom" secondItem="Xw0-GZ-nvv" secondAttribute="bottom" id="mE7-CS-jNO"/>
                     <constraint firstItem="OJm-eW-jrK" firstAttribute="leading" secondItem="BWJ-0p-Rho" secondAttribute="trailing" constant="2" id="nYh-17-S5j"/>
                     <constraint firstAttribute="trailing" secondItem="VDQ-gf-VVk" secondAttribute="trailing" id="oMy-mv-Z11"/>
                     <constraint firstItem="Xw0-GZ-nvv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rfo-Fj-KAP"/>
@@ -170,12 +177,12 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressIcon" destination="BWJ-0p-Rho" id="t8q-dl-syd"/>
                 <outlet property="addressLabel" destination="OJm-eW-jrK" id="N4g-fI-kjP"/>
                 <outlet property="bottomSpace" destination="dQd-vy-uIE" id="joT-vU-5aY"/>
-                <outlet property="bottomView" destination="8Dd-dV-wjH" id="KE8-co-F0i"/>
-                <outlet property="bottomViewHegiht" destination="WtL-a9-cE3" id="WCh-LV-ijI"/>
                 <outlet property="commendBtn" destination="Y0y-YR-RJZ" id="Ce8-ZA-PJc"/>
                 <outlet property="contentLabel" destination="UIH-Pn-eWK" id="Ge6-Qu-qCA"/>
+                <outlet property="fucosBtn" destination="bPt-oB-vQu" id="MlW-FZ-km9"/>
                 <outlet property="headImageView" destination="8q6-L9-6SG" id="k2B-CY-0GV"/>
                 <outlet property="headTapBtn" destination="P49-wD-gfe" id="e9M-me-R2W"/>
                 <outlet property="likeBtn" destination="DgV-e2-aFF" id="qAd-Bw-3w6"/>
@@ -184,6 +191,7 @@
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
                 <outlet property="shareBtn" destination="6KS-4W-Pb0" id="ec6-4J-RjQ"/>
                 <outlet property="tagView" destination="Ikg-qs-7wT" id="zSO-ye-Qed"/>
+                <outlet property="tagView_bottom_distance" destination="DP1-IE-ZAp" id="qVq-3H-2Rv"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
             </connections>
             <point key="canvasLocation" x="312" y="414.5"/>
@@ -196,5 +204,7 @@
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="16" height="17"/>
         <image name="me_address" width="9" height="13"/>
+        <image name="me_path" width="9" height="9"/>
+        <image name="me_path_right" width="11" height="8"/>
     </resources>
 </document>

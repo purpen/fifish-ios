@@ -82,13 +82,14 @@
 
 -(UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.segmentedControl.y + self.segmentedControl.height, SCREEN_WIDTH, SCREEN_HEIGHT - self.segmentedControl.y - self.segmentedControl.height)];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.segmentedControl.y + self.segmentedControl.height, SCREEN_WIDTH, SCREEN_HEIGHT - self.segmentedControl.y - self.segmentedControl.height) style:UITableViewStyleGrouped];
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.showsVerticalScrollIndicator = NO;
         [_myTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSFoundStuffTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSFoundStuffTableViewCell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"FSListUserTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSListUserTableViewCell"];
+        _myTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
     }
     return _myTableView;
 }
@@ -98,12 +99,27 @@
         //用户
         return self.userAry.count > 0 ? self.userAry.count : 1;
     } else if ([self.type isEqualToNumber:@(1)]) {
-        if (self.stuffAry.count == 0) {
-            self.myTableView.mj_footer.hidden = YES;
-        }
+        return 1;
+    }
+    return 0;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if ([self.type isEqualToNumber:@(2)]) {
+        //用户
+        return 1;
+    } else if ([self.type isEqualToNumber:@(1)]) {
         return self.stuffAry.count > 0 ? self.stuffAry.count : 1;
     }
     return 0;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.00001f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
 }
 
 -(void)userFcousClick:(UIButton*)sender{
@@ -171,24 +187,25 @@
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.navc = self.navigationController;
         //传入模型
-        FSZuoPin *model = self.stuffAry[indexPath.row];
+        FSZuoPin *model = self.stuffAry[indexPath.section];
         cell.model = model;
-        cell.fucosBtn.tag = indexPath.row;
+        cell.fucosBtn.tag = indexPath.section;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
-        cell.likeBtn.tag = indexPath.row;
-        cell.commendBtn.tag = indexPath.row;
+        cell.likeBtn.tag = indexPath.section;
+        cell.commendBtn.tag = indexPath.section;
         [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.moreBtn.hidden = YES;
-        cell.pictuerView.tapBTn.tag = indexPath.row;
+        cell.pictuerView.tapBTn.tag = indexPath.section;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.videoView.tapBtn.tag = indexPath.row;
+        cell.videoView.tapBtn.tag = indexPath.section;
         [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
 }
+
 
 #pragma mark - 视频播放
 -(void)videoClick:(UIButton*)sender{
@@ -207,7 +224,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
-        vc.model = self.stuffAry[indexPath.row];
+        vc.model = self.stuffAry[indexPath.section];
         vc.title = @"评论";
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -265,8 +282,7 @@
                 FSZuoPin *cellModel = self.stuffAry[i];
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 0;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:0];
-                    [self.myTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    [self.myTableView reloadData];
                 }
             }
         } failure:^(FBRequest *request, NSError *error) {
@@ -281,8 +297,7 @@
                 FSZuoPin *cellModel = self.stuffAry[i];
                 if ([cellModel.user_id isEqualToString:model.user_id]) {
                     cellModel.is_follow = 1;
-                    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:0];
-                    [self.myTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    [self.myTableView reloadData];
                 }
             }
         } failure:^(FBRequest *request, NSError *error) {
@@ -302,11 +317,11 @@
         if (self.stuffAry.count == 0) {
             return SCREEN_HEIGHT - 109;
         }
-        FSZuoPin *model = self.stuffAry[indexPath.row];
+        FSZuoPin *model = self.stuffAry[indexPath.section];
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
         CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-        return gaoDu + 10 + 9;
+        return gaoDu + 9;
     }
     return 0;
 }

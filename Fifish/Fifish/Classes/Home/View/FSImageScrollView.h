@@ -11,5 +11,6 @@
 @interface FSImageScrollView : UIScrollView
 
 - (void)displayImage:(UIImage *)image;
+- (void)displayImageUrl:(NSString *)imageUrl;
 
 @end

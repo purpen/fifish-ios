@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *zuoPinNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *focusNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fansNumLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
 
 @end
 
@@ -41,8 +42,7 @@
     
     FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
-        
-        NSLog(@"个人信息 %@",result);
+
         NSDictionary *dict = result[@"data"];
         FSUserModel *userModel = [[FSUserModel findAll] lastObject];
         userModel = [FSUserModel mj_objectWithKeyValues:dict];
@@ -52,6 +52,9 @@
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
         self.nameLabel.text = userModel.username;
         self.addressLabel.text = userModel.zone;
+        if (self.addressLabel.text.length == 0) {
+            self.addressIcon.hidden = YES;
+        }
         self.summaryLabel.text = userModel.summary;
         self.zuoPinNumLabel.text = userModel.stuff_count;
         self.fansNumLabel.text = userModel.fans_count;

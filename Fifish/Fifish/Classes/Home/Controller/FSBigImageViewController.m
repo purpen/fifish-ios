@@ -8,7 +8,6 @@
 
 #import "FSBigImageViewController.h"
 #import "FSImageScrollView.h"
-#import "AFNetworking.h"
 
 @interface FSBigImageViewController ()
 
@@ -36,13 +35,13 @@
 - (void)setViewUI {
     self.view.backgroundColor = [UIColor blackColor];
     if (self.imageUrl.length != 0) {
-        _sceneImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageUrl]]];
+        [self.imageView displayImageUrl:self.imageUrl];
     } else {
         _sceneImage = self.showImage;
+        [self.imageView displayImage:_sceneImage];
     }
     [self addGestureRecognizer];
     [self.view addSubview:self.imageView];
-    [self.imageView displayImage:_sceneImage];
 }
 
 #pragma mark - 添加手势操作

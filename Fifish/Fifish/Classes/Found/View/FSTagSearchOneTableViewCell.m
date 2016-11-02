@@ -39,7 +39,6 @@
 -(void)setPlaceString:(NSString *)placeString{
     if ([placeString rangeOfString:@"#"].location != NSNotFound) {
         _placeString = [placeString substringFromIndex:2];
-        NSLog(@"adhausdhuasdh  %@",self.placeString);
     } else {
         _placeString = placeString;
     }

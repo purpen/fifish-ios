@@ -19,47 +19,44 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sE3-JA-axL">
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkC-fh-f7Y">
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sE3-JA-axL">
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="120" id="JQI-hg-48Z"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="JQI-hg-48Z"/>
+                                </mask>
+                            </variation>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的宝贵意见和建议，我们将不断完善。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhv-hT-91Q">
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="JQI-hg-48Z"/>
-                        <constraint firstAttribute="width" secondItem="sE3-JA-axL" secondAttribute="height" multiplier="23:8" id="vGl-ci-Z0r"/>
+                        <constraint firstItem="Vhv-hT-91Q" firstAttribute="leading" secondItem="NkC-fh-f7Y" secondAttribute="leading" constant="8" id="Cgp-J6-uy7"/>
+                        <constraint firstItem="sE3-JA-axL" firstAttribute="leading" secondItem="NkC-fh-f7Y" secondAttribute="leading" id="Pt8-jy-1PB"/>
+                        <constraint firstAttribute="bottom" secondItem="sE3-JA-axL" secondAttribute="bottom" id="Sg3-Nj-K5w"/>
+                        <constraint firstAttribute="trailing" secondItem="sE3-JA-axL" secondAttribute="trailing" id="cie-mg-Ipy"/>
+                        <constraint firstAttribute="width" secondItem="NkC-fh-f7Y" secondAttribute="height" multiplier="23/8" id="gxZ-Hs-s0t"/>
+                        <constraint firstItem="sE3-JA-axL" firstAttribute="top" secondItem="NkC-fh-f7Y" secondAttribute="top" constant="-60" id="y8D-fa-qtk"/>
+                        <constraint firstItem="Vhv-hT-91Q" firstAttribute="top" secondItem="NkC-fh-f7Y" secondAttribute="top" constant="15" id="zIB-in-EBa"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="JQI-hg-48Z"/>
-                        </mask>
-                    </variation>
-                </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的宝贵意见和建议，我们将不断完善。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhv-hT-91Q">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="3mu-p4-r0f"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2W-ts-3wo">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="8iB-bn-h8J"/>
-                        <constraint firstAttribute="width" constant="198" id="eRo-En-rkN"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.95973086350000003" green="0.95973086350000003" blue="0.95973086350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="sE3-JA-axL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="116" id="1M9-wN-1v7"/>
-                <constraint firstItem="Vhv-hT-91Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="126" id="7u5-KZ-hKe"/>
-                <constraint firstItem="t2W-ts-3wo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Ffr-ja-SZw"/>
-                <constraint firstAttribute="trailing" secondItem="sE3-JA-axL" secondAttribute="trailing" constant="15" id="Nv7-iX-F7V"/>
-                <constraint firstItem="Vhv-hT-91Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="dMQ-Qg-9oW"/>
-                <constraint firstAttribute="bottom" secondItem="t2W-ts-3wo" secondAttribute="bottom" constant="307" id="sfK-5v-oyc"/>
-                <constraint firstItem="sE3-JA-axL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="vgJ-Cc-ntH"/>
+                <constraint firstAttribute="trailing" secondItem="NkC-fh-f7Y" secondAttribute="trailing" constant="15" id="LtD-cn-8JB"/>
+                <constraint firstItem="NkC-fh-f7Y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="VA9-bB-Iid"/>
+                <constraint firstItem="NkC-fh-f7Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="jAj-7G-pI9"/>
             </constraints>
             <point key="canvasLocation" x="385.5" y="380.5"/>
         </view>

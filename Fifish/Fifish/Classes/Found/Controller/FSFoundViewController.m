@@ -229,13 +229,10 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2 + self.stuffAry.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 2) {
-        return self.stuffAry.count;
-    }
     return 1;
 }
 
@@ -250,6 +247,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0 || section == 1) {
         return 15;
+    } else {
+        return 10;
     }
     return 0.01;
 }
@@ -266,7 +265,7 @@
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 10 + 9;
+    return gaoDu + 9;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -274,12 +273,15 @@
     self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
     if (section == 0) {
         self.headerView.titleLabel.text = @"热门标签";
+        return self.headerView;
     } else if (section == 1) {
         self.headerView.titleLabel.text = @"热门用户";
+        return self.headerView;
     } else if (section == 2) {
         self.headerView.titleLabel.text = @"热门推荐";
+        return self.headerView;
     }
-    return self.headerView;
+    return nil;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -301,21 +303,21 @@
         }
         cell.modelAry = self.userAry;
         return cell;
-    } else if (indexPath.section == 2) {
+    } else {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
-        cell.model = self.stuffAry[indexPath.row];
-        cell.fucosBtn.tag = indexPath.row;
+        cell.model = self.stuffAry[indexPath.section - 2];
+        cell.fucosBtn.tag = indexPath.section - 2;
         cell.navc = self.navigationController;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
-        cell.likeBtn.tag = indexPath.row;
-        cell.commendBtn.tag = indexPath.row;
+        cell.likeBtn.tag = indexPath.section - 2;
+        cell.commendBtn.tag = indexPath.section - 2;
         [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.pictuerView.tapBTn.tag = indexPath.row;
+        cell.pictuerView.tapBTn.tag = indexPath.section - 2;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.videoView.tapBtn.tag = indexPath.row;
+        cell.videoView.tapBtn.tag = indexPath.section - 2;
         [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
@@ -343,8 +345,7 @@
                     FSZuoPin *cellModel = self.stuffAry[i];
                     if ([cellModel.user_id isEqualToString:model.user_id]) {
                         cellModel.is_follow = 0;
-                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                        [self.contentTableView reloadData];
                     }
                 }
             } failure:^(FBRequest *request, NSError *error) {
@@ -359,8 +360,7 @@
                     FSZuoPin *cellModel = self.stuffAry[i];
                     if ([cellModel.user_id isEqualToString:model.user_id]) {
                         cellModel.is_follow = 1;
-                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
-                        [self.contentTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                        [self.contentTableView reloadData];
                     }
                 }
             } failure:^(FBRequest *request, NSError *error) {

@@ -7,6 +7,9 @@
 //
 
 #import "FSImageScrollView.h"
+#import "UIImageView+WebCache.h"
+#import "FSProgressViewProgress.h"
+#import "Masonry.h"
 
 @interface FSImageScrollView () <UIScrollViewDelegate>
 
@@ -15,10 +18,19 @@
 }
 
 @property (strong, nonatomic) UIImageView *imageView;
+/**  */
+@property (nonatomic, strong) FSProgressViewProgress *progressView;
 
 @end
 
 @implementation FSImageScrollView
+
+-(FSProgressViewProgress *)progressView{
+    if (!_progressView) {
+        _progressView = [[FSProgressViewProgress alloc] init];
+    }
+    return _progressView;
+}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -54,6 +66,36 @@
     self.imageView.frame = frameToCenter;
 }
 
+-(void)displayImageUrl:(NSString *)imageUrl{
+    [self.imageView removeFromSuperview];
+    self.imageView = nil;
+    
+    self.zoomScale = 1.0;
+    
+    self.imageView = [[UIImageView alloc] init];
+    [self.imageView addSubview:self.progressView];
+    [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.imageView.mas_centerX);
+        make.centerY.mas_equalTo(self.imageView.mas_centerY);
+        make.width.height.mas_equalTo(100);
+    }];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"shuffling_default"] options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        self.progressView.hidden = NO;
+        CGFloat pictureProgress = 1.0 * receivedSize / expectedSize;
+        [self.progressView setProgress:pictureProgress animated:YES];
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.progressView.hidden = YES;
+    }];
+    self.imageView.clipsToBounds = NO;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:self.imageView];
+    
+    CGRect frame = self.imageView.frame;
+    frame.size.height = SCREEN_HEIGHT;
+    frame.size.width = SCREEN_WIDTH;
+    self.imageView.frame = frame;
+    [self configureForImageSize:self.imageView.bounds.size];
+}
 
 - (void)displayImage:(UIImage *)image {
     [self.imageView removeFromSuperview];

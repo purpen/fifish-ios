@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "FSBaseViewController.h"
 
-@interface FSHomeViewController : UIViewController
+@interface FSHomeViewController : FSBaseViewController
 
 @end

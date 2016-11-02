@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSMeViewController">
             <connections>
+                <outlet property="addressIcon" destination="VLX-rR-JVh" id="72O-7J-eWN"/>
                 <outlet property="addressLabel" destination="I65-qp-8nH" id="ELG-li-6pZ"/>
                 <outlet property="fansNumLabel" destination="nNd-HU-XCJ" id="Kao-2G-g7e"/>
                 <outlet property="focusNumLabel" destination="TBc-nj-qCd" id="mww-EO-xof"/>

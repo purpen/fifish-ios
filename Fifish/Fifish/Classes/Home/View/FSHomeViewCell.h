@@ -29,5 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHegiht;
 @property (weak, nonatomic) IBOutlet UIButton *tagBtn;
+@property (weak, nonatomic) IBOutlet UIButton *fucosBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomView_height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_bottom_distance;
 
 @end

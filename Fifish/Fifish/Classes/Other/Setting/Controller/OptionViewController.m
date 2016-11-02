@@ -48,6 +48,7 @@
     FBRequest *request = [FBAPI postWithUrlString:@"/feedback/submit" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD showSuccessWithStatus:@"反馈成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(FBRequest *request, NSError *error) {
         //发送请求失败
         [SVProgressHUD showErrorWithStatus:error.localizedDescription];

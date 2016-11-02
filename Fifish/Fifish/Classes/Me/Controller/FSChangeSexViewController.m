@@ -46,17 +46,17 @@
     }
 }
 
-- (IBAction)menClick:(UIButton *)sender {
-    if (sender.selected) {
+- (IBAction)manClickClick:(id)sender {
+    if (self.manBtn.selected) {
     } else {
         //选中
         FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
-                                                                                            @"sex" : @(1)
-                                                                                            } delegate:self];
+                                                                                          @"sex" : @(1)
+                                                                                          } delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             FSUserModel *userModel = [[FSUserModel findAll] lastObject];
             userModel.gender = 1;
-            sender.selected = YES;
+            self.manBtn.selected = YES;
             self.womenBtn.selected = NO;
             [userModel saveOrUpdate];
         } failure:^(FBRequest *request, NSError *error) {
@@ -65,17 +65,17 @@
     }
 }
 
-- (IBAction)womenClick:(UIButton *)sender {
-    if (sender.selected) {
+- (IBAction)womenClickClick:(id)sender {
+    if (self.womenBtn.selected) {
     } else {
         //选中
         FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
-                                                                                            @"sex" : @(2)
-                                                                                            } delegate:self];
+                                                                                          @"sex" : @(2)
+                                                                                          } delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             FSUserModel *userModel = [[FSUserModel findAll] lastObject];
             userModel.gender = 2;
-            sender.selected = YES;
+            self.womenBtn.selected = YES;
             self.manBtn.selected = NO;
             [userModel saveOrUpdate];
         } failure:^(FBRequest *request, NSError *error) {
@@ -83,5 +83,6 @@
         }];
     }
 }
+
 
 @end

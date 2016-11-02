@@ -19,6 +19,7 @@
 #import "FSUserModel.h"
 #import "FSListUserTableViewCell.h"
 #import "Masonry.h"
+#import "FSHomePageViewController.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -203,7 +204,7 @@
 
 -(UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)style:UITableViewStyleGrouped];
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -211,6 +212,7 @@
         [_myTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSHomeViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSHomeViewCell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"FSTagSearchOneTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSTagSearchOneTableViewCell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"FSListUserTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSListUserTableViewCell"];
+        _myTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
     }
     return _myTableView;
 }
@@ -243,21 +245,45 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if ([self.type isEqualToNumber:@(2)]) {
-        return self.userAry.count > 0 ? self.userAry.count + 2 : 1 + 2;
-    } else if ([self.type isEqualToNumber:@(1)]) {
-        if (self.stuffAry.count == 0) {
-            self.myTableView.mj_footer.hidden = YES;
+        if (section == 0) {
+            return 2;
+        } else {
+            return self.userAry.count > 0 ? self.userAry.count : 1;
         }
-        return self.stuffAry.count > 0 ? self.stuffAry.count +2 : 1 + 2;
+    } else if ([self.type isEqualToNumber:@(1)]) {
+        if (section == 0) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
     return 2;
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if ([self.type isEqualToNumber:@(2)]) {
+        return 2;
+    } else if ([self.type isEqualToNumber:@(1)]) {
+        return self.stuffAry.count > 0 ? self.stuffAry.count + 1 : 2;
+    }
+    return 2;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.0000001f;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return 170;
-    } else if (indexPath.row == 1) {
-        return 44 + 10;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            return 170;
+        } else if (indexPath.row == 1) {
+            return 44;
+        }
     } else {
         if ([self.type isEqualToNumber:@(2)]) {
             if (self.userAry.count == 0) {
@@ -272,28 +298,30 @@
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
             CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-            return gaoDu + 10 + 9;
+            return gaoDu + 9;
         }
     }
     return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        FSTagSearchOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSTagSearchOneTableViewCell"];
-        cell.placeString = self.placeString;
-        cell.navc = self.navigationController;
-        return cell;
-    } else if (indexPath.row == 1) {
-        static NSString *cellId = @"cellTwo";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell.contentView addSubview:self.segmentedControl];
-            [cell.contentView addSubview:self.lineView];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            FSTagSearchOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSTagSearchOneTableViewCell"];
+            cell.placeString = self.placeString;
+            cell.navc = self.navigationController;
+            return cell;
+        } else if (indexPath.row == 1) {
+            static NSString *cellId = @"cellTwo";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                [cell.contentView addSubview:self.segmentedControl];
+                [cell.contentView addSubview:self.lineView];
+            }
+            return cell;
         }
-        return cell;
     } else {
         if ([self.type isEqualToNumber:@(2)]) {
             if (self.userAry.count == 0) {
@@ -314,9 +342,9 @@
             //用户
             FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSListUserTableViewCell"];
             //传入模型
-            FSUserModel *model = self.userAry[indexPath.row - 2];
+            FSUserModel *model = self.userAry[indexPath.row];
             cell.userModel = model;
-            cell.fucosBtn.tag = indexPath.row - 2;
+            cell.fucosBtn.tag = indexPath.row;
             [cell.fucosBtn addTarget:self action:@selector(userFcousClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         } else if ([self.type isEqualToNumber:@(1)]) {
@@ -337,20 +365,38 @@
             
             FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSHomeViewCell"];
             cell.navi = self.navigationController;
-            cell.model = self.stuffAry[indexPath.row - 2];
-            cell.likeBtn.tag = indexPath.row - 2;
-            cell.commendBtn.tag = indexPath.row - 2;
+            cell.model = self.stuffAry[indexPath.section - 1];
+            cell.likeBtn.tag = indexPath.section - 1;
+            cell.commendBtn.tag = indexPath.section - 1;
             [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
-            cell.pictuerView.tapBTn.tag = indexPath.section;
+            cell.pictuerView.tapBTn.tag = indexPath.section - 1;
             [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-            cell.videoView.tapBtn.tag = indexPath.section;
+            cell.videoView.tapBtn.tag = indexPath.section - 1;
             [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
     }
     return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return;
+    } else {
+        if ([self.type isEqualToNumber:@(2)]) {
+            FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+            FSUserModel *model = self.userAry[indexPath.row];
+            vc.userId = model.userId;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else if ([self.type isEqualToNumber:@(1)]) {
+            FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+            vc.model = self.stuffAry[indexPath.section - 1];
+            vc.title = @"评论";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
 
 -(void)userFcousClick:(UIButton*)sender{

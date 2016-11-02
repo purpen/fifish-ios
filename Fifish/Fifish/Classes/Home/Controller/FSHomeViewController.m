@@ -293,7 +293,7 @@ static NSString * const CellId = @"home";
 -(UITableView *)contenTableView{
     if (!_contenTableView) {
         self.automaticallyAdjustsScrollViewInsets = NO;
-        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStylePlain]; 
+        _contenTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStyleGrouped];
         _contenTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _contenTableView.showsVerticalScrollIndicator = NO;
         _contenTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
@@ -377,6 +377,13 @@ static NSString * const CellId = @"home";
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.000001f;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
@@ -391,7 +398,47 @@ static NSString * const CellId = @"home";
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.videoView.tapBtn.tag = indexPath.section;
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+#pragma mark - 关注
+-(void)fucosClick:(UIButton*)sender{
+    if ([self isLoginAndPresentLoginVc]) {
+        if (sender.selected) {
+            //取消关注
+            FSZuoPin *model = self.modelAry[sender.tag];
+            FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.modelAry.count; i ++) {
+                    FSZuoPin *cellModel = self.modelAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 0;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
+                }
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //关注
+            FSZuoPin *model = self.modelAry[sender.tag];
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                for (int i = 0; i < self.modelAry.count; i ++) {
+                    FSZuoPin *cellModel = self.modelAry[i];
+                    if ([cellModel.user_id isEqualToString:model.user_id]) {
+                        cellModel.is_follow = 1;
+                        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:i inSection:2];
+                        [self.contenTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                    }
+                }
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
+    }
 }
 
 
@@ -508,7 +555,7 @@ static NSString * const CellId = @"home";
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
     CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 10 + 9 ;
+    return gaoDu + 9 ;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
