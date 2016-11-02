@@ -19,6 +19,7 @@
 
 @interface FSFoundStuffTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UILabel *tagtagLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -30,8 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
-@property (weak, nonatomic) IBOutlet UILabel *tagTag;
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
@@ -88,6 +87,8 @@
     self.addressLabel.text = model.address;
     if (model.address.length == 0) {
         self.addressIcon.hidden = YES;
+    } else {
+        self.addressIcon.hidden = NO;
     }
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
@@ -128,7 +129,7 @@
         self.likeBtn.selected = YES;
     }
     
-    CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, -5, SCREEN_WIDTH, self.tagView.height)];
+    CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
     view.userInteractionEnabled = YES;
     view.navc = self.navc;
     view.backgroundColor = [UIColor whiteColor];
@@ -141,11 +142,12 @@
     CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
     [self.tagMAry removeAllObjects];
     if (model.tags.count > 0) {
+        self.tagtagLabel.hidden = NO;
         for (int i = 0; i < model.tags.count; i ++) {
             NSDictionary *dict = model.tags[i];
             NSDictionary *cellDict = @{
                                        @"color" : @"blue",
-                                       @"content" : [NSString stringWithFormat:@" # %@",dict[@"name"]],
+                                       @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
                                        @"url" : @"hh",
                                        @"type" : @"link"
                                        };
@@ -153,6 +155,8 @@
         }
         config.width = SCREEN_WIDTH;
         [self.tagMAry writeToFile:filename atomically:YES];
+    } else {
+        self.tagtagLabel.hidden = YES;
     }
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     view.data = data;

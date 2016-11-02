@@ -14,6 +14,7 @@
     [super awakeFromNib];
     self.roundedCorners = 2;
     self.progressLabel.textColor = [UIColor blackColor];
+    self.progressTintColor = [UIColor blackColor];
 }
 
 -(void)setProgress:(CGFloat)progress animated:(BOOL)animated{

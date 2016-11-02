@@ -35,6 +35,7 @@
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 @property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
+@property (weak, nonatomic) IBOutlet UILabel *tagTagLabel;
 
 @end
 
@@ -86,6 +87,8 @@
     self.addressLabel.text = model.address;
     if (model.address.length == 0) {
         self.addressIcon.hidden = YES;
+    } else {
+        self.addressIcon.hidden = NO;
     }
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
@@ -125,11 +128,12 @@
     CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
     [self.tagMAry removeAllObjects];
     if (model.tags.count > 0) {
+        self.tagTagLabel.hidden = NO;
         for (int i = 0; i < model.tags.count; i ++) {
             NSDictionary *dict = model.tags[i];
             NSDictionary *cellDict = @{
                                        @"color" : @"blue",
-                                       @"content" : [NSString stringWithFormat:@" # %@",dict[@"name"]],
+                                       @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
                                        @"url" : @"hh",
                                        @"type" : @"link"
                                        };
@@ -137,6 +141,8 @@
         }
         config.width = SCREEN_WIDTH;
         [self.tagMAry writeToFile:filename atomically:YES];
+    } else {
+        self.tagTagLabel.hidden = YES;
     }
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     view.data = data;
