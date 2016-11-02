@@ -46,6 +46,8 @@
 @property (nonatomic, assign) NSInteger gender;
 /**  */
 @property (nonatomic, assign) NSInteger following;
+/**  */
+@property (nonatomic, assign) NSInteger followFlag;
 
 
 @end

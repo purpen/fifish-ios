@@ -309,14 +309,11 @@ static NSString * const fucosCellId = @"fucos";
         default:
             break;
     }
-
-    
 }
 
 -(void)fucosRequsetMore{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"关注列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -338,7 +335,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fucosRequset{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"关注列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -357,7 +353,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fansRequestMore{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"粉丝列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -379,7 +374,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fansRequest{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"粉丝列表  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -414,6 +408,7 @@ static NSString * const fucosCellId = @"fucos";
         FBRequest *request2 = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@",self.userId] requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
+            NSLog(@"用户是否关注了 %@", dict[@"following"]);
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
             self.fucosBtn.selected = self.user_model.following == 1;
             [self.contentTableView reloadData];
@@ -427,7 +422,7 @@ static NSString * const fucosCellId = @"fucos";
 -(void)zuoPinRequest{
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:@{
                                                                                 @"page" : @(self.current_page),
-                                                                                @"per_page" : @(10),
+                                                                                @"per_page" : @(12),
                                                                                 @"user_id" : self.userId
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -451,7 +446,7 @@ static NSString * const fucosCellId = @"fucos";
 -(void)zuoPinRequestMore{
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:@{
                                                                                 @"page" : @(++ self.current_page),
-                                                                                @"per_page" : @(10),
+                                                                                @"per_page" : @(12),
                                                                                 @"user_id" : self.userId
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {

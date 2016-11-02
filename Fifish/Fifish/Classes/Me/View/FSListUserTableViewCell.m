@@ -27,7 +27,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.fucosBtn.layer.masksToBounds = YES;
         self.fucosBtn.layer.cornerRadius = 13;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
         self.fucosBtn.layer.borderWidth = 1;
         self.headInageView.layer.masksToBounds = YES;
         self.headInageView.layer.cornerRadius = 20;
@@ -40,13 +40,13 @@
     self.userNameLabel.text = userModel.username;
     self.summaryLabel.text = userModel.summary;
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];
-//    if (userModel.followFlag == 1) {
-//        self.fucosBtn.selected = YES;
-//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
-//    } else {
-//        self.fucosBtn.selected = NO;
-//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
-//    }
+    if (userModel.following == 1) {
+        self.fucosBtn.selected = YES;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+    } else {
+        self.fucosBtn.selected = NO;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
+    }
 }
 
 -(void)setModel:(FSListUserModel *)model{
@@ -56,8 +56,10 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (model.followFlag == 1) {
         self.fucosBtn.selected = YES;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
     } else {
         self.fucosBtn.selected = NO;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
     }
 }
 
@@ -65,7 +67,7 @@
     [super awakeFromNib];
     self.fucosBtn.layer.masksToBounds = YES;
     self.fucosBtn.layer.cornerRadius = 13;
-    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
     self.fucosBtn.layer.borderWidth = 1;
     self.headInageView.layer.masksToBounds = YES;
     self.headInageView.layer.cornerRadius = 20;

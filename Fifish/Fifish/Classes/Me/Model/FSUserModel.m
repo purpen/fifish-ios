@@ -16,7 +16,8 @@
              @"userId" : @"id",
              @"small" : @"avatar.small",
              @"large" : @"avatar.large",
-             @"gender" : @"sex"
+             @"gender" : @"sex",
+             @"followFlag" : @"is_follow"
              };
 }
 
