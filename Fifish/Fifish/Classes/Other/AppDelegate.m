@@ -24,8 +24,8 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "FBAPI.h"
 #import "FBRequest.h"
-#import <UMSocialCore/UMSocialCore.h>
 #import "SVProgressHUD.h"
+#import "AppDelegate+FSUMRegiester.h"
 
 @interface AppDelegate ()
 
@@ -35,34 +35,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-   
-    
     //设置推送---------------------------------------------------
     //创建UIUserNotificationSettings，并设置消息的显示类类型
     UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
-    
     [application registerUserNotificationSettings:notiSettings];
     //------------------------------------------------------
-    
     [self setKeyBoard];
     [self windowShow];
     
     [[UITabBar appearance] setTranslucent:YES];
     [[UITabBar appearance] setBackgroundColor:[UIColor clearColor]];
-    [[UITabBar appearance] setShadowImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
-    [[UITabBar appearance] setBackgroundImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:0.9]]];
-    
+    [[UITabBar appearance] setShadowImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:1]]];
+    [[UITabBar appearance] setBackgroundImage:[self createImageWithColor:[UIColor colorWithHexString:@"#f8f8f8" alpha:1]]];
     //----------------注册高德地图
     [AMapServices sharedServices].apiKey =@"7dd6c9292619fb6fbdf34a1f5993a5aa";
     //------------------注册友盟等社交平台
-    [[UMSocialManager defaultManager] openLog:YES];
-    [[UMSocialManager defaultManager] setUmSocialAppkey:@"580dbf76717c1916cb0043ed"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"163101587483903" appSecret:nil redirectURL:@"http://api.qysea.com"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Instagram appKey:@"1c54a1a8da6b4b5e939501d1cfdb3a93" appSecret:@"ce739bb3302c4261a39e29d623428317" redirectURL:@"http://api.qysea.com"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+    [self regiesterUM];
     //------------------设置hud
     [SVProgressHUD setMinimumDismissTimeInterval:2];
-    
     return YES;
 }
 
@@ -70,7 +60,7 @@
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
     if (!result) {
-        
+        // 其他如支付等SDK的回调
     }
     return result;
 }

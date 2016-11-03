@@ -18,6 +18,7 @@
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "FSPraisedViewController.h"
+#import "FSMessageViewController.h"
 
 @interface FSMeViewController ()
 
@@ -67,6 +68,11 @@
 
 - (IBAction)praisedClick:(id)sender {
     FSPraisedViewController *vc = [[FSPraisedViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)messageClick:(id)sender {
+    FSMessageViewController *vc = [[FSMessageViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

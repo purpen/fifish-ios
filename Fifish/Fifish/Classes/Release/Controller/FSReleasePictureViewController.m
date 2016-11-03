@@ -192,9 +192,9 @@
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {
-            NSLog(@"************Share fail with error %@*********",error);
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }else{
-            NSLog(@"response data is %@",data);
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Share success", nil)];
         }
     }];
 }
@@ -217,9 +217,9 @@
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {
-            NSLog(@"************Share fail with error %@*********",error);
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }else{
-            NSLog(@"response data is %@",data);
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Share success", nil)];
         }
     }];
 }

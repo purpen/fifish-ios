@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import "FSUserModel.h"
 #import "AddreesPickerViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *head_bg_view;
@@ -45,6 +46,10 @@
     self.head_bg_imageView.layer.masksToBounds = YES;
     self.head_bg_imageView.layer.cornerRadius = 48;
     
+    FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
+    [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:usermodel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.userNameTF.text = usermodel.username;
+    
     UITapGestureRecognizer* singleRecognizer;
     singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];
     singleRecognizer.numberOfTapsRequired = 1;
@@ -69,14 +74,15 @@
     [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    if (textField.text.length == 0) {
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (string.length == 0) {
         self.sureBtn.selected = NO;
         self.sureBtn.enabled = NO;
     }else{
         self.sureBtn.selected = YES;
         self.sureBtn.enabled = YES;
     }
+    return YES;
 }
 
 

@@ -289,6 +289,11 @@
 		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
 		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
 		1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */; };
+		1FAB4C931DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C921DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m */; };
+		1FAB4C971DCB1E420037DBF9 /* FSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C951DCB1E420037DBF9 /* FSMessageViewController.m */; };
+		1FAB4C981DCB1E420037DBF9 /* FSMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C961DCB1E420037DBF9 /* FSMessageViewController.xib */; };
+		1FAB4C9C1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C9A1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m */; };
+		1FAB4C9D1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */; };
 		1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */; };
 		1FB4FBB21D954EC400E236CF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB891D954EC400E236CF /* MJRefreshBackFooter.m */; };
 		1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FB8B1D954EC400E236CF /* MJRefreshComponent.m */; };
@@ -1036,6 +1041,14 @@
 		1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPraisedViewController.h; sourceTree = "<group>"; };
 		1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPraisedViewController.m; sourceTree = "<group>"; };
 		1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPraisedViewController.xib; sourceTree = "<group>"; };
+		1FAB4C911DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+FSUMRegiester.h"; sourceTree = "<group>"; };
+		1FAB4C921DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+FSUMRegiester.m"; sourceTree = "<group>"; };
+		1FAB4C941DCB1E420037DBF9 /* FSMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMessageViewController.h; sourceTree = "<group>"; };
+		1FAB4C951DCB1E420037DBF9 /* FSMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMessageViewController.m; sourceTree = "<group>"; };
+		1FAB4C961DCB1E420037DBF9 /* FSMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMessageViewController.xib; sourceTree = "<group>"; };
+		1FAB4C991DCB2E4A0037DBF9 /* FSMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMessageTableViewCell.h; sourceTree = "<group>"; };
+		1FAB4C9A1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMessageTableViewCell.m; sourceTree = "<group>"; };
+		1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMessageTableViewCell.xib; sourceTree = "<group>"; };
 		1FB4FB861D954EC400E236CF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		1FB4FB871D954EC400E236CF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		1FB4FB881D954EC400E236CF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -2752,6 +2765,9 @@
 				1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */,
 				1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */,
 				1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */,
+				1FAB4C941DCB1E420037DBF9 /* FSMessageViewController.h */,
+				1FAB4C951DCB1E420037DBF9 /* FSMessageViewController.m */,
+				1FAB4C961DCB1E420037DBF9 /* FSMessageViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2800,6 +2816,9 @@
 				1FE564F51DB5FC61000AE61D /* FSStuffCollectionViewCell.h */,
 				1FE564F61DB5FC61000AE61D /* FSStuffCollectionViewCell.m */,
 				1FE564F71DB5FC61000AE61D /* FSStuffCollectionViewCell.xib */,
+				1FAB4C991DCB2E4A0037DBF9 /* FSMessageTableViewCell.h */,
+				1FAB4C9A1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m */,
+				1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2844,6 +2863,8 @@
 				1F7EDE8F1D45EF6900ABED5D /* AppDelegate.m */,
 				1F4202081D48B21500D3E6CB /* AppDelegate+FSGuide.h */,
 				1F4202091D48B21500D3E6CB /* AppDelegate+FSGuide.m */,
+				1FAB4C911DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.h */,
+				1FAB4C921DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m */,
 				1F7EDEA71D45F9A500ABED5D /* FSConst.h */,
 				1F7EDEA81D45F9A500ABED5D /* FSConst.m */,
 			);
@@ -3713,6 +3734,7 @@
 				0436AECE1DACE30C001E6808 /* sierraMap.png in Resources */,
 				1FDE28BD1D92241D00566A73 /* LICENSE in Resources */,
 				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
+				1FAB4C981DCB1E420037DBF9 /* FSMessageViewController.xib in Resources */,
 				48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */,
 				0436AEB81DACE30C001E6808 /* brannanBlowout.png in Resources */,
 				1FE5655B1DBDF0C4000AE61D /* README.txt in Resources */,
@@ -3728,6 +3750,7 @@
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
+				1FAB4C9D1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib in Resources */,
 				0436AEBB1DACE30C001E6808 /* brannanProcess.png in Resources */,
 				0436AED01DACE30C001E6808 /* softLight.png in Resources */,
 				0436AEDB1DACE30C001E6808 /* vignetteMap.png in Resources */,
@@ -3935,6 +3958,7 @@
 				1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
 				043CB29B1D6EE6040060B629 /* FSlocalMediaViewController.m in Sources */,
+				1FAB4C9C1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m in Sources */,
 				0436AF3E1DACE5C2001E6808 /* FSAmaroFilter.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
@@ -4033,6 +4057,7 @@
 				1FDE28E31D928F0600566A73 /* FSUserCollectionViewCell.m in Sources */,
 				1F8011401DA8E2FD00B320C7 /* FSReleaseView.m in Sources */,
 				1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */,
+				1FAB4C931DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m in Sources */,
 				1FE564E81DB4D1E8000AE61D /* SDCollectionViewCell.m in Sources */,
 				1F7EDEF11D4700E500ABED5D /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				0452CD041D77FFB6007694CC /* RovInfo.m in Sources */,
@@ -4079,6 +4104,7 @@
 				1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */,
 				1F80114E1DAA481200B320C7 /* FSAddressViewController.m in Sources */,
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
+				1FAB4C971DCB1E420037DBF9 /* FSMessageViewController.m in Sources */,
 				1FB4FBBA1D954EC400E236CF /* MJRefreshBackNormalFooter.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
 				0436AF4D1DACE5C2001E6808 /* FSValenciaFilter.m in Sources */,

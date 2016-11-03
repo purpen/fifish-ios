@@ -19,6 +19,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
+#import "MJExtension.h"
 
 @interface FSLoginViewController ()<FBRequestDelegate>
 
@@ -135,15 +136,22 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
        [defaults setObject:token forKey:@"token"];
        [defaults synchronize];
-        FSUserModel *model = [[FSUserModel alloc] init];
-        model.isLogin = YES;
-        [model saveOrUpdate];
         [SVProgressHUD showSuccessWithStatus:@"登录成功" maskType:SVProgressHUDMaskTypeNone];
         if (first_login == 0) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
+            [request2 startRequestSuccess:^(FBRequest *request, id result) {
+                NSDictionary *dict = result[@"data"];
+                FSUserModel *userModel = [[FSUserModel alloc] init];
+                userModel = [FSUserModel mj_objectWithKeyValues:dict];
+                userModel.isLogin = YES;
+                [userModel saveOrUpdate];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
         }
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];
@@ -229,9 +237,15 @@
         NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.uid,authresponse.accessToken];
         [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
             UMSocialUserInfoResponse *userinfo =result;
-            NSString *message2 = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
+            NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
+            [self afterThirdAuth:userinfo];
         }];
     }];
+}
+
+-(void)afterThirdAuth:(UMSocialUserInfoResponse*)userInfo{
+    //调取接口在后台记录用户，如果是第一次完善信息，如果不是直接进入
+    //将用户信息存起来
 }
 
 - (IBAction)registerNowBtn:(UIButton *)sender {

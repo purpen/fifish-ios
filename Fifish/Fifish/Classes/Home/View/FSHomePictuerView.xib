@@ -17,8 +17,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-0i-dQf" customClass="FSProgressViewProgress">
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="0DU-CY-Fto"/>
-                        <constraint firstAttribute="height" constant="100" id="QuG-IV-i5y"/>
+                        <constraint firstAttribute="width" constant="60" id="0DU-CY-Fto"/>
+                        <constraint firstAttribute="height" constant="60" id="QuG-IV-i5y"/>
                     </constraints>
                 </view>
             </subviews>

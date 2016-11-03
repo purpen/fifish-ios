@@ -77,9 +77,9 @@
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.imageView.mas_centerX);
         make.centerY.mas_equalTo(self.imageView.mas_centerY);
-        make.width.height.mas_equalTo(100);
+        make.width.height.mas_equalTo(60);
     }];
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"shuffling_default"] options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"home_bigImage_default"] options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressView.hidden = NO;
         CGFloat pictureProgress = 1.0 * receivedSize / expectedSize;
         [self.progressView setProgress:pictureProgress animated:YES];

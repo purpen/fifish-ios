@@ -132,48 +132,6 @@
                         <constraint firstAttribute="trailing" secondItem="eMg-0d-boT" secondAttribute="trailing" id="uYq-wu-UOY"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJG-ub-Dbx">
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdA-Yg-rTC">
-                            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="BQv-5x-hgi"/>
-                            </constraints>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOu-Ci-5he">
-                            <constraints>
-                                <constraint firstAttribute="width" constant="70" id="W8g-df-RXe"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="添加水印">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关闭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUe-pw-wgg">
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6z-1P-CON"/>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="2bz-y6-1ck"/>
-                        <constraint firstAttribute="trailing" secondItem="Y6z-1P-CON" secondAttribute="trailing" id="8XY-LN-5lt"/>
-                        <constraint firstItem="nOu-Ci-5he" firstAttribute="leading" secondItem="PJG-ub-Dbx" secondAttribute="leading" constant="15" id="Aqb-fa-PKi"/>
-                        <constraint firstAttribute="trailing" secondItem="EUe-pw-wgg" secondAttribute="trailing" constant="15" id="Tf6-OA-MYj"/>
-                        <constraint firstItem="EUe-pw-wgg" firstAttribute="centerY" secondItem="PJG-ub-Dbx" secondAttribute="centerY" id="a80-rp-66I"/>
-                        <constraint firstAttribute="bottom" secondItem="qdA-Yg-rTC" secondAttribute="bottom" id="bkB-gK-pI3"/>
-                        <constraint firstItem="nOu-Ci-5he" firstAttribute="centerY" secondItem="PJG-ub-Dbx" secondAttribute="centerY" id="c1h-P3-7Q2"/>
-                        <constraint firstItem="qdA-Yg-rTC" firstAttribute="top" secondItem="Y6z-1P-CON" secondAttribute="bottom" id="e9y-93-ZGb"/>
-                        <constraint firstAttribute="trailing" secondItem="qdA-Yg-rTC" secondAttribute="trailing" id="hgU-1o-R1T"/>
-                        <constraint firstItem="qdA-Yg-rTC" firstAttribute="leading" secondItem="PJG-ub-Dbx" secondAttribute="leading" id="ldp-Hf-e9H"/>
-                        <constraint firstItem="Y6z-1P-CON" firstAttribute="leading" secondItem="PJG-ub-Dbx" secondAttribute="leading" id="rHi-q3-9Ya"/>
-                        <constraint firstItem="Y6z-1P-CON" firstAttribute="top" secondItem="PJG-ub-Dbx" secondAttribute="top" id="zNx-rI-S4Q"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YF8-VH-Dx2">
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoG-Lo-17S">
@@ -338,14 +296,11 @@
                 <constraint firstAttribute="trailing" secondItem="HWH-Lo-TTP" secondAttribute="trailing" id="1J0-hb-7PK"/>
                 <constraint firstItem="YF8-VH-Dx2" firstAttribute="leading" secondItem="scG-V7-4B6" secondAttribute="leading" id="4qT-rK-Nba"/>
                 <constraint firstItem="HWH-Lo-TTP" firstAttribute="leading" secondItem="scG-V7-4B6" secondAttribute="leading" id="CJ7-Rf-pJJ"/>
-                <constraint firstItem="YF8-VH-Dx2" firstAttribute="top" secondItem="PJG-ub-Dbx" secondAttribute="bottom" id="ETJ-uA-5Fk"/>
                 <constraint firstItem="0w8-dq-MgI" firstAttribute="leading" secondItem="scG-V7-4B6" secondAttribute="leading" id="EtT-cS-uQz"/>
+                <constraint firstItem="YF8-VH-Dx2" firstAttribute="top" secondItem="0w8-dq-MgI" secondAttribute="bottom" id="FJs-hE-js6"/>
                 <constraint firstAttribute="trailing" secondItem="YF8-VH-Dx2" secondAttribute="trailing" id="HZ9-po-MzX"/>
                 <constraint firstAttribute="trailing" secondItem="0w8-dq-MgI" secondAttribute="trailing" id="NLt-LB-qmd"/>
                 <constraint firstItem="Z1h-lU-QwJ" firstAttribute="leading" secondItem="scG-V7-4B6" secondAttribute="leading" id="OjC-bm-Mcv"/>
-                <constraint firstItem="PJG-ub-Dbx" firstAttribute="leading" secondItem="scG-V7-4B6" secondAttribute="leading" id="Pxg-rC-2Fk"/>
-                <constraint firstAttribute="trailing" secondItem="PJG-ub-Dbx" secondAttribute="trailing" id="RMO-WK-sRS"/>
-                <constraint firstItem="PJG-ub-Dbx" firstAttribute="top" secondItem="0w8-dq-MgI" secondAttribute="bottom" id="WZI-H6-glA"/>
                 <constraint firstAttribute="trailing" secondItem="Z1h-lU-QwJ" secondAttribute="trailing" id="YAQ-jH-PGj"/>
                 <constraint firstAttribute="trailing" secondItem="Ood-Hs-m0N" secondAttribute="trailing" id="cN8-aq-8jD"/>
                 <constraint firstItem="0w8-dq-MgI" firstAttribute="top" secondItem="Ood-Hs-m0N" secondAttribute="bottom" id="jgf-Mj-qsO"/>
@@ -357,11 +312,9 @@
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="accordingLabel" destination="ebX-KW-oAG" id="far-qh-0cc"/>
-                <outlet property="addWaterBtn" destination="Y6z-1P-CON" id="7RF-pC-aZ3"/>
                 <outlet property="addressBtn" destination="4az-eU-6mH" id="uzf-7F-ekb"/>
                 <outlet property="addressLabel" destination="q3i-Cz-S4z" id="ujJ-ct-hc8"/>
                 <outlet property="facebookBtn" destination="qDH-Oi-wN7" id="hGh-TS-Le5"/>
-                <outlet property="flagLabel" destination="EUe-pw-wgg" id="9r8-I5-Q3R"/>
                 <outlet property="instagramBtn" destination="Vh3-fX-efP" id="kCY-RT-vNn"/>
                 <outlet property="instructionsTextView" destination="fHB-Re-7EK" id="5BU-uZ-xV2"/>
                 <outlet property="placeHolderLabel" destination="QB2-1m-mJV" id="vwG-Kn-SEv"/>

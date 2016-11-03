@@ -157,6 +157,14 @@ static NSString * const fucosCellId = @"fucos";
     return _naviView;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > 206) {
+        self.naviView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"me_bg_large"]];
+    } else {
+        self.naviView.backgroundColor = [UIColor clearColor];
+    }
+}
+
 -(UIButton *)fucosBtn{
     if (!_fucosBtn) {
         _fucosBtn = [UIButton buttonWithType:UIButtonTypeCustom];

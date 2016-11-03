@@ -7,14 +7,16 @@
 //
 
 #import "FSProgressViewProgress.h"
+#import "UIColor+FSExtension.h"
 
 @implementation FSProgressViewProgress
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    self.roundedCorners = 2;
-    self.progressLabel.textColor = [UIColor blackColor];
-    self.progressTintColor = [UIColor blackColor];
+    self.roundedCorners = 1;
+    self.progressLabel.textColor = [UIColor colorWithHexString:@"#0995F8"];
+    self.progressTintColor = [UIColor colorWithHexString:@"#0995F8"];
+    self.thicknessRatio = 0.1;
 }
 
 -(void)setProgress:(CGFloat)progress animated:(BOOL)animated{
@@ -25,9 +27,10 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        self.roundedCorners = 2;
-        self.progressLabel.textColor = [UIColor blackColor];
-        self.progressTintColor = [UIColor blackColor];
+        self.roundedCorners = 1;
+        self.progressLabel.textColor = [UIColor colorWithHexString:@"#0995F8"];
+        self.progressTintColor = [UIColor colorWithHexString:@"#0995F8"];
+        self.thicknessRatio = 0.1;
     }
     return self;
 }
