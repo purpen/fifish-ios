@@ -56,8 +56,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Vqr-nL-6Yf" firstAttribute="centerY" secondItem="KDT-IC-oV5" secondAttribute="centerY" constant="-5" id="2TJ-hd-srv"/>
-                            <constraint firstItem="hjC-kl-OOm" firstAttribute="leading" secondItem="KDT-IC-oV5" secondAttribute="leading" constant="20" id="ANW-DO-Vpx"/>
-                            <constraint firstItem="Vqr-nL-6Yf" firstAttribute="leading" secondItem="KDT-IC-oV5" secondAttribute="leading" constant="30" id="DnH-Ma-vb2"/>
+                            <constraint firstItem="Vqr-nL-6Yf" firstAttribute="leading" secondItem="KDT-IC-oV5" secondAttribute="leading" constant="25" id="DnH-Ma-vb2"/>
                             <constraint firstItem="hjC-kl-OOm" firstAttribute="centerY" secondItem="KDT-IC-oV5" secondAttribute="centerY" id="K2v-Mb-qqK"/>
                             <constraint firstAttribute="trailing" secondItem="Vqr-nL-6Yf" secondAttribute="trailing" constant="15" id="S5h-vo-If1"/>
                             <constraint firstAttribute="height" constant="44" id="yO4-WG-0Qk"/>
@@ -163,6 +162,7 @@
                     <constraint firstItem="M9O-EF-VPs" firstAttribute="leading" secondItem="kb6-aT-ufJ" secondAttribute="leadingMargin" id="AyG-Ej-7xp"/>
                     <constraint firstItem="NKo-PJ-as7" firstAttribute="leading" secondItem="dJV-X0-PgA" secondAttribute="leading" id="CET-mO-KWX"/>
                     <constraint firstAttribute="trailing" secondItem="KDT-IC-oV5" secondAttribute="trailing" id="DZk-Mr-0n2"/>
+                    <constraint firstItem="hjC-kl-OOm" firstAttribute="leading" secondItem="g7W-wn-UwT" secondAttribute="leading" id="FQL-lC-7BT"/>
                     <constraint firstItem="M9O-EF-VPs" firstAttribute="top" secondItem="hCc-Rs-QJx" secondAttribute="bottom" id="GeG-bY-2PW"/>
                     <constraint firstItem="KDT-IC-oV5" firstAttribute="top" secondItem="M9O-EF-VPs" secondAttribute="bottom" id="MSe-RM-ZoB"/>
                     <constraint firstItem="NKo-PJ-as7" firstAttribute="top" secondItem="dJV-X0-PgA" secondAttribute="bottom" constant="3" id="Xhy-JU-1O6"/>
@@ -221,7 +221,7 @@
         <image name="home_liked" width="20" height="18"/>
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="16" height="17"/>
-        <image name="me_address" width="9" height="13"/>
+        <image name="me_address" width="9" height="12"/>
         <image name="me_path" width="9" height="10"/>
         <image name="me_path_right" width="11" height="9"/>
     </resources>

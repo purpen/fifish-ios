@@ -240,7 +240,7 @@ static NSString * const fucosCellId = @"fucos";
     // 自动改变透明度
     self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contentTableView.mj_header beginRefreshing];
-    
+    self.contentTableView.mj_footer.hidden = YES;
     self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
@@ -278,7 +278,7 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 刷新
 -(void)loadNew{
-    
+    self.contentTableView.mj_footer.hidden = YES;
     [self updateUserInfo];
     
     [self.contentTableView.mj_footer endRefreshing];
@@ -745,7 +745,16 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeGuanZhu:
             {
                 FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-                vc.userId = self.userId;
+                FSListUserModel *model = self.guanZhuPersons[indexPath.row];
+                vc.userId = model.userId;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case FSTypeFenSi:
+            {
+                FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+                FSListUserModel *model = self.fenSiPersons[indexPath.row];
+                vc.userId = model.userId;
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

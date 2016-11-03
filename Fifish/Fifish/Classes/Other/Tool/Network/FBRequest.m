@@ -12,7 +12,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "SVProgressHUD.h"
 #import "FSConst.h"
-
+#import "FSUserModel.h"
+#import "FSTabBarController.h"
 
 typedef enum : NSUInteger {
     
@@ -416,6 +417,13 @@ static BOOL                           _canSendMessage      = YES;
                                                success(weakSelf, responseObject);
                                            } else {
                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+                                               if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token expired!"]) {
+                                                   [FSUserModel clearTable];
+                                                   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                   [defaults setObject:@"" forKey:@"token"];
+                                                   [defaults synchronize];
+                                                   [[FSTabBarController sharedManager] setSelectedIndex:3];
+                                               }
                                            }
 
                                        }
@@ -444,6 +452,13 @@ static BOOL                           _canSendMessage      = YES;
                                                 success(weakSelf, responseObject);
                                             } else {
                                                 [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+                                                if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token expired!"]) {
+                                                    [FSUserModel clearTable];
+                                                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                    [defaults setObject:@"" forKey:@"token"];
+                                                    [defaults synchronize];
+                                                    [[FSTabBarController sharedManager] setSelectedIndex:3];
+                                                }
                                             }
                                         }
                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {

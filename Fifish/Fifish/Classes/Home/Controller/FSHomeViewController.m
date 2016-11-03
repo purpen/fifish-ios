@@ -555,8 +555,8 @@ static NSString * const CellId = @"home";
     CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-    return gaoDu + 9 - 18;
+    CGFloat gaoDu = textH + 368;
+    return gaoDu;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
