@@ -192,6 +192,7 @@
 		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
+		1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F01DCB52BF009B9C32 /* FSFansModel.m */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -866,6 +867,8 @@
 		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
 		1F04249F1D548A600071A1D6 /* FSCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentModel.h; sourceTree = "<group>"; };
 		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
+		1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFansModel.h; sourceTree = "<group>"; };
+		1F3401F01DCB52BF009B9C32 /* FSFansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFansModel.m; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2783,6 +2786,8 @@
 				1F02199F1D794E6E003A8A11 /* FSUserModel.m */,
 				1F04241B1D51F3BA0071A1D6 /* FSZuoPin.h */,
 				1F04241C1D51F3BA0071A1D6 /* FSZuoPin.m */,
+				1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */,
+				1F3401F01DCB52BF009B9C32 /* FSFansModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3962,6 +3967,7 @@
 				0436AF3E1DACE5C2001E6808 /* FSAmaroFilter.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
+				1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */,
 				1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */,
 				48FC207A1DBC4A08001D71F4 /* CoreTextData.m in Sources */,
 				1FB4FBB11D954EC400E236CF /* MJRefreshAutoFooter.m in Sources */,

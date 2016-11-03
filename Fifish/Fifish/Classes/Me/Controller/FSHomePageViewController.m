@@ -26,6 +26,7 @@
 #import "FSHomeDetailViewController.h"
 #import "FSStuffCountTableViewCell.h"
 #import "FSZuoPinGroupTableViewCell.h"
+#import "FSFansModel.h"
 
 typedef enum {
     FSTypeZuoPin = 1,
@@ -174,7 +175,7 @@ static NSString * const fucosCellId = @"fucos";
         _fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
         [_fucosBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
         [_fucosBtn setTitle:@"已关注" forState:UIControlStateSelected];
-        _fucosBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        _fucosBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#0995f8"] forState:UIControlStateSelected];
         [_fucosBtn setImage:[UIImage imageNamed:@"me_fucos_right"] forState:UIControlStateSelected];
@@ -364,7 +365,7 @@ static NSString * const fucosCellId = @"fucos";
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        NSArray *ary = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.fenSiPersons addObjectsFromArray:ary];
         [self.contentTableView reloadData];
         [self checkFooterState];
@@ -385,7 +386,7 @@ static NSString * const fucosCellId = @"fucos";
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        self.fenSiPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        self.fenSiPersons = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
@@ -407,6 +408,7 @@ static NSString * const fucosCellId = @"fucos";
             NSDictionary *dict = result[@"data"];
             userModel = [FSUserModel mj_objectWithKeyValues:dict];
             userModel.isLogin = YES;
+            self.userId = userModel.userId;
             [userModel saveOrUpdate];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
@@ -416,9 +418,14 @@ static NSString * const fucosCellId = @"fucos";
         FBRequest *request2 = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@",self.userId] requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
-            NSLog(@"用户是否关注了 %@", dict[@"following"]);
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
+            self.userId = self.user_model.userId;
             self.fucosBtn.selected = self.user_model.following == 1;
+            if (self.fucosBtn.selected) {
+                self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#0995f8"].CGColor;
+            } else {
+                self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+            }
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
             
@@ -761,7 +768,7 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeFenSi:
             {
                 FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-                FSListUserModel *model = self.fenSiPersons[indexPath.row];
+                FSFansModel *model = self.fenSiPersons[indexPath.row];
                 vc.userId = model.userId;
                 [self.navigationController pushViewController:vc animated:YES];
             }
@@ -776,22 +783,56 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 点击关注按钮
 -(void)fucosClick : (UIButton *) sender {
-    if (sender.selected) {
-       FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
-        } failure:^(FBRequest *request, NSError *error) {
+    switch (self.type) {
+        case FSTypeZuoPin:
+        {
+        }
+            break;
+        case FSTypeGuanZhu:
+        {
+            if (sender.selected) {
+                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                [request startRequestSuccess:^(FBRequest *request, id result) {
+                    sender.selected = NO;
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+                } failure:^(FBRequest *request, NSError *error) {
+                    
+                }];
+            } else {
+                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                [request startRequestSuccess:^(FBRequest *request, id result) {
+                    sender.selected = YES;
+                    sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+                } failure:^(FBRequest *request, NSError *error) {
+                    
+                }];
+            }
+        }
+            break;
+        case FSTypeFenSi:
+        {
+            if (sender.selected) {
+                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                [request startRequestSuccess:^(FBRequest *request, id result) {
+                    sender.selected = NO;
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+                } failure:^(FBRequest *request, NSError *error) {
+                    
+                }];
+            } else {
+                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                [request startRequestSuccess:^(FBRequest *request, id result) {
+                    sender.selected = YES;
+                    sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+                } failure:^(FBRequest *request, NSError *error) {
+                    
+                }];
+            }
+        }
+            break;
             
-        }];
-    } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
-        } failure:^(FBRequest *request, NSError *error) {
-            
-        }];
+        default:
+            break;
     }
 }
 

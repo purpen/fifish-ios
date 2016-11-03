@@ -63,6 +63,20 @@
     }
 }
 
+-(void)setFansModel:(FSFansModel *)fansModel{
+    _fansModel = fansModel;
+    self.userNameLabel.text = fansModel.userName;
+    self.summaryLabel.text = fansModel.summary;
+    [self.headInageView sd_setImageWithURL:[NSURL URLWithString:fansModel.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
+    if (fansModel.followFlag == 1) {
+        self.fucosBtn.selected = YES;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+    } else {
+        self.fucosBtn.selected = NO;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
+    }
+}
+
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.fucosBtn.layer.masksToBounds = YES;

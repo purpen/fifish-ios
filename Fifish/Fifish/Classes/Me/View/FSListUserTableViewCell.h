@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FSUserModel.h"
+#import "FSFansModel.h"
 @class FSListUserModel;
 
 @interface FSListUserTableViewCell : UITableViewCell
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fucosBtn;
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
+/**  */
+@property (nonatomic, strong) FSFansModel *fansModel;
 
 @end
