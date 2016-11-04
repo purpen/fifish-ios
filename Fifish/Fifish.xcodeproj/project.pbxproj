@@ -193,6 +193,16 @@
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
 		1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F01DCB52BF009B9C32 /* FSFansModel.m */; };
+		1F3401F51DCC2232009B9C32 /* FSNewFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F31DCC2232009B9C32 /* FSNewFansViewController.m */; };
+		1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3401F41DCC2232009B9C32 /* FSNewFansViewController.xib */; };
+		1F3401FA1DCC226B009B9C32 /* FSRecivedPriaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F81DCC226B009B9C32 /* FSRecivedPriaseViewController.m */; };
+		1F3401FB1DCC226B009B9C32 /* FSRecivedPriaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3401F91DCC226B009B9C32 /* FSRecivedPriaseViewController.xib */; };
+		1F3401FF1DCC2296009B9C32 /* FSCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401FD1DCC2296009B9C32 /* FSCommentViewController.m */; };
+		1F3402001DCC2296009B9C32 /* FSCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3401FE1DCC2296009B9C32 /* FSCommentViewController.xib */; };
+		1F3402041DCC634E009B9C32 /* FSPrasiedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3402021DCC634E009B9C32 /* FSPrasiedTableViewCell.m */; };
+		1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3402031DCC634E009B9C32 /* FSPrasiedTableViewCell.xib */; };
+		1F3402091DCC687E009B9C32 /* FSCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */; };
+		1F34020A1DCC687E009B9C32 /* FSCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -869,6 +879,21 @@
 		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
 		1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFansModel.h; sourceTree = "<group>"; };
 		1F3401F01DCB52BF009B9C32 /* FSFansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFansModel.m; sourceTree = "<group>"; };
+		1F3401F21DCC2232009B9C32 /* FSNewFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewFansViewController.h; sourceTree = "<group>"; };
+		1F3401F31DCC2232009B9C32 /* FSNewFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNewFansViewController.m; sourceTree = "<group>"; };
+		1F3401F41DCC2232009B9C32 /* FSNewFansViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSNewFansViewController.xib; sourceTree = "<group>"; };
+		1F3401F71DCC226B009B9C32 /* FSRecivedPriaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecivedPriaseViewController.h; sourceTree = "<group>"; };
+		1F3401F81DCC226B009B9C32 /* FSRecivedPriaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecivedPriaseViewController.m; sourceTree = "<group>"; };
+		1F3401F91DCC226B009B9C32 /* FSRecivedPriaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSRecivedPriaseViewController.xib; sourceTree = "<group>"; };
+		1F3401FC1DCC2296009B9C32 /* FSCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentViewController.h; sourceTree = "<group>"; };
+		1F3401FD1DCC2296009B9C32 /* FSCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentViewController.m; sourceTree = "<group>"; };
+		1F3401FE1DCC2296009B9C32 /* FSCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommentViewController.xib; sourceTree = "<group>"; };
+		1F3402011DCC634E009B9C32 /* FSPrasiedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPrasiedTableViewCell.h; sourceTree = "<group>"; };
+		1F3402021DCC634E009B9C32 /* FSPrasiedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPrasiedTableViewCell.m; sourceTree = "<group>"; };
+		1F3402031DCC634E009B9C32 /* FSPrasiedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPrasiedTableViewCell.xib; sourceTree = "<group>"; };
+		1F3402061DCC687E009B9C32 /* FSCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentTableViewCell.h; sourceTree = "<group>"; };
+		1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentTableViewCell.m; sourceTree = "<group>"; };
+		1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommentTableViewCell.xib; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2771,6 +2796,15 @@
 				1FAB4C941DCB1E420037DBF9 /* FSMessageViewController.h */,
 				1FAB4C951DCB1E420037DBF9 /* FSMessageViewController.m */,
 				1FAB4C961DCB1E420037DBF9 /* FSMessageViewController.xib */,
+				1F3401F21DCC2232009B9C32 /* FSNewFansViewController.h */,
+				1F3401F31DCC2232009B9C32 /* FSNewFansViewController.m */,
+				1F3401F41DCC2232009B9C32 /* FSNewFansViewController.xib */,
+				1F3401F71DCC226B009B9C32 /* FSRecivedPriaseViewController.h */,
+				1F3401F81DCC226B009B9C32 /* FSRecivedPriaseViewController.m */,
+				1F3401F91DCC226B009B9C32 /* FSRecivedPriaseViewController.xib */,
+				1F3401FC1DCC2296009B9C32 /* FSCommentViewController.h */,
+				1F3401FD1DCC2296009B9C32 /* FSCommentViewController.m */,
+				1F3401FE1DCC2296009B9C32 /* FSCommentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2824,6 +2858,12 @@
 				1FAB4C991DCB2E4A0037DBF9 /* FSMessageTableViewCell.h */,
 				1FAB4C9A1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m */,
 				1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */,
+				1F3402011DCC634E009B9C32 /* FSPrasiedTableViewCell.h */,
+				1F3402021DCC634E009B9C32 /* FSPrasiedTableViewCell.m */,
+				1F3402031DCC634E009B9C32 /* FSPrasiedTableViewCell.xib */,
+				1F3402061DCC687E009B9C32 /* FSCommentTableViewCell.h */,
+				1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */,
+				1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3723,6 +3763,8 @@
 				1FE5655A1DBDF0C4000AE61D /* read_me.txt in Resources */,
 				1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
+				1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */,
+				1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */,
 				0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */,
 				0436AEC01DACE30C001E6808 /* earlybirdOverlayMap.png in Resources */,
 				0436AED81DACE30C001E6808 /* toasterSoftLight.png in Resources */,
@@ -3772,6 +3814,7 @@
 				1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */,
 				0436AECD1DACE30C001E6808 /* riseMap.png in Resources */,
 				0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */,
+				1F3401FB1DCC226B009B9C32 /* FSRecivedPriaseViewController.xib in Resources */,
 				0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */,
 				0436AEB51DACE30C001E6808 /* 1977map.png in Resources */,
 				1FE565081DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib in Resources */,
@@ -3785,6 +3828,7 @@
 				0436AECF1DACE30C001E6808 /* sierraVignette.png in Resources */,
 				1F4201FD1D48AE0100D3E6CB /* Info.plist in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
+				1F3402001DCC2296009B9C32 /* FSCommentViewController.xib in Resources */,
 				1FE564F41DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib in Resources */,
 				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
 				1FE565031DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib in Resources */,
@@ -3801,6 +3845,7 @@
 				0436AEC91DACE30C001E6808 /* kelvinMap.png in Resources */,
 				1F7EDE951D45EF6900ABED5D /* FSEquipmentViewController.xib in Resources */,
 				0436AEBA1DACE30C001E6808 /* brannanLuma.png in Resources */,
+				1F34020A1DCC687E009B9C32 /* FSCommentTableViewCell.xib in Resources */,
 				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
 				1FE5655E1DBDF0C4000AE61D /* UMSocialSDKResources.bundle in Resources */,
 				1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */,
@@ -4008,6 +4053,7 @@
 				1FDE28C81D92241D00566A73 /* README.md in Sources */,
 				1F0424481D51F3C30071A1D6 /* AFHTTPRequestOperation.m in Sources */,
 				1F80114A1DA9E12800B320C7 /* FSTagModel.m in Sources */,
+				1F3402041DCC634E009B9C32 /* FSPrasiedTableViewCell.m in Sources */,
 				1FB4FBB61D954EC400E236CF /* MJRefreshAutoGifFooter.m in Sources */,
 				047A85871D79AB8300A88891 /* UIView+Toast.m in Sources */,
 				1F04244E1D51F3C30071A1D6 /* AFURLRequestSerialization.m in Sources */,
@@ -4021,11 +4067,13 @@
 				1F4202021D48AE0100D3E6CB /* MASViewAttribute.m in Sources */,
 				1FE564B61DAE275A000AE61D /* UIView+SGExtension.m in Sources */,
 				040995641D95174600BFEC92 /* FSImageModel.m in Sources */,
+				1F3401F51DCC2232009B9C32 /* FSNewFansViewController.m in Sources */,
 				1F0424621D51F3F20071A1D6 /* FBRequest.m in Sources */,
 				1FDE28DB1D92864300566A73 /* FSTagCollectionViewCell.m in Sources */,
 				1F0219A11D794E6E003A8A11 /* FSUserModel.m in Sources */,
 				1FB4FBB91D954EC400E236CF /* MJRefreshBackGifFooter.m in Sources */,
 				1F7EDEBD1D46F99500ABED5D /* FSTextField.m in Sources */,
+				1F3402091DCC687E009B9C32 /* FSCommentTableViewCell.m in Sources */,
 				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
 				04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */,
 				1F0219B61D79500A003A8A11 /* FMDatabaseAdditions.m in Sources */,
@@ -4110,11 +4158,13 @@
 				1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */,
 				1F80114E1DAA481200B320C7 /* FSAddressViewController.m in Sources */,
 				1F0424701D530D970071A1D6 /* FSPictuerView.m in Sources */,
+				1F3401FA1DCC226B009B9C32 /* FSRecivedPriaseViewController.m in Sources */,
 				1FAB4C971DCB1E420037DBF9 /* FSMessageViewController.m in Sources */,
 				1FB4FBBA1D954EC400E236CF /* MJRefreshBackNormalFooter.m in Sources */,
 				1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */,
 				0436AF4D1DACE5C2001E6808 /* FSValenciaFilter.m in Sources */,
 				1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */,
+				1F3401FF1DCC2296009B9C32 /* FSCommentViewController.m in Sources */,
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F80112E1DA8859C00B320C7 /* FSBaseViewController.m in Sources */,

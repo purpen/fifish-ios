@@ -11,9 +11,11 @@
 #import "FBRequest.h"
 #import "FBAPI.h"
 
-@interface OptionViewController () <UITextViewDelegate>
+@interface OptionViewController () <UITextViewDelegate, UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *remindLabel;
 @property (weak, nonatomic) IBOutlet UITextView *optionTFV;
+@property (weak, nonatomic) IBOutlet UITextField *contactTF;
 
 @end
 
@@ -32,7 +34,7 @@
     [button addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = sendItem;
-    
+    self.contactTF.delegate = self;
     self.optionTFV.delegate = self;
 }
 
@@ -40,10 +42,17 @@
     if (self.optionTFV.text.length > 200) {
         [SVProgressHUD showInfoWithStatus:@"不能多于200个字"];
         return;
+    } else if (self.optionTFV.text.length == 0) {
+        [SVProgressHUD showInfoWithStatus:@"你没有填写内容"];
+        return;
+    } else if (self.contactTF.text.length == 0) {
+        [SVProgressHUD showInfoWithStatus:@"联系方式为空"];
+        return;
     }
     //封装参数
     NSDictionary *params = @{
-                             @"content":self.optionTFV.text
+                             @"content" : self.optionTFV.text,
+                             @"contact" : self.contactTF.text
                              };
     FBRequest *request = [FBAPI postWithUrlString:@"/feedback/submit" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -57,6 +66,10 @@
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{
     self.remindLabel.hidden = YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [self.view endEditing:YES];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView{

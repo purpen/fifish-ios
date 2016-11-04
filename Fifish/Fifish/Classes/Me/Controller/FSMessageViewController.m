@@ -8,6 +8,10 @@
 
 #import "FSMessageViewController.h"
 #import "FSMessageTableViewCell.h"
+#import "FSNewFansViewController.h"
+#import "FSRecivedPriaseViewController.h"
+#import "FSCommentViewController.h"
+#import "FSRecivedPriaseViewController.h"
 
 @interface FSMessageViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -69,6 +73,32 @@
     NSDictionary *dict = self.modelAry[indexPath.row];
     cell.dict = dict;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:
+        {
+            FSNewFansViewController *vc = [[FSNewFansViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 1:
+        {
+            FSRecivedPriaseViewController *vc = [[FSRecivedPriaseViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        {
+            FSCommentViewController *vc = [[FSCommentViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
