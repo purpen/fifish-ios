@@ -24,11 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"意见反馈";
+    self.navigationItem.title = NSLocalizedString(@"feedback", nil);
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 40, 40);
-    [button setTitle:@"发送" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"send", nil) forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:14];
     [button setTitleColor:[UIColor colorWithHexString:@"#298cff"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];

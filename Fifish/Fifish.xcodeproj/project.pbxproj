@@ -203,6 +203,16 @@
 		1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3402031DCC634E009B9C32 /* FSPrasiedTableViewCell.xib */; };
 		1F3402091DCC687E009B9C32 /* FSCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */; };
 		1F34020A1DCC687E009B9C32 /* FSCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */; };
+		1F3402121DCC8B24009B9C32 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402101DCC8B24009B9C32 /* jpush-ios-2.2.0.a */; };
+		1F3402141DCC8B5A009B9C32 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402131DCC8B5A009B9C32 /* CFNetwork.framework */; };
+		1F3402161DCC8B7C009B9C32 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402151DCC8B7C009B9C32 /* CoreFoundation.framework */; };
+		1F3402181DCC8BAD009B9C32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402171DCC8BAD009B9C32 /* CoreGraphics.framework */; };
+		1F34021A1DCC8BCE009B9C32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402191DCC8BCE009B9C32 /* Foundation.framework */; };
+		1F34021C1DCC8BD9009B9C32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F34021B1DCC8BD9009B9C32 /* UIKit.framework */; };
+		1F34021E1DCC8BF2009B9C32 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F34021D1DCC8BF2009B9C32 /* Security.framework */; };
+		1F3402201DCC8C23009B9C32 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */; };
+		1F3402221DCC8C31009B9C32 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402211DCC8C31009B9C32 /* libresolv.tbd */; };
+		1F3402251DCC924C009B9C32 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402241DCC924C009B9C32 /* UserNotifications.framework */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -894,6 +904,18 @@
 		1F3402061DCC687E009B9C32 /* FSCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentTableViewCell.h; sourceTree = "<group>"; };
 		1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentTableViewCell.m; sourceTree = "<group>"; };
 		1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommentTableViewCell.xib; sourceTree = "<group>"; };
+		1F3402101DCC8B24009B9C32 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
+		1F3402111DCC8B24009B9C32 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		1F3402131DCC8B5A009B9C32 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1F3402151DCC8B7C009B9C32 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		1F3402171DCC8BAD009B9C32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1F3402191DCC8BCE009B9C32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F34021B1DCC8BD9009B9C32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F34021D1DCC8BF2009B9C32 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		1F3402211DCC8C31009B9C32 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		1F3402231DCC8C73009B9C32 /* Fifish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fifish.entitlements; sourceTree = "<group>"; };
+		1F3402241DCC924C009B9C32 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UserNotifications.framework; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1343,13 +1365,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3402221DCC8C31009B9C32 /* libresolv.tbd in Frameworks */,
+				1F3402201DCC8C23009B9C32 /* UserNotifications.framework in Frameworks */,
+				0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */,
+				1F34021E1DCC8BF2009B9C32 /* Security.framework in Frameworks */,
+				1F34021C1DCC8BD9009B9C32 /* UIKit.framework in Frameworks */,
+				1F34021A1DCC8BCE009B9C32 /* Foundation.framework in Frameworks */,
+				1F3402181DCC8BAD009B9C32 /* CoreGraphics.framework in Frameworks */,
+				1F3402161DCC8B7C009B9C32 /* CoreFoundation.framework in Frameworks */,
+				1F3402141DCC8B5A009B9C32 /* CFNetwork.framework in Frameworks */,
 				1FE5660B1DC2EF02000AE61D /* QuartzCore.framework in Frameworks */,
 				1FE565661DBDF279000AE61D /* TwitterKitResources.bundle in Frameworks */,
 				1FE565641DBDF219000AE61D /* libc++.tbd in Frameworks */,
 				1F8011631DAC969100B320C7 /* AMapSearchKit.framework in Frameworks */,
 				1F8011611DAC8BAA00B320C7 /* libstdc++.6.0.9.tbd in Frameworks */,
 				1FE565591DBDF0C4000AE61D /* libWeChatSDK.a in Frameworks */,
-				0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */,
 				1F80115F1DAC8B8400B320C7 /* CoreTelephony.framework in Frameworks */,
 				0470C4F91D9BAE5100B13500 /* SystemConfiguration.framework in Frameworks */,
 				1F80115D1DAC8B6B00B320C7 /* JavaScriptCore.framework in Frameworks */,
@@ -1383,9 +1413,11 @@
 				1FE565561DBDF0C4000AE61D /* TwitterCore.framework in Frameworks */,
 				1FE5654C1DBDF0C4000AE61D /* libSocialFacebook.a in Frameworks */,
 				0434F41D1D61C59B00DBFFCE /* libswresample.a in Frameworks */,
+				1F3402251DCC924C009B9C32 /* UserNotifications.framework in Frameworks */,
 				0434F41C1D61C59B00DBFFCE /* libavutil.a in Frameworks */,
 				0434F4191D61C59B00DBFFCE /* libavdevice.a in Frameworks */,
 				1F4202591D49B36000D3E6CB /* ImageIO.framework in Frameworks */,
+				1F3402121DCC8B24009B9C32 /* jpush-ios-2.2.0.a in Frameworks */,
 				0434F41E1D61C59B00DBFFCE /* libswscale.a in Frameworks */,
 				0434F4181D61C59B00DBFFCE /* libavcodec.a in Frameworks */,
 				1AA91B7C0B764D4165F33738 /* libPods-Fifish.a in Frameworks */,
@@ -2457,6 +2489,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		1F34020F1DCC8B24009B9C32 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				1F3402101DCC8B24009B9C32 /* jpush-ios-2.2.0.a */,
+				1F3402111DCC8B24009B9C32 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
 		1F4201C11D475C8A00D3E6CB /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -2562,6 +2603,7 @@
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
+				1F3402241DCC924C009B9C32 /* UserNotifications.framework */,
 				1F8011621DAC969100B320C7 /* AMapSearchKit.framework */,
 				1F80115A1DAC8B4000B320C7 /* AMapLocationKit.framework */,
 				1F8011581DAC8AEB00B320C7 /* AMapFoundationKit.framework */,
@@ -2588,6 +2630,7 @@
 		1F7EDE161D45E0D300ABED5D /* Fifish */ = {
 			isa = PBXGroup;
 			children = (
+				1F3402231DCC8C73009B9C32 /* Fifish.entitlements */,
 				1F7EDE691D45EF6900ABED5D /* Classes */,
 				1F7EDE171D45E0D300ABED5D /* Supporting Files */,
 			);
@@ -3012,6 +3055,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1F34020F1DCC8B24009B9C32 /* JPush */,
 				1FE565FB1DC2E9C4000AE61D /* DACircularProgress */,
 				1FE565091DBDF0C4000AE61D /* UMSocial */,
 				48FC20651DBC4A08001D71F4 /* CoreText */,
@@ -3568,6 +3612,14 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F3402211DCC8C31009B9C32 /* libresolv.tbd */,
+				1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */,
+				1F34021D1DCC8BF2009B9C32 /* Security.framework */,
+				1F34021B1DCC8BD9009B9C32 /* UIKit.framework */,
+				1F3402191DCC8BCE009B9C32 /* Foundation.framework */,
+				1F3402171DCC8BAD009B9C32 /* CoreGraphics.framework */,
+				1F3402151DCC8B7C009B9C32 /* CoreFoundation.framework */,
+				1F3402131DCC8B5A009B9C32 /* CFNetwork.framework */,
 				1FE5660A1DC2EF02000AE61D /* QuartzCore.framework */,
 				1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */,
 				1FE565631DBDF219000AE61D /* libc++.tbd */,
@@ -3712,6 +3764,11 @@
 					1F7EDE131D45E0D200ABED5D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = QNKEA2Q4R9;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					1F7EDE2C1D45E0D300ABED5D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -4331,7 +4388,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4372,7 +4429,7 @@
 				INSTALL_OWNER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4385,6 +4442,7 @@
 				ALTERNATE_OWNER = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4414,11 +4472,13 @@
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Twitter",
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/Lib",
+					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4430,6 +4490,7 @@
 				ALTERNATE_OWNER = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				ENABLE_BITCODE = NO;
@@ -4460,11 +4521,13 @@
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Sina",
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Twitter",
 					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/Lib",
+					"$(PROJECT_DIR)/Fifish/Classes/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
