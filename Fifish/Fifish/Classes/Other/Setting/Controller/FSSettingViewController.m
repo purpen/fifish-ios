@@ -144,7 +144,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     [defaults synchronize];
-    [[FSTabBarController sharedManager] setSelectedIndex:3];
+    [[FSTabBarController sharedManager] setSelectedIndex:0];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
