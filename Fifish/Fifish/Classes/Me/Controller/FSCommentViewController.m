@@ -91,6 +91,7 @@
     }];
 }
 
+
 -(void)checkFooterState{
     self.myTableView.mj_footer.hidden = self.modelAry.count == 0;
     if (self.modelAry.count == self.total_rows) {
@@ -99,6 +100,7 @@
         [self.myTableView.mj_footer endRefreshing];
     }
 }
+
 
 -(UITableView *)myTableView{
     if (!_myTableView) {
