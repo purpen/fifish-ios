@@ -37,19 +37,19 @@
     if (duration > 60) {
         NSInteger minutes = duration / 60;
         NSString *str2;
-        if (minutes > 10) {
+        if (minutes >= 10) {
             str2 = [NSString stringWithFormat:@"%ld",minutes];
         } else {
             str2 = [NSString stringWithFormat:@"0%ld",minutes];
         }
         NSInteger seconds = duration - minutes * 60;
-        if (seconds > 10) {
+        if (seconds >= 10) {
             str = [NSString stringWithFormat:@"%@:%ld",str2 ,seconds];
         } else {
             str = [NSString stringWithFormat:@"%@:0%ld",str2 ,seconds];
         }
     } else {
-        if (duration > 10) {
+        if (duration >= 10) {
             str = [NSString stringWithFormat:@"00:%ld",duration];
         } else {
             str = [NSString stringWithFormat:@"00:0%ld",duration];
