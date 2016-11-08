@@ -162,7 +162,7 @@
     //视频宽高
     self.width = _pCodecContext->width = SCREEN_WIDTH;
     self.height= _pCodecContext->height= SCREEN_HEIGHT;
-    
+
     //查找解码器
     _pCodec = avcodec_find_decoder(_pCodecContext->codec_id);
     if (!_pCodec) {
@@ -183,7 +183,7 @@
     }
     
     img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_RGB32, SWS_BICUBIC, NULL, NULL, NULL);
-
+    
     return 0;
     
     
