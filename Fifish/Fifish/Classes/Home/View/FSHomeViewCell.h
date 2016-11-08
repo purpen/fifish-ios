@@ -33,5 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomView_height;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_bottom_distance;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabel_height;
+/**  */
+@property (nonatomic, strong) UIViewController *myViewController;
 
 @end

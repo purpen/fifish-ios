@@ -390,6 +390,7 @@ static NSString * const CellId = @"home";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     cell.navi = self.navigationController;
+    cell.myViewController = self;
     cell.model = self.modelAry[indexPath.section];
     cell.likeBtn.tag = indexPath.section;
     cell.commendBtn.tag = indexPath.section;

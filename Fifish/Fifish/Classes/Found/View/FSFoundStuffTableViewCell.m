@@ -17,6 +17,7 @@
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
 #import "FSUserModel.h"
+#import "FSShareViewController.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -41,6 +42,14 @@
 
 
 @implementation FSFoundStuffTableViewCell
+
+- (IBAction)shareClick:(id)sender {
+    FSShareViewController *vc = [[FSShareViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    vc.model = self.model;
+    [self.myViewController presentViewController:vc animated:YES completion:nil];
+}
 
 -(NSMutableArray *)tagMAry{
     if (!_tagMAry) {

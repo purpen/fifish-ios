@@ -28,5 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fucosBtn;
 /**  */
 @property (nonatomic, strong) UINavigationController *navc;
+/**  */
+@property (nonatomic, strong) UIViewController *myViewController;
 
 @end

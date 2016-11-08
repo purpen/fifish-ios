@@ -192,6 +192,8 @@
 		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
+		1F32F8C11DD1775B000E2FF6 /* FSShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */; };
+		1F32F8C21DD1775B000E2FF6 /* FSShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */; };
 		1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F01DCB52BF009B9C32 /* FSFansModel.m */; };
 		1F3401F51DCC2232009B9C32 /* FSNewFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F31DCC2232009B9C32 /* FSNewFansViewController.m */; };
 		1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3401F41DCC2232009B9C32 /* FSNewFansViewController.xib */; };
@@ -212,7 +214,6 @@
 		1F34021E1DCC8BF2009B9C32 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F34021D1DCC8BF2009B9C32 /* Security.framework */; };
 		1F3402201DCC8C23009B9C32 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */; };
 		1F3402221DCC8C31009B9C32 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402211DCC8C31009B9C32 /* libresolv.tbd */; };
-		1F3402251DCC924C009B9C32 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402241DCC924C009B9C32 /* UserNotifications.framework */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
 		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
@@ -306,6 +307,8 @@
 		1F8011A61DACE92600B320C7 /* FSWatermarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */; };
 		1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */; };
 		1F8011AA1DADDBB700B320C7 /* UIImage+FSWatermark.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */; };
+		1F84E9621DD0783200C71662 /* FSTipNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F84E9611DD0783200C71662 /* FSTipNumberView.m */; };
+		1F84E9641DD0784700C71662 /* FSTipNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F84E9631DD0784700C71662 /* FSTipNumberView.xib */; };
 		1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */; };
 		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
 		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
@@ -887,6 +890,9 @@
 		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
 		1F04249F1D548A600071A1D6 /* FSCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentModel.h; sourceTree = "<group>"; };
 		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
+		1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShareViewController.h; sourceTree = "<group>"; };
+		1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShareViewController.m; sourceTree = "<group>"; };
+		1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShareViewController.xib; sourceTree = "<group>"; };
 		1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFansModel.h; sourceTree = "<group>"; };
 		1F3401F01DCB52BF009B9C32 /* FSFansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFansModel.m; sourceTree = "<group>"; };
 		1F3401F21DCC2232009B9C32 /* FSNewFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewFansViewController.h; sourceTree = "<group>"; };
@@ -915,7 +921,6 @@
 		1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		1F3402211DCC8C31009B9C32 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		1F3402231DCC8C73009B9C32 /* Fifish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fifish.entitlements; sourceTree = "<group>"; };
-		1F3402241DCC924C009B9C32 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UserNotifications.framework; sourceTree = "<group>"; };
 		1F42018B1D47389700D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1085,6 +1090,9 @@
 		1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWatermarkViewController.xib; sourceTree = "<group>"; };
 		1F8011A81DADDBB700B320C7 /* UIImage+FSWatermark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FSWatermark.h"; sourceTree = "<group>"; };
 		1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FSWatermark.m"; sourceTree = "<group>"; };
+		1F84E9601DD0783200C71662 /* FSTipNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTipNumberView.h; sourceTree = "<group>"; };
+		1F84E9611DD0783200C71662 /* FSTipNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTipNumberView.m; sourceTree = "<group>"; };
+		1F84E9631DD0784700C71662 /* FSTipNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTipNumberView.xib; sourceTree = "<group>"; };
 		1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChangeSexViewController.h; sourceTree = "<group>"; };
 		1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChangeSexViewController.m; sourceTree = "<group>"; };
 		1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSChangeSexViewController.xib; sourceTree = "<group>"; };
@@ -1413,7 +1421,6 @@
 				1FE565561DBDF0C4000AE61D /* TwitterCore.framework in Frameworks */,
 				1FE5654C1DBDF0C4000AE61D /* libSocialFacebook.a in Frameworks */,
 				0434F41D1D61C59B00DBFFCE /* libswresample.a in Frameworks */,
-				1F3402251DCC924C009B9C32 /* UserNotifications.framework in Frameworks */,
 				0434F41C1D61C59B00DBFFCE /* libavutil.a in Frameworks */,
 				0434F4191D61C59B00DBFFCE /* libavdevice.a in Frameworks */,
 				1F4202591D49B36000D3E6CB /* ImageIO.framework in Frameworks */,
@@ -2474,6 +2481,9 @@
 			isa = PBXGroup;
 			children = (
 				1F04245C1D51F3F20071A1D6 /* Network */,
+				1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */,
+				1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */,
+				1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -2603,7 +2613,6 @@
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
-				1F3402241DCC924C009B9C32 /* UserNotifications.framework */,
 				1F8011621DAC969100B320C7 /* AMapSearchKit.framework */,
 				1F80115A1DAC8B4000B320C7 /* AMapLocationKit.framework */,
 				1F8011581DAC8AEB00B320C7 /* AMapFoundationKit.framework */,
@@ -2907,6 +2916,9 @@
 				1F3402061DCC687E009B9C32 /* FSCommentTableViewCell.h */,
 				1F3402071DCC687E009B9C32 /* FSCommentTableViewCell.m */,
 				1F3402081DCC687E009B9C32 /* FSCommentTableViewCell.xib */,
+				1F84E9601DD0783200C71662 /* FSTipNumberView.h */,
+				1F84E9611DD0783200C71662 /* FSTipNumberView.m */,
+				1F84E9631DD0784700C71662 /* FSTipNumberView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3895,6 +3907,7 @@
 				0436AED91DACE30C001E6808 /* valenciaGradientMap.png in Resources */,
 				0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */,
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
+				1F32F8C21DD1775B000E2FF6 /* FSShareViewController.xib in Resources */,
 				0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */,
 				1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */,
 				1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */,
@@ -3924,6 +3937,7 @@
 				1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
 				1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */,
+				1F84E9641DD0784700C71662 /* FSTipNumberView.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4179,7 +4193,9 @@
 				0452CCFD1D77CA6A007694CC /* FSOSDManager.m in Sources */,
 				1FE087971D825649007790E3 /* FSBaseView.m in Sources */,
 				1FDE28C31D92241D00566A73 /* NSObject+MJClass.m in Sources */,
+				1F84E9621DD0783200C71662 /* FSTipNumberView.m in Sources */,
 				0436AF411DACE5C2001E6808 /* FSFiveInputFilter.m in Sources */,
+				1F32F8C11DD1775B000E2FF6 /* FSShareViewController.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1FE564E61DB4D1E8000AE61D /* TADotView.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
