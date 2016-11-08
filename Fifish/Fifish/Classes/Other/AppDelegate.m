@@ -38,9 +38,6 @@
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
-/**  */
-@property (nonatomic, assign) NSInteger notificationCount;
-
 @end
 
 @implementation AppDelegate
@@ -98,7 +95,7 @@
                                                           UIUserNotificationTypeAlert)
                                               categories:nil];
     }
-    [JPUSHService setupWithOption:launchOptions appKey:@"ec16c5e0c8a4f6fe29ea28ff"
+    [JPUSHService setupWithOption:launchOptions appKey:@"d5fd66f4c503b47e633a8d66"
                           channel:@"App Store"
                  apsForProduction:0
             advertisingIdentifier:nil];
@@ -109,10 +106,19 @@
         if(remoteNotification) {
             // 如果​remoteNotification不为空，代表有推送发过来
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-            [self performSelector:@selector(goToMssageViewControllerWith:)withObject:remoteNotification afterDelay:1];
-            [self goToMssageViewControllerWith:remoteNotification];
+            [[FSTabBarController sharedManager] setSelectedIndex:3];
         }
     }
+    FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSDictionary *dataDict = result[@"data"];
+        FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+        UITabBarItem *item = requiredViewController.tabBarItem;
+        NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
+        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
     
     return YES;
 }
@@ -213,10 +219,16 @@ fetchCompletionHandler:
 (void (^)(UIBackgroundFetchResult))completionHandler {
     [JPUSHService handleRemoteNotification:userInfo];
     if ([[UIDevice currentDevice].systemVersion floatValue]<10.0 || application.applicationState>0) {
-        FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-        UITabBarItem *item = requiredViewController.tabBarItem;
-        self.notificationCount ++;
-        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)self.notificationCount]];
+        FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSDictionary *dataDict = result[@"data"];
+            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+            UITabBarItem *item = requiredViewController.tabBarItem;
+            NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
+            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
         NSLog(@"iOS10以下 前台收到远程通知:%@", [self logDic:userInfo]);
     }
     completionHandler(UIBackgroundFetchResultNewData);
@@ -243,10 +255,16 @@ fetchCompletionHandler:
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
-        FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-        UITabBarItem *item = requiredViewController.tabBarItem;
-        self.notificationCount ++;
-        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)self.notificationCount]];
+        FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSDictionary *dataDict = result[@"data"];
+            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+            UITabBarItem *item = requiredViewController.tabBarItem;
+            NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
+            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
     }
     else {
         // 判断为本地通知

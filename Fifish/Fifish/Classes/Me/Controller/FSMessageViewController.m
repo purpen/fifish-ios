@@ -103,30 +103,18 @@
     switch (indexPath.row) {
         case 0:
         {
-            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-            UITabBarItem *item = requiredViewController.tabBarItem;
-            NSInteger count = ([self.alert_comment_count integerValue] + [self.alert_like_count integerValue]);
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
             FSNewFansViewController *vc = [[FSNewFansViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 1:
         {
-            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-            UITabBarItem *item = requiredViewController.tabBarItem;
-            NSInteger count = ([self.alert_comment_count integerValue] + [self.alert_fans_count integerValue]);
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
             FSRecivedPriaseViewController *vc = [[FSRecivedPriaseViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
         {
-            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-            UITabBarItem *item = requiredViewController.tabBarItem;
-            NSInteger count = ([self.alert_fans_count integerValue] + [self.alert_like_count integerValue]);
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
             FSCommentViewController *vc = [[FSCommentViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }

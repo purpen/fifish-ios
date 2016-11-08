@@ -13,12 +13,12 @@
 #import "FSHomePageViewController.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
-#import "FSFindFriendViewController.h"
 #import "FSUserModel.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "FSPraisedViewController.h"
 #import "FSMessageViewController.h"
+#import "FSTabBarController.h"
 
 @interface FSMeViewController ()
 
@@ -40,6 +40,18 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    
+    FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSDictionary *dataDict = result[@"data"];
+        FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+        UITabBarItem *item = requiredViewController.tabBarItem;
+        NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
+        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+
     
     FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
@@ -97,15 +109,8 @@
 }
 
 -(void)setupNav{
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(searchClick)];
     UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil title:nil target:self action:@selector(setClick)];
     self.navigationItem.rightBarButtonItem = setItem;
-    self.navigationItem.leftBarButtonItem = searchItem;
-}
-
--(void)searchClick{
-    FSFindFriendViewController *vc = [[FSFindFriendViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)setClick{

@@ -24,6 +24,8 @@
 #import "FSHomeDetailViewController.h"
 #import "FSPlayViewController.h"
 #import "SDCycleScrollView.h"
+#import "UIBarButtonItem+FSExtension.h"
+#import "FSFindFriendViewController.h"
 
 @interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate>
 
@@ -73,9 +75,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(searchClick)];
+    self.navigationItem.leftBarButtonItem = searchItem;
     [self.view addSubview:self.contentTableView];
     // 添加刷新控件
     [self setupRefresh];
+}
+
+-(void)searchClick{
+    FSFindFriendViewController *vc = [[FSFindFriendViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(NSMutableArray *)stuffAry{
@@ -308,6 +317,7 @@
     } else {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.section - 2];
+        cell.myViewController = self;
         cell.fucosBtn.tag = indexPath.section - 2;
         cell.navc = self.navigationController;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];

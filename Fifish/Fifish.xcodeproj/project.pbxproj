@@ -192,6 +192,8 @@
 		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
+		1F32F8C11DD1775B000E2FF6 /* FSShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */; };
+		1F32F8C21DD1775B000E2FF6 /* FSShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */; };
 		1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F01DCB52BF009B9C32 /* FSFansModel.m */; };
 		1F3401F51DCC2232009B9C32 /* FSNewFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3401F31DCC2232009B9C32 /* FSNewFansViewController.m */; };
 		1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3401F41DCC2232009B9C32 /* FSNewFansViewController.xib */; };
@@ -888,6 +890,9 @@
 		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
 		1F04249F1D548A600071A1D6 /* FSCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommentModel.h; sourceTree = "<group>"; };
 		1F0424A01D548A600071A1D6 /* FSCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommentModel.m; sourceTree = "<group>"; };
+		1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSShareViewController.h; sourceTree = "<group>"; };
+		1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSShareViewController.m; sourceTree = "<group>"; };
+		1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSShareViewController.xib; sourceTree = "<group>"; };
 		1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFansModel.h; sourceTree = "<group>"; };
 		1F3401F01DCB52BF009B9C32 /* FSFansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFansModel.m; sourceTree = "<group>"; };
 		1F3401F21DCC2232009B9C32 /* FSNewFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNewFansViewController.h; sourceTree = "<group>"; };
@@ -2476,6 +2481,9 @@
 			isa = PBXGroup;
 			children = (
 				1F04245C1D51F3F20071A1D6 /* Network */,
+				1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */,
+				1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */,
+				1F32F8C01DD1775B000E2FF6 /* FSShareViewController.xib */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -3899,6 +3907,7 @@
 				0436AED91DACE30C001E6808 /* valenciaGradientMap.png in Resources */,
 				0436AEBE1DACE30C001E6808 /* earlyBirdCurves.png in Resources */,
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
+				1F32F8C21DD1775B000E2FF6 /* FSShareViewController.xib in Resources */,
 				0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */,
 				1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */,
 				1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */,
@@ -4186,6 +4195,7 @@
 				1FDE28C31D92241D00566A73 /* NSObject+MJClass.m in Sources */,
 				1F84E9621DD0783200C71662 /* FSTipNumberView.m in Sources */,
 				0436AF411DACE5C2001E6808 /* FSFiveInputFilter.m in Sources */,
+				1F32F8C11DD1775B000E2FF6 /* FSShareViewController.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
 				1FE564E61DB4D1E8000AE61D /* TADotView.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,

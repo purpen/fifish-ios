@@ -148,6 +148,7 @@ static NSString * const FSCommentId = @"comment";
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
     cell.navi = self.navigationController;
+    cell.myViewController = self;
     cell.contentLabel_height.constant = 10000;
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
