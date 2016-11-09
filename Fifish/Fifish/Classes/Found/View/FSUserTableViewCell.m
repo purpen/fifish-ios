@@ -38,8 +38,8 @@
 -(UICollectionView *)myCollectionView{
     if (!_myCollectionView) {
         UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        flowLayout.minimumLineSpacing = 0.0f;
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        flowLayout.minimumLineSpacing = 0;
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 90)

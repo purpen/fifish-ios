@@ -50,7 +50,7 @@
     self.fucosBtn.layer.masksToBounds = YES;
     self.fucosBtn.layer.cornerRadius = 13;
     self.fucosBtn.layer.borderWidth = 1;
-    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
 }
 
 -(NSMutableArray *)tagMAry{
@@ -171,10 +171,10 @@
     }
     
     if (model.is_follow == 0) {
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
         self.fucosBtn.selected = NO;
     } else {
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995F8"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#0995F8"].CGColor;
         self.fucosBtn.selected = YES;
     }
 }
