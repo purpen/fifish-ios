@@ -444,7 +444,11 @@ static BOOL                           _canSendMessage      = YES;
                                                 
                                                 success(weakSelf, responseObject);
                                             } else {
-                                                
+                                                if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token absent!"]) {
+                                                    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                                                    userModel.isLogin = NO;
+                                                    [userModel saveOrUpdate];
+                                                }
                                             }
                                         }
                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -135,7 +135,7 @@
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = NO;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -145,7 +145,7 @@
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
