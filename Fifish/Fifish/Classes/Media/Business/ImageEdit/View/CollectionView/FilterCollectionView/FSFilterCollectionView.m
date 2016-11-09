@@ -96,8 +96,18 @@ static NSInteger const CellWei = 70;
     if (self.FilterDelegate&&[self.FilterDelegate respondsToSelector:@selector(SeletedFilterWithIndex:)]) {
         
         [self.FilterDelegate SeletedFilterWithIndex:indexPath];
+        
+        //改变文字选中颜色
+        FSFilterCollectionViewCell * cell = (FSFilterCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+        cell.FilterNameLab.textColor = [UIColor grayColor];
     }
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FSFilterCollectionViewCell * cell = (FSFilterCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.FilterNameLab.textColor = [UIColor whiteColor];
+}
+
 #pragma mark originalImage
 - (void)setOriginalImage:(UIImage *)originalImage{
     _originalImage = originalImage;
