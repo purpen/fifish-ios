@@ -127,8 +127,11 @@
 -(void)setImage{
     for (int i = 0; i < self.pictuerAry.count; i++) {
         UIImageView  *showImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.pictuerAry[i]]];
-        showImageView.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, 368.5);
-        showImageView.contentMode = UIViewContentModeScaleAspectFit;
+        showImageView.x = i * SCREEN_WIDTH;
+        showImageView.y = showImageView.height * 0.5;
+        showImageView.width = SCREEN_WIDTH;
+//        showImageView.height = self.contentScrollview.height;
+        showImageView.contentMode = UIViewContentModeScaleToFill;
         [_contentScrollview addSubview:showImageView];
     }
 }
@@ -145,7 +148,6 @@
         _contentScrollview.alwaysBounceVertical = NO;
         _contentScrollview.alwaysBounceHorizontal = NO;
         _contentScrollview.bounces = NO;
-
     }
     return _contentScrollview;
 }
