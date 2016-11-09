@@ -43,7 +43,7 @@
 -(UIImageView *)FilterImageView{
     if (!_FilterImageView) {
         _FilterImageView = [[UIImageView alloc] init];
-        _FilterImageView.backgroundColor = [UIColor whiteColor];
+        _FilterImageView.backgroundColor = [UIColor blackColor];
         _FilterImageView.contentMode = UIViewContentModeScaleToFill;
     }
     return _FilterImageView;
@@ -51,7 +51,7 @@
 -(UILabel *)FilterNameLab{
     if (!_FilterNameLab) {
         _FilterNameLab = [[UILabel alloc] init];
-        _FilterNameLab.textColor = [UIColor whiteColor];
+        _FilterNameLab.textColor = [UIColor grayColor];
         _FilterNameLab.textAlignment = NSTextAlignmentCenter;
         _FilterNameLab.font = [UIFont systemFontOfSize:12];
     }

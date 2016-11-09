@@ -99,13 +99,13 @@ static NSInteger const CellWei = 70;
         
         //改变文字选中颜色
         FSFilterCollectionViewCell * cell = (FSFilterCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-        cell.FilterNameLab.textColor = [UIColor grayColor];
+        cell.FilterNameLab.textColor = [UIColor whiteColor];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSFilterCollectionViewCell * cell = (FSFilterCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.FilterNameLab.textColor = [UIColor whiteColor];
+    cell.FilterNameLab.textColor = [UIColor grayColor];
 }
 
 #pragma mark originalImage

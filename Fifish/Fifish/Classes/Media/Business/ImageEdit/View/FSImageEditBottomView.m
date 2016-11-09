@@ -50,7 +50,7 @@
     
     UIView * lineview = [[UIView alloc] init];
     [self addSubview:lineview];
-    lineview.backgroundColor = [UIColor colorWithHexString:@"3A5464"];
+    lineview.backgroundColor = [UIColor grayColor];
     [lineview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(1, 20));
         make.centerX.equalTo(self.mas_centerX);
