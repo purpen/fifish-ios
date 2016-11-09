@@ -181,7 +181,7 @@
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
     //创建视频内容对象
-    UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:@"" descr:self.releaseView.accordingLabel.text thumImage:((FSVideoModel*)self.mediaModel).VideoPicture];
+    UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:@"FiFish" descr:self.releaseView.accordingLabel.text thumImage:((FSVideoModel*)self.mediaModel).VideoPicture];
     //设置视频网页播放地址
     shareObject.videoUrl = self.mediaModel.fileUrl;
     //            shareObject.videoStreamUrl = @"这里设置视频数据流地址（如果有的话，而且也要看所分享的平台支不支持）";

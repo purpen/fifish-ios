@@ -26,6 +26,8 @@
 #import "SDCycleScrollView.h"
 #import "UIBarButtonItem+FSExtension.h"
 #import "FSFindFriendViewController.h"
+#import "FSSearchViewController.h"
+#import "FSNavigationViewController.h"
 
 @interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate>
 
@@ -75,16 +77,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(searchClick)];
+    UIBarButtonItem *addItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(addClick)];
+    self.navigationItem.rightBarButtonItem = addItem;
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
     [self.view addSubview:self.contentTableView];
     // 添加刷新控件
     [self setupRefresh];
 }
 
--(void)searchClick{
+-(void)addClick{
     FSFindFriendViewController *vc = [[FSFindFriendViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)searchClick{
+    FSSearchViewController *vc = [[FSSearchViewController alloc] init];
+    FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
+    [self presentViewController:navi animated:YES completion:nil];
 }
 
 -(NSMutableArray *)stuffAry{
@@ -255,7 +265,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0 || section == 1) {
-        return 15;
+        return 10;
     } else {
         return 10;
     }

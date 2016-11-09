@@ -19,6 +19,7 @@
 #import "FSPraisedViewController.h"
 #import "FSMessageViewController.h"
 #import "FSTabBarController.h"
+#import "OptionViewController.h"
 
 @interface FSMeViewController ()
 
@@ -39,7 +40,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = YES;
     
     FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -91,10 +92,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNav];
+//    [self setupNav];
     
     self.headImageView.layer.masksToBounds = YES;
-    self.headImageView.layer.cornerRadius = 40;
+    self.headImageView.layer.cornerRadius = 45;
     self.headImageView.layer.borderWidth = 2;
     self.headImageView.layer.borderColor = [UIColor colorWithHexString:@"#F1F1F1"].CGColor;
     
@@ -108,12 +109,17 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)setupNav{
-    UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil title:nil target:self action:@selector(setClick)];
-    self.navigationItem.rightBarButtonItem = setItem;
+- (IBAction)feedBackClick:(id)sender {
+    OptionViewController *vc = [[OptionViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)setClick{
+//-(void)setupNav{
+//    UIBarButtonItem *setItem = [UIBarButtonItem itemWithImage:@"me_set" highImage:nil title:nil target:self action:@selector(setClick)];
+//    self.navigationItem.rightBarButtonItem = setItem;
+//}
+
+- (IBAction)settingClick:(id)sender {
     FSSettingViewController *vc = [[FSSettingViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
