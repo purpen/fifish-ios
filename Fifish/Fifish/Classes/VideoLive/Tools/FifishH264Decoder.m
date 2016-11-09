@@ -106,6 +106,8 @@
     //初始化网络
     avformat_network_init();
     
+    AVDictionary* options = NULL;
+    av_dict_set(&options, "rtsp_transport", "tcp", 0);
     //封装格式山下文
     _pFormatContext = avformat_alloc_context();
     if (avformat_open_input(&_pFormatContext,[self.FileUrl UTF8String],NULL,NULL)!=0) {
