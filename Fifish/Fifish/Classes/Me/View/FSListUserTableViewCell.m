@@ -42,7 +42,7 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];
     if (userModel.following == 1) {
         self.fucosBtn.selected = YES;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"2288FF"].CGColor;
     } else {
         self.fucosBtn.selected = NO;
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
@@ -56,7 +56,7 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (model.followFlag == 1) {
         self.fucosBtn.selected = YES;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"2288FF"].CGColor;
     } else {
         self.fucosBtn.selected = NO;
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;
@@ -70,7 +70,7 @@
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:fansModel.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (fansModel.followFlag == 1) {
         self.fucosBtn.selected = YES;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"2288FF"].CGColor;
     } else {
         self.fucosBtn.selected = NO;
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"7F8FA2"].CGColor;

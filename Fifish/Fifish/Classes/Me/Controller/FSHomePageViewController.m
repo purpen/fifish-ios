@@ -177,7 +177,7 @@ static NSString * const fucosCellId = @"fucos";
         [_fucosBtn setTitle:@"已关注" forState:UIControlStateSelected];
         _fucosBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
-        [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#0995f8"] forState:UIControlStateSelected];
+        [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#2288FF"] forState:UIControlStateSelected];
         [_fucosBtn setImage:[UIImage imageNamed:@"me_fucos_right"] forState:UIControlStateSelected];
         _fucosBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
         _fucosBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -2, 0, 0);
@@ -202,7 +202,7 @@ static NSString * const fucosCellId = @"fucos";
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.user_model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#0995f8"].CGColor;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -422,7 +422,7 @@ static NSString * const fucosCellId = @"fucos";
             self.userId = self.user_model.userId;
             self.fucosBtn.selected = self.user_model.following == 1;
             if (self.fucosBtn.selected) {
-                self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#0995f8"].CGColor;
+                self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
             } else {
                 self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
             }
@@ -788,7 +788,7 @@ static NSString * const fucosCellId = @"fucos";
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
@@ -796,7 +796,7 @@ static NSString * const fucosCellId = @"fucos";
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = YES;
-                    sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
@@ -809,7 +809,7 @@ static NSString * const fucosCellId = @"fucos";
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"0995f8"].CGColor;
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
@@ -817,7 +817,7 @@ static NSString * const fucosCellId = @"fucos";
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = YES;
-                    sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];

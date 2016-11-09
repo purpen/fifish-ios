@@ -14,8 +14,8 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.roundedCorners = 1;
-    self.progressLabel.textColor = [UIColor colorWithHexString:@"#0995F8"];
-    self.progressTintColor = [UIColor colorWithHexString:@"#0995F8"];
+    self.progressLabel.textColor = [UIColor colorWithHexString:@"#2288FF"];
+    self.progressTintColor = [UIColor colorWithHexString:@"#2288FF"];
     self.thicknessRatio = 0.1;
 }
 
@@ -28,8 +28,8 @@
 -(instancetype)init{
     if (self = [super init]) {
         self.roundedCorners = 1;
-        self.progressLabel.textColor = [UIColor colorWithHexString:@"#0995F8"];
-        self.progressTintColor = [UIColor colorWithHexString:@"#0995F8"];
+        self.progressLabel.textColor = [UIColor colorWithHexString:@"#2288FF"];
+        self.progressTintColor = [UIColor colorWithHexString:@"#2288FF"];
         self.thicknessRatio = 0.1;
     }
     return self;

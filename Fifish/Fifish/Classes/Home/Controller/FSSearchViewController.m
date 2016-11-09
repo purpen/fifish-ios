@@ -135,7 +135,7 @@
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSUserModel*)self.userAry[sender.tag]).userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            sender.backgroundColor = [UIColor colorWithHexString:@"0995f8"];
+            sender.backgroundColor = [UIColor colorWithHexString:@"#2288FF"];
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -320,8 +320,8 @@
         FSZuoPin *model = self.stuffAry[indexPath.section];
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-        CGFloat gaoDu = 210 + 59 + 44 + textH + 20 + 44;
-        return gaoDu + 9;
+        CGFloat gaoDu = textH + 374;
+        return gaoDu;
     }
     return 0;
 }

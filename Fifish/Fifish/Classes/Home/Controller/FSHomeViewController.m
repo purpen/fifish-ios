@@ -556,7 +556,7 @@ static NSString * const CellId = @"home";
     CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
     // 计算文字的高度
     CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = textH + 368;
+    CGFloat gaoDu = textH + 374;
     return gaoDu;
 }
 
