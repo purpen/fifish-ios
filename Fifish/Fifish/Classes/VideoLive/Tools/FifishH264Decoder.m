@@ -157,18 +157,19 @@
         NSLog(@"获取解码上下文失败");
         return -1;
     }
-    
+
     
     //视频宽高
     self.width = _pCodecContext->width = SCREEN_WIDTH;
     self.height= _pCodecContext->height= SCREEN_HEIGHT;
-    
+
     //查找解码器
     _pCodec = avcodec_find_decoder(_pCodecContext->codec_id);
     if (!_pCodec) {
         NSLog(@"查找解码器失败");
         return -1;
     }
+    
     
     
     
@@ -183,7 +184,8 @@
     }
     
     img_convert_ctx = sws_getContext(_pCodecContext->width, _pCodecContext->height, _pCodecContext->pix_fmt, _pCodecContext->width, _pCodecContext->height, AV_PIX_FMT_RGB32, SWS_BICUBIC, NULL, NULL, NULL);
-
+    
+    
     return 0;
     
     
@@ -277,6 +279,7 @@
 
 - (void)saveMp4File:(AVPacket *)packet IsKeyFlag:(BOOL)key{
     if (packet&&_mp4outFormatContext) {
+         NSLog(@"->>>>>>>>>>>>>-->pts%lld\n-------------dts%lld\n-------------->duration%lld\n",packet->pts,packet->dts,packet->duration);
 //        AVStream *in_stream = _pFormatContext->streams[0];
 //        AVStream *out_stream = _mp4outFormatContext->streams[0];
 //        packet->pts = av_rescale_q_rnd(packet->pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
