@@ -43,7 +43,7 @@
 
 -(NSArray *)titleAry{
     if (!_titleAry) {
-        _titleAry = [NSArray arrayWithObjects:@"1、打开Rov设备电源", @"2、打开中继设备电源", @"3、连接线缆", @"4、移动设备连接到中继设备的WiFi", nil];
+        _titleAry = [NSArray arrayWithObjects:NSLocalizedString(@"1, open the Rov equipment power supply", nil), NSLocalizedString(@"2, open the relay equipment power supply", nil), NSLocalizedString(@"3, connection cable", nil), NSLocalizedString(@"4, mobile devices to connect to the WiFi relay equipment", nil), nil];
     }
     return _titleAry;
 }
@@ -76,21 +76,21 @@
     self.myPageControl.currentPage = index;
     self.tipLabel.text = self.titleAry[index];
     if (index == self.titleAry.count - 1) {
-        [self.nextBtn setTitle:@"完成" forState:UIControlStateNormal];
+        [self.nextBtn setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateNormal];
     } else {
-        [self.nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
+        [self.nextBtn setTitle:NSLocalizedString(@"next", nil) forState:UIControlStateNormal];
     }
 }
 
 -(void)setNavi{
-    self.navigationItem.title = @"连接帮助";
+    self.navigationItem.title = NSLocalizedString(@"The connection to help", nil);
 }
 
 - (IBAction)nextClick:(UIButton *)sender {
-    if ([sender.titleLabel.text isEqualToString:@"下一步"]) {
+    if ([sender.titleLabel.text isEqualToString:NSLocalizedString(@"next", nil)]) {
         int index = fabs(self.myScrollView.contentOffset.x/SCREEN_WIDTH);
         [self.myScrollView setContentOffset:CGPointMake((index + 1) * SCREEN_WIDTH,0) animated:YES];
-    } else if ([sender.titleLabel.text isEqualToString:@"完成"]) {
+    } else if ([sender.titleLabel.text isEqualToString:NSLocalizedString(@"done", nil)]) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

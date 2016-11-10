@@ -156,7 +156,7 @@
                     self.isInChina = YES;
                 } else {
                     self.isInChina = NO;
-                    [self appleMap:location.coordinate :@"景点"];
+                    [self appleMap:location.coordinate :NSLocalizedString(@"attractions", nil)];
                 }
             }];
             _flag = YES;
@@ -233,7 +233,7 @@
         return;
     }
     NSString *mediaMessage = @"请在设置->隐私->定位服务 中打开本应用的访问权限并在返回后重新打开该页面";
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:mediaMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", nil) message:mediaMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"determine", nil) otherButtonTitles:NSLocalizedString(@"cancel", nil), nil];
     alertView.delegate = self;
     [alertView show];
 }

@@ -51,7 +51,7 @@
     FBRequest *request = [FBAPI getWithUrlString:encodedString requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:result[@"data"][@"cover"][@"file"][@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
-        self.countLabel.text = [NSString stringWithFormat:@"使用次数:%@",result[@"data"][@"total_count"]];
+        self.countLabel.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Use the number", nil) , result[@"data"][@"total_count"]];
         if ([result[@"data"][@"related_words"] isKindOfClass:[NSArray class]]) {
             self.tagAry = result[@"data"][@"related_words"];
         }

@@ -125,14 +125,13 @@ static NSString * const CellId = @"home";
                                                                                                @"lng" : dict[@"lng"]
                                                                                                } delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Release success", nil)];
                 [UIView animateWithDuration:0.25 animations:^{
                     self.contenTableView.y -= 44;
                     [self.view layoutIfNeeded];
                 }];
                 [self.contenTableView.mj_header beginRefreshing];
             } failure:^(FBRequest *request, NSError *error) {
-                NSLog(@"错误信息  %@", error.localizedDescription);
             }];
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             self.progressView.repeatBtn.hidden = NO;
@@ -140,7 +139,6 @@ static NSString * const CellId = @"home";
             [self.progressView.repeatBtn addTarget:self action:@selector(repeat2) forControlEvents:UIControlEventTouchUpInside];
             [self.progressView.deleteBtn addTarget:self action:@selector(delete) forControlEvents:UIControlEventTouchUpInside];
             self.progressView.stateLabel.text = NSLocalizedString(@"Upload failed", nil);
-            NSLog(@"错误信息  %@", error.localizedDescription);
         }];
         
     } failure:^(FBRequest *request, NSError *error) {
@@ -182,7 +180,7 @@ static NSString * const CellId = @"home";
                                                                                                @"lng" : dict[@"lng"]
                                                                                                } delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Upload failed", nil)];
                 [UIView animateWithDuration:0.25 animations:^{
                     self.contenTableView.y -= 44;
                     [self.view layoutIfNeeded];
@@ -252,7 +250,7 @@ static NSString * const CellId = @"home";
          [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_header endRefreshing];
     }];
@@ -285,7 +283,7 @@ static NSString * const CellId = @"home";
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_footer endRefreshing];
     }];
@@ -481,7 +479,7 @@ static NSString * const CellId = @"home";
             //内容不雅举报
             
         }];
-        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [reportAlertC addAction:garbageAction];
@@ -502,7 +500,7 @@ static NSString * const CellId = @"home";
 -(void)commendClick: (UIButton *) sender{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
     vc.model = self.modelAry[sender.tag];
-    vc.title = @"评论";
+    vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -518,7 +516,7 @@ static NSString * const CellId = @"home";
                 sender.selected = NO;
                 ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 0;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
             }];
         } else {
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
@@ -526,7 +524,7 @@ static NSString * const CellId = @"home";
                 sender.selected = YES;
                 ((FSZuoPin*)self.modelAry[sender.tag]).is_love = 1;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
             }];
         }
     } else {
@@ -563,7 +561,7 @@ static NSString * const CellId = @"home";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
     vc.model = self.modelAry[indexPath.section];
-    vc.title = @"评论";
+    vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
 }
 

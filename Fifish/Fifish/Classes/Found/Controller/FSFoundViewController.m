@@ -158,7 +158,7 @@
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_footer endRefreshing];
@@ -174,7 +174,6 @@
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"推荐的作品 %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
@@ -184,7 +183,7 @@
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -209,7 +208,7 @@
         [self.contentTableView reloadData];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -220,13 +219,12 @@
 -(void)tagRequest{
     FBRequest *request = [FBAPI getWithUrlString:@"/tags/sticks" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"标签  %@",result);
         NSArray *rows = result[@"data"];
         self.tagsAry = [FSTageModel mj_objectArrayWithKeyValuesArray:rows];
         [self.contentTableView reloadData];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -293,13 +291,13 @@
     self.headerView = [FSFoundHeaderView viewFromXib];
     self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
     if (section == 0) {
-        self.headerView.titleLabel.text = @"热门标签";
+        self.headerView.titleLabel.text = NSLocalizedString(@"Hot labels", nil);
         return self.headerView;
     } else if (section == 1) {
-        self.headerView.titleLabel.text = @"热门用户";
+        self.headerView.titleLabel.text = NSLocalizedString(@"Popular user", nil);
         return self.headerView;
     } else if (section == 2) {
-        self.headerView.titleLabel.text = @"热门推荐";
+        self.headerView.titleLabel.text = NSLocalizedString(@"Hot recommended", nil);
         return self.headerView;
     }
     return nil;
@@ -446,7 +444,7 @@
                 sender.selected = NO;
                 ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
             }];
         } else {
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
@@ -454,7 +452,7 @@
                 sender.selected = YES;
                 ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"操作失败"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
             }];
         }
     }

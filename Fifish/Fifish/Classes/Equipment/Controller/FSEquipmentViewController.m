@@ -55,14 +55,14 @@
 -(void)isReachAble{
     [FBAPI isExistenceROVwithBlock:^(BOOL isconnect) {
         if (isconnect) {
-            self.statusLabel.text = @"WIFI已连接";
-            [self.connectionBtn setTitle:@"已连接" forState:UIControlStateNormal];
+            self.statusLabel.text = NSLocalizedString(@"WIFI is connected", nil);
+            [self.connectionBtn setTitle:NSLocalizedString(@"connected", nil) forState:UIControlStateNormal];
             self.connectionBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
             [self.connectionBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             self.connectionBtn.enabled = NO;
         } else {
-            self.statusLabel.text = @"WIFI未连接";
-            [self.connectionBtn setTitle:@"连接WIFI" forState:UIControlStateNormal];
+            self.statusLabel.text = NSLocalizedString(@"WIFI not connected", nil);
+            [self.connectionBtn setTitle:NSLocalizedString(@"Connect the WIFI", nil) forState:UIControlStateNormal];
             self.connectionBtn.layer.borderColor = DEFAULT_COLOR.CGColor;
             [self.connectionBtn setTitleColor:DEFAULT_COLOR forState:UIControlStateNormal];
             self.connectionBtn.enabled = YES;
@@ -170,7 +170,7 @@
 
 - (IBAction)contentROV:(UIButton *)sender {
     
-    if ([self.statusLabel.text isEqualToString:@"WIFI未连接"]) {
+    if ([self.statusLabel.text isEqualToString:NSLocalizedString(@"WIFI not connected", nil)]) {
 //        [UIView animateWithDuration:0.3 animations:^{
 //            self.tipView.y = SCREEN_HEIGHT - 170;
 //        } completion:nil];

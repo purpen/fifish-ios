@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"系统设置";
+    self.navigationItem.title = NSLocalizedString(@"System Settings", nil);
     
     //更改通知状态的代理
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
@@ -50,9 +50,9 @@
     //第一次进入界面时判断推送状态
     UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
     if (setting.types == UIUserNotificationTypeNone) {
-        self.pushStateLabel.text = @"已关闭";
+        self.pushStateLabel.text = NSLocalizedString(@"closed", nil);
     }else{
-        self.pushStateLabel.text = @"已开启";
+        self.pushStateLabel.text = NSLocalizedString(@"opened", nil);
     }
 
     NSString * cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
@@ -101,7 +101,7 @@
     NSFileManager *manager = [NSFileManager defaultManager];
     NSArray *files = [manager subpathsAtPath:cachesPath];
     if (files.count == 0) {
-        [SVProgressHUD showInfoWithStatus:@"缓存已清空"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Cache is empty", nil)];
         
         return;
     }
@@ -113,10 +113,10 @@
             [manager removeItemAtPath:filePath error:&error];
             if (error) {
                 //本来就是空的
-                [SVProgressHUD showInfoWithStatus:@"缓存已清空"];
+                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Cache is empty", nil)];
             }else{
                 //提示清空，改变显示的内存大小
-                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"清理缓存成功"]];
+                [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:NSLocalizedString(@"Clear the cache success", nil)]];
                 
             }
         }
@@ -156,9 +156,9 @@
 -(void)resetNotificationState{
     UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
     if (setting.types == UIUserNotificationTypeNone) {
-        self.pushStateLabel.text = @"已关闭";
+        self.pushStateLabel.text = NSLocalizedString(@"closed", nil);
     } else {
-        self.pushStateLabel.text = @"已开启";
+        self.pushStateLabel.text = NSLocalizedString(@"opened", nil);
     }
 }
 

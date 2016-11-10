@@ -25,7 +25,7 @@
     self.navigationItem.title = NSLocalizedString(@"Modify the nickname", nil);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 40, 40);
-    [button setTitle:@"保存" forState:UIControlStateNormal];
+    [button setTitle:NSLocalizedString(@"save", nil) forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:14];
     [button setTitleColor:[UIColor colorWithHexString:@"#298cff"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(saveClick) forControlEvents:UIControlEventTouchUpInside];

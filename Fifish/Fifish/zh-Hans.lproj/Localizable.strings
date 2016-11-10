@@ -65,6 +65,22 @@
 "like" = "喜欢";
 "send" = "发送";
 "feedback" = "意见反馈";
+"System Settings" = "系统设置";
+"closed" = "已关闭";
+"opened" = "已开启";
+"Cache is empty" = "缓存已清空";
+"Clear the cache success" = "清理缓存成功";
+
+//发布页
+"share" = "分享";
+"release" = "发布";
+"Please add content" = "请添加作品内容";
+"Release success" = "发布成功";
+
+//地点
+"attractions" = "景点";
+"prompt" = "提示";
+"determine" = "确定";
 
 //搜索
 "video" = "视频";
@@ -72,7 +88,47 @@
 "user" = "用户";
 "Can't find the content" = "找不到内容";
 "Add the position" = "添加位置";
+"search" = "搜索";
+"works" = "个作品";
+"work details" = "作品详情";
 
+//设备页
+"WIFI is connected" = "WIFI已连接";
+"connected" = "已连接";
+"WIFI not connected" = "WIFI未连接";
+"Connect the WIFI" = "连接WIFI";
+"1, open the Rov equipment power supply" = "1、打开Rov设备电源";
+"2, open the relay equipment power supply" = "2、打开中继设备电源";
+"3, connection cable" = "3、连接线缆";
+"4, mobile devices to connect to the WiFi relay equipment" = "4、移动设备连接到中继设备的WiFi";
+"next" = "下一步";
+"The connection to help" = "连接帮助";
+"Use the number" = "使用次数";
+
+//发现页
+"Hot labels" = "热门标签";
+"Popular user" = "热门用户";
+"Hot recommended" = "热门推荐";
+"fucos" = "关注";
+"focused" = "已关注";
+
+//评论页
+"Comment on" = "评论一下";
+"reply" = "回复";
+
+//登录页
+"Email address format is not correct" = "邮箱格式不正确";
+"Passwords shall not be less than six" = "密码不得少于6位";
+"Registered successfully" = "注册成功";
+"Login successful" = "登录成功";
+"Existing account?" = "已有帐号?";
+"Still no account?" = "还没有帐号?";
+"Forgot password" = "忘记密码";
+"The mailbox is empty" = "邮箱为空";
+
+//错误提示
+"Loading user data failed" = "加载用户数据失败";
+"The operation failure" = "操作失败";
 
 //camera设置
 "通用设置" = "通用设置";
@@ -158,3 +214,10 @@
 //直播页面
 
 "Video" = "视频";
+
+//个人信息
+"Replace the picture" = "更换头像";
+"Taking pictures" = "拍照";
+"From the album to choose" = "从相册选择";
+"Personal information" = "个人信息";
+"save" = "保存";

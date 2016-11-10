@@ -73,7 +73,7 @@
     for(UIView *view in  [[[searchBar subviews] objectAtIndex:0] subviews]) {
         if([view isKindOfClass:[NSClassFromString(@"UINavigationButton") class]]) {
             UIButton * cancel =(UIButton *)view;
-            [cancel setTitle:@"搜索" forState:UIControlStateNormal];
+            [cancel setTitle:NSLocalizedString(@"search", nil) forState:UIControlStateNormal];
             cancel.titleLabel.font = [UIFont systemFontOfSize:14];
         }
     }

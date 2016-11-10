@@ -202,7 +202,7 @@ static NSString * const FSCommentId = @"comment";
             //内容不雅举报
             
         }];
-        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [reportAlertC addAction:garbageAction];
@@ -223,7 +223,7 @@ static NSString * const FSCommentId = @"comment";
 #pragma mark - 评论按钮
 -(void)commentClick :(UIButton *)sender{
     [self.textTF becomeFirstResponder];
-    self.textTF.placeholder = @"评论一下";
+    self.textTF.placeholder = NSLocalizedString(@"Comment on", nil);
 }
 
 #pragma mark - 点赞按钮
@@ -259,7 +259,7 @@ static NSString * const FSCommentId = @"comment";
     // 修改底部约束
     self.bottomSpace.constant = SCREEN_HEIGHT - frame.origin.y;
     if (frame.origin.y == SCREEN_HEIGHT) {
-        self.textTF.placeholder = @"评论一下";
+        self.textTF.placeholder = NSLocalizedString(@"Comment on", nil);
     }
     // 动画时间
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -301,7 +301,7 @@ static NSString * const FSCommentId = @"comment";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.textTF becomeFirstResponder];
     FSCommentModel *model = self.commentAry[indexPath.row];
-    self.textTF.placeholder = [NSString stringWithFormat:@"回复：%@",model.username];
+    self.textTF.placeholder = [NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"reply", nil) ,model.username];
     self.sendBtn.tag = [model.userId integerValue];
 }
 
@@ -313,7 +313,7 @@ static NSString * const FSCommentId = @"comment";
             return;
         }
         
-        if ([self.textTF.placeholder isEqualToString:@"评论一下"]) {
+        if ([self.textTF.placeholder isEqualToString:NSLocalizedString(@"Comment on", nil)]) {
             //评论
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text} delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {

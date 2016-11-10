@@ -225,7 +225,7 @@
     } else {
         FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
         vc.model = self.stuffAry[indexPath.section];
-        vc.title = @"评论";
+        vc.title = NSLocalizedString(@"comments", nil);
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -245,7 +245,7 @@
 -(void)commendClick: (UIButton *) sender{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
     vc.model = self.stuffAry[sender.tag];
-    vc.title = @"评论";
+    vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -258,7 +258,7 @@
             sender.selected = NO;
             ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
         } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
         }];
     } else {
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
@@ -266,7 +266,7 @@
             sender.selected = YES;
             ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
         } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
         }];
     }
 }

@@ -73,11 +73,11 @@
     [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     if (![_phone_register.text isValidateEmail]) {
-        [SVProgressHUD showInfoWithStatus:@"邮箱格式不正确"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Email address format is not correct", nil)];
         return;
     }
     if (_pwd_register.text.length < 6) {
-        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Passwords shall not be less than six", nil)];
         return;
     }
     //进行网络请求
@@ -86,7 +86,7 @@
                                                                                         @"password" : self.pwd_register.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Registered successfully", nil)];
         [self registerNowBtn:self.registerBtn];
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];
@@ -118,11 +118,11 @@
     [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     if (![_phoneTF.text isValidateEmail]) {
-        [SVProgressHUD showInfoWithStatus:@"邮箱格式不正确"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Email address format is not correct", nil)];
         return;
     }
     if (_pwdTF.text.length < 6) {
-        [SVProgressHUD showInfoWithStatus:@"密码不得少于6位"];
+        [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Passwords shall not be less than six", nil)];
         return;
     }
     //进行网络请求
@@ -136,7 +136,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
        [defaults setObject:token forKey:@"token"];
        [defaults synchronize];
-        [SVProgressHUD showSuccessWithStatus:@"登录成功" maskType:SVProgressHUDMaskTypeNone];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
         if (first_login == 0) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
@@ -251,9 +251,9 @@
 - (IBAction)registerNowBtn:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
-        self.tipLabel.text = @"已有帐号?";
+        self.tipLabel.text = NSLocalizedString(@"Existing account?", nil);
     }else{
-        self.tipLabel.text = @"还没有帐号?";
+        self.tipLabel.text = NSLocalizedString(@"Still no account?", nil);
     }
     // 退出键盘
     [self.view endEditing:YES];

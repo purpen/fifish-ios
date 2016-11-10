@@ -109,10 +109,10 @@
 
 -(void)singleTap:(UITapGestureRecognizer*)recognizer{
     
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"更换头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Replace the picture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     //判断是否支持相机。模拟器没有相机
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Taking pictures", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             //调取相机
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
@@ -122,7 +122,7 @@
         }];
         [alertC addAction:cameraAction];
     }
-    UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"From the album to choose", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //调取相册
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
@@ -130,7 +130,7 @@
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:nil];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [alertC dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertC addAction:phontoAction];
@@ -157,7 +157,6 @@
     NSDictionary * params = @{@"avatar" : icon64Str};
     FBRequest * request = [FBAPI postWithUrlString:@"/upload/avatar" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"用户头像  %@",result);
         [SVProgressHUD dismiss];
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD dismiss];

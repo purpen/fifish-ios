@@ -26,17 +26,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"忘记密码";
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneClick)];
+    self.navigationItem.title = NSLocalizedString(@"Forgot password", nil);
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(doneClick)];
     self.navigationItem.rightBarButtonItem = doneItem;
 }
 
 -(void)doneClick{
     if (_emailTF.text.length == 0) {
-        [SVProgressHUD showErrorWithStatus:@"邮箱为空"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The mailbox is empty", nil)];
         return;
     }else if (![_emailTF.text isValidateEmail]){
-        [SVProgressHUD showErrorWithStatus:@"邮箱格式不正确"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Email address format is not correct", nil)];
     }
     
     

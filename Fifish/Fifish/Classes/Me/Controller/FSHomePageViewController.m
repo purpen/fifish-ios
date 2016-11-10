@@ -173,8 +173,8 @@ static NSString * const fucosCellId = @"fucos";
         _fucosBtn.layer.cornerRadius = 13;
         _fucosBtn.layer.borderWidth = 1;
         _fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
-        [_fucosBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
-        [_fucosBtn setTitle:@"已关注" forState:UIControlStateSelected];
+        [_fucosBtn setTitle:[NSString stringWithFormat:@"+ %@", NSLocalizedString(@"fucos", nil)] forState:UIControlStateNormal];
+        [_fucosBtn setTitle:NSLocalizedString(@"focused", nil) forState:UIControlStateSelected];
         _fucosBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         [_fucosBtn setTitleColor:[UIColor colorWithHexString:@"#2288FF"] forState:UIControlStateSelected];
@@ -441,7 +441,6 @@ static NSString * const fucosCellId = @"fucos";
                                                                                 @"user_id" : self.userId
                                                                                 } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"作品  %@",result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -674,9 +673,9 @@ static NSString * const fucosCellId = @"fucos";
                     FSStuffCountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSStuffCountTableViewCell"];
                     if (self.isMyself) {
                         FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",userModel.stuff_count];
+                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",userModel.stuff_count, NSLocalizedString(@"works", nil)];
                     } else {
-                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@个作品",self.user_model.stuff_count];
+                        cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",self.user_model.stuff_count, NSLocalizedString(@"works", nil)];
                     }
                     [cell.arrangementBtn addTarget:self action:@selector(changeArrangment:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
@@ -747,7 +746,7 @@ static NSString * const fucosCellId = @"fucos";
                 }
                 FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
                 vc.model = self.zuoPins[indexPath.row - 1];
-                vc.title = @"作品详情";
+                vc.title = NSLocalizedString(@"work details", nil);
                 [self.navigationController pushViewController:vc animated:YES];
             }
                 break;

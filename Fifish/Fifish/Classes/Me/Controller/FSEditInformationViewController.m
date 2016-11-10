@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.title = @"个人信息";
+    self.navigationItem.title = NSLocalizedString(@"Personal information", nil);
     [self headImage];
     FSUserModel *model = [[FSUserModel findAll] lastObject];
     self.zoneLabel.text = model.zone;

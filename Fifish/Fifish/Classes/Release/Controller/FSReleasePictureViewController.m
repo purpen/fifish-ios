@@ -332,8 +332,8 @@
 }
 
 -(void)setUpNavi{
-    self.navigationItem.title = @"分享";
-    UIBarButtonItem *releaseItem = [UIBarButtonItem itemWithTitle:@"发布" target:self action:@selector(releaseClick)];
+    self.navigationItem.title = NSLocalizedString(@"share", nil);
+    UIBarButtonItem *releaseItem = [UIBarButtonItem itemWithTitle:NSLocalizedString(@"release", nil) target:self action:@selector(releaseClick)];
     self.navigationItem.rightBarButtonItem = releaseItem;
 }
 
@@ -341,7 +341,7 @@
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
         if (self.releaseView.instructionsTextView.text.length < 5) {
-            [SVProgressHUD showInfoWithStatus:@"请添加作品内容"];
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Please add content", nil)];
         } else {
             self.kind = @"1";
             NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 1);
@@ -364,7 +364,7 @@
     } else {
         //视频
         if (self.releaseView.instructionsTextView.text.length < 5) {
-            [SVProgressHUD showInfoWithStatus:@"请添加作品内容"];
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Please add content", nil)];
         } else {
             self.kind = @"2";
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];

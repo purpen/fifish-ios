@@ -30,14 +30,14 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hhhhhh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVY-gK-Fy5" userLabel="昵称">
                         <rect key="frame" x="70" y="8" width="46" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_address" translatesAutoresizingMaskIntoConstraints="NO" id="BWJ-0p-Rho" userLabel="地址图标">
-                        <rect key="frame" x="70" y="31" width="9" height="12"/>
+                        <rect key="frame" x="70" y="32" width="9" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJm-eW-jrK" userLabel="地址">
-                        <rect key="frame" x="81" y="30" width="23" height="14"/>
+                        <rect key="frame" x="81" y="31" width="23" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6go-S4-nWb" userLabel="标签" customClass="CTDisplayView">
-                        <rect key="frame" x="0.0" y="315" width="370" height="44"/>
+                        <rect key="frame" x="0.0" y="314" width="370" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikg-qs-7wT" customClass="CTDisplayView">
                                 <rect key="frame" x="25" y="3" width="330" height="28"/>
@@ -75,14 +75,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw0-GZ-nvv">
-                        <rect key="frame" x="0.0" y="358" width="370" height="1"/>
+                        <rect key="frame" x="0.0" y="357" width="370" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="0.67085830479999997" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="748-sP-5k4"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDQ-gf-VVk" userLabel="内容">
-                        <rect key="frame" x="0.0" y="232.5" width="370" height="82.5"/>
+                        <rect key="frame" x="0.0" y="231.5" width="370" height="82.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-Pn-eWK" userLabel="内容">
                                 <rect key="frame" x="15" y="10" width="340" height="62.5"/>
@@ -124,7 +124,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYU-YG-39Z" userLabel="工具">
-                        <rect key="frame" x="0.0" y="188.5" width="370" height="44"/>
+                        <rect key="frame" x="0.0" y="187.5" width="370" height="44"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DgV-e2-aFF" userLabel="喜欢">
                                 <rect key="frame" x="15" y="11" width="19" height="22"/>
@@ -252,7 +252,7 @@
         <image name="home_liked" width="20" height="18"/>
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="19" height="20"/>
-        <image name="me_address" width="9" height="12"/>
+        <image name="me_address" width="9" height="11"/>
         <image name="me_path" width="9" height="10"/>
         <image name="me_path_right" width="11" height="9"/>
     </resources>
