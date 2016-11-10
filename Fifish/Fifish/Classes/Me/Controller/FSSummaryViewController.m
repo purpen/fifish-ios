@@ -34,21 +34,19 @@
 }
 
 -(void)doneClick{
-//    if (self.summaryTF.text.length == 0) {
-//        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The summary is null", nil)];
-//        return;
-//    }
-//    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:@{
-//                                                                                        @"useranme" : self.nameTF.text
-//                                                                                        } delegate:self];
-//    [request startRequestSuccess:^(FBRequest *request, id result) {
-//        FSUserModel *model = [[FSUserModel findAll] lastObject];
-//        model.username = self.nameTF.text;
-//        [model saveOrUpdate];
-//        [self.navigationController popViewControllerAnimated:YES];
-//    } failure:^(FBRequest *request, NSError *error) {
-//        
-//    }];
+    if (self.summaryTF.text.length == 0) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The summary is null", nil)];
+        return;
+    }
+    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        model.summary = self.summaryTF.text;
+        [model saveOrUpdate];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

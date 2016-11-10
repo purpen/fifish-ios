@@ -15,16 +15,24 @@
 #import "FSUserNameViewController.h"
 #import "AddreesPickerViewController.h"
 #import "FSChangeSexViewController.h"
+#import "FSSummaryViewController.h"
 
 @interface FSEditInformationViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property(nonatomic,strong) AddreesPickerViewController *addreesPickerVC;
 @property (weak, nonatomic) IBOutlet UILabel *zoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
 @end
 
 @implementation FSEditInformationViewController
+
+#pragma mark - 更改个性签名
+- (IBAction)summaryClick:(id)sender {
+    FSSummaryViewController *vc = [[FSSummaryViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 -(AddreesPickerViewController *)addreesPickerVC{
     if (!_addreesPickerVC) {
@@ -33,13 +41,18 @@
     return _addreesPickerVC;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    self.summaryLabel.text = userModel.summary;
+    self.zoneLabel.text = userModel.zone;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = NSLocalizedString(@"Personal information", nil);
     [self headImage];
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
-    self.zoneLabel.text = model.zone;
 }
 
 - (IBAction)sexClick:(id)sender {

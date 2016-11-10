@@ -41,6 +41,12 @@
     [self.view addSubview:self.myTableView];
     [self setupRefresh];
     self.navigationItem.title = NSLocalizedString(@"The new fan", nil);
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/resetCount" requestDictionary:@{@"key" : @"fans"} delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 -(void)setupRefresh{
@@ -54,7 +60,8 @@
 
 -(void)loadNew{
     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:nil delegate:self];
+    self.current_page = 1;
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:@{@"page" : @(self.current_page), @"per_page" : @(20)} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
@@ -73,7 +80,7 @@
 
 -(void)loadMore{
     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:nil delegate:self];
+    FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:@{@"page" : @(++self.current_page), @"per_page" : @(20)} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];

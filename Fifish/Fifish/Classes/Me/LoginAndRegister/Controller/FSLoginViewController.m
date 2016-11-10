@@ -238,7 +238,41 @@
         [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
             UMSocialUserInfoResponse *userinfo =result;
             NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
-            [self afterThirdAuth:userinfo];
+            NSLog(@"qweqwe   %@",message);
+//            [self afterThirdAuth:userinfo];
+            FSUserModel *userModel = [[FSUserModel alloc] init];
+            userModel.username = userinfo.name;
+            userModel.large = userinfo.iconurl;
+            if ([userinfo.gender isEqualToString:@"m"]) {
+                userModel.gender = 1;
+            } else if ([userinfo.gender isEqualToString:@"w"]) {
+                userModel.gender = 2;
+            }
+            userModel.isLogin = YES;
+            [userModel saveOrUpdate];
+            FBRequest *request = [FBAPI postWithUrlString:@"/oauth/wechat" requestDictionary:@{
+                                                                                               @"uid" : authresponse.openid,
+                                                                                               @"accessToken" : authresponse.accessToken,
+                                                                                               @"name" : userinfo.name,
+                                                                                               @"icon" : userinfo.iconurl,
+                                                                                               @"gender" : userinfo.gender
+                                                                                               } delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                NSString *token = result[@"data"][@"token"];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:token forKey:@"token"];
+                [defaults synchronize];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
+                NSInteger first_login = [result[@"data"][@"first_login"] integerValue];
+                if (first_login == 0) {
+                    FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                } else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
         }];
     }];
 }
@@ -246,6 +280,7 @@
 -(void)afterThirdAuth:(UMSocialUserInfoResponse*)userInfo{
     //调取接口在后台记录用户，如果是第一次完善信息，如果不是直接进入
     //将用户信息存起来
+    
 }
 
 - (IBAction)registerNowBtn:(UIButton *)sender {

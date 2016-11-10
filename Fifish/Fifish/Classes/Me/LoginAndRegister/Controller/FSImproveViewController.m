@@ -49,6 +49,7 @@
     FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
     [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:usermodel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.userNameTF.text = usermodel.username;
+    [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:usermodel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     
     UITapGestureRecognizer* singleRecognizer;
     singleRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];

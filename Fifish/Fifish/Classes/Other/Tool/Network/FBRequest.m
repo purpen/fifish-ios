@@ -444,6 +444,7 @@ static BOOL                           _canSendMessage      = YES;
                                                 
                                                 success(weakSelf, responseObject);
                                             } else {
+                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
                                                 if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token absent!"]) {
                                                     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
                                                     userModel.isLogin = NO;
