@@ -10,28 +10,55 @@
 
 @interface FSReportViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondViewBottomSpace;
+
 @end
 
 @implementation FSReportViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)reportClick:(id)sender {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.firstViewBottomSapce.constant = -132;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.secondViewBottomSpace.constant = 0;
+            [self.view layoutIfNeeded];
+        } completion:nil];
+    }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)shareClick:(id)sender {
 }
-*/
+
+- (IBAction)cancelClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)spamClick:(id)sender {
+}
+
+- (IBAction)indecentClick:(id)sender {
+}
+
+- (IBAction)secondCancel:(id)sender {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.secondViewBottomSpace.constant = -132;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.firstViewBottomSapce.constant = 0;
+            [self.view layoutIfNeeded];
+        } completion:nil];
+    }];
+}
+
+- (IBAction)oterSpaceClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

@@ -10,4 +10,6 @@
 
 @interface FSReportViewController : FSBaseViewController
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstViewBottomSapce;
+
 @end

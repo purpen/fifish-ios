@@ -25,6 +25,7 @@
 #import "FSHomePageViewController.h"
 #import "FSPlayViewController.h"
 #import "Masonry.h"
+#import "FSReportViewController.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -196,7 +197,8 @@
         cell.commendBtn.tag = indexPath.section;
         [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.moreBtn.hidden = YES;
+        cell.moreBtn.tag = indexPath.section;
+        [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.pictuerView.tapBTn.tag = indexPath.section;
         [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.videoView.tapBtn.tag = indexPath.section;
@@ -206,6 +208,17 @@
     return nil;
 }
 
+-(void)moreClick:(UIButton*)sender{
+    FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:^{
+        [UIView animateWithDuration:0.25 animations:^{
+            vc.firstViewBottomSapce.constant = 0;
+            [vc.view layoutIfNeeded];
+        } completion:nil];
+    }];
+}
 
 #pragma mark - 视频播放
 -(void)videoClick:(UIButton*)sender{
