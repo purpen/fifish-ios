@@ -20,6 +20,7 @@
 #import "FSListUserTableViewCell.h"
 #import "Masonry.h"
 #import "FSHomePageViewController.h"
+#import "FSReportViewController.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -440,37 +441,15 @@
 
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击举报
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //垃圾内容的网络请求
-            
-        }];
-        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //内容不雅举报
-            
-        }];
-        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [reportAlertC addAction:garbageAction];
-        [reportAlertC addAction:indecentAction];
-        [reportAlertC addAction:reportCancelAction];
-        [self presentViewController:reportAlertC animated:YES completion:nil];
-        
+    FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:^{
+        [UIView animateWithDuration:0.25 animations:^{
+            vc.firstViewBottomSapce.constant = 0;
+            [vc.view layoutIfNeeded];
+        } completion:nil];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alertC addAction:reportAction];
-    [alertC addAction:cancelAction];
-    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 

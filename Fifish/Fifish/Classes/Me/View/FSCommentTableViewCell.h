@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSRecivedPrasiedModel.h"
 
 @interface FSCommentTableViewCell : UITableViewCell
+
+/**  */
+@property (nonatomic, strong) FSRecivedPrasiedModel *model;
+/**  */
+@property (nonatomic, strong) UIViewController *myVC;
 
 @end

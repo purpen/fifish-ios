@@ -12,6 +12,8 @@
 #import "FSFansModel.h"
 #import "FSCommentTableViewCell.h"
 #import "FSHomePageViewController.h"
+#import "FSRecivedPrasiedModel.h"
+#import "FSHomeDetailViewController.h"
 
 @interface FSCommentViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -40,7 +42,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.myTableView];
     [self setupRefresh];
-    self.navigationItem.title = NSLocalizedString(@"like", nil);
+    self.navigationItem.title = NSLocalizedString(@"comments", nil);
     FBRequest *request = [FBAPI postWithUrlString:@"/me/resetCount" requestDictionary:@{@"key" : @"comment"} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         
@@ -59,12 +61,12 @@
 }
 
 -(void)loadNew{
-    FBRequest *request = [FBAPI postWithUrlString:@"/me/gotComment" requestDictionary:@{@"page" : @(self.current_page), @"per_page" : @(20)} delegate:self];
+    FBRequest *request = [FBAPI getWithUrlString:@"/me/gotComment" requestDictionary:@{@"page" : @(self.current_page), @"per_page" : @(20)} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        self.modelAry = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
+        self.modelAry = [FSRecivedPrasiedModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.myTableView reloadData];
         [self checkFooterState];
         [self.myTableView.mj_header endRefreshing];
@@ -82,7 +84,7 @@
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
-        NSArray *ary = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSRecivedPrasiedModel mj_objectArrayWithKeyValuesArray:dataAry];
         [self.modelAry addObjectsFromArray:ary];
         [self.myTableView reloadData];
         [self checkFooterState];
@@ -127,15 +129,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSCommentTableViewCell"];
-    //    cell.model = self.modelAry[indexPath.row];
-    //    cell.fucosBtn.tag = indexPath.row;
-    //    [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.model = self.modelAry[indexPath.row];
+    cell.myVC = self;
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    FSRecivedPrasiedModel *model = self.modelAry[indexPath.row];
+    vc.stuffId = model.stuffId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

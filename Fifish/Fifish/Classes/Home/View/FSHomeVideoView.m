@@ -25,7 +25,7 @@
     _model = model;
     self.timeBtn.layer.masksToBounds = YES;
     self.timeBtn.layer.cornerRadius = 5;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:[UIImage imageNamed:@"shuffling_default"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:[UIImage imageNamed:@"shuffling_default"] options:SDWebImageLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressView.hidden = NO;
         _model.pictureProgress = 1.0 * receivedSize / expectedSize;
         [self.progressView setProgress:_model.pictureProgress animated:NO];

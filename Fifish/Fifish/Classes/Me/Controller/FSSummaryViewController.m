@@ -38,7 +38,9 @@
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The summary is null", nil)];
         return;
     }
-    FBRequest *request = [FBAPI postWithUrlString:@"/user/settings" requestDictionary:nil delegate:self];
+    FBRequest *request = [FBAPI postWithUrlString:@"/me/updateSign" requestDictionary:@{
+                                                                                        @"summary" : self.summaryTF.text
+                                                                                        } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         FSUserModel *model = [[FSUserModel findAll] lastObject];
         model.summary = self.summaryTF.text;

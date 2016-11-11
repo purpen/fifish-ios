@@ -115,7 +115,11 @@
         FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
         UITabBarItem *item = requiredViewController.tabBarItem;
         NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
-        [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+        if (count == 0) {
+            item.badgeValue = nil;
+        } else {
+            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+        }
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
@@ -225,7 +229,11 @@ fetchCompletionHandler:
             FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
             UITabBarItem *item = requiredViewController.tabBarItem;
             NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            if (count == 0) {
+                item.badgeValue = nil;
+            } else {
+                [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            }
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -261,7 +269,11 @@ fetchCompletionHandler:
             FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
             UITabBarItem *item = requiredViewController.tabBarItem;
             NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            if (count == 0) {
+                item.badgeValue = nil;
+            } else {
+                [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            }
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

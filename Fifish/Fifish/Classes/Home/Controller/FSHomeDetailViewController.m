@@ -22,6 +22,7 @@
 #import "FSUserModel.h"
 #import "FSBigImageViewController.h"
 #import "FSPlayViewController.h"
+#import "FSReportViewController.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -133,18 +134,6 @@ static NSString * const FSCommentId = @"comment";
 }
 
 -(void)setupHeader{
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = textH + 374;
-    
-    // 创建header
-    UIView *header = [[UIView alloc] init];
-    header.height = gaoDu;
-    header.width = SCREEN_WIDTH;
-    header.backgroundColor = [UIColor whiteColor];
-    
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
     cell.navi = self.navigationController;
@@ -155,14 +144,60 @@ static NSString * const FSCommentId = @"comment";
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.model = self.model;
-    cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-    cell.bottomViewHegiht = 0;
-    [cell.contentView layoutIfNeeded];
-    [header addSubview:cell];
-    
-    // 设置header
-    self.commendTableView.tableHeaderView = header;
+    if (self.stuffId.length == 0) {
+        cell.model = self.model;
+        // 文字的最大尺寸
+        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+        // 计算文字的高度
+        CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+        CGFloat gaoDu = textH + 374;
+        
+        cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+        cell.bottomViewHegiht = 0;
+        [cell.contentView layoutIfNeeded];
+        
+        
+        // 创建header
+        UIView *header = [[UIView alloc] init];
+        header.height = gaoDu;
+        header.width = SCREEN_WIDTH;
+        header.backgroundColor = [UIColor whiteColor];
+        
+        [header addSubview:cell];
+        
+        // 设置header
+        self.commendTableView.tableHeaderView = header;
+    } else {
+        FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/stuffs/%@", self.stuffId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSDictionary *dataDict = result[@"data"];
+            self.model = [FSZuoPin mj_objectWithKeyValues:dataDict];
+            cell.model = self.model;
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            
+            cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+            cell.bottomViewHegiht = 0;
+            [cell.contentView layoutIfNeeded];
+            
+            
+            // 创建header
+            UIView *header = [[UIView alloc] init];
+            header.height = gaoDu;
+            header.width = SCREEN_WIDTH;
+            header.backgroundColor = [UIColor whiteColor];
+            
+            [header addSubview:cell];
+            
+            // 设置header
+            self.commendTableView.tableHeaderView = header;
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 #pragma mark - 视频播放
@@ -186,37 +221,15 @@ static NSString * const FSCommentId = @"comment";
 
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *reportAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"report", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击举报
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-        UIAlertController *reportAlertC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *garbageAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"garbage content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //垃圾内容的网络请求
-            
-        }];
-        UIAlertAction *indecentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"inelegant content", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //内容不雅举报
-            
-        }];
-        UIAlertAction *reportCancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [reportAlertC addAction:garbageAction];
-        [reportAlertC addAction:indecentAction];
-        [reportAlertC addAction:reportCancelAction];
-        [self presentViewController:reportAlertC animated:YES completion:nil];
-        
+    FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:vc animated:YES completion:^{
+        [UIView animateWithDuration:0.25 animations:^{
+            vc.firstViewBottomSapce.constant = 0;
+            [vc.view layoutIfNeeded];
+        } completion:nil];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alertC addAction:reportAction];
-    [alertC addAction:cancelAction];
-    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 
