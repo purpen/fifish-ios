@@ -348,7 +348,7 @@ CGFloat const Cellspecace = 1;
         //如果是图片
         UIImage * image  = info[UIImagePickerControllerEditedImage];
         //保存图片至本地
-      NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
+        NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地
         FSImageModel * imageModel = [[FSImageModel alloc] initWithFilePath:imageurlStr];
         [self.sourceArr addObject:imageModel];

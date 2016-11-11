@@ -8,6 +8,8 @@
 
 #import "FSVideoLiveBottomBar.h"
 
+#import "FSRovDirectionView.h"
+
 #import "FSCameraManager.h"
 
 #import "SVProgressHUD.h"
@@ -30,6 +32,9 @@
 
 //标题
 @property (nonatomic, strong) UILabel   * TitleLab;
+
+//右边的方向显示view
+@property (nonatomic, strong) FSRovDirectionView * directionView;
 
 //存储中
 
@@ -66,6 +71,13 @@
         [self.take_photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(40, 40));
             make.left.equalTo(self.record_btn.mas_right).offset(10);
+            make.centerY.equalTo(self.mas_centerY);
+        }];
+        
+        [self addSubview:self.directionView];
+        [self.directionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(80, 80));
+            make.right.equalTo(self.mas_right).offset(-20);
             make.centerY.equalTo(self.mas_centerY);
         }];
     }
@@ -106,6 +118,13 @@
     }
     return _take_photoBtn;
 }
+-(FSRovDirectionView *)directionView{
+    if (!_directionView) {
+        _directionView = [[FSRovDirectionView alloc] init];
+    }
+    return _directionView;
+}
+
 
 #pragma mark 拍照
 - (void)takePhotoClick{
