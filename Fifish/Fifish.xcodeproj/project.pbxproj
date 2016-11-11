@@ -309,6 +309,9 @@
 		1F8011AA1DADDBB700B320C7 /* UIImage+FSWatermark.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */; };
 		1F84E9621DD0783200C71662 /* FSTipNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F84E9611DD0783200C71662 /* FSTipNumberView.m */; };
 		1F84E9641DD0784700C71662 /* FSTipNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F84E9631DD0784700C71662 /* FSTipNumberView.xib */; };
+		1F9FA4901DD5713800A1806A /* FSReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA48E1DD5713800A1806A /* FSReportViewController.m */; };
+		1F9FA4911DD5713800A1806A /* FSReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FA48F1DD5713800A1806A /* FSReportViewController.xib */; };
+		1F9FA4941DD5750A00A1806A /* FSRecivedPrasiedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */; };
 		1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */; };
 		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
 		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
@@ -1093,6 +1096,11 @@
 		1F84E9601DD0783200C71662 /* FSTipNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTipNumberView.h; sourceTree = "<group>"; };
 		1F84E9611DD0783200C71662 /* FSTipNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTipNumberView.m; sourceTree = "<group>"; };
 		1F84E9631DD0784700C71662 /* FSTipNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTipNumberView.xib; sourceTree = "<group>"; };
+		1F9FA48D1DD5713800A1806A /* FSReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReportViewController.h; sourceTree = "<group>"; };
+		1F9FA48E1DD5713800A1806A /* FSReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReportViewController.m; sourceTree = "<group>"; };
+		1F9FA48F1DD5713800A1806A /* FSReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportViewController.xib; sourceTree = "<group>"; };
+		1F9FA4921DD5750A00A1806A /* FSRecivedPrasiedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecivedPrasiedModel.h; sourceTree = "<group>"; };
+		1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecivedPrasiedModel.m; sourceTree = "<group>"; };
 		1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChangeSexViewController.h; sourceTree = "<group>"; };
 		1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChangeSexViewController.m; sourceTree = "<group>"; };
 		1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSChangeSexViewController.xib; sourceTree = "<group>"; };
@@ -2769,6 +2777,9 @@
 				1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */,
 				1FE564CC1DB0D2B2000AE61D /* FSPlayViewController.h */,
 				1FE564CD1DB0D2B2000AE61D /* FSPlayViewController.m */,
+				1F9FA48D1DD5713800A1806A /* FSReportViewController.h */,
+				1F9FA48E1DD5713800A1806A /* FSReportViewController.m */,
+				1F9FA48F1DD5713800A1806A /* FSReportViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2874,6 +2885,8 @@
 				1F04241C1D51F3BA0071A1D6 /* FSZuoPin.m */,
 				1F3401EF1DCB52BF009B9C32 /* FSFansModel.h */,
 				1F3401F01DCB52BF009B9C32 /* FSFansModel.m */,
+				1F9FA4921DD5750A00A1806A /* FSRecivedPrasiedModel.h */,
+				1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3825,6 +3838,7 @@
 				044175341DC8277100D170E6 /* FSfilterName.plist in Resources */,
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
 				0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */,
+				1F9FA4911DD5713800A1806A /* FSReportViewController.xib in Resources */,
 				1FB4FBBF1D954EC400E236CF /* MJRefresh.bundle in Resources */,
 				1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */,
 				1FE565501DBDF0C4000AE61D /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -4062,6 +4076,7 @@
 				1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */,
 				1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */,
 				48911F911D9177590042B96F /* FSListUserModel.m in Sources */,
+				1F9FA4901DD5713800A1806A /* FSReportViewController.m in Sources */,
 				1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */,
 				1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */,
 				0442D51C1DAE1FA5001ECC6B /* FSFSImageRegulateBottomView.m in Sources */,
@@ -4075,6 +4090,7 @@
 				1F04244F1D51F3C30071A1D6 /* AFURLResponseSerialization.m in Sources */,
 				1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */,
 				48FC207B1DBC4A08001D71F4 /* CoreTextImageData.m in Sources */,
+				1F9FA4941DD5750A00A1806A /* FSRecivedPrasiedModel.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
 				1FB4FBB31D954EC400E236CF /* MJRefreshComponent.m in Sources */,
 				1F7EDEEB1D4700E500ABED5D /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -4493,8 +4509,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "421582ba-0f85-42f1-ad57-737a4c909143";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4542,8 +4558,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "421582ba-0f85-42f1-ad57-737a4c909143";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;

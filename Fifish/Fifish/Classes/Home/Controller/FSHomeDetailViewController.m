@@ -133,18 +133,6 @@ static NSString * const FSCommentId = @"comment";
 }
 
 -(void)setupHeader{
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = textH + 374;
-    
-    // 创建header
-    UIView *header = [[UIView alloc] init];
-    header.height = gaoDu;
-    header.width = SCREEN_WIDTH;
-    header.backgroundColor = [UIColor whiteColor];
-    
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
     cell.navi = self.navigationController;
@@ -155,14 +143,60 @@ static NSString * const FSCommentId = @"comment";
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.model = self.model;
-    cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-    cell.bottomViewHegiht = 0;
-    [cell.contentView layoutIfNeeded];
-    [header addSubview:cell];
-    
-    // 设置header
-    self.commendTableView.tableHeaderView = header;
+    if (self.stuffId.length == 0) {
+        cell.model = self.model;
+        // 文字的最大尺寸
+        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+        // 计算文字的高度
+        CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+        CGFloat gaoDu = textH + 374;
+        
+        cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+        cell.bottomViewHegiht = 0;
+        [cell.contentView layoutIfNeeded];
+        
+        
+        // 创建header
+        UIView *header = [[UIView alloc] init];
+        header.height = gaoDu;
+        header.width = SCREEN_WIDTH;
+        header.backgroundColor = [UIColor whiteColor];
+        
+        [header addSubview:cell];
+        
+        // 设置header
+        self.commendTableView.tableHeaderView = header;
+    } else {
+        FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/stuffs/%@", self.stuffId] requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSDictionary *dataDict = result[@"data"];
+            self.model = [FSZuoPin mj_objectWithKeyValues:dataDict];
+            cell.model = self.model;
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            
+            cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+            cell.bottomViewHegiht = 0;
+            [cell.contentView layoutIfNeeded];
+            
+            
+            // 创建header
+            UIView *header = [[UIView alloc] init];
+            header.height = gaoDu;
+            header.width = SCREEN_WIDTH;
+            header.backgroundColor = [UIColor whiteColor];
+            
+            [header addSubview:cell];
+            
+            // 设置header
+            self.commendTableView.tableHeaderView = header;
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
 }
 
 #pragma mark - 视频播放

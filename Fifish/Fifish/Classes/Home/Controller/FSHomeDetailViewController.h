@@ -22,5 +22,7 @@
 @property (nonatomic, strong) FSZuoPin *model;
 /**  */
 @property (nonatomic, weak) id <FSHomeDetailViewControllerDelegate> homeDetailDelegate;
+/**  */
+@property(nonatomic,copy) NSString *stuffId;
 
 @end

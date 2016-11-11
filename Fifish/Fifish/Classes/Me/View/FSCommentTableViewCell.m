@@ -7,6 +7,8 @@
 //
 
 #import "FSCommentTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "FSHomePageViewController.h"
 
 @interface FSCommentTableViewCell ()
 
@@ -28,7 +30,24 @@
     self.headImageView.layer.cornerRadius = 16;
 }
 
+-(void)setModel:(FSRecivedPrasiedModel *)model{
+    _model = model;
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    self.nameLabel.text = model.username;
+    self.contentLabel.text = model.content;
+    if (model.stuff_kind == 1) {
+        self.videoFlag.hidden = YES;
+    } else if (model.stuff_kind == 2) {
+        self.videoFlag.hidden = NO;
+    }
+    self.timeLabel.text = model.comment_on_time;
+    [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.file_large] placeholderImage:[UIImage imageNamed:@"home_bigImage_default"]];
+}
+
 - (IBAction)headClick:(id)sender {
+    FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
+    vc.userId = self.model.userId;
+    [self.myVC.navigationController pushViewController:vc animated:YES];
 }
 
 @end
