@@ -49,12 +49,21 @@
 @property (nonatomic, strong) NSNotification *notification;
 /**  */
 @property (nonatomic, assign) BOOL repeatFlag;
+/**  */
+@property (nonatomic, strong) NSMutableArray *cellHeightAry;
 
 @end
 
 static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
+
+-(NSMutableArray *)cellHeightAry{
+    if (!_cellHeightAry) {
+        _cellHeightAry = [NSMutableArray array];
+    }
+    return _cellHeightAry;
+}
 
 -(FSProgressView *)progressView{
     if (!_progressView) {
@@ -246,6 +255,16 @@ static NSString * const CellId = @"home";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
          self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        [self.cellHeightAry removeAllObjects];
+        for (int i = 0; i < self.modelAry.count; i++) {
+            FSZuoPin *model = self.modelAry[i];
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+        }
          [self.contenTableView reloadData];
          [self.contenTableView.mj_header endRefreshing];
          [self checkFooterState];
@@ -279,6 +298,16 @@ static NSString * const CellId = @"home";
         NSArray *rows = result[@"data"];
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.modelAry addObjectsFromArray:ary];
+        [self.cellHeightAry removeAllObjects];
+        for (int i = 0; i < self.modelAry.count; i++) {
+            FSZuoPin *model = self.modelAry[i];
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+        }
         [self.contenTableView reloadData];
         [self.contenTableView.mj_footer endRefreshing];
         [self checkFooterState];
@@ -528,12 +557,8 @@ static NSString * const CellId = @"home";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FSZuoPin *model = self.modelAry[indexPath.section];
-    // 文字的最大尺寸
-    CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-    // 计算文字的高度
-    CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-    CGFloat gaoDu = textH + 374;
+    NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
+    CGFloat gaoDu = [cellHeightStr floatValue];
     return gaoDu;
 }
 
