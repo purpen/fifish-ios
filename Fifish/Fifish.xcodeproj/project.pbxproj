@@ -313,6 +313,7 @@
 		1F9FA4901DD5713800A1806A /* FSReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA48E1DD5713800A1806A /* FSReportViewController.m */; };
 		1F9FA4911DD5713800A1806A /* FSReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FA48F1DD5713800A1806A /* FSReportViewController.xib */; };
 		1F9FA4941DD5750A00A1806A /* FSRecivedPrasiedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */; };
+		1F9FA49A1DD969B400A1806A /* UINavigationBar+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */; };
 		1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */; };
 		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
 		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
@@ -1104,6 +1105,8 @@
 		1F9FA48F1DD5713800A1806A /* FSReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReportViewController.xib; sourceTree = "<group>"; };
 		1F9FA4921DD5750A00A1806A /* FSRecivedPrasiedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecivedPrasiedModel.h; sourceTree = "<group>"; };
 		1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecivedPrasiedModel.m; sourceTree = "<group>"; };
+		1F9FA4981DD969B400A1806A /* UINavigationBar+FSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FSExtension.h"; sourceTree = "<group>"; };
+		1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FSExtension.m"; sourceTree = "<group>"; };
 		1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChangeSexViewController.h; sourceTree = "<group>"; };
 		1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChangeSexViewController.m; sourceTree = "<group>"; };
 		1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSChangeSexViewController.xib; sourceTree = "<group>"; };
@@ -3048,6 +3051,8 @@
 				1F42020C1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m */,
 				1F8011A81DADDBB700B320C7 /* UIImage+FSWatermark.h */,
 				1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */,
+				1F9FA4981DD969B400A1806A /* UINavigationBar+FSExtension.h */,
+				1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -4245,6 +4250,7 @@
 				1FE087681D7D4D04007790E3 /* FindeFriendTableViewCell.m in Sources */,
 				1FDE28D61D92823E00566A73 /* FSTagTableViewCell.m in Sources */,
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
+				1F9FA49A1DD969B400A1806A /* UINavigationBar+FSExtension.m in Sources */,
 				48FC207F1DBC4A08001D71F4 /* CTFrameParserConfig.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,

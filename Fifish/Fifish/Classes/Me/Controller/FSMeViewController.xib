@@ -33,9 +33,6 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_bg_small" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-J3-SUk">
                             <rect key="frame" x="0.0" y="0.0" width="607" height="170"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVH-MF-YLU" userLabel="个人主页">
-                            <rect key="frame" x="0.0" y="0.0" width="607" height="170"/>
-                        </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_head_default" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-Hs-yAd">
                             <rect key="frame" x="19" y="60" width="90" height="90"/>
                             <constraints>
@@ -161,6 +158,9 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_go-1" translatesAutoresizingMaskIntoConstraints="NO" id="81z-nB-4Q8">
                             <rect key="frame" x="586" y="79" width="6" height="12"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVH-MF-YLU" userLabel="个人主页">
+                            <rect key="frame" x="0.0" y="0.0" width="607" height="170"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
