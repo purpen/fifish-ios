@@ -87,6 +87,7 @@
     
     [self.view addSubview:self.contentScrollview];
     [self.contentScrollview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).offset(0);
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.top.mas_equalTo(self.nameLabel.mas_bottom).offset(10);
         make.bottom.mas_equalTo(self.connectionBtn.mas_top).offset(-40);
@@ -128,10 +129,10 @@
     for (int i = 0; i < self.pictuerAry.count; i++) {
         UIImageView  *showImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.pictuerAry[i]]];
         showImageView.x = i * SCREEN_WIDTH;
-        showImageView.y = showImageView.height * 0.5;
         showImageView.width = SCREEN_WIDTH;
-//        showImageView.height = self.contentScrollview.height;
-        showImageView.contentMode = UIViewContentModeScaleToFill;
+        showImageView.y = 145;
+        showImageView.height = self.contentScrollview.height;
+        showImageView.contentMode = UIViewContentModeScaleAspectFill;
         [_contentScrollview addSubview:showImageView];
     }
 }

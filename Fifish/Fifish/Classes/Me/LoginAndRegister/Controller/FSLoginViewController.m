@@ -241,28 +241,27 @@
             NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
             NSLog(@"qweqwe   %@",message);
 //            [self afterThirdAuth:userinfo];
-            FSUserModel *userModel = [[FSUserModel alloc] init];
-            userModel.username = userinfo.name;
-            userModel.large = userinfo.iconurl;
-            if ([userinfo.gender isEqualToString:@"m"]) {
-                userModel.gender = 1;
-            } else if ([userinfo.gender isEqualToString:@"w"]) {
-                userModel.gender = 2;
-            }
-            userModel.isLogin = YES;
-            [userModel saveOrUpdate];
             FBRequest *request = [FBAPI postWithUrlString:@"/oauth/wechat" requestDictionary:@{
                                                                                                @"uid" : authresponse.openid,
                                                                                                @"accessToken" : authresponse.accessToken,
                                                                                                @"name" : userinfo.name,
-                                                                                               @"icon" : userinfo.iconurl,
-                                                                                               @"gender" : userinfo.gender
+                                                                                               @"icon" : userinfo.iconurl
                                                                                                } delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
                 NSString *token = result[@"data"][@"token"];
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:token forKey:@"token"];
                 [defaults synchronize];
+                FSUserModel *userModel = [[FSUserModel alloc] init];
+                userModel.username = userinfo.name;
+                userModel.large = userinfo.iconurl;
+                if ([userinfo.gender isEqualToString:@"m"]) {
+                    userModel.gender = 1;
+                } else if ([userinfo.gender isEqualToString:@"w"]) {
+                    userModel.gender = 2;
+                }
+                userModel.isLogin = YES;
+                [userModel saveOrUpdate];
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
                 NSInteger first_login = [result[@"data"][@"first_login"] integerValue];
                 if (first_login == 0) {

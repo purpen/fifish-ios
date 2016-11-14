@@ -306,7 +306,7 @@
     } else if (indexPath.section == 1) {
         return 100;
     } else if (indexPath.section > 1) {
-        NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
+        NSString *cellHeightStr = self.cellHeightAry[indexPath.section - 2];
         CGFloat gaoDu = [cellHeightStr floatValue];
         return gaoDu;
     }
