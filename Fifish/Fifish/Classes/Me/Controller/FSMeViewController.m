@@ -68,6 +68,7 @@
         [userModel saveOrUpdate];
         
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+        NSLog(@"头像  %@",userModel.large);
         self.nameLabel.text = userModel.username;
         self.addressLabel.text = userModel.zone;
         if (self.addressLabel.text.length == 0) {

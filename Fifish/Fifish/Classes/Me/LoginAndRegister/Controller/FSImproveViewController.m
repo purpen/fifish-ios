@@ -58,6 +58,9 @@
     [self.head_bg_imageView addGestureRecognizer:singleRecognizer];
     self.head_bg_imageView.userInteractionEnabled = YES;
     
+    if (self.userNameTF.text.length != 0) {
+        self.sureBtn.enabled = YES;
+    }
     [self.sureBtn addTarget:self action:@selector(sureBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     self.userNameTF.delegate = self;
@@ -76,18 +79,21 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (string.length == 0) {
-        self.sureBtn.selected = NO;
+    if (textField.text.length == 0) {
         self.sureBtn.enabled = NO;
     }else{
-        self.sureBtn.selected = YES;
         self.sureBtn.enabled = YES;
+        self.type = NO;
     }
     return YES;
 }
 
 
 -(void)sureBtnClick:(UIButton*)sender{
+    if (self.type) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
     //网络请求
     FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
@@ -141,28 +147,34 @@
 
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    self.type = NO;
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
     NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
-//            NSData * iconData = UIImageJPEGRepresentation(editedImg , 0.5);
-    [self uploadIconWithData:iconData];
-    [picker dismissViewControllerAnimated:YES completion:nil];
     
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
+    [iconData writeToFile:fullPath atomically:NO];
+    
+    FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSString *upload_url = result[@"data"][@"upload_url"];
+        NSString *token = result[@"data"][@"token"];
+        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
+            
+        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            userModel.large = responseObject[@"file"][@"large"];
+            [userModel saveOrUpdate];
+            [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-//上传头像
-- (void)uploadIconWithData:(NSData *)iconData
-{
-    [SVProgressHUD show];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    NSString * icon64Str = [iconData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSDictionary * params = @{@"avatar" : icon64Str};
-    FBRequest * request = [FBAPI postWithUrlString:@"/upload/avatar" requestDictionary:params delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        [SVProgressHUD dismiss];
-    } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD dismiss];
-    }];
-}
 
 
 @end

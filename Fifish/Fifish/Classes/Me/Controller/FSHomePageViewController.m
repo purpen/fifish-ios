@@ -27,6 +27,10 @@
 #import "FSStuffCountTableViewCell.h"
 #import "FSZuoPinGroupTableViewCell.h"
 #import "FSFansModel.h"
+#import "UINavigationBar+FSExtension.h"
+#import "UIBarButtonItem+FSExtension.h"
+
+#define NAVBAR_CHANGE_POINT 170
 
 typedef enum {
     FSTypeZuoPin = 1,
@@ -69,7 +73,6 @@ typedef enum {
 
 @end
 
-
 static NSString * const zuoPinCellId = @"zuoPin";
 static NSString * const fucosCellId = @"fucos";
 
@@ -109,10 +112,6 @@ static NSString * const fucosCellId = @"fucos";
     [self setupNav];
 }
 
-#pragma mark - 状态栏颜色
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 
 -(UIView *)naviView{
     if (!_naviView) {
@@ -159,16 +158,21 @@ static NSString * const fucosCellId = @"fucos";
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y > 206) {
-        self.naviView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"me_bg_large"]];
+    UIColor * color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"me_bg_large_bottom"]];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_CHANGE_POINT) {
+        CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
     } else {
-        self.naviView.backgroundColor = [UIColor clearColor];
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
     }
 }
 
 -(UIButton *)fucosBtn{
     if (!_fucosBtn) {
         _fucosBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _fucosBtn.width = 72;
+        _fucosBtn.height = 26;
         _fucosBtn.layer.masksToBounds = YES;
         _fucosBtn.layer.cornerRadius = 13;
         _fucosBtn.layer.borderWidth = 1;
@@ -211,8 +215,32 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 设置导航条
 -(void)setupNav{
-    self.navigationController.navigationBarHidden = YES;
-    [self.view addSubview:self.naviView];
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    if (self.isMyself) {
+        UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_back" highImage:nil title:nil target:self action:@selector(back)];
+        self.navigationItem.leftBarButtonItem = searchItem;
+        
+        UIBarButtonItem *quick_releaseItem = [UIBarButtonItem itemWithImage:@"me_edit" highImage:nil title:nil target:self action:@selector(editBtn)];
+        self.navigationItem.rightBarButtonItem = quick_releaseItem;
+    } else {
+        UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_back" highImage:nil title:nil target:self action:@selector(back)];
+        self.navigationItem.leftBarButtonItem = searchItem;
+        
+        UIBarButtonItem *fucosItem = [[UIBarButtonItem alloc] initWithCustomView:self.fucosBtn];
+        self.navigationItem.rightBarButtonItem = fucosItem;
+    }
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    self.contentTableView.delegate = nil;
+    [self.navigationController.navigationBar lt_reset];
+    [self.navigationController.navigationBar setShadowImage:nil];
 }
 
 #pragma mark - 懒加载顶部渐变层

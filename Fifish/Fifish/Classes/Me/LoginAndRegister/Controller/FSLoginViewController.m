@@ -164,21 +164,21 @@
         if (error) {
             
         } else {
-            UMSocialAuthResponse *resp = result;
+            UMSocialAuthResponse *authresponse = result;
             
             // 授权信息
-            NSLog(@"Facebook uid: %@", resp.uid);
-            NSLog(@"Facebook accessToken: %@", resp.accessToken);
-            NSLog(@"Facebook expiration: %@", resp.expiration);
+            NSLog(@"Facebook uid: %@", authresponse.uid);
+            NSLog(@"Facebook accessToken: %@", authresponse.accessToken);
+            NSLog(@"Facebook expiration: %@", authresponse.expiration);
             
             // 第三方平台SDK源数据
-            NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+            NSLog(@"Facebook originalResponse: %@", authresponse.originalResponse);
             [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Facebook currentViewController:nil completion:^(id result, NSError *error) {
                 if (error) {
                     
                 } else {
                     UMSocialUserInfoResponse *resp = result;
-                    
+                    [self afterThirdAuth:resp andAuthresponse:authresponse andType:(NSString*)@"facebook"];
                     // 授权信息
                     NSLog(@"Facebook uid: %@", resp.uid);
                     NSLog(@"Facebook accessToken: %@", resp.accessToken);
@@ -200,21 +200,21 @@
         if (error) {
             
         } else {
-            UMSocialAuthResponse *resp = result;
+            UMSocialAuthResponse *authresponse = result;
             
             // 授权信息
-            NSLog(@"Facebook uid: %@", resp.uid);
-            NSLog(@"Facebook accessToken: %@", resp.accessToken);
-            NSLog(@"Facebook expiration: %@", resp.expiration);
+            NSLog(@"Facebook uid: %@", authresponse.uid);
+            NSLog(@"Facebook accessToken: %@", authresponse.accessToken);
+            NSLog(@"Facebook expiration: %@", authresponse.expiration);
             
             // 第三方平台SDK源数据
-            NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
+            NSLog(@"Facebook originalResponse: %@", authresponse.originalResponse);
             [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Instagram currentViewController:nil completion:^(id result, NSError *error) {
                 if (error) {
                     
                 } else {
                     UMSocialUserInfoResponse *resp = result;
-                    
+                    [self afterThirdAuth:resp andAuthresponse:authresponse andType:(NSString*)@"instagram"];
                     // 授权信息
                     NSLog(@"Facebook uid: %@", resp.uid);
                     NSLog(@"Facebook accessToken: %@", resp.accessToken);
@@ -234,53 +234,58 @@
 - (IBAction)weixinClick:(id)sender {
     [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         UMSocialAuthResponse *authresponse = result;
-        NSString *message = [NSString stringWithFormat:@"result: %d\n uid: %@\n accessToken: %@\n",(int)error.code,authresponse.openid,authresponse.accessToken];
-        NSLog(@"qweqwe   %@",message);
         [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
             UMSocialUserInfoResponse *userinfo =result;
-            NSString *message = [NSString stringWithFormat:@"name: %@\n icon: %@\n gender: %@\n",userinfo.name,userinfo.iconurl,userinfo.gender];
-            NSLog(@"qweqwe   %@",message);
-//            [self afterThirdAuth:userinfo];
-            FBRequest *request = [FBAPI postWithUrlString:@"/oauth/wechat" requestDictionary:@{
-                                                                                               @"uid" : authresponse.openid,
-                                                                                               @"accessToken" : authresponse.accessToken,
-                                                                                               @"name" : userinfo.name,
-                                                                                               @"icon" : userinfo.iconurl
-                                                                                               } delegate:self];
-            [request startRequestSuccess:^(FBRequest *request, id result) {
-                NSString *token = result[@"data"][@"token"];
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:token forKey:@"token"];
-                [defaults synchronize];
-                FSUserModel *userModel = [[FSUserModel alloc] init];
-                userModel.username = userinfo.name;
-                userModel.large = userinfo.iconurl;
-                if ([userinfo.gender isEqualToString:@"m"]) {
-                    userModel.gender = 1;
-                } else if ([userinfo.gender isEqualToString:@"w"]) {
-                    userModel.gender = 2;
-                }
-                userModel.isLogin = YES;
-                [userModel saveOrUpdate];
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
-                NSInteger first_login = [result[@"data"][@"first_login"] integerValue];
-                if (first_login == 0) {
-                    FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-                    [self.navigationController pushViewController:vc animated:YES];
-                } else {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
-            } failure:^(FBRequest *request, NSError *error) {
-                
-            }];
+            [self afterThirdAuth:userinfo andAuthresponse:authresponse andType:(NSString*)@"wechat"];
         }];
     }];
 }
 
--(void)afterThirdAuth:(UMSocialUserInfoResponse*)userInfo{
+-(void)afterThirdAuth:(UMSocialUserInfoResponse*)userinfo andAuthresponse:(UMSocialAuthResponse*)authresponse andType:(NSString*)type{
     //调取接口在后台记录用户，如果是第一次完善信息，如果不是直接进入
     //将用户信息存起来
-    
+    NSString *sex;
+    if ([userinfo.gender isEqualToString:@"m"]) {
+        sex = @"1";
+    } else if ([userinfo.gender isEqualToString:@"w"]) {
+        sex = @"2";
+    }
+    FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/oauth/%@", type] requestDictionary:@{
+                                                                                       @"uid" : authresponse.openid,
+                                                                                       @"accessToken" : authresponse.accessToken,
+                                                                                       @"name" : userinfo.name,
+                                                                                       @"icon" : userinfo.iconurl,
+                                                                                       @"gender" : sex
+                                                                                       } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"微信登录 %@", result);
+        NSString *token = result[@"data"][@"token"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:token forKey:@"token"];
+        [defaults synchronize];
+        FSUserModel *userModel = [[FSUserModel alloc] init];
+        userModel.username = userinfo.name;
+        userModel.large = userinfo.iconurl;
+        if ([userinfo.gender isEqualToString:@"m"]) {
+            userModel.gender = 1;
+        } else if ([userinfo.gender isEqualToString:@"w"]) {
+            userModel.gender = 2;
+        }
+        userModel.isLogin = YES;
+        [userModel saveOrUpdate];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
+        NSInteger first_login = [result[@"data"][@"first_login"] integerValue];
+        NSLog(@"first_login %ld",(long)first_login);
+        if (first_login == 0) {
+            FSImproveViewController *vc = [[FSImproveViewController alloc] init];
+            vc.type = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    } failure:^(FBRequest *request, NSError *error) {
+        
+    }];
 }
 
 - (IBAction)registerNowBtn:(UIButton *)sender {

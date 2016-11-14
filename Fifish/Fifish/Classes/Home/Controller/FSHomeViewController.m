@@ -32,6 +32,7 @@
 #import "FSMediaBrowseViewController.h"
 #import "FSMcBaseNavViewController.h"
 #import "FSReportViewController.h"
+#import "UINavigationBar+FSExtension.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
