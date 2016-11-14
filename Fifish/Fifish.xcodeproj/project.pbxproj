@@ -112,6 +112,7 @@
 		04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A8F1D802EEE008D1DD5 /* FSsettingBaseViewController.m */; };
 		04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */; };
 		04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */; };
+		045D79E71DD5C36E009C2FD3 /* FSRovDirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D79E61DD5C36E009C2FD3 /* FSRovDirectionView.m */; };
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
 		0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */; };
 		0467651D1D632A3A00FFA743 /* FSTemperatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467651C1D632A3A00FFA743 /* FSTemperatureView.m */; };
@@ -746,6 +747,8 @@
 		04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEncodingSettingViewController.m; sourceTree = "<group>"; };
 		04596A981D805B58008D1DD5 /* FSFrameRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFrameRateViewController.h; sourceTree = "<group>"; };
 		04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFrameRateViewController.m; sourceTree = "<group>"; };
+		045D79E51DD5C36E009C2FD3 /* FSRovDirectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovDirectionView.h; sourceTree = "<group>"; };
+		045D79E61DD5C36E009C2FD3 /* FSRovDirectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovDirectionView.m; sourceTree = "<group>"; };
 		046765151D63285800FFA743 /* FSBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBatteryView.h; sourceTree = "<group>"; };
 		046765161D63285800FFA743 /* FSBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBatteryView.m; sourceTree = "<group>"; };
 		046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFSVideoLiveStatusBar.h; sourceTree = "<group>"; };
@@ -2142,6 +2145,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		045D79E11DD56CA4009C2FD3 /* RovDirectionView */ = {
+			isa = PBXGroup;
+			children = (
+				045D79E51DD5C36E009C2FD3 /* FSRovDirectionView.h */,
+				045D79E61DD5C36E009C2FD3 /* FSRovDirectionView.m */,
+			);
+			path = RovDirectionView;
+			sourceTree = "<group>";
+		};
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2253,6 +2265,7 @@
 		04A1B6F41D6444E90008223E /* FSVideoLiveTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				045D79E11DD56CA4009C2FD3 /* RovDirectionView */,
 				04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */,
 				04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */,
 			);
@@ -4040,6 +4053,7 @@
 				1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
 				1FE566061DC2E9C4000AE61D /* README.md in Sources */,
+				045D79E71DD5C36E009C2FD3 /* FSRovDirectionView.m in Sources */,
 				1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */,
 				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
@@ -4420,7 +4434,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4461,7 +4475,7 @@
 				INSTALL_OWNER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4509,8 +4523,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4558,8 +4572,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
-				PROVISIONING_PROFILE_SPECIFIER = Fifish;
+				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE_SPECIFIER = all;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;

@@ -50,10 +50,19 @@
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 /**  */
 @property (nonatomic, strong) NSMutableArray *imageUrlAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *cellHeightAry;
 
 @end
 
 @implementation FSFoundViewController
+
+-(NSMutableArray *)cellHeightAry{
+    if (!_cellHeightAry) {
+        _cellHeightAry = [NSMutableArray array];
+    }
+    return _cellHeightAry;
+}
 
 -(NSMutableArray *)imageUrlAry{
     if (!_imageUrlAry) {
@@ -154,6 +163,16 @@
         NSArray *rows = result[@"data"];
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.stuffAry addObjectsFromArray:ary];
+        [self.cellHeightAry removeAllObjects];
+        for (int i = 0; i < self.stuffAry.count; i++) {
+            FSZuoPin *model = self.stuffAry[i];
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+        }
         [self.contentTableView reloadData];
         [self.contentTableView.mj_footer endRefreshing];
         [self checkFooterState];
@@ -179,6 +198,16 @@
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
         self.stuffAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        [self.cellHeightAry removeAllObjects];
+        for (int i = 0; i < self.stuffAry.count; i++) {
+            FSZuoPin *model = self.stuffAry[i];
+            // 文字的最大尺寸
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            // 计算文字的高度
+            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat gaoDu = textH + 374;
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+        }
         [self.contentTableView reloadData];
         [self.contentTableView.mj_header endRefreshing];
         [self checkFooterState];
@@ -277,12 +306,8 @@
     } else if (indexPath.section == 1) {
         return 100;
     } else if (indexPath.section > 1) {
-        FSZuoPin *model = self.stuffAry[indexPath.section - 2];
-        // 文字的最大尺寸
-        CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-        // 计算文字的高度
-        CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-        CGFloat gaoDu = textH + 374;
+        NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
+        CGFloat gaoDu = [cellHeightStr floatValue];
         return gaoDu;
     }
     return 0;
