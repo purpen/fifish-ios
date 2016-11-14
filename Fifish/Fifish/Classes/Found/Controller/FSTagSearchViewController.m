@@ -324,7 +324,7 @@
             if (self.stuffAry.count == 0) {
                 return SCREEN_HEIGHT - 288;
             }
-            NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
+            NSString *cellHeightStr = self.cellHeightAry[indexPath.section - 1];
             CGFloat gaoDu = [cellHeightStr floatValue];
             return gaoDu;
         }
