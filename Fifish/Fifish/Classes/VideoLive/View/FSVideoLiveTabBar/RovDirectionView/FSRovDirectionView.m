@@ -125,8 +125,7 @@
 - (void)testMethed{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         while (1) {
-            CGFloat routa = (arc4random()%45)*M_PI/180.0;
-            NSLog(@"%f",routa);
+            CGFloat routa = (arc4random()%360)*M_PI/180.0;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
                     self.headingImageView.transform = CGAffineTransformMakeRotation(routa);
