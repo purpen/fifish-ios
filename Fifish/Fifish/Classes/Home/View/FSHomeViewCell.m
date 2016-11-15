@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagTagLabel;
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
+@property (weak, nonatomic) IBOutlet UIView *toolView;
 
 @end
 
@@ -58,14 +59,14 @@
         make.left.mas_equalTo(self.contentView.mas_left).offset(0);
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-        make.height.mas_equalTo(210);
+        make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
     }];
     [self.contentView addSubview:self.videoView];
     [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView.mas_left).offset(0);
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-        make.height.mas_equalTo(210);
+        make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
     }];
 }
 

@@ -243,6 +243,7 @@
                 <outlet property="tagView" destination="Ikg-qs-7wT" id="zSO-ye-Qed"/>
                 <outlet property="tagView_bottom_distance" destination="DP1-IE-ZAp" id="qVq-3H-2Rv"/>
                 <outlet property="timeLabel" destination="pbF-do-7rp" id="TzW-4l-woN"/>
+                <outlet property="toolView" destination="gYU-YG-39Z" id="ACm-YF-3Au"/>
             </connections>
             <point key="canvasLocation" x="312" y="414.5"/>
         </tableViewCell>

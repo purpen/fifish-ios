@@ -39,7 +39,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDj-2E-nc7" userLabel="地址">
                         <rect key="frame" x="81" y="31" width="23" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.74117647060000003" green="0.7725490196" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1天前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-DL-kX9" userLabel="时间">
@@ -238,6 +238,7 @@
                 <outlet property="shareBtn" destination="UAt-H2-CFk" id="zY3-u2-e0h"/>
                 <outlet property="tagView" destination="Vqr-nL-6Yf" id="eTs-qF-Qhu"/>
                 <outlet property="tagtagLabel" destination="hjC-kl-OOm" id="ue7-9o-HRK"/>
+                <outlet property="toolView" destination="hCc-Rs-QJx" id="gpD-0A-EhJ"/>
             </connections>
             <point key="canvasLocation" x="312" y="414.5"/>
         </tableViewCell>

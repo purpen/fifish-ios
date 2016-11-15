@@ -238,7 +238,7 @@ static NSString * const FSCommentId = @"comment";
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度
             CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = textH + 374;
+            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
             
             cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
             cell.bottomViewHegiht = 0;
