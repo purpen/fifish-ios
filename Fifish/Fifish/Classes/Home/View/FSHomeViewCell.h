@@ -37,5 +37,6 @@
 @property (nonatomic, strong) UIViewController *myViewController;
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
+@property (weak, nonatomic) IBOutlet UIView *bottom_line_view;
 
 @end

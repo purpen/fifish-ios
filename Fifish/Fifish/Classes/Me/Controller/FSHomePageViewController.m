@@ -32,11 +32,11 @@
 
 #define NAVBAR_CHANGE_POINT 170
 
-typedef enum {
-    FSTypeZuoPin = 1,
-    FSTypeGuanZhu = 11,
-    FSTypeFenSi = 21
-} FSType;
+typedef NS_ENUM(NSInteger, FSType) {
+    FSTypeZuoPin,
+    FSTypeGuanZhu,
+    FSTypeFenSi
+};
 
 @interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -102,6 +102,8 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.type = FSTypeZuoPin;
+//    self.arrangementFlag = NO;
     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
     if ([userModel.userId isEqualToString:self.userId]) {
         self.isMyself = YES;
@@ -241,9 +243,7 @@ static NSString * const fucosCellId = @"fucos";
     [super viewDidDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     self.contentTableView.delegate = nil;
-//    [self.navigationController.navigationBar lt_reset];
-//    [self.navigationController.navigationBar setShadowImage:nil];
-    UIColor *color = [UIColor whiteColor];
+    UIColor *color = [UIColor colorWithHexString:@"#ffffff"];
     [self.navigationController.navigationBar lt_setBackgroundColor:color];
     [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];
 }
@@ -264,9 +264,6 @@ static NSString * const fucosCellId = @"fucos";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.type = FSTypeZuoPin;
-    
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
@@ -320,10 +317,9 @@ static NSString * const fucosCellId = @"fucos";
 
 #pragma mark - 刷新
 -(void)loadNew{
-    self.contentTableView.mj_footer.hidden = YES;
+    [self.contentTableView.mj_footer endRefreshing];
     [self updateUserInfo];
     
-    [self.contentTableView.mj_footer endRefreshing];
     self.current_page = 1;
     
     switch (self.type) {
@@ -657,7 +653,7 @@ static NSString * const fucosCellId = @"fucos";
                 break;
         }
     }
-    return 10;
+    return 210 + 40;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSShareViewController">
             <connections>
+                <outlet property="cancelBtn" destination="Gif-h9-rLO" id="v7I-Gb-31K"/>
                 <outlet property="qqBtn" destination="LuP-3o-wyf" id="QhO-NW-Q5d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wechatBtn" destination="AAZ-JE-qbg" id="KXH-2o-wcx"/>
@@ -27,11 +28,11 @@
                     <rect key="frame" x="0.0" y="387" width="375" height="280"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gif-h9-rLO">
-                            <rect key="frame" x="10" y="221" width="355" height="44"/>
+                            <rect key="frame" x="35" y="221" width="305" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="xWD-gb-zEV"/>
                             </constraints>
-                            <state key="normal" title="取消" backgroundImage="share_btn_bg">
+                            <state key="normal" title="取消">
                                 <color key="titleColor" red="0.2627450980392157" green="0.59607843137254901" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -184,11 +185,11 @@
                         <constraint firstItem="3tW-Sb-VRa" firstAttribute="width" secondItem="Cpf-yG-b94" secondAttribute="width" id="9ba-nE-BoU"/>
                         <constraint firstItem="7T5-Du-3ZM" firstAttribute="leading" secondItem="6XY-N3-BgT" secondAttribute="trailing" constant="8" id="GTm-Zj-lt0"/>
                         <constraint firstItem="6XY-N3-BgT" firstAttribute="centerY" secondItem="7T5-Du-3ZM" secondAttribute="centerY" id="Idm-0N-kmO"/>
-                        <constraint firstItem="Gif-h9-rLO" firstAttribute="leading" secondItem="PP7-oL-5pl" secondAttribute="leading" constant="10" id="ItD-mj-7aE"/>
+                        <constraint firstItem="Gif-h9-rLO" firstAttribute="leading" secondItem="PP7-oL-5pl" secondAttribute="leading" constant="35" id="ItD-mj-7aE"/>
                         <constraint firstItem="FMW-xW-FYe" firstAttribute="leading" secondItem="3tW-Sb-VRa" secondAttribute="trailing" id="MiP-h9-Zfp"/>
                         <constraint firstItem="FMW-xW-FYe" firstAttribute="height" secondItem="Cpf-yG-b94" secondAttribute="height" id="Ngv-o5-sl5"/>
                         <constraint firstAttribute="bottom" secondItem="Gif-h9-rLO" secondAttribute="bottom" constant="15" id="TxW-Yy-KOF"/>
-                        <constraint firstAttribute="trailing" secondItem="Gif-h9-rLO" secondAttribute="trailing" constant="10" id="Uyl-G4-tzX"/>
+                        <constraint firstAttribute="trailing" secondItem="Gif-h9-rLO" secondAttribute="trailing" constant="35" id="Uyl-G4-tzX"/>
                         <constraint firstAttribute="trailing" secondItem="FMW-xW-FYe" secondAttribute="trailing" id="Xh5-ER-jDB"/>
                         <constraint firstItem="Gif-h9-rLO" firstAttribute="top" secondItem="Cpf-yG-b94" secondAttribute="bottom" constant="8" id="YAC-KR-ovB"/>
                         <constraint firstItem="FMW-xW-FYe" firstAttribute="width" secondItem="Cpf-yG-b94" secondAttribute="width" id="cCt-b5-eLp"/>
@@ -226,7 +227,6 @@
         </view>
     </objects>
     <resources>
-        <image name="share_btn_bg" width="355" height="44"/>
         <image name="share_facebook" width="44" height="44"/>
         <image name="share_instgram" width="44" height="44"/>
         <image name="share_qq" width="43" height="43"/>

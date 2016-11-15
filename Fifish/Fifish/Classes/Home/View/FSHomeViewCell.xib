@@ -227,6 +227,7 @@
                 <outlet property="addressIcon" destination="BWJ-0p-Rho" id="t8q-dl-syd"/>
                 <outlet property="addressLabel" destination="OJm-eW-jrK" id="N4g-fI-kjP"/>
                 <outlet property="bottomSpace" destination="dQd-vy-uIE" id="joT-vU-5aY"/>
+                <outlet property="bottom_line_view" destination="Xw0-GZ-nvv" id="0HP-Sk-vwO"/>
                 <outlet property="commendBtn" destination="Y0y-YR-RJZ" id="Ce8-ZA-PJc"/>
                 <outlet property="contentLabel" destination="UIH-Pn-eWK" id="Ge6-Qu-qCA"/>
                 <outlet property="contentLabel_height" destination="HgM-Dp-3h9" id="p2t-du-rwY"/>

@@ -20,6 +20,8 @@
 #import "FSMessageViewController.h"
 #import "FSTabBarController.h"
 #import "OptionViewController.h"
+#import "FSTipNumberView.h"
+#import "Masonry.h"
 
 @interface FSMeViewController ()
 
@@ -33,10 +35,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *focusNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fansNumLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
+/**  */
+@property (nonatomic, strong) FSTipNumberView *tipNumView;
+@property (weak, nonatomic) IBOutlet UIView *messageView;
+@property (weak, nonatomic) IBOutlet UIImageView *goIcon;
 
 @end
 
 @implementation FSMeViewController
+
+-(FSTipNumberView *)tipNumView{
+    if (!_tipNumView) {
+        _tipNumView = [FSTipNumberView getTipNumView];
+    }
+    return _tipNumView;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -50,8 +63,21 @@
         NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
         if (count == 0) {
             item.badgeValue = nil;
+            [self.tipNumView removeFromSuperview];
         } else {
             [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            self.tipNumView.tipNumLabel.text = [NSString stringWithFormat:@"%ld", (long)count];
+            CGSize size = [self.tipNumView.tipNumLabel.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
+            [self.messageView addSubview:self.tipNumView];
+            [self.tipNumView mas_makeConstraints:^(MASConstraintMaker *make) {
+                if ((size.width+9) > 15) {
+                    make.size.mas_equalTo(CGSizeMake(size.width+11, 17));
+                }else{
+                    make.size.mas_equalTo(CGSizeMake(17, 17));
+                }
+                make.right.mas_equalTo(self.goIcon.mas_left).with.offset(-15);
+                make.centerY.mas_equalTo(self.messageView.mas_centerY).with.offset(0);
+            }];
         }
     } failure:^(FBRequest *request, NSError *error) {
         

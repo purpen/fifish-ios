@@ -105,6 +105,10 @@
     
 }
 
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated{
+    return [super popViewControllerAnimated:animated];
+}
+
 - (void)back
 {
     [self popViewControllerAnimated:YES];

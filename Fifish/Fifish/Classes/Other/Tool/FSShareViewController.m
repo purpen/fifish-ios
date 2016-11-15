@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *wechatBtn;
 @property (weak, nonatomic) IBOutlet UIButton *qqBtn;
 @property (weak, nonatomic) IBOutlet UIButton *weiBoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 
 @end
 
@@ -25,6 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self judge];
+    self.cancelBtn.layer.masksToBounds = YES;
+    self.cancelBtn.layer.cornerRadius = 22;
+    self.cancelBtn.layer.borderColor = [UIColor colorWithHexString:@"#4398fb"].CGColor;
+    self.cancelBtn.layer.borderWidth = 1;
 }
 
 -(void)judge{

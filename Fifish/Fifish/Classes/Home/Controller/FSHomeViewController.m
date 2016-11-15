@@ -284,7 +284,7 @@ static NSString * const CellId = @"home";
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = textH + 374;
+            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         [self.ctDataAry removeAllObjects];
@@ -355,7 +355,7 @@ static NSString * const CellId = @"home";
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = textH + 374;
+            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         for (int i = 0; i < self.modelAry.count; i++) {

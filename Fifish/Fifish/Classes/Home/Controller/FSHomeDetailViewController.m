@@ -23,6 +23,9 @@
 #import "FSBigImageViewController.h"
 #import "FSPlayViewController.h"
 #import "FSReportViewController.h"
+#import "CTFrameParserConfig.h"
+#import "CoreTextData.h"
+#import "CTFrameParser.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -36,12 +39,21 @@
 @property (nonatomic, assign) NSInteger current_page;
 /**  */
 @property (nonatomic, assign) NSInteger total_rows;
+/**  */
+@property (nonatomic, strong) NSMutableArray *tagMAry;
 
 @end
 
 static NSString * const FSCommentId = @"comment";
 
 @implementation FSHomeDetailViewController
+
+-(NSMutableArray *)tagMAry{
+    if (!_tagMAry) {
+        _tagMAry = [NSMutableArray array];
+    }
+    return _tagMAry;
+}
 
 -(NSMutableArray *)commentAry{
     if (!_commentAry) {
@@ -136,6 +148,7 @@ static NSString * const FSCommentId = @"comment";
 -(void)setupHeader{
     // 添加cell
     FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
+    cell.bottom_line_view.hidden = YES;
     cell.navi = self.navigationController;
     cell.myViewController = self;
     cell.contentLabel_height.constant = 10000;
@@ -146,6 +159,30 @@ static NSString * const FSCommentId = @"comment";
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     if (self.stuffId.length == 0) {
         cell.model = self.model;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+        NSString *path = [paths objectAtIndex:0];
+        NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filename contents:nil attributes:nil];
+        CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+        [self.tagMAry removeAllObjects];
+        if (self.model.tags.count > 0) {
+            for (int i = 0; i < self.model.tags.count; i ++) {
+                NSDictionary *dict = self.model.tags[i];
+                NSDictionary *cellDict = @{
+                                           @"color" : @"blue",
+                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                           @"url" : @"hh",
+                                           @"type" : @"link"
+                                           };
+                [self.tagMAry addObject:cellDict];
+            }
+            config.width = SCREEN_WIDTH;
+            [self.tagMAry writeToFile:filename atomically:YES];
+        } else {
+        }
+        CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+        cell.ctData = data;
         // 文字的最大尺寸
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         // 计算文字的高度
@@ -173,6 +210,30 @@ static NSString * const FSCommentId = @"comment";
             NSDictionary *dataDict = result[@"data"];
             self.model = [FSZuoPin mj_objectWithKeyValues:dataDict];
             cell.model = self.model;
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+            NSString *path = [paths objectAtIndex:0];
+            NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm createFileAtPath:filename contents:nil attributes:nil];
+            CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+            [self.tagMAry removeAllObjects];
+            if (self.model.tags.count > 0) {
+                for (int i = 0; i < self.model.tags.count; i ++) {
+                    NSDictionary *dict = self.model.tags[i];
+                    NSDictionary *cellDict = @{
+                                               @"color" : @"blue",
+                                               @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                               @"url" : @"hh",
+                                               @"type" : @"link"
+                                               };
+                    [self.tagMAry addObject:cellDict];
+                }
+                config.width = SCREEN_WIDTH;
+                [self.tagMAry writeToFile:filename atomically:YES];
+            } else {
+            }
+            CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+            cell.ctData = data;
             // 文字的最大尺寸
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度

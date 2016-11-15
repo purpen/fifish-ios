@@ -38,6 +38,8 @@
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 @property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
 @property (weak, nonatomic) IBOutlet UILabel *tagTagLabel;
+/**  */
+@property (nonatomic, strong) FSUserModel *userModel;
 
 @end
 
@@ -102,10 +104,16 @@
     return _videoView;
 }
 
+-(FSUserModel *)userModel{
+    if (!_userModel) {
+        _userModel = [[FSUserModel findAll] lastObject];
+    }
+    return _userModel;
+}
+
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-    if ([userModel.userId isEqualToString:_model.user_id]) {
+    if ([self.userModel.userId isEqualToString:_model.user_id]) {
         self.fucosBtn.hidden = YES;
     } else {
         self.fucosBtn.hidden = NO;
@@ -148,6 +156,7 @@
 
 -(void)setCtData:(CoreTextData *)ctData{
     if (self.model.tags.count > 0) {
+        self.tagView.hidden = NO;
         self.tagTagLabel.hidden = NO;
         _ctData = ctData;
         CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
@@ -157,6 +166,7 @@
         [self.tagView addSubview:view];
         view.data = ctData;
     } else {
+        self.tagView.hidden = YES;
         self.tagTagLabel.hidden = YES;
     }
 }
