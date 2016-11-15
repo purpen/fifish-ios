@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FSHomeVideoView.h"
 #import "FSHomePictuerView.h"
+#import "CoreTextData.h"
 @class FSZuoPin;
 
 @interface FSFoundStuffTableViewCell : UITableViewCell
@@ -30,5 +31,7 @@
 @property (nonatomic, strong) UINavigationController *navc;
 /**  */
 @property (nonatomic, strong) UIViewController *myViewController;
+/**  */
+@property (nonatomic, strong) CoreTextData *ctData;
 
 @end
