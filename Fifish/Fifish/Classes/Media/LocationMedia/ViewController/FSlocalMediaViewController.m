@@ -139,7 +139,7 @@ CGFloat const Cellspecace = 1;
     if (!_RigthNavBtn) {
         _RigthNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _RigthNavBtn.frame = CGRectMake(0, 0, 60, 40);
-        _RigthNavBtn.contentMode = UIViewContentModeRight;
+        _RigthNavBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [_RigthNavBtn addTarget:self action:@selector(EditChoose:) forControlEvents:UIControlEventTouchUpInside];
         _RigthNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_RigthNavBtn setTitle:NSLocalizedString(@"Choose", nil) forState:UIControlStateNormal];
