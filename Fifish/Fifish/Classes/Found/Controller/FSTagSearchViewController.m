@@ -21,6 +21,9 @@
 #import "Masonry.h"
 #import "FSHomePageViewController.h"
 #import "FSReportViewController.h"
+#import "CTFrameParserConfig.h"
+#import "CoreTextData.h"
+#import "CTFrameParser.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -50,10 +53,28 @@
 @property (nonatomic, strong) NSMutableArray *userAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *cellHeightAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *tagMAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *ctDataAry;
 
 @end
 
 @implementation FSTagSearchViewController
+
+-(NSMutableArray *)ctDataAry{
+    if (!_ctDataAry) {
+        _ctDataAry = [NSMutableArray array];
+    }
+    return _ctDataAry;
+}
+
+-(NSMutableArray *)tagMAry{
+    if (!_tagMAry) {
+        _tagMAry = [NSMutableArray array];
+    }
+    return _tagMAry;
+}
 
 -(NSMutableArray *)cellHeightAry{
     if (!_cellHeightAry) {
@@ -148,6 +169,36 @@
                 CGFloat gaoDu = textH + 374;
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
+            [self.ctDataAry removeAllObjects];
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+                NSString *path = [paths objectAtIndex:0];
+                NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+                NSFileManager *fm = [NSFileManager defaultManager];
+                [fm createFileAtPath:filename contents:nil attributes:nil];
+                CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+                [self.tagMAry removeAllObjects];
+                if (model.tags.count > 0) {
+                    //                self.tagtagLabel.hidden = NO;
+                    for (int i = 0; i < model.tags.count; i ++) {
+                        NSDictionary *dict = model.tags[i];
+                        NSDictionary *cellDict = @{
+                                                   @"color" : @"blue",
+                                                   @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                                   @"url" : @"hh",
+                                                   @"type" : @"link"
+                                                   };
+                        [self.tagMAry addObject:cellDict];
+                    }
+                    config.width = SCREEN_WIDTH;
+                    [self.tagMAry writeToFile:filename atomically:YES];
+                } else {
+                    //                self.tagtagLabel.hidden = YES;
+                }
+                CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+                [self.ctDataAry addObject:data];
+            }
         }
         [self.myTableView reloadData];
         [self checkFooterState];
@@ -202,6 +253,36 @@
                 CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
                 CGFloat gaoDu = textH + 374;
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+            }
+
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+                NSString *path = [paths objectAtIndex:0];
+                NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+                NSFileManager *fm = [NSFileManager defaultManager];
+                [fm createFileAtPath:filename contents:nil attributes:nil];
+                CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+                [self.tagMAry removeAllObjects];
+                if (model.tags.count > 0) {
+                    //                self.tagtagLabel.hidden = NO;
+                    for (int i = 0; i < model.tags.count; i ++) {
+                        NSDictionary *dict = model.tags[i];
+                        NSDictionary *cellDict = @{
+                                                   @"color" : @"blue",
+                                                   @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                                   @"url" : @"hh",
+                                                   @"type" : @"link"
+                                                   };
+                        [self.tagMAry addObject:cellDict];
+                    }
+                    config.width = SCREEN_WIDTH;
+                    [self.tagMAry writeToFile:filename atomically:YES];
+                } else {
+                    //                self.tagtagLabel.hidden = YES;
+                }
+                CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+                [self.ctDataAry addObject:data];
             }
         }
         [self.myTableView reloadData];

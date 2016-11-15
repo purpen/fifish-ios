@@ -66,6 +66,20 @@
     self.fucosBtn.layer.cornerRadius = 13;
     self.fucosBtn.layer.borderWidth = 1;
     self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+    [self.contentView addSubview:self.pictuerView];
+    [_pictuerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView.mas_left).offset(0);
+        make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
+        make.right.mas_equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(210);
+    }];
+    [self.contentView addSubview:self.videoView];
+    [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.contentView.mas_left).offset(0);
+        make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
+        make.right.mas_equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(210);
+    }];
 }
 
 - (IBAction)headTapClick:(UIButton *)sender {
@@ -108,26 +122,12 @@
     }
     self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
-        [self.videoView removeFromSuperview];
-        [self.contentView addSubview:self.pictuerView];
-        [_pictuerView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
-            make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-            make.height.mas_equalTo(210);
-        }];
-        [self.contentView layoutIfNeeded];
+        self.videoView.hidden = YES;
+        self.pictuerView.hidden = NO;
         self.pictuerView.model = model;
     }else if ([model.kind intValue] == 2){
-        [self.pictuerView removeFromSuperview];
-        [self.contentView addSubview:self.videoView];
-        [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(self.contentView.mas_left).offset(0);
-            make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
-            make.right.mas_equalTo(self.contentView.mas_right).offset(0);
-            make.height.mas_equalTo(210);
-        }];
-        [self.contentView layoutIfNeeded];
+        self.pictuerView.hidden = YES;
+        self.videoView.hidden = NO;
         self.videoView.model = model;
     }
     
@@ -145,38 +145,21 @@
         self.likeBtn.selected = YES;
     }
     
-    CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
-    view.userInteractionEnabled = YES;
-    view.navc = self.navc;
-    view.backgroundColor = [UIColor whiteColor];
-    [self.tagView addSubview:view];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    NSString *path = [paths objectAtIndex:0];
-    NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    [fm createFileAtPath:filename contents:nil attributes:nil];
-    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-    [self.tagMAry removeAllObjects];
-    if (model.tags.count > 0) {
+}
+
+-(void)setCtData:(CoreTextData *)ctData{
+    if (self.model.tags.count > 0) {
         self.tagtagLabel.hidden = NO;
-        for (int i = 0; i < model.tags.count; i ++) {
-            NSDictionary *dict = model.tags[i];
-            NSDictionary *cellDict = @{
-                                       @"color" : @"blue",
-                                       @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
-                                       @"url" : @"hh",
-                                       @"type" : @"link"
-                                       };
-            [self.tagMAry addObject:cellDict];
-        }
-        config.width = SCREEN_WIDTH;
-        [self.tagMAry writeToFile:filename atomically:YES];
+        _ctData = ctData;
+        CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
+        view.userInteractionEnabled = YES;
+        view.navc = self.navc;
+        view.backgroundColor = [UIColor whiteColor];
+        [self.tagView addSubview:view];
+        view.data = ctData;
     } else {
         self.tagtagLabel.hidden = YES;
     }
-    CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-    view.data = data;
-    
 }
 
 @end

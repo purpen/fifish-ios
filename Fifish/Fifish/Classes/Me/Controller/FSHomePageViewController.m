@@ -163,7 +163,9 @@ static NSString * const fucosCellId = @"fucos";
     if (offsetY > NAVBAR_CHANGE_POINT) {
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+        [self.navigationController.navigationBar setShadowImage:nil];
     } else {
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
     }
 }
@@ -239,8 +241,11 @@ static NSString * const fucosCellId = @"fucos";
     [super viewDidDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     self.contentTableView.delegate = nil;
-    [self.navigationController.navigationBar lt_reset];
-    [self.navigationController.navigationBar setShadowImage:nil];
+//    [self.navigationController.navigationBar lt_reset];
+//    [self.navigationController.navigationBar setShadowImage:nil];
+    UIColor *color = [UIColor whiteColor];
+    [self.navigationController.navigationBar lt_setBackgroundColor:color];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];
 }
 
 #pragma mark - 懒加载顶部渐变层

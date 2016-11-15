@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FSHomePictuerView.h"
 #import "FSHomeVideoView.h"
-
+#import "CoreTextData.h"
 @class FSZuoPin;
 
 
@@ -35,5 +35,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLabel_height;
 /**  */
 @property (nonatomic, strong) UIViewController *myViewController;
+/**  */
+@property (nonatomic, strong) CoreTextData *ctData;
 
 @end
