@@ -9,6 +9,7 @@
 #import "FSBaseViewController.h"
 #import "FSUserModel.h"
 #import "FSLoginViewController.h"
+#import "UINavigationBar+FSExtension.h"
 
 @interface FSBaseViewController ()
 
@@ -19,6 +20,10 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    UIColor *color = [UIColor colorWithHexString:@"#ffffff"];
+    [self.navigationController.navigationBar setShadowImage:nil];
+    [self.navigationController.navigationBar lt_setBackgroundColor:color];
+    [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];
 }
 
 - (void)viewDidLoad {
