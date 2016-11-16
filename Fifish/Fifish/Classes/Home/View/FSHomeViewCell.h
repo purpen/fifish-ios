@@ -38,5 +38,10 @@
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
 @property (weak, nonatomic) IBOutlet UIView *bottom_line_view;
+/**  */
+@property (nonatomic, strong) NSMutableAttributedString *contentString;
+/** 
+ */
+@property (nonatomic, assign) NSInteger hideFlag;
 
 @end

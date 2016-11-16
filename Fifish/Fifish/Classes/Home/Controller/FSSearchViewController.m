@@ -65,10 +65,19 @@
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *contentStringAry;
 
 @end
 
 @implementation FSSearchViewController
+
+-(NSMutableArray *)contentStringAry{
+    if (!_contentStringAry) {
+        _contentStringAry = [NSMutableArray array];
+    }
+    return _contentStringAry;
+}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -221,6 +230,7 @@
         FSZuoPin *model = self.stuffAry[indexPath.section];
         cell.model = model;
         cell.ctData = self.ctDataAry[indexPath.section];
+        cell.contentString = self.contentStringAry[indexPath.section];
         cell.fucosBtn.tag = indexPath.section;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
@@ -430,7 +440,14 @@
                 CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
                 // 计算文字的高度
                 CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-                CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+                CGFloat gaoDu = 0;
+                if (textH <= 140) {
+                    NSInteger n = textH / 10;
+                    gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    NSInteger n = 140 / 10;
+                    gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
             [self.ctDataAry removeAllObjects];
@@ -462,6 +479,15 @@
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
+            }
+            [self.contentStringAry removeAllObjects];
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                [paragraphStyle  setLineSpacing:5];
+                NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
+                [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+                [self.contentStringAry addObject:setString];
             }
         }
         [self.myTableView reloadData];
@@ -514,8 +540,15 @@
                 // 文字的最大尺寸
                 CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
                 // 计算文字的高度
-                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-                CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+                CGFloat gaoDu = 0;
+                if (textH <= 140) {
+                    NSInteger n = textH / 10;
+                    gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    NSInteger n = 140 / 10;
+                    gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
             for (int i = 0; i < self.stuffAry.count; i++) {
@@ -546,6 +579,14 @@
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
+            }
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                [paragraphStyle  setLineSpacing:5];
+                NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
+                [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+                [self.contentStringAry addObject:setString];
             }
         }
         [self.myTableView reloadData];

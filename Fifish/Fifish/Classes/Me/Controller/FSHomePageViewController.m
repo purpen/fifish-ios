@@ -242,7 +242,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    self.contentTableView.delegate = nil;
     UIColor *color = [UIColor colorWithHexString:@"#ffffff"];
     [self.navigationController.navigationBar lt_setBackgroundColor:color];
     [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];

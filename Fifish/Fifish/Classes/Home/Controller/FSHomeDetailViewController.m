@@ -183,12 +183,23 @@ static NSString * const FSCommentId = @"comment";
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         cell.ctData = data;
+        NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle  setLineSpacing:6];
+        NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:self.model.content];
+        [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.model.content length])];
+        cell.contentString = setString;
         // 文字的最大尺寸
         CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
         // 计算文字的高度
-        CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-        CGFloat gaoDu = textH + 374;
-        
+        CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+        CGFloat gaoDu = 0;
+        if (textH <= 1000) {
+            NSInteger n = textH / 10;
+            gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+        } else {
+            NSInteger n = 1000 / 10;
+            gaoDu = (1000 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+        }
         cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
         cell.bottomViewHegiht = 0;
         [cell.contentView layoutIfNeeded];
@@ -235,11 +246,17 @@ static NSString * const FSCommentId = @"comment";
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             cell.ctData = data;
             // 文字的最大尺寸
-            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
+            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 20 , MAXFLOAT);
             // 计算文字的高度
-            CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
-            
+            CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+            CGFloat gaoDu = 0;
+            if (textH <= 1000) {
+                NSInteger n = textH / 10;
+                gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                NSInteger n = 1000 / 10;
+                gaoDu = (1000 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            }
             cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
             cell.bottomViewHegiht = 0;
             [cell.contentView layoutIfNeeded];

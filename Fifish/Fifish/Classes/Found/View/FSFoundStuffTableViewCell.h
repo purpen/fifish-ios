@@ -33,5 +33,7 @@
 @property (nonatomic, strong) UIViewController *myViewController;
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
+/**  */
+@property (nonatomic, strong) NSMutableAttributedString *contentString;
 
 @end

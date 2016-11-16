@@ -59,10 +59,19 @@
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *contentStringAry;
 
 @end
 
 @implementation FSFoundViewController
+
+-(NSMutableArray *)contentStringAry{
+    if (!_contentStringAry) {
+        _contentStringAry = [NSMutableArray array];
+    }
+    return _contentStringAry;
+}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -191,7 +200,14 @@
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = textH + 374;
+            CGFloat gaoDu = 0;
+            if (textH <= 140) {
+                NSInteger n = textH / 10;
+                gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                NSInteger n = 140 / 10;
+                gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         for (int i = 0; i < self.stuffAry.count; i++) {
@@ -222,6 +238,14 @@
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             [self.ctDataAry addObject:data];
+        }
+        for (int i = 0; i < self.stuffAry.count; i++) {
+            FSZuoPin *model = self.stuffAry[i];
+            NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            [paragraphStyle  setLineSpacing:5];
+            NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
+            [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+            [self.contentStringAry addObject:setString];
         }
         [self.contentTableView reloadData];
         [self.contentTableView.mj_footer endRefreshing];
@@ -254,8 +278,15 @@
             // 文字的最大尺寸
             CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
             // 计算文字的高度
-            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = textH + 374;
+            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+            CGFloat gaoDu = 0;
+            if (textH <= 140) {
+                NSInteger n = textH / 10;
+                gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                NSInteger n = 140 / 10;
+                gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+            }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         [self.ctDataAry removeAllObjects];
@@ -287,6 +318,15 @@
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             [self.ctDataAry addObject:data];
+        }
+        [self.contentStringAry removeAllObjects];
+        for (int i = 0; i < self.stuffAry.count; i++) {
+            FSZuoPin *model = self.stuffAry[i];
+            NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            [paragraphStyle  setLineSpacing:5];
+            NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
+            [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+            [self.contentStringAry addObject:setString];
         }
         [self.contentTableView reloadData];
         [self.contentTableView.mj_header endRefreshing];
@@ -432,6 +472,7 @@
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.model = self.stuffAry[indexPath.section - 2];
         cell.ctData = self.ctDataAry[indexPath.section - 2];
+        cell.contentString = self.contentStringAry[indexPath.section - 2];
         cell.myViewController = self;
         cell.fucosBtn.tag = indexPath.section - 2;
         cell.navc = self.navigationController;
@@ -449,6 +490,13 @@
         return cell;
     }
     return nil;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.model = self.stuffAry[indexPath.section - 2];
+    vc.title = NSLocalizedString(@"comments", nil);
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 视频播放

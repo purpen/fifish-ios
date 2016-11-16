@@ -6,11 +6,11 @@
 //  Copyright © 2016年 Dong. All rights reserved.
 //
 
-#import "FSBaseViewController.h"
+#import <UIKit/UIKit.h>
 #import "FSImageModel.h"
 #import "FSVideoModel.h"
 
-@interface FSReleasePictureViewController : FSBaseViewController
+@interface FSReleasePictureViewController : UIViewController
 
 /**
  媒体模型
