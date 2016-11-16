@@ -291,6 +291,7 @@ static NSString * const CellId = @"home";
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"首页  %@", result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
@@ -304,14 +305,12 @@ static NSString * const CellId = @"home";
             // 计算文字的高度
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
             CGFloat gaoDu = 0;
-            if (textH <= 140) {
+            if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
                 [self.hideAry addObject:@(1)];
-                NSInteger n = textH / 10;
-                gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
             } else {
                 [self.hideAry addObject:@(0)];
-                NSInteger n = 140 / 10;
-                gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (65 + 374) / 667.0 * SCREEN_HEIGHT;
             }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
@@ -393,14 +392,12 @@ static NSString * const CellId = @"home";
             // 计算文字的高度
             CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
             CGFloat gaoDu = 0;
-            if (textH <= 140) {
+            if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
                 [self.hideAry addObject:@(1)];
-                NSInteger n = textH / 10;
-                gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
             } else {
                 [self.hideAry addObject:@(0)];
-                NSInteger n = 140 / 10;
-                gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (65 + 374) / 667.0 * SCREEN_HEIGHT;
             }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }

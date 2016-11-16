@@ -52,7 +52,7 @@
                             <rect key="frame" x="119" y="70" width="9" height="11"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I65-qp-8nH" userLabel="地址">
-                            <rect key="frame" x="130" y="75.5" width="0.0" height="0.0"/>
+                            <rect key="frame" x="130" y="76" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -238,10 +238,10 @@
                     <rect key="frame" x="0.0" y="215" width="607" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_prasied" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-2d-ekf">
-                            <rect key="frame" x="15" y="13" width="20" height="18"/>
+                            <rect key="frame" x="15" y="15" width="16" height="15"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赞" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQV-yw-915">
-                            <rect key="frame" x="50" y="13" width="16" height="18"/>
+                            <rect key="frame" x="46" y="13" width="16" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -375,7 +375,7 @@
         <image name="me_bg_small" width="375" height="160"/>
         <image name="me_go-1" width="6" height="12"/>
         <image name="me_pen" width="15" height="15"/>
-        <image name="me_prasied" width="20" height="18"/>
+        <image name="me_prasied" width="16" height="15"/>
         <image name="me_set" width="17" height="17"/>
     </resources>
 </document>

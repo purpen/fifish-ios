@@ -41,7 +41,7 @@
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
-@property (weak, nonatomic) IBOutlet UILabel *hideView;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @end
 
