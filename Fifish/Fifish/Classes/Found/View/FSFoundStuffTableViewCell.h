@@ -33,5 +33,10 @@
 @property (nonatomic, strong) UIViewController *myViewController;
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
+/**  */
+@property (nonatomic, strong) NSAttributedString *contentString;
+/**
+ */
+@property (nonatomic, assign) NSInteger hideFlag;
 
 @end

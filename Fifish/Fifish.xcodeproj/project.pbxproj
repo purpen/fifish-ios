@@ -246,6 +246,8 @@
 		1F4202241D48DB8300D3E6CB /* FSHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4202221D48DB8300D3E6CB /* FSHomePageViewController.m */; };
 		1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4202231D48DB8300D3E6CB /* FSHomePageViewController.xib */; };
 		1F4202591D49B36000D3E6CB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4202581D49B36000D3E6CB /* ImageIO.framework */; };
+		1F4847081DDBEF6A00161564 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4847071DDBEF6A00161564 /* Foundation+Log.m */; };
+		1F48470B1DDD4C6600161564 /* NSString+FSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F48470A1DDD4C6600161564 /* NSString+FSAttributedString.m */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -989,6 +991,9 @@
 		1F4202221D48DB8300D3E6CB /* FSHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomePageViewController.m; sourceTree = "<group>"; };
 		1F4202231D48DB8300D3E6CB /* FSHomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomePageViewController.xib; sourceTree = "<group>"; };
 		1F4202581D49B36000D3E6CB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1F4847071DDBEF6A00161564 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		1F4847091DDD4C6600161564 /* NSString+FSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FSAttributedString.h"; sourceTree = "<group>"; };
+		1F48470A1DDD4C6600161564 /* NSString+FSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FSAttributedString.m"; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2504,6 +2509,7 @@
 		1F04245B1D51F3F20071A1D6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1F4847071DDBEF6A00161564 /* Foundation+Log.m */,
 				1F04245C1D51F3F20071A1D6 /* Network */,
 				1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */,
 				1F32F8BF1DD1775B000E2FF6 /* FSShareViewController.m */,
@@ -3053,6 +3059,8 @@
 				1F8011A91DADDBB700B320C7 /* UIImage+FSWatermark.m */,
 				1F9FA4981DD969B400A1806A /* UINavigationBar+FSExtension.h */,
 				1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */,
+				1F4847091DDD4C6600161564 /* NSString+FSAttributedString.h */,
+				1F48470A1DDD4C6600161564 /* NSString+FSAttributedString.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -4136,6 +4144,7 @@
 				1FDE28E81D93827D00566A73 /* FSFoundStuffTableViewCell.m in Sources */,
 				1F0424521D51F3C30071A1D6 /* README.md in Sources */,
 				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
+				1F48470B1DDD4C6600161564 /* NSString+FSAttributedString.m in Sources */,
 				1F0219B51D79500A003A8A11 /* FMDatabase.m in Sources */,
 				0436AF461DACE5C2001E6808 /* FSLordKelvinFilter.m in Sources */,
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
@@ -4252,6 +4261,7 @@
 				047BDBE61D7EFD4100A1C0AC /* FSliveSettingsTableViewCell.m in Sources */,
 				1F9FA49A1DD969B400A1806A /* UINavigationBar+FSExtension.m in Sources */,
 				48FC207F1DBC4A08001D71F4 /* CTFrameParserConfig.m in Sources */,
+				1F4847081DDBEF6A00161564 /* Foundation+Log.m in Sources */,
 				04903C4C1D6AFC6800E3E041 /* FSFileManager.m in Sources */,
 				1F7EDE941D45EF6900ABED5D /* FSEquipmentViewController.m in Sources */,
 				1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */,

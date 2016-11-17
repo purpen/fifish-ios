@@ -29,6 +29,7 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
+#import "NSString+FSAttributedString.h"
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -65,10 +66,28 @@
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *contentStringAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *hideAry;
 
 @end
 
 @implementation FSSearchViewController
+
+-(NSMutableArray *)hideAry{
+    if (!_hideAry) {
+        _hideAry = [NSMutableArray array];
+    }
+    return _hideAry;
+}
+
+-(NSMutableArray *)contentStringAry{
+    if (!_contentStringAry) {
+        _contentStringAry = [NSMutableArray array];
+    }
+    return _contentStringAry;
+}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -221,6 +240,8 @@
         FSZuoPin *model = self.stuffAry[indexPath.section];
         cell.model = model;
         cell.ctData = self.ctDataAry[indexPath.section];
+        cell.contentString = self.contentStringAry[indexPath.section];
+        cell.hideFlag = [self.hideAry[indexPath.section] integerValue];
         cell.fucosBtn.tag = indexPath.section;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.navi = self.navigationController;
@@ -424,13 +445,18 @@
                 [self.stuffAry addObject:model];
             }
             [self.cellHeightAry removeAllObjects];
+            [self.hideAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                // 文字的最大尺寸
-                CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-                // 计算文字的高度
-                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-                CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
             [self.ctDataAry removeAllObjects];
@@ -444,7 +470,6 @@
                 CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
                 [self.tagMAry removeAllObjects];
                 if (model.tags.count > 0) {
-                    //                self.tagtagLabel.hidden = NO;
                     for (int i = 0; i < model.tags.count; i ++) {
                         NSDictionary *dict = model.tags[i];
                         NSDictionary *cellDict = @{
@@ -458,10 +483,15 @@
                     config.width = SCREEN_WIDTH;
                     [self.tagMAry writeToFile:filename atomically:YES];
                 } else {
-                    //                self.tagtagLabel.hidden = YES;
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
+            }
+            [self.contentStringAry removeAllObjects];
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
             }
         }
         [self.myTableView reloadData];
@@ -509,15 +539,21 @@
                 [self.stuffAry addObject:model];
             }
             [self.cellHeightAry removeAllObjects];
+            [self.hideAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                // 文字的最大尺寸
-                CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-                // 计算文字的高度
-                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-                CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
+            [self.ctDataAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -528,7 +564,6 @@
                 CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
                 [self.tagMAry removeAllObjects];
                 if (model.tags.count > 0) {
-                    //                self.tagtagLabel.hidden = NO;
                     for (int i = 0; i < model.tags.count; i ++) {
                         NSDictionary *dict = model.tags[i];
                         NSDictionary *cellDict = @{
@@ -542,10 +577,15 @@
                     config.width = SCREEN_WIDTH;
                     [self.tagMAry writeToFile:filename atomically:YES];
                 } else {
-                    //                self.tagtagLabel.hidden = YES;
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
+            }
+            [self.contentStringAry removeAllObjects];
+            for (int i = 0; i < self.stuffAry.count; i++) {
+                FSZuoPin *model = self.stuffAry[i];
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
             }
         }
         [self.myTableView reloadData];

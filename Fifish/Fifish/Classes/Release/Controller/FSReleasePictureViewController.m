@@ -52,7 +52,7 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     self.navigationController.navigationBar.barTintColor = FishBlackColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:FishBlackColor,NSForegroundColorAttributeName,nil]];
 }
 
 -(NSMutableArray *)tagsAry{
@@ -334,7 +334,13 @@
 -(void)setUpNavi{
     self.navigationItem.title = NSLocalizedString(@"share", nil);
     UIBarButtonItem *releaseItem = [UIBarButtonItem itemWithTitle:NSLocalizedString(@"release", nil) target:self action:@selector(releaseClick)];
+    UIBarButtonItem *backItem = [UIBarButtonItem itemWithImage:@"navi_back" highImage:nil title:nil target:self action:@selector(backClick)];
+    self.navigationItem.leftBarButtonItem = backItem;
     self.navigationItem.rightBarButtonItem = releaseItem;
+}
+
+-(void)backClick{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)releaseClick{

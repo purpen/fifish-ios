@@ -40,6 +40,7 @@
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @end
 
@@ -75,6 +76,7 @@
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
+        make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
     }];
     [self.contentView addSubview:self.videoView];
     [_videoView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -82,6 +84,7 @@
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
+        make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
     }];
 }
 
@@ -129,7 +132,6 @@
     } else {
         self.addressIcon.hidden = NO;
     }
-    self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         self.videoView.hidden = YES;
         self.pictuerView.hidden = NO;
@@ -154,6 +156,16 @@
         self.likeBtn.selected = YES;
     }
     
+}
+
+-(void)setHideFlag:(NSInteger)hideFlag{
+    _hideFlag = hideFlag;
+    self.hideView.hidden = hideFlag;
+}
+
+-(void)setContentString:(NSAttributedString *)contentString{
+    _contentString = contentString;
+    [self.contentLabel setAttributedText:contentString];
 }
 
 -(void)setCtData:(CoreTextData *)ctData{

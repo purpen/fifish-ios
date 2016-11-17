@@ -41,6 +41,7 @@
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @end
 
@@ -59,6 +60,7 @@
         make.left.mas_equalTo(self.contentView.mas_left).offset(0);
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
     }];
     [self.contentView addSubview:self.videoView];
@@ -66,6 +68,7 @@
         make.left.mas_equalTo(self.contentView.mas_left).offset(0);
         make.top.mas_equalTo(self.headImageView.mas_bottom).offset(8);
         make.right.mas_equalTo(self.contentView.mas_right).offset(0);
+        make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
     }];
 }
@@ -129,7 +132,6 @@
     } else {
         self.addressIcon.hidden = NO;
     }
-    self.contentLabel.text = model.content;
     if ([model.kind intValue] == 1) {
         self.videoView.hidden = YES;
         self.pictuerView.hidden = NO;
@@ -153,6 +155,16 @@
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
         self.fucosBtn.selected = YES;
     }
+}
+
+-(void)setHideFlag:(NSInteger)hideFlag{
+    _hideFlag = hideFlag;
+    self.hideView.hidden = hideFlag;
+}
+
+-(void)setContentString:(NSAttributedString *)contentString{
+    _contentString = contentString;
+    [self.contentLabel setAttributedText:contentString];
 }
 
 -(void)setCtData:(CoreTextData *)ctData{

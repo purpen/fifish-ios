@@ -36,6 +36,7 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
+#import "NSString+FSAttributedString.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -59,12 +60,30 @@
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *contentStringAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *hideAry;
 
 @end
 
 static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
+
+-(NSMutableArray *)hideAry{
+    if (!_hideAry) {
+        _hideAry = [NSMutableArray array];
+    }
+    return _hideAry;
+}
+
+-(NSMutableArray *)contentStringAry{
+    if (!_contentStringAry) {
+        _contentStringAry = [NSMutableArray array];
+    }
+    return _contentStringAry;
+}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -278,13 +297,18 @@ static NSString * const CellId = @"home";
         NSArray *rows = result[@"data"];
          self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.cellHeightAry removeAllObjects];
+        [self.hideAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            // 文字的最大尺寸
-            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-            // 计算文字的高度
-            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            CGFloat gaoDu = 0;
+            if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                [self.hideAry addObject:@(1)];
+                gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                [self.hideAry addObject:@(0)];
+                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+            }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         [self.ctDataAry removeAllObjects];
@@ -314,6 +338,12 @@ static NSString * const CellId = @"home";
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             [self.ctDataAry addObject:data];
+        }
+        [self.contentStringAry removeAllObjects];
+        for (int i = 0; i < self.modelAry.count; i++) {
+            FSZuoPin *model = self.modelAry[i];
+            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+            [self.contentStringAry addObject:setString];
         }
          [self.contenTableView reloadData];
          [self.contenTableView.mj_header endRefreshing];
@@ -349,15 +379,21 @@ static NSString * const CellId = @"home";
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.modelAry addObjectsFromArray:ary];
         [self.cellHeightAry removeAllObjects];
+        [self.hideAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            // 文字的最大尺寸
-            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-            // 计算文字的高度
-            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
-            CGFloat gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            CGFloat gaoDu = 0;
+            if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                [self.hideAry addObject:@(1)];
+                gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                [self.hideAry addObject:@(0)];
+                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+            }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
+        [self.ctDataAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -368,7 +404,6 @@ static NSString * const CellId = @"home";
             CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
             [self.tagMAry removeAllObjects];
             if (model.tags.count > 0) {
-                //                self.tagtagLabel.hidden = NO;
                 for (int i = 0; i < model.tags.count; i ++) {
                     NSDictionary *dict = model.tags[i];
                     NSDictionary *cellDict = @{
@@ -382,10 +417,15 @@ static NSString * const CellId = @"home";
                 config.width = SCREEN_WIDTH;
                 [self.tagMAry writeToFile:filename atomically:YES];
             } else {
-                //                self.tagtagLabel.hidden = YES;
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             [self.ctDataAry addObject:data];
+        }
+        [self.contentStringAry removeAllObjects];
+        for (int i = 0; i < self.modelAry.count; i++) {
+            FSZuoPin *model = self.modelAry[i];
+            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+            [self.contentStringAry addObject:setString];
         }
         [self.contenTableView reloadData];
         [self.contenTableView.mj_footer endRefreshing];
@@ -497,9 +537,11 @@ static NSString * const CellId = @"home";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     cell.navi = self.navigationController;
+    cell.contentString = self.contentStringAry[indexPath.section];
     cell.myViewController = self;
     cell.model = self.modelAry[indexPath.section];
     cell.ctData = self.ctDataAry[indexPath.section];
+    cell.hideFlag = [self.hideAry[indexPath.section] integerValue];
     cell.likeBtn.tag = indexPath.section;
     cell.commendBtn.tag = indexPath.section;
     [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
