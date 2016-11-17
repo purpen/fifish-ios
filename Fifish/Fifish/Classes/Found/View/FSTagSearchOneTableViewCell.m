@@ -47,6 +47,7 @@
 }
 
 -(void)tagRequest{
+    
     NSString *encodedString = [[NSString stringWithFormat:@"/tags/%@",self.placeString] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     FBRequest *request = [FBAPI getWithUrlString:encodedString requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -59,6 +60,7 @@
     } failure:^(FBRequest *request, NSError *error) {
         
     }];
+    
 }
 
 -(UICollectionView *)myCollectionView{
