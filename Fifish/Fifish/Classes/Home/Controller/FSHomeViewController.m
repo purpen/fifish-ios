@@ -342,8 +342,14 @@ static NSString * const CellId = @"home";
         [self.contentStringAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            [self.contentStringAry addObject:setString];
+            NSInteger flag = [self.hideAry[i] integerValue];
+            if (flag) {
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
+            } else {
+                NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
+            }
         }
          [self.contenTableView reloadData];
          [self.contenTableView.mj_header endRefreshing];
@@ -424,8 +430,14 @@ static NSString * const CellId = @"home";
         [self.contentStringAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            [self.contentStringAry addObject:setString];
+            NSInteger flag = [self.hideAry[i] integerValue];
+            if (flag) {
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
+            } else {
+                NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                [self.contentStringAry addObject:setString];
+            }
         }
         [self.contenTableView reloadData];
         [self.contenTableView.mj_footer endRefreshing];

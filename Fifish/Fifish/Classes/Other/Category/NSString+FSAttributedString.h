@@ -22,6 +22,17 @@
 -(NSAttributedString*)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor*)textcolor textFont:(UIFont*)font;
 
 /**
+ * 设置段落样式(后四个字符隐藏的)
+ *
+ *  行高
+ *  字体颜色
+ *  字体
+ 
+ *   return 富文本
+ */
+-(NSAttributedString*)stringHideLastFourWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor*)textcolor textFont:(UIFont*)font;
+
+/**
  * 计算富文本字体高度
  *
  *  行高

@@ -224,8 +224,14 @@
             [self.contentStringAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
+                NSInteger flag = [self.hideAry[i] integerValue];
+                if (flag) {
+                    NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                    [self.contentStringAry addObject:setString];
+                } else {
+                    NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                    [self.contentStringAry addObject:setString];
+                }
             }
         }
         [self.myTableView reloadData];
@@ -318,8 +324,14 @@
             [self.contentStringAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
+                NSInteger flag = [self.hideAry[i] integerValue];
+                if (flag) {
+                    NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                    [self.contentStringAry addObject:setString];
+                } else {
+                    NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+                    [self.contentStringAry addObject:setString];
+                }
             }
         }
         [self.myTableView reloadData];
@@ -513,7 +525,7 @@
             cell.navi = self.navigationController;
             cell.model = self.stuffAry[indexPath.section - 1];
             cell.ctData = self.contentStringAry[indexPath.section - 1];
-            cell.hideFlag = self.hideAry[indexPath.section - 1];
+            cell.hideFlag = [self.hideAry[indexPath.section - 1] integerValue];
             cell.contentString = self.contentStringAry[indexPath.section - 1];
             cell.likeBtn.tag = indexPath.section - 1;
             cell.commendBtn.tag = indexPath.section - 1;
