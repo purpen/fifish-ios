@@ -292,7 +292,6 @@ static NSString * const CellId = @"home";
                              };
     FBRequest *request = [FBAPI getWithUrlString:@"/stuffs" requestDictionary:params delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"首页  %@", result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
@@ -308,7 +307,7 @@ static NSString * const CellId = @"home";
                 gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
             } else {
                 [self.hideAry addObject:@(0)];
-                gaoDu = (65 + 378) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
             }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
@@ -380,22 +379,21 @@ static NSString * const CellId = @"home";
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.modelAry addObjectsFromArray:ary];
         [self.cellHeightAry removeAllObjects];
+        [self.hideAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            // 文字的最大尺寸
-            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-            // 计算文字的高度
-            CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
             CGFloat gaoDu = 0;
             if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
                 [self.hideAry addObject:@(1)];
-                gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
             } else {
                 [self.hideAry addObject:@(0)];
-                gaoDu = (65 + 374) / 667.0 * SCREEN_HEIGHT;
+                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
             }
             [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
+        [self.ctDataAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -423,12 +421,10 @@ static NSString * const CellId = @"home";
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             [self.ctDataAry addObject:data];
         }
+        [self.contentStringAry removeAllObjects];
         for (int i = 0; i < self.modelAry.count; i++) {
             FSZuoPin *model = self.modelAry[i];
-            NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            [paragraphStyle  setLineSpacing:6];
-            NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
-            [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
             [self.contentStringAry addObject:setString];
         }
         [self.contenTableView reloadData];

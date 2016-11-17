@@ -187,7 +187,6 @@ static NSString * const FSCommentId = @"comment";
         NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
         cell.contentString = setString;
         CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-        NSLog(@"textHeight  %f", textH);
         CGFloat gaoDu = 0;
         cell.hideFlag = 1;
         gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
@@ -236,13 +235,12 @@ static NSString * const FSCommentId = @"comment";
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
             cell.ctData = data;
-            // 文字的最大尺寸
-            CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width - 20 , MAXFLOAT);
-            // 计算文字的高度
-            CGFloat textH = [self.model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+            NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+            cell.contentString = setString;
+            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
             CGFloat gaoDu = 0;
             cell.hideFlag = 1;
-            gaoDu = (textH + 374) / 667.0 * SCREEN_HEIGHT;
+            gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
             cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
             cell.bottomViewHegiht = 0;
             [cell.contentView layoutIfNeeded];

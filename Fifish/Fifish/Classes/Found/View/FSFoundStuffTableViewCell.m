@@ -40,6 +40,7 @@
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @end
 
@@ -157,7 +158,12 @@
     
 }
 
--(void)setContentString:(NSMutableAttributedString *)contentString{
+-(void)setHideFlag:(NSInteger)hideFlag{
+    _hideFlag = hideFlag;
+    self.hideView.hidden = hideFlag;
+}
+
+-(void)setContentString:(NSAttributedString *)contentString{
     _contentString = contentString;
     [self.contentLabel setAttributedText:contentString];
 }

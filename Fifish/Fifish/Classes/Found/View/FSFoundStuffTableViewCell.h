@@ -34,6 +34,9 @@
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
 /**  */
-@property (nonatomic, strong) NSMutableAttributedString *contentString;
+@property (nonatomic, strong) NSAttributedString *contentString;
+/**
+ */
+@property (nonatomic, assign) NSInteger hideFlag;
 
 @end

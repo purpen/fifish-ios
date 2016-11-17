@@ -24,6 +24,7 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
+#import "NSString+FSAttributedString.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -59,10 +60,19 @@
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *contentStringAry;
+/**  */
+@property (nonatomic, strong) NSMutableArray *hideAry;
 
 @end
 
 @implementation FSTagSearchViewController
+
+-(NSMutableArray *)hideAry{
+    if (!_hideAry) {
+        _hideAry = [NSMutableArray array];
+    }
+    return _hideAry;
+}
 
 -(NSMutableArray *)contentStringAry{
     if (!_contentStringAry) {
@@ -169,19 +179,17 @@
                 [self.stuffAry addObject:model];
             }
             [self.cellHeightAry removeAllObjects];
+            [self.hideAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                // 文字的最大尺寸
-                CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-                // 计算文字的高度
-                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
                 CGFloat gaoDu = 0;
-                if (textH <= 140) {
-                    NSInteger n = textH / 10;
-                    gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
                 } else {
-                    NSInteger n = 140 / 10;
-                    gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
                 }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
@@ -196,7 +204,6 @@
                 CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
                 [self.tagMAry removeAllObjects];
                 if (model.tags.count > 0) {
-                    //                self.tagtagLabel.hidden = NO;
                     for (int i = 0; i < model.tags.count; i ++) {
                         NSDictionary *dict = model.tags[i];
                         NSDictionary *cellDict = @{
@@ -210,7 +217,6 @@
                     config.width = SCREEN_WIDTH;
                     [self.tagMAry writeToFile:filename atomically:YES];
                 } else {
-                    //                self.tagtagLabel.hidden = YES;
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
@@ -218,10 +224,7 @@
             [self.contentStringAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-                [paragraphStyle  setLineSpacing:5];
-                NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
-                [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
                 [self.contentStringAry addObject:setString];
             }
         }
@@ -270,23 +273,21 @@
                 [self.stuffAry addObject:model];
             }
             [self.cellHeightAry removeAllObjects];
+            [self.hideAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                // 文字的最大尺寸
-                CGSize maxSize = CGSizeMake([UIScreen mainScreen].bounds.size.width , MAXFLOAT);
-                // 计算文字的高度
-                CGFloat textH = [model.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
+                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
                 CGFloat gaoDu = 0;
-                if (textH <= 140) {
-                    NSInteger n = textH / 10;
-                    gaoDu = (textH + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
                 } else {
-                    NSInteger n = 140 / 10;
-                    gaoDu = (140 + 374 + n * 8) / 667.0 * SCREEN_HEIGHT;
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
                 }
                 [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
-
+            [self.ctDataAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -297,7 +298,6 @@
                 CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
                 [self.tagMAry removeAllObjects];
                 if (model.tags.count > 0) {
-                    //                self.tagtagLabel.hidden = NO;
                     for (int i = 0; i < model.tags.count; i ++) {
                         NSDictionary *dict = model.tags[i];
                         NSDictionary *cellDict = @{
@@ -311,17 +311,14 @@
                     config.width = SCREEN_WIDTH;
                     [self.tagMAry writeToFile:filename atomically:YES];
                 } else {
-                    //                self.tagtagLabel.hidden = YES;
                 }
                 CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
                 [self.ctDataAry addObject:data];
             }
+            [self.contentStringAry removeAllObjects];
             for (int i = 0; i < self.stuffAry.count; i++) {
                 FSZuoPin *model = self.stuffAry[i];
-                NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-                [paragraphStyle  setLineSpacing:5];
-                NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:model.content];
-                [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [model.content length])];
+                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
                 [self.contentStringAry addObject:setString];
             }
         }
@@ -515,6 +512,8 @@
             FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSHomeViewCell"];
             cell.navi = self.navigationController;
             cell.model = self.stuffAry[indexPath.section - 1];
+            cell.ctData = self.contentStringAry[indexPath.section - 1];
+            cell.hideFlag = self.hideAry[indexPath.section - 1];
             cell.contentString = self.contentStringAry[indexPath.section - 1];
             cell.likeBtn.tag = indexPath.section - 1;
             cell.commendBtn.tag = indexPath.section - 1;
