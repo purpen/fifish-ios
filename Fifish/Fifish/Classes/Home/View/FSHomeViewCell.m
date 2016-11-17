@@ -162,7 +162,7 @@
     self.hideView.hidden = hideFlag;
 }
 
--(void)setContentString:(NSMutableAttributedString *)contentString{
+-(void)setContentString:(NSAttributedString *)contentString{
     _contentString = contentString;
     [self.contentLabel setAttributedText:contentString];
 }
