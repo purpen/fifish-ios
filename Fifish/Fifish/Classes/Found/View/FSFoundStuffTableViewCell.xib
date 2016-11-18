@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDT-IC-oV5" userLabel="标签" customClass="CTDisplayView">
-                        <rect key="frame" x="0.0" y="315" width="370" height="44"/>
+                        <rect key="frame" x="0.0" y="314" width="370" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqr-nL-6Yf" customClass="CTDisplayView">
                                 <rect key="frame" x="25" y="3" width="330" height="28"/>
@@ -75,14 +75,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX9-57-Eau">
-                        <rect key="frame" x="0.0" y="358" width="370" height="1"/>
+                        <rect key="frame" x="0.0" y="357" width="370" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="0.67085830479999997" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="4e0-HR-ubN"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9O-EF-VPs" userLabel="内容">
-                        <rect key="frame" x="0.0" y="248" width="370" height="67"/>
+                        <rect key="frame" x="0.0" y="247" width="370" height="67"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7W-wn-UwT" userLabel="内容">
                                 <rect key="frame" x="15" y="0.0" width="340" height="67"/>
@@ -146,8 +146,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-Rs-QJx" userLabel="工具">
-                        <rect key="frame" x="0.0" y="204" width="370" height="44"/>
+                        <rect key="frame" x="0.0" y="203" width="370" height="44"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6L5-2G-KtT">
+                                <rect key="frame" x="37" y="6" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.56078431370000004" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtR-SI-3a2" userLabel="喜欢">
                                 <rect key="frame" x="15" y="11" width="19" height="22"/>
                                 <state key="normal" image="home_like"/>
@@ -174,12 +180,14 @@
                             <constraint firstItem="UAt-H2-CFk" firstAttribute="centerY" secondItem="hCc-Rs-QJx" secondAttribute="centerY" id="2Ry-TN-lav"/>
                             <constraint firstItem="KtR-SI-3a2" firstAttribute="leading" secondItem="hCc-Rs-QJx" secondAttribute="leading" constant="15" id="3XX-Ss-yKx"/>
                             <constraint firstItem="UAt-H2-CFk" firstAttribute="leading" secondItem="dCl-TA-amC" secondAttribute="trailing" constant="40" id="8Bb-jO-CXl"/>
+                            <constraint firstItem="6L5-2G-KtT" firstAttribute="top" secondItem="KtR-SI-3a2" secondAttribute="top" constant="-5" id="Emy-7M-CX7"/>
                             <constraint firstAttribute="trailing" secondItem="f2z-9i-ung" secondAttribute="trailing" constant="15" id="HaM-Ie-ojc"/>
                             <constraint firstAttribute="height" constant="44" id="IJN-JG-Cmb"/>
                             <constraint firstItem="f2z-9i-ung" firstAttribute="centerY" secondItem="hCc-Rs-QJx" secondAttribute="centerY" id="eox-Tw-IYt"/>
                             <constraint firstItem="KtR-SI-3a2" firstAttribute="centerY" secondItem="hCc-Rs-QJx" secondAttribute="centerY" id="fLH-9B-20t"/>
                             <constraint firstItem="dCl-TA-amC" firstAttribute="centerY" secondItem="hCc-Rs-QJx" secondAttribute="centerY" id="haH-oK-Ldq"/>
                             <constraint firstItem="dCl-TA-amC" firstAttribute="leading" secondItem="KtR-SI-3a2" secondAttribute="trailing" constant="40" id="nqr-ir-C5k"/>
+                            <constraint firstItem="6L5-2G-KtT" firstAttribute="leading" secondItem="KtR-SI-3a2" secondAttribute="trailing" constant="3" id="wzb-xs-QWN"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-jy-QPJ">
@@ -255,6 +263,7 @@
                 <outlet property="headTapBtn" destination="2C1-jy-QPJ" id="kUg-DU-0n7"/>
                 <outlet property="hideView" destination="vIW-nn-otf" id="uVs-c1-BeI"/>
                 <outlet property="likeBtn" destination="KtR-SI-3a2" id="iPz-IG-vpS"/>
+                <outlet property="like_count_label" destination="6L5-2G-KtT" id="3i5-eA-VOS"/>
                 <outlet property="moreBtn" destination="f2z-9i-ung" id="wiV-Ya-9YX"/>
                 <outlet property="nameLabel" destination="dJV-X0-PgA" id="8Qf-0A-bHV"/>
                 <outlet property="neiRongView" destination="M9O-EF-VPs" id="qz1-pu-cg8"/>
@@ -269,7 +278,7 @@
     <resources>
         <image name="home_commend" width="20" height="17"/>
         <image name="home_like" width="19" height="18"/>
-        <image name="home_liked" width="20" height="18"/>
+        <image name="home_liked" width="19" height="19"/>
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="19" height="20"/>
         <image name="me_address" width="9" height="11"/>

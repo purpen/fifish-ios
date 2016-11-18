@@ -168,6 +168,12 @@
                                 <rect key="frame" x="334" y="11" width="21" height="22"/>
                                 <state key="normal" image="home_more"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUi-sK-OCm">
+                                <rect key="frame" x="37" y="6" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.49803921568627452" green="0.5607843137254902" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -177,6 +183,8 @@
                             <constraint firstItem="6KS-4W-Pb0" firstAttribute="centerY" secondItem="gYU-YG-39Z" secondAttribute="centerY" id="SZp-n3-cIw"/>
                             <constraint firstAttribute="trailing" secondItem="BWO-PK-qya" secondAttribute="trailing" constant="15" id="YXg-3T-VcA"/>
                             <constraint firstItem="Y0y-YR-RJZ" firstAttribute="leading" secondItem="DgV-e2-aFF" secondAttribute="trailing" constant="40" id="byb-qb-yxy"/>
+                            <constraint firstItem="iUi-sK-OCm" firstAttribute="top" secondItem="DgV-e2-aFF" secondAttribute="top" constant="-5" id="dOh-dd-Ooq"/>
+                            <constraint firstItem="iUi-sK-OCm" firstAttribute="leading" secondItem="DgV-e2-aFF" secondAttribute="trailing" constant="3" id="hSl-3S-USw"/>
                             <constraint firstAttribute="height" constant="44" id="mBo-RK-tMh"/>
                             <constraint firstItem="DgV-e2-aFF" firstAttribute="centerY" secondItem="gYU-YG-39Z" secondAttribute="centerY" id="z09-Pl-Eri"/>
                             <constraint firstItem="6KS-4W-Pb0" firstAttribute="leading" secondItem="Y0y-YR-RJZ" secondAttribute="trailing" constant="40" id="zvx-Ef-GOw"/>
@@ -215,8 +223,8 @@
                     <constraint firstItem="8q6-L9-6SG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BAu-Io-IJz"/>
                     <constraint firstItem="gYU-YG-39Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ccp-We-JOn"/>
                     <constraint firstAttribute="bottom" secondItem="6go-S4-nWb" secondAttribute="bottom" id="DP1-IE-ZAp"/>
-                    <constraint firstItem="WVY-gK-Fy5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="FCI-Jo-3Vs"/>
                     <constraint firstItem="VDQ-gf-VVk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ISb-6R-QWB"/>
+                    <constraint firstItem="OJm-eW-jrK" firstAttribute="top" secondItem="WVY-gK-Fy5" secondAttribute="bottom" constant="7" id="Kdp-Tf-OL8"/>
                     <constraint firstItem="6go-S4-nWb" firstAttribute="top" secondItem="VDQ-gf-VVk" secondAttribute="bottom" id="ORw-jh-cPe"/>
                     <constraint firstItem="BWJ-0p-Rho" firstAttribute="bottom" secondItem="8q6-L9-6SG" secondAttribute="bottom" constant="-5" id="PCE-rX-dCi"/>
                     <constraint firstItem="6go-S4-nWb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QV7-Q8-9ZO"/>
@@ -258,6 +266,7 @@
                 <outlet property="headTapBtn" destination="P49-wD-gfe" id="e9M-me-R2W"/>
                 <outlet property="hideView" destination="ULK-bg-j0W" id="fPA-IY-N71"/>
                 <outlet property="likeBtn" destination="DgV-e2-aFF" id="qAd-Bw-3w6"/>
+                <outlet property="like_count_label" destination="iUi-sK-OCm" id="G81-cu-Vaw"/>
                 <outlet property="moreBtn" destination="BWO-PK-qya" id="gOt-BH-ew9"/>
                 <outlet property="nameLabel" destination="WVY-gK-Fy5" id="tY6-cb-jFa"/>
                 <outlet property="neiRongView" destination="VDQ-gf-VVk" id="VFN-KO-7n8"/>
@@ -274,7 +283,7 @@
     <resources>
         <image name="home_commend" width="20" height="17"/>
         <image name="home_like" width="19" height="18"/>
-        <image name="home_liked" width="20" height="18"/>
+        <image name="home_liked" width="19" height="19"/>
         <image name="home_more" width="21" height="5"/>
         <image name="home_share" width="19" height="20"/>
         <image name="me_address" width="9" height="11"/>

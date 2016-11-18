@@ -29,6 +29,34 @@
 }
 
 -(NSAttributedString *)stringHideLastFourWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor *)textcolor textFont:(UIFont *)font{
+    NSUInteger n = 0;
+    NSInteger m = 0;
+    if (SCREEN_HEIGHT == 667.0) {
+        n = 69 - 5;
+        m = 5;
+    } else if (SCREEN_HEIGHT == 736.0) {
+        if (self.length <= 95) {
+            n = 0;
+            m = 0;
+        } else if (self.length >= 100) {
+            m = 4;
+            n = 100 - m;
+        } else {
+            n = 96;
+            m = self.length - n;;
+        }
+    } else {
+        if (self.length <= 34) {
+            n = 0;
+            m = 0;
+        } else if (self.length >= 38) {
+            m = 4;
+            n = 38 - m;
+        } else {
+            n = 34;
+            m = self.length - n;;
+        }
+    }
     //设置段落
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = lineSpacing;
@@ -43,11 +71,13 @@
                                 NSFontAttributeName : font
                                 };
     [attriStr addAttributes:attriBute range:NSMakeRange(0, self.length)];
-    [attriStr addAttribute:NSForegroundColorAttributeName
-     
-                          value:[UIColor whiteColor]
-     
-                          range:NSMakeRange(69 - 5, 5)];
+    if (n) {
+        [attriStr addAttribute:NSForegroundColorAttributeName
+         
+                         value:[UIColor whiteColor]
+         
+                         range:NSMakeRange(n, m)];
+    }
     return attriStr;
 }
 

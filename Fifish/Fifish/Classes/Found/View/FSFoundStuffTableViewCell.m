@@ -18,6 +18,8 @@
 #import "CTFrameParser.h"
 #import "FSUserModel.h"
 #import "FSShareViewController.h"
+#import "FSLoginViewController.h"
+#import <pop/POP.h>
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -41,6 +43,7 @@
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
+@property (weak, nonatomic) IBOutlet UILabel *like_count_label;
 
 @end
 
@@ -86,6 +89,7 @@
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
         make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
     }];
+    [self.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)headTapClick:(UIButton *)sender {
@@ -118,6 +122,9 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
+    if ([model.like_count integerValue]) {
+        self.like_count_label.text = model.like_count;
+    }
     if ([_model.user_id isEqualToString:self.userModel.userId]) {
         self.fucosBtn.hidden = YES;
     } else {
@@ -152,8 +159,10 @@
     
     if (model.is_love == 0) {
         self.likeBtn.selected = NO;
-    } else {
+        self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+    } else if (model.is_love == 1) {
         self.likeBtn.selected = YES;
+        self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
     }
     
 }
@@ -184,5 +193,54 @@
         self.tagtagLabel.hidden = YES;
     }
 }
+
+#pragma mark - 点击喜欢按钮
+-(void)likeClick:(UIButton*)sender{
+    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    if (model.isLogin) {
+        //登录了，可以进行后续操作
+        NSString *idStr = self.model.user_id;
+        if (sender.selected) {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                sender.selected = NO;
+                self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+                NSInteger n = [self.model.like_count integerValue] - 1;
+                NSString *str = [NSString stringWithFormat:@"%ld",  n];
+                if (n == 0) {
+                    str = @"";
+                }
+                self.model.like_count = str;
+                self.like_count_label.text = str;
+                self.model.is_love = 0;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+            }];
+        } else {
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
+                likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
+                likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+                likeAnimation.springSpeed = 10;
+                likeAnimation.springBounciness = 10;
+                [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
+                sender.selected = YES;
+                self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+                NSInteger n = [self.model.like_count integerValue] + 1;
+                NSString *str = [NSString stringWithFormat:@"%ld",  n];
+                self.model.like_count = str;
+                self.like_count_label.text = str;
+                self.model.is_love = 1;
+            } failure:^(FBRequest *request, NSError *error) {
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+            }];
+        }
+    } else {
+        FSLoginViewController *vc = [[FSLoginViewController alloc] init];
+        [self.myViewController presentViewController:vc animated:YES completion:nil];
+    }
+}
+
 
 @end

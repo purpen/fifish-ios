@@ -3,6 +3,7 @@ PODS:
     - CocoaAsyncSocket/GCD (= 7.5.0)
   - CocoaAsyncSocket/GCD (7.5.0)
   - GPUImage (0.1.7)
+  - pop (1.0.9)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -10,13 +11,15 @@ PODS:
 DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.5.0)
   - GPUImage (~> 0.1.7)
+  - pop (~> 1.0)
   - SDWebImage (~> 3.8.1)
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 01b4793d9f3837d4e2ac893da0c16d8f086daa03
+PODFILE CHECKSUM: 8132d6786443355a3da9c835c0d9f4a26fb1c1c5
 
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 1.1.1

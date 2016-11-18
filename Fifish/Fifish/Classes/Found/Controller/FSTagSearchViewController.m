@@ -184,7 +184,7 @@
                 FSZuoPin *model = self.stuffAry[i];
                 CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
                 CGFloat gaoDu = 0;
-                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                if (model.content.length <= 96) {
                     [self.hideAry addObject:@(1)];
                     gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
                 } else {
@@ -284,7 +284,7 @@
                 FSZuoPin *model = self.stuffAry[i];
                 CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
                 CGFloat gaoDu = 0;
-                if (model.content.length <= 80 / 667.0 * SCREEN_HEIGHT) {
+                if (model.content.length <= 96) {
                     [self.hideAry addObject:@(1)];
                     gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
                 } else {
@@ -527,9 +527,7 @@
             cell.ctData = self.contentStringAry[indexPath.section - 1];
             cell.hideFlag = [self.hideAry[indexPath.section - 1] integerValue];
             cell.contentString = self.contentStringAry[indexPath.section - 1];
-            cell.likeBtn.tag = indexPath.section - 1;
             cell.commendBtn.tag = indexPath.section - 1;
-            [cell.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
             cell.pictuerView.tapBTn.tag = indexPath.section - 1;
@@ -621,26 +619,5 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - 点击喜欢按钮
--(void)likeClick:(UIButton*)sender{
-    NSString *idStr = ((FSZuoPin*)self.stuffAry[sender.tag]).idFeild;
-    if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 0;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
-        }];
-    } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            ((FSZuoPin*)self.stuffAry[sender.tag]).is_love = 1;
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"The operation failure", nil)];
-        }];
-    }
-}
 
 @end
