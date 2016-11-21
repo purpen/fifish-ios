@@ -208,15 +208,27 @@
         for (int i = 0; i < self.stuffAry.count; i++) {
             FSZuoPin *model = self.stuffAry[i];
             CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (model.content.length <= 96) {
-                [self.hideAry addObject:@(1)];
-                gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+            if (SCREEN_HEIGHT == 568.0) {
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 53) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378 + 20) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (85 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
+                [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             } else {
-                [self.hideAry addObject:@(0)];
-                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 96) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
+                [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         [self.ctDataAry removeAllObjects];
         for (int i = 0; i < self.stuffAry.count; i++) {
@@ -290,15 +302,27 @@
         for (int i = 0; i < self.stuffAry.count; i++) {
             FSZuoPin *model = self.stuffAry[i];
             CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (model.content.length <= 96) {
-                [self.hideAry addObject:@(1)];
-                gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+            if (SCREEN_HEIGHT == 568.0) {
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 53) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378 + 20) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (85 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
+                [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             } else {
-                [self.hideAry addObject:@(0)];
-                gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                CGFloat gaoDu = 0;
+                if (model.content.length <= 96) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 378) / 667.0 * SCREEN_HEIGHT;
+                }
+                [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
             }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
         }
         [self.ctDataAry removeAllObjects];
         for (int i = 0; i < self.stuffAry.count; i++) {

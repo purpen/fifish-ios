@@ -189,7 +189,15 @@ static NSString * const FSCommentId = @"comment";
         CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
         CGFloat gaoDu = 0;
         cell.hideFlag = 1;
-        gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+        if (SCREEN_HEIGHT == 568.0) {
+            if (self.model.content.length <= 53) {
+                gaoDu = (textH + 378 + 20) / 667.0 * SCREEN_HEIGHT;
+            } else {
+                gaoDu = (textH + 378 + 35) / 667.0 * SCREEN_HEIGHT;
+            }
+        } else {
+            gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
+        }
         cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
         cell.bottomViewHegiht = 0;
         [cell.contentView layoutIfNeeded];
