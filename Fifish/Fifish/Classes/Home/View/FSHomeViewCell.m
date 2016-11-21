@@ -45,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
 @property (weak, nonatomic) IBOutlet UILabel *like_count_label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
 
 @end
 
@@ -76,6 +77,7 @@
     }];
     [self.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 
 -(NSMutableArray *)tagMAry{
     if (!_tagMAry) {
@@ -136,8 +138,12 @@
     self.addressLabel.text = model.address;
     if (model.address.length == 0) {
         self.addressIcon.hidden = YES;
+        self.nameLabel_bottomSpace.constant = 7;
+        [self layoutIfNeeded];
     } else {
         self.addressIcon.hidden = NO;
+        self.nameLabel_bottomSpace.constant = -2.5;
+        [self layoutIfNeeded];
     }
     if ([model.kind intValue] == 1) {
         self.videoView.hidden = YES;

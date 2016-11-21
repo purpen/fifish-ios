@@ -158,6 +158,7 @@ static NSString * const FSCommentId = @"comment";
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     if (self.stuffId.length == 0) {
         cell.model = self.model;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -267,6 +268,33 @@ static NSString * const FSCommentId = @"comment";
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
+    }
+}
+
+#pragma mark - 关注
+-(void)fucosClick:(UIButton*)sender{
+    if ([self isLoginAndPresentLoginVc]) {
+        if (sender.selected) {
+            //取消关注
+            FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.model.is_follow = 0;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.selected = NO;
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //关注
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.model.is_follow = 1;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.selected = YES;
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
 }
 

@@ -44,6 +44,8 @@
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
 @property (weak, nonatomic) IBOutlet UILabel *like_count_label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_height;
 
 @end
 
@@ -135,8 +137,10 @@
     self.timeLabel.text = model.created_at;
     self.addressLabel.text = model.address;
     if (model.address.length == 0) {
+        self.nameLabel_bottomSpace.constant = 7;
         self.addressIcon.hidden = YES;
     } else {
+        self.nameLabel_bottomSpace.constant = -2.5;
         self.addressIcon.hidden = NO;
     }
     if ([model.kind intValue] == 1) {
@@ -165,6 +169,12 @@
         self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
     }
     
+    if (model.tags.count == 0) {
+        self.tagView_height.constant = 0;
+    } else {
+        self.tagView_height.constant = 33;
+    }
+    [self layoutIfNeeded];
 }
 
 -(void)setHideFlag:(NSInteger)hideFlag{

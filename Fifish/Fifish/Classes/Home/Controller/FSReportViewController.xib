@@ -128,8 +128,8 @@
                         <constraint firstAttribute="trailing" secondItem="KDp-Op-Lr5" secondAttribute="trailing" id="tDp-Cr-AC5"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-Ll-1xe" userLabel="呦吼">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzW-Ll-1xe" userLabel="呦吼">
+                    <rect key="frame" x="0.0" y="667" width="375" height="132"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0d-aU-1MI">
                             <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -242,7 +242,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="NzW-Ll-1xe" secondAttribute="bottom" constant="-132" id="28X-51-iS1"/>
                 <constraint firstAttribute="trailing" secondItem="NzW-Ll-1xe" secondAttribute="trailing" id="7IZ-h2-Afu"/>
