@@ -95,6 +95,7 @@
     return _headingImageView;
 }
 -(UIView *)directionLabView{
+    
     if (!_directionLabView) {
         _directionLabView = [[UIView alloc] init];
         _directionLabView.userInteractionEnabled = NO;
@@ -103,47 +104,48 @@
         UILabel * Nlab =[[UILabel alloc] init];
         Nlab.textColor = [UIColor whiteColor];
         Nlab.font = [UIFont systemFontOfSize:10];
-        Nlab.text = @"↑";
+        Nlab.text = @"N";
         [_directionLabView addSubview:Nlab];
         [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_directionLabView.mas_top).offset(5);
             make.centerX.equalTo(_directionLabView.mas_centerX);
         }];
-#warning 测试需要注释掉
-//        UILabel * Elab =[[UILabel alloc] init];
-//        Elab.textColor = [UIColor whiteColor];
-//        Elab.font = [UIFont systemFontOfSize:10];
-//        Elab.text = @"E";
-//        [_directionLabView addSubview:Elab];
-//        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.right.equalTo(_directionLabView.mas_right).offset(-5);
-//            make.centerY.equalTo(_directionLabView.mas_centerY);
-//        }];
-//        
-//        UILabel * Slab =[[UILabel alloc] init];
-//        Slab.textColor = [UIColor whiteColor];
-//        Slab.font = [UIFont systemFontOfSize:10];
-//        Slab.text = @"S";
-//        [_directionLabView addSubview:Slab];
-//        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(_directionLabView.mas_bottom).offset(-5);
-//            make.centerX.equalTo(_directionLabView.mas_centerX);
-//        }];
-//        
-//        UILabel * Wlab =[[UILabel alloc] init];
-//        Wlab.textColor = [UIColor whiteColor];
-//        Wlab.font = [UIFont systemFontOfSize:10];
-//        Wlab.text = @"W";
-//        [_directionLabView addSubview:Wlab];
-//        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_directionLabView.mas_left).offset(5);
-//            make.centerY.equalTo(_directionLabView.mas_centerY);
-//        }];
+        UILabel * Elab =[[UILabel alloc] init];
+        Elab.textColor = [UIColor whiteColor];
+        Elab.font = [UIFont systemFontOfSize:10];
+        Elab.text = @"E";
+        [_directionLabView addSubview:Elab];
+        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_directionLabView.mas_right).offset(-5);
+            make.centerY.equalTo(_directionLabView.mas_centerY);
+        }];
+
+        UILabel * Slab =[[UILabel alloc] init];
+        Slab.textColor = [UIColor whiteColor];
+        Slab.font = [UIFont systemFontOfSize:10];
+        Slab.text = @"S";
+        [_directionLabView addSubview:Slab];
+        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_directionLabView.mas_bottom).offset(-5);
+            make.centerX.equalTo(_directionLabView.mas_centerX);
+        }];
+        
+        UILabel * Wlab =[[UILabel alloc] init];
+        Wlab.textColor = [UIColor whiteColor];
+        Wlab.font = [UIFont systemFontOfSize:10];
+        Wlab.text = @"W";
+        [_directionLabView addSubview:Wlab];
+        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_directionLabView.mas_left).offset(5);
+            make.centerY.equalTo(_directionLabView.mas_centerY);
+        }];
     }
+    
     return _directionLabView;
+    
 }
 
-#warning  转动test
+#warning  转动测试！
 - (void)testMethed{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         while (1) {
@@ -170,7 +172,8 @@
                 
             });
             
-            sleep(3);
+            sleep(2);
+        
         }
         
     });
@@ -180,6 +183,7 @@
 #pragma marke 通知中心
 //监听ROV航向
 - (void)ObserverWithOSDCourse{
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changecourse:) name:@"RovInfoChange" object:nil];
 }
 - (void)changecourse:(NSNotification *)notice{

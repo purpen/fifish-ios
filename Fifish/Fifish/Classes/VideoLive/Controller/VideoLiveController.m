@@ -175,6 +175,7 @@
         });
         
     }
+    
     [self AddVideoView];
     
     //状态栏、录像栏拿到最前面
@@ -183,8 +184,11 @@
     [self.view bringSubviewToFront:self.bottomBar];
 }
 - (void)viewDidDisappear:(BOOL)animated{
+    
     [super viewDidDisappear:animated];
+    
     self.ViedoDecoder.isRunningDecode = NO;
+    
 }
 - (UIActivityIndicatorView *)activityIndicatorView{
     if (!_activityIndicatorView) {
@@ -203,16 +207,24 @@
 }
 //深度尺
 - (FSVideoDepthRulerView *)DetpthView{
+    
     if (!_DetpthView) {
+        
         _DetpthView = [[FSVideoDepthRulerView alloc] init];
+        
     }
+    
     return _DetpthView;
 }
 //底部栏
 - (FSVideoLiveBottomBar *)bottomBar{
+    
     if (!_bottomBar) {
+        
         _bottomBar = [[FSVideoLiveBottomBar alloc] init];
+        
         _bottomBar.backgroundColor = [UIColor clearColor];
+        
     }
     return _bottomBar;
 }
@@ -277,9 +289,12 @@
 }
 
 #pragma mark GestureMethd
+
 //单击手势控制深度尺和偏航角显示与隐藏
 - (void)handleTap:(UITapGestureRecognizer*)tap{
+    
     self.HiddenOSD = !self.HiddenOSD;
+    
     [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionTransitionNone
@@ -288,6 +303,7 @@
                          self.DetpthView.alpha = !self.HiddenOSD;
                      }
                      completion:nil];
+    
 }
 
 
@@ -297,22 +313,32 @@
 }
 
 - (void)connectWithOSDerror:(NSError *)error{
+    
     [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Equipment connection exception", nil),error.localizedDescription]];
+    
     [SVProgressHUD dismiss];
+    
 }
 
 #pragma mark VideoStatusBarDelegate
+
 - (void)FifishBackBtnClick{
+    
     //停止解码
     self.ViedoDecoder.isRunningDecode = NO;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 //菜单
 - (void)VideoLiveMenuBtnClick{
+    
     FSLiveSettingsViewController * settingVc = [[FSLiveSettingsViewController alloc] init];
+    
     self.modalPresentationStyle = UIModalPresentationCurrentContext;//推出的界面透明,不管用
+    
     [self presentViewController:settingVc animated:YES completion:nil];
+    
 }
 @end
