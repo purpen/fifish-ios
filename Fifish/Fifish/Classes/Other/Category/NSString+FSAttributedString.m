@@ -43,18 +43,18 @@
             n = 100 - m;
         } else {
             n = 96;
-            m = self.length - n;;
+            m = self.length - n;
         }
     } else {
-        if (self.length <= 34) {
+        if (self.length <= 53) {
             n = 0;
             m = 0;
-        } else if (self.length >= 38) {
+        } else if (self.length >= 57) {
             m = 4;
-            n = 38 - m;
+            n = 57 - m;
         } else {
-            n = 34;
-            m = self.length - n;;
+            n = 53;
+            m = self.length - n;
         }
     }
     //设置段落

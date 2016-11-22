@@ -158,6 +158,8 @@ static NSString * const FSCommentId = @"comment";
     [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
+    CGFloat gaoDu = 0;
     if (self.stuffId.length == 0) {
         cell.model = self.model;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -180,16 +182,34 @@ static NSString * const FSCommentId = @"comment";
             }
             config.width = SCREEN_WIDTH;
             [self.tagMAry writeToFile:filename atomically:YES];
+            
+            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            if (SCREEN_HEIGHT == 568.0) {
+                gaoDu = (textH + 375 - 40);
+            } else if (SCREEN_HEIGHT == 667.0) {
+                gaoDu = (textH + 375 - 12);
+            } else {
+                gaoDu = (textH + 375 + 12);
+            }
         } else {
+            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            if (SCREEN_HEIGHT == 568.0) {
+                gaoDu = (textH + 347 - 38);
+            } else if (SCREEN_HEIGHT == 667.0) {
+                gaoDu = (textH + 347 - 15);
+            } else {
+                if (self.model.content.length <= 96) {
+                    gaoDu = (textH + 347 + 4);
+                } else {
+                    gaoDu = (textH + 347 + 10);
+                }
+            }
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         cell.ctData = data;
         NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
         cell.contentString = setString;
-        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-        CGFloat gaoDu = 0;
         cell.hideFlag = 1;
-        gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
         cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
         cell.bottomViewHegiht = 0;
         [cell.contentView layoutIfNeeded];
@@ -259,6 +279,33 @@ static NSString * const FSCommentId = @"comment";
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
+    }
+}
+
+#pragma mark - 关注
+-(void)fucosClick:(UIButton*)sender{
+    if ([self isLoginAndPresentLoginVc]) {
+        if (sender.selected) {
+            //取消关注
+            FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.model.is_follow = 0;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.selected = NO;
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        } else {
+            //关注
+            FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.model.user_id] requestDictionary:nil delegate:self];
+            [request startRequestSuccess:^(FBRequest *request, id result) {
+                self.model.is_follow = 1;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.selected = YES;
+            } failure:^(FBRequest *request, NSError *error) {
+                
+            }];
+        }
     }
 }
 

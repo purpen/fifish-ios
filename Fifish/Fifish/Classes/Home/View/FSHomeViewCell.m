@@ -45,6 +45,8 @@
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
 @property (weak, nonatomic) IBOutlet UILabel *like_count_label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_height;
 
 @end
 
@@ -76,6 +78,7 @@
     }];
     [self.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 
 -(NSMutableArray *)tagMAry{
     if (!_tagMAry) {
@@ -136,8 +139,10 @@
     self.addressLabel.text = model.address;
     if (model.address.length == 0) {
         self.addressIcon.hidden = YES;
+        self.nameLabel_bottomSpace.constant = 7;
     } else {
         self.addressIcon.hidden = NO;
+        self.nameLabel_bottomSpace.constant = -2.5;
     }
     if ([model.kind intValue] == 1) {
         self.videoView.hidden = YES;
@@ -164,6 +169,13 @@
         self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
         self.fucosBtn.selected = YES;
     }
+    
+    if (model.tags.count == 0) {
+        self.tagView_height.constant = 0;
+    } else {
+        self.tagView_height.constant = 33;
+    }
+    [self layoutIfNeeded];
 }
 
 -(void)setHideFlag:(NSInteger)hideFlag{
