@@ -77,6 +77,7 @@
         make.bottom.mas_equalTo(self.toolView.mas_top).offset(-3);
     }];
     [self.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.videoView.tapBtn addTarget:self action:@selector(video:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -176,6 +177,13 @@
         self.tagView_height.constant = 33;
     }
     [self layoutIfNeeded];
+}
+
+-(void)video:(UIButton*)sender{
+    WeakSelf(weakSelf);
+    if ([weakSelf.fSHomeViewDelegate respondsToSelector:@selector(homeTableViewCell:didClickVideoWithVideoUrl:videoCover:)]) {
+        [weakSelf.fSHomeViewDelegate homeTableViewCell:weakSelf didClickVideoWithVideoUrl:self.model.srcfile videoCover:self.videoView];
+    }
 }
 
 -(void)setHideFlag:(NSInteger)hideFlag{

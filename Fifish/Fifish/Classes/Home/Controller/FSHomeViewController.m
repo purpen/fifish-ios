@@ -37,8 +37,13 @@
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
 #import "NSString+FSAttributedString.h"
+#import "WMPlayer.h"
 
-@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate>
+
+{
+    WMPlayer *wmPlayer;
+}
 
 /**  */
 @property(nonatomic,assign) NSInteger current_page;
@@ -64,6 +69,10 @@
 @property (nonatomic, strong) NSMutableArray *contentStringAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *hideAry;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+/**  */
+@property (nonatomic, strong) UIView *imageView;
+@property (nonatomic, assign) BOOL isSmallScreen;
 
 @end
 
@@ -654,6 +663,7 @@ static NSString * const CellId = @"home";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    cell.fSHomeViewDelegate = self;
     cell.navi = self.navigationController;
     cell.contentString = self.contentStringAry[indexPath.section];
     cell.myViewController = self;
@@ -665,8 +675,8 @@ static NSString * const CellId = @"home";
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.pictuerView.tapBTn.tag = indexPath.section;
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.videoView.tapBtn.tag = indexPath.section;
-    [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.videoView.tapBtn.tag = indexPath.section;
+//    [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.fucosBtn.tag = indexPath.section;
     [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
@@ -777,6 +787,272 @@ static NSString * const CellId = @"home";
     vc.model = self.modelAry[indexPath.section];
     vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)homeTableViewCell:(FSHomeViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(FSHomeVideoView *)baseImageView{
+    self.indexPath = [self.contenTableView indexPathForCell:cell];
+    self.imageView = baseImageView;
+    
+    wmPlayer = [[WMPlayer alloc]initWithFrame:baseImageView.bounds];
+    wmPlayer.delegate = self;
+    wmPlayer.closeBtnStyle = CloseBtnStyleClose;
+    wmPlayer.URLString = videoUrl;
+    [baseImageView addSubview:wmPlayer];
+    [wmPlayer play];
+}
+
+#pragma mark - WMPlayerDelegate
+- (BOOL)prefersStatusBarHidden {
+    if (wmPlayer) {
+        if (wmPlayer.isFullscreen) {
+            return YES;
+        } else {
+            return NO;
+        }
+    } else {
+        return NO;
+    }
+}
+
+- (void)toCell {
+    [wmPlayer removeFromSuperview];
+    [UIView animateWithDuration:0.5f animations:^{
+        wmPlayer.transform = CGAffineTransformIdentity;
+        wmPlayer.frame = self.imageView.bounds;
+        wmPlayer.playerLayer.frame =  wmPlayer.bounds;
+        [self.imageView addSubview:wmPlayer];
+        [self.imageView bringSubviewToFront:wmPlayer];
+        [wmPlayer.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(0);
+            make.right.equalTo(wmPlayer).with.offset(0);
+            make.height.mas_equalTo(40);
+            make.bottom.equalTo(wmPlayer).with.offset(0);
+        }];
+        [wmPlayer.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(0);
+            make.right.equalTo(wmPlayer).with.offset(0);
+            make.height.mas_equalTo(40);
+            make.top.equalTo(wmPlayer).with.offset(0);
+        }];
+        [wmPlayer.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer.topView).with.offset(45);
+            make.right.equalTo(wmPlayer.topView).with.offset(-45);
+            make.center.equalTo(wmPlayer.topView);
+            make.top.equalTo(wmPlayer.topView).with.offset(0);
+        }];
+        [wmPlayer.closeBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(5);
+            make.height.mas_equalTo(30);
+            make.width.mas_equalTo(30);
+            make.top.equalTo(wmPlayer).with.offset(5);
+        }];
+        [wmPlayer.loadFailedLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(wmPlayer);
+            make.width.equalTo(wmPlayer);
+            make.height.equalTo(@30);
+        }];
+    }completion:^(BOOL finished) {
+        wmPlayer.isFullscreen = NO;
+        [self setNeedsStatusBarAppearanceUpdate];
+        self.isSmallScreen = NO;
+        wmPlayer.fullScreenBtn.selected = NO;
+        
+    }];
+    
+    
+}
+
+- (void)toFullScreenWithInterfaceOrientation:(UIInterfaceOrientation )interfaceOrientation {
+    [wmPlayer removeFromSuperview];
+    wmPlayer.transform = CGAffineTransformIdentity;
+    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+        wmPlayer.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    } else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
+        wmPlayer.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+    wmPlayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    wmPlayer.playerLayer.frame =  CGRectMake(0,0, SCREEN_HEIGHT,SCREEN_WIDTH);
+    
+    [wmPlayer.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(40);
+        make.top.mas_equalTo(SCREEN_WIDTH-40);
+        make.width.mas_equalTo(SCREEN_HEIGHT);
+    }];
+    
+    [wmPlayer.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(40);
+        make.left.equalTo(wmPlayer).with.offset(0);
+        make.width.mas_equalTo(SCREEN_HEIGHT);
+    }];
+    
+    [wmPlayer.closeBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(wmPlayer).with.offset((-SCREEN_HEIGHT/2));
+        make.height.mas_equalTo(30);
+        make.width.mas_equalTo(30);
+        make.top.equalTo(wmPlayer).with.offset(5);
+        
+    }];
+    
+    [wmPlayer.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(wmPlayer.topView).with.offset(45);
+        make.right.equalTo(wmPlayer.topView).with.offset(-45);
+        make.center.equalTo(wmPlayer.topView);
+        make.top.equalTo(wmPlayer.topView).with.offset(0);
+    }];
+    
+    [wmPlayer.loadFailedLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_HEIGHT);
+        make.center.mas_equalTo(CGPointMake(SCREEN_WIDTH/2-36, -(SCREEN_WIDTH/2)));
+        make.height.equalTo(@30);
+    }];
+    
+    [wmPlayer.loadingView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(CGPointMake(SCREEN_WIDTH/2-37, -(SCREEN_WIDTH/2-37)));
+    }];
+    [wmPlayer.loadFailedLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_HEIGHT);
+        make.center.mas_equalTo(CGPointMake(SCREEN_WIDTH/2-36, -(SCREEN_HEIGHT/2)+36));
+        make.height.equalTo(@30);
+    }];
+    [[UIApplication sharedApplication].keyWindow addSubview:wmPlayer];
+    
+    wmPlayer.fullScreenBtn.selected = YES;
+    [wmPlayer bringSubviewToFront:wmPlayer.bottomView];
+    
+}
+
+- (void)toSmallScreen {
+    // 放widow上
+    [wmPlayer removeFromSuperview];
+    [UIView animateWithDuration:0.3f animations:^{
+        wmPlayer.transform = CGAffineTransformIdentity;
+        wmPlayer.frame = CGRectMake(SCREEN_WIDTH/2,SCREEN_HEIGHT-kTabBarHeight-(SCREEN_WIDTH/2)*0.75, SCREEN_WIDTH/2, (SCREEN_WIDTH/2)*0.75);
+        wmPlayer.playerLayer.frame = wmPlayer.bounds;
+        [[UIApplication sharedApplication].keyWindow addSubview:wmPlayer];
+        [wmPlayer.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(0);
+            make.right.equalTo(wmPlayer).with.offset(0);
+            make.height.mas_equalTo(40);
+            make.bottom.equalTo(wmPlayer).with.offset(0);
+        }];
+        [wmPlayer.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(0);
+            make.right.equalTo(wmPlayer).with.offset(0);
+            make.height.mas_equalTo(40);
+            make.top.equalTo(wmPlayer).with.offset(0);
+        }];
+        [wmPlayer.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer.topView).with.offset(45);
+            make.right.equalTo(wmPlayer.topView).with.offset(-45);
+            make.center.equalTo(wmPlayer.topView);
+            make.top.equalTo(wmPlayer.topView).with.offset(0);
+        }];
+        [wmPlayer.closeBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(wmPlayer).with.offset(5);
+            make.height.mas_equalTo(30);
+            make.width.mas_equalTo(30);
+            make.top.equalTo(wmPlayer).with.offset(5);
+            
+        }];
+        [wmPlayer.loadFailedLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(wmPlayer);
+            make.width.equalTo(wmPlayer);
+            make.height.equalTo(@30);
+        }];
+        
+    } completion:^(BOOL finished) {
+        wmPlayer.isFullscreen = NO;
+        [self setNeedsStatusBarAppearanceUpdate];
+        wmPlayer.fullScreenBtn.selected = NO;
+        self.isSmallScreen = YES;
+        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:wmPlayer];
+    }];
+}
+
+- (void)wmplayer:(WMPlayer *)wmplayer clickedCloseButton:(UIButton *)closeBtn {
+    if (wmplayer.isFullscreen) {
+        wmplayer.isFullscreen = NO;
+        [self toCell];
+    } else {
+        [self releaseWMPlayer];
+    }
+    
+}
+
+- (void)wmplayer:(WMPlayer *)wmplayer clickedFullScreenButton:(UIButton *)fullScreenBtn {
+    if (fullScreenBtn.isSelected) {//全屏显示
+        wmPlayer.isFullscreen = YES;
+        [self setNeedsStatusBarAppearanceUpdate];
+        [self toFullScreenWithInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
+    } else {
+        if (self.isSmallScreen) {
+            // 放widow上,小屏显示
+            [self toSmallScreen];
+        } else {
+            [self toCell];
+        }
+    }
+}
+
+- (void)wmplayer:(WMPlayer *)wmplayer singleTaped:(UITapGestureRecognizer *)singleTap{
+    NSLog(@"didSingleTaped");
+}
+
+- (void)wmplayer:(WMPlayer *)wmplayer doubleTaped:(UITapGestureRecognizer *)doubleTap{
+    NSLog(@"didDoubleTaped");
+}
+
+- (void)wmplayerFailedPlay:(WMPlayer *)wmplayer WMPlayerStatus:(WMPlayerState)state {
+    NSLog(@"wmplayerDidFailedPlay");
+}
+
+- (void)wmplayerReadyToPlay:(WMPlayer *)wmplayer WMPlayerStatus:(WMPlayerState)state {
+    NSLog(@"wmplayerDidReadyToPlay");
+}
+
+- (void)wmplayerFinishedPlay:(WMPlayer *)wmplayer {
+    [self releaseWMPlayer];
+}
+
+- (void)releaseWMPlayer {
+    [wmPlayer pause];
+    [wmPlayer removeFromSuperview];
+    [wmPlayer.playerLayer removeFromSuperlayer];
+    [wmPlayer.player replaceCurrentItemWithPlayerItem:nil];
+    wmPlayer.player = nil;
+    wmPlayer.currentItem = nil;
+    //释放定时器，否侧不会调用WMPlayer中的dealloc方法
+    [wmPlayer.autoDismissTimer invalidate];
+    wmPlayer.autoDismissTimer = nil;
+    wmPlayer.playOrPauseBtn = nil;
+    wmPlayer.playerLayer = nil;
+    wmPlayer = nil;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (wmPlayer.superview) {
+        CGRect rectInTableView = [self.contenTableView rectForRowAtIndexPath:self.indexPath];
+        CGRect rectInSuperview = [self.contenTableView convertRect:rectInTableView toView:[self.contenTableView superview]];
+        if (rectInSuperview.origin.y < -self.imageView.frame.size.height || rectInSuperview.origin.y>SCREEN_HEIGHT-kTopBarHeight-kTabBarHeight) {//往上拖动
+            
+            if ([[UIApplication sharedApplication].keyWindow.subviews containsObject:wmPlayer]&&self.isSmallScreen) {
+                self.isSmallScreen = YES;
+            } else {
+                [self releaseWMPlayer];
+            }
+        } else {
+            if ([self.imageView.subviews containsObject:wmPlayer]) {
+                
+            } else {
+                [self releaseWMPlayer];
+            }
+        }
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self releaseWMPlayer];
 }
 
 @end
