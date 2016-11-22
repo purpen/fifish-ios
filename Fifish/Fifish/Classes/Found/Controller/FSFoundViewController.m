@@ -238,20 +238,30 @@
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 53) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 377 + 20) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
+                    }
+                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+                } else if (SCREEN_HEIGHT == 667.0) {
+                    CGFloat gaoDu = 0;
+                    if (model.content.length <= 65) {
+                        [self.hideAry addObject:@(1)];
+                        gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
+                    } else {
+                        [self.hideAry addObject:@(0)];
+                        gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 } else {
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 96) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 375 + 12);
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (53 + 375);
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 }
@@ -261,20 +271,30 @@
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 53) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 349 + 20) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
+                    }
+                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+                } else if (SCREEN_HEIGHT == 667.0) {
+                    CGFloat gaoDu = 0;
+                    if (model.content.length <= 65) {
+                        [self.hideAry addObject:@(1)];
+                        gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
+                    } else {
+                        [self.hideAry addObject:@(0)];
+                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 } else {
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 96) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 }
@@ -351,20 +371,30 @@
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 53) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 377 + 20) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
+                    }
+                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+                } else if (SCREEN_HEIGHT == 667.0) {
+                    CGFloat gaoDu = 0;
+                    if (model.content.length <= 65) {
+                        [self.hideAry addObject:@(1)];
+                        gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
+                    } else {
+                        [self.hideAry addObject:@(0)];
+                        gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 } else {
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 96) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 375 + 12);
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 377) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (53 + 375);
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 }
@@ -374,20 +404,30 @@
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 53) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 349 + 20) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
+                    }
+                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
+                } else if (SCREEN_HEIGHT == 667.0) {
+                    CGFloat gaoDu = 0;
+                    if (model.content.length <= 65) {
+                        [self.hideAry addObject:@(1)];
+                        gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
+                    } else {
+                        [self.hideAry addObject:@(0)];
+                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 } else {
                     CGFloat gaoDu = 0;
                     if (model.content.length <= 96) {
                         [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
                     } else {
                         [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 349) / 667.0 * SCREEN_HEIGHT;
+                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
                     }
                     [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
                 }

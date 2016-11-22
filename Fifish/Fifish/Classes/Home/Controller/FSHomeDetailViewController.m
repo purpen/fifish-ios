@@ -159,6 +159,7 @@ static NSString * const FSCommentId = @"comment";
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
+    CGFloat gaoDu = 0;
     if (self.stuffId.length == 0) {
         cell.model = self.model;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -181,24 +182,34 @@ static NSString * const FSCommentId = @"comment";
             }
             config.width = SCREEN_WIDTH;
             [self.tagMAry writeToFile:filename atomically:YES];
+            
+            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            if (SCREEN_HEIGHT == 568.0) {
+                gaoDu = (textH + 375 - 40);
+            } else if (SCREEN_HEIGHT == 667.0) {
+                gaoDu = (textH + 375 - 12);
+            } else {
+                gaoDu = (textH + 375 + 12);
+            }
         } else {
+            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            if (SCREEN_HEIGHT == 568.0) {
+                gaoDu = (textH + 347 - 38);
+            } else if (SCREEN_HEIGHT == 667.0) {
+                gaoDu = (textH + 347 - 15);
+            } else {
+                if (self.model.content.length <= 96) {
+                    gaoDu = (textH + 347 + 4);
+                } else {
+                    gaoDu = (textH + 347 + 10);
+                }
+            }
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         cell.ctData = data;
         NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
         cell.contentString = setString;
-        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-        CGFloat gaoDu = 0;
         cell.hideFlag = 1;
-        if (SCREEN_HEIGHT == 568.0) {
-            if (self.model.content.length <= 53) {
-                gaoDu = (textH + 378 + 20) / 667.0 * SCREEN_HEIGHT;
-            } else {
-                gaoDu = (textH + 378 + 35) / 667.0 * SCREEN_HEIGHT;
-            }
-        } else {
-            gaoDu = (textH + 378) / 667.0 * SCREEN_HEIGHT;
-        }
         cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
         cell.bottomViewHegiht = 0;
         [cell.contentView layoutIfNeeded];
