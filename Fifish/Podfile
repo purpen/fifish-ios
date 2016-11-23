@@ -6,4 +6,7 @@ pod 'CocoaAsyncSocket', '~> 7.5.0'
 pod 'SDWebImage', '~> 3.8.1'
 pod 'GPUImage', '~> 0.1.7'
 pod 'pop', '~> 1.0'
+pod 'MJRefresh'
+pod 'MJExtension'
+pod 'Masonry'
 end

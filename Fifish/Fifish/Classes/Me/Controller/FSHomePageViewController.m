@@ -278,7 +278,6 @@ static NSString * const fucosCellId = @"fucos";
     // 自动改变透明度
     self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contentTableView.mj_header beginRefreshing];
-    self.contentTableView.mj_footer.hidden = YES;
     self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
@@ -474,8 +473,8 @@ static NSString * const fucosCellId = @"fucos";
         NSArray *dataAry = result[@"data"];
         self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:dataAry];
         [self.contentTableView reloadData];
-        [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
+        [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
@@ -498,8 +497,8 @@ static NSString * const fucosCellId = @"fucos";
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:dataAry];
         [self.zuoPins addObjectsFromArray:ary];
         [self.contentTableView reloadData];
-        [self checkFooterState];
         [self.contentTableView.mj_footer endRefreshing];
+        [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
