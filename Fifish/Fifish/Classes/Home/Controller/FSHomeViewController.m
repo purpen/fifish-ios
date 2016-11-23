@@ -675,8 +675,6 @@ static NSString * const CellId = @"home";
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.pictuerView.tapBTn.tag = indexPath.section;
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.videoView.tapBtn.tag = indexPath.section;
-//    [cell.videoView.tapBtn addTarget:self action:@selector(videoClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.fucosBtn.tag = indexPath.section;
     [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
@@ -719,15 +717,6 @@ static NSString * const CellId = @"home";
     }
 }
 
-
-#pragma mark - 视频播放
--(void)videoClick:(UIButton*)sender{
-    //开始播放视频
-    FSZuoPin *model = self.modelAry[sender.tag];
-    FSPlayViewController *mvPlayer = [[FSPlayViewController alloc] init];
-    mvPlayer.videoUrl = [NSURL URLWithString:model.srcfile];
-    [self presentViewController:mvPlayer animated:YES completion:nil];
-}
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{

@@ -92,6 +92,14 @@
         make.height.mas_equalTo(211 / 667.0 * SCREEN_HEIGHT);
     }];
     [self.likeBtn addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.videoView.tapBtn addTarget:self action:@selector(video:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)video:(UIButton*)sender{
+    WeakSelf(weakSelf);
+    if ([weakSelf.fSHomeViewDelegate respondsToSelector:@selector(homeTableViewCell:didClickVideoWithVideoUrl:videoCover:)]) {
+        [weakSelf.fSHomeViewDelegate homeTableViewCell:weakSelf didClickVideoWithVideoUrl:self.model.srcfile videoCover:self.videoView];
+    }
 }
 
 - (IBAction)headTapClick:(UIButton *)sender {

@@ -11,6 +11,14 @@
 #import "FSHomePictuerView.h"
 #import "CoreTextData.h"
 @class FSZuoPin;
+@class FSFoundStuffTableViewCell;
+
+@protocol FSFoundStuffTableViewCellDelegate <NSObject>
+
+/** 播放视频*/
+- (void)homeTableViewCell:(FSFoundStuffTableViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(FSHomeVideoView *)baseImageView;
+
+@end
 
 @interface FSFoundStuffTableViewCell : UITableViewCell
 
@@ -38,5 +46,7 @@
 /**
  */
 @property (nonatomic, assign) NSInteger hideFlag;
+/**  */
+@property (nonatomic, weak) id<FSFoundStuffTableViewCellDelegate> fSHomeViewDelegate;
 
 @end
