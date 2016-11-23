@@ -128,7 +128,7 @@ CGFloat const Cellspecace = 1;
 - (UIButton *)LeftNavBtn{
     if (!_LeftNavBtn) {
         _LeftNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _LeftNavBtn.frame = CGRectMake(0, 0, 17, 40);
+        _LeftNavBtn.frame = CGRectMake(0, 0, 30, 30);
         [_LeftNavBtn addTarget:self action:@selector(chooseLocalMedia) forControlEvents:UIControlEventTouchUpInside];
         [_LeftNavBtn setImage:[UIImage imageNamed:@"import_icon"] forState:UIControlStateNormal];
         _LeftNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
