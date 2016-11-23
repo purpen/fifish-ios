@@ -346,6 +346,8 @@
 		1FB4FBC31D954EC400E236CF /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FBB01D954EC400E236CF /* UIView+MJExtension.m */; };
 		1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */; };
 		1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */; };
+		1FD5B0401DE43B4A004929F0 /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */; };
+		1FD5B0411DE43B4A004929F0 /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */; };
 		1FDE28BD1D92241D00566A73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1FDE28A51D92241D00566A73 /* LICENSE */; };
 		1FDE28BE1D92241D00566A73 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28A91D92241D00566A73 /* MJExtensionConst.m */; };
 		1FDE28BF1D92241D00566A73 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28AB1D92241D00566A73 /* MJFoundation.m */; };
@@ -1167,6 +1169,9 @@
 		1FB4FBC41D954EE900E236CF /* FSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchViewController.h; sourceTree = "<group>"; };
 		1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchViewController.m; sourceTree = "<group>"; };
 		1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSearchViewController.xib; sourceTree = "<group>"; };
+		1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
+		1FD5B03E1DE43B4A004929F0 /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
+		1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
 		1FDE28A51D92241D00566A73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1FDE28A71D92241D00566A73 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		1FDE28A81D92241D00566A73 /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
@@ -3106,6 +3111,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1FD5B03C1DE43B4A004929F0 /* WMPlayer */,
 				1F34020F1DCC8B24009B9C32 /* JPush */,
 				1FE565FB1DC2E9C4000AE61D /* DACircularProgress */,
 				1FE565091DBDF0C4000AE61D /* UMSocial */,
@@ -3351,6 +3357,16 @@
 				1FB4FBA61D954EC400E236CF /* MJRefreshStateHeader.m */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		1FD5B03C1DE43B4A004929F0 /* WMPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */,
+				1FD5B03E1DE43B4A004929F0 /* WMPlayer.h */,
+				1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */,
+			);
+			path = WMPlayer;
 			sourceTree = "<group>";
 		};
 		1FDE28A41D92241D00566A73 /* MJExtension */ = {
@@ -3876,6 +3892,7 @@
 				1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */,
 				0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */,
 				0436AEC01DACE30C001E6808 /* earlybirdOverlayMap.png in Resources */,
+				1FD5B0401DE43B4A004929F0 /* WMPlayer.bundle in Resources */,
 				0436AED81DACE30C001E6808 /* toasterSoftLight.png in Resources */,
 				0436AEC71DACE30C001E6808 /* hudsonMap.png in Resources */,
 				0436AECC1DACE30C001E6808 /* overlayMap.png in Resources */,
@@ -4241,6 +4258,7 @@
 				0436AF411DACE5C2001E6808 /* FSFiveInputFilter.m in Sources */,
 				1F32F8C11DD1775B000E2FF6 /* FSShareViewController.m in Sources */,
 				1F7EDEB11D46167400ABED5D /* FSNavigationViewController.m in Sources */,
+				1FD5B0411DE43B4A004929F0 /* WMPlayer.m in Sources */,
 				1FE564E61DB4D1E8000AE61D /* TADotView.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
 				1FE564E71DB4D1E8000AE61D /* TAPageControl.m in Sources */,

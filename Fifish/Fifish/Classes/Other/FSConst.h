@@ -57,5 +57,12 @@ UIKIT_EXTERN NSString * const FSTabBarDidSelectNotification;
 
 #define NSLog(s, ... ) NSLog(@"#%s##%d# %@",strrchr(__FILE__,'/'),__LINE__ , [NSString stringWithFormat:(s), ##__VA_ARGS__]);
 
+/**
+ *  弱指针
+ */
+#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+#define kTabBarHeight 49
+#define kTopBarHeight 64
+
 
 
