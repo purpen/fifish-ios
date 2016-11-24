@@ -12,7 +12,7 @@
 
 @protocol FSHomeDetailViewControllerDelegate <NSObject>
 
--(void)lickClick:(BOOL)btnState :(NSString*)idFiled;
+-(void)lickClick:(BOOL)btnState :(NSString*)idFiled andlikeCount:(NSInteger)likecount;
 -(void)fucosDelegateClick:(BOOL)senderState andId:(NSString*)idFiled;
 
 @end

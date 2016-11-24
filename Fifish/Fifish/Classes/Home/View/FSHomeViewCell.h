@@ -17,6 +17,7 @@
 
 /** 播放视频*/
 - (void)homeTableViewCell:(FSHomeViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(FSHomeVideoView *)baseImageView;
+-(void)homeTableViewCellClickLike:(UIButton*)sender andState:(BOOL)state;
 
 @end
 
@@ -51,7 +52,10 @@
 /** 
  */
 @property (nonatomic, assign) NSInteger hideFlag;
+@property (weak, nonatomic) IBOutlet UILabel *like_count_label;
 /**  */
 @property (nonatomic, weak) id<FSHomeViewCellDelegate> fSHomeViewDelegate;
+
+-(void)likeClick:(UIButton*)sender;
 
 @end

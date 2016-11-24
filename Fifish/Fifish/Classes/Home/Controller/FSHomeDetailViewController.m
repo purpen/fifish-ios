@@ -32,6 +32,7 @@
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate>
 {
     WMPlayer *wmPlayer;
+    FSHomeViewCell *_cell;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
@@ -155,20 +156,20 @@ static NSString * const FSCommentId = @"comment";
 
 -(void)setupHeader{
     // 添加cell
-    FSHomeViewCell *cell = [FSHomeViewCell viewFromXib];
-    cell.fSHomeViewDelegate = self;
-    cell.bottom_line_view.hidden = YES;
-    cell.navi = self.navigationController;
-    cell.myViewController = self;
-    cell.contentLabel_height.constant = 10000;
-    [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
+    _cell = [FSHomeViewCell viewFromXib];
+    _cell.fSHomeViewDelegate = self;
+    _cell.bottom_line_view.hidden = YES;
+    _cell.navi = self.navigationController;
+    _cell.myViewController = self;
+    _cell.contentLabel_height.constant = 10000;
+    [_cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
     CGFloat gaoDu = 0;
     if (self.stuffId.length == 0) {
-        cell.model = self.model;
+        _cell.model = self.model;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
         NSString *path = [paths objectAtIndex:0];
         NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
@@ -213,13 +214,13 @@ static NSString * const FSCommentId = @"comment";
             }
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-        cell.ctData = data;
+        _cell.ctData = data;
         NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-        cell.contentString = setString;
-        cell.hideFlag = 1;
-        cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-        cell.bottomViewHegiht = 0;
-        [cell.contentView layoutIfNeeded];
+        _cell.contentString = setString;
+        _cell.hideFlag = 1;
+        _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+        _cell.bottomViewHegiht = 0;
+        [_cell.contentView layoutIfNeeded];
         
         
         // 创建header
@@ -228,7 +229,7 @@ static NSString * const FSCommentId = @"comment";
         header.width = SCREEN_WIDTH;
         header.backgroundColor = [UIColor whiteColor];
         
-        [header addSubview:cell];
+        [header addSubview:_cell];
         
         // 设置header
         self.commendTableView.tableHeaderView = header;
@@ -237,7 +238,7 @@ static NSString * const FSCommentId = @"comment";
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dataDict = result[@"data"];
             self.model = [FSZuoPin mj_objectWithKeyValues:dataDict];
-            cell.model = self.model;
+            _cell.model = self.model;
             CGFloat gaoDu = 0;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
             NSString *path = [paths objectAtIndex:0];
@@ -283,13 +284,13 @@ static NSString * const FSCommentId = @"comment";
                 }
             }
             CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-            cell.ctData = data;
+            _cell.ctData = data;
             NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            cell.contentString = setString;
-            cell.hideFlag = 1;
-            cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-            cell.bottomViewHegiht = 0;
-            [cell.contentView layoutIfNeeded];
+            _cell.contentString = setString;
+            _cell.hideFlag = 1;
+            _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+            _cell.bottomViewHegiht = 0;
+            [_cell.contentView layoutIfNeeded];
             
             
             // 创建header
@@ -298,7 +299,7 @@ static NSString * const FSCommentId = @"comment";
             header.width = SCREEN_WIDTH;
             header.backgroundColor = [UIColor whiteColor];
             
-            [header addSubview:cell];
+            [header addSubview:_cell];
             
             // 设置header
             self.commendTableView.tableHeaderView = header;
@@ -318,6 +319,9 @@ static NSString * const FSCommentId = @"comment";
                 self.model.is_follow = 0;
                 sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
                 sender.selected = NO;
+                if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
+                    [self.homeDetailDelegate fucosDelegateClick:NO andId:self.model.idFeild];
+                }
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
@@ -328,6 +332,9 @@ static NSString * const FSCommentId = @"comment";
                 self.model.is_follow = 1;
                 sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
                 sender.selected = YES;
+                if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
+                    [self.homeDetailDelegate fucosDelegateClick:YES andId:self.model.idFeild];
+                }
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
@@ -378,25 +385,13 @@ static NSString * const FSCommentId = @"comment";
 -(void)lickClick:(UIButton *)sender{
     NSString *idStr = self.model.idFeild;
     if (sender.selected) {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::)]) {
-                [self.homeDetailDelegate lickClick:sender.selected :idStr];
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+        if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::andlikeCount:)]) {
+            [self.homeDetailDelegate lickClick:NO :idStr andlikeCount:[_cell.like_count_label.text integerValue] - 1];
+        }
     } else {
-        FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
-        [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::)]) {
-                [self.homeDetailDelegate lickClick:sender.selected :idStr];
-            }
-        } failure:^(FBRequest *request, NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"操作失败"];
-        }];
+        if ([self.homeDetailDelegate respondsToSelector:@selector(lickClick::andlikeCount:)]) {
+            [self.homeDetailDelegate lickClick:YES :idStr andlikeCount:[_cell.like_count_label.text integerValue] + 1];
+        }
     }
 }
 
@@ -432,9 +427,9 @@ static NSString * const FSCommentId = @"comment";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FSCommendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FSCommentId];
-    cell.model = self.commentAry[indexPath.row];
-    return cell;
+    FSCommendTableViewCell *onecell = [tableView dequeueReusableCellWithIdentifier:FSCommentId];
+    onecell.model = self.commentAry[indexPath.row];
+    return onecell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

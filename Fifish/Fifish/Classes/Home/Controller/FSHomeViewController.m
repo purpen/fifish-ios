@@ -39,7 +39,7 @@
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
-@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource,FSHomeDetailViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate>
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
 
 {
     WMPlayer *wmPlayer;
@@ -680,6 +680,8 @@ static NSString * const CellId = @"home";
     return cell;
 }
 
+
+
 #pragma mark - 关注
 -(void)fucosClick:(UIButton*)sender{
     if ([self isLoginAndPresentLoginVc]) {
@@ -744,6 +746,7 @@ static NSString * const CellId = @"home";
 #pragma mark - 评论按钮
 -(void)commendClick: (UIButton *) sender{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.homeDetailDelegate = self;
     vc.model = self.modelAry[sender.tag];
     vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
@@ -751,7 +754,7 @@ static NSString * const CellId = @"home";
 
 
 #pragma mark - FSHomeDetailViewControllerDelegate
--(void)lickClick:(BOOL)btnState :(NSString *)idFiled{
+-(void)lickClick:(BOOL)btnState :(NSString *)idFiled andlikeCount:(NSInteger)likecount{
     int n;
     for (int i = 0; i < self.modelAry.count; i ++) {
         NSString *idStr = ((FSZuoPin*)self.modelAry[i]).idFeild;
@@ -762,8 +765,29 @@ static NSString * const CellId = @"home";
     }
     FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:n]];
     cell.likeBtn.selected = btnState;
-    cell.model.idFeild = idFiled;
+    if (btnState) {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+    } else {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+    }
+    cell.like_count_label.text = [NSString stringWithFormat:@"%ld", likecount];
 }
+
+-(void)fucosDelegateClick:(BOOL)senderState andId:(NSString *)idFiled{
+    int n;
+    for (int i = 0; i < self.modelAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.modelAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:n]];
+            cell.model.is_follow = senderState ? 1 : 0;
+            cell.likeBtn.selected = senderState;
+            cell.model.idFeild = idFiled;
+        }
+    }
+    [self.contenTableView reloadData];
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
@@ -773,6 +797,7 @@ static NSString * const CellId = @"home";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.homeDetailDelegate = self;
     vc.model = self.modelAry[indexPath.section];
     vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
