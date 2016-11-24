@@ -874,7 +874,6 @@
 - (void)wmplayer:(WMPlayer *)wmplayer clickedCloseButton:(UIButton *)closeBtn {
     if (wmplayer.isFullscreen) {
         wmplayer.isFullscreen = NO;
-        [UIApplication sharedApplication].statusBarHidden = NO;
         [self toCell];
     } else {
         [self releaseWMPlayer];
@@ -887,9 +886,7 @@
         wmPlayer.isFullscreen = YES;
         [self setNeedsStatusBarAppearanceUpdate];
         [self toFullScreenWithInterfaceOrientation:UIInterfaceOrientationLandscapeRight];
-        [UIApplication sharedApplication].statusBarHidden = YES;
     } else {
-        [UIApplication sharedApplication].statusBarHidden = NO;
         if (self.isSmallScreen) {
             // 放widow上,小屏显示
             [self toSmallScreen];
