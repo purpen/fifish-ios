@@ -35,7 +35,7 @@
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
-@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate>
+@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -671,7 +671,6 @@
         } completion:nil];
     }];
 }
-
 
 #pragma mark - 评论按钮
 -(void)commendClick: (UIButton *) sender{
