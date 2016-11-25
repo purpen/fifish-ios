@@ -279,6 +279,7 @@ static NSString * const fucosCellId = @"fucos";
     self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contentTableView.mj_header beginRefreshing];
     self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.contentTableView.mj_footer.hidden = YES;
 }
 
 #pragma mark - 加载更多

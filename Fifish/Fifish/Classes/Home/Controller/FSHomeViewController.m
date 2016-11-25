@@ -290,6 +290,7 @@ static NSString * const CellId = @"home";
     self.contenTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contenTableView.mj_header beginRefreshing];
     self.contenTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.contenTableView.mj_footer.hidden = YES;
 }
 
 -(void)loadNew{

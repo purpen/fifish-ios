@@ -108,6 +108,7 @@ static NSString * const FSCommentId = @"comment";
     self.commendTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.commendTableView.mj_header beginRefreshing];
     self.commendTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.commendTableView.mj_footer.hidden = YES;
 }
 
 -(void)loadNew{

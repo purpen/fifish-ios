@@ -168,6 +168,7 @@
     self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.contentTableView.mj_header beginRefreshing];
     self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.contentTableView.mj_footer.hidden = YES;
 }
 
 -(void)loadNew{

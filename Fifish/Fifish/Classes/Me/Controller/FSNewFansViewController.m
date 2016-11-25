@@ -54,8 +54,8 @@
     // 自动改变透明度
     self.myTableView.mj_header.automaticallyChangeAlpha = YES;
     [self.myTableView.mj_header beginRefreshing];
-    [self.myTableView.mj_footer setHidden:YES];
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.myTableView.mj_footer.hidden = YES;
 }
 
 -(void)loadNew{
