@@ -616,6 +616,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.homeDetailDelegate = self;
     vc.model = self.stuffAry[indexPath.section - 2];
     vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
@@ -675,10 +676,47 @@
 #pragma mark - 评论按钮
 -(void)commendClick: (UIButton *) sender{
     FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+    vc.homeDetailDelegate = self;
     vc.model = self.stuffAry[sender.tag];
-    vc.title = @"评论";
+    vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - FSHomeDetailViewControllerDelegate
+-(void)lickClick:(BOOL)btnState :(NSString *)idFiled andlikeCount:(NSInteger)likecount{
+    int n;
+    for (int i = 0; i < self.stuffAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            break;
+        }
+    }
+    FSFoundStuffTableViewCell *cell = [self.contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(n + 2)]];
+    cell.likeBtn.selected = btnState;
+    if (btnState) {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+    } else {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+    }
+    cell.like_count_label.text = [NSString stringWithFormat:@"%ld", likecount];
+}
+
+-(void)fucosDelegateClick:(BOOL)senderState andId:(NSString *)idFiled{
+    int n;
+    for (int i = 0; i < self.stuffAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            FSFoundStuffTableViewCell *cell = [self.contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(n + 2)]];
+            cell.model.is_follow = senderState ? 1 : 0;
+            cell.likeBtn.selected = senderState;
+            cell.model.idFeild = idFiled;
+        }
+    }
+    [self.contentTableView reloadData];
+}
+
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{

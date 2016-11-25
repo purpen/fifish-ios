@@ -17,7 +17,6 @@
 
 /** 播放视频*/
 - (void)homeTableViewCell:(FSHomeViewCell *)cell didClickVideoWithVideoUrl:(NSString *)videoUrl videoCover:(FSHomeVideoView *)baseImageView;
--(void)homeTableViewCellClickLike:(UIButton*)sender andState:(BOOL)state;
 
 @end
 

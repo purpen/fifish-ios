@@ -43,7 +43,6 @@
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
-@property (weak, nonatomic) IBOutlet UILabel *like_count_label;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_height;
 

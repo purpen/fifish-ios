@@ -32,7 +32,7 @@
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
-@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate>
+@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -285,6 +285,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         FSHomeDetailViewController *vc = [[FSHomeDetailViewController alloc] init];
+        vc.homeDetailDelegate = self;
         vc.model = self.stuffAry[indexPath.section];
         vc.title = NSLocalizedString(@"comments", nil);
         [self.navigationController pushViewController:vc animated:YES];
@@ -308,6 +309,41 @@
     vc.model = self.stuffAry[sender.tag];
     vc.title = NSLocalizedString(@"comments", nil);
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - FSHomeDetailViewControllerDelegate
+-(void)lickClick:(BOOL)btnState :(NSString *)idFiled andlikeCount:(NSInteger)likecount{
+    int n;
+    for (int i = 0; i < self.stuffAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            break;
+        }
+    }
+    FSFoundStuffTableViewCell *cell = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:n]];
+    cell.likeBtn.selected = btnState;
+    if (btnState) {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+    } else {
+        cell.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+    }
+    cell.like_count_label.text = [NSString stringWithFormat:@"%ld", likecount];
+}
+
+-(void)fucosDelegateClick:(BOOL)senderState andId:(NSString *)idFiled{
+    int n;
+    for (int i = 0; i < self.stuffAry.count; i ++) {
+        NSString *idStr = ((FSZuoPin*)self.stuffAry[i]).idFeild;
+        if ([idStr isEqualToString:idFiled]) {
+            n = i;
+            FSFoundStuffTableViewCell *cell = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:n]];
+            cell.model.is_follow = senderState ? 1 : 0;
+            cell.likeBtn.selected = senderState;
+            cell.model.idFeild = idFiled;
+        }
+    }
+    [self.myTableView reloadData];
 }
 
 #pragma mark - 关注
