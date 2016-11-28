@@ -235,7 +235,7 @@
         if ([primaryValue intValue] <= 0) {
             return [self save];
         }else{
-            self.pk = [primaryValue integerValue];
+            self.pk = [primaryValue longLongValue];
             return [self update];
         }
     }else{
