@@ -28,10 +28,10 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me_address" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-PJ-as7" userLabel="地址图标">
-                        <rect key="frame" x="70" y="29" width="9" height="11"/>
+                        <rect key="frame" x="65" y="29" width="9" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDj-2E-nc7" userLabel="地址">
-                        <rect key="frame" x="81" y="28" width="23" height="14"/>
+                        <rect key="frame" x="76" y="28" width="23" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -207,8 +207,8 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hhhhhh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJV-X0-PgA" userLabel="昵称">
-                        <rect key="frame" x="70" y="9.5" width="49" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="65" y="9.5" width="51.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -234,7 +234,7 @@
                     <constraint firstItem="NKo-PJ-as7" firstAttribute="bottom" secondItem="r8q-rU-Gnb" secondAttribute="bottom" constant="-8" id="fFh-YF-i1q"/>
                     <constraint firstItem="hCc-Rs-QJx" firstAttribute="leading" secondItem="kb6-aT-ufJ" secondAttribute="leading" id="iaO-Tx-Eb6"/>
                     <constraint firstItem="2C1-jy-QPJ" firstAttribute="top" secondItem="r8q-rU-Gnb" secondAttribute="top" constant="-5" id="k2z-Bg-UUu"/>
-                    <constraint firstItem="dJV-X0-PgA" firstAttribute="leading" secondItem="r8q-rU-Gnb" secondAttribute="trailing" constant="15" id="ldb-ta-DNf"/>
+                    <constraint firstItem="dJV-X0-PgA" firstAttribute="leading" secondItem="r8q-rU-Gnb" secondAttribute="trailing" constant="10" id="ldb-ta-DNf"/>
                     <constraint firstItem="2C1-jy-QPJ" firstAttribute="width" secondItem="r8q-rU-Gnb" secondAttribute="width" multiplier="1.5" id="m1P-Og-0zD"/>
                     <constraint firstAttribute="trailing" secondItem="M9O-EF-VPs" secondAttribute="trailing" id="mdW-hL-DuI"/>
                     <constraint firstItem="dJV-X0-PgA" firstAttribute="bottom" secondItem="NKo-PJ-as7" secondAttribute="top" constant="-2.5" id="pR0-J0-gbs"/>

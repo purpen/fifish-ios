@@ -50,9 +50,8 @@
     if (!_equipmentBtn) {
         _equipmentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateNormal)];
-        [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateHighlighted)];
         [_equipmentBtn addTarget:self action:@selector(equipmentBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        _equipmentBtn.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8" alpha:0.9];
+        _equipmentBtn.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8" alpha:1];
     }
     return _equipmentBtn;
 }
@@ -61,12 +60,6 @@
  *  点击设备按钮
  */
 -(void)equipmentBtnClick:(UIButton*)sender{
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
-    } else {
-        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#121f27"];
-    }
     FSEquipmentViewController *vc = [[FSEquipmentViewController alloc] init];
     FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navi animated:YES completion:nil];

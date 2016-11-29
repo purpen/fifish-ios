@@ -232,7 +232,7 @@
                 self.like_count_label.text = str;
                 self.model.is_love = 0;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];
         } else {
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
@@ -251,7 +251,7 @@
                 self.like_count_label.text = str;
                 self.model.is_love = 1;
             } failure:^(FBRequest *request, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];
         }
     } else {

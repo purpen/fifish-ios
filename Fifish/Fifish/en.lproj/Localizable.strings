@@ -201,7 +201,7 @@
 "The mailbox is empty" = "邮箱为空";
 
 //错误提示
-"Loading user data failed" = "加载用户数据失败";
+"Network error" = "网络错误";
 "The operation failure" = "操作失败";
 
 "uploading" = "正在上传";

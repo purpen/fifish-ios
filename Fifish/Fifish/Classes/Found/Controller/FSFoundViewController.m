@@ -136,8 +136,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *addItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(addClick)];
-    self.navigationItem.rightBarButtonItem = addItem;
+//    UIBarButtonItem *addItem = [UIBarButtonItem itemWithImage:@"me_addFriend" highImage:nil title:nil target:self action:@selector(addClick)];
+//    self.navigationItem.rightBarButtonItem = addItem;
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"home_search" highImage:nil title:nil target:self action:@selector(searchClick)];
     self.navigationItem.leftBarButtonItem = searchItem;
     [self.view addSubview:self.contentTableView];
@@ -233,7 +233,7 @@
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contentTableView.mj_footer endRefreshing];
     }];
@@ -265,7 +265,7 @@
         [self.contentTableView.mj_header endRefreshing];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
         self.stuffAry = (NSMutableArray *)[FSZuoPin findAll];
         for (FSZuoPin *model in self.stuffAry) {
@@ -408,7 +408,7 @@
         [self.contentTableView reloadData];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
         self.userAry = [FSUserModel findAll];
         [self.contentTableView reloadData];
@@ -427,7 +427,7 @@
         [self.contentTableView reloadData];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
         self.tagsAry = [FSTageModel findAll];
