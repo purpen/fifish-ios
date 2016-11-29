@@ -7,12 +7,21 @@
 //
 
 #import "FSTemperatureView.h"
+#import "FSSettingManager.h"
 #import "LiveVideoMacro.h"
 @interface FSTemperatureView ()
 
 @property (nonatomic ,strong) UIImageView * temperatureIconView;
 
 @property (nonatomic ,strong) UILabel     * temperatureLab;
+
+@property (nonatomic)         CGFloat       temperatureCoefficient;//温度系数
+
+
+/**
+ 温度单位
+ */
+@property (nonatomic, strong, nonnull) NSString    * temperatureUnit;
 
 
 @end
@@ -49,10 +58,13 @@
         _temperatureLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
         _temperatureLab.textAlignment = NSTextAlignmentLeft;
         _temperatureLab.text = @"18°";
+        self.temperatureCoefficient = 1.0;//初始温度系数为1。默认为摄氏度
+        _temperatureUnit = @"℃";//默认为摄氏度单位
     }
     
     return _temperatureLab;
 }
+
 - (UIImageView *)temperatureIconView{
     if (!_temperatureIconView) {
         _temperatureIconView = [[UIImageView alloc] init];
@@ -62,6 +74,21 @@
 }
 - (void)setTempera:(NSString *)Tempera{
     _Tempera = Tempera;
-    self.temperatureLab.text = [NSString stringWithFormat:@"%@℃",_Tempera];
+    self.temperatureLab.text = [NSString stringWithFormat:@"%@%.1f",self.temperatureUnit,[_Tempera integerValue]*self.temperatureCoefficient];
+}
+
+-(void)updateUI{
+    //摄氏度为单位
+    if ([FSSettingManager GetTemperatureUnit]==0) {
+        
+        self.temperatureUnit = @"℃";
+        self.temperatureCoefficient = 1.0;
+    }
+    //华氏度为单位
+    else{
+   
+        self.temperatureUnit = @"℉";
+        self.temperatureCoefficient = 33.8;
+    }
 }
 @end

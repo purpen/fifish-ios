@@ -18,9 +18,9 @@
 + (NSInteger)getDeepUnit;
 
 /**
- 获取温度单位
+ 获取温度单位 0为摄氏度，1为华氏度
 
- @return 0为摄氏度，1为华氏度
+ @return 
  */
 + (NSInteger)GetTemperatureUnit;
 
