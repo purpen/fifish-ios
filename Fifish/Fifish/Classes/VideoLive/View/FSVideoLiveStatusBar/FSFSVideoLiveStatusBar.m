@@ -159,14 +159,19 @@
 }
 - (void)getRovInfo:(NSNotification *)notice{
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         self.FifishBattery.text = [NSString stringWithFormat:@"ROV电量:%.1f％",rovinfo.Remain_battery];
         self.TemperatureView.Tempera = rovinfo.Temp;
     });
 }
+
 -(void)dealloc{
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
+
 - (void)updataUI{
     
 }
