@@ -117,6 +117,7 @@
     }
     return _editView;
 }
+
 #pragma mark UIcollectionviewdelegate
 
 //个数
@@ -138,7 +139,7 @@
     cell.model = model;
     
     return cell;
-    
+
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSImageModel * model = self.modelArr[indexPath.row];
@@ -150,11 +151,14 @@
 - (void)finalizeCollectionViewUpdates{
     
 }
+
 #pragma mark ScrollviewDelegate
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     CGPoint offset = scrollView.contentOffset;
+    
     self.seletedIndex = offset.x/SCREEN_WIDTH;
+    
     self.offsetLab.text = [NSString stringWithFormat:@"%ld/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
 }
 
