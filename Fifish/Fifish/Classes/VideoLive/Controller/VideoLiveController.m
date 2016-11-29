@@ -116,6 +116,7 @@
 - (void)SetUpUI{
     self.view.backgroundColor = [UIColor blackColor];
     
+    //顶部状态栏
     [self.view addSubview:self.statusBar];
     [self.statusBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -124,6 +125,7 @@
         make.height.equalTo(@60);
     }];
 
+    //底部录像、拍照栏
     [self.view addSubview:self.bottomBar];
     [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom);
@@ -132,6 +134,7 @@
         make.height.equalTo(@100);
     }];
     
+    //深度尺
     [self.view addSubview:self.DetpthView];
     [self.DetpthView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.statusBar.mas_bottom);
@@ -140,6 +143,7 @@
         make.right.equalTo(self.view.mas_right);
     }];
     
+    //进入页面loding视图
     [self.view addSubview:self.activityIndicatorView];
     [self.activityIndicatorView startAnimating];
     [self.activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,6 +151,11 @@
     }];
 }
 
+//从设置页面过来刷新界面，因为会涉及页面单位改变等等
+- (void)updataUI{
+    [self.statusBar updataUI];
+    [self.DetpthView updataUI];
+}
 #pragma mark dealloc
 - (void)dealloc{
     //终止连接
@@ -182,7 +191,15 @@
     [self.view bringSubviewToFront:self.statusBar];
     [self.view bringSubviewToFront:self.DetpthView];
     [self.view bringSubviewToFront:self.bottomBar];
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self updataUI];
+}
+
 - (void)viewDidDisappear:(BOOL)animated{
     
     [super viewDidDisappear:animated];
@@ -196,6 +213,7 @@
     }
     return _activityIndicatorView;
 }
+
 //状态栏
 - (FSFSVideoLiveStatusBar *)statusBar{
     if (!_statusBar) {
@@ -205,6 +223,7 @@
     }
     return _statusBar;
 }
+
 //深度尺
 - (FSVideoDepthRulerView *)DetpthView{
     

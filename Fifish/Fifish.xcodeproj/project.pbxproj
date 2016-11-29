@@ -130,6 +130,7 @@
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A23B851DAF2997001BD636 /* FSFliterImage.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
+		04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D014171DED5C1E00AC51B5 /* FSSettingManager.m */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
 		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
@@ -739,6 +740,8 @@
 		04A23B851DAF2997001BD636 /* FSFliterImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFliterImage.m; sourceTree = "<group>"; };
 		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
 		04A52F001D90DC1000F9303D /* FSliveVideoConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveVideoConst.m; sourceTree = "<group>"; };
+		04D014161DED5C1E00AC51B5 /* FSSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingManager.h; sourceTree = "<group>"; };
+		04D014171DED5C1E00AC51B5 /* FSSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingManager.m; sourceTree = "<group>"; };
 		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
 		04F20ED61D7D0B79009790EE /* FSBearingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBearingsView.m; sourceTree = "<group>"; };
 		04F20EE61D7D6971009790EE /* FSLiveSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLiveSettingsViewController.h; sourceTree = "<group>"; };
@@ -1899,6 +1902,7 @@
 		04596A6B1D7FBD66008D1DD5 /* GeneralSettings */ = {
 			isa = PBXGroup;
 			children = (
+				04D014151DED5BE400AC51B5 /* Tools */,
 				04596A6C1D7FBD66008D1DD5 /* Controller */,
 				04596A6D1D7FBD66008D1DD5 /* Model */,
 				04596A6E1D7FBD66008D1DD5 /* VIew */,
@@ -2144,6 +2148,15 @@
 				04A52F001D90DC1000F9303D /* FSliveVideoConst.m */,
 			);
 			path = const;
+			sourceTree = "<group>";
+		};
+		04D014151DED5BE400AC51B5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04D014161DED5C1E00AC51B5 /* FSSettingManager.h */,
+				04D014171DED5C1E00AC51B5 /* FSSettingManager.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		04F20ED41D7D0B5E009790EE /* FifishBearingsView */ = {
@@ -3796,6 +3809,7 @@
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */,
+				04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */,
 				1FE565AF1DC041D5000AE61D /* FSUserNameViewController.m in Sources */,
 				1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,

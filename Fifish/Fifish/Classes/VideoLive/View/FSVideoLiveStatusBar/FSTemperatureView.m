@@ -42,6 +42,7 @@
 }
 
 - (UILabel *)temperatureLab{
+    
     if (!_temperatureLab) {
         _temperatureLab  = [[UILabel alloc] init];
         _temperatureLab.font = [UIFont systemFontOfSize:10];
@@ -49,6 +50,7 @@
         _temperatureLab.textAlignment = NSTextAlignmentLeft;
         _temperatureLab.text = @"18°";
     }
+    
     return _temperatureLab;
 }
 - (UIImageView *)temperatureIconView{
