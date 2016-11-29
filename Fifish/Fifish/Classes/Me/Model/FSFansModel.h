@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JKDBModel.h"
 
-@interface FSFansModel : NSObject
+@interface FSFansModel : JKDBModel
 
 /**  */
 @property(nonatomic,copy) NSString *userId;

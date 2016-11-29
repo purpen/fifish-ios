@@ -30,5 +30,36 @@
              };
 }
 
++ (id)toArrayOrNSDictionary:(NSData *)jsonData{
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                    options:NSJSONReadingMutableContainers
+                                                      error:&error];
+    
+    if (jsonObject != nil && error == nil){
+        return jsonObject;
+    }else{
+        // 解析错误
+        return nil;
+    }
+    
+}
+
+// 将字典或者数组转化为JSON串
++ (NSData *)toJSONData:(id)theData{
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSLog(@"%@", jsonData);
+    
+    if ([jsonData length] != 0 && error == nil){
+        return jsonData;
+    }else{
+        return nil;
+    }
+}
+
 
 @end

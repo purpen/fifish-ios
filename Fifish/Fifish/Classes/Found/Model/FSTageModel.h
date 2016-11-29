@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JKDBModel.h"
 
-@interface FSTageModel : NSObject
+@interface FSTageModel : JKDBModel
 
 /**  */
 @property(nonatomic,copy) NSString *tagId;
