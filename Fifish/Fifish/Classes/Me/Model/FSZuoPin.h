@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "FSConst.h"
+#import "JKDBModel.h"
 
 
-@interface FSZuoPin : NSObject
+@interface FSZuoPin : JKDBModel
 
 /**  */
 @property(nonatomic,copy) NSString *content;
@@ -30,6 +31,8 @@
 @property(nonatomic,copy) NSString *username;
 /**  */
 @property (nonatomic, strong) NSArray *tags;
+/**  */
+@property(nonatomic,copy) NSString *tagsStr;
 /**  */
 @property (nonatomic, assign) NSInteger is_love;
 /**  */
@@ -54,5 +57,9 @@
 @property(nonatomic,copy) NSString *duration;
 /**  */
 @property (nonatomic, assign) CGFloat pictureProgress;
+
++ (id)toArrayOrNSDictionary:(NSData *)jsonData;
+// 将字典或者数组转化为JSON串
++ (NSData *)toJSONData:(id)theData;
 
 @end

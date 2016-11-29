@@ -376,14 +376,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.guanZhuPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSListUserModel findAll];
+        [FSListUserModel deleteObjects:ary];
+        [FSListUserModel saveObjects:self.guanZhuPersons];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
+        self.guanZhuPersons = (NSMutableArray*)[FSListUserModel findAll];
+        [self.contentTableView reloadData];
     }];
 }
 
@@ -415,15 +418,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.fenSiPersons = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSFansModel findAll];
+        [FSFansModel deleteObjects:ary];
+        [FSFansModel saveObjects:self.fenSiPersons];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        
-        // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
+        self.fenSiPersons = (NSMutableArray*)[FSFansModel findAll];
+        [self.contentTableView reloadData];
     }];
 }
 
@@ -440,7 +445,9 @@ static NSString * const fucosCellId = @"fucos";
             [userModel saveOrUpdate];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
-            
+            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            self.userId = userModel.userId;
+            [self.contentTableView reloadData];
         }];
     } else {
         FBRequest *request2 = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@",self.userId] requestDictionary:nil delegate:self];
@@ -473,14 +480,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSZuoPin findAll];
+        [FSZuoPin deleteObjects:ary];
+        [FSZuoPin saveObjects:self.zuoPins];
         [self.contentTableView reloadData];
         [self.contentTableView.mj_header endRefreshing];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
         [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
+        self.zuoPins = (NSMutableArray*)[FSZuoPin findAll];
+        [self.contentTableView reloadData];
     }];
 }
 

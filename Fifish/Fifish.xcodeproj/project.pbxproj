@@ -310,6 +310,7 @@
 		1FAB4C9D1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */; };
 		1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */; };
 		1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */; };
+		1FC536D61DED546D0034CC1E /* FSFoundSlidePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */; };
 		1FD5B0401DE43B4A004929F0 /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */; };
 		1FD5B0411DE43B4A004929F0 /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */; };
 		1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28CC1D92739700566A73 /* FSTageModel.m */; };
@@ -1044,6 +1045,8 @@
 		1FB4FBC41D954EE900E236CF /* FSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchViewController.h; sourceTree = "<group>"; };
 		1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchViewController.m; sourceTree = "<group>"; };
 		1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSearchViewController.xib; sourceTree = "<group>"; };
+		1FC536D41DED546D0034CC1E /* FSFoundSlidePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundSlidePageModel.h; sourceTree = "<group>"; };
+		1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundSlidePageModel.m; sourceTree = "<group>"; };
 		1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
 		1FD5B03E1DE43B4A004929F0 /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
 		1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
@@ -3068,6 +3071,8 @@
 			children = (
 				1FDE28CB1D92739700566A73 /* FSTageModel.h */,
 				1FDE28CC1D92739700566A73 /* FSTageModel.m */,
+				1FC536D41DED546D0034CC1E /* FSFoundSlidePageModel.h */,
+				1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3924,6 +3929,7 @@
 				48FC20821DBC4A08001D71F4 /* UIView+frameAdjust.m in Sources */,
 				1FE564FD1DB75DBE000AE61D /* FSTagSearchViewController.m in Sources */,
 				1F7EDE191D45E0D300ABED5D /* main.m in Sources */,
+				1FC536D61DED546D0034CC1E /* FSFoundSlidePageModel.m in Sources */,
 				1FE565611DBDF0C4000AE61D /* UMSocialShareScrollView.m in Sources */,
 				0476A8CC1D82540E0009D10E /* FSEncodingInfoModel.m in Sources */,
 				1FE566041DC2E9C4000AE61D /* DALabeledCircularProgressView.m in Sources */,

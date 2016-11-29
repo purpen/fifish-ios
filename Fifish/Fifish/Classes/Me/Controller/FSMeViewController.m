@@ -92,22 +92,23 @@
         userModel = [FSUserModel mj_objectWithKeyValues:dict];
         userModel.isLogin = YES;
         [userModel saveOrUpdate];
-        
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
-        NSLog(@"头像  %@",userModel.large);
-        self.nameLabel.text = userModel.username;
-        self.addressLabel.text = userModel.zone;
-        if (self.addressLabel.text.length == 0) {
-            self.addressIcon.hidden = YES;
-        }
-        self.summaryLabel.text = userModel.summary;
-        self.zuoPinNumLabel.text = userModel.stuff_count;
-        self.fansNumLabel.text = userModel.fans_count;
-        self.focusNumLabel.text = userModel.follow_count;
+        [self settingTheProject:userModel];
         
     } failure:^(FBRequest *request, NSError *error) {
-        
+        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+        [self settingTheProject:userModel];
     }];
+}
+
+-(void)settingTheProject:(FSUserModel*)userModel{
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.nameLabel.text = userModel.username;
+    self.addressLabel.text = userModel.zone;
+    self.addressIcon.hidden = self.addressLabel.text.length == 0;
+    self.summaryLabel.text = userModel.summary;
+    self.zuoPinNumLabel.text = userModel.stuff_count;
+    self.fansNumLabel.text = userModel.fans_count;
+    self.focusNumLabel.text = userModel.follow_count;
 }
 
 - (IBAction)praisedClick:(id)sender {
