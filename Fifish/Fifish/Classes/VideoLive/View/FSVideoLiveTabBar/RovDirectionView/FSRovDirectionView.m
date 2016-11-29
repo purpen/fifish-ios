@@ -71,7 +71,7 @@
         
         
 //        测试旋转方法
-        [self testMethed];
+//        [self testMethed];
         
 //        监听ROV 航向
 //        [self ObserverWithOSDCourse];

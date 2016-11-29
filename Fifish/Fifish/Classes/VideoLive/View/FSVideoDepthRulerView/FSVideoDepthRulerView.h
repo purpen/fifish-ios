@@ -10,4 +10,6 @@
 
 @interface FSVideoDepthRulerView : UIView
 
+//刷新界面
+- (void)updataUI;
 @end

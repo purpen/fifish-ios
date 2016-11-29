@@ -9,7 +9,7 @@
 #import "FSGeneralSettingViewController.h"
 #import "FSGeneralSettingsCell.h"
 
-
+#import "FSSettingManager.h"
 
 
 @interface FSGeneralSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -29,8 +29,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //读取设置。
+    [self loadSettingValue];
     [self loadMenu];
     // Do any additional setup after loading the view.
+}
+- (void)loadSettingValue{
+    
+    //读取度量单位显示设置
+    self.currentUnitIdex = [NSIndexPath indexPathForRow:[FSSettingManager getDeepUnit] inSection:0];
+    self.currentTempIdex = [NSIndexPath indexPathForRow:[FSSettingManager GetTemperatureUnit] inSection:1];
+    
 }
 - (NSArray *)subMenuTitleArrs{
     if (!_subMenuTitleArrs) {
@@ -51,7 +61,7 @@
         _menuTableView.delegate = self;
         _menuTableView.dataSource =self;
         _menuTableView.backgroundColor = [UIColor blackColor];
-        _menuTableView.tableFooterView = [[UIView alloc] init];
+        _menuTableView.tableFooterView = [[UIView alloc] init]; 
         [_menuTableView registerClass:[FSGeneralSettingsCell class] forCellReuseIdentifier:GeneralSettingsCellIden];
     }
     return _menuTableView;
@@ -99,13 +109,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
     if (indexPath.section==0) {
+        
         self.currentUnitIdex = indexPath;
+        
+        [FSSettingManager setDeepUnit:indexPath.row];//保存深度单位
+    
     }
+    
     if (indexPath.section ==1) {
+        
         self.currentTempIdex = indexPath;
+        
+        [FSSettingManager setTemperatureUnit:indexPath.row];//保存温度单位
+        
     }
+    
     [tableView reloadData];
+    
 }
 /*
 #pragma mark - Navigation

@@ -9,6 +9,7 @@
 #import "FSVideoDepthRulerView.h"
 #import "Masonry.h"
 #import "FSRulersScrollView.h"
+#import "FSSettingManager.h"
 
 #import "RovInfo.h"
 @interface FSVideoDepthRulerView()
@@ -26,6 +27,8 @@
 @property (nonatomic, strong)UIImageView        * RightLineView;
 
 @property (nonatomic, strong)UILabel            * depthLab;//深度单位
+
+@property (nonatomic)CGFloat                    deepCoefficient;//深度换算系数，单位为英尺系数为3.3，米为1
 
 @property (nonatomic, strong)UIButton           * depthBtn;//深度数值
 
@@ -133,14 +136,16 @@
     }
     return _RightLineView;
 }
+
 -(UILabel *)depthLab{
     if (!_depthLab) {
         _depthLab = [[UILabel alloc] init];
         _depthLab.font = [UIFont systemFontOfSize:10];
         _depthLab.textAlignment = NSTextAlignmentLeft;
         _depthLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
-        _depthLab.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Depth", nil),NSLocalizedString(@"metre", nil)];
+        
     }
+    [self updataUI];
     return _depthLab;
 }
 
@@ -161,10 +166,26 @@
     return _currentLineView;
 }
 
+-(void)updataUI{
+    //英尺为单位
+    if ([FSSettingManager getDeepUnit]==0) {
+        _depthLab.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Depth", nil),NSLocalizedString(@"foot", nil)];
+        self.deepCoefficient = 3.3;
+    }
+    //米为单位
+    else{
+        _depthLab.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"Depth", nil),NSLocalizedString(@"metre", nil)];
+        
+        //初始化深度系数为1.单位为米；例：传回数据为10此时就是10*1为1米。如果单位为英尺此时系数为3.3，10*3.3为33英尺。
+        self.deepCoefficient = 1;
+    }
+}
 
 #pragma 监听rov信息
 - (void)ObserverWithOSD{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(depthChange:) name:@"RovInfoChange" object:nil];
+    
+    
     
 }
 - (void)dealloc{
@@ -176,7 +197,7 @@
         CGPoint point = CGPointMake(0,(rovinfo.Depth*self.leftRulersScrowView.stpe)-(self.leftRulersScrowView.frame.size.height/2));
         [self.leftRulersScrowView setContentOffset:point animated:YES];
         [self.rightRulersScrowView setContentOffset:point animated:YES];
-        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",rovinfo.Depth] forState:UIControlStateNormal];
+        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",rovinfo.Depth*self.deepCoefficient] forState:UIControlStateNormal];
     });
 }
 /*

@@ -36,6 +36,8 @@
 {
     self = [super init];
     if (self) {
+        
+        
         [self addSubview:self.FifishBackBtn];
         [self.FifishBackBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(100, 50));
@@ -164,5 +166,8 @@
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void)updataUI{
+    
 }
 @end
