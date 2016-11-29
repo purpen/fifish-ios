@@ -12,4 +12,6 @@
 //温度
 @property (nonatomic , assign) NSString * Tempera;
 
+//根据温度单位的选项刷新UI
+- (void)updateUI;
 @end

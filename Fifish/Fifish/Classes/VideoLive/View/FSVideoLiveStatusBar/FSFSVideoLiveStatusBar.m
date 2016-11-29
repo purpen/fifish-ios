@@ -173,6 +173,6 @@
 }
 
 - (void)updataUI{
-    
+    [self.TemperatureView updateUI];
 }
 @end
