@@ -405,6 +405,7 @@
     self.searchBar.delegate = self;
     self.type = @(1);
     self.tid = @(2);
+    [self.searchBar becomeFirstResponder];
 }
 
 

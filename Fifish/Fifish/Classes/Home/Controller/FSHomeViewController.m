@@ -320,7 +320,7 @@ static NSString * const CellId = @"home";
          [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_header endRefreshing];
         self.modelAry = (NSMutableArray *)[FSZuoPin findAll];
@@ -351,7 +351,7 @@ static NSString * const CellId = @"home";
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_footer endRefreshing];
     }];

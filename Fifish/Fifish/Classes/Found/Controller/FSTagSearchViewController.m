@@ -639,7 +639,7 @@
             cell.fSHomeViewDelegate = self;
             cell.navi = self.navigationController;
             cell.model = self.stuffAry[indexPath.section - 1];
-            cell.ctData = self.contentStringAry[indexPath.section - 1];
+            cell.ctData = self.ctDataAry[indexPath.section - 1];
             cell.hideFlag = [self.hideAry[indexPath.section - 1] integerValue];
             cell.contentString = self.contentStringAry[indexPath.section - 1];
             cell.commendBtn.tag = indexPath.section - 1;

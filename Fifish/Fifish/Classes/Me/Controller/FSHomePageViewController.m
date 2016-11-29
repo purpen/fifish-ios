@@ -361,7 +361,7 @@ static NSString * const fucosCellId = @"fucos";
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -383,7 +383,7 @@ static NSString * const fucosCellId = @"fucos";
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
         self.guanZhuPersons = (NSMutableArray*)[FSListUserModel findAll];
         [self.contentTableView reloadData];
@@ -403,7 +403,7 @@ static NSString * const fucosCellId = @"fucos";
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -425,7 +425,7 @@ static NSString * const fucosCellId = @"fucos";
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
         self.fenSiPersons = (NSMutableArray*)[FSFansModel findAll];
         [self.contentTableView reloadData];
@@ -487,7 +487,7 @@ static NSString * const fucosCellId = @"fucos";
         [self.contentTableView.mj_header endRefreshing];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
         self.zuoPins = (NSMutableArray*)[FSZuoPin findAll];
         [self.contentTableView reloadData];
@@ -512,7 +512,7 @@ static NSString * const fucosCellId = @"fucos";
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_footer endRefreshing];
