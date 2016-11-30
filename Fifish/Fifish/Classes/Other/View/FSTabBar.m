@@ -40,7 +40,7 @@
         _equipmentLabel = [[UILabel alloc] init];
         _equipmentLabel.text = NSLocalizedString(@"equipment", nil);
         _equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
-        _equipmentLabel.font = [UIFont systemFontOfSize:12];
+        _equipmentLabel.font = [UIFont systemFontOfSize:10];
         _equipmentLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _equipmentLabel;
@@ -75,7 +75,7 @@
     
     // 设置其他UITabBarButton的frame
     CGFloat buttonX = 0;
-    CGFloat buttonY = 0;
+    CGFloat buttonY = -2;
     CGFloat buttonW = width / (self.items.count + 1);
     CGFloat buttonH = height;
     NSInteger index = 0;
@@ -92,7 +92,7 @@
     
     
     self.equipmentLabel.frame = CGRectMake(0, 0, 70, 12);
-    self.equipmentLabel.center = CGPointMake(width * 0.5, height * 0.87 - 2);
+    self.equipmentLabel.center = CGPointMake(width * 0.5, height * 0.87 - 2.5);
     
     self.equipmentBtn.frame = CGRectMake(buttonX, buttonY, 50, 50);
     self.equipmentBtn.layer.cornerRadius = 50 / 2;

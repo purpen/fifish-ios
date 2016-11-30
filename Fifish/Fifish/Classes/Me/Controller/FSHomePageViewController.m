@@ -103,7 +103,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.type = FSTypeZuoPin;
-//    self.arrangementFlag = NO;
     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
     if ([userModel.userId isEqualToString:self.userId]) {
         self.isMyself = YES;
@@ -112,6 +111,7 @@ static NSString * const fucosCellId = @"fucos";
     }
     // 设置导航栏
     [self setupNav];
+    [self.contentTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 
@@ -216,6 +216,7 @@ static NSString * const fucosCellId = @"fucos";
         }];
     }
 }
+
 
 #pragma mark - 设置导航条
 -(void)setupNav{
@@ -753,7 +754,7 @@ static NSString * const fucosCellId = @"fucos";
             {
                 //粉丝
                 FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:fucosCellId];
-                cell.model = self.fenSiPersons[indexPath.row];
+                cell.fansModel = self.fenSiPersons[indexPath.row];
                 cell.fucosBtn.tag = indexPath.row;
                 [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;

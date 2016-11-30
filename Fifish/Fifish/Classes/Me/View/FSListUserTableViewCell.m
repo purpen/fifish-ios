@@ -10,6 +10,7 @@
 #import "FSListUserModel.h"
 #import "UIColor+FSExtension.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+FSExtension.h"
 
 @interface FSListUserTableViewCell ()
 
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headInageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryLabel_topSpace;
 
 
 @end
@@ -38,7 +40,8 @@
 -(void)setUserModel:(FSUserModel *)userModel{
     _userModel = userModel;
     self.userNameLabel.text = userModel.username;
-    self.summaryLabel.text = userModel.summary;
+    self.summaryLabel_topSpace.constant = userModel.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
+    [self layoutIfNeeded];
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];
     if (userModel.following == 1) {
         self.fucosBtn.selected = YES;
@@ -53,6 +56,9 @@
     _model = model;
     self.userNameLabel.text = model.userName;
     self.summaryLabel.text = model.summary;
+    self.summaryLabel_topSpace.constant = model.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
+    [self layoutIfNeeded];
+    NSLog(@"self.headInageView.height%f, self.summaryLabel.height%f", self.headInageView.height, self.summaryLabel.height);
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (model.followFlag == 1) {
         self.fucosBtn.selected = YES;
@@ -66,7 +72,8 @@
 -(void)setFansModel:(FSFansModel *)fansModel{
     _fansModel = fansModel;
     self.userNameLabel.text = fansModel.userName;
-    self.summaryLabel.text = fansModel.summary;
+    self.summaryLabel_topSpace.constant = fansModel.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
+    [self layoutIfNeeded];
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:fansModel.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
     if (fansModel.followFlag == 1) {
         self.fucosBtn.selected = YES;
