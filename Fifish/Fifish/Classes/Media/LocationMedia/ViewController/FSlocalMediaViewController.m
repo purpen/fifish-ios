@@ -304,6 +304,7 @@ CGFloat const Cellspecace = 1;
     
     return _deletedBtn;
 }
+
 - (void)deleteMediaItem{
     //删除操作！
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -326,12 +327,15 @@ CGFloat const Cellspecace = 1;
             currentIndex = [self.seletedCellIndexSet indexLessThanIndex:currentIndex];
             
         }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            
             //UI界面删除
             [self.BroswerCollection deleteItemsAtIndexPaths:deleteArr];
             
             //更新删除按钮
             [self UpdateDeletedBtn];
+            
         });
         
     });

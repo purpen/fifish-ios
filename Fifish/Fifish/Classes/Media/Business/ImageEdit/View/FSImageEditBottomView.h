@@ -10,6 +10,12 @@
 
 @protocol FSImageEditBottomViewDelegate <NSObject>
 
+
+/**
+ 切换滤镜和参数调整
+
+ @param index 滤镜或者参数，0为滤镜1为参数
+ */
 - (void)FSImageEditBottomViewChooseWithIndex:(NSInteger)index;
 
 
@@ -25,6 +31,7 @@
  第二个
  */
 @property (nonatomic,strong) UIButton * adjustmentBtn;
+
 @property(assign,nonatomic) id<FSImageEditBottomViewDelegate>delegate;
 
 -(instancetype)initWithFristTitle:(NSString *)fristTitle AndSencondTitle:(NSString *)secondTitle;

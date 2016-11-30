@@ -208,21 +208,29 @@
 - (void)FSImageEditBottomViewChooseWithIndex:(NSInteger)type{
     if (type == 1) {
         NSLog(@"调整");
+        self.NavLeftBtn.hidden = YES;//调整状态不允许返回
         self.FilterCollectionView.hidden = YES;
         self.RegulateCollectionView.hidden = NO;
     }
     else{
+        
         NSLog(@"滤镜");
+        self.NavLeftBtn.hidden = NO;
         self.FilterCollectionView.hidden = NO;
         self.RegulateCollectionView.hidden = YES;
+        
     }
 }
 
 #pragma FsfilterCollectionDelegate
 
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
+    
    self.imageView.image = self.ParamsImage.image  = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
-    self.title = self.FilterManager.fsFilterNameArr[indexpath.row];
+    
+    //取消点击滤镜名字显示在navbar上
+//    self.title = self.FilterManager.fsFilterNameArr[indexpath.row];
+    
 }
 #pragma mark FSFilterCollectionViewDelegate
 -(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{
@@ -234,16 +242,19 @@
     //记录编辑类型
     self.editType = indexPath.row;
     NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
+    
 }
 
 #pragma mark FSFSImageRegulateBottomViewDelegate
 - (void)FSFSImageRegulateBottomViewCancel{
+    
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
     self.imageView.image = self.ParamsImage.image?self.ParamsImage.image:self.originalImage;
 
 }
 - (void)FSFSImageRegulateBottomViewConfirm{
+    
     self.ImageRegulateBottomView.hidden = YES;
     NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
     //记录参数值
