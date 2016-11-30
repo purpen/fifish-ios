@@ -10,21 +10,19 @@
 
 @implementation NSString (FSAttributedString)
 
--(NSAttributedString *)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor *)textcolor textFont:(UIFont *)font{
+-(NSAttributedString *)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor *)textcolor textFont:(UIFont *)font andIsAll:(BOOL)flag{
     //设置段落
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = lineSpacing;
+    paragraphStyle.lineSpacing = flag ? 4 : lineSpacing - 5;
+    
     //NSKernAttributeName 字体间距
     NSDictionary *attributes = @{
                                  NSParagraphStyleAttributeName : paragraphStyle,
-                                 NSKernAttributeName : @(0.5f)
+                                 NSKernAttributeName : @(0.5f),
+                                 NSForegroundColorAttributeName : textcolor,
+                                 NSFontAttributeName : font
                                  };
     NSMutableAttributedString *attriStr = [[NSMutableAttributedString alloc] initWithString:self attributes:attributes];
-    NSDictionary *attriBute = @{
-                                NSForegroundColorAttributeName : textcolor,
-                                NSFontAttributeName : font
-                                };
-    [attriStr addAttributes:attriBute range:NSMakeRange(0, self.length)];
     return attriStr;
 }
 
@@ -63,14 +61,11 @@
     //NSKernAttributeName 字体间距
     NSDictionary *attributes = @{
                                  NSParagraphStyleAttributeName : paragraphStyle,
-                                 NSKernAttributeName : @(0.5f)
+                                 NSKernAttributeName : @(0.5f),
+                                 NSForegroundColorAttributeName : textcolor,
+                                 NSFontAttributeName : font
                                  };
     NSMutableAttributedString *attriStr = [[NSMutableAttributedString alloc] initWithString:self attributes:attributes];
-    NSDictionary *attriBute = @{
-                                NSForegroundColorAttributeName : textcolor,
-                                NSFontAttributeName : font
-                                };
-    [attriStr addAttributes:attriBute range:NSMakeRange(0, self.length)];
     if (n) {
         [attriStr addAttribute:NSForegroundColorAttributeName
          

@@ -10,21 +10,36 @@
 #import "FSTagCollectionViewCell.h"
 #import "FSTagSearchViewController.h"
 #import "FSTageModel.h"
+#import "Masonry.h"
 
 @interface FSTagTableViewCell () <UICollectionViewDelegate,UICollectionViewDataSource>
 
 /**  */
 @property (nonatomic, strong) UICollectionView *myCollectionView;
+/**  */
+@property (nonatomic, strong) UIView *lineView;
 
 @end
 
 @implementation FSTagTableViewCell
 
+-(UIView *)lineView{
+    if (!_lineView) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = [UIColor colorWithHexString:@"#aaaaaa" alpha:0.67];
+    }
+    return _lineView;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
        [self.contentView addSubview:self.myCollectionView];
+        [self.contentView addSubview:self.lineView];
+        [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@(1));
+            make.left.bottom.right.equalTo(@(0));
+        }];
     }
     return self;
 }
