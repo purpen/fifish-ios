@@ -44,7 +44,8 @@
     if (!_FilterImageView) {
         _FilterImageView = [[UIImageView alloc] init];
         _FilterImageView.backgroundColor = [UIColor blackColor];
-        _FilterImageView.contentMode = UIViewContentModeScaleToFill;
+        _FilterImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _FilterImageView.clipsToBounds = YES;
     }
     return _FilterImageView;
 }
