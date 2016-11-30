@@ -311,6 +311,10 @@
 		1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */; };
 		1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */; };
 		1FC536D61DED546D0034CC1E /* FSFoundSlidePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */; };
+		1FC536D91DEEC15B0034CC1E /* FSHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536D81DEEC15B0034CC1E /* FSHistoryView.m */; };
+		1FC536DC1DEEC3F20034CC1E /* FSSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536DB1DEEC3F20034CC1E /* FSSearchModel.m */; };
+		1FC536E01DEEC5020034CC1E /* FSHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536DE1DEEC5020034CC1E /* FSHistoryCollectionViewCell.m */; };
+		1FC536E11DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC536DF1DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib */; };
 		1FD5B0401DE43B4A004929F0 /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */; };
 		1FD5B0411DE43B4A004929F0 /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */; };
 		1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE28CC1D92739700566A73 /* FSTageModel.m */; };
@@ -1047,6 +1051,13 @@
 		1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSearchViewController.xib; sourceTree = "<group>"; };
 		1FC536D41DED546D0034CC1E /* FSFoundSlidePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundSlidePageModel.h; sourceTree = "<group>"; };
 		1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundSlidePageModel.m; sourceTree = "<group>"; };
+		1FC536D71DEEC15B0034CC1E /* FSHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHistoryView.h; sourceTree = "<group>"; };
+		1FC536D81DEEC15B0034CC1E /* FSHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHistoryView.m; sourceTree = "<group>"; };
+		1FC536DA1DEEC3F20034CC1E /* FSSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchModel.h; sourceTree = "<group>"; };
+		1FC536DB1DEEC3F20034CC1E /* FSSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchModel.m; sourceTree = "<group>"; };
+		1FC536DD1DEEC5020034CC1E /* FSHistoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHistoryCollectionViewCell.h; sourceTree = "<group>"; };
+		1FC536DE1DEEC5020034CC1E /* FSHistoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHistoryCollectionViewCell.m; sourceTree = "<group>"; };
+		1FC536DF1DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHistoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		1FD5B03D1DE43B4A004929F0 /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
 		1FD5B03E1DE43B4A004929F0 /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
 		1FD5B03F1DE43B4A004929F0 /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
@@ -2611,6 +2622,8 @@
 			children = (
 				1F04249F1D548A600071A1D6 /* FSCommentModel.h */,
 				1F0424A01D548A600071A1D6 /* FSCommentModel.m */,
+				1FC536DA1DEEC3F20034CC1E /* FSSearchModel.h */,
+				1FC536DB1DEEC3F20034CC1E /* FSSearchModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2637,6 +2650,11 @@
 				1FE564C51DAF84A7000AE61D /* FSReportView.xib */,
 				1FE566071DC2EA30000AE61D /* FSProgressViewProgress.h */,
 				1FE566081DC2EA30000AE61D /* FSProgressViewProgress.m */,
+				1FC536D71DEEC15B0034CC1E /* FSHistoryView.h */,
+				1FC536D81DEEC15B0034CC1E /* FSHistoryView.m */,
+				1FC536DD1DEEC5020034CC1E /* FSHistoryCollectionViewCell.h */,
+				1FC536DE1DEEC5020034CC1E /* FSHistoryCollectionViewCell.m */,
+				1FC536DF1DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3540,6 +3558,7 @@
 				1F04248D1D542FD90071A1D6 /* FSHomeViewCell.xib in Resources */,
 				044175341DC8277100D170E6 /* FSfilterName.plist in Resources */,
 				1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */,
+				1FC536E11DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib in Resources */,
 				0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */,
 				1F9FA4911DD5713800A1806A /* FSReportViewController.xib in Resources */,
 				1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */,
@@ -3736,6 +3755,7 @@
 				0467651A1D6328E100FFA743 /* FSFSVideoLiveStatusBar.m in Sources */,
 				0434F4271D61C8D400DBFFCE /* FifishH264Decoder.m in Sources */,
 				1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */,
+				1FC536D91DEEC15B0034CC1E /* FSHistoryView.m in Sources */,
 				1F42020D1D48BCCE00D3E6CB /* UIBarButtonItem+FSExtension.m in Sources */,
 				1FE566061DC2E9C4000AE61D /* README.md in Sources */,
 				045D79E71DD5C36E009C2FD3 /* FSRovDirectionView.m in Sources */,
@@ -3789,6 +3809,7 @@
 				1FAB4C9C1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m in Sources */,
 				0436AF3E1DACE5C2001E6808 /* FSAmaroFilter.m in Sources */,
 				1F7EDEEE1D4700E500ABED5D /* IQPreviousNextView.m in Sources */,
+				1FC536DC1DEEC3F20034CC1E /* FSSearchModel.m in Sources */,
 				1F7EDEA91D45F9A500ABED5D /* FSConst.m in Sources */,
 				1F3401F11DCB52BF009B9C32 /* FSFansModel.m in Sources */,
 				1FF36E651D49F3A100EB3C93 /* ChanePwdViewController.m in Sources */,
@@ -3819,6 +3840,7 @@
 				48FC207E1DBC4A08001D71F4 /* CTFrameParser.m in Sources */,
 				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
 				1F0219CC1D799027003A8A11 /* FSForgetViewController.m in Sources */,
+				1FC536E01DEEC5020034CC1E /* FSHistoryCollectionViewCell.m in Sources */,
 				1F7EDEE81D4700E500ABED5D /* IQUIViewController+Additions.m in Sources */,
 				1F0424581D51F3C30071A1D6 /* UIProgressView+AFNetworking.m in Sources */,
 				1F0424481D51F3C30071A1D6 /* AFHTTPRequestOperation.m in Sources */,

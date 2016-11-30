@@ -31,8 +31,11 @@
 #import "CTFrameParser.h"
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
+#import "FSHistoryView.h"
+#import "FSSearchModel.h"
+#define ADVICE_TABLEVIEW 11
 
-@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
+@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -78,10 +81,36 @@
 /**  */
 @property (nonatomic, strong) UIView *imageView;
 @property (nonatomic, assign) BOOL isSmallScreen;
+/** ` */
+@property (nonatomic, strong) FSHistoryView *historyView;
+/**  */
+@property (nonatomic, strong) NSArray *adviceAry;
+/**  */
+@property (nonatomic, strong) UITableView *adviceTableView;
 
 @end
 
 @implementation FSSearchViewController
+
+-(UITableView *)adviceTableView{
+    if (!_adviceTableView) {
+        _adviceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+        _adviceTableView.delegate = self;
+        _adviceTableView.dataSource = self;
+        _adviceTableView.showsVerticalScrollIndicator = NO;
+        _adviceTableView.tag = ADVICE_TABLEVIEW;
+        [_adviceTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    }
+    return _adviceTableView;
+}
+
+-(FSHistoryView *)historyView{
+    if (!_historyView) {
+        _historyView = [[FSHistoryView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 500)];
+        _historyView.hVDelegate = self;
+    }
+    return _historyView;
+}
 
 -(NSMutableArray *)hideAry{
     if (!_hideAry) {
@@ -153,6 +182,9 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        return self.adviceAry.count;
+    }
     if ([self.type isEqualToNumber:@(2)]) {
         //用户
         return self.userAry.count > 0 ? self.userAry.count : 1;
@@ -163,6 +195,9 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        return 1;
+    }
     if ([self.type isEqualToNumber:@(2)]) {
         //用户
         return 1;
@@ -177,6 +212,9 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        return 0.00001f;
+    }
     return 10;
 }
 
@@ -201,6 +239,12 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        NSString *str = self.adviceAry[indexPath.row];
+        cell.textLabel.text = str;
+        return cell;
+    }
     if ([self.type isEqualToNumber:@(2)]) {
         if (self.userAry.count == 0) {
             static NSString *cellId = @"emptyShow";
@@ -278,6 +322,12 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        NSString *str = self.adviceAry[indexPath.row];
+        self.searchBar.text = str;
+        [self searchBarSearchButtonClicked:self.searchBar];
+        return;
+    }
     if ([self.type isEqualToNumber:@(2)]) {
         FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
         FSUserModel *model = self.userAry[indexPath.row];
@@ -383,6 +433,9 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.tag == ADVICE_TABLEVIEW) {
+        return 44;
+    }
     if ([self.type isEqualToNumber:@(2)]) {
         if (self.userAry.count == 0) {
             return SCREEN_HEIGHT - 109;
@@ -406,14 +459,15 @@
     self.type = @(1);
     self.tid = @(2);
     [self.searchBar becomeFirstResponder];
+    [self.view addSubview:self.historyView];
 }
 
 
-
 -(void)setupRefresh{
-    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+//    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+    [self loadNew];
     // 自动改变透明度
-    self.myTableView.mj_header.automaticallyChangeAlpha = YES;
+//    self.myTableView.mj_header.automaticallyChangeAlpha = YES;
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     self.myTableView.mj_footer.hidden = YES;
 }
@@ -523,6 +577,7 @@
 
 
 -(void)loadNew{
+    [SVProgressHUD show];
     [self.myTableView.mj_footer endRefreshing];
     self.current_page = 1;
     FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
@@ -535,7 +590,8 @@
                                                                                      @"sort" : @(1)
                                                                                      } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        [self.myTableView.mj_header endRefreshing];
+//        [self.myTableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
        
@@ -565,12 +621,13 @@
         [self.myTableView reloadData];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-        [self.myTableView.mj_header endRefreshing];
+//        [self.myTableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     }];
 }
 
 -(void)loadMore{
-    [self.myTableView.mj_header endRefreshing];
+//    [self.myTableView.mj_header endRefreshing];
     FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
                                                                                      @"page" : @(++self.current_page),
                                                                                      @"per_page" : @(10),
@@ -652,18 +709,49 @@
     return _lineView;
 }
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    self.historyView.hidden = searchBar.text.length != 0;
     if (searchBar.text.length == 0) {
+        return;
+    }
+    FBRequest *request = [FBAPI getWithUrlString:@"/search/expanded" requestDictionary:@{
+                                                                                         @"q" : searchBar.text,
+                                                                                         @"size" : @(5)
+                                                                                         } delegate:self];
+    [request startRequestSuccess:^(FBRequest *request, id result) {
+        [self.view addSubview:self.adviceTableView];
+        NSDictionary *dataDict = result[@"data"];
+        self.adviceAry = dataDict[@"swords"];
+        [self.adviceTableView reloadData];
+    } failure:^(FBRequest *request, NSError *error) {
         
-    } else {
+    }];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    if (searchBar.text.length != 0) {
+        FSSearchModel *model = [[FSSearchModel alloc] init];
+        model.keyStr = searchBar.text;
+        NSArray *ary = [FSSearchModel findAll];
+        if (ary.count >= 10) {
+            FSSearchModel *deleteModel = [[FSSearchModel alloc] init];
+            deleteModel.pk = 10;
+            [deleteModel deleteObject];
+        }
+        [model save];
         [self.view addSubview:self.segmentedControl];
         [self.view addSubview:self.lineView];
         [self.view endEditing:YES];
         [self.view addSubview:self.myTableView];
         [self setupRefresh];
         //进行网络请求
-        [self.myTableView.mj_header beginRefreshing];
+        [self loadNew];
     }
+}
+
+-(void)beginSearch:(NSString *)keyStr{
+    self.searchBar.text = keyStr;
+    [self searchBarSearchButtonClicked:self.searchBar];
 }
 
 #pragma mark - - - SGTopScrollMenu代理方法
@@ -679,7 +767,7 @@
         self.tid = @(0);
     }
     //进行网络请求
-    [self.myTableView.mj_header beginRefreshing];
+    [self loadNew];
 }
 
 - (IBAction)cancelClick:(id)sender {

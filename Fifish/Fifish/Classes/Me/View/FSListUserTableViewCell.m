@@ -40,6 +40,7 @@
 -(void)setUserModel:(FSUserModel *)userModel{
     _userModel = userModel;
     self.userNameLabel.text = userModel.username;
+    self.summaryLabel.text = userModel.summary;
     self.summaryLabel_topSpace.constant = userModel.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
     [self layoutIfNeeded];
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@""]];

@@ -247,7 +247,7 @@
     NSString *sex;
     if ([userinfo.gender isEqualToString:@"m"]) {
         sex = @"1";
-    } else if ([userinfo.gender isEqualToString:@"w"]) {
+    } else if ([userinfo.gender isEqualToString:@"f"]) {
         sex = @"2";
     }
     FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/oauth/%@", type] requestDictionary:@{
@@ -258,7 +258,6 @@
                                                                                        @"gender" : sex
                                                                                        } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"微信登录 %@", result);
         NSString *token = result[@"data"][@"token"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:token forKey:@"token"];
