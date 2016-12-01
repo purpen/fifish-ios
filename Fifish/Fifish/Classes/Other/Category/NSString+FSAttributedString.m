@@ -13,7 +13,7 @@
 -(NSAttributedString *)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor *)textcolor textFont:(UIFont *)font andIsAll:(BOOL)flag{
     //设置段落
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = flag ? 4 : lineSpacing - 5;
+    paragraphStyle.lineSpacing = flag ? 4 : lineSpacing;
     
     //NSKernAttributeName 字体间距
     NSDictionary *attributes = @{

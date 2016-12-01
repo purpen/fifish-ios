@@ -416,7 +416,7 @@ static NSString * const CellId = @"home";
                     gaoDu = (53 + 375);
                 }
             }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
         } else {
             CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
             CGFloat gaoDu = 0;
@@ -602,7 +602,7 @@ static NSString * const CellId = @"home";
                     [self.contenTableView reloadData];
                 }
             } failure:^(FBRequest *request, NSError *error) {
-                
+                NSLog(@"错误 %@", error.localizedDescription);
             }];
         } else {
             //关注

@@ -10,6 +10,7 @@
 #import "UIView+FSExtension.h"
 #import "FSSearchModel.h"
 #import "FSHistoryCollectionViewCell.h"
+#import "UICollectionViewLeftAlignedLayout.h"
 
 @interface FSHistoryView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -24,7 +25,7 @@
 
 -(UICollectionView *)historyCollectionView{
     if (!_historyCollectionView) {
-        UICollectionViewFlowLayout *layOut = [[UICollectionViewFlowLayout alloc] init];
+        UICollectionViewLeftAlignedLayout *layOut = [[UICollectionViewLeftAlignedLayout alloc] init];
         layOut.minimumLineSpacing = 10;
         layOut.minimumInteritemSpacing = 5;
         layOut.sectionInset = UIEdgeInsetsMake(30, 10, 0, 10);

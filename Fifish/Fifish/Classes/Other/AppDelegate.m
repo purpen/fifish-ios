@@ -191,8 +191,15 @@
         NSString *token = [defaults objectForKey:@"token"];
         FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
-            [defaults synchronize];
+            NSInteger status_code = [result[@"meta"][@"status_code"] integerValue];
+            if (status_code == 200) {
+                [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
+                [defaults synchronize];
+            } else {
+                FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                userModel.isLogin = NO;
+                [userModel saveOrUpdate];
+            }
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

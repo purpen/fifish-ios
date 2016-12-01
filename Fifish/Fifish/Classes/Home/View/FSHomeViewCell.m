@@ -124,8 +124,10 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    if ([model.like_count integerValue]) {
+    if ([model.like_count integerValue] > 0) {
         self.like_count_label.text = model.like_count;
+    } else {
+        self.like_count_label.text = @"";
     }
     if ([self.userModel.userId isEqualToString:_model.user_id]) {
         self.fucosBtn.hidden = YES;

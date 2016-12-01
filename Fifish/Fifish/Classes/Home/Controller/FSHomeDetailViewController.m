@@ -190,6 +190,7 @@ static NSString * const FSCommentId = @"comment";
             gaoDu = (textH + 375 + 12);
             flag = self.model.content.length > 96;
         }
+        gaoDu += 8;
     } else {
         CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
         if (SCREEN_HEIGHT == 568.0) {
@@ -203,8 +204,8 @@ static NSString * const FSCommentId = @"comment";
                 gaoDu = (textH + 347 + 10);
             }
         }
+        gaoDu += 3;
     }
-    gaoDu += 3;
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     _cell.ctData = data;
     NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:flag];

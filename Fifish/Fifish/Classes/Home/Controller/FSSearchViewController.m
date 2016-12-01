@@ -465,7 +465,7 @@
     self.searchBar.delegate = self;
     self.type = @(1);
     self.tid = @(2);
-    [self.searchBar becomeFirstResponder];
+    [self.searchBar performSelector:@selector(becomeFirstResponder) withObject:self afterDelay:0.5];
     [self.view addSubview:self.historyView];
 }
 
@@ -537,7 +537,7 @@
                     gaoDu = (53 + 375);
                 }
             }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
         } else {
             CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
             CGFloat gaoDu = 0;
@@ -584,6 +584,7 @@
 
 
 -(void)loadNew{
+    if (self.searchBar.text.length == 0) return;
     [SVProgressHUD show];
     [self.myTableView.mj_footer endRefreshing];
     self.current_page = 1;
@@ -751,8 +752,7 @@
             if ([kModel.keyStr isEqualToString:model.keyStr]) return;
         }
         if (ary.count >= 10) {
-            FSSearchModel *deleteModel = [[FSSearchModel alloc] init];
-            deleteModel.pk = 10;
+            FSSearchModel *deleteModel = ary[0];
             [deleteModel deleteObject];
         }
         [model save];

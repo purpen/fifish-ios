@@ -1,15 +1,4 @@
-/*!
- @header WMPlayer.m
- 
- @abstract  作者Github地址：https://github.com/zhengwenming
- 作者CSDN博客地址:http://blog.csdn.net/wenmingzheng
- 
- @author   Created by zhengwenming on  16/1/24
- 
- @version 2.0.0 16/1/24 Creation(版本信息)
- 
- Copyright © 2016年 郑文明. All rights reserved.
- */
+
 
 
 #import "WMPlayer.h"
@@ -144,8 +133,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
     self.playOrPauseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.playOrPauseBtn.showsTouchWhenHighlighted = YES;
     [self.playOrPauseBtn addTarget:self action:@selector(PlayOrPause:) forControlEvents:UIControlEventTouchUpInside];
-    [self.playOrPauseBtn setImage:[UIImage imageNamed:WMPlayerSrcName(@"pause")] ?: [UIImage imageNamed:WMPlayerFrameworkSrcName(@"pause")] forState:UIControlStateNormal];
-    [self.playOrPauseBtn setImage:[UIImage imageNamed:WMPlayerSrcName(@"play")] ?: [UIImage imageNamed:WMPlayerFrameworkSrcName(@"play")] forState:UIControlStateSelected];
+    [self.playOrPauseBtn setImage:[UIImage imageNamed:@"media_play"] ?: [UIImage imageNamed:@"media_stop"] forState:UIControlStateNormal];
+    [self.playOrPauseBtn setImage:[UIImage imageNamed:@"media_stop"] ?: [UIImage imageNamed:@"media_play"] forState:UIControlStateSelected];
     [self.bottomView addSubview:self.playOrPauseBtn];
     //autoLayout _playOrPauseBtn
     [self.playOrPauseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -202,6 +191,7 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
     self.progressSlider = [[UISlider alloc]init];
     self.progressSlider.minimumValue = 0.0;
     [self.progressSlider setThumbImage:[UIImage imageNamed:WMPlayerSrcName(@"dot")] ?: [UIImage imageNamed:WMPlayerFrameworkSrcName(@"dot")]  forState:UIControlStateNormal];
+//    [self.progressSlider setThumbImage:[UIImage imageNamed:@"media_progress_point"] forState:UIControlStateNormal];
     self.progressSlider.minimumTrackTintColor = [UIColor greenColor];
     self.progressSlider.maximumTrackTintColor = [UIColor clearColor];
 
@@ -220,8 +210,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
     
     //autoLayout slider
     [self.progressSlider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bottomView).with.offset(45);
-        make.right.equalTo(self.bottomView).with.offset(-45);
+        make.left.equalTo(self.bottomView).with.offset(55);
+        make.right.equalTo(self.bottomView).with.offset(-55);
         make.center.equalTo(self.bottomView);
     }];
     

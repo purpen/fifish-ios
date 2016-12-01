@@ -439,18 +439,19 @@ static BOOL                           _canSendMessage      = YES;
                                      parameters:[weakSelf transformRequestDictionary]
                                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                             weakSelf.isRunning = NO;
-                                            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
-                                            if (status_code == 200) {
-                                                
-                                                success(weakSelf, responseObject);
-                                            } else {
-//                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
-                                                if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token absent!"]) {
-                                                    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-                                                    userModel.isLogin = NO;
-                                                    [userModel saveOrUpdate];
-                                                }
-                                            }
+                                            success(weakSelf, responseObject);
+//                                            NSInteger status_code = [responseObject[@"meta"][@"status_code"] integerValue];
+//                                            if (status_code == 200) {
+//                                                
+//                                                success(weakSelf, responseObject);
+//                                            } else {
+////                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+//                                                if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token absent!"]) {
+//                                                    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+//                                                    userModel.isLogin = NO;
+//                                                    [userModel saveOrUpdate];
+//                                                }
+//                                            }
                                         }
                                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                             weakSelf.isRunning = NO;

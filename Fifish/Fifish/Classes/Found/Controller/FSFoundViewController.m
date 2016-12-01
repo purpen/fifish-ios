@@ -334,7 +334,7 @@
                     gaoDu = (53 + 375);
                 }
             }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f", gaoDu + 3]];
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f", gaoDu + 8]];
         } else {
             CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
             CGFloat gaoDu = 0;
