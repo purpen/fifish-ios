@@ -10,14 +10,18 @@
 
 @protocol FSRegulateCollectionViewDelegate <NSObject>
 
-- (void)RegulateSeletedParameter:(NSIndexPath *)indexPath;
+- (void)RegulateSeletedParameter:( NSIndexPath * _Nonnull )indexPath;
+
 
 
 @end
 
 @interface FSRegulateCollectionView : UICollectionView
 
-@property (nonatomic,assign) id<FSRegulateCollectionViewDelegate>FSRegulateDelegate;
+@property (nonatomic,assign,nonnull) id<FSRegulateCollectionViewDelegate>FSRegulateDelegate;
 
+//不严谨，后期改为只读属性
+@property (nonatomic,strong,nonnull)NSArray * imageArr;
+@property (nonatomic,strong,nonnull)NSArray * titleArr;
 
 @end

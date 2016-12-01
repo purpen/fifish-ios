@@ -86,12 +86,22 @@
     [self setRightItem:nextBtn];
 }
 - (void)NavBack{
+    
     [[[FSAlertView alloc] init] showAlertView:self title:NSLocalizedString(@"Give up editing?", nil) message:NSLocalizedString(@"If you return now, the picture editor will be cancelled.", nil) canceltitle:NSLocalizedString(@"Give up", nil) oktitle:NSLocalizedString(@"Retain", nil) confirmBlock:^{
         
     } cancelBlock:^{
         [super NavBack];
     }];
+    
 }
+
+/*隐藏和显示NAVitem*/
+- (void)NavItemNeedHidden:(BOOL)ishidden{
+    self.NavLeftBtn.hidden = ishidden;
+    self.NavRightBtn.hidden = ishidden;
+    self.title = @"";
+}
+
 - (void)gotoshareVC{
     
     FSReleasePictureViewController * vc = [[FSReleasePictureViewController alloc] init];
@@ -206,20 +216,20 @@
 }
 #pragma mark FSImageEditBottomViewDelegate
 - (void)FSImageEditBottomViewChooseWithIndex:(NSInteger)type{
+    
     if (type == 1) {
         NSLog(@"调整");
-        self.NavLeftBtn.hidden = YES;//调整状态不允许返回
         self.FilterCollectionView.hidden = YES;
         self.RegulateCollectionView.hidden = NO;
     }
     else{
         
         NSLog(@"滤镜");
-        self.NavLeftBtn.hidden = NO;
         self.FilterCollectionView.hidden = NO;
         self.RegulateCollectionView.hidden = YES;
         
     }
+    
 }
 
 #pragma FsfilterCollectionDelegate
@@ -237,11 +247,18 @@
     
     //点击参数值设定，显示参数调整滑动条
     self.ImageRegulateBottomView.hidden = NO;
+    
+    /*点击参数调整不允许返回和继续操作*/
+    [self NavItemNeedHidden:YES];
+    
+    
     [self.ImageRegulateBottomView.SliderView setSliederWithType:indexPath.row AndImage:self.ParamsImage];
     
     //记录编辑类型
     self.editType = indexPath.row;
     NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
+    
+    self.title = NSLocalizedString(self.RegulateCollectionView.titleArr[indexPath.row], nil);
     
 }
 
@@ -251,6 +268,9 @@
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
     self.imageView.image = self.ParamsImage.image?self.ParamsImage.image:self.originalImage;
+
+    /*显示导航条按钮*/
+    [self NavItemNeedHidden:NO];
 
 }
 - (void)FSFSImageRegulateBottomViewConfirm{
@@ -263,12 +283,14 @@
     
     self.ParamsImage.image = self.imageView.image;
     
+    /*显示导航条按钮*/
+    [self NavItemNeedHidden:NO];
+    
 }
 
 -(void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value{
 
     self.imageView.image = [self.FilterManager randerImageWithProgress:value WithImage:self.ParamsImage.image?self.ParamsImage.image:self.originalImage WithImageParamType:self.editType];
-    
     
 }
 @end

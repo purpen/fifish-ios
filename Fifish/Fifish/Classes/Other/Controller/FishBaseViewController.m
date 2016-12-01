@@ -28,8 +28,12 @@
 }
 - (void)setRightItem:(UIView *)view
 {
+    if ([view isKindOfClass:[UIButton class]]) {
+        _NavRightBtn = (UIButton *)view;
+    }
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.rightBarButtonItems = @[rightItem];
+    
 }
 
 -(void)setLeftItem:(UIView *)view{

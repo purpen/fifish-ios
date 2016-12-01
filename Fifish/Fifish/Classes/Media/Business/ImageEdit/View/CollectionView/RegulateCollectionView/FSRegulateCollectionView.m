@@ -16,10 +16,6 @@ static NSInteger const CellHeight = 90;
 
 @interface FSRegulateCollectionView ()
 
-@property (nonatomic,strong)NSArray * imageArr;
-@property (nonatomic,strong)NSArray * titleArr;
-
-
 @end
 
 @interface FSRegulateCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
