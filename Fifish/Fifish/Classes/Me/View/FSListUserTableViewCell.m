@@ -73,6 +73,7 @@
 -(void)setFansModel:(FSFansModel *)fansModel{
     _fansModel = fansModel;
     self.userNameLabel.text = fansModel.userName;
+    self.summaryLabel.text = fansModel.summary;
     self.summaryLabel_topSpace.constant = fansModel.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
     [self layoutIfNeeded];
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:fansModel.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];

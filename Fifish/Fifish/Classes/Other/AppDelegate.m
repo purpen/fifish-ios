@@ -189,16 +189,13 @@
     if (userModel.isLogin) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *token = [defaults objectForKey:@"token"];
-        NSLog(@"Token %@", token);
-        if (token.length != 0) {
-            FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
-            [request startRequestSuccess:^(FBRequest *request, id result) {
-                [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
-                [defaults synchronize];
-            } failure:^(FBRequest *request, NSError *error) {
-                
-            }];
-        }
+        FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
+            [defaults synchronize];
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
     }
     
     [application setApplicationIconBadgeNumber:0];

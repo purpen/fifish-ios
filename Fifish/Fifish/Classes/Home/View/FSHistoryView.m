@@ -25,9 +25,9 @@
 -(UICollectionView *)historyCollectionView{
     if (!_historyCollectionView) {
         UICollectionViewFlowLayout *layOut = [[UICollectionViewFlowLayout alloc] init];
-        layOut.minimumLineSpacing = 20;
-        layOut.minimumInteritemSpacing = 10;
-        layOut.sectionInset = UIEdgeInsetsMake(30, 3, 0, 3);
+        layOut.minimumLineSpacing = 10;
+        layOut.minimumInteritemSpacing = 5;
+        layOut.sectionInset = UIEdgeInsetsMake(30, 10, 0, 10);
         _historyCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.height) collectionViewLayout:layOut];
         _historyCollectionView.showsHorizontalScrollIndicator = NO;
         _historyCollectionView.delegate = self;
@@ -41,7 +41,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     FSSearchModel *model = self.dataAry[indexPath.row];
     CGSize size = [model.keyStr sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
-    return CGSizeMake(size.width+30, 30);
+    return CGSizeMake(size.width+40, 30);
 }
 
 -(instancetype)initWithFrame:(CGRect)frame{

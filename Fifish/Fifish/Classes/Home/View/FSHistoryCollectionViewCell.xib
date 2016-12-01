@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="129" height="62"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNf-HW-IOM">
-                        <rect key="frame" x="8" y="5" width="113" height="52"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="12" y="5" width="105" height="52"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -32,13 +32,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="GNf-HW-IOM" secondAttribute="bottom" constant="5" id="0DB-SW-Xdl"/>
-                <constraint firstAttribute="trailing" secondItem="GNf-HW-IOM" secondAttribute="trailing" constant="8" id="5Lo-S6-hy0"/>
+                <constraint firstAttribute="trailing" secondItem="GNf-HW-IOM" secondAttribute="trailing" constant="12" id="5Lo-S6-hy0"/>
                 <constraint firstItem="GNf-HW-IOM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="94r-DR-muh"/>
                 <constraint firstItem="gqK-cj-u0R" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Qmz-ZY-3Xc"/>
                 <constraint firstAttribute="bottom" secondItem="gqK-cj-u0R" secondAttribute="bottom" id="Qx0-Xs-IbM"/>
                 <constraint firstItem="gqK-cj-u0R" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SqR-QG-eFP"/>
                 <constraint firstAttribute="trailing" secondItem="gqK-cj-u0R" secondAttribute="trailing" id="giw-jv-bzv"/>
-                <constraint firstItem="GNf-HW-IOM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="kCD-zh-Iqb"/>
+                <constraint firstItem="GNf-HW-IOM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="kCD-zh-Iqb"/>
                 <constraint firstItem="GNf-HW-IOM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="v5P-bm-cmD"/>
             </constraints>
             <size key="customSize" width="129" height="62"/>
@@ -49,6 +49,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="search_history_bg" width="180" height="70"/>
+        <image name="search_history_bg" width="110" height="44"/>
     </resources>
 </document>

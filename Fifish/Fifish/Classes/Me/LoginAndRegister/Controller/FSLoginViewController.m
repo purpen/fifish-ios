@@ -247,7 +247,7 @@
     NSString *sex;
     if ([userinfo.gender isEqualToString:@"m"]) {
         sex = @"1";
-    } else if ([userinfo.gender isEqualToString:@"f"]) {
+    } else {
         sex = @"2";
     }
     FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/oauth/%@", type] requestDictionary:@{

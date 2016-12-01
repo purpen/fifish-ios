@@ -416,7 +416,7 @@ static BOOL                           _canSendMessage      = YES;
                                                
                                                success(weakSelf, responseObject);
                                            } else {
-                                               [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+//                                               [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
                                            }
 
                                        }
@@ -444,7 +444,7 @@ static BOOL                           _canSendMessage      = YES;
                                                 
                                                 success(weakSelf, responseObject);
                                             } else {
-                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+//                                                [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
                                                 if ([responseObject[@"meta"][@"message"] isEqualToString:@"Token absent!"]) {
                                                     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
                                                     userModel.isLogin = NO;
@@ -509,7 +509,7 @@ static BOOL                           _canSendMessage      = YES;
                                                 if (status_code == 200) {
                                                     success(weakSelf, responseObject);
                                                 } else {
-                                                    [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
+//                                                    [SVProgressHUD showInfoWithStatus:responseObject[@"meta"][@"message"]];
                                                 }
                                                 
                                             }
@@ -539,7 +539,7 @@ static BOOL                           _canSendMessage      = YES;
                                                     
                                                     success(weakSelf, responseObject);
                                                 } else {
-                                                    [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
+//                                                    [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
                                                 }
                                             }
                                             failure:^(AFHTTPRequestOperation *operation, NSError *error) {

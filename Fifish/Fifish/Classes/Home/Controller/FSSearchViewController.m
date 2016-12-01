@@ -100,6 +100,7 @@
         _adviceTableView.showsVerticalScrollIndicator = NO;
         _adviceTableView.tag = ADVICE_TABLEVIEW;
         [_adviceTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        _adviceTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _adviceTableView;
 }
@@ -169,7 +170,7 @@
 
 -(UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.segmentedControl.y + self.segmentedControl.height, SCREEN_WIDTH, SCREEN_HEIGHT - self.segmentedControl.y - self.segmentedControl.height) style:UITableViewStyleGrouped];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.segmentedControl.y + self.segmentedControl.height + 1, SCREEN_WIDTH, SCREEN_HEIGHT - self.segmentedControl.y - self.segmentedControl.height - 1) style:UITableViewStyleGrouped];
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -241,6 +242,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == ADVICE_TABLEVIEW) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        [cell.contentView addSubview:self.lineView];
+        [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@(1));
+            make.left.right.bottom.equalTo(@(0));
+        }];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         NSString *str = self.adviceAry[indexPath.row];
         cell.textLabel.text = str;
         return cell;
@@ -730,15 +737,6 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     if (searchBar.text.length != 0) {
-        FSSearchModel *model = [[FSSearchModel alloc] init];
-        model.keyStr = searchBar.text;
-        NSArray *ary = [FSSearchModel findAll];
-        if (ary.count >= 10) {
-            FSSearchModel *deleteModel = [[FSSearchModel alloc] init];
-            deleteModel.pk = 10;
-            [deleteModel deleteObject];
-        }
-        [model save];
         [self.view addSubview:self.segmentedControl];
         [self.view addSubview:self.lineView];
         [self.view endEditing:YES];
@@ -746,6 +744,18 @@
         [self setupRefresh];
         //进行网络请求
         [self loadNew];
+        FSSearchModel *model = [[FSSearchModel alloc] init];
+        model.keyStr = searchBar.text;
+        NSArray *ary = [FSSearchModel findAll];
+        for (FSSearchModel *kModel in ary) {
+            if ([kModel.keyStr isEqualToString:model.keyStr]) return;
+        }
+        if (ary.count >= 10) {
+            FSSearchModel *deleteModel = [[FSSearchModel alloc] init];
+            deleteModel.pk = 10;
+            [deleteModel deleteObject];
+        }
+        [model save];
     }
 }
 

@@ -40,6 +40,10 @@ typedef NS_ENUM(NSInteger, FSType) {
 
 @interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
+{
+    BOOL statusChangeFlag;
+}
+
 /**  */
 @property (nonatomic, strong) UITableView *contentTableView;
 /** 当前选中的按钮 */
@@ -70,6 +74,7 @@ typedef NS_ENUM(NSInteger, FSType) {
 @property (nonatomic, strong) FSUserModel *user_model;
 /**  */
 @property (nonatomic, strong) UIButton *fucosBtn;
+
 
 @end
 
@@ -102,7 +107,6 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.type = FSTypeZuoPin;
     FSUserModel *userModel = [[FSUserModel findAll] lastObject];
     if ([userModel.userId isEqualToString:self.userId]) {
         self.isMyself = YES;
@@ -218,6 +222,7 @@ static NSString * const fucosCellId = @"fucos";
 }
 
 
+
 #pragma mark - 设置导航条
 -(void)setupNav{
     self.navigationController.navigationBarHidden = NO;
@@ -240,13 +245,14 @@ static NSString * const fucosCellId = @"fucos";
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     UIColor *color = [UIColor colorWithHexString:@"#ffffff"];
     [self.navigationController.navigationBar lt_setBackgroundColor:color];
     [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];
 }
+
 
 #pragma mark - 懒加载顶部渐变层
 -(CAGradientLayer *)shadow{
@@ -264,6 +270,7 @@ static NSString * const fucosCellId = @"fucos";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.type = FSTypeZuoPin;
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
