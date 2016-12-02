@@ -720,6 +720,7 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     self.historyView.hidden = searchBar.text.length != 0;
     if (searchBar.text.length == 0) {
+        [self.view bringSubviewToFront:self.historyView];
         return;
     }
     FBRequest *request = [FBAPI getWithUrlString:@"/search/expanded" requestDictionary:@{
