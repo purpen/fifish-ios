@@ -224,7 +224,7 @@
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSUserModel*)self.userAry[sender.tag]).userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = NO;
-            sender.backgroundColor = [UIColor whiteColor];
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -232,7 +232,7 @@
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSUserModel*)self.userAry[sender.tag]).userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             sender.selected = YES;
-            sender.backgroundColor = [UIColor colorWithHexString:@"#2288FF"];
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -607,6 +607,7 @@
         
         if ([self.type isEqualToNumber:@(2)]) {
             //用户
+            NSLog(@"用户 %@", result);
             [self.userAry removeAllObjects];
             NSArray *dataAry = result[@"data"];
             for (NSDictionary *dict in dataAry) {

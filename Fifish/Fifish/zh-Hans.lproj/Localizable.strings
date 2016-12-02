@@ -129,6 +129,7 @@
 //错误提示
 "Network error" = "网络错误";
 "The operation failure" = "操作失败";
+"The account does not exist" = "帐号不存在";
 
 //camera设置
 "通用设置" = "通用设置";

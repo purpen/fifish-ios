@@ -20,6 +20,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "MJExtension.h"
+#import "FSUserModel2.h"
 
 @interface FSLoginViewController ()<FBRequestDelegate>
 
@@ -133,9 +134,13 @@
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSInteger first_login = [result[@"data"][@"first_login"] integerValue];
         NSString *token = result[@"data"][@"token"];
+        if (token.length == 0) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"The account does not exist", nil)];
+            return;
+        }
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-       [defaults setObject:token forKey:@"token"];
-       [defaults synchronize];
+        [defaults setObject:token forKey:@"token"];
+        [defaults synchronize];
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
         if (first_login == 0) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
@@ -144,8 +149,8 @@
             FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
             [request2 startRequestSuccess:^(FBRequest *request, id result) {
                 NSDictionary *dict = result[@"data"];
-                FSUserModel *userModel = [[FSUserModel alloc] init];
-                userModel = [FSUserModel mj_objectWithKeyValues:dict];
+                FSUserModel2 *userModel = [[FSUserModel2 alloc] init];
+                userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
                 userModel.isLogin = YES;
                 [userModel saveOrUpdate];
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -231,6 +236,7 @@
     }];
 }
 
+
 - (IBAction)weixinClick:(id)sender {
     [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         UMSocialAuthResponse *authresponse = result;
@@ -242,6 +248,7 @@
 }
 
 -(void)afterThirdAuth:(UMSocialUserInfoResponse*)userinfo andAuthresponse:(UMSocialAuthResponse*)authresponse andType:(NSString*)type{
+    [SVProgressHUD show];
     //调取接口在后台记录用户，如果是第一次完善信息，如果不是直接进入
     //将用户信息存起来
     NSString *sex;
@@ -262,7 +269,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:token forKey:@"token"];
         [defaults synchronize];
-        FSUserModel *userModel = [[FSUserModel alloc] init];
+        FSUserModel2 *userModel = [[FSUserModel2 alloc] init];
         userModel.username = userinfo.name;
         userModel.large = userinfo.iconurl;
         if ([userinfo.gender isEqualToString:@"m"]) {

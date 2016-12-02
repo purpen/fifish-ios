@@ -29,6 +29,7 @@
 #import "FSFansModel.h"
 #import "UINavigationBar+FSExtension.h"
 #import "UIBarButtonItem+FSExtension.h"
+#import "FSUserModel2.h"
 
 #define NAVBAR_CHANGE_POINT 170
 
@@ -107,7 +108,7 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if ([userModel.userId isEqualToString:self.userId]) {
         self.isMyself = YES;
     } else {
@@ -445,15 +446,15 @@ static NSString * const fucosCellId = @"fucos";
     if (self.isMyself) {
         FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             NSDictionary *dict = result[@"data"];
-            userModel = [FSUserModel mj_objectWithKeyValues:dict];
+            userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
             userModel.isLogin = YES;
             self.userId = userModel.userId;
             [userModel saveOrUpdate];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             self.userId = userModel.userId;
             [self.contentTableView reloadData];
         }];
@@ -681,9 +682,9 @@ static NSString * const fucosCellId = @"fucos";
         if (cell == nil) {
             cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
         if (self.isMyself) {
-           cell.model = userModel;
+           cell.model2 = userModel;
         } else {
             cell.model = self.user_model;
         }
@@ -718,7 +719,7 @@ static NSString * const fucosCellId = @"fucos";
                 if (indexPath.row == 0) {
                     FSStuffCountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSStuffCountTableViewCell"];
                     if (self.isMyself) {
-                        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
                         cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",userModel.stuff_count, NSLocalizedString(@"works", nil)];
                     } else {
                         cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",self.user_model.stuff_count, NSLocalizedString(@"works", nil)];

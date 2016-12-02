@@ -7,7 +7,7 @@
 //
 
 #import "FSBaseViewController.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "FSLoginViewController.h"
 #import "UINavigationBar+FSExtension.h"
 
@@ -31,7 +31,7 @@
 }
 
 -(BOOL)isLoginAndPresentLoginVc{
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     if (model.isLogin) {
         //登录了，可以进行后续操作
         return YES;

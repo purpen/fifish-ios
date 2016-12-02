@@ -28,6 +28,7 @@
 #import "CTFrameParser.h"
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
+#import "FSUserModel2.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate>
 {
@@ -416,7 +417,7 @@ static NSString * const FSCommentId = @"comment";
             }];
         } else {
             //回复某人
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
                 self.textTF.text = @"";

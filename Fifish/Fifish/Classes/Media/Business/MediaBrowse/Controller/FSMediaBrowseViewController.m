@@ -8,7 +8,7 @@
 
 //tools
 #import "FSFileManager.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import <Photos/Photos.h>
 //model
 #import "FSImageModel.h"
@@ -172,8 +172,7 @@
 
 #pragma mark FSMediaBrowBottomEditViewDelegate
 - (void)MediaBrowViewEditAndShare{
-    NSLog(@"分享");
-    FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
     if (!usermodel.isLogin) {
         FSLoginViewController *vc = [[FSLoginViewController alloc] init];
         [self presentViewController:vc animated:YES completion:nil];

@@ -14,7 +14,7 @@
 #import "GuidePageViewController.h"
 #import "OptionViewController.h"
 #import "AboutViewController.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "FSTabBarController.h"
 
 @interface FSSettingViewController ()<NotificationDelege>
@@ -145,7 +145,7 @@
 }
 
 - (IBAction)quiteBtn:(id)sender {
-    [FSUserModel clearTable];
+    [FSUserModel2 clearTable];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     [defaults synchronize];

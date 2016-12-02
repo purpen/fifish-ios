@@ -16,7 +16,7 @@
 #import "UIColor+FSExtension.h"
 #import "FSNavigationViewController.h"
 #import "FSLoginViewController.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 
 @interface FSTabBarController ()<UITabBarControllerDelegate>
 
@@ -89,7 +89,7 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     //这里我判断的是当前点击的tabBarItem的标题
     if ([viewController.tabBarItem.title isEqualToString:NSLocalizedString(@"me", nil)]) {
         //如果没有登录

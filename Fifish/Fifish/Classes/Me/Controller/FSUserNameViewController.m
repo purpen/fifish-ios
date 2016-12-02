@@ -7,7 +7,7 @@
 //
 
 #import "FSUserNameViewController.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 
 @interface FSUserNameViewController () <UITextFieldDelegate>
 
@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.nameTF.delegate = self;
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     self.nameTF.text = model.username;
     self.navigationItem.title = NSLocalizedString(@"Modify the nickname", nil);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,8 +42,9 @@
                                                                                         @"username" : self.nameTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
         model.username = self.nameTF.text;
+        model.isLogin = YES;
         [model saveOrUpdate];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(FBRequest *request, NSError *error) {

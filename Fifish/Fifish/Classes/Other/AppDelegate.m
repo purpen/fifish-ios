@@ -26,7 +26,7 @@
 #import "FBRequest.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate+FSUMRegiester.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "JPUSHService.h"
 #import "FSMeViewController.h"
 #import "FSMessageViewController.h"
@@ -185,7 +185,7 @@
         [_reachDelegate isReachAble];
     }
     //更新Token
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if (userModel.isLogin) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *token = [defaults objectForKey:@"token"];
@@ -196,7 +196,7 @@
                 [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
                 [defaults synchronize];
             } else {
-                FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
                 userModel.isLogin = NO;
                 [userModel saveOrUpdate];
             }

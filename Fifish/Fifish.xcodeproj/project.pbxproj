@@ -231,6 +231,7 @@
 		1F4202591D49B36000D3E6CB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4202581D49B36000D3E6CB /* ImageIO.framework */; };
 		1F4847081DDBEF6A00161564 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4847071DDBEF6A00161564 /* Foundation+Log.m */; };
 		1F48470B1DDD4C6600161564 /* NSString+FSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F48470A1DDD4C6600161564 /* NSString+FSAttributedString.m */; };
+		1F61F9B81DF12A3C0075B45C /* FSUserModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -914,6 +915,8 @@
 		1F4847071DDBEF6A00161564 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		1F4847091DDD4C6600161564 /* NSString+FSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FSAttributedString.h"; sourceTree = "<group>"; };
 		1F48470A1DDD4C6600161564 /* NSString+FSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FSAttributedString.m"; sourceTree = "<group>"; };
+		1F61F9B61DF12A3C0075B45C /* FSUserModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserModel2.h; sourceTree = "<group>"; };
+		1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserModel2.m; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2727,6 +2730,8 @@
 				1F3401F01DCB52BF009B9C32 /* FSFansModel.m */,
 				1F9FA4921DD5750A00A1806A /* FSRecivedPrasiedModel.h */,
 				1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */,
+				1F61F9B61DF12A3C0075B45C /* FSUserModel2.h */,
+				1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3833,6 +3838,7 @@
 				04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */,
 				1FE565AF1DC041D5000AE61D /* FSUserNameViewController.m in Sources */,
 				1FE564B51DAE275A000AE61D /* SGTopTitleView.m in Sources */,
+				1F61F9B81DF12A3C0075B45C /* FSUserModel2.m in Sources */,
 				1F04244B1D51F3C30071A1D6 /* AFNetworkReachabilityManager.m in Sources */,
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
 				0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */,

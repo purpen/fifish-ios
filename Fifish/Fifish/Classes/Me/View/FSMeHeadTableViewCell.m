@@ -40,6 +40,23 @@
     return self;
 }
 
+-(void)setModel2:(FSUserModel2 *)model2{
+    _model2 = model2;
+    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model2.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.nickName.text = model2.username;
+    self.addressLabel.text = model2.zone;
+    self.signatureLabel.text = model2.summary;
+    self.zuoPinShu.text = model2.stuff_count;
+    self.guanZhuShuLabel.text = model2.follow_count;
+    self.fenSiShuLabel.text = model2.fans_count;
+    if (model2.zone.length == 0) {
+        self.addressIconImageView.hidden = YES;
+    } else {
+        self.addressIconImageView.hidden = NO;
+    }
+}
+
 -(void)setModel:(FSUserModel *)model{
     _model = model;
     [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];

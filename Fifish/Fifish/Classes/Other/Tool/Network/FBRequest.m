@@ -12,7 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "SVProgressHUD.h"
 #import "FSConst.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "FSTabBarController.h"
 
 typedef enum : NSUInteger {

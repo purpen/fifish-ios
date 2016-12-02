@@ -21,6 +21,7 @@
 #import "FSShareViewController.h"
 #import "FSLoginViewController.h"
 #import <pop/POP.h>
+#import "FSUserModel2.h"
 
 @interface FSHomeViewCell ()
 
@@ -117,7 +118,7 @@
 
 -(FSUserModel *)userModel{
     if (!_userModel) {
-        _userModel = [[FSUserModel findAll] lastObject];
+        _userModel = [[FSUserModel2 findAll] lastObject];
     }
     return _userModel;
 }
@@ -216,7 +217,7 @@
 
 #pragma mark - 点击喜欢按钮
 -(void)likeClick:(UIButton*)sender{
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     if (model.isLogin) {
         //登录了，可以进行后续操作
         NSString *idStr = self.model.user_id;
