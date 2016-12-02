@@ -498,7 +498,7 @@ static NSString * const CellId = @"home";
 -(void)quickReleaseClick:(UIButton*)sender{
     UIImagePickerController * pickerVc = [[UIImagePickerController alloc] init];
     pickerVc.delegate = self;
-    pickerVc.allowsEditing = YES;
+    pickerVc.allowsEditing = NO;
     pickerVc.mediaTypes = @[(NSString *)kUTTypeMovie,(NSString *)kUTTypeVideo,(NSString *)kUTTypeImage];
     pickerVc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
@@ -511,7 +511,7 @@ static NSString * const CellId = @"home";
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
-        UIImage * image  = info[UIImagePickerControllerEditedImage];
+        UIImage * image  = info[UIImagePickerControllerOriginalImage];
         //保存图片至本地
         NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地
@@ -585,7 +585,6 @@ static NSString * const CellId = @"home";
 }
 
 
-
 #pragma mark - 关注
 -(void)fucosClick:(UIButton*)sender{
     if ([self isLoginAndPresentLoginVc]) {
@@ -602,7 +601,6 @@ static NSString * const CellId = @"home";
                     [self.contenTableView reloadData];
                 }
             } failure:^(FBRequest *request, NSError *error) {
-                NSLog(@"错误 %@", error.localizedDescription);
             }];
         } else {
             //关注

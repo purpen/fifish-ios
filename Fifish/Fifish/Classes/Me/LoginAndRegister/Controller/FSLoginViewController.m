@@ -138,6 +138,9 @@
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"The account does not exist", nil)];
             return;
         }
+        FSUserModel2 *userModel = [[FSUserModel2 alloc] init];
+        userModel.isLogin = YES;
+        [userModel saveOrUpdate];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:token forKey:@"token"];
         [defaults synchronize];
@@ -149,9 +152,8 @@
             FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
             [request2 startRequestSuccess:^(FBRequest *request, id result) {
                 NSDictionary *dict = result[@"data"];
-                FSUserModel2 *userModel = [[FSUserModel2 alloc] init];
+                FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
                 userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
-                userModel.isLogin = YES;
                 [userModel saveOrUpdate];
                 [self dismissViewControllerAnimated:YES completion:nil];
             } failure:^(FBRequest *request, NSError *error) {

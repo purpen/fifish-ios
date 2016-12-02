@@ -630,7 +630,7 @@ static NSString * const fucosCellId = @"fucos";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 284;
+        return 284 / 667.0 * SCREEN_HEIGHT;
     } else if (indexPath.section == 1) {
         switch (self.type) {
             case FSTypeZuoPin:
@@ -647,7 +647,7 @@ static NSString * const fucosCellId = @"fucos";
                         }
                         return n1 * ((SCREEN_WIDTH - 5 * 2) / 3 + 10);
                     } else {
-                        return 210 + 40;
+                        return (211 + 40) / 667.0 * SCREEN_HEIGHT;
                     }
                 }
             }
@@ -656,14 +656,14 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeGuanZhu:
             {
                 //关注高度
-                return 55;
+                return 55 / 667.0 * SCREEN_HEIGHT;
             }
                 break;
                 
             case FSTypeFenSi:
             {
                 //粉丝高度
-                return 55;
+                return 55 / 667.0 * SCREEN_HEIGHT;
             }
                 break;
                 

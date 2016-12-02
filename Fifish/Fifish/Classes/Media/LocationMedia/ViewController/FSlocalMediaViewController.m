@@ -345,12 +345,11 @@ CGFloat const Cellspecace = 1;
 
 #pragma mark imagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    NSLog(@"%@",info);
     NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
-        UIImage * image  = info[UIImagePickerControllerEditedImage];
+        UIImage * image  = info[UIImagePickerControllerOriginalImage];
         //保存图片至本地
         NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地

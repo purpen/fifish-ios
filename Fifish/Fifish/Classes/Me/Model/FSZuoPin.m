@@ -22,8 +22,8 @@
              @"avatar_large" : @"user.avatar.large",
              @"width" : @"cover.width",
              @"height" : @"cover.height",
-             @"file_small" : @"cover.file.small",
-             @"file_large" : @"cover.file.large",
+             @"file_small" : @"cover.file.large",
+             @"file_large" : @"cover.file.srcfile",
              @"srcfile" : @"cover.file.srcfile",
              @"filepath" : @"cover.filepath",
              @"duration" : @"cover.duration"
@@ -52,8 +52,6 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-    NSLog(@"%@", jsonData);
-    
     if ([jsonData length] != 0 && error == nil){
         return jsonData;
     }else{

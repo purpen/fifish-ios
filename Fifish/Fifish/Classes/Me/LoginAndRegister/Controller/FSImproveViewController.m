@@ -95,6 +95,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
+    [SVProgressHUD show];
     //网络请求
     FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
@@ -107,6 +108,7 @@
         model.username = self.userNameTF.text;
         model.job = self.professionalTF.text;
         model.zone = self.addressTF.text;
+        model.isLogin = YES;
         [model saveOrUpdate];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(FBRequest *request, NSError *error) {
@@ -150,11 +152,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     self.type = NO;
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
-    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
-    
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
-    [iconData writeToFile:fullPath atomically:NO];
-    
+    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 1);
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
@@ -162,10 +160,7 @@
         [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
             
         } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
-            userModel.large = responseObject[@"file"][@"large"];
-            [userModel saveOrUpdate];
-            [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+            [self.head_bg_imageView setImage:editedImg];
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];

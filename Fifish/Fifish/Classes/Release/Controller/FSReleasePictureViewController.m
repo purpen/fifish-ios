@@ -350,7 +350,8 @@
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Please add content", nil)];
         } else {
             self.kind = @"1";
-            NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:self.bigImage] , 1);
+//            NSData * iconData = UIImageJPEGRepresentation(self.bigImage , 1);
+            NSData * iconData = UIImageJPEGRepresentation(self.bigImage , 1);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"kind"] = self.kind;
             dict[@"content"] = self.releaseView.instructionsTextView.text;

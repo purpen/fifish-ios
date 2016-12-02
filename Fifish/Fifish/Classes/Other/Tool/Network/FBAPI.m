@@ -258,7 +258,6 @@
     if (progressblock) {
         [uploadOperation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
             CGFloat progress = (float)totalBytesWritten/totalBytesExpectedToWrite;
-            NSLog(@"%f",progress);
             progressblock(progress);
         }];
     }
