@@ -8,7 +8,7 @@
 
 #import "FSNewFansViewController.h"
 #import "MJRefresh.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "FSFansModel.h"
 #import "FSListUserTableViewCell.h"
 #import "FSHomePageViewController.h"
@@ -59,7 +59,7 @@
 }
 
 -(void)loadNew{
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     self.current_page = 1;
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:@{@"page" : @(self.current_page), @"per_page" : @(20)} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -72,14 +72,14 @@
         [self.myTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.myTableView.mj_header endRefreshing];
     }];
 }
 
 -(void)loadMore{
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",userModel.userId] requestDictionary:@{@"page" : @(++self.current_page), @"per_page" : @(20)} delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
@@ -92,7 +92,7 @@
         [self.myTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.myTableView.mj_header endRefreshing];
     }];

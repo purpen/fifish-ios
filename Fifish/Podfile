@@ -10,4 +10,5 @@ pod 'MJRefresh'
 pod 'MJExtension'
 pod 'Masonry'
 pod 'JKDBModel-JDBR', '~> 0.0.1'
+pod 'UICollectionViewLeftAlignedLayout'
 end

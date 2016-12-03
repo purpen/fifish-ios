@@ -127,8 +127,9 @@
 "The mailbox is empty" = "邮箱为空";
 
 //错误提示
-"Loading user data failed" = "加载用户数据失败";
+"Network error" = "网络错误";
 "The operation failure" = "操作失败";
+"The account does not exist" = "帐号不存在";
 
 //camera设置
 "通用设置" = "通用设置";
@@ -198,6 +199,7 @@
 //计量单位
 "unit"  = "单位";
 "metre" = "米";
+"foot"  = "英尺";
 "Depth" = "深度";
 
 //图片滤镜

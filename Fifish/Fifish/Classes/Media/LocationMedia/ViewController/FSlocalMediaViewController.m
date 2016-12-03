@@ -128,9 +128,9 @@ CGFloat const Cellspecace = 1;
 - (UIButton *)LeftNavBtn{
     if (!_LeftNavBtn) {
         _LeftNavBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _LeftNavBtn.frame = CGRectMake(0, 0, 30, 30);
         [_LeftNavBtn addTarget:self action:@selector(chooseLocalMedia) forControlEvents:UIControlEventTouchUpInside];
-        [_LeftNavBtn setImage:[UIImage imageNamed:@"import_icon"] forState:UIControlStateNormal];
+        [_LeftNavBtn setBackgroundImage:[UIImage imageNamed:@"import_icon"] forState:UIControlStateNormal];
+        _LeftNavBtn.frame = CGRectMake(0, 0, _LeftNavBtn.currentBackgroundImage.size.width, _LeftNavBtn.currentBackgroundImage.size.height);
         _LeftNavBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return _LeftNavBtn;
@@ -304,6 +304,7 @@ CGFloat const Cellspecace = 1;
     
     return _deletedBtn;
 }
+
 - (void)deleteMediaItem{
     //删除操作！
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -326,12 +327,15 @@ CGFloat const Cellspecace = 1;
             currentIndex = [self.seletedCellIndexSet indexLessThanIndex:currentIndex];
             
         }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            
             //UI界面删除
             [self.BroswerCollection deleteItemsAtIndexPaths:deleteArr];
             
             //更新删除按钮
             [self UpdateDeletedBtn];
+            
         });
         
     });
@@ -341,12 +345,11 @@ CGFloat const Cellspecace = 1;
 
 #pragma mark imagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    NSLog(@"%@",info);
     NSString *mediaType=[info objectForKey:UIImagePickerControllerMediaType];
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
-        UIImage * image  = info[UIImagePickerControllerEditedImage];
+        UIImage * image  = info[UIImagePickerControllerOriginalImage];
         //保存图片至本地
         NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地

@@ -8,7 +8,7 @@
 
 //tools
 #import "FSFileManager.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import <Photos/Photos.h>
 //model
 #import "FSImageModel.h"
@@ -117,6 +117,7 @@
     }
     return _editView;
 }
+
 #pragma mark UIcollectionviewdelegate
 
 //个数
@@ -126,7 +127,7 @@
 
 //单元大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+    return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.height);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,7 +139,7 @@
     cell.model = model;
     
     return cell;
-    
+
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FSImageModel * model = self.modelArr[indexPath.row];
@@ -150,11 +151,14 @@
 - (void)finalizeCollectionViewUpdates{
     
 }
+
 #pragma mark ScrollviewDelegate
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     CGPoint offset = scrollView.contentOffset;
+    
     self.seletedIndex = offset.x/SCREEN_WIDTH;
+    
     self.offsetLab.text = [NSString stringWithFormat:@"%ld/%lu",self.seletedIndex+1,(unsigned long)self.modelArr.count];
 }
 
@@ -168,8 +172,7 @@
 
 #pragma mark FSMediaBrowBottomEditViewDelegate
 - (void)MediaBrowViewEditAndShare{
-    NSLog(@"分享");
-    FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
     if (!usermodel.isLogin) {
         FSLoginViewController *vc = [[FSLoginViewController alloc] init];
         [self presentViewController:vc animated:YES completion:nil];

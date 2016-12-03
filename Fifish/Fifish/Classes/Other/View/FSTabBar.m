@@ -40,7 +40,7 @@
         _equipmentLabel = [[UILabel alloc] init];
         _equipmentLabel.text = NSLocalizedString(@"equipment", nil);
         _equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
-        _equipmentLabel.font = [UIFont systemFontOfSize:12];
+        _equipmentLabel.font = [UIFont systemFontOfSize:10];
         _equipmentLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _equipmentLabel;
@@ -50,9 +50,8 @@
     if (!_equipmentBtn) {
         _equipmentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateNormal)];
-        [_equipmentBtn setImage:[UIImage imageNamed:@"equipment"] forState:(UIControlStateHighlighted)];
         [_equipmentBtn addTarget:self action:@selector(equipmentBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        _equipmentBtn.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8" alpha:0.9];
+        _equipmentBtn.backgroundColor = [UIColor colorWithHexString:@"#f8f8f8" alpha:1];
     }
     return _equipmentBtn;
 }
@@ -61,12 +60,6 @@
  *  点击设备按钮
  */
 -(void)equipmentBtnClick:(UIButton*)sender{
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#8a98a9"];
-    } else {
-        self.equipmentLabel.textColor = [UIColor colorWithHexString:@"#121f27"];
-    }
     FSEquipmentViewController *vc = [[FSEquipmentViewController alloc] init];
     FSNavigationViewController *navi = [[FSNavigationViewController alloc] initWithRootViewController:vc];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navi animated:YES completion:nil];
@@ -82,7 +75,7 @@
     
     // 设置其他UITabBarButton的frame
     CGFloat buttonX = 0;
-    CGFloat buttonY = 0;
+    CGFloat buttonY = -2;
     CGFloat buttonW = width / (self.items.count + 1);
     CGFloat buttonH = height;
     NSInteger index = 0;
@@ -99,7 +92,7 @@
     
     
     self.equipmentLabel.frame = CGRectMake(0, 0, 70, 12);
-    self.equipmentLabel.center = CGPointMake(width * 0.5, height * 0.87 - 2);
+    self.equipmentLabel.center = CGPointMake(width * 0.5, height * 0.87 - 2.5);
     
     self.equipmentBtn.frame = CGRectMake(buttonX, buttonY, 50, 50);
     self.equipmentBtn.layer.cornerRadius = 50 / 2;

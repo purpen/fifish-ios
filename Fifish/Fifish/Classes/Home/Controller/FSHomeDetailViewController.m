@@ -28,6 +28,7 @@
 #import "CTFrameParser.h"
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
+#import "FSUserModel2.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate>
 {
@@ -155,6 +156,79 @@ static NSString * const FSCommentId = @"comment";
     }
 }
 
+-(void)detailSetUpHeader{
+    CGFloat gaoDu = 0;
+    BOOL flag = NO;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm createFileAtPath:filename contents:nil attributes:nil];
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    [self.tagMAry removeAllObjects];
+    if (self.model.tags.count > 0) {
+        for (int i = 0; i < self.model.tags.count; i ++) {
+            NSDictionary *dict = self.model.tags[i];
+            NSDictionary *cellDict = @{
+                                       @"color" : @"blue",
+                                       @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                       @"url" : @"hh",
+                                       @"type" : @"link"
+                                       };
+            [self.tagMAry addObject:cellDict];
+        }
+        config.width = SCREEN_WIDTH;
+        [self.tagMAry writeToFile:filename atomically:YES];
+        
+        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+        if (SCREEN_HEIGHT == 568.0) {
+            gaoDu = (textH + 375 - 40);
+            flag = self.model.content.length > 53;
+        } else if (SCREEN_HEIGHT == 667.0) {
+            gaoDu = (textH + 375 - 12);
+            flag = self.model.content.length > 65;
+        } else {
+            gaoDu = (textH + 375 + 12);
+            flag = self.model.content.length > 96;
+        }
+        gaoDu += 8;
+    } else {
+        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+        if (SCREEN_HEIGHT == 568.0) {
+            gaoDu = (textH + 347 - 38);
+        } else if (SCREEN_HEIGHT == 667.0) {
+            gaoDu = (textH + 347 - 15);
+        } else {
+            if (self.model.content.length <= 96) {
+                gaoDu = (textH + 347 + 4);
+            } else {
+                gaoDu = (textH + 347 + 10);
+            }
+        }
+        gaoDu += 3;
+    }
+    CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+    _cell.ctData = data;
+    NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:flag];
+    _cell.contentString = setString;
+    _cell.hideFlag = 1;
+    _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
+    _cell.bottomViewHegiht = 0;
+    [_cell.contentView layoutIfNeeded];
+    
+    
+    // 创建header
+    UIView *header = [[UIView alloc] init];
+    header.height = gaoDu;
+    header.width = SCREEN_WIDTH;
+    header.backgroundColor = [UIColor whiteColor];
+    
+    [header addSubview:_cell];
+    
+    // 设置header
+    self.commendTableView.tableHeaderView = header;
+}
+
 -(void)setupHeader{
     // 添加cell
     _cell = [FSHomeViewCell viewFromXib];
@@ -168,142 +242,16 @@ static NSString * const FSCommentId = @"comment";
     [_cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
     [_cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
     [_cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
-    CGFloat gaoDu = 0;
     if (self.stuffId.length == 0) {
         _cell.model = self.model;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-        NSString *path = [paths objectAtIndex:0];
-        NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
-        NSFileManager *fm = [NSFileManager defaultManager];
-        [fm createFileAtPath:filename contents:nil attributes:nil];
-        CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-        [self.tagMAry removeAllObjects];
-        if (self.model.tags.count > 0) {
-            for (int i = 0; i < self.model.tags.count; i ++) {
-                NSDictionary *dict = self.model.tags[i];
-                NSDictionary *cellDict = @{
-                                           @"color" : @"blue",
-                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
-                                           @"url" : @"hh",
-                                           @"type" : @"link"
-                                           };
-                [self.tagMAry addObject:cellDict];
-            }
-            config.width = SCREEN_WIDTH;
-            [self.tagMAry writeToFile:filename atomically:YES];
-            
-            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            if (SCREEN_HEIGHT == 568.0) {
-                gaoDu = (textH + 375 - 40);
-            } else if (SCREEN_HEIGHT == 667.0) {
-                gaoDu = (textH + 375 - 12);
-            } else {
-                gaoDu = (textH + 375 + 12);
-            }
-        } else {
-            CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            if (SCREEN_HEIGHT == 568.0) {
-                gaoDu = (textH + 347 - 38);
-            } else if (SCREEN_HEIGHT == 667.0) {
-                gaoDu = (textH + 347 - 15);
-            } else {
-                if (self.model.content.length <= 96) {
-                    gaoDu = (textH + 347 + 4);
-                } else {
-                    gaoDu = (textH + 347 + 10);
-                }
-            }
-        }
-        CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-        _cell.ctData = data;
-        NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-        _cell.contentString = setString;
-        _cell.hideFlag = 1;
-        _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-        _cell.bottomViewHegiht = 0;
-        [_cell.contentView layoutIfNeeded];
-        
-        
-        // 创建header
-        UIView *header = [[UIView alloc] init];
-        header.height = gaoDu;
-        header.width = SCREEN_WIDTH;
-        header.backgroundColor = [UIColor whiteColor];
-        
-        [header addSubview:_cell];
-        
-        // 设置header
-        self.commendTableView.tableHeaderView = header;
+        [self detailSetUpHeader];
     } else {
         FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/stuffs/%@", self.stuffId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dataDict = result[@"data"];
             self.model = [FSZuoPin mj_objectWithKeyValues:dataDict];
             _cell.model = self.model;
-            CGFloat gaoDu = 0;
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-            NSString *path = [paths objectAtIndex:0];
-            NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
-            NSFileManager *fm = [NSFileManager defaultManager];
-            [fm createFileAtPath:filename contents:nil attributes:nil];
-            CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-            [self.tagMAry removeAllObjects];
-            if (self.model.tags.count > 0) {
-                for (int i = 0; i < self.model.tags.count; i ++) {
-                    NSDictionary *dict = self.model.tags[i];
-                    NSDictionary *cellDict = @{
-                                               @"color" : @"blue",
-                                               @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
-                                               @"url" : @"hh",
-                                               @"type" : @"link"
-                                               };
-                    [self.tagMAry addObject:cellDict];
-                }
-                config.width = SCREEN_WIDTH;
-                [self.tagMAry writeToFile:filename atomically:YES];
-                
-                CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    gaoDu = (textH + 375 - 40);
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    gaoDu = (textH + 375 - 12);
-                } else {
-                    gaoDu = (textH + 375 + 12);
-                }
-            } else {
-                CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    gaoDu = (textH + 347 - 38);
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    gaoDu = (textH + 347 - 15);
-                } else {
-                    if (self.model.content.length <= 96) {
-                        gaoDu = (textH + 347 + 4);
-                    } else {
-                        gaoDu = (textH + 347 + 10);
-                    }
-                }
-            }
-            CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-            _cell.ctData = data;
-            NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            _cell.contentString = setString;
-            _cell.hideFlag = 1;
-            _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-            _cell.bottomViewHegiht = 0;
-            [_cell.contentView layoutIfNeeded];
-            
-            
-            // 创建header
-            UIView *header = [[UIView alloc] init];
-            header.height = gaoDu;
-            header.width = SCREEN_WIDTH;
-            header.backgroundColor = [UIColor whiteColor];
-            
-            [header addSubview:_cell];
-            
-            // 设置header
-            self.commendTableView.tableHeaderView = header;
+            [self detailSetUpHeader];
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -469,7 +417,7 @@ static NSString * const FSCommentId = @"comment";
             }];
         } else {
             //回复某人
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/postComment",self.model.idFeild] requestDictionary:@{@"content" : self.textTF.text , @"reply_user_id" : [NSString stringWithFormat:@"%ld",sender.tag] , @"parent_id" : userModel.userId} delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
                 self.textTF.text = @"";

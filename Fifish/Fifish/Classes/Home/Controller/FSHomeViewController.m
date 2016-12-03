@@ -305,133 +305,31 @@ static NSString * const CellId = @"home";
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *rows = result[@"data"];
-         self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
-        [self.cellHeightAry removeAllObjects];
-        [self.hideAry removeAllObjects];
-        [self.ctDataAry removeAllObjects];
-        [self.contentStringAry removeAllObjects];
-        for (int i = 0; i < self.modelAry.count; i++) {
-            FSZuoPin *model = self.modelAry[i];
-            
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-            NSString *path = [paths objectAtIndex:0];
-            NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
-            NSFileManager *fm = [NSFileManager defaultManager];
-            [fm createFileAtPath:filename contents:nil attributes:nil];
-            CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-            [self.tagMAry removeAllObjects];
-            if (model.tags.count > 0) {
-                for (int i = 0; i < model.tags.count; i ++) {
-                    NSDictionary *dict = model.tags[i];
-                    NSDictionary *cellDict = @{
-                                               @"color" : @"blue",
-                                               @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
-                                               @"url" : @"hh",
-                                               @"type" : @"link"
-                                               };
-                    [self.tagMAry addObject:cellDict];
-                }
-                config.width = SCREEN_WIDTH;
-                [self.tagMAry writeToFile:filename atomically:YES];
-                
-                
-                
-                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 53) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 65) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 96) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 + 12);
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 375);
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                }
-            } else {
-                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 53) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 65) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 96) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                }
-            }
-            CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-            [self.ctDataAry addObject:data];
-            
-            NSInteger flag = [self.hideAry[i] integerValue];
-            if (flag) {
-                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
-            } else {
-                NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
-            }
+        self.modelAry = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
+        for (FSZuoPin *model in self.modelAry) {
+            model.tagsStr = [[NSString alloc] initWithData:[FSZuoPin toJSONData:model.tags] encoding:NSUTF8StringEncoding];
         }
+        [self parsing];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSArray *array = [FSZuoPin findAll];
+            [FSZuoPin deleteObjects:array];
+            [FSZuoPin saveObjects:self.modelAry];
+        });
          [self.contenTableView reloadData];
          [self.contenTableView.mj_header endRefreshing];
          [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_header endRefreshing];
+        self.modelAry = (NSMutableArray *)[FSZuoPin findAll];
+        for (FSZuoPin *model in self.modelAry) {
+            model.tags = [FSZuoPin toArrayOrNSDictionary:[model.tagsStr dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+        [self parsing];
+        [self.contenTableView reloadData];
     }];
-}
-
--(void)checkFooterState{
-    self.contenTableView.mj_footer.hidden = self.modelAry.count == 0;
-    if (self.modelAry.count == self.total_rows) {
-        self.contenTableView.mj_footer.hidden = YES;
-    }else{
-        [self.contenTableView.mj_footer endRefreshing];
-    }
 }
 
 -(void)loadMore{
@@ -447,124 +345,129 @@ static NSString * const CellId = @"home";
         NSArray *rows = result[@"data"];
         NSArray *ary = [FSZuoPin mj_objectArrayWithKeyValuesArray:rows];
         [self.modelAry addObjectsFromArray:ary];
-        [self.cellHeightAry removeAllObjects];
-        [self.hideAry removeAllObjects];
-        [self.ctDataAry removeAllObjects];
-        [self.contentStringAry removeAllObjects];
-        for (int i = 0; i < self.modelAry.count; i++) {
-            FSZuoPin *model = self.modelAry[i];
-            
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-            NSString *path = [paths objectAtIndex:0];
-            NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
-            NSFileManager *fm = [NSFileManager defaultManager];
-            [fm createFileAtPath:filename contents:nil attributes:nil];
-            CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
-            [self.tagMAry removeAllObjects];
-            if (model.tags.count > 0) {
-                for (int i = 0; i < model.tags.count; i ++) {
-                    NSDictionary *dict = model.tags[i];
-                    NSDictionary *cellDict = @{
-                                               @"color" : @"blue",
-                                               @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
-                                               @"url" : @"hh",
-                                               @"type" : @"link"
-                                               };
-                    [self.tagMAry addObject:cellDict];
-                }
-                config.width = SCREEN_WIDTH;
-                [self.tagMAry writeToFile:filename atomically:YES];
-                
-                
-                
-                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 53) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 65) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 96) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 375 + 12);
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 375);
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                }
-            } else {
-                CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-                if (SCREEN_HEIGHT == 568.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 53) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else if (SCREEN_HEIGHT == 667.0) {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 65) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                } else {
-                    CGFloat gaoDu = 0;
-                    if (model.content.length <= 96) {
-                        [self.hideAry addObject:@(1)];
-                        gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
-                    } else {
-                        [self.hideAry addObject:@(0)];
-                        gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                    }
-                    [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu]];
-                }
-            }
-            CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
-            [self.ctDataAry addObject:data];
-            
-            NSInteger flag = [self.hideAry[i] integerValue];
-            if (flag) {
-                NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
-            } else {
-                NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-                [self.contentStringAry addObject:setString];
-            }
-        }
+        [self parsing];
         [self.contenTableView reloadData];
         [self.contenTableView.mj_footer endRefreshing];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Loading user data failed", nil)];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         // 让底部控件结束刷新
         [self.contenTableView.mj_footer endRefreshing];
     }];
+    
+}
 
+-(void)parsing{
+    [self.cellHeightAry removeAllObjects];
+    [self.hideAry removeAllObjects];
+    [self.ctDataAry removeAllObjects];
+    [self.contentStringAry removeAllObjects];
+    for (int i = 0; i < self.modelAry.count; i++) {
+        FSZuoPin *model = self.modelAry[i];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+        NSString *path = [paths objectAtIndex:0];
+        NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:filename contents:nil attributes:nil];
+        CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+        [self.tagMAry removeAllObjects];
+        if (model.tags.count > 0) {
+            for (int i = 0; i < model.tags.count; i ++) {
+                NSDictionary *dict = model.tags[i];
+                NSDictionary *cellDict = @{
+                                           @"color" : @"blue",
+                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                           @"url" : @"hh",
+                                           @"type" : @"link"
+                                           };
+                [self.tagMAry addObject:cellDict];
+            }
+            config.width = SCREEN_WIDTH;
+            [self.tagMAry writeToFile:filename atomically:YES];
+            
+            
+            
+            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            CGFloat gaoDu = 0;
+            if (SCREEN_HEIGHT == 568.0) {
+                if (model.content.length <= 53) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
+                }
+            } else if (SCREEN_HEIGHT == 667.0) {
+                if (model.content.length <= 65) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
+                }
+            } else {
+                if (model.content.length <= 96) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 375 + 12);
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 375);
+                }
+            }
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
+        } else {
+            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
+            CGFloat gaoDu = 0;
+            if (SCREEN_HEIGHT == 568.0) {
+                if (model.content.length <= 53) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
+                }
+            } else if (SCREEN_HEIGHT == 667.0) {
+                if (model.content.length <= 65) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
+                }
+            } else {
+                if (model.content.length <= 96) {
+                    [self.hideAry addObject:@(1)];
+                    gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
+                } else {
+                    [self.hideAry addObject:@(0)];
+                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
+                }
+            }
+            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
+        }
+        CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
+        [self.ctDataAry addObject:data];
+        
+        NSInteger flag = [self.hideAry[i] integerValue];
+        if (flag) {
+            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:NO];
+            [self.contentStringAry addObject:setString];
+        } else {
+            NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
+            [self.contentStringAry addObject:setString];
+        }
+    }
+}
+
+-(void)checkFooterState{
+    self.contenTableView.mj_footer.hidden = self.modelAry.count == 0;
+    if (self.modelAry.count == self.total_rows) {
+        self.contenTableView.mj_footer.hidden = YES;
+    }else{
+        [self.contenTableView.mj_footer endRefreshing];
+    }
 }
 
 -(UITableView *)contenTableView{
@@ -595,7 +498,7 @@ static NSString * const CellId = @"home";
 -(void)quickReleaseClick:(UIButton*)sender{
     UIImagePickerController * pickerVc = [[UIImagePickerController alloc] init];
     pickerVc.delegate = self;
-    pickerVc.allowsEditing = YES;
+    pickerVc.allowsEditing = NO;
     pickerVc.mediaTypes = @[(NSString *)kUTTypeMovie,(NSString *)kUTTypeVideo,(NSString *)kUTTypeImage];
     pickerVc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
@@ -608,7 +511,7 @@ static NSString * const CellId = @"home";
     //判断资源类型
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
         //如果是图片
-        UIImage * image  = info[UIImagePickerControllerEditedImage];
+        UIImage * image  = info[UIImagePickerControllerOriginalImage];
         //保存图片至本地
         NSString * imageurlStr = [[FSFileManager defaultManager] SaveImageWithImage:image];
         //添加到本地
@@ -682,7 +585,6 @@ static NSString * const CellId = @"home";
 }
 
 
-
 #pragma mark - 关注
 -(void)fucosClick:(UIButton*)sender{
     if ([self isLoginAndPresentLoginVc]) {
@@ -699,7 +601,6 @@ static NSString * const CellId = @"home";
                     [self.contenTableView reloadData];
                 }
             } failure:^(FBRequest *request, NSError *error) {
-                
             }];
         } else {
             //关注

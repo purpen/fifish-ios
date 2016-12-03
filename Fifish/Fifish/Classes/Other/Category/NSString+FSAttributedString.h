@@ -19,7 +19,7 @@
  
  *   return 富文本
  */
--(NSAttributedString*)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor*)textcolor textFont:(UIFont*)font;
+-(NSAttributedString*)stringWithParagraphlineSpeace:(CGFloat)lineSpacing textColor:(UIColor*)textcolor textFont:(UIFont*)font andIsAll:(BOOL)flag;
 
 /**
  * 设置段落样式(后四个字符隐藏的)

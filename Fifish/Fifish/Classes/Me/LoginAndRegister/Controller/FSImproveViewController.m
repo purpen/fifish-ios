@@ -14,6 +14,7 @@
 #import "FSUserModel.h"
 #import "AddreesPickerViewController.h"
 #import "UIImageView+WebCache.h"
+#import "FSUserModel2.h"
 
 @interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *head_bg_view;
@@ -46,7 +47,7 @@
     self.head_bg_imageView.layer.masksToBounds = YES;
     self.head_bg_imageView.layer.cornerRadius = 48;
     
-    FSUserModel *usermodel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
     [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:usermodel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.userNameTF.text = usermodel.username;
     [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:usermodel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
@@ -94,6 +95,7 @@
         [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
+    [SVProgressHUD show];
     //网络请求
     FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
@@ -102,10 +104,11 @@
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         [SVProgressHUD dismiss];
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
         model.username = self.userNameTF.text;
         model.job = self.professionalTF.text;
         model.zone = self.addressTF.text;
+        model.isLogin = YES;
         [model saveOrUpdate];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(FBRequest *request, NSError *error) {
@@ -149,11 +152,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     self.type = NO;
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
-    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
-    
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
-    [iconData writeToFile:fullPath atomically:NO];
-    
+    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 1);
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
         NSString *upload_url = result[@"data"][@"upload_url"];
@@ -161,10 +160,7 @@
         [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
             
         } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-            userModel.large = responseObject[@"file"][@"large"];
-            [userModel saveOrUpdate];
-            [self.head_bg_imageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+            [self.head_bg_imageView setImage:editedImg];
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];

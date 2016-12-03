@@ -29,6 +29,7 @@
 #import "FSFansModel.h"
 #import "UINavigationBar+FSExtension.h"
 #import "UIBarButtonItem+FSExtension.h"
+#import "FSUserModel2.h"
 
 #define NAVBAR_CHANGE_POINT 170
 
@@ -39,6 +40,10 @@ typedef NS_ENUM(NSInteger, FSType) {
 };
 
 @interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+
+{
+    BOOL statusChangeFlag;
+}
 
 /**  */
 @property (nonatomic, strong) UITableView *contentTableView;
@@ -71,6 +76,7 @@ typedef NS_ENUM(NSInteger, FSType) {
 /**  */
 @property (nonatomic, strong) UIButton *fucosBtn;
 
+
 @end
 
 static NSString * const zuoPinCellId = @"zuoPin";
@@ -102,9 +108,7 @@ static NSString * const fucosCellId = @"fucos";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.type = FSTypeZuoPin;
-//    self.arrangementFlag = NO;
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if ([userModel.userId isEqualToString:self.userId]) {
         self.isMyself = YES;
     } else {
@@ -112,6 +116,7 @@ static NSString * const fucosCellId = @"fucos";
     }
     // 设置导航栏
     [self setupNav];
+    [self.contentTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 
@@ -217,6 +222,8 @@ static NSString * const fucosCellId = @"fucos";
     }
 }
 
+
+
 #pragma mark - 设置导航条
 -(void)setupNav{
     self.navigationController.navigationBarHidden = NO;
@@ -239,13 +246,14 @@ static NSString * const fucosCellId = @"fucos";
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     UIColor *color = [UIColor colorWithHexString:@"#ffffff"];
     [self.navigationController.navigationBar lt_setBackgroundColor:color];
     [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:1]];
 }
+
 
 #pragma mark - 懒加载顶部渐变层
 -(CAGradientLayer *)shadow{
@@ -263,6 +271,7 @@ static NSString * const fucosCellId = @"fucos";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.type = FSTypeZuoPin;
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
@@ -361,7 +370,7 @@ static NSString * const fucosCellId = @"fucos";
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -376,14 +385,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.guanZhuPersons = [FSListUserModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSListUserModel findAll];
+        [FSListUserModel deleteObjects:ary];
+        [FSListUserModel saveObjects:self.guanZhuPersons];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        // 让底部控件结束刷新
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
+        self.guanZhuPersons = (NSMutableArray*)[FSListUserModel findAll];
+        [self.contentTableView reloadData];
     }];
 }
 
@@ -400,7 +412,7 @@ static NSString * const fucosCellId = @"fucos";
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_header endRefreshing];
@@ -415,15 +427,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.fenSiPersons = [FSFansModel mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSFansModel findAll];
+        [FSFansModel deleteObjects:ary];
+        [FSFansModel saveObjects:self.fenSiPersons];
         [self.contentTableView reloadData];
         [self checkFooterState];
         [self.contentTableView.mj_header endRefreshing];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        
-        // 让底部控件结束刷新
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
+        self.fenSiPersons = (NSMutableArray*)[FSFansModel findAll];
+        [self.contentTableView reloadData];
     }];
 }
 
@@ -432,15 +446,17 @@ static NSString * const fucosCellId = @"fucos";
     if (self.isMyself) {
         FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             NSDictionary *dict = result[@"data"];
-            userModel = [FSUserModel mj_objectWithKeyValues:dict];
+            userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
             userModel.isLogin = YES;
             self.userId = userModel.userId;
             [userModel saveOrUpdate];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
-            
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+            self.userId = userModel.userId;
+            [self.contentTableView reloadData];
         }];
     } else {
         FBRequest *request2 = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@",self.userId] requestDictionary:nil delegate:self];
@@ -473,14 +489,17 @@ static NSString * const fucosCellId = @"fucos";
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
         self.zuoPins = [FSZuoPin mj_objectArrayWithKeyValuesArray:dataAry];
+        NSArray *ary = [FSZuoPin findAll];
+        [FSZuoPin deleteObjects:ary];
+        [FSZuoPin saveObjects:self.zuoPins];
         [self.contentTableView reloadData];
         [self.contentTableView.mj_header endRefreshing];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-        // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
-        // 让底部控件结束刷新
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         [self.contentTableView.mj_header endRefreshing];
+        self.zuoPins = (NSMutableArray*)[FSZuoPin findAll];
+        [self.contentTableView reloadData];
     }];
 }
 
@@ -502,7 +521,7 @@ static NSString * const fucosCellId = @"fucos";
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
         // 提醒
-        [SVProgressHUD showErrorWithStatus:@"加载用户数据失败"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
         
         // 让底部控件结束刷新
         [self.contentTableView.mj_footer endRefreshing];
@@ -611,7 +630,7 @@ static NSString * const fucosCellId = @"fucos";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 284;
+        return 284 / 667.0 * SCREEN_HEIGHT;
     } else if (indexPath.section == 1) {
         switch (self.type) {
             case FSTypeZuoPin:
@@ -628,7 +647,7 @@ static NSString * const fucosCellId = @"fucos";
                         }
                         return n1 * ((SCREEN_WIDTH - 5 * 2) / 3 + 10);
                     } else {
-                        return 210 + 40;
+                        return (211 + 40) / 667.0 * SCREEN_HEIGHT;
                     }
                 }
             }
@@ -637,14 +656,14 @@ static NSString * const fucosCellId = @"fucos";
             case FSTypeGuanZhu:
             {
                 //关注高度
-                return 55;
+                return 55 / 667.0 * SCREEN_HEIGHT;
             }
                 break;
                 
             case FSTypeFenSi:
             {
                 //粉丝高度
-                return 55;
+                return 55 / 667.0 * SCREEN_HEIGHT;
             }
                 break;
                 
@@ -663,9 +682,9 @@ static NSString * const fucosCellId = @"fucos";
         if (cell == nil) {
             cell = [[FSMeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr1];
         }
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
         if (self.isMyself) {
-           cell.model = userModel;
+           cell.model2 = userModel;
         } else {
             cell.model = self.user_model;
         }
@@ -700,7 +719,7 @@ static NSString * const fucosCellId = @"fucos";
                 if (indexPath.row == 0) {
                     FSStuffCountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSStuffCountTableViewCell"];
                     if (self.isMyself) {
-                        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+                        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
                         cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",userModel.stuff_count, NSLocalizedString(@"works", nil)];
                     } else {
                         cell.stuffCountLabel.text = [NSString stringWithFormat:@"%@%@",self.user_model.stuff_count, NSLocalizedString(@"works", nil)];
@@ -743,7 +762,7 @@ static NSString * const fucosCellId = @"fucos";
             {
                 //粉丝
                 FSListUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:fucosCellId];
-                cell.model = self.fenSiPersons[indexPath.row];
+                cell.fansModel = self.fenSiPersons[indexPath.row];
                 cell.fucosBtn.tag = indexPath.row;
                 [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;

@@ -90,9 +90,9 @@
     //创建视频内容对象
     UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:@"FiFish" descr:self.model.content thumImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.model.file_large]]]];
     //设置视频网页播放地址
-    shareObject.videoUrl = self.model.filepath;
+//    shareObject.videoUrl = self.model.filepath;
+    shareObject.videoUrl = [NSString stringWithFormat:@"https://m.qysea.com/stuff/%@.html", self.model.user_id];
 //    shareObject.videoLowBandUrl = self.model.filepath;
-    NSLog(@"视频 %@", self.model.filepath);
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

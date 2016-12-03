@@ -13,7 +13,7 @@
 #import "FSHomePageViewController.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "FSPraisedViewController.h"
@@ -88,26 +88,27 @@
     [request2 startRequestSuccess:^(FBRequest *request, id result) {
 
         NSDictionary *dict = result[@"data"];
-        FSUserModel *userModel = [[FSUserModel findAll] lastObject];
-        userModel = [FSUserModel mj_objectWithKeyValues:dict];
+        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+        userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
         userModel.isLogin = YES;
         [userModel saveOrUpdate];
-        
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
-        NSLog(@"头像  %@",userModel.large);
-        self.nameLabel.text = userModel.username;
-        self.addressLabel.text = userModel.zone;
-        if (self.addressLabel.text.length == 0) {
-            self.addressIcon.hidden = YES;
-        }
-        self.summaryLabel.text = userModel.summary;
-        self.zuoPinNumLabel.text = userModel.stuff_count;
-        self.fansNumLabel.text = userModel.fans_count;
-        self.focusNumLabel.text = userModel.follow_count;
+        [self settingTheProject:userModel];
         
     } failure:^(FBRequest *request, NSError *error) {
-        
+        FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+        [self settingTheProject:userModel];
     }];
+}
+
+-(void)settingTheProject:(FSUserModel2*)userModel{
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
+    self.nameLabel.text = userModel.username;
+    self.addressLabel.text = userModel.zone;
+    self.addressIcon.hidden = self.addressLabel.text.length == 0;
+    self.summaryLabel.text = userModel.summary;
+    self.zuoPinNumLabel.text = userModel.stuff_count;
+    self.fansNumLabel.text = userModel.fans_count;
+    self.focusNumLabel.text = userModel.follow_count;
 }
 
 - (IBAction)praisedClick:(id)sender {
@@ -135,7 +136,7 @@
 
 -(void)clickHomePageBtn:(UIButton*)sender{
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     vc.userId = userModel.userId;
     [self.navigationController pushViewController:vc animated:YES];
 }

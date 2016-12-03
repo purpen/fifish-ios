@@ -26,7 +26,7 @@
 #import "FBRequest.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate+FSUMRegiester.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "JPUSHService.h"
 #import "FSMeViewController.h"
 #import "FSMessageViewController.h"
@@ -185,20 +185,24 @@
         [_reachDelegate isReachAble];
     }
     //更新Token
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if (userModel.isLogin) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *token = [defaults objectForKey:@"token"];
-        NSLog(@"Token %@", token);
-        if (token.length != 0) {
-            FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
-            [request startRequestSuccess:^(FBRequest *request, id result) {
+        FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSInteger status_code = [result[@"meta"][@"status_code"] integerValue];
+            if (status_code == 200) {
                 [defaults setObject:result[@"data"][@"token"] forKey:@"token"];
                 [defaults synchronize];
-            } failure:^(FBRequest *request, NSError *error) {
-                
-            }];
-        }
+            } else {
+                FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+                userModel.isLogin = NO;
+                [userModel saveOrUpdate];
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
     }
     
     [application setApplicationIconBadgeNumber:0];

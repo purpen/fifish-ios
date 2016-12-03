@@ -7,7 +7,7 @@
 //
 
 #import "FSSummaryViewController.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 
 @interface FSSummaryViewController () <UITextFieldDelegate>
 
@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.summaryTF.delegate = self;
-    FSUserModel *model = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     self.summaryTF.text = model.summary;
     self.navigationItem.title = NSLocalizedString(@"Individuality signature", nil);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,8 +42,9 @@
                                                                                         @"summary" : self.summaryTF.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
         model.summary = self.summaryTF.text;
+        model.isLogin = YES;
         [model saveOrUpdate];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(FBRequest *request, NSError *error) {

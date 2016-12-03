@@ -37,6 +37,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1JA-Og-aoP">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcO-Bh-cG7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzt-Wb-TJs">
                     <rect key="frame" x="342" y="27" width="18" height="22"/>
                     <constraints>
@@ -49,10 +53,10 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ita-gq-Vzn">
-                    <rect key="frame" x="113" y="80" width="149" height="44"/>
+                    <rect key="frame" x="113" y="80" width="149" height="23"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="La4-SU-CuI" userLabel="注册">
-                    <rect key="frame" x="375" y="139" width="375" height="277"/>
+                    <rect key="frame" x="375" y="118" width="375" height="277"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tf_bg" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-TJ-inv">
                             <rect key="frame" x="23" y="6.5" width="329" height="44"/>
@@ -139,7 +143,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B62-Sc-ulc" userLabel="手机号登录">
-                    <rect key="frame" x="0.0" y="139" width="375" height="233.5"/>
+                    <rect key="frame" x="0.0" y="118" width="375" height="233.5"/>
                     <subviews>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-Aa-KVF" userLabel="白色线1">
                             <rect key="frame" x="79" y="49.5" width="239" height="1"/>
@@ -347,7 +351,7 @@
                     </variation>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="B62-Sc-ulc" firstAttribute="top" secondItem="ita-gq-Vzn" secondAttribute="bottom" constant="15" id="2q5-rO-pvq"/>
                 <constraint firstItem="QOa-TJ-inv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.066" id="37H-bP-dkw"/>
@@ -360,6 +364,7 @@
                 <constraint firstAttribute="trailing" secondItem="B62-Sc-ulc" secondAttribute="trailing" id="FIT-nc-Yyh"/>
                 <constraint firstItem="B62-Sc-ulc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L7W-gL-peV"/>
                 <constraint firstItem="3tW-ke-XaB" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.066" id="Mel-rq-V0u"/>
+                <constraint firstAttribute="trailing" secondItem="EcO-Bh-cG7" secondAttribute="trailing" id="Mjh-Ed-Zga"/>
                 <constraint firstItem="73H-QE-NgH" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.075" id="Ms8-gP-O5F"/>
                 <constraint firstItem="ita-gq-Vzn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="SMI-io-Of8"/>
                 <constraint firstItem="wSf-5t-ZXh" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.066" id="Sbq-uU-hl1"/>
@@ -367,11 +372,14 @@
                 <constraint firstAttribute="bottom" secondItem="1JA-Og-aoP" secondAttribute="bottom" id="WQ8-JQ-t0g"/>
                 <constraint firstItem="DVt-sh-gWB" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.075" id="WnE-m4-J6N"/>
                 <constraint firstItem="1JA-Og-aoP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z2H-hx-sxq"/>
+                <constraint firstItem="EcO-Bh-cG7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dOP-5I-Wp8"/>
                 <constraint firstItem="B62-Sc-ulc" firstAttribute="top" secondItem="ita-gq-Vzn" secondAttribute="bottom" constant="20" id="eVz-yi-gu5"/>
                 <constraint firstItem="Ltk-9k-0BQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.066" id="f3b-Et-s6d"/>
                 <constraint firstItem="8Ti-1W-Bzz" firstAttribute="top" secondItem="B62-Sc-ulc" secondAttribute="bottom" constant="69" id="g1V-Mr-NSW"/>
                 <constraint firstAttribute="bottom" secondItem="8Ti-1W-Bzz" secondAttribute="bottom" id="gAz-9R-aAw"/>
+                <constraint firstAttribute="bottom" secondItem="EcO-Bh-cG7" secondAttribute="bottom" id="guF-1i-cbN"/>
                 <constraint firstItem="La4-SU-CuI" firstAttribute="leading" secondItem="B62-Sc-ulc" secondAttribute="trailing" id="iov-zR-eHk"/>
+                <constraint firstItem="EcO-Bh-cG7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kci-U2-rso"/>
                 <constraint firstItem="1JA-Og-aoP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="l02-qt-fLl"/>
                 <constraint firstItem="B62-Sc-ulc" firstAttribute="width" secondItem="1JA-Og-aoP" secondAttribute="width" id="o1V-Qd-BFN"/>
                 <constraint firstAttribute="trailing" secondItem="8Ti-1W-Bzz" secondAttribute="trailing" id="p47-1p-xaH"/>
@@ -396,7 +404,7 @@
         <image name="login_insgram" width="40" height="40"/>
         <image name="login_lock" width="19" height="20"/>
         <image name="login_login" width="326" height="50"/>
-        <image name="login_logo" width="149" height="44"/>
+        <image name="login_logo" width="149" height="23"/>
         <image name="login_regiester" width="323" height="47"/>
         <image name="login_weixin" width="40" height="40"/>
         <image name="navi_cancel" width="13" height="13"/>

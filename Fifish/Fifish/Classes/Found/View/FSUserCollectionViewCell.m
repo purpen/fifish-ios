@@ -21,7 +21,7 @@
 
 -(void)setModel:(FSUserModel *)model{
     _model = model;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.small] placeholderImage:[UIImage imageNamed:@"me_defult"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.large] placeholderImage:[UIImage imageNamed:@"me_defult"]];
     self.nameLabel.text = model.username;
 }
 

@@ -83,6 +83,7 @@
                 <outlet property="fucosBtn" destination="gSK-mD-87d" id="urX-R8-iP0"/>
                 <outlet property="headInageView" destination="2C0-Eh-aVT" id="Gil-52-i5z"/>
                 <outlet property="summaryLabel" destination="ZRv-oa-CRg" id="vDH-cC-tqH"/>
+                <outlet property="summaryLabel_topSpace" destination="ucx-Tc-ntp" id="eYl-70-6wy"/>
                 <outlet property="userNameLabel" destination="NJV-Ev-y0t" id="Zwu-jN-eHs"/>
             </connections>
             <point key="canvasLocation" x="34" y="26"/>

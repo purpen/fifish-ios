@@ -24,6 +24,7 @@
     self.navigationController.navigationBar.translucent = NO;
     [self.NavLeftBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
     [self setDefaultLeftNav];
+    
 
 //    FSNavigationViewController * nav = (FSNavigationViewController *)self.navigationController;
 //    [nav.backBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
@@ -31,4 +32,5 @@
     
     
 }
+
 @end

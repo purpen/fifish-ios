@@ -25,4 +25,7 @@
 
 @property (nonatomic,assign)id<FSVidoLiveStatusBarDelegate>delegate;
 
+//刷新界面
+- (void)updataUI;
+
 @end

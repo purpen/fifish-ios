@@ -47,19 +47,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIFI未连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-r8-xlr">
-                    <rect key="frame" x="154" y="80" width="67" height="16"/>
+                    <rect key="frame" x="154" y="110" width="67" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择连接你的Fifish设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwL-MS-IN5">
-                    <rect key="frame" x="123" y="106" width="129" height="15"/>
+                    <rect key="frame" x="123" y="136" width="129" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIFISH P4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3C-ql-8Et">
-                    <rect key="frame" x="158" y="129" width="59" height="16"/>
+                    <rect key="frame" x="158" y="159" width="59" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.29803921570000003" green="0.62352941179999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                 <constraint firstItem="x3C-ql-8Et" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4jf-9A-se7"/>
                 <constraint firstItem="gwL-MS-IN5" firstAttribute="top" secondItem="vOs-r8-xlr" secondAttribute="bottom" constant="10" id="Faq-9V-SOf"/>
                 <constraint firstItem="ECc-ux-dpR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="I8a-6j-2ET"/>
-                <constraint firstItem="vOs-r8-xlr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="QFm-G4-SwW"/>
+                <constraint firstItem="vOs-r8-xlr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="QFm-G4-SwW"/>
                 <constraint firstItem="6dS-kW-ewQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SWS-CH-riz"/>
                 <constraint firstItem="vOs-r8-xlr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="epH-RM-lYw"/>
                 <constraint firstItem="ECc-ux-dpR" firstAttribute="top" secondItem="6dS-kW-ewQ" secondAttribute="bottom" constant="10" id="fwI-Wv-dio"/>

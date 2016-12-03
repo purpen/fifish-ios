@@ -15,6 +15,7 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
+  - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.5.0)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - MJRefresh
   - pop (~> 1.0)
   - SDWebImage (~> 3.8.1)
+  - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
@@ -36,7 +38,8 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: c8e2a63decf47c094414a6eed38e05ab9b47822f
+PODFILE CHECKSUM: a255f385be79a208f978ae6ae6415dc57ea489d8
 
 COCOAPODS: 1.1.1

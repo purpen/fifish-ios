@@ -10,7 +10,7 @@
 #import "UIImage+Helper.h"
 #import "FBRequest.h"
 #import "FBAPI.h"
-#import "FSUserModel.h"
+#import "FSUserModel2.h"
 #import "UIImageView+WebCache.h"
 #import "FSUserNameViewController.h"
 #import "AddreesPickerViewController.h"
@@ -43,7 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     self.summaryLabel.text = userModel.summary;
     self.zoneLabel.text = userModel.zone;
 }
@@ -73,8 +73,10 @@
                                                                                         @"zone" : self.zoneLabel.text
                                                                                         } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        FSUserModel *model = [[FSUserModel findAll] lastObject];
+        FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
         model.zone = self.zoneLabel.text;
+        model.isLogin = YES;
+        [model saveOrUpdate];
         [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
     } failure:^(FBRequest *request, NSError *error) {
         
@@ -92,7 +94,7 @@
     self.headImageView.layer.cornerRadius = 15;
     self.headImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.headImageView.layer.borderWidth = 1;
-    FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+    FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
 }
 
@@ -127,7 +129,7 @@
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage * editedImg = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
     
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
@@ -140,8 +142,9 @@
         [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
             
         } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
-            FSUserModel *userModel = [[FSUserModel findAll] lastObject];
+            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
             userModel.large = responseObject[@"file"][@"large"];
+            userModel.isLogin = YES;
             [userModel saveOrUpdate];
             [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
         } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {

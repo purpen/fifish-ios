@@ -86,12 +86,22 @@
     [self setRightItem:nextBtn];
 }
 - (void)NavBack{
+    
     [[[FSAlertView alloc] init] showAlertView:self title:NSLocalizedString(@"Give up editing?", nil) message:NSLocalizedString(@"If you return now, the picture editor will be cancelled.", nil) canceltitle:NSLocalizedString(@"Give up", nil) oktitle:NSLocalizedString(@"Retain", nil) confirmBlock:^{
         
     } cancelBlock:^{
         [super NavBack];
     }];
+    
 }
+
+/*隐藏和显示NAVitem*/
+- (void)NavItemNeedHidden:(BOOL)ishidden{
+    self.NavLeftBtn.hidden = ishidden;
+    self.NavRightBtn.hidden = ishidden;
+    self.title = @"";
+}
+
 - (void)gotoshareVC{
     
     FSReleasePictureViewController * vc = [[FSReleasePictureViewController alloc] init];
@@ -206,44 +216,65 @@
 }
 #pragma mark FSImageEditBottomViewDelegate
 - (void)FSImageEditBottomViewChooseWithIndex:(NSInteger)type{
+    
     if (type == 1) {
         NSLog(@"调整");
         self.FilterCollectionView.hidden = YES;
         self.RegulateCollectionView.hidden = NO;
     }
     else{
+        
         NSLog(@"滤镜");
         self.FilterCollectionView.hidden = NO;
         self.RegulateCollectionView.hidden = YES;
+        
     }
+    
 }
 
 #pragma FsfilterCollectionDelegate
 
 -(void)SeletedFilterWithIndex:(NSIndexPath *)indexpath{
+    
    self.imageView.image = self.ParamsImage.image  = [self.FilterManager randerImageWithIndex:self.FilterManager.fsFilterArr[indexpath.row] WithImage:self.originalImage];
-    self.title = self.FilterManager.fsFilterNameArr[indexpath.row];
+    
+    //取消点击滤镜名字显示在navbar上
+//    self.title = self.FilterManager.fsFilterNameArr[indexpath.row];
+    
 }
 #pragma mark FSFilterCollectionViewDelegate
 -(void)RegulateSeletedParameter:(NSIndexPath *)indexPath{
     
     //点击参数值设定，显示参数调整滑动条
     self.ImageRegulateBottomView.hidden = NO;
+    
+    /*点击参数调整不允许返回和继续操作*/
+    [self NavItemNeedHidden:YES];
+    
+    
     [self.ImageRegulateBottomView.SliderView setSliederWithType:indexPath.row AndImage:self.ParamsImage];
     
     //记录编辑类型
     self.editType = indexPath.row;
     NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
+    
+    self.title = NSLocalizedString(self.RegulateCollectionView.titleArr[indexPath.row], nil);
+    
 }
 
 #pragma mark FSFSImageRegulateBottomViewDelegate
 - (void)FSFSImageRegulateBottomViewCancel{
+    
     //隐藏参数调整滑动条
     self.ImageRegulateBottomView.hidden = YES;
     self.imageView.image = self.ParamsImage.image?self.ParamsImage.image:self.originalImage;
 
+    /*显示导航条按钮*/
+    [self NavItemNeedHidden:NO];
+
 }
 - (void)FSFSImageRegulateBottomViewConfirm{
+    
     self.ImageRegulateBottomView.hidden = YES;
     NSLog(@"type:%ld,value:%f",(long)self.editType,self.ImageRegulateBottomView.SliderView.sliderCurrentValue);
     //记录参数值
@@ -252,12 +283,14 @@
     
     self.ParamsImage.image = self.imageView.image;
     
+    /*显示导航条按钮*/
+    [self NavItemNeedHidden:NO];
+    
 }
 
 -(void)FSFSImageRegulateBottomViewSliderValuechange:(CGFloat)value{
 
     self.imageView.image = [self.FilterManager randerImageWithProgress:value WithImage:self.ParamsImage.image?self.ParamsImage.image:self.originalImage WithImageParamType:self.editType];
-    
     
 }
 @end
