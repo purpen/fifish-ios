@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSZuoPin.h"
 
 @interface FSBigImageViewController : UIViewController
 
@@ -14,6 +15,6 @@
 /**  */
 @property (nonatomic, strong) UIImage *showImage;
 /**  */
-@property (nonatomic, strong) NSString *imageUrl;
+@property (nonatomic, strong) FSZuoPin *model;
 
 @end

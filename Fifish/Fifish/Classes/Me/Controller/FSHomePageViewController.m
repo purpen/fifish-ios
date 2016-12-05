@@ -852,7 +852,7 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeFenSi:
         {
             if (sender.selected) {
-                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = NO;
                     sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
@@ -860,7 +860,7 @@ static NSString * const fucosCellId = @"fucos";
                     
                 }];
             } else {
-                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = YES;
                     sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;

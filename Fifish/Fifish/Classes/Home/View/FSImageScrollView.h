@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSZuoPin.h"
 
 @interface FSImageScrollView : UIScrollView
 
 - (void)displayImage:(UIImage *)image;
-- (void)displayImageUrl:(NSString *)imageUrl;
+- (void)displayImageUrl:(NSString *)imageUrl andModel:(FSZuoPin*)model;
 
 @end

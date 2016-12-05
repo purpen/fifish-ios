@@ -132,9 +132,12 @@
 
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
-    if ([model.like_count integerValue]) {
+    if ([model.like_count integerValue] > 0) {
         self.like_count_label.text = model.like_count;
+    } else {
+        self.like_count_label.text = @"";
     }
+    
     if ([_model.user_id isEqualToString:self.userModel.userId]) {
         self.fucosBtn.hidden = YES;
     } else {
@@ -217,7 +220,7 @@
     FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
     if (model.isLogin) {
         //登录了，可以进行后续操作
-        NSString *idStr = self.model.user_id;
+        NSString *idStr = self.model.idFeild;
         if (sender.selected) {
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -225,12 +228,13 @@
                 self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
                 NSInteger n = [self.model.like_count integerValue] - 1;
                 NSString *str = [NSString stringWithFormat:@"%ld",  n];
-                if (n == 0) {
-                    str = @"";
-                }
-                self.model.like_count = str;
-                self.like_count_label.text = str;
                 self.model.is_love = 0;
+                if (n <= 0) {
+                    self.model.like_count = @"0";
+                    self.like_count_label.text = @"";
+                    return;
+                }
+                self.like_count_label.text = str;
             } failure:^(FBRequest *request, NSError *error) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];

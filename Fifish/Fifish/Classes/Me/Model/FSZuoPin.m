@@ -22,8 +22,8 @@
              @"avatar_large" : @"user.avatar.large",
              @"width" : @"cover.width",
              @"height" : @"cover.height",
-             @"file_small" : @"cover.file.large",
-             @"file_large" : @"cover.file.srcfile",
+             @"file_small" : @"cover.file.small",
+             @"file_large" : @"cover.file.large",
              @"srcfile" : @"cover.file.srcfile",
              @"filepath" : @"cover.filepath",
              @"duration" : @"cover.duration"

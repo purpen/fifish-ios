@@ -34,8 +34,8 @@
 
 - (void)setViewUI {
     self.view.backgroundColor = [UIColor blackColor];
-    if (self.imageUrl.length != 0) {
-        [self.imageView displayImageUrl:self.imageUrl];
+    if (self.model.srcfile.length != 0) {
+        [self.imageView displayImageUrl:self.model.srcfile andModel:self.model];
     } else {
         _sceneImage = self.showImage;
         [self.imageView displayImage:_sceneImage];
