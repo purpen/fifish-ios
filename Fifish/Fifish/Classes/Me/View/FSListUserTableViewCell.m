@@ -59,15 +59,16 @@
     self.summaryLabel.text = model.summary;
     self.summaryLabel_topSpace.constant = model.summary.length == 0 ? ((self.headInageView.height - 16) * 0.5) : 2;
     [self layoutIfNeeded];
-    NSLog(@"self.headInageView.height%f, self.summaryLabel.height%f", self.headInageView.height, self.summaryLabel.height);
     [self.headInageView sd_setImageWithURL:[NSURL URLWithString:model.userHeadImage] placeholderImage:[UIImage imageNamed:@""]];
-    if (model.followFlag == 1) {
-        self.fucosBtn.selected = YES;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
-    } else {
-        self.fucosBtn.selected = NO;
-        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
-    }
+    self.fucosBtn.selected = YES;
+    self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+//    if (model.followFlag == 1) {
+//        self.fucosBtn.selected = YES;
+//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+//    } else {
+//        self.fucosBtn.selected = NO;
+//        self.fucosBtn.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+//    }
 }
 
 -(void)setFansModel:(FSFansModel *)fansModel{
