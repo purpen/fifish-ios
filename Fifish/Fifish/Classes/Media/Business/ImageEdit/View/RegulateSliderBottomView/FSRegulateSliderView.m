@@ -16,6 +16,11 @@
 @property (nonatomic,strong)UILabel  * ValueLab;
 
 
+/**
+ 记录当前参数，因为参数显示UI要求为0-1。各个参数范围不同，通过type换算
+ */
+@property (nonatomic)       NSInteger  paramsType;
+
 @end
 
 @implementation FSRegulateSliderView
@@ -82,35 +87,38 @@
             break;
         case 1:
         {
-            MaxValue = 4.0;
-            MinValue = 0;
-            CurrentValue = fsimage.contrastValue;
+            MaxValue = 1.0;
+            MinValue = -1.0;
+            CurrentValue = fsimage.contrastValue-1;//值的范围是0-4，为了方便计算，只允许0-2。标准值是1
         }
             break;
         case 2:
         {
-            MaxValue = 2.0;
-            MinValue = 0;
-            CurrentValue = fsimage.staurationValue;
+            MaxValue = 1.0;
+            MinValue = -1.0;
+            CurrentValue = (fsimage.staurationValue-1)/2.0;//值的范围是0-2，显示要求是-1-1，所以当前值是差值的比例。
         }
             break;
         case 3:
         {
-            MaxValue = 4.0;
-            MinValue = -4.0;
-            CurrentValue = fsimage.sharpnessValue;
+            MaxValue = 1.0;
+            MinValue = -1.0;
+            CurrentValue = fsimage.sharpnessValue/8.0;//值的范围是-4 - 4，所以当前值是差值的比例
         }
             break;
         case 4:
         {
-            MaxValue = 10000;
-            MinValue = 1000;
-            CurrentValue = fsimage.colorTemperatureValue;
+            MaxValue = 1.0;
+            MinValue = -1.0;
+            CurrentValue = (fsimage.colorTemperatureValue-5000)/5000.0;//值的范围是1000 - 10000，所以当前值是差值的比例
         }
             break;
         default:
             break;
     }
+    /*记录当前编辑状态*/
+    self.paramsType = type;
+    
     self.ValueLab.text = [NSString stringWithFormat:@"%.2f",CurrentValue];
     self.MainSlider.maximumValue = MaxValue;
     self.MainSlider.minimumValue = MinValue;
@@ -127,6 +135,40 @@
 }
 - (void)sliderValueChange:(UISlider *)sender{
     self.ValueLab.text = [NSString stringWithFormat:@"%.2f",sender.value];
-    [self.delegate FSRegulateSliderViewSliderValueChangeWithValue:sender.value];
+    
+    /*根据UI要求换算完的结果*/
+    CGFloat resultValue;
+    switch (self.paramsType) {
+        case 0:
+        {
+            //亮度不做换算
+        }
+            break;
+        
+        case 1:
+        {
+            resultValue = sender.value+1;//显示时减1，现在加回来
+        }
+            break;
+        case 2:
+        {
+            resultValue = sender.value*2.0+1;//显示时除以2，现在乘回来
+        }
+            break;
+        case 3:
+        {
+            resultValue = sender.value*8.0;//显示时除以8，现在乘回来
+        }
+            break;
+        case 4:
+        {
+            resultValue = sender.value*5000+5000;//
+        }
+            break;
+        default:
+            break;
+    }
+    
+    [self.delegate FSRegulateSliderViewSliderValueChangeWithValue:resultValue];
 }
 @end

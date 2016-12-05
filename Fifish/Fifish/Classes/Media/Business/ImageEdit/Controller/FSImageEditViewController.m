@@ -272,7 +272,7 @@
     /*显示导航条按钮*/
     [self NavItemNeedHidden:NO];
 
-}
+}   
 - (void)FSFSImageRegulateBottomViewConfirm{
     
     self.ImageRegulateBottomView.hidden = YES;
