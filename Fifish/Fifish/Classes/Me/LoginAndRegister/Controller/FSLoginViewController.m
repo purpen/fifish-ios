@@ -154,6 +154,7 @@
                 NSDictionary *dict = result[@"data"];
                 FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
                 userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
+                userModel.isLogin = YES;
                 [userModel saveOrUpdate];
                 [self dismissViewControllerAnimated:YES completion:nil];
             } failure:^(FBRequest *request, NSError *error) {

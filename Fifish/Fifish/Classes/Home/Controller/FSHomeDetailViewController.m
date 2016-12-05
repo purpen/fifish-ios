@@ -306,7 +306,7 @@ static NSString * const FSCommentId = @"comment";
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     FSZuoPin *model = self.model;
-    vc.imageUrl = model.srcfile;
+    vc.model = model;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

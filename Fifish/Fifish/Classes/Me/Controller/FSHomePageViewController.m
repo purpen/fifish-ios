@@ -381,6 +381,7 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fucosRequset{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
+        NSLog(@"关注  %@", result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -852,7 +853,7 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeFenSi:
         {
             if (sender.selected) {
-                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = NO;
                     sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
@@ -860,7 +861,7 @@ static NSString * const fucosCellId = @"fucos";
                     
                 }];
             } else {
-                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
+                FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
                     sender.selected = YES;
                     sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;

@@ -16,6 +16,7 @@
 #import "AboutViewController.h"
 #import "FSUserModel2.h"
 #import "FSTabBarController.h"
+#import "FSMeViewController.h"
 
 @interface FSSettingViewController ()<NotificationDelege>
 
@@ -149,6 +150,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     [defaults synchronize];
+    FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+    UITabBarItem *item = requiredViewController.tabBarItem;
+    item.badgeValue = nil;
     [[FSTabBarController sharedManager] setSelectedIndex:0];
     [self.navigationController popViewControllerAnimated:YES];
 }

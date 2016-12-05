@@ -109,21 +109,23 @@
             [[FSTabBarController sharedManager] setSelectedIndex:3];
         }
     }
-    FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSDictionary *dataDict = result[@"data"];
-        FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
-        UITabBarItem *item = requiredViewController.tabBarItem;
-        NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
-        if (count == 0) {
-            item.badgeValue = nil;
-        } else {
-            [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
-        }
-    } failure:^(FBRequest *request, NSError *error) {
-        
-    }];
-    
+    FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
+    if (usermodel.isLogin) {
+        FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            NSDictionary *dataDict = result[@"data"];
+            FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
+            UITabBarItem *item = requiredViewController.tabBarItem;
+            NSInteger count = ([dataDict[@"alert_comment_count"] integerValue] + [dataDict[@"alert_like_count"] integerValue] + [dataDict[@"alert_fans_count"] integerValue]);
+            if (count == 0) {
+                item.badgeValue = nil;
+            } else {
+                [item setBadgeValue:[NSString stringWithFormat:@"%ld", (long)count]];
+            }
+        } failure:^(FBRequest *request, NSError *error) {
+            
+        }];
+    }
     return YES;
 }
 

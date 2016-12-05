@@ -66,7 +66,7 @@
     self.imageView.frame = frameToCenter;
 }
 
--(void)displayImageUrl:(NSString *)imageUrl{
+-(void)displayImageUrl:(NSString *)imageUrl andModel:(FSZuoPin *)model{
     [self.imageView removeFromSuperview];
     self.imageView = nil;
     
@@ -79,12 +79,14 @@
         make.centerY.mas_equalTo(self.imageView.mas_centerY);
         make.width.height.mas_equalTo(60);
     }];
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"home_bigImage_default"] options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        self.progressView.hidden = NO;
-        CGFloat pictureProgress = 1.0 * receivedSize / expectedSize;
-        [self.progressView setProgress:pictureProgress animated:YES];
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        self.progressView.hidden = YES;
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:model.file_small] options:0 progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:image options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            self.progressView.hidden = NO;
+            CGFloat pictureProgress = 1.0 * receivedSize / expectedSize;
+            [self.progressView setProgress:pictureProgress animated:YES];
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            self.progressView.hidden = YES;
+        }];
     }];
     self.imageView.clipsToBounds = NO;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;

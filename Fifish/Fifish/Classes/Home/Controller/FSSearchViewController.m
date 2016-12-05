@@ -355,7 +355,7 @@
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     FSZuoPin *model = self.stuffAry[sender.tag];
-    vc.imageUrl = model.srcfile;
+    vc.model = model;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
