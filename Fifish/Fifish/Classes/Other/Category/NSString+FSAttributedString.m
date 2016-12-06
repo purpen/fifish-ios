@@ -30,7 +30,7 @@
     NSUInteger n = 0;
     NSInteger m = 0;
     if (SCREEN_HEIGHT == 667.0) {
-        n = 69 - 5;
+        n = 74 - 5;
         m = 5;
     } else if (SCREEN_HEIGHT == 736.0) {
         if (self.length <= 95) {

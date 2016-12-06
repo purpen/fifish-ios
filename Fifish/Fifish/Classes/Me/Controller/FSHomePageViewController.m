@@ -75,6 +75,8 @@ typedef NS_ENUM(NSInteger, FSType) {
 @property (nonatomic, strong) FSUserModel *user_model;
 /**  */
 @property (nonatomic, strong) UIButton *fucosBtn;
+/**  */
+@property (nonatomic, strong) UILabel *titleLabel;
 
 
 @end
@@ -171,9 +173,11 @@ static NSString * const fucosCellId = @"fucos";
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
         [self.navigationController.navigationBar setShadowImage:nil];
+        self.titleLabel.alpha = alpha;
     } else {
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+        self.titleLabel.alpha = 0;
     }
 }
 
@@ -232,6 +236,8 @@ static NSString * const fucosCellId = @"fucos";
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     if (self.isMyself) {
+        FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
+        self.titleLabel.text = usermodel.username;
         UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_back" highImage:nil title:nil target:self action:@selector(back)];
         self.navigationItem.leftBarButtonItem = searchItem;
         
@@ -244,6 +250,16 @@ static NSString * const fucosCellId = @"fucos";
         UIBarButtonItem *fucosItem = [[UIBarButtonItem alloc] initWithCustomView:self.fucosBtn];
         self.navigationItem.rightBarButtonItem = fucosItem;
     }
+    self.navigationItem.titleView = self.titleLabel;
+}
+
+-(UILabel *)titleLabel{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -275,9 +291,7 @@ static NSString * const fucosCellId = @"fucos";
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
-    
     [self setUpRefresh];
-    
     [self.view.layer addSublayer:self.shadow];
 }
 
@@ -464,6 +478,7 @@ static NSString * const fucosCellId = @"fucos";
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
+            self.titleLabel.text = self.user_model.username;
             self.userId = self.user_model.userId;
             self.fucosBtn.selected = self.user_model.following == 1;
             if (self.fucosBtn.selected) {
@@ -584,6 +599,7 @@ static NSString * const fucosCellId = @"fucos";
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSListUserTableViewCell class]) bundle:nil] forCellReuseIdentifier:fucosCellId];
         [_contentTableView registerNib:[UINib nibWithNibName:@"FSStuffCountTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSStuffCountTableViewCell"];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _contentTableView.showsVerticalScrollIndicator = NO;
     }
     return _contentTableView;
 }
