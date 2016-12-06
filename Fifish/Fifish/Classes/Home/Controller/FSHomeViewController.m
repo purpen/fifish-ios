@@ -39,7 +39,7 @@
 #import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
-@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
+@interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 
 {
     WMPlayer *wmPlayer;
@@ -240,7 +240,7 @@ static NSString * const CellId = @"home";
                                                                                                @"lng" : dict[@"lng"]
                                                                                                } delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Upload failed", nil)];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Release success", nil)];
                 [UIView animateWithDuration:0.25 animations:^{
                     self.contenTableView.y -= 44;
                     [self.view layoutIfNeeded];
@@ -378,7 +378,7 @@ static NSString * const CellId = @"home";
                 NSDictionary *dict = model.tags[i];
                 NSDictionary *cellDict = @{
                                            @"color" : @"blue",
-                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                           @"content" : [NSString stringWithFormat:@"#%@ ",dict[@"name"]],
                                            @"url" : @"hh",
                                            @"type" : @"link"
                                            };
@@ -549,6 +549,7 @@ static NSString * const CellId = @"home";
 }
 
 
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.modelAry.count;
 }
@@ -576,6 +577,7 @@ static NSString * const CellId = @"home";
     cell.hideFlag = [self.hideAry[indexPath.section] integerValue];
     cell.commendBtn.tag = indexPath.section;
     [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.moreBtn.tag = indexPath.section;
     [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.pictuerView.tapBTn.tag = indexPath.section;
     [cell.pictuerView.tapBTn addTarget:self action:@selector(imageClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -635,6 +637,8 @@ static NSString * const CellId = @"home";
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.modelAry[sender.tag];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
@@ -643,6 +647,18 @@ static NSString * const CellId = @"home";
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
+}
+
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    NSInteger section = 0;
+    for (int i = 0; i < self.modelAry.count; ++i) {
+        FSZuoPin *model = self.modelAry[i];
+        if ([model.idFeild isEqualToString:cellId]) section = i;
+    }
+    [self.modelAry removeObjectAtIndex:section];
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.contenTableView deleteRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - 评论按钮

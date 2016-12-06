@@ -296,7 +296,7 @@
                 NSDictionary *dict = model.tags[i];
                 NSDictionary *cellDict = @{
                                            @"color" : @"blue",
-                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                           @"content" : [NSString stringWithFormat:@"#%@ ",dict[@"name"]],
                                            @"url" : @"hh",
                                            @"type" : @"link"
                                            };

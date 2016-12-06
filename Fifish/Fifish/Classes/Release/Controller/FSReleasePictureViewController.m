@@ -346,11 +346,10 @@
 -(void)releaseClick{
     if ([self.type isEqualToNumber:@(1)]) {
         //图片
-        if (self.releaseView.instructionsTextView.text.length < 5) {
+        if (self.releaseView.instructionsTextView.text.length == 0) {
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Please add content", nil)];
         } else {
             self.kind = @"1";
-//            NSData * iconData = UIImageJPEGRepresentation(self.bigImage , 1);
             NSData * iconData = UIImageJPEGRepresentation(self.bigImage , 1);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"kind"] = self.kind;
@@ -370,7 +369,7 @@
         //[iconData writeToFile:fullPath atomically:NO];
     } else {
         //视频
-        if (self.releaseView.instructionsTextView.text.length < 5) {
+        if (self.releaseView.instructionsTextView.text.length == 0) {
             [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"Please add content", nil)];
         } else {
             self.kind = @"2";

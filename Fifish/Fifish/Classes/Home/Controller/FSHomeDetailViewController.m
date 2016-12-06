@@ -171,7 +171,7 @@ static NSString * const FSCommentId = @"comment";
             NSDictionary *dict = self.model.tags[i];
             NSDictionary *cellDict = @{
                                        @"color" : @"blue",
-                                       @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                       @"content" : [NSString stringWithFormat:@"#%@ ",dict[@"name"]],
                                        @"url" : @"hh",
                                        @"type" : @"link"
                                        };
