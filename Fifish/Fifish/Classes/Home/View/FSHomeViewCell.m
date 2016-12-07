@@ -22,6 +22,7 @@
 #import "FSLoginViewController.h"
 #import <pop/POP.h>
 #import "FSUserModel2.h"
+#import "UILabel+MultipleLines.h"
 
 @interface FSHomeViewCell ()
 
@@ -31,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
@@ -40,7 +41,6 @@
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 @property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
-@property (weak, nonatomic) IBOutlet UILabel *tagTagLabel;
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
@@ -179,7 +179,10 @@
         self.tagView_height.constant = 33;
     }
     [self layoutIfNeeded];
+    CGSize textSzie = [self.contentLabel setText:model.content lines:3 andLineSpacing:5 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) andWordsSpace:0.5f];
+    self.contentLabel.frame = CGRectMake(15, 10, textSzie.width, textSzie.height);
 }
+
 
 -(void)video:(UIButton*)sender{
     WeakSelf(weakSelf);
@@ -188,20 +191,10 @@
     }
 }
 
--(void)setHideFlag:(NSInteger)hideFlag{
-    _hideFlag = hideFlag;
-    self.hideView.hidden = hideFlag;
-}
-
--(void)setContentString:(NSAttributedString *)contentString{
-    _contentString = contentString;
-    [self.contentLabel setAttributedText:contentString];
-}
 
 -(void)setCtData:(CoreTextData *)ctData{
     if (self.model.tags.count > 0) {
         self.tagView.hidden = NO;
-        self.tagTagLabel.hidden = NO;
         _ctData = ctData;
         CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
         view.userInteractionEnabled = YES;
@@ -211,7 +204,6 @@
         view.data = ctData;
     } else {
         self.tagView.hidden = YES;
-        self.tagTagLabel.hidden = YES;
     }
 }
 

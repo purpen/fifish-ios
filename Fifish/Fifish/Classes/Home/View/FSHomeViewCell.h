@@ -35,7 +35,6 @@
 /**  */
 @property (nonatomic, strong) UINavigationController *navi;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHegiht;
 @property (weak, nonatomic) IBOutlet UIButton *tagBtn;
 @property (weak, nonatomic) IBOutlet UIButton *fucosBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomView_height;
@@ -46,12 +45,8 @@
 /**  */
 @property (nonatomic, strong) CoreTextData *ctData;
 @property (weak, nonatomic) IBOutlet UIView *bottom_line_view;
-/**  */
-@property (nonatomic, strong) NSAttributedString *contentString;
-/** 
- */
-@property (nonatomic, assign) NSInteger hideFlag;
 @property (weak, nonatomic) IBOutlet UILabel *like_count_label;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 /**  */
 @property (nonatomic, weak) id<FSHomeViewCellDelegate> fSHomeViewDelegate;
 

@@ -36,7 +36,6 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
-#import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
@@ -59,16 +58,9 @@
 @property (nonatomic, strong) NSNotification *notification;
 /**  */
 @property (nonatomic, assign) BOOL repeatFlag;
-/**  */
-@property (nonatomic, strong) NSMutableArray *cellHeightAry;
-/**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *contentStringAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *hideAry;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 /**  */
 @property (nonatomic, strong) UIView *imageView;
@@ -79,20 +71,6 @@
 static NSString * const CellId = @"home";
 
 @implementation FSHomeViewController
-
--(NSMutableArray *)hideAry{
-    if (!_hideAry) {
-        _hideAry = [NSMutableArray array];
-    }
-    return _hideAry;
-}
-
--(NSMutableArray *)contentStringAry{
-    if (!_contentStringAry) {
-        _contentStringAry = [NSMutableArray array];
-    }
-    return _contentStringAry;
-}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -108,12 +86,6 @@ static NSString * const CellId = @"home";
     return _tagMAry;
 }
 
--(NSMutableArray *)cellHeightAry{
-    if (!_cellHeightAry) {
-        _cellHeightAry = [NSMutableArray array];
-    }
-    return _cellHeightAry;
-}
 
 -(FSProgressView *)progressView{
     if (!_progressView) {
@@ -359,10 +331,7 @@ static NSString * const CellId = @"home";
 }
 
 -(void)parsing{
-    [self.cellHeightAry removeAllObjects];
-    [self.hideAry removeAllObjects];
     [self.ctDataAry removeAllObjects];
-    [self.contentStringAry removeAllObjects];
     for (int i = 0; i < self.modelAry.count; i++) {
         FSZuoPin *model = self.modelAry[i];
         
@@ -386,78 +355,9 @@ static NSString * const CellId = @"home";
             }
             config.width = SCREEN_WIDTH;
             [self.tagMAry writeToFile:filename atomically:YES];
-            
-            
-            
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 12);
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375);
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
-        } else {
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         [self.ctDataAry addObject:data];
-        
-        NSInteger flag = [self.hideAry[i] integerValue];
-        if (flag) {
-            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:NO];
-            [self.contentStringAry addObject:setString];
-        } else {
-            NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            [self.contentStringAry addObject:setString];
-        }
     }
 }
 
@@ -480,6 +380,7 @@ static NSString * const CellId = @"home";
         _contenTableView.delegate = self;
         _contenTableView.dataSource = self;
         _contenTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _contenTableView.estimatedRowHeight = 400;
     }
     return _contenTableView;
 }
@@ -570,11 +471,9 @@ static NSString * const CellId = @"home";
     FSHomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     cell.fSHomeViewDelegate = self;
     cell.navi = self.navigationController;
-    cell.contentString = self.contentStringAry[indexPath.section];
     cell.myViewController = self;
     cell.model = self.modelAry[indexPath.section];
     cell.ctData = self.ctDataAry[indexPath.section];
-    cell.hideFlag = [self.hideAry[indexPath.section] integerValue];
     cell.commendBtn.tag = indexPath.section;
     [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.moreBtn.tag = indexPath.section;
@@ -704,13 +603,6 @@ static NSString * const CellId = @"home";
         }
     }
     [self.contenTableView reloadData];
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
-    CGFloat gaoDu = [cellHeightStr floatValue];
-    return gaoDu;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

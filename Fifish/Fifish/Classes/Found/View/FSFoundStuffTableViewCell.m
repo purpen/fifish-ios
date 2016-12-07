@@ -21,6 +21,8 @@
 #import "FSLoginViewController.h"
 #import <pop/POP.h>
 #import "FSUserModel2.h"
+#import "FSUserModel2.h"
+#import "UILabel+MultipleLines.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -186,6 +188,8 @@
         self.tagView_height.constant = 33;
     }
     [self layoutIfNeeded];
+    CGSize textSzie = [self.contentLabel setText:model.content lines:3 andLineSpacing:5 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) andWordsSpace:0.5f];
+    self.contentLabel.frame = CGRectMake(15, 10, textSzie.width, textSzie.height);
 }
 
 -(void)setHideFlag:(NSInteger)hideFlag{

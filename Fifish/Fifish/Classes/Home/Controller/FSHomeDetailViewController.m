@@ -26,9 +26,9 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
-#import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 #import "FSUserModel2.h"
+#import "UILabel+MultipleLines.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate>
 {
@@ -157,8 +157,6 @@ static NSString * const FSCommentId = @"comment";
 }
 
 -(void)detailSetUpHeader{
-    CGFloat gaoDu = 0;
-    BOOL flag = NO;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *path = [paths objectAtIndex:0];
     NSString *filename = [path stringByAppendingPathComponent:@"tag.plist"];
@@ -179,64 +177,24 @@ static NSString * const FSCommentId = @"comment";
         }
         config.width = SCREEN_WIDTH;
         [self.tagMAry writeToFile:filename atomically:YES];
-        
-        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-        if (SCREEN_HEIGHT == 568.0) {
-            gaoDu = (textH + 375 - 40);
-            flag = self.model.content.length > 53;
-        } else if (SCREEN_HEIGHT == 667.0) {
-            gaoDu = (textH + 375 - 12);
-            flag = self.model.content.length > 65;
-        } else {
-            gaoDu = (textH + 375 + 12);
-            flag = self.model.content.length > 96;
-        }
-        gaoDu += 8;
-    } else {
-        CGFloat textH = [self.model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-        if (SCREEN_HEIGHT == 568.0) {
-            gaoDu = (textH + 347 - 38);
-        } else if (SCREEN_HEIGHT == 667.0) {
-            gaoDu = (textH + 347 - 15);
-        } else {
-            if (self.model.content.length <= 96) {
-                gaoDu = (textH + 347 + 4);
-            } else {
-                gaoDu = (textH + 347 + 10);
-            }
-        }
-        gaoDu += 3;
     }
     CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
     _cell.ctData = data;
-    NSAttributedString  *setString = [self.model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:flag];
-    _cell.contentString = setString;
-    _cell.hideFlag = 1;
-    _cell.frame = CGRectMake(0, 0, SCREEN_WIDTH, gaoDu);
-    _cell.bottomViewHegiht = 0;
-    [_cell.contentView layoutIfNeeded];
-    
-    
-    // 创建header
-    UIView *header = [[UIView alloc] init];
-    header.height = gaoDu;
-    header.width = SCREEN_WIDTH;
-    header.backgroundColor = [UIColor whiteColor];
-    
-    [header addSubview:_cell];
-    
+    CGSize textSzie = [_cell.contentLabel setText:self.model.content lines:0 andLineSpacing:5 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) andWordsSpace:0.5f];
+    _cell.contentLabel.frame = CGRectMake(15, 10, textSzie.width, textSzie.height);
+    _cell.height += textSzie.height + 10;
     // 设置header
-    self.commendTableView.tableHeaderView = header;
+    self.commendTableView.tableHeaderView = _cell;
 }
 
 -(void)setupHeader{
     // 添加cell
     _cell = [FSHomeViewCell viewFromXib];
+    _cell.backgroundColor = [UIColor whiteColor];
     _cell.fSHomeViewDelegate = self;
     _cell.bottom_line_view.hidden = YES;
     _cell.navi = self.navigationController;
     _cell.myViewController = self;
-    _cell.contentLabel_height.constant = 10000;
     [_cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
     [_cell.likeBtn addTarget:self action:@selector(lickClick:) forControlEvents:UIControlEventTouchUpInside];
     [_cell.commendBtn addTarget:self action:@selector(commentClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -381,9 +339,6 @@ static NSString * const FSCommentId = @"comment";
     return onecell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
-}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FSCommentModel *model = self.commentAry[indexPath.row];

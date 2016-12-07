@@ -24,7 +24,6 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
-#import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
@@ -56,15 +55,9 @@
 /**  */
 @property (nonatomic, strong) NSMutableArray *userAry;
 /**  */
-@property (nonatomic, strong) NSMutableArray *cellHeightAry;
-/**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *contentStringAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *hideAry;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 /**  */
 @property (nonatomic, strong) UIView *imageView;
@@ -73,20 +66,6 @@
 @end
 
 @implementation FSTagSearchViewController
-
--(NSMutableArray *)hideAry{
-    if (!_hideAry) {
-        _hideAry = [NSMutableArray array];
-    }
-    return _hideAry;
-}
-
--(NSMutableArray *)contentStringAry{
-    if (!_contentStringAry) {
-        _contentStringAry = [NSMutableArray array];
-    }
-    return _contentStringAry;
-}
 
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
@@ -100,13 +79,6 @@
         _tagMAry = [NSMutableArray array];
     }
     return _tagMAry;
-}
-
--(NSMutableArray *)cellHeightAry{
-    if (!_cellHeightAry) {
-        _cellHeightAry = [NSMutableArray array];
-    }
-    return _cellHeightAry;
 }
 
 -(NSMutableArray *)userAry{
@@ -196,10 +168,7 @@
 }
 
 -(void)parsing{
-    [self.cellHeightAry removeAllObjects];
-    [self.hideAry removeAllObjects];
     [self.ctDataAry removeAllObjects];
-    [self.contentStringAry removeAllObjects];
     for (int i = 0; i < self.stuffAry.count; i++) {
         FSZuoPin *model = self.stuffAry[i];
         
@@ -223,78 +192,9 @@
             }
             config.width = SCREEN_WIDTH;
             [self.tagMAry writeToFile:filename atomically:YES];
-            
-            
-            
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 12);
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375);
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
-        } else {
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         [self.ctDataAry addObject:data];
-        
-        NSInteger flag = [self.hideAry[i] integerValue];
-        if (flag) {
-            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:NO];
-            [self.contentStringAry addObject:setString];
-        } else {
-            NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            [self.contentStringAry addObject:setString];
-        }
     }
 }
 
@@ -377,6 +277,7 @@
         [_myTableView registerNib:[UINib nibWithNibName:@"FSTagSearchOneTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSTagSearchOneTableViewCell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"FSListUserTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSListUserTableViewCell"];
         _myTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
+        _myTableView.estimatedRowHeight = 400;
     }
     return _myTableView;
 }
@@ -441,31 +342,6 @@
     return 0.0000001f;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            return 170;
-        } else if (indexPath.row == 1) {
-            return 44;
-        }
-    } else {
-        if ([self.type isEqualToNumber:@(2)]) {
-            if (self.userAry.count == 0) {
-                return SCREEN_HEIGHT - 288;
-            }
-            return 60;
-        } else if ([self.type isEqualToNumber:@(1)]) {
-            if (self.stuffAry.count == 0) {
-                return SCREEN_HEIGHT - 288;
-            }
-            NSString *cellHeightStr = self.cellHeightAry[indexPath.section - 1];
-            CGFloat gaoDu = [cellHeightStr floatValue];
-            return gaoDu;
-        }
-    }
-    return 0;
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -497,6 +373,7 @@
                     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                         make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
                         make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                        make.top.equalTo(cell.contentView.mas_top).offset(250/667.0*SCREEN_HEIGHT);
                     }];
                 }
                 return cell;
@@ -520,6 +397,7 @@
                     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                         make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
                         make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                        make.top.equalTo(cell.contentView.mas_top).offset(250/667.0*SCREEN_HEIGHT);
                     }];
                 }
                 return cell;
@@ -530,9 +408,6 @@
             cell.navi = self.navigationController;
             cell.model = self.stuffAry[indexPath.section - 1];
             cell.ctData = self.ctDataAry[indexPath.section - 1];
-            cell.hideFlag = [self.hideAry[indexPath.section - 1] integerValue];
-            cell.contentString = self.contentStringAry[indexPath.section - 1];
-            cell.commendBtn.tag = indexPath.section - 1;
             [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];
             cell.pictuerView.tapBTn.tag = indexPath.section - 1;
