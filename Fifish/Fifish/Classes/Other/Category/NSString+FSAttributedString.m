@@ -30,17 +30,25 @@
     NSUInteger n = 0;
     NSInteger m = 0;
     if (SCREEN_HEIGHT == 667.0) {
-        n = 74 - 5;
-        m = 5;
-    } else if (SCREEN_HEIGHT == 736.0) {
-        if (self.length <= 95) {
+        if (self.length <= 70) {
             n = 0;
             m = 0;
-        } else if (self.length >= 100) {
+        } else if (self.length >= 74) {
             m = 4;
-            n = 100 - m;
+            n = 54 - m;
         } else {
-            n = 96;
+            n = 70;
+            m = self.length - n;
+        }
+    } else if (SCREEN_HEIGHT == 736.0) {
+        if (self.length <= 52) {
+            n = 0;
+            m = 0;
+        } else if (self.length >= 56) {
+            m = 4;
+            n = 56 - m;
+        } else {
+            n = 52;
             m = self.length - n;
         }
     } else {
