@@ -79,9 +79,9 @@
     switch (type) {
         case 0:
         {
-            MaxValue = 1.0;
-            MinValue = -1.0;
-            CurrentValue = fsimage.lightValue;
+            MaxValue = 0.5;
+            MinValue = -0.5;
+            CurrentValue = fsimage.lightValue;//值的范围是-1 - 1，不能显示太黑或者太白，只允许-0.5-0.5。标准值是0
             
         }
             break;
@@ -141,7 +141,8 @@
     switch (self.paramsType) {
         case 0:
         {
-            //亮度不做换算
+            //亮度不做换算，但需要判断，不能让图片太黑或者太白。
+            resultValue = sender.value;
         }
             break;
         
