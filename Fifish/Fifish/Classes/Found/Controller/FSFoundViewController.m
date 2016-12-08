@@ -407,13 +407,12 @@
     } else {
         FSFoundStuffTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FSFoundStuffTableViewCell"];
         cell.fSHomeViewDelegate = self;
+        cell.navc = self.navigationController;
+        cell.myViewController = self;
         cell.model = self.stuffAry[indexPath.section - 2];
         cell.ctData = self.ctDataAry[indexPath.section - 2];
-        cell.myViewController = self;
         cell.fucosBtn.tag = indexPath.section - 2;
-        cell.navc = self.navigationController;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.navi = self.navigationController;
         cell.commendBtn.tag = indexPath.section - 2;
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.moreBtn addTarget:self action:@selector(moreClick:) forControlEvents:UIControlEventTouchUpInside];

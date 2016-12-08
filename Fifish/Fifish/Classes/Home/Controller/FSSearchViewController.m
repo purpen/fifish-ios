@@ -277,7 +277,6 @@
         cell.ctData = self.ctDataAry[indexPath.section];
         cell.fucosBtn.tag = indexPath.section;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.navi = self.navigationController;
         cell.commendBtn.tag = indexPath.section;
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.moreBtn.tag = indexPath.section;
