@@ -35,7 +35,7 @@
 #import "WMPlayer.h"
 #import "FSFoundSlidePageModel.h"
 
-@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
+@interface FSFoundViewController () <UITableViewDelegate,UITableViewDataSource, SDCycleScrollViewDelegate, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -439,30 +439,34 @@
         if (sender.selected) {
             //取消关注
             FSZuoPin *model = self.stuffAry[sender.tag];
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 0;
+                    [self.contentTableView reloadData];
+                }
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                for (int i = 0; i < self.stuffAry.count; i ++) {
-                    FSZuoPin *cellModel = self.stuffAry[i];
-                    if ([cellModel.user_id isEqualToString:model.user_id]) {
-                        cellModel.is_follow = 0;
-                        [self.contentTableView reloadData];
-                    }
-                }
+                sender.userInteractionEnabled = YES;
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
         } else {
             //关注
             FSZuoPin *model = self.stuffAry[sender.tag];
+            for (int i = 0; i < self.stuffAry.count; i ++) {
+                FSZuoPin *cellModel = self.stuffAry[i];
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 1;
+                    [self.contentTableView reloadData];
+                }
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                for (int i = 0; i < self.stuffAry.count; i ++) {
-                    FSZuoPin *cellModel = self.stuffAry[i];
-                    if ([cellModel.user_id isEqualToString:model.user_id]) {
-                        cellModel.is_follow = 1;
-                        [self.contentTableView reloadData];
-                    }
-                }
+                sender.userInteractionEnabled = YES;
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
@@ -473,14 +477,32 @@
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.stuffAry[sender.tag];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
-        [UIView animateWithDuration:0.05 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+        [UIView animateWithDuration:0.25 animations:^{
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
+}
+
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    NSInteger section = 0;
+    for (int i = 0; i < self.stuffAry.count; ++i) {
+        FSZuoPin *model = self.stuffAry[i];
+        if ([model.idFeild isEqualToString:cellId]) section = i;
+    }
+    [self.stuffAry removeObjectAtIndex:section];
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.contentTableView deleteRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - 评论按钮

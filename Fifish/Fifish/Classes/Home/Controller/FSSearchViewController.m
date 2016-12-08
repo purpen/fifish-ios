@@ -34,7 +34,7 @@
 #import "FSSearchModel.h"
 #define ADVICE_TABLEVIEW 11
 
-@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate>
+@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate, FSReportViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -291,14 +291,32 @@
 
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.stuffAry[sender.tag];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
         [UIView animateWithDuration:0.25 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
+}
+
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    NSInteger section = 0;
+    for (int i = 0; i < self.stuffAry.count; ++i) {
+        FSZuoPin *model = self.stuffAry[i];
+        if ([model.idFeild isEqualToString:cellId]) section = i;
+    }
+    [self.stuffAry removeObjectAtIndex:section];
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.myTableView deleteRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -381,30 +399,34 @@
     if (sender.selected) {
         //取消关注
         FSZuoPin *model = self.stuffAry[sender.tag];
+        for (int i = 0; i < self.stuffAry.count; i ++) {
+            FSZuoPin *cellModel = self.stuffAry[i];
+            if ([cellModel.user_id isEqualToString:model.user_id]) {
+                cellModel.is_follow = 0;
+                [self.myTableView reloadData];
+            }
+        }
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 0;
-                    [self.myTableView reloadData];
-                }
-            }
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     } else {
         //关注
         FSZuoPin *model = self.stuffAry[sender.tag];
+        for (int i = 0; i < self.stuffAry.count; i ++) {
+            FSZuoPin *cellModel = self.stuffAry[i];
+            if ([cellModel.user_id isEqualToString:model.user_id]) {
+                cellModel.is_follow = 1;
+                [self.myTableView reloadData];
+            }
+        }
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 1;
-                    [self.myTableView reloadData];
-                }
-            }
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

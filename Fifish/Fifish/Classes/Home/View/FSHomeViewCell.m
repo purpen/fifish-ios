@@ -214,38 +214,44 @@
         //登录了，可以进行后续操作
         NSString *idStr = self.model.idFeild;
         if (sender.selected) {
+            POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
+            likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
+            likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+            likeAnimation.springSpeed = 10;
+            likeAnimation.springBounciness = 10;
+            [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
+            sender.selected = NO;
+            self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+            NSInteger n = [self.model.like_count integerValue] - 1;
+            NSString *str = [NSString stringWithFormat:@"%ld",  n];
+            self.model.is_love = 0;
+            if (n <= 0) {
+                self.model.like_count = @"0";
+                self.like_count_label.text = @"";
+                return;
+            }
+            self.like_count_label.text = str;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                sender.selected = NO;
-                self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
-                NSInteger n = [self.model.like_count integerValue] - 1;
-                NSString *str = [NSString stringWithFormat:@"%ld",  n];
-                self.model.is_love = 0;
-                if (n <= 0) {
-                    self.model.like_count = @"0";
-                    self.like_count_label.text = @"";
-                    return;
-                }
-                self.like_count_label.text = str;
             } failure:^(FBRequest *request, NSError *error) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];
         } else {
+            POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
+            likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
+            likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+            likeAnimation.springSpeed = 10;
+            likeAnimation.springBounciness = 10;
+            [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
+            sender.selected = YES;
+            self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+            NSInteger n = [self.model.like_count integerValue] + 1;
+            NSString *str = [NSString stringWithFormat:@"%ld",  n];
+            self.model.like_count = str;
+            self.like_count_label.text = str;
+            self.model.is_love = 1;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
-                likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
-                likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
-                likeAnimation.springSpeed = 10;
-                likeAnimation.springBounciness = 10;
-                [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
-                sender.selected = YES;
-                self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
-                NSInteger n = [self.model.like_count integerValue] + 1;
-                NSString *str = [NSString stringWithFormat:@"%ld",  n];
-                self.model.like_count = str;
-                self.like_count_label.text = str;
-                self.model.is_love = 1;
             } failure:^(FBRequest *request, NSError *error) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];

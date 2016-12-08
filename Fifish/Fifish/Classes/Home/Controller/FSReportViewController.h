@@ -22,5 +22,8 @@
 @property (nonatomic, strong) FSZuoPin *model;
 /**  */
 @property (nonatomic, weak) id<FSReportViewControllerDelegate> fSReportDelegate;
+/**  */
+@property (nonatomic, assign) BOOL isMineStuff;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *haChBottomSpace;
 
 @end

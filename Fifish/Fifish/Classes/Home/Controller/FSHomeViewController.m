@@ -327,7 +327,6 @@ static NSString * const CellId = @"home";
         // 让底部控件结束刷新
         [self.contenTableView.mj_footer endRefreshing];
     }];
-    
 }
 
 -(void)parsing{
@@ -492,36 +491,39 @@ static NSString * const CellId = @"home";
         if (sender.selected) {
             //取消关注
             FSZuoPin *model = self.modelAry[sender.tag];
+            for (int i = 0; i < self.modelAry.count; i ++) {
+                FSZuoPin *cellModel = self.modelAry[i];
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 0;
+                }
+                [self.contenTableView reloadData];
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                for (int i = 0; i < self.modelAry.count; i ++) {
-                    FSZuoPin *cellModel = self.modelAry[i];
-                    if ([cellModel.user_id isEqualToString:model.user_id]) {
-                        cellModel.is_follow = 0;
-                    }
-                    [self.contenTableView reloadData];
-                }
+                sender.userInteractionEnabled = YES;
             } failure:^(FBRequest *request, NSError *error) {
             }];
         } else {
             //关注
             FSZuoPin *model = self.modelAry[sender.tag];
+            for (int i = 0; i < self.modelAry.count; i ++) {
+                FSZuoPin *cellModel = self.modelAry[i];
+                if ([cellModel.user_id isEqualToString:model.user_id]) {
+                    cellModel.is_follow = 1;
+                }
+                [self.contenTableView reloadData];
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                for (int i = 0; i < self.modelAry.count; i ++) {
-                    FSZuoPin *cellModel = self.modelAry[i];
-                    if ([cellModel.user_id isEqualToString:model.user_id]) {
-                        cellModel.is_follow = 1;
-                    }
-                    [self.contenTableView reloadData];
-                }
+                sender.userInteractionEnabled = YES;
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
         }
     }
 }
-
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{
@@ -542,7 +544,11 @@ static NSString * const CellId = @"home";
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
         [UIView animateWithDuration:0.25 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];

@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *deleteBtnHeight;
 /**  */
 @property (nonatomic, assign) CGFloat viewHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *haChView;
 
 @end
 
@@ -25,11 +25,7 @@
 -(void)setModel:(FSZuoPin *)model{
     _model = model;
     FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
-    self.deleteBtnHeight.constant = [usermodel.userId isEqualToString:model.user_id] ? 44 : 0;
-    self.viewHeight = [usermodel.userId isEqualToString:model.user_id] ? 176 : 132;
-    self.viewHeightConstraint.constant = self.viewHeight;
-    NSLog(@"高度 %f %f", self.deleteBtnHeight.constant, self.viewHeightConstraint.constant);
-    [self.view layoutIfNeeded];
+    self.isMineStuff = [usermodel.userId isEqualToString:model.user_id];
 }
 
 - (void)viewDidLoad {
@@ -39,7 +35,11 @@
 
 - (IBAction)reportClick:(id)sender {
     [UIView animateWithDuration:0.25 animations:^{
-        self.firstViewBottomSapce.constant = -self.viewHeight;
+        if (self.isMineStuff) {
+            self.firstViewBottomSapce.constant = -self.viewHeight;
+        } else {
+            self.haChBottomSpace.constant = 132;
+        }
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.25 animations:^{
@@ -63,6 +63,7 @@
         if ([self.fSReportDelegate respondsToSelector:@selector(deleteCellWithCellId:)]) {
             [self.fSReportDelegate deleteCellWithCellId:self.model.idFeild];
         }
+        [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(FBRequest *request, NSError *error) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
     }];
@@ -80,7 +81,11 @@
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.25 animations:^{
-            self.firstViewBottomSapce.constant = 0;
+            if (self.isMineStuff) {
+                self.firstViewBottomSapce.constant = 0;
+            } else {
+                self.haChBottomSpace.constant = 0;
+            }
             [self.view layoutIfNeeded];
         } completion:nil];
     }];

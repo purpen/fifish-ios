@@ -26,7 +26,7 @@
 #import "CTFrameParser.h"
 #import "WMPlayer.h"
 
-@interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate>
+@interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -481,16 +481,33 @@
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.stuffAry[sender.tag];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
         [UIView animateWithDuration:0.25 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
 }
 
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    NSInteger section = 0;
+    for (int i = 0; i < self.stuffAry.count; ++i) {
+        FSZuoPin *model = self.stuffAry[i];
+        if ([model.idFeild isEqualToString:cellId]) section = i;
+    }
+    [self.stuffAry removeObjectAtIndex:section];
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.myTableView deleteRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+}
 
 #pragma mark - 评论按钮
 -(void)commendClick: (UIButton *) sender{

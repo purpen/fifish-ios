@@ -30,7 +30,7 @@
 #import "FSUserModel2.h"
 #import "UILabel+MultipleLines.h"
 
-@interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate>
+@interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSReportViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
     FSHomeViewCell *_cell;
@@ -221,27 +221,30 @@ static NSString * const FSCommentId = @"comment";
     if ([self isLoginAndPresentLoginVc]) {
         if (sender.selected) {
             //取消关注
+            self.model.is_follow = 0;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+            sender.selected = NO;
+            if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
+                [self.homeDetailDelegate fucosDelegateClick:NO andId:self.model.idFeild];
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                self.model.is_follow = 0;
-                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
-                sender.selected = NO;
-                if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
-                    [self.homeDetailDelegate fucosDelegateClick:NO andId:self.model.idFeild];
-                }
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
         } else {
             //关注
+            self.model.is_follow = 1;
+            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+            sender.selected = YES;
+            if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
+                [self.homeDetailDelegate fucosDelegateClick:YES andId:self.model.idFeild];
+            }
+            sender.userInteractionEnabled = NO;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.model.user_id] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                self.model.is_follow = 1;
-                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
-                sender.selected = YES;
-                if ([self.homeDetailDelegate respondsToSelector:@selector(fucosDelegateClick:andId:)]) {
-                    [self.homeDetailDelegate fucosDelegateClick:YES andId:self.model.idFeild];
-                }
+                sender.userInteractionEnabled = YES;
             } failure:^(FBRequest *request, NSError *error) {
                 
             }];
@@ -271,16 +274,26 @@ static NSString * const FSCommentId = @"comment";
 #pragma mark - 更多按钮
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.model;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
         [UIView animateWithDuration:0.25 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
 }
 
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    
+}
 
 #pragma mark - 评论按钮
 -(void)commentClick :(UIButton *)sender{

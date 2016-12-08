@@ -207,19 +207,23 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fucosCenterClick:(UIButton*)sender{
     if (sender.selected) {
         //取消关注
+        sender.selected = NO;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.user_model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     } else {
         //关注
+        sender.selected = YES;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.user_model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -905,18 +909,22 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeGuanZhu:
         {
             if (sender.selected) {
+                sender.selected = NO;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
             } else {
+                sender.selected = YES;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = YES;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
@@ -926,18 +934,22 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeFenSi:
         {
             if (sender.selected) {
+                sender.selected = NO;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
             } else {
+                sender.selected = YES;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = YES;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
