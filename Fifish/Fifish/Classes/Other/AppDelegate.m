@@ -190,7 +190,6 @@
     FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if (userModel.isLogin) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *token = [defaults objectForKey:@"token"];
         FBRequest *request = [FBAPI postWithUrlString:@"/auth/upToken" requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
             NSInteger status_code = [result[@"meta"][@"status_code"] integerValue];
@@ -214,7 +213,6 @@
 #pragma mark - 注册APNs成功并上报DeviceToken
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     [JPUSHService registerDeviceToken:deviceToken];
-#warning 这里，发送网络请求，把该用户的ID和该token发送到自己的服务器，建立关系，当需要发送消息的时候，服务器就可以查表获得token，并且发送相应的消息到APNs，让APNs去推送。
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

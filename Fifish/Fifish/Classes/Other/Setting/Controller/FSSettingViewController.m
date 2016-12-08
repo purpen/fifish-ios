@@ -17,6 +17,7 @@
 #import "FSUserModel2.h"
 #import "FSTabBarController.h"
 #import "FSMeViewController.h"
+#import "JPUSHService.h"
 
 @interface FSSettingViewController ()<NotificationDelege>
 
@@ -153,6 +154,7 @@
     FSMeViewController *requiredViewController = [[FSTabBarController sharedManager].viewControllers objectAtIndex:3];
     UITabBarItem *item = requiredViewController.tabBarItem;
     item.badgeValue = nil;
+    [JPUSHService setTags:nil alias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     [[FSTabBarController sharedManager] setSelectedIndex:0];
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -22,6 +22,7 @@
 #import "OptionViewController.h"
 #import "FSTipNumberView.h"
 #import "Masonry.h"
+#import "JPUSHService.h"
 
 @interface FSMeViewController ()
 
@@ -51,9 +52,18 @@
     return _tipNumView;
 }
 
+-(void)tagsAliasCallback:(int)iResCode
+                    tags:(NSSet*)tags
+                   alias:(NSString*)alias
+{
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    FSUserModel2 *tempUserModel = [[FSUserModel2 findAll] lastObject];
+    [JPUSHService setTags:nil alias:tempUserModel.userId callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     
     FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
