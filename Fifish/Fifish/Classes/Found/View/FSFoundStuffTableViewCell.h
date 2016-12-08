@@ -24,8 +24,6 @@
 
 /**  */
 @property (nonatomic, strong) FSZuoPin *model;
-/**  */
-@property (nonatomic, strong) UINavigationController *navi;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commendBtn;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;

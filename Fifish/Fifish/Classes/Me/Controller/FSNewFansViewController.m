@@ -139,20 +139,24 @@
     if (sender.selected) {
         //取消关注
         FSFansModel *model = self.fansAry[sender.tag];
+        sender.selected = NO;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     } else {
         //关注
         FSFansModel *model = self.fansAry[sender.tag];
+        sender.selected = YES;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+        sender.userInteractionEnabled = YES;
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+            sender.userInteractionEnabled = NO;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];

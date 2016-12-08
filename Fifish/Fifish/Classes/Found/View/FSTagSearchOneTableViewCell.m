@@ -38,7 +38,7 @@
 
 -(void)setPlaceString:(NSString *)placeString{
     if ([placeString rangeOfString:@"#"].location != NSNotFound) {
-        _placeString = [placeString substringFromIndex:2];
+        _placeString = [placeString substringFromIndex:1];
     } else {
         _placeString = placeString;
     }

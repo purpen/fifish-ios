@@ -36,6 +36,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self.contentView addSubview:self.myCollectionView];
+        [_myCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.bottom.equalTo(@(0));
+            make.height.equalTo(@(90));
+        }];
         [self.contentView addSubview:self.lineView];
         [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@(1));

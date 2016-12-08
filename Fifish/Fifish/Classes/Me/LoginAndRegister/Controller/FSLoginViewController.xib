@@ -268,16 +268,16 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awe-Lo-LPD" userLabel="去注册">
-                            <rect key="frame" x="117" y="105" width="141" height="70"/>
+                            <rect key="frame" x="117.5" y="105" width="141" height="70"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还没有帐号?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvY-4J-pYg">
-                                    <rect key="frame" x="0.0" y="26.5" width="78.5" height="17"/>
+                                    <rect key="frame" x="0.0" y="27" width="79" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-Uh-vwl">
-                                    <rect key="frame" x="83" y="20.5" width="58" height="29"/>
+                                    <rect key="frame" x="83" y="21" width="58" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="立即注册">
                                         <color key="titleColor" red="0.13333333333333333" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -299,13 +299,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快速注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5S-OO-zWp">
-                            <rect key="frame" x="159" y="25" width="57.5" height="17"/>
+                            <rect key="frame" x="158.5" y="25" width="58" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPS-yr-f0I" userLabel="左边的白线">
-                            <rect key="frame" x="50" y="33" width="94" height="1"/>
+                            <rect key="frame" x="50" y="33" width="93.5" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="cLJ-fi-Tj1"/>
@@ -398,7 +398,7 @@
         </view>
     </objects>
     <resources>
-        <image name="login_bg" width="375" height="666"/>
+        <image name="login_bg" width="375" height="667"/>
         <image name="login_email" width="19" height="15"/>
         <image name="login_faceBook" width="40" height="40"/>
         <image name="login_insgram" width="40" height="40"/>

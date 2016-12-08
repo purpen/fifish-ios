@@ -29,13 +29,12 @@
 #import "CTFrameParserConfig.h"
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
-#import "NSString+FSAttributedString.h"
 #import "WMPlayer.h"
 #import "FSHistoryView.h"
 #import "FSSearchModel.h"
 #define ADVICE_TABLEVIEW 11
 
-@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate>
+@interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate, FSReportViewControllerDelegate>
 {
     WMPlayer *wmPlayer;
 }
@@ -67,15 +66,9 @@
 /**  */
 @property (nonatomic, strong) NSMutableArray *stuffAry;
 /**  */
-@property (nonatomic, strong) NSMutableArray *cellHeightAry;
-/**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 /**  */
 @property (nonatomic, strong) NSMutableArray *ctDataAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *contentStringAry;
-/**  */
-@property (nonatomic, strong) NSMutableArray *hideAry;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 /**  */
@@ -113,20 +106,6 @@
     return _historyView;
 }
 
--(NSMutableArray *)hideAry{
-    if (!_hideAry) {
-        _hideAry = [NSMutableArray array];
-    }
-    return _hideAry;
-}
-
--(NSMutableArray *)contentStringAry{
-    if (!_contentStringAry) {
-        _contentStringAry = [NSMutableArray array];
-    }
-    return _contentStringAry;
-}
-
 -(NSMutableArray *)ctDataAry{
     if (!_ctDataAry) {
         _ctDataAry = [NSMutableArray array];
@@ -139,13 +118,6 @@
         _tagMAry = [NSMutableArray array];
     }
     return _tagMAry;
-}
-
--(NSMutableArray *)cellHeightAry{
-    if (!_cellHeightAry) {
-        _cellHeightAry = [NSMutableArray array];
-    }
-    return _cellHeightAry;
 }
 
 -(NSMutableArray *)stuffAry{
@@ -178,6 +150,7 @@
         [_myTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSFoundStuffTableViewCell class]) bundle:nil] forCellReuseIdentifier:@"FSFoundStuffTableViewCell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"FSListUserTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSListUserTableViewCell"];
         _myTableView.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
+        _myTableView.estimatedRowHeight = 400;
     }
     return _myTableView;
 }
@@ -264,6 +237,7 @@
                 [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
                     make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                    make.top.equalTo(cell.contentView.mas_top).offset(250/667.0*SCREEN_HEIGHT);
                 }];
             }
             return cell;
@@ -288,6 +262,7 @@
                 [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.centerY.mas_equalTo(cell.contentView.centerY).offset(0);
                     make.centerX.mas_equalTo(cell.contentView.centerX).offset(0);
+                    make.top.equalTo(cell.contentView.mas_top).offset(250/667.0*SCREEN_HEIGHT);
                 }];
             }
             return cell;
@@ -300,11 +275,8 @@
         FSZuoPin *model = self.stuffAry[indexPath.section];
         cell.model = model;
         cell.ctData = self.ctDataAry[indexPath.section];
-        cell.contentString = self.contentStringAry[indexPath.section];
-        cell.hideFlag = [self.hideAry[indexPath.section] integerValue];
         cell.fucosBtn.tag = indexPath.section;
         [cell.fucosBtn addTarget:self action:@selector(fucosClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.navi = self.navigationController;
         cell.commendBtn.tag = indexPath.section;
         [cell.commendBtn addTarget:self action:@selector(commendClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.moreBtn.tag = indexPath.section;
@@ -318,14 +290,32 @@
 
 -(void)moreClick:(UIButton*)sender{
     FSReportViewController *vc = [[FSReportViewController alloc] init];
+    vc.fSReportDelegate = self;
+    vc.model = self.stuffAry[sender.tag];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:vc animated:YES completion:^{
         [UIView animateWithDuration:0.25 animations:^{
-            vc.firstViewBottomSapce.constant = 0;
+            if (vc.isMineStuff) {
+                vc.firstViewBottomSapce.constant = 0;
+            } else {
+                vc.haChBottomSpace.constant = 0;
+            }
             [vc.view layoutIfNeeded];
         } completion:nil];
     }];
+}
+
+#pragma mark - FSReportViewControllerDelegate
+-(void)deleteCellWithCellId:(NSString *)cellId{
+    NSInteger section = 0;
+    for (int i = 0; i < self.stuffAry.count; ++i) {
+        FSZuoPin *model = self.stuffAry[i];
+        if ([model.idFeild isEqualToString:cellId]) section = i;
+    }
+    [self.stuffAry removeObjectAtIndex:section];
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:section];
+    [self.myTableView deleteRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -408,55 +398,38 @@
     if (sender.selected) {
         //取消关注
         FSZuoPin *model = self.stuffAry[sender.tag];
+        for (int i = 0; i < self.stuffAry.count; i ++) {
+            FSZuoPin *cellModel = self.stuffAry[i];
+            if ([cellModel.user_id isEqualToString:model.user_id]) {
+                cellModel.is_follow = 0;
+                [self.myTableView reloadData];
+            }
+        }
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 0;
-                    [self.myTableView reloadData];
-                }
-            }
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     } else {
         //关注
         FSZuoPin *model = self.stuffAry[sender.tag];
+        for (int i = 0; i < self.stuffAry.count; i ++) {
+            FSZuoPin *cellModel = self.stuffAry[i];
+            if ([cellModel.user_id isEqualToString:model.user_id]) {
+                cellModel.is_follow = 1;
+                [self.myTableView reloadData];
+            }
+        }
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",model.user_id] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            for (int i = 0; i < self.stuffAry.count; i ++) {
-                FSZuoPin *cellModel = self.stuffAry[i];
-                if ([cellModel.user_id isEqualToString:model.user_id]) {
-                    cellModel.is_follow = 1;
-                    [self.myTableView reloadData];
-                }
-            }
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     }
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (tableView.tag == ADVICE_TABLEVIEW) {
-        return 44;
-    }
-    if ([self.type isEqualToNumber:@(2)]) {
-        if (self.userAry.count == 0) {
-            return SCREEN_HEIGHT - 109;
-        }
-        return 60;
-    } else if ([self.type isEqualToNumber:@(1)]) {
-        if (self.stuffAry.count == 0) {
-            return SCREEN_HEIGHT - 109;
-        }
-        NSString *cellHeightStr = self.cellHeightAry[indexPath.section];
-        CGFloat gaoDu = [cellHeightStr floatValue];
-        return gaoDu;
-    }
-    return 0;
 }
 
 
@@ -480,10 +453,7 @@
 }
 
 -(void)parsing{
-    [self.cellHeightAry removeAllObjects];
-    [self.hideAry removeAllObjects];
     [self.ctDataAry removeAllObjects];
-    [self.contentStringAry removeAllObjects];
     for (int i = 0; i < self.stuffAry.count; i++) {
         FSZuoPin *model = self.stuffAry[i];
         
@@ -499,7 +469,7 @@
                 NSDictionary *dict = model.tags[i];
                 NSDictionary *cellDict = @{
                                            @"color" : @"blue",
-                                           @"content" : [NSString stringWithFormat:@" %@",dict[@"name"]],
+                                           @"content" : [NSString stringWithFormat:@"#%@ ",dict[@"name"]],
                                            @"url" : @"hh",
                                            @"type" : @"link"
                                            };
@@ -507,78 +477,9 @@
             }
             config.width = SCREEN_WIDTH;
             [self.tagMAry writeToFile:filename atomically:YES];
-            
-            
-            
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 375 + 12);
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 375);
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 8]];
-        } else {
-            CGFloat textH = [model.content getSpaceLabelHeightWithSpeace:5 withFont:[UIFont systemFontOfSize:14] withWidth:(SCREEN_WIDTH - 30)];
-            CGFloat gaoDu = 0;
-            if (SCREEN_HEIGHT == 568.0) {
-                if (model.content.length <= 53) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 + 20) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (85 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else if (SCREEN_HEIGHT == 667.0) {
-                if (model.content.length <= 65) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 12) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            } else {
-                if (model.content.length <= 96) {
-                    [self.hideAry addObject:@(1)];
-                    gaoDu = (textH + 347 - 30) / 667.0 * SCREEN_HEIGHT;
-                } else {
-                    [self.hideAry addObject:@(0)];
-                    gaoDu = (53 + 347) / 667.0 * SCREEN_HEIGHT;
-                }
-            }
-            [self.cellHeightAry addObject:[NSString stringWithFormat:@"%f",gaoDu + 3]];
         }
         CoreTextData *data = [CTFrameParser parseTemplateFile:filename config:config];
         [self.ctDataAry addObject:data];
-        
-        NSInteger flag = [self.hideAry[i] integerValue];
-        if (flag) {
-            NSAttributedString  *setString = [model.content stringWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14] andIsAll:NO];
-            [self.contentStringAry addObject:setString];
-        } else {
-            NSAttributedString  *setString = [model.content stringHideLastFourWithParagraphlineSpeace:5 textColor:[UIColor colorWithHexString:@"#222222"] textFont:[UIFont systemFontOfSize:14]];
-            [self.contentStringAry addObject:setString];
-        }
     }
 }
 
@@ -598,7 +499,6 @@
                                                                                      @"sort" : @(1)
                                                                                      } delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-//        [self.myTableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total = [result[@"meta"][@"pagination"][@"total"] integerValue];
@@ -630,13 +530,11 @@
         [self.myTableView reloadData];
         [self checkFooterState];
     } failure:^(FBRequest *request, NSError *error) {
-//        [self.myTableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
     }];
 }
 
 -(void)loadMore{
-//    [self.myTableView.mj_header endRefreshing];
     FBRequest *request = [FBAPI getWithUrlString:@"/search/list" requestDictionary:@{
                                                                                      @"page" : @(++self.current_page),
                                                                                      @"per_page" : @(10),

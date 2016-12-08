@@ -22,6 +22,7 @@
 #import "FSLoginViewController.h"
 #import <pop/POP.h>
 #import "FSUserModel2.h"
+#import "UILabel+MultipleLines.h"
 
 @interface FSHomeViewCell ()
 
@@ -31,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagTag;
 
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIView *neiRongView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
@@ -40,13 +41,14 @@
 /**  */
 @property (nonatomic, strong) NSMutableArray *tagMAry;
 @property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
-@property (weak, nonatomic) IBOutlet UILabel *tagTagLabel;
 /**  */
 @property (nonatomic, strong) FSUserModel *userModel;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIView *hideView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_height;
+/**  */
+@property (nonatomic, strong) CTDisplayView *ctView;
 
 @end
 
@@ -179,7 +181,10 @@
         self.tagView_height.constant = 33;
     }
     [self layoutIfNeeded];
+    CGSize textSzie = [self.contentLabel setText:model.content lines:3 andLineSpacing:5 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) andWordsSpace:0.5f];
+    self.contentLabel.frame = CGRectMake(15, 10, textSzie.width, textSzie.height);
 }
+
 
 -(void)video:(UIButton*)sender{
     WeakSelf(weakSelf);
@@ -188,30 +193,25 @@
     }
 }
 
--(void)setHideFlag:(NSInteger)hideFlag{
-    _hideFlag = hideFlag;
-    self.hideView.hidden = hideFlag;
-}
-
--(void)setContentString:(NSAttributedString *)contentString{
-    _contentString = contentString;
-    [self.contentLabel setAttributedText:contentString];
+-(CTDisplayView *)ctView{
+    if (!_ctView) {
+        _ctView = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
+        _ctView.userInteractionEnabled = YES;
+        _ctView.navc = self.navi;
+        _ctView.backgroundColor = [UIColor whiteColor];
+    }
+    return _ctView;
 }
 
 -(void)setCtData:(CoreTextData *)ctData{
     if (self.model.tags.count > 0) {
         self.tagView.hidden = NO;
-        self.tagTagLabel.hidden = NO;
         _ctData = ctData;
-        CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
-        view.userInteractionEnabled = YES;
-        view.navc = self.navi;
-        view.backgroundColor = [UIColor whiteColor];
-        [self.tagView addSubview:view];
-        view.data = ctData;
+        [self.tagView addSubview:self.ctView];
+        self.ctView.data = ctData;
+        [self.ctView setNeedsDisplay];
     } else {
         self.tagView.hidden = YES;
-        self.tagTagLabel.hidden = YES;
     }
 }
 
@@ -222,38 +222,44 @@
         //登录了，可以进行后续操作
         NSString *idStr = self.model.idFeild;
         if (sender.selected) {
+            POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
+            likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
+            likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+            likeAnimation.springSpeed = 10;
+            likeAnimation.springBounciness = 10;
+            [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
+            sender.selected = NO;
+            self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
+            NSInteger n = [self.model.like_count integerValue] - 1;
+            NSString *str = [NSString stringWithFormat:@"%ld",  n];
+            self.model.is_love = 0;
+            if (n <= 0) {
+                self.model.like_count = @"0";
+                self.like_count_label.text = @"";
+                return;
+            }
+            self.like_count_label.text = str;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/cancelike",idStr] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                sender.selected = NO;
-                self.like_count_label.textColor = [UIColor colorWithHexString:@"#7F8FA2"];
-                NSInteger n = [self.model.like_count integerValue] - 1;
-                NSString *str = [NSString stringWithFormat:@"%ld",  n];
-                self.model.is_love = 0;
-                if (n <= 0) {
-                    self.model.like_count = @"0";
-                    self.like_count_label.text = @"";
-                    return;
-                }
-                self.like_count_label.text = str;
             } failure:^(FBRequest *request, NSError *error) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];
         } else {
+            POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
+            likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
+            likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
+            likeAnimation.springSpeed = 10;
+            likeAnimation.springBounciness = 10;
+            [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
+            sender.selected = YES;
+            self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
+            NSInteger n = [self.model.like_count integerValue] + 1;
+            NSString *str = [NSString stringWithFormat:@"%ld",  n];
+            self.model.like_count = str;
+            self.like_count_label.text = str;
+            self.model.is_love = 1;
             FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/stuffs/%@/dolike",idStr] requestDictionary:nil delegate:self];
             [request startRequestSuccess:^(FBRequest *request, id result) {
-                POPSpringAnimation *likeAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSubscaleXY];
-                likeAnimation.fromValue = [NSValue valueWithCGSize:CGSizeMake(0.5, 0.5)];
-                likeAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
-                likeAnimation.springSpeed = 10;
-                likeAnimation.springBounciness = 10;
-                [sender.layer pop_addAnimation:likeAnimation forKey:@"like"];
-                sender.selected = YES;
-                self.like_count_label.textColor = [UIColor colorWithHexString:@"#2288ff"];
-                NSInteger n = [self.model.like_count integerValue] + 1;
-                NSString *str = [NSString stringWithFormat:@"%ld",  n];
-                self.model.like_count = str;
-                self.like_count_label.text = str;
-                self.model.is_love = 1;
             } failure:^(FBRequest *request, NSError *error) {
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Network error", nil)];
             }];

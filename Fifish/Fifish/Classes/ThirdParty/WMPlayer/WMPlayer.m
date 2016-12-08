@@ -210,8 +210,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
     
     //autoLayout slider
     [self.progressSlider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bottomView).with.offset(55);
-        make.right.equalTo(self.bottomView).with.offset(-55);
+        make.left.equalTo(self.bottomView).with.offset(80);
+        make.right.equalTo(self.bottomView).with.offset(-80);
         make.center.equalTo(self.bottomView);
     }];
     
@@ -264,7 +264,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
         make.left.equalTo(self.bottomView).with.offset(45);
         make.right.equalTo(self.bottomView).with.offset(-45);
         make.height.mas_equalTo(20);
-        make.bottom.equalTo(self.bottomView).with.offset(0);
+//        make.bottom.equalTo(self.bottomView).with.offset(0);
+        make.centerY.equalTo(self.progressSlider.mas_centerY);
     }];
     
     
@@ -281,7 +282,8 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
         make.left.equalTo(self.bottomView).with.offset(45);
         make.right.equalTo(self.bottomView).with.offset(-45);
         make.height.mas_equalTo(20);
-        make.bottom.equalTo(self.bottomView).with.offset(0);
+//        make.bottom.equalTo(self.bottomView).with.offset(0);
+        make.centerY.equalTo(self.progressSlider.mas_centerY);
     }];
     
     

@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, FSType) {
     FSTypeFenSi
 };
 
-@interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface FSHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 {
     BOOL statusChangeFlag;
@@ -75,6 +75,8 @@ typedef NS_ENUM(NSInteger, FSType) {
 @property (nonatomic, strong) FSUserModel *user_model;
 /**  */
 @property (nonatomic, strong) UIButton *fucosBtn;
+/**  */
+@property (nonatomic, strong) UILabel *titleLabel;
 
 
 @end
@@ -171,9 +173,11 @@ static NSString * const fucosCellId = @"fucos";
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
         [self.navigationController.navigationBar setShadowImage:nil];
+        self.titleLabel.alpha = alpha;
     } else {
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+        self.titleLabel.alpha = 0;
     }
 }
 
@@ -203,19 +207,23 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fucosCenterClick:(UIButton*)sender{
     if (sender.selected) {
         //取消关注
+        sender.selected = NO;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",self.user_model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = NO;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#ffffff"].CGColor;
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
     } else {
         //关注
+        sender.selected = YES;
+        sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+        sender.userInteractionEnabled = NO;
         FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",self.user_model.userId] requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
-            sender.selected = YES;
-            sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+            sender.userInteractionEnabled = YES;
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
@@ -232,6 +240,8 @@ static NSString * const fucosCellId = @"fucos";
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     if (self.isMyself) {
+        FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
+        self.titleLabel.text = usermodel.username;
         UIBarButtonItem *searchItem = [UIBarButtonItem itemWithImage:@"me_back" highImage:nil title:nil target:self action:@selector(back)];
         self.navigationItem.leftBarButtonItem = searchItem;
         
@@ -244,6 +254,16 @@ static NSString * const fucosCellId = @"fucos";
         UIBarButtonItem *fucosItem = [[UIBarButtonItem alloc] initWithCustomView:self.fucosBtn];
         self.navigationItem.rightBarButtonItem = fucosItem;
     }
+    self.navigationItem.titleView = self.titleLabel;
+}
+
+-(UILabel *)titleLabel{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -275,9 +295,7 @@ static NSString * const fucosCellId = @"fucos";
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
-    
     [self setUpRefresh];
-    
     [self.view.layer addSublayer:self.shadow];
 }
 
@@ -464,6 +482,7 @@ static NSString * const fucosCellId = @"fucos";
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             NSDictionary *dict = result[@"data"];
             self.user_model = [FSUserModel mj_objectWithKeyValues:dict];
+            self.titleLabel.text = self.user_model.username;
             self.userId = self.user_model.userId;
             self.fucosBtn.selected = self.user_model.following == 1;
             if (self.fucosBtn.selected) {
@@ -584,6 +603,7 @@ static NSString * const fucosCellId = @"fucos";
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSListUserTableViewCell class]) bundle:nil] forCellReuseIdentifier:fucosCellId];
         [_contentTableView registerNib:[UINib nibWithNibName:@"FSStuffCountTableViewCell" bundle:nil] forCellReuseIdentifier:@"FSStuffCountTableViewCell"];
         _contentTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _contentTableView.showsVerticalScrollIndicator = NO;
     }
     return _contentTableView;
 }
@@ -785,6 +805,35 @@ static NSString * const fucosCellId = @"fucos";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"replaceHeadPortrait", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        //判断是否支持相机。模拟器没有相机
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"takingPictures", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                //调取相机xx
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                picker.delegate = self;
+                picker.allowsEditing = YES;
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:picker animated:YES completion:nil];
+            }];
+            [alertC addAction:cameraAction];
+        }
+        UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"fromAlbumToChoose", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //调取相册
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:picker animated:YES completion:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertC addAction:phontoAction];
+        [alertC addAction:cancelAction];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }
     if (indexPath.section == 1) {
         switch (self.type) {
             case FSTypeZuoPin:
@@ -821,6 +870,34 @@ static NSString * const fucosCellId = @"fucos";
     }
 }
 
+//#pragma mark - UIImagePickerControllerDelegate
+//-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+//    UIImage * editedImg = [info objectForKey:UIImagePickerControllerOriginalImage];
+//    NSData * iconData = UIImageJPEGRepresentation(editedImg , 1);
+//    
+//    FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
+//    [request startRequestSuccess:^(FBRequest *request, id result) {
+//        NSString *upload_url = result[@"data"][@"upload_url"];
+//        NSString *token = result[@"data"][@"token"];
+//        [FBAPI uploadFileWithURL:upload_url WithToken:token WithFileUrl:nil WithFileData:iconData WihtProgressBlock:^(CGFloat progress) {
+//            
+//        } WithSuccessBlock:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+//            userModel.large = responseObject[@"file"][@"large"];
+//            userModel.isLogin = YES;
+//            [userModel saveOrUpdate];
+//            [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userModel.large]];
+//        } WithFailureBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            
+//        }];
+//    } failure:^(FBRequest *request, NSError *error) {
+//        
+//    }];
+//    
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//}
+
+
 
 #pragma mark - 点击关注按钮
 -(void)fucosClick : (UIButton *) sender {
@@ -832,18 +909,22 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeGuanZhu:
         {
             if (sender.selected) {
+                sender.selected = NO;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
             } else {
+                sender.selected = YES;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSListUserModel*)self.guanZhuPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = YES;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
@@ -853,18 +934,22 @@ static NSString * const fucosCellId = @"fucos";
         case FSTypeFenSi:
         {
             if (sender.selected) {
+                sender.selected = NO;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI deleteWithUrlString:[NSString stringWithFormat:@"/user/%@/cancelFollow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = NO;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#7F8FA2"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];
             } else {
+                sender.selected = YES;
+                sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                sender.userInteractionEnabled = NO;
                 FBRequest *request = [FBAPI postWithUrlString:[NSString stringWithFormat:@"/user/%@/follow",((FSFansModel*)self.fenSiPersons[sender.tag]).userId] requestDictionary:nil delegate:self];
                 [request startRequestSuccess:^(FBRequest *request, id result) {
-                    sender.selected = YES;
-                    sender.layer.borderColor = [UIColor colorWithHexString:@"#2288FF"].CGColor;
+                    sender.userInteractionEnabled = YES;
                 } failure:^(FBRequest *request, NSError *error) {
                     
                 }];

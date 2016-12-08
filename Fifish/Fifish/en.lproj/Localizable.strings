@@ -208,6 +208,7 @@
 
 "uploading" = "正在上传";
 "Upload failed" = "上传失败";
+"Uploaded successfully" = "上传成功";
 "tag" = "标签";
 "latest" = "最新";
 "hottest" = "最热";

@@ -183,13 +183,13 @@ typedef enum CTDisplayViewState : NSInteger {
                                                     action:@selector(userTapGestureDetected:)];
     [self addGestureRecognizer:tapRecognizer];
 
-    UIGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(userLongPressedGuestureDetected:)];
-    [self addGestureRecognizer:longPressRecognizer];
-
-    UIGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(userPanGuestureDetected:)];
-    [self addGestureRecognizer:panRecognizer];
+//    UIGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+//                                                    action:@selector(userLongPressedGuestureDetected:)];
+//    [self addGestureRecognizer:longPressRecognizer];
+//
+//    UIGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+//                                                    action:@selector(userPanGuestureDetected:)];
+//    [self addGestureRecognizer:panRecognizer];
 
     self.userInteractionEnabled = YES;
 }

@@ -21,6 +21,8 @@
 #import "FSLoginViewController.h"
 #import <pop/POP.h>
 #import "FSUserModel2.h"
+#import "FSUserModel2.h"
+#import "UILabel+MultipleLines.h"
 
 @interface FSFoundStuffTableViewCell ()
 
@@ -46,6 +48,8 @@
 @property (weak, nonatomic) IBOutlet UIView *hideView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabel_bottomSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tagView_height;
+/**  */
+@property (nonatomic, strong) CTDisplayView *ctView;
 
 @end
 
@@ -105,7 +109,7 @@
 - (IBAction)headTapClick:(UIButton *)sender {
     FSHomePageViewController *vc = [[FSHomePageViewController alloc] init];
     vc.userId = self.model.user_id;
-    [self.navi pushViewController:vc animated:YES];
+    [self.navc pushViewController:vc animated:YES];
 }
 
 
@@ -186,6 +190,8 @@
         self.tagView_height.constant = 33;
     }
     [self layoutIfNeeded];
+    CGSize textSzie = [self.contentLabel setText:model.content lines:3 andLineSpacing:5 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30, MAXFLOAT) andWordsSpace:0.5f];
+    self.contentLabel.frame = CGRectMake(15, 10, textSzie.width, textSzie.height);
 }
 
 -(void)setHideFlag:(NSInteger)hideFlag{
@@ -198,20 +204,25 @@
     [self.contentLabel setAttributedText:contentString];
 }
 
+-(CTDisplayView *)ctView{
+    if (!_ctView) {
+        _ctView = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
+        _ctView.userInteractionEnabled = YES;
+        _ctView.navc = self.navc;
+        _ctView.backgroundColor = [UIColor whiteColor];
+    }
+    return _ctView;
+}
+
 -(void)setCtData:(CoreTextData *)ctData{
     if (self.model.tags.count > 0) {
         self.tagView.hidden = NO;
-        self.tagtagLabel.hidden = NO;
         _ctData = ctData;
-        CTDisplayView *view = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tagView.height)];
-        view.userInteractionEnabled = YES;
-        view.navc = self.navi;
-        view.backgroundColor = [UIColor whiteColor];
-        [self.tagView addSubview:view];
-        view.data = ctData;
+        [self.tagView addSubview:self.ctView];
+        self.ctView.data = ctData;
+        [self.ctView setNeedsDisplay];
     } else {
         self.tagView.hidden = YES;
-        self.tagtagLabel.hidden = YES;
     }
 }
 

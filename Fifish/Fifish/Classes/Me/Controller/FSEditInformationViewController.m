@@ -130,10 +130,8 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 0.5);
+    NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 1);
     
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"stuff.png"];
-    [iconData writeToFile:fullPath atomically:NO];
     
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
