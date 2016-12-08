@@ -34,6 +34,7 @@
 //#import "FSCommentViewController.m"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
+
 #endif
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
@@ -175,6 +176,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -186,6 +188,7 @@
     if (_reachDelegate && [_reachDelegate respondsToSelector:@selector(isReachAble)]) {
         [_reachDelegate isReachAble];
     }
+    
     //更新Token
     FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
     if (userModel.isLogin) {
