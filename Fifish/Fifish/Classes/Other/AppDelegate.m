@@ -63,7 +63,6 @@
     return str;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //设置推送---------------------------------------------------
     //创建UIUserNotificationSettings，并设置消息的显示类类型
@@ -107,7 +106,9 @@
         if(remoteNotification) {
             // 如果​remoteNotification不为空，代表有推送发过来
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-            [[FSTabBarController sharedManager] setSelectedIndex:3];
+            [JPUSHService resetBadge];
+            [self goToMssageViewControllerWith:remoteNotification];
+            NSLog(@"app未运行状态获取的通知消息 %@", remoteNotification);
         }
     }
     FSUserModel2 *usermodel = [[FSUserModel2 findAll] lastObject];
@@ -131,9 +132,11 @@
 }
 
 -(void)goToMssageViewControllerWith:(NSDictionary*)userinfo{
-    [[FSTabBarController sharedManager] setSelectedIndex:3];
-    FSMessageViewController *vc = [[FSMessageViewController alloc] init];
-    [self.window.rootViewController.childViewControllers[3] pushViewController:vc animated:YES];
+    if ([userinfo[@"infoType"] integerValue] == 8) {
+        [[FSTabBarController sharedManager] setSelectedIndex:3];
+        FSMessageViewController *vc = [[FSMessageViewController alloc] init];
+        [self.window.rootViewController.childViewControllers[3] pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - 设置 U-Share SDK回调
@@ -210,6 +213,7 @@
     }
     
     [application setApplicationIconBadgeNumber:0];
+    [JPUSHService resetBadge];
     [application cancelAllLocalNotifications];
 }
 
@@ -244,6 +248,8 @@ fetchCompletionHandler:
         } failure:^(FBRequest *request, NSError *error) {
             
         }];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        [JPUSHService resetBadge];
         NSLog(@"iOS10以下 前台收到远程通知:%@", [self logDic:userInfo]);
     }
     completionHandler(UIBackgroundFetchResultNewData);
@@ -269,6 +275,8 @@ fetchCompletionHandler:
     NSString *title = content.title;  // 推送消息的标题
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        [JPUSHService resetBadge];
         NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
         FBRequest *request = [FBAPI getWithUrlString:@"/me/alertCount" requestDictionary:nil delegate:self];
         [request startRequestSuccess:^(FBRequest *request, id result) {
@@ -306,6 +314,8 @@ fetchCompletionHandler:
     
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        [JPUSHService resetBadge];
         NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
         [self goToMssageViewControllerWith:userInfo];
     }
