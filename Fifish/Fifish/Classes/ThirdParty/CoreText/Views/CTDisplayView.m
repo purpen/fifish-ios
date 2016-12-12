@@ -244,7 +244,7 @@ typedef enum CTDisplayViewState : NSInteger {
         CoreTextLinkData *linkData = [CoreTextUtils touchLinkInView:self atPoint:point data:self.data];
         if (linkData) {
             NSLog(@"hint link!");
-            NSDictionary *userInfo = @{ @"linkData": linkData };
+//            NSDictionary *userInfo = @{ @"linkData": linkData };
 //            [[NSNotificationCenter defaultCenter] postNotificationName:CTDisplayViewLinkPressedNotification
 //                                                                object:self userInfo:userInfo];
             FSTagSearchViewController *vc = [[FSTagSearchViewController alloc] init];
