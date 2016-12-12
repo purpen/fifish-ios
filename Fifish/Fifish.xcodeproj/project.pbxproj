@@ -232,6 +232,13 @@
 		1F4847081DDBEF6A00161564 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4847071DDBEF6A00161564 /* Foundation+Log.m */; };
 		1F61F9B81DF12A3C0075B45C /* FSUserModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */; };
 		1F61F9BB1DF7AA2B0075B45C /* UILabel+MultipleLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9BA1DF7AA2A0075B45C /* UILabel+MultipleLines.m */; };
+		1F61F9CB1DFE76830075B45C /* InstagramConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9BE1DFE76830075B45C /* InstagramConstants.m */; };
+		1F61F9CC1DFE76830075B45C /* InstagramLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9C01DFE76830075B45C /* InstagramLoginManager.m */; };
+		1F61F9CD1DFE76830075B45C /* InstagramLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9C21DFE76830075B45C /* InstagramLoginResponse.m */; };
+		1F61F9CE1DFE76830075B45C /* InstagramLoginUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9C41DFE76830075B45C /* InstagramLoginUtils.m */; };
+		1F61F9CF1DFE76830075B45C /* InstagramSimpleOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9C71DFE76830075B45C /* InstagramSimpleOAuthViewController.m */; };
+		1F61F9D01DFE76830075B45C /* InstagramSimpleOAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F61F9C81DFE76830075B45C /* InstagramSimpleOAuthViewController.xib */; };
+		1F61F9D11DFE76830075B45C /* InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9CA1DFE76830075B45C /* InstagramUser.m */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -917,6 +924,20 @@
 		1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserModel2.m; sourceTree = "<group>"; };
 		1F61F9B91DF7AA2A0075B45C /* UILabel+MultipleLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultipleLines.h"; sourceTree = "<group>"; };
 		1F61F9BA1DF7AA2A0075B45C /* UILabel+MultipleLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultipleLines.m"; sourceTree = "<group>"; };
+		1F61F9BD1DFE76830075B45C /* InstagramConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramConstants.h; sourceTree = "<group>"; };
+		1F61F9BE1DFE76830075B45C /* InstagramConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramConstants.m; sourceTree = "<group>"; };
+		1F61F9BF1DFE76830075B45C /* InstagramLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLoginManager.h; sourceTree = "<group>"; };
+		1F61F9C01DFE76830075B45C /* InstagramLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLoginManager.m; sourceTree = "<group>"; };
+		1F61F9C11DFE76830075B45C /* InstagramLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLoginResponse.h; sourceTree = "<group>"; };
+		1F61F9C21DFE76830075B45C /* InstagramLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLoginResponse.m; sourceTree = "<group>"; };
+		1F61F9C31DFE76830075B45C /* InstagramLoginUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLoginUtils.h; sourceTree = "<group>"; };
+		1F61F9C41DFE76830075B45C /* InstagramLoginUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLoginUtils.m; sourceTree = "<group>"; };
+		1F61F9C51DFE76830075B45C /* InstagramSimpleOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramSimpleOAuth.h; sourceTree = "<group>"; };
+		1F61F9C61DFE76830075B45C /* InstagramSimpleOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramSimpleOAuthViewController.h; sourceTree = "<group>"; };
+		1F61F9C71DFE76830075B45C /* InstagramSimpleOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramSimpleOAuthViewController.m; sourceTree = "<group>"; };
+		1F61F9C81DFE76830075B45C /* InstagramSimpleOAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstagramSimpleOAuthViewController.xib; sourceTree = "<group>"; };
+		1F61F9C91DFE76830075B45C /* InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramUser.h; sourceTree = "<group>"; };
+		1F61F9CA1DFE76830075B45C /* InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramUser.m; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2454,6 +2475,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1F61F9BC1DFE76830075B45C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1F61F9BD1DFE76830075B45C /* InstagramConstants.h */,
+				1F61F9BE1DFE76830075B45C /* InstagramConstants.m */,
+				1F61F9BF1DFE76830075B45C /* InstagramLoginManager.h */,
+				1F61F9C01DFE76830075B45C /* InstagramLoginManager.m */,
+				1F61F9C11DFE76830075B45C /* InstagramLoginResponse.h */,
+				1F61F9C21DFE76830075B45C /* InstagramLoginResponse.m */,
+				1F61F9C31DFE76830075B45C /* InstagramLoginUtils.h */,
+				1F61F9C41DFE76830075B45C /* InstagramLoginUtils.m */,
+				1F61F9C51DFE76830075B45C /* InstagramSimpleOAuth.h */,
+				1F61F9C61DFE76830075B45C /* InstagramSimpleOAuthViewController.h */,
+				1F61F9C71DFE76830075B45C /* InstagramSimpleOAuthViewController.m */,
+				1F61F9C81DFE76830075B45C /* InstagramSimpleOAuthViewController.xib */,
+				1F61F9C91DFE76830075B45C /* InstagramUser.h */,
+				1F61F9CA1DFE76830075B45C /* InstagramUser.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
@@ -2929,6 +2971,7 @@
 		1F7EDEBE1D4700E500ABED5D /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1F61F9BC1DFE76830075B45C /* Source */,
 				1FD5B03C1DE43B4A004929F0 /* WMPlayer */,
 				1F34020F1DCC8B24009B9C32 /* JPush */,
 				1FE565FB1DC2E9C4000AE61D /* DACircularProgress */,
@@ -3517,7 +3560,7 @@
 						DevelopmentTeam = 7ET6PJMCHV;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3584,6 +3627,7 @@
 				1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */,
 				1FF783BC1D9A855A00618245 /* FSBigImageViewController.xib in Resources */,
 				1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */,
+				1F61F9D01DFE76830075B45C /* InstagramSimpleOAuthViewController.xib in Resources */,
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				0436AEBD1DACE30C001E6808 /* earlybirdBlowout.png in Resources */,
@@ -3768,6 +3812,7 @@
 				1FDE28DF1D928D9600566A73 /* FSUserTableViewCell.m in Sources */,
 				1F0424551D51F3C30071A1D6 /* UIAlertView+AFNetworking.m in Sources */,
 				1FE565B41DC050F4000AE61D /* FSSummaryViewController.m in Sources */,
+				1F61F9CF1DFE76830075B45C /* InstagramSimpleOAuthViewController.m in Sources */,
 				04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */,
 				1F7EDE9F1D45EF6900ABED5D /* FSTabBarController.m in Sources */,
 				0436AF451DACE5C2001E6808 /* FSLomofiFilter.m in Sources */,
@@ -3782,6 +3827,7 @@
 				04F5847C1DAA1288008FC43A /* FishBlackNavViewController.m in Sources */,
 				1F0219C61D798630003A8A11 /* AreaModel.m in Sources */,
 				1FE565601DBDF0C4000AE61D /* UMShareMenuSelectionView.m in Sources */,
+				1F61F9D11DFE76830075B45C /* InstagramUser.m in Sources */,
 				1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */,
 				1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */,
 				040995611D95173200BFEC92 /* FSMediaModel.m in Sources */,
@@ -3868,6 +3914,7 @@
 				1F3402091DCC687E009B9C32 /* FSCommentTableViewCell.m in Sources */,
 				04F5847F1DAA24C9008FC43A /* FSMediaBrowCollectionViewCell.m in Sources */,
 				04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */,
+				1F61F9CC1DFE76830075B45C /* InstagramLoginManager.m in Sources */,
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */,
 				0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */,
@@ -3912,6 +3959,7 @@
 				1FD5B0411DE43B4A004929F0 /* WMPlayer.m in Sources */,
 				1FE564E61DB4D1E8000AE61D /* TADotView.m in Sources */,
 				1F0424561D51F3C30071A1D6 /* UIButton+AFNetworking.m in Sources */,
+				1F61F9CD1DFE76830075B45C /* InstagramLoginResponse.m in Sources */,
 				1FE564E71DB4D1E8000AE61D /* TAPageControl.m in Sources */,
 				1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */,
 				04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */,
@@ -3950,6 +3998,7 @@
 				1FE087651D7D4B8E007790E3 /* InvitationModel.m in Sources */,
 				1F3401FF1DCC2296009B9C32 /* FSCommentViewController.m in Sources */,
 				1F42021A1D48D4A900D3E6CB /* FSSettingViewController.m in Sources */,
+				1F61F9CB1DFE76830075B45C /* InstagramConstants.m in Sources */,
 				1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */,
 				1F80112E1DA8859C00B320C7 /* FSBaseViewController.m in Sources */,
 				0442D5121DADE8C6001ECC6B /* FSRegulateCollectionviewCell.m in Sources */,
@@ -3971,6 +4020,7 @@
 				1F0424751D5312690071A1D6 /* FSVideoView.m in Sources */,
 				1FE566091DC2EA30000AE61D /* FSProgressViewProgress.m in Sources */,
 				1FE564F81DB5FC61000AE61D /* FSStuffCollectionViewCell.m in Sources */,
+				1F61F9CE1DFE76830075B45C /* InstagramLoginUtils.m in Sources */,
 				1F7EDEB91D4624F100ABED5D /* FSLoginViewController.m in Sources */,
 				047A85811D79553800A88891 /* FSVideoDepthRulerView.m in Sources */,
 				1F04244A1D51F3C30071A1D6 /* AFHTTPSessionManager.m in Sources */,
@@ -4110,7 +4160,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4151,7 +4201,7 @@
 				INSTALL_OWNER = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4165,6 +4215,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
 				ENABLE_BITCODE = NO;
@@ -4200,8 +4251,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4214,6 +4265,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaoyi Tian (65JXH7V6N9)";
 				DEVELOPMENT_TEAM = 7ET6PJMCHV;
@@ -4250,8 +4302,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b27149e-9516-4300-b627-f984b00b0ce6";
-				PROVISIONING_PROFILE_SPECIFIER = all;
+				PROVISIONING_PROFILE = "16255bf4-8ba0-41dd-971d-c2ea2c131f30";
+				PROVISIONING_PROFILE_SPECIFIER = Fifish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;

@@ -182,12 +182,12 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.00001f;
+    return CGFLOAT_MIN;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (tableView.tag == ADVICE_TABLEVIEW) {
-        return 0.00001f;
+        return CGFLOAT_MIN;
     }
     return 10;
 }
