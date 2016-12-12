@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleDisplayName</key>
 	<string></string>
 	<key>CFBundleExecutable</key>
@@ -48,16 +46,6 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>instagram</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>ins1c54a1a8da6b4b5e939501d1cfdb3a93</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
 			<string>wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
@@ -92,6 +80,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb3236371468</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>instagram</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ins1c54a1a8da6b4b5e939501d1cfdb3a93</string>
 			</array>
 		</dict>
 	</array>
@@ -279,5 +277,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

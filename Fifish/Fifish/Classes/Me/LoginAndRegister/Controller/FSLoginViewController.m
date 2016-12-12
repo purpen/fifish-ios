@@ -21,6 +21,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "MJExtension.h"
 #import "FSUserModel2.h"
+#import "InstagramSimpleOAuth.h"
 
 @interface FSLoginViewController ()<FBRequestDelegate>
 
@@ -168,7 +169,7 @@
 }
 
 - (IBAction)facebookClick:(id)sender {
-    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Facebook currentViewController:nil completion:^(id result, NSError *error) {
+    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Facebook currentViewController:self completion:^(id result, NSError *error) {
         if (error) {
             
         } else {
@@ -204,35 +205,30 @@
 }
 
 - (IBAction)instagramClick:(id)sender {
-    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Instagram currentViewController:nil completion:^(id result, NSError *error) {
+//    InstagramSimpleOAuthViewController
+//    *viewController = [[InstagramSimpleOAuthViewController alloc] initWithClientID:@"1c54a1a8da6b4b5e939501d1cfdb3a93"
+//                                                                      clientSecret:@"ce739bb3302c4261a39e29d623428317"
+//                                                                       callbackURL:[NSURL URLWithString:@"http://enter.callback.url.here"]
+//                                                                        completion:^(InstagramLoginResponse *response, NSError *error) {
+//                                                                            if (response.accessToken) {
+//                                                                                
+//                                                                            }
+//                                                                        }];
+//    
+//    [self presentViewController:viewController
+//                       animated:YES
+//                     completion:nil];
+    [[UMSocialManager defaultManager] authWithPlatform:UMSocialPlatformType_Instagram currentViewController:self completion:^(id result, NSError *error) {
         if (error) {
             
         } else {
             UMSocialAuthResponse *authresponse = result;
-            
-            // 授权信息
-            NSLog(@"Facebook uid: %@", authresponse.uid);
-            NSLog(@"Facebook accessToken: %@", authresponse.accessToken);
-            NSLog(@"Facebook expiration: %@", authresponse.expiration);
-            
-            // 第三方平台SDK源数据
-            NSLog(@"Facebook originalResponse: %@", authresponse.originalResponse);
-            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Instagram currentViewController:nil completion:^(id result, NSError *error) {
+            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Instagram currentViewController:self completion:^(id result, NSError *error) {
                 if (error) {
                     
                 } else {
                     UMSocialUserInfoResponse *resp = result;
                     [self afterThirdAuth:resp andAuthresponse:authresponse andType:(NSString*)@"instagram"];
-                    // 授权信息
-                    NSLog(@"Facebook uid: %@", resp.uid);
-                    NSLog(@"Facebook accessToken: %@", resp.accessToken);
-                    NSLog(@"Facebook expiration: %@", resp.expiration);
-                    
-                    // 用户信息
-                    NSLog(@"Facebook name: %@", resp.name);
-                    
-                    // 第三方平台SDK源数据
-                    NSLog(@"Facebook originalResponse: %@", resp.originalResponse);
                 }
             }];
         }
@@ -242,11 +238,19 @@
 
 - (IBAction)weixinClick:(id)sender {
     [[UMSocialManager defaultManager]  authWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
-        UMSocialAuthResponse *authresponse = result;
-        [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
-            UMSocialUserInfoResponse *userinfo =result;
-            [self afterThirdAuth:userinfo andAuthresponse:authresponse andType:(NSString*)@"wechat"];
-        }];
+        if (error) {
+        
+        } else {
+            UMSocialAuthResponse *authresponse = result;
+            [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
+                if (error) {
+                    
+                } else {
+                    UMSocialUserInfoResponse *userinfo =result;
+                    [self afterThirdAuth:userinfo andAuthresponse:authresponse andType:(NSString*)@"wechat"];
+                }
+            }];
+        }
     }];
 }
 
