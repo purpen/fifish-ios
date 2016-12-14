@@ -50,7 +50,7 @@
     
     CGContextRef bgContextRef = UIGraphicsGetCurrentContext();
     
-    CGRect edgeframe = CGRectMake(0, 0, 20, self.frame.size.height);
+    CGRect edgeframe = CGRectMake(0, 2, 10, self.frame.size.height-2);
     
     CGContextAddRect(bgContextRef, edgeframe);
     
@@ -62,24 +62,24 @@
     
     
    [LIVEVIDEO_DEFAULT_COLOR setFill];
-    CGFloat pointWidth  = 2.0;
-    CGFloat pointHeight = 1.0;
-    CGContextMoveToPoint(bgContextRef, edgeframe.size.width+1, (edgeframe.size.height-pointHeight)/2);
+    CGFloat pointWidth  = 3.0;
+    CGFloat pointHeight = 2.0;
+    CGContextMoveToPoint(bgContextRef, (edgeframe.size.width-pointWidth)/2, edgeframe.origin.y-pointHeight);
     
-    CGContextAddLineToPoint(bgContextRef, edgeframe.size.width+1+pointWidth, (edgeframe.size.height-pointHeight)/2);
+    CGContextAddLineToPoint(bgContextRef, (edgeframe.size.width-pointWidth)/2+pointWidth, edgeframe.origin.y-pointHeight);
     
-    CGContextSetLineWidth(bgContextRef, pointWidth);
+    CGContextSetLineWidth(bgContextRef, pointHeight);
     
     CGContextStrokePath(bgContextRef);
     
     
     
-    CGContextFillRect(bgContextRef,CGRectMake(1, 1,(edgeframe.size.width-2)*_currentNum, edgeframe.size.height-2));//填充框
+    CGContextFillRect(bgContextRef,CGRectMake(1, edgeframe.size.height*(1-_currentNum)+2+1,edgeframe.size.width-2,edgeframe.size.height*_currentNum-2));//填充框
     
     CGContextDrawPath(bgContextRef, kCGPathFillStroke);//绘画路径
     
     NSString * ste = [NSString stringWithFormat:@"%.f％",_currentNum*100];
 
-    [ste drawInRect:CGRectMake(edgeframe.size.width+5,-1.5, 40, edgeframe.size.height) withAttributes:@{NSForegroundColorAttributeName:LIVEVIDEO_DEFAULT_COLOR,NSFontAttributeName:[UIFont systemFontOfSize:10]}];
+    [ste drawInRect:CGRectMake(edgeframe.size.width+5,4/*一点一点试出来的*/, 40, edgeframe.size.height) withAttributes:@{NSForegroundColorAttributeName:LIVEVIDEO_DEFAULT_COLOR,NSFontAttributeName:[UIFont systemFontOfSize:10]}];
 }
 @end

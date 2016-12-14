@@ -55,7 +55,7 @@
         [self addSubview:self.batteryView];
         [self.batteryView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.MenuBtn.mas_left).offset(-10);
-            make.size.mas_equalTo(CGSizeMake(55, 10));
+            make.size.mas_equalTo(CGSizeMake(55, 20));
             make.centerY.equalTo(self.mas_centerY);
         }];
         
