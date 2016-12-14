@@ -89,7 +89,7 @@
 //        [request insertAssets:createdAssets atIndexes:[NSIndexSet indexSetWithIndex:0]];
     } error:&error];
     
-
+    
     // 保存结果
     if (error) {
         NSLog(@"保存失败！");
