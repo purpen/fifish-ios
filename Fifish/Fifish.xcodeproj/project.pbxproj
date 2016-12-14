@@ -4200,8 +4200,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c0b5b08-e59c-45d9-8f12-3bac6bc8f5a9";
-				PROVISIONING_PROFILE_SPECIFIER = QiYuanAll;
+				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
+				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4250,8 +4250,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c0b5b08-e59c-45d9-8f12-3bac6bc8f5a9";
-				PROVISIONING_PROFILE_SPECIFIER = QiYuanAll;
+				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
+				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
