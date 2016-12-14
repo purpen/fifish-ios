@@ -232,6 +232,10 @@
 		1F4847081DDBEF6A00161564 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4847071DDBEF6A00161564 /* Foundation+Log.m */; };
 		1F61F9B81DF12A3C0075B45C /* FSUserModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */; };
 		1F61F9BB1DF7AA2B0075B45C /* UILabel+MultipleLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61F9BA1DF7AA2A0075B45C /* UILabel+MultipleLines.m */; };
+		1F76176F1E012BAF00EF5AD0 /* FSGuideManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76176E1E012BAF00EF5AD0 /* FSGuideManager.m */; };
+		1F76177E1E0149A400EF5AD0 /* guide_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F76177D1E0149A400EF5AD0 /* guide_1.png */; };
+		1F7617801E0149AD00EF5AD0 /* guide_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F76177F1E0149AD00EF5AD0 /* guide_2.png */; };
+		1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617811E0149B200EF5AD0 /* guide_3.png */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
@@ -917,6 +921,11 @@
 		1F61F9B71DF12A3C0075B45C /* FSUserModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserModel2.m; sourceTree = "<group>"; };
 		1F61F9B91DF7AA2A0075B45C /* UILabel+MultipleLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultipleLines.h"; sourceTree = "<group>"; };
 		1F61F9BA1DF7AA2A0075B45C /* UILabel+MultipleLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultipleLines.m"; sourceTree = "<group>"; };
+		1F76176D1E012BAF00EF5AD0 /* FSGuideManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGuideManager.h; sourceTree = "<group>"; };
+		1F76176E1E012BAF00EF5AD0 /* FSGuideManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGuideManager.m; sourceTree = "<group>"; };
+		1F76177D1E0149A400EF5AD0 /* guide_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_1.png; sourceTree = "<group>"; };
+		1F76177F1E0149AD00EF5AD0 /* guide_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_2.png; sourceTree = "<group>"; };
+		1F7617811E0149B200EF5AD0 /* guide_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_3.png; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2356,6 +2365,7 @@
 		1F04245B1D51F3F20071A1D6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1F76176C1E012B9000EF5AD0 /* GuideManager */,
 				1F4847071DDBEF6A00161564 /* Foundation+Log.m */,
 				1F04245C1D51F3F20071A1D6 /* Network */,
 				1F32F8BE1DD1775B000E2FF6 /* FSShareViewController.h */,
@@ -2454,6 +2464,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1F76176C1E012B9000EF5AD0 /* GuideManager */ = {
+			isa = PBXGroup;
+			children = (
+				1F76176D1E012BAF00EF5AD0 /* FSGuideManager.h */,
+				1F76176E1E012BAF00EF5AD0 /* FSGuideManager.m */,
+			);
+			path = GuideManager;
+			sourceTree = "<group>";
+		};
 		1F7EDE0B1D45E0D200ABED5D = {
 			isa = PBXGroup;
 			children = (
@@ -2493,6 +2512,9 @@
 		1F7EDE171D45E0D300ABED5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1F7617811E0149B200EF5AD0 /* guide_3.png */,
+				1F76177F1E0149AD00EF5AD0 /* guide_2.png */,
+				1F76177D1E0149A400EF5AD0 /* guide_1.png */,
 				1F0219C71D798C8B003A8A11 /* areas.plist */,
 				1F7EDE231D45E0D300ABED5D /* Assets.xcassets */,
 				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
@@ -3572,6 +3594,7 @@
 				1FE5655A1DBDF0C4000AE61D /* read_me.txt in Resources */,
 				1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */,
 				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
+				1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */,
 				1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */,
 				1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */,
 				0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */,
@@ -3616,6 +3639,7 @@
 				1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */,
 				1FDE28D21D927DE000566A73 /* FSFoundHeaderView.xib in Resources */,
 				0436AED21DACE30C001E6808 /* sutroEdgeBurn.png in Resources */,
+				1F76177E1E0149A400EF5AD0 /* guide_1.png in Resources */,
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
 				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
 				0436AEC21DACE30C001E6808 /* hefeGradientMap.png in Resources */,
@@ -3634,6 +3658,7 @@
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */,
 				1F4202251D48DB8300D3E6CB /* FSHomePageViewController.xib in Resources */,
+				1F7617801E0149AD00EF5AD0 /* guide_2.png in Resources */,
 				0436AECF1DACE30C001E6808 /* sierraVignette.png in Resources */,
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1F3402001DCC2296009B9C32 /* FSCommentViewController.xib in Resources */,
@@ -3807,6 +3832,7 @@
 				0436AF481DACE5C2001E6808 /* FSRiseFilter.m in Sources */,
 				1F04244F1D51F3C30071A1D6 /* AFURLResponseSerialization.m in Sources */,
 				1F04248C1D542FD90071A1D6 /* FSHomeViewCell.m in Sources */,
+				1F76176F1E012BAF00EF5AD0 /* FSGuideManager.m in Sources */,
 				48FC207B1DBC4A08001D71F4 /* CoreTextImageData.m in Sources */,
 				1F9FA4941DD5750A00A1806A /* FSRecivedPrasiedModel.m in Sources */,
 				1F7EDEED1D4700E500ABED5D /* IQBarButtonItem.m in Sources */,
@@ -4200,8 +4226,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb5962f4-90b1-4515-ba1c-0d348fe14a0f";
-				PROVISIONING_PROFILE_SPECIFIER = QYAll;
+				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
+				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4250,8 +4276,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb5962f4-90b1-4515-ba1c-0d348fe14a0f";
-				PROVISIONING_PROFILE_SPECIFIER = QYAll;
+				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
+				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
