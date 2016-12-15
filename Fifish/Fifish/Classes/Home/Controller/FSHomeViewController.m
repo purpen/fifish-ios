@@ -37,6 +37,7 @@
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
 #import "WMPlayer.h"
+#import "FSGuideManager.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 
@@ -106,8 +107,19 @@ static NSString * const CellId = @"home";
     self.navigationController.navigationBarHidden = NO;
 }
 
+-(void)setGuide{
+    NSMutableArray *pathAry = [NSMutableArray new];
+    for (int i = 1; i < 4; ++i) {
+        [pathAry addObject:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"guide_%d", i] ofType:@"png"]];
+    }
+    [[FSGuideManager shared] showGuideViewWithImages:pathAry];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setGuide];
+    
     [self setupNav];
     [self.view addSubview:self.contenTableView];
     [self.contenTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSHomeViewCell class]) bundle:nil] forCellReuseIdentifier:CellId];
