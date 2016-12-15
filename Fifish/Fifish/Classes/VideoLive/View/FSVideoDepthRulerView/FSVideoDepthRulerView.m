@@ -20,11 +20,6 @@
 //右边刻度尺
 @property (nonatomic, strong)FSRulersScrollView * rightRulersScrowView;
 
-//左边框
-@property (nonatomic, strong)UIImageView        * leftLineView;
-
-//右边框
-@property (nonatomic, strong)UIImageView        * RightLineView;
 
 @property (nonatomic, strong)UILabel            * depthLab;//深度单位
 
@@ -53,47 +48,25 @@
 }
 
 - (void)setUpUI{
-    
-    [self addSubview:self.leftRulersScrowView];
-    [self.leftRulersScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(20);
-        make.bottom.mas_equalTo (self.mas_bottom).offset(-20);
-        make.width.mas_equalTo(@30);
-        make.centerX.equalTo(self.mas_centerX).offset(-150);
-    }];
-    
-    [self addSubview:self.leftLineView];
-    [self.leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.leftRulersScrowView.mas_right).offset(5);
-        make.centerY.equalTo(self.leftRulersScrowView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(6, 200));
-    }];
-    
-    [self addSubview:self.rightRulersScrowView];
-    [self.rightRulersScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.leftRulersScrowView);
-        make.bottom.mas_equalTo (self.leftRulersScrowView);
-        make.width.mas_equalTo(@30);
-        make.centerX.equalTo(self.mas_centerX).offset(150);
-    }];
-    
-    [self addSubview:self.RightLineView];
-    [self.RightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.rightRulersScrowView.mas_left).offset(-5);
-        make.centerY.equalTo(self.leftRulersScrowView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(6, 200));
-    }];
-    
     [self addSubview:self.depthBtn];
     [self.depthBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.leftRulersScrowView.mas_left);
-        make.centerY.equalTo(self.leftRulersScrowView.mas_centerY);
+        make.left.equalTo(self.mas_left).offset(10);
+        make.centerY.equalTo(self.mas_centerY);
     }];
     
     [self addSubview:self.depthLab];
     [self.depthLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.depthBtn.mas_left);
         make.bottom.equalTo(self.depthBtn.mas_top);
+    }];
+    
+    [self addSubview:self.leftRulersScrowView];
+    [self.leftRulersScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.mas_top).offset(20);
+        make.bottom.mas_equalTo (self.mas_bottom).offset(-20);
+        make.width.mas_equalTo(@30);
+//        make.centerX.equalTo(self.mas_centerX).offset(-150);
+        make.left.mas_equalTo(self.depthBtn.mas_right).offset(5);
     }];
     
     [self addSubview:self.currentLineView];
@@ -113,13 +86,6 @@
     
 }
 
-- (UIImageView *)leftLineView{
-    if (!_leftLineView) {
-        _leftLineView = [[UIImageView alloc] init];
-        _leftLineView.image = [UIImage imageNamed:@"left_line"];
-    }
-    return _leftLineView;
-}
 
 - (FSRulersScrollView *)rightRulersScrowView{
     if (!_rightRulersScrowView) {
@@ -127,14 +93,6 @@
         _rightRulersScrowView.backgroundColor =[UIColor clearColor];
     }
     return _rightRulersScrowView;
-}
-
-- (UIImageView *)RightLineView{
-    if (!_RightLineView) {
-        _RightLineView = [[UIImageView alloc] init];
-        _RightLineView.image = [UIImage imageNamed:@"right_line"];
-    }
-    return _RightLineView;
 }
 
 -(UILabel *)depthLab{

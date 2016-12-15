@@ -131,6 +131,7 @@
 		04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A23B851DAF2997001BD636 /* FSFliterImage.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D014171DED5C1E00AC51B5 /* FSSettingManager.m */; };
+		04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D5BAA81E02A44E0041CCAC /* Assets.xcassets */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
 		04F20EE81D7D6971009790EE /* FSLiveSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EE71D7D6971009790EE /* FSLiveSettingsViewController.m */; };
 		04F20EEC1D7D6A3A009790EE /* FSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20EEB1D7D6A3A009790EE /* FSCameraManager.m */; };
@@ -238,7 +239,6 @@
 		1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617811E0149B200EF5AD0 /* guide_3.png */; };
 		1F7617B21E02387500EF5AD0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7617B11E02387500EF5AD0 /* MapKit.framework */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
-		1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE231D45E0D300ABED5D /* Assets.xcassets */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
 		1F7EDE321D45E0D300ABED5D /* FifishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE311D45E0D300ABED5D /* FifishTests.m */; };
 		1F7EDE3D1D45E0D300ABED5D /* FifishUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE3C1D45E0D300ABED5D /* FifishUITests.m */; };
@@ -752,6 +752,7 @@
 		04A52F001D90DC1000F9303D /* FSliveVideoConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveVideoConst.m; sourceTree = "<group>"; };
 		04D014161DED5C1E00AC51B5 /* FSSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingManager.h; sourceTree = "<group>"; };
 		04D014171DED5C1E00AC51B5 /* FSSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingManager.m; sourceTree = "<group>"; };
+		04D5BAA81E02A44E0041CCAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04F20ED51D7D0B79009790EE /* FSBearingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBearingsView.h; sourceTree = "<group>"; };
 		04F20ED61D7D0B79009790EE /* FSBearingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBearingsView.m; sourceTree = "<group>"; };
 		04F20EE61D7D6971009790EE /* FSLiveSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLiveSettingsViewController.h; sourceTree = "<group>"; };
@@ -930,7 +931,6 @@
 		1F7617B11E02387500EF5AD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F7EDE231D45E0D300ABED5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F7EDE261D45E0D300ABED5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F7EDE281D45E0D300ABED5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F7EDE2D1D45E0D300ABED5D /* FifishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FifishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2515,11 +2515,13 @@
 		1F7EDE171D45E0D300ABED5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04D5BAA81E02A44E0041CCAC /* Assets.xcassets */,
+
 				1F7617811E0149B200EF5AD0 /* guide_3.png */,
 				1F76177F1E0149AD00EF5AD0 /* guide_2.png */,
 				1F76177D1E0149A400EF5AD0 /* guide_1.png */,
+
 				1F0219C71D798C8B003A8A11 /* areas.plist */,
-				1F7EDE231D45E0D300ABED5D /* Assets.xcassets */,
 				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
 				1F7EDE281D45E0D300ABED5D /* Info.plist */,
 				1F7EDE181D45E0D300ABED5D /* main.m */,
@@ -3619,7 +3621,6 @@
 				0436AEBD1DACE30C001E6808 /* earlybirdBlowout.png in Resources */,
 				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
 				0436AECE1DACE30C001E6808 /* sierraMap.png in Resources */,
-				1F7EDE241D45E0D300ABED5D /* Assets.xcassets in Resources */,
 				1FAB4C981DCB1E420037DBF9 /* FSMessageViewController.xib in Resources */,
 				48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */,
 				0436AEB81DACE30C001E6808 /* brannanBlowout.png in Resources */,
@@ -3634,6 +3635,7 @@
 				1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */,
 				1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */,
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
+				04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */,
 				0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */,
 				1F0424771D5312780071A1D6 /* FSVideoView.xib in Resources */,
 				1FAB4C9D1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib in Resources */,

@@ -55,7 +55,7 @@
         [self addSubview:self.batteryView];
         [self.batteryView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.MenuBtn.mas_left).offset(-10);
-            make.size.mas_equalTo(CGSizeMake(55, 10));
+            make.size.mas_equalTo(CGSizeMake(55, 20));
             make.centerY.equalTo(self.mas_centerY);
         }];
         
@@ -65,14 +65,7 @@
             make.size.mas_equalTo(CGSizeMake(50, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
-        
-        [self addSubview:self.BearingsView];
-        [self.BearingsView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.mas_centerY);
-            make.centerX.equalTo(self.mas_centerX);
-            make.size.mas_equalTo(CGSizeMake(100,50));
-        }];
-        
+   
         [self addSubview:self.FifishBattery];
         [self.FifishBattery mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.TemperatureView.mas_left).offset(-10);
@@ -88,9 +81,9 @@
 - (UIButton *)FifishBackBtn{
     if (!_FifishBackBtn) {
         _FifishBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_FifishBackBtn setTitle:@"FIFISH" forState:UIControlStateNormal];
-        [_FifishBackBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
-        [_FifishBackBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_FifishBackBtn setTitle:@"FIFISH" forState:UIControlStateNormal];
+//        [_FifishBackBtn setImage:[UIImage imageNamed:@"Nav_back_white"] forState:UIControlStateNormal];
+        [_FifishBackBtn setTitleColor:LIVEVIDEO_DEFAULT_COLOR forState:UIControlStateNormal];
         _FifishBackBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_FifishBackBtn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -123,15 +116,6 @@
     }
     return _FifishBattery;
 }
-
-- (FSBearingsView *)BearingsView{
-    if (!_BearingsView) {
-        _BearingsView = [[FSBearingsView alloc] init];
-    }
-    return _BearingsView;
-}
-
-
 
 - (void)menuBtnClick:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(VideoLiveMenuBtnClick)]) {
