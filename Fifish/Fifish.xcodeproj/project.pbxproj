@@ -2512,13 +2512,12 @@
 		1F7EDE171D45E0D300ABED5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				04D5BAA81E02A44E0041CCAC /* Assets.xcassets */,
-=======
+
 				1F7617811E0149B200EF5AD0 /* guide_3.png */,
 				1F76177F1E0149AD00EF5AD0 /* guide_2.png */,
 				1F76177D1E0149A400EF5AD0 /* guide_1.png */,
->>>>>>> 0feb5e23d11b887d17bad804a86ca32983cd626e
+
 				1F0219C71D798C8B003A8A11 /* areas.plist */,
 				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
 				1F7EDE281D45E0D300ABED5D /* Info.plist */,
