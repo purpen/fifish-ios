@@ -237,6 +237,7 @@
 		1F76177E1E0149A400EF5AD0 /* guide_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F76177D1E0149A400EF5AD0 /* guide_1.png */; };
 		1F7617801E0149AD00EF5AD0 /* guide_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F76177F1E0149AD00EF5AD0 /* guide_2.png */; };
 		1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617811E0149B200EF5AD0 /* guide_3.png */; };
+		1F7617B21E02387500EF5AD0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7617B11E02387500EF5AD0 /* MapKit.framework */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
 		1F7EDE321D45E0D300ABED5D /* FifishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE311D45E0D300ABED5D /* FifishTests.m */; };
@@ -927,6 +928,7 @@
 		1F76177D1E0149A400EF5AD0 /* guide_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_1.png; sourceTree = "<group>"; };
 		1F76177F1E0149AD00EF5AD0 /* guide_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_2.png; sourceTree = "<group>"; };
 		1F7617811E0149B200EF5AD0 /* guide_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_3.png; sourceTree = "<group>"; };
+		1F7617B11E02387500EF5AD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE261D45E0D300ABED5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1293,6 +1295,7 @@
 				1F80115F1DAC8B8400B320C7 /* CoreTelephony.framework in Frameworks */,
 				0470C4F91D9BAE5100B13500 /* SystemConfiguration.framework in Frameworks */,
 				1F80115D1DAC8B6B00B320C7 /* JavaScriptCore.framework in Frameworks */,
+				1F7617B21E02387500EF5AD0 /* MapKit.framework in Frameworks */,
 				1FE565581DBDF0C4000AE61D /* libSocialWeChat.a in Frameworks */,
 				1F80115B1DAC8B4000B320C7 /* AMapLocationKit.framework in Frameworks */,
 				1FE565511DBDF0C4000AE61D /* libSocialSina.a in Frameworks */,
@@ -3387,6 +3390,7 @@
 		47AC8B0E95BC3507AFE6941B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F7617B11E02387500EF5AD0 /* MapKit.framework */,
 				1F3402211DCC8C31009B9C32 /* libresolv.tbd */,
 				1F34021F1DCC8C23009B9C32 /* UserNotifications.framework */,
 				1F34021D1DCC8BF2009B9C32 /* Security.framework */,
@@ -3540,8 +3544,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 3256449JXC;
 						SystemCapabilities = {
-							com.apple.Push = {
+							com.apple.Maps.iOS = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -4193,6 +4200,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				DEVELOPMENT_TEAM = 3256449JXC;
 				ENABLE_BITCODE = NO;
@@ -4242,6 +4250,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				DEVELOPMENT_TEAM = 3256449JXC;
