@@ -1,19 +1,58 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FSForgetViewController">
             <connections>
+                <outlet property="emailTF" destination="j5P-iU-nxP" id="RgM-vR-eKZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_line" translatesAutoresizingMaskIntoConstraints="NO" id="S12-pc-CI4">
+                    <rect key="frame" x="40" y="124" width="295" height="1"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您登录的邮箱，我们会发送重置密码的链接到您的邮箱" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yai-Ni-rWd">
+                    <rect key="frame" x="40" y="149" width="295" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j5P-iU-nxP">
+                    <rect key="frame" x="50" y="80" width="285" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="0Zi-1P-WFM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="S12-pc-CI4" firstAttribute="trailing" secondItem="j5P-iU-nxP" secondAttribute="trailing" id="0So-Td-gbs"/>
+                <constraint firstAttribute="trailing" secondItem="j5P-iU-nxP" secondAttribute="trailing" constant="40" id="29x-Ft-N2c"/>
+                <constraint firstItem="S12-pc-CI4" firstAttribute="top" secondItem="j5P-iU-nxP" secondAttribute="bottom" id="5Na-pL-JiC"/>
+                <constraint firstItem="Yai-Ni-rWd" firstAttribute="trailing" secondItem="S12-pc-CI4" secondAttribute="trailing" id="fLa-58-aNI"/>
+                <constraint firstItem="S12-pc-CI4" firstAttribute="leading" secondItem="j5P-iU-nxP" secondAttribute="leading" constant="-10" id="iZl-ya-4Jb"/>
+                <constraint firstItem="j5P-iU-nxP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="pVv-1M-8ah"/>
+                <constraint firstItem="j5P-iU-nxP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="tAV-3I-keN"/>
+                <constraint firstItem="Yai-Ni-rWd" firstAttribute="leading" secondItem="S12-pc-CI4" secondAttribute="leading" id="wGd-t6-m2x"/>
+                <constraint firstItem="Yai-Ni-rWd" firstAttribute="top" secondItem="S12-pc-CI4" secondAttribute="bottom" constant="24" id="z8t-pZ-rEg"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="login_line" width="304" height="1"/>
+    </resources>
 </document>

@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; normalTitle = "微信"; ObjectID = "B1e-lV-Khc"; */
+"B1e-lV-Khc.normalTitle" = "WeChat";
+
+/* Class = "UIButton"; normalTitle = "微博"; ObjectID = "Bol-uD-F3C"; */
+"Bol-uD-F3C.normalTitle" = "weibo";
+
+/* Class = "UITextField"; placeholder = "# 添加标签"; ObjectID = "L18-WX-vNy"; */
+"L18-WX-vNy.placeholder" = "# Add tags";
+
+/* Class = "UILabel"; text = "说点什么吧"; ObjectID = "QB2-1m-mJV"; */
+"QB2-1m-mJV.text" = "Say something!";
+
+/* Class = "UIButton"; normalTitle = "分享到"; ObjectID = "V7I-yB-ljI"; */
+"V7I-yB-ljI.normalTitle" = "Share";
+
+/* Class = "UIButton"; normalTitle = "instagram"; ObjectID = "Vh3-fX-efP"; */
+"Vh3-fX-efP.normalTitle" = "instagram";
+
+/* Class = "UIButton"; normalTitle = "QQ"; ObjectID = "d1C-Xg-Ac2"; */
+"d1C-Xg-Ac2.normalTitle" = "QQ";
+
+/* Class = "UIButton"; normalTitle = "twitter"; ObjectID = "ht0-PK-vgW"; */
+"ht0-PK-vgW.normalTitle" = "twitter";
+
+/* Class = "UILabel"; text = "添加位置"; ObjectID = "q3i-Cz-S4z"; */
+"q3i-Cz-S4z.text" = "Add the position";
+
+/* Class = "UIButton"; normalTitle = "facebook"; ObjectID = "qDH-Oi-wN7"; */
+"qDH-Oi-wN7.normalTitle" = "facebook";

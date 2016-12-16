@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "消息"; ObjectID = "8D2-6W-ybZ"; */
+"8D2-6W-ybZ.text" = "message";
+
+/* Class = "UILabel"; text = "用户反馈"; ObjectID = "Qm2-hI-J8l"; */
+"Qm2-hI-J8l.text" = "feedback";
+
+/* Class = "UILabel"; text = "作品"; ObjectID = "RCd-vO-BkM"; */
+"RCd-vO-BkM.text" = "stuff";
+
+/* Class = "UILabel"; text = "粉丝"; ObjectID = "cEQ-7Y-hg7"; */
+"cEQ-7Y-hg7.text" = "fans";
+
+/* Class = "UILabel"; text = "关注"; ObjectID = "cUK-Qj-Ter"; */
+"cUK-Qj-Ter.text" = "focus";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "dXk-7M-o3U"; */
+"dXk-7M-o3U.text" = "set";
+
+/* Class = "UILabel"; text = "赞"; ObjectID = "oQV-yw-915"; */
+"oQV-yw-915.text" = "good";

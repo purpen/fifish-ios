@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "头像"; ObjectID = "7sp-N7-YDX"; */
+"7sp-N7-YDX.text" = "avatar";
+
+/* Class = "UILabel"; text = "用户名(昵称)"; ObjectID = "8Zm-AN-GN5"; */
+"8Zm-AN-GN5.text" = "nickname";
+
+/* Class = "UILabel"; text = "性别"; ObjectID = "W7K-Oi-XJJ"; */
+"W7K-Oi-XJJ.text" = "sex";
+
+/* Class = "UILabel"; text = "地区"; ObjectID = "hom-I1-0Bf"; */
+"hom-I1-0Bf.text" = "area";
+
+/* Class = "UILabel"; text = "个性签名"; ObjectID = "qys-dT-s8J"; */
+"qys-dT-s8J.text" = "summary";

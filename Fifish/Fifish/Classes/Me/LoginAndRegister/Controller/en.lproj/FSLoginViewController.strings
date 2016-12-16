@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "73H-QE-NgH"; */
+"73H-QE-NgH.normalTitle" = "login";
+
+/* Class = "UIButton"; normalTitle = "忘记密码?"; ObjectID = "Btb-8y-TvJ"; */
+"Btb-8y-TvJ.normalTitle" = "ForgotPassword?";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "DVt-sh-gWB"; */
+"DVt-sh-gWB.normalTitle" = "registered";
+
+/* Class = "UITextField"; placeholder = "邮箱"; ObjectID = "GTn-UB-nIT"; */
+"GTn-UB-nIT.placeholder" = "email";
+
+/* Class = "UIButton"; normalTitle = "立即注册"; ObjectID = "MSt-Uh-vwl"; */
+"MSt-Uh-vwl.normalTitle" = "RegisterNow";
+
+/* Class = "UIButton"; selectedTitle = "立即登录"; ObjectID = "MSt-Uh-vwl"; */
+"MSt-Uh-vwl.selectedTitle" = "LoginImmediately";
+
+/* Class = "UITextField"; placeholder = "帐号密码"; ObjectID = "Q7V-n7-zf9"; */
+"Q7V-n7-zf9.placeholder" = "accountPassword";
+
+/* Class = "UILabel"; text = "还没有帐号?"; ObjectID = "ZvY-4J-pYg"; */
+"ZvY-4J-pYg.text" = "noAccount?";
+
+/* Class = "UITextField"; placeholder = "帐号密码"; ObjectID = "cgb-5w-LdR"; */
+"cgb-5w-LdR.placeholder" = "accountPassword";
+
+/* Class = "UITextField"; placeholder = "邮箱"; ObjectID = "y0s-fV-ciq"; */
+"y0s-fV-ciq.placeholder" = "email";
+
+/* Class = "UILabel"; text = "快速注册"; ObjectID = "y5S-OO-zWp"; */
+"y5S-OO-zWp.text" = "quickRegistration";

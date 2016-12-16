@@ -1,0 +1,6 @@
+
+/* Class = "UIButton"; normalTitle = "发送"; ObjectID = "109-ce-ILi"; */
+"109-ce-ILi.normalTitle" = "send";
+
+/* Class = "UITextField"; placeholder = "评论一下"; ObjectID = "T1i-dO-fh9"; */
+"T1i-dO-fh9.placeholder" = "Comment on";

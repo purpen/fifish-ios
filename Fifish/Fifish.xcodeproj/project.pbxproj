@@ -147,7 +147,6 @@
 		1F0219C61D798630003A8A11 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219C51D798630003A8A11 /* AreaModel.m */; };
 		1F0219C81D798C8B003A8A11 /* areas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F0219C71D798C8B003A8A11 /* areas.plist */; };
 		1F0219CC1D799027003A8A11 /* FSForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0219CA1D799027003A8A11 /* FSForgetViewController.m */; };
-		1F0219CD1D799027003A8A11 /* FSForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0219CB1D799027003A8A11 /* FSForgetViewController.xib */; };
 		1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04241C1D51F3BA0071A1D6 /* FSZuoPin.m */; };
 		1F0424481D51F3C30071A1D6 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424211D51F3C30071A1D6 /* AFHTTPRequestOperation.m */; };
 		1F0424491D51F3C30071A1D6 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424231D51F3C30071A1D6 /* AFHTTPRequestOperationManager.m */; };
@@ -184,7 +183,6 @@
 		1F0424921D543CBE0071A1D6 /* FSHomeVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424911D543CBE0071A1D6 /* FSHomeVideoView.m */; };
 		1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */; };
 		1F0424981D5467940071A1D6 /* FSHomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */; };
-		1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */; };
 		1F04249D1D5479C90071A1D6 /* FSCommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */; };
 		1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */; };
 		1F0424A11D548A600071A1D6 /* FSCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0424A01D548A600071A1D6 /* FSCommentModel.m */; };
@@ -212,7 +210,6 @@
 		1F3402221DCC8C31009B9C32 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3402211DCC8C31009B9C32 /* libresolv.tbd */; };
 		1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018C1D47389700D3E6CB /* InfoPlist.strings */; };
 		1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F42018F1D47389C00D3E6CB /* Localizable.strings */; };
-		1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */; };
 		1F4201C01D4755C400D3E6CB /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */; };
 		1F4201CC1D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C31D475C8A00D3E6CB /* SVIndefiniteAnimatedView.m */; };
 		1F4201CD1D475C8A00D3E6CB /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C51D475C8A00D3E6CB /* SVProgressAnimatedView.m */; };
@@ -220,7 +217,6 @@
 		1F4201CF1D475C8A00D3E6CB /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201C91D475C8A00D3E6CB /* SVProgressHUD.m */; };
 		1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201CB1D475C8A00D3E6CB /* SVRadialGradientLayer.m */; };
 		1F4201D91D4888DD00D3E6CB /* FSImproveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201D71D4888DD00D3E6CB /* FSImproveViewController.m */; };
-		1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4201D81D4888DD00D3E6CB /* FSImproveViewController.xib */; };
 		1F4201DD1D48A1DD00D3E6CB /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201DC1D48A1DD00D3E6CB /* UIImage+Helper.m */; };
 		1F4201E11D48AC5200D3E6CB /* GuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4201E01D48AC5200D3E6CB /* GuidePageViewController.m */; };
 		1F42020A1D48B21500D3E6CB /* AppDelegate+FSGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4202091D48B21500D3E6CB /* AppDelegate+FSGuide.m */; };
@@ -238,6 +234,23 @@
 		1F7617801E0149AD00EF5AD0 /* guide_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F76177F1E0149AD00EF5AD0 /* guide_2.png */; };
 		1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617811E0149B200EF5AD0 /* guide_3.png */; };
 		1F7617B21E02387500EF5AD0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7617B11E02387500EF5AD0 /* MapKit.framework */; };
+		1F7617B31E038C7D00EF5AD0 /* FSAddTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617B51E038C7D00EF5AD0 /* FSAddTagViewController.xib */; };
+		1F7617BA1E038F4500EF5AD0 /* FSAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617BC1E038F4500EF5AD0 /* FSAddressViewController.xib */; };
+		1F7617C11E038F7E00EF5AD0 /* FSReleaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617C31E038F7E00EF5AD0 /* FSReleaseView.xib */; };
+		1F7617C81E03904700EF5AD0 /* FSTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617CA1E03904700EF5AD0 /* FSTipView.xib */; };
+		1F7617CF1E0390A900EF5AD0 /* FSContenHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617D11E0390A900EF5AD0 /* FSContenHelpViewController.xib */; };
+		1F7617E11E03918600EF5AD0 /* FSTagSearchOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617DF1E03918600EF5AD0 /* FSTagSearchOneTableViewCell.xib */; };
+		1F7617E21E0391F000EF5AD0 /* FSSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617E41E0391F000EF5AD0 /* FSSearchViewController.xib */; };
+		1F7617E91E03927F00EF5AD0 /* FSHomeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617EB1E03927F00EF5AD0 /* FSHomeDetailViewController.xib */; };
+		1F7617F01E03932E00EF5AD0 /* FSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617F21E03932E00EF5AD0 /* FSLoginViewController.xib */; };
+		1F7617F71E03940600EF5AD0 /* FSForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7617F91E03940600EF5AD0 /* FSForgetViewController.xib */; };
+		1F7617FE1E03955800EF5AD0 /* FSImproveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7618001E03955800EF5AD0 /* FSImproveViewController.xib */; };
+		1F7618051E0397C900EF5AD0 /* FSMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7618071E0397C900EF5AD0 /* FSMeViewController.xib */; };
+		1F76180C1E03986A00EF5AD0 /* FSEditInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F76180E1E03986A00EF5AD0 /* FSEditInformationViewController.xib */; };
+		1F7618131E0398D000EF5AD0 /* FSUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7618151E0398D000EF5AD0 /* FSUserNameViewController.xib */; };
+		1F76181A1E03990C00EF5AD0 /* FSSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F76181C1E03990C00EF5AD0 /* FSSummaryViewController.xib */; };
+		1F7618211E03992500EF5AD0 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7618231E03992500EF5AD0 /* FSChangeSexViewController.xib */; };
+		1F7618281E03996100EF5AD0 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F76182A1E03996100EF5AD0 /* FSMeHeadTableViewCell.xib */; };
 		1F7EDE191D45E0D300ABED5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE181D45E0D300ABED5D /* main.m */; };
 		1F7EDE271D45E0D300ABED5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */; };
 		1F7EDE321D45E0D300ABED5D /* FifishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE311D45E0D300ABED5D /* FifishTests.m */; };
@@ -249,7 +262,6 @@
 		1F7EDE981D45EF6900ABED5D /* FSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */; };
 		1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */; };
 		1F7EDE9A1D45EF6900ABED5D /* FSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */; };
-		1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */; };
 		1F7EDE9C1D45EF6900ABED5D /* FSMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE891D45EF6900ABED5D /* FSMediaViewController.m */; };
 		1F7EDE9D1D45EF6900ABED5D /* FSMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */; };
 		1F7EDE9E1D45EF6900ABED5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDE8F1D45EF6900ABED5D /* AppDelegate.m */; };
@@ -279,14 +291,10 @@
 		1F8011321DA8861500B320C7 /* FSReleasePictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011301DA8861500B320C7 /* FSReleasePictureViewController.m */; };
 		1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */; };
 		1F8011361DA8902000B320C7 /* FSTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011351DA8902000B320C7 /* FSTipView.m */; };
-		1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011371DA8902C00B320C7 /* FSTipView.xib */; };
 		1F8011401DA8E2FD00B320C7 /* FSReleaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */; };
-		1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011411DA8E30800B320C7 /* FSReleaseView.xib */; };
 		1F8011461DA8F89D00B320C7 /* FSAddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */; };
-		1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */; };
 		1F80114A1DA9E12800B320C7 /* FSTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011491DA9E12800B320C7 /* FSTagModel.m */; };
 		1F80114E1DAA481200B320C7 /* FSAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80114C1DAA481200B320C7 /* FSAddressViewController.m */; };
-		1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */; };
 		1F8011521DAA555E00B320C7 /* FSSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011511DAA555E00B320C7 /* FSSearchBar.m */; };
 		1F8011561DAB493B00B320C7 /* FSLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8011541DAB493B00B320C7 /* FSLocationTableViewCell.m */; };
 		1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8011551DAB493B00B320C7 /* FSLocationTableViewCell.xib */; };
@@ -306,7 +314,6 @@
 		1F9FA4941DD5750A00A1806A /* FSRecivedPrasiedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA4931DD5750A00A1806A /* FSRecivedPrasiedModel.m */; };
 		1F9FA49A1DD969B400A1806A /* UINavigationBar+FSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */; };
 		1FAB4C871DC829AC0037DBF9 /* FSChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */; };
-		1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */; };
 		1FAB4C8C1DC891CB0037DBF9 /* FSPraisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */; };
 		1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */; };
 		1FAB4C931DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C921DCADEB90037DBF9 /* AppDelegate+FSUMRegiester.m */; };
@@ -315,7 +322,6 @@
 		1FAB4C9C1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB4C9A1DCB2E4A0037DBF9 /* FSMessageTableViewCell.m */; };
 		1FAB4C9D1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */; };
 		1FB4FBC71D954EE900E236CF /* FSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */; };
-		1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */; };
 		1FC536D61DED546D0034CC1E /* FSFoundSlidePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */; };
 		1FC536D91DEEC15B0034CC1E /* FSHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536D81DEEC15B0034CC1E /* FSHistoryView.m */; };
 		1FC536DC1DEEC3F20034CC1E /* FSSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC536DB1DEEC3F20034CC1E /* FSSearchModel.m */; };
@@ -367,7 +373,6 @@
 		1FE565021DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565001DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m */; };
 		1FE565031DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */; };
 		1FE565071DB855B9000AE61D /* FSTagSearchOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */; };
-		1FE565081DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */; };
 		1FE565481DBDF0C4000AE61D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE5650C1DBDF0C4000AE61D /* Bolts.framework */; };
 		1FE565491DBDF0C4000AE61D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE5650E1DBDF0C4000AE61D /* FBSDKCoreKit.framework */; };
 		1FE5654A1DBDF0C4000AE61D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE5650F1DBDF0C4000AE61D /* FBSDKLoginKit.framework */; };
@@ -398,9 +403,7 @@
 		1FE565641DBDF219000AE61D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE565631DBDF219000AE61D /* libc++.tbd */; };
 		1FE565661DBDF279000AE61D /* TwitterKitResources.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */; };
 		1FE565AF1DC041D5000AE61D /* FSUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */; };
-		1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */; };
 		1FE565B41DC050F4000AE61D /* FSSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */; };
-		1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */; };
 		1FE566031DC2E9C4000AE61D /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE565FE1DC2E9C4000AE61D /* DACircularProgressView.m */; };
 		1FE566041DC2E9C4000AE61D /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566001DC2E9C4000AE61D /* DALabeledCircularProgressView.m */; };
 		1FE566051DC2E9C4000AE61D /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 1FE566011DC2E9C4000AE61D /* LICENSE.md */; };
@@ -414,11 +417,8 @@
 		1FF36E6A1D49F3A900EB3C93 /* OptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E681D49F3A900EB3C93 /* OptionViewController.m */; };
 		1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */; };
 		1FF36E6F1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */; };
-		1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */; };
 		1FF36E901D4B6BC500EB3C93 /* FSEditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */; };
-		1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */; };
 		1FF783A81D9923AF00618245 /* FSContenHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */; };
-		1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */; };
 		1FF783BB1D9A855A00618245 /* FSBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783B91D9A855A00618245 /* FSBigImageViewController.m */; };
 		1FF783BC1D9A855A00618245 /* FSBigImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */; };
 		1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF783BE1D9B585700618245 /* FSImageScrollView.m */; };
@@ -778,7 +778,6 @@
 		1F0219C71D798C8B003A8A11 /* areas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = areas.plist; sourceTree = "<group>"; };
 		1F0219C91D799027003A8A11 /* FSForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSForgetViewController.h; sourceTree = "<group>"; };
 		1F0219CA1D799027003A8A11 /* FSForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSForgetViewController.m; sourceTree = "<group>"; };
-		1F0219CB1D799027003A8A11 /* FSForgetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSForgetViewController.xib; sourceTree = "<group>"; };
 		1F04241B1D51F3BA0071A1D6 /* FSZuoPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSZuoPin.h; sourceTree = "<group>"; };
 		1F04241C1D51F3BA0071A1D6 /* FSZuoPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSZuoPin.m; sourceTree = "<group>"; };
 		1F0424201D51F3C30071A1D6 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -846,7 +845,6 @@
 		1F0424931D543CCB0071A1D6 /* FSHomeVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeVideoView.xib; sourceTree = "<group>"; };
 		1F0424951D5467940071A1D6 /* FSHomeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHomeDetailViewController.h; sourceTree = "<group>"; };
 		1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHomeDetailViewController.m; sourceTree = "<group>"; };
-		1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeDetailViewController.xib; sourceTree = "<group>"; };
 		1F04249A1D5479C90071A1D6 /* FSCommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCommendTableViewCell.h; sourceTree = "<group>"; };
 		1F04249B1D5479C90071A1D6 /* FSCommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCommendTableViewCell.m; sourceTree = "<group>"; };
 		1F04249C1D5479C90071A1D6 /* FSCommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSCommendTableViewCell.xib; sourceTree = "<group>"; };
@@ -887,7 +885,6 @@
 		1F42018E1D47389C00D3E6CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4201901D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1F4201911D4738AB00D3E6CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSLoginViewController.xib; sourceTree = "<group>"; };
 		1F4201BE1D4755C400D3E6CB /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
 		1F4201BF1D4755C400D3E6CB /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
 		1F4201C21D475C8A00D3E6CB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -902,7 +899,6 @@
 		1F4201CB1D475C8A00D3E6CB /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		1F4201D61D4888DD00D3E6CB /* FSImproveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImproveViewController.h; sourceTree = "<group>"; };
 		1F4201D71D4888DD00D3E6CB /* FSImproveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImproveViewController.m; sourceTree = "<group>"; };
-		1F4201D81D4888DD00D3E6CB /* FSImproveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSImproveViewController.xib; sourceTree = "<group>"; };
 		1F4201DB1D48A1DD00D3E6CB /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
 		1F4201DC1D48A1DD00D3E6CB /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
 		1F4201DF1D48AC5200D3E6CB /* GuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidePageViewController.h; sourceTree = "<group>"; };
@@ -929,6 +925,55 @@
 		1F76177F1E0149AD00EF5AD0 /* guide_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_2.png; sourceTree = "<group>"; };
 		1F7617811E0149B200EF5AD0 /* guide_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_3.png; sourceTree = "<group>"; };
 		1F7617B11E02387500EF5AD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1F7617B41E038C7D00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSAddTagViewController.xib; sourceTree = "<group>"; };
+		1F7617B71E038C8F00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSAddTagViewController.strings; sourceTree = "<group>"; };
+		1F7617B91E038C9500EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSAddTagViewController.strings"; sourceTree = "<group>"; };
+		1F7617BB1E038F4500EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSAddressViewController.xib; sourceTree = "<group>"; };
+		1F7617BE1E038F4700EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSAddressViewController.strings; sourceTree = "<group>"; };
+		1F7617C01E038F4900EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSAddressViewController.strings"; sourceTree = "<group>"; };
+		1F7617C21E038F7E00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSReleaseView.xib; sourceTree = "<group>"; };
+		1F7617C51E038F8000EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSReleaseView.strings; sourceTree = "<group>"; };
+		1F7617C71E038F8200EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSReleaseView.strings"; sourceTree = "<group>"; };
+		1F7617C91E03904700EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSTipView.xib; sourceTree = "<group>"; };
+		1F7617CC1E03904A00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSTipView.strings; sourceTree = "<group>"; };
+		1F7617CE1E03904C00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSTipView.strings"; sourceTree = "<group>"; };
+		1F7617D01E0390A900EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSContenHelpViewController.xib; sourceTree = "<group>"; };
+		1F7617D31E0390AB00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSContenHelpViewController.strings; sourceTree = "<group>"; };
+		1F7617D51E0390AC00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSContenHelpViewController.strings"; sourceTree = "<group>"; };
+		1F7617E01E03918600EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FSTagSearchOneTableViewCell.xib; sourceTree = "<group>"; };
+		1F7617E31E0391F000EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSSearchViewController.xib; sourceTree = "<group>"; };
+		1F7617E61E03920200EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSSearchViewController.strings; sourceTree = "<group>"; };
+		1F7617E81E03920500EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSSearchViewController.strings"; sourceTree = "<group>"; };
+		1F7617EA1E03927F00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSHomeDetailViewController.xib; sourceTree = "<group>"; };
+		1F7617ED1E03928200EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSHomeDetailViewController.strings; sourceTree = "<group>"; };
+		1F7617EF1E03928300EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSHomeDetailViewController.strings"; sourceTree = "<group>"; };
+		1F7617F11E03932E00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSLoginViewController.xib; sourceTree = "<group>"; };
+		1F7617F41E03933400EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSLoginViewController.strings; sourceTree = "<group>"; };
+		1F7617F61E03933700EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSLoginViewController.strings"; sourceTree = "<group>"; };
+		1F7617F81E03940600EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSForgetViewController.xib; sourceTree = "<group>"; };
+		1F7617FB1E03940C00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSForgetViewController.strings; sourceTree = "<group>"; };
+		1F7617FD1E03940E00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSForgetViewController.strings"; sourceTree = "<group>"; };
+		1F7617FF1E03955800EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSImproveViewController.xib; sourceTree = "<group>"; };
+		1F7618021E03973900EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSImproveViewController.strings; sourceTree = "<group>"; };
+		1F7618041E03973A00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSImproveViewController.strings"; sourceTree = "<group>"; };
+		1F7618061E0397C900EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSMeViewController.xib; sourceTree = "<group>"; };
+		1F7618091E0397CB00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSMeViewController.strings; sourceTree = "<group>"; };
+		1F76180B1E0397CC00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSMeViewController.strings"; sourceTree = "<group>"; };
+		1F76180D1E03986A00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSEditInformationViewController.xib; sourceTree = "<group>"; };
+		1F7618101E03986D00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSEditInformationViewController.strings; sourceTree = "<group>"; };
+		1F7618121E03986E00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSEditInformationViewController.strings"; sourceTree = "<group>"; };
+		1F7618141E0398D000EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSUserNameViewController.xib; sourceTree = "<group>"; };
+		1F7618171E0398D300EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSUserNameViewController.strings; sourceTree = "<group>"; };
+		1F7618191E0398D700EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSUserNameViewController.strings"; sourceTree = "<group>"; };
+		1F76181B1E03990C00EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSSummaryViewController.xib; sourceTree = "<group>"; };
+		1F76181E1E03990E00EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSSummaryViewController.strings; sourceTree = "<group>"; };
+		1F7618201E03990F00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSSummaryViewController.strings"; sourceTree = "<group>"; };
+		1F7618221E03992500EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSChangeSexViewController.xib; sourceTree = "<group>"; };
+		1F7618251E03992900EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSChangeSexViewController.strings; sourceTree = "<group>"; };
+		1F7618271E03992A00EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSChangeSexViewController.strings"; sourceTree = "<group>"; };
+		1F7618291E03996100EF5AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FSMeHeadTableViewCell.xib; sourceTree = "<group>"; };
+		1F76182C1E03996400EF5AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FSMeHeadTableViewCell.strings; sourceTree = "<group>"; };
+		1F76182E1E03996500EF5AD0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FSMeHeadTableViewCell.strings"; sourceTree = "<group>"; };
 		1F7EDE141D45E0D200ABED5D /* Fifish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fifish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7EDE181D45E0D300ABED5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F7EDE261D45E0D300ABED5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -950,7 +995,6 @@
 		1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHomeViewController.xib; sourceTree = "<group>"; };
 		1F7EDE811D45EF6900ABED5D /* FSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeViewController.h; sourceTree = "<group>"; };
 		1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeViewController.m; sourceTree = "<group>"; };
-		1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeViewController.xib; sourceTree = "<group>"; };
 		1F7EDE881D45EF6900ABED5D /* FSMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMediaViewController.h; sourceTree = "<group>"; };
 		1F7EDE891D45EF6900ABED5D /* FSMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMediaViewController.m; sourceTree = "<group>"; };
 		1F7EDE8A1D45EF6900ABED5D /* FSMediaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMediaViewController.xib; sourceTree = "<group>"; };
@@ -1008,18 +1052,14 @@
 		1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReleasePictureViewController.xib; sourceTree = "<group>"; };
 		1F8011341DA8902000B320C7 /* FSTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTipView.h; sourceTree = "<group>"; };
 		1F8011351DA8902000B320C7 /* FSTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTipView.m; sourceTree = "<group>"; };
-		1F8011371DA8902C00B320C7 /* FSTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTipView.xib; sourceTree = "<group>"; };
 		1F80113E1DA8E2FD00B320C7 /* FSReleaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSReleaseView.h; sourceTree = "<group>"; };
 		1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSReleaseView.m; sourceTree = "<group>"; };
-		1F8011411DA8E30800B320C7 /* FSReleaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSReleaseView.xib; sourceTree = "<group>"; };
 		1F8011431DA8F89D00B320C7 /* FSAddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddTagViewController.h; sourceTree = "<group>"; };
 		1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddTagViewController.m; sourceTree = "<group>"; };
-		1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddTagViewController.xib; sourceTree = "<group>"; };
 		1F8011481DA9E12800B320C7 /* FSTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagModel.h; sourceTree = "<group>"; };
 		1F8011491DA9E12800B320C7 /* FSTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagModel.m; sourceTree = "<group>"; };
 		1F80114B1DAA481200B320C7 /* FSAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAddressViewController.h; sourceTree = "<group>"; };
 		1F80114C1DAA481200B320C7 /* FSAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAddressViewController.m; sourceTree = "<group>"; };
-		1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSAddressViewController.xib; sourceTree = "<group>"; };
 		1F8011501DAA555E00B320C7 /* FSSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchBar.h; sourceTree = "<group>"; };
 		1F8011511DAA555E00B320C7 /* FSSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchBar.m; sourceTree = "<group>"; };
 		1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLocationTableViewCell.h; sourceTree = "<group>"; };
@@ -1048,7 +1088,6 @@
 		1F9FA4991DD969B400A1806A /* UINavigationBar+FSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FSExtension.m"; sourceTree = "<group>"; };
 		1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSChangeSexViewController.h; sourceTree = "<group>"; };
 		1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSChangeSexViewController.m; sourceTree = "<group>"; };
-		1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSChangeSexViewController.xib; sourceTree = "<group>"; };
 		1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPraisedViewController.h; sourceTree = "<group>"; };
 		1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPraisedViewController.m; sourceTree = "<group>"; };
 		1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSPraisedViewController.xib; sourceTree = "<group>"; };
@@ -1062,7 +1101,6 @@
 		1FAB4C9B1DCB2E4A0037DBF9 /* FSMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMessageTableViewCell.xib; sourceTree = "<group>"; };
 		1FB4FBC41D954EE900E236CF /* FSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSearchViewController.h; sourceTree = "<group>"; };
 		1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSearchViewController.m; sourceTree = "<group>"; };
-		1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSearchViewController.xib; sourceTree = "<group>"; };
 		1FC536D41DED546D0034CC1E /* FSFoundSlidePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFoundSlidePageModel.h; sourceTree = "<group>"; };
 		1FC536D51DED546D0034CC1E /* FSFoundSlidePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFoundSlidePageModel.m; sourceTree = "<group>"; };
 		1FC536D71DEEC15B0034CC1E /* FSHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHistoryView.h; sourceTree = "<group>"; };
@@ -1151,7 +1189,6 @@
 		1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		1FE565041DB855B9000AE61D /* FSTagSearchOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTagSearchOneTableViewCell.h; sourceTree = "<group>"; };
 		1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTagSearchOneTableViewCell.m; sourceTree = "<group>"; };
-		1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSTagSearchOneTableViewCell.xib; sourceTree = "<group>"; };
 		1FE5650C1DBDF0C4000AE61D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		1FE5650D1DBDF0C4000AE61D /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
 		1FE5650E1DBDF0C4000AE61D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -1208,10 +1245,8 @@
 		1FE565651DBDF279000AE61D /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = Fifish/Classes/ThirdParty/UMSocial/SocialLibraries/Twitter/TwitterKit.framework/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		1FE565AC1DC041D5000AE61D /* FSUserNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSUserNameViewController.h; sourceTree = "<group>"; };
 		1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSUserNameViewController.m; sourceTree = "<group>"; };
-		1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSUserNameViewController.xib; sourceTree = "<group>"; };
 		1FE565B11DC050F4000AE61D /* FSSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSummaryViewController.h; sourceTree = "<group>"; };
 		1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSummaryViewController.m; sourceTree = "<group>"; };
-		1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSSummaryViewController.xib; sourceTree = "<group>"; };
 		1FE565FD1DC2E9C4000AE61D /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		1FE565FE1DC2E9C4000AE61D /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		1FE565FF1DC2E9C4000AE61D /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
@@ -1232,13 +1267,10 @@
 		1FF36E691D49F3A900EB3C93 /* OptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionViewController.xib; sourceTree = "<group>"; };
 		1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMeHeadTableViewCell.h; sourceTree = "<group>"; };
 		1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMeHeadTableViewCell.m; sourceTree = "<group>"; };
-		1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSMeHeadTableViewCell.xib; sourceTree = "<group>"; };
 		1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEditInformationViewController.h; sourceTree = "<group>"; };
 		1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEditInformationViewController.m; sourceTree = "<group>"; };
-		1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSEditInformationViewController.xib; sourceTree = "<group>"; };
 		1FF783A51D9923AF00618245 /* FSContenHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSContenHelpViewController.h; sourceTree = "<group>"; };
 		1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSContenHelpViewController.m; sourceTree = "<group>"; };
-		1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSContenHelpViewController.xib; sourceTree = "<group>"; };
 		1FF783B81D9A855A00618245 /* FSBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBigImageViewController.h; sourceTree = "<group>"; };
 		1FF783B91D9A855A00618245 /* FSBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBigImageViewController.m; sourceTree = "<group>"; };
 		1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSBigImageViewController.xib; sourceTree = "<group>"; };
@@ -2516,11 +2548,9 @@
 			isa = PBXGroup;
 			children = (
 				04D5BAA81E02A44E0041CCAC /* Assets.xcassets */,
-
 				1F7617811E0149B200EF5AD0 /* guide_3.png */,
 				1F76177F1E0149AD00EF5AD0 /* guide_2.png */,
 				1F76177D1E0149A400EF5AD0 /* guide_1.png */,
-
 				1F0219C71D798C8B003A8A11 /* areas.plist */,
 				1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */,
 				1F7EDE281D45E0D300ABED5D /* Info.plist */,
@@ -2585,7 +2615,7 @@
 				1F7EDE6E1D45EF6900ABED5D /* FSEquipmentViewController.xib */,
 				1FF783A51D9923AF00618245 /* FSContenHelpViewController.h */,
 				1FF783A61D9923AF00618245 /* FSContenHelpViewController.m */,
-				1FF783A71D9923AF00618245 /* FSContenHelpViewController.xib */,
+				1F7617D11E0390A900EF5AD0 /* FSContenHelpViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2628,13 +2658,13 @@
 			children = (
 				1FB4FBC41D954EE900E236CF /* FSSearchViewController.h */,
 				1FB4FBC51D954EE900E236CF /* FSSearchViewController.m */,
-				1FB4FBC61D954EE900E236CF /* FSSearchViewController.xib */,
+				1F7617E41E0391F000EF5AD0 /* FSSearchViewController.xib */,
 				1F7EDE7A1D45EF6900ABED5D /* FSHomeViewController.h */,
 				1F7EDE7B1D45EF6900ABED5D /* FSHomeViewController.m */,
 				1F7EDE7C1D45EF6900ABED5D /* FSHomeViewController.xib */,
 				1F0424951D5467940071A1D6 /* FSHomeDetailViewController.h */,
 				1F0424961D5467940071A1D6 /* FSHomeDetailViewController.m */,
-				1F0424971D5467940071A1D6 /* FSHomeDetailViewController.xib */,
+				1F7617EB1E03927F00EF5AD0 /* FSHomeDetailViewController.xib */,
 				1FF783B81D9A855A00618245 /* FSBigImageViewController.h */,
 				1FF783B91D9A855A00618245 /* FSBigImageViewController.m */,
 				1FF783BA1D9A855A00618245 /* FSBigImageViewController.xib */,
@@ -2705,24 +2735,24 @@
 			children = (
 				1F7EDE811D45EF6900ABED5D /* FSMeViewController.h */,
 				1F7EDE821D45EF6900ABED5D /* FSMeViewController.m */,
-				1F7EDE831D45EF6900ABED5D /* FSMeViewController.xib */,
+				1F7618071E0397C900EF5AD0 /* FSMeViewController.xib */,
 				1F4202211D48DB8300D3E6CB /* FSHomePageViewController.h */,
 				1F4202221D48DB8300D3E6CB /* FSHomePageViewController.m */,
 				1F4202231D48DB8300D3E6CB /* FSHomePageViewController.xib */,
 				1FF36E8D1D4B6BC500EB3C93 /* FSEditInformationViewController.h */,
 				1FF36E8E1D4B6BC500EB3C93 /* FSEditInformationViewController.m */,
-				1FF36E8F1D4B6BC500EB3C93 /* FSEditInformationViewController.xib */,
+				1F76180E1E03986A00EF5AD0 /* FSEditInformationViewController.xib */,
 				1FE565AC1DC041D5000AE61D /* FSUserNameViewController.h */,
 				1FE565AD1DC041D5000AE61D /* FSUserNameViewController.m */,
-				1FE565AE1DC041D5000AE61D /* FSUserNameViewController.xib */,
+				1F7618151E0398D000EF5AD0 /* FSUserNameViewController.xib */,
 				1FE0875E1D7D46D5007790E3 /* FSFindFriendViewController.h */,
 				1FE0875F1D7D46D5007790E3 /* FSFindFriendViewController.m */,
 				1FE565B11DC050F4000AE61D /* FSSummaryViewController.h */,
 				1FE565B21DC050F4000AE61D /* FSSummaryViewController.m */,
-				1FE565B31DC050F4000AE61D /* FSSummaryViewController.xib */,
+				1F76181C1E03990C00EF5AD0 /* FSSummaryViewController.xib */,
 				1FAB4C841DC829AC0037DBF9 /* FSChangeSexViewController.h */,
 				1FAB4C851DC829AC0037DBF9 /* FSChangeSexViewController.m */,
-				1FAB4C861DC829AC0037DBF9 /* FSChangeSexViewController.xib */,
+				1F7618231E03992500EF5AD0 /* FSChangeSexViewController.xib */,
 				1FAB4C891DC891CB0037DBF9 /* FSPraisedViewController.h */,
 				1FAB4C8A1DC891CB0037DBF9 /* FSPraisedViewController.m */,
 				1FAB4C8B1DC891CB0037DBF9 /* FSPraisedViewController.xib */,
@@ -2776,7 +2806,7 @@
 				1F0424651D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib */,
 				1FF36E6C1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.h */,
 				1FF36E6D1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.m */,
-				1FF36E6E1D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib */,
+				1F76182A1E03996100EF5AD0 /* FSMeHeadTableViewCell.xib */,
 				1F04246E1D530D970071A1D6 /* FSPictuerView.h */,
 				1F04246F1D530D970071A1D6 /* FSPictuerView.m */,
 				1F0424711D530DA80071A1D6 /* FSPictuerView.xib */,
@@ -2931,15 +2961,15 @@
 				1F0219BE1D798567003A8A11 /* AddreesPickerViewController.h */,
 				1F0219BF1D798567003A8A11 /* AddreesPickerViewController.m */,
 				1F0219C01D798567003A8A11 /* AddreesPickerViewController.xib */,
-				1F4201B41D47483D00D3E6CB /* FSLoginViewController.xib */,
+				1F7617F21E03932E00EF5AD0 /* FSLoginViewController.xib */,
 				1F7EDEB61D4624F100ABED5D /* FSLoginViewController.h */,
 				1F7EDEB71D4624F100ABED5D /* FSLoginViewController.m */,
 				1F0219C91D799027003A8A11 /* FSForgetViewController.h */,
 				1F0219CA1D799027003A8A11 /* FSForgetViewController.m */,
-				1F0219CB1D799027003A8A11 /* FSForgetViewController.xib */,
+				1F7617F91E03940600EF5AD0 /* FSForgetViewController.xib */,
 				1F4201D61D4888DD00D3E6CB /* FSImproveViewController.h */,
 				1F4201D71D4888DD00D3E6CB /* FSImproveViewController.m */,
-				1F4201D81D4888DD00D3E6CB /* FSImproveViewController.xib */,
+				1F7618001E03955800EF5AD0 /* FSImproveViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3068,10 +3098,10 @@
 				1F8011311DA8861500B320C7 /* FSReleasePictureViewController.xib */,
 				1F8011431DA8F89D00B320C7 /* FSAddTagViewController.h */,
 				1F8011441DA8F89D00B320C7 /* FSAddTagViewController.m */,
-				1F8011451DA8F89D00B320C7 /* FSAddTagViewController.xib */,
+				1F7617B51E038C7D00EF5AD0 /* FSAddTagViewController.xib */,
 				1F80114B1DAA481200B320C7 /* FSAddressViewController.h */,
 				1F80114C1DAA481200B320C7 /* FSAddressViewController.m */,
-				1F80114D1DAA481200B320C7 /* FSAddressViewController.xib */,
+				1F7617BC1E038F4500EF5AD0 /* FSAddressViewController.xib */,
 				1F8011A31DACE92600B320C7 /* FSWatermarkViewController.h */,
 				1F8011A41DACE92600B320C7 /* FSWatermarkViewController.m */,
 				1F8011A51DACE92600B320C7 /* FSWatermarkViewController.xib */,
@@ -3093,7 +3123,7 @@
 			children = (
 				1F80113E1DA8E2FD00B320C7 /* FSReleaseView.h */,
 				1F80113F1DA8E2FD00B320C7 /* FSReleaseView.m */,
-				1F8011411DA8E30800B320C7 /* FSReleaseView.xib */,
+				1F7617C31E038F7E00EF5AD0 /* FSReleaseView.xib */,
 				1F8011501DAA555E00B320C7 /* FSSearchBar.h */,
 				1F8011511DAA555E00B320C7 /* FSSearchBar.m */,
 				1F8011531DAB493B00B320C7 /* FSLocationTableViewCell.h */,
@@ -3152,7 +3182,7 @@
 				1FE565011DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib */,
 				1FE565041DB855B9000AE61D /* FSTagSearchOneTableViewCell.h */,
 				1FE565051DB855B9000AE61D /* FSTagSearchOneTableViewCell.m */,
-				1FE565061DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib */,
+				1F7617DF1E03918600EF5AD0 /* FSTagSearchOneTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3382,7 +3412,7 @@
 			children = (
 				1F8011341DA8902000B320C7 /* FSTipView.h */,
 				1F8011351DA8902000B320C7 /* FSTipView.m */,
-				1F8011371DA8902C00B320C7 /* FSTipView.xib */,
+				1F7617CA1E03904700EF5AD0 /* FSTipView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3597,43 +3627,44 @@
 				1FC536E11DEEC5020034CC1E /* FSHistoryCollectionViewCell.xib in Resources */,
 				0436AEC61DACE30C001E6808 /* hudsonBackground.png in Resources */,
 				1F9FA4911DD5713800A1806A /* FSReportViewController.xib in Resources */,
-				1FB4FBC81D954EE900E236CF /* FSSearchViewController.xib in Resources */,
+				1F7617E21E0391F000EF5AD0 /* FSSearchViewController.xib in Resources */,
 				1FE565501DBDF0C4000AE61D /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				1FF36E701D49FDCB00EB3C93 /* FSMeHeadTableViewCell.xib in Resources */,
+				1F7618281E03996100EF5AD0 /* FSMeHeadTableViewCell.xib in Resources */,
 				1FE5655A1DBDF0C4000AE61D /* read_me.txt in Resources */,
-				1F8011471DA8F89D00B320C7 /* FSAddTagViewController.xib in Resources */,
-				1F4201B51D47483D00D3E6CB /* FSLoginViewController.xib in Resources */,
+				1F7617B31E038C7D00EF5AD0 /* FSAddTagViewController.xib in Resources */,
+				1F7617F01E03932E00EF5AD0 /* FSLoginViewController.xib in Resources */,
 				1F7617821E0149B200EF5AD0 /* guide_3.png in Resources */,
 				1F3401F61DCC2232009B9C32 /* FSNewFansViewController.xib in Resources */,
 				1F3402051DCC634E009B9C32 /* FSPrasiedTableViewCell.xib in Resources */,
 				0436AECB1DACE30C001E6808 /* nashvilleMap.png in Resources */,
 				0436AEC01DACE30C001E6808 /* earlybirdOverlayMap.png in Resources */,
+				1F7617E11E03918600EF5AD0 /* FSTagSearchOneTableViewCell.xib in Resources */,
 				1FD5B0401DE43B4A004929F0 /* WMPlayer.bundle in Resources */,
 				0436AED81DACE30C001E6808 /* toasterSoftLight.png in Resources */,
 				0436AEC71DACE30C001E6808 /* hudsonMap.png in Resources */,
 				0436AECC1DACE30C001E6808 /* overlayMap.png in Resources */,
 				1F42021B1D48D4A900D3E6CB /* FSSettingViewController.xib in Resources */,
-				1FF783A91D9923AF00618245 /* FSContenHelpViewController.xib in Resources */,
+				1F7617CF1E0390A900EF5AD0 /* FSContenHelpViewController.xib in Resources */,
 				1FF783BC1D9A855A00618245 /* FSBigImageViewController.xib in Resources */,
 				1FDE28E41D928F0600566A73 /* FSUserCollectionViewCell.xib in Resources */,
 				1F0424671D51F40F0071A1D6 /* FSZuoPinTableViewCell.xib in Resources */,
 				1F42018A1D47389700D3E6CB /* InfoPlist.strings in Resources */,
 				0436AEBD1DACE30C001E6808 /* earlybirdBlowout.png in Resources */,
-				1F4201DA1D4888DD00D3E6CB /* FSImproveViewController.xib in Resources */,
+				1F7617FE1E03955800EF5AD0 /* FSImproveViewController.xib in Resources */,
 				0436AECE1DACE30C001E6808 /* sierraMap.png in Resources */,
 				1FAB4C981DCB1E420037DBF9 /* FSMessageViewController.xib in Resources */,
 				48911F8E1D9177220042B96F /* FSListUserTableViewCell.xib in Resources */,
 				0436AEB81DACE30C001E6808 /* brannanBlowout.png in Resources */,
 				1FE5655B1DBDF0C4000AE61D /* README.txt in Resources */,
 				0436AEB71DACE30C001E6808 /* blackboard1024.png in Resources */,
-				1F0219CD1D799027003A8A11 /* FSForgetViewController.xib in Resources */,
+				1F7617F71E03940600EF5AD0 /* FSForgetViewController.xib in Resources */,
 				1FE565531DBDF0C4000AE61D /* WeiboSDK.bundle in Resources */,
 				0436AED11DACE30C001E6808 /* sutroCurves.png in Resources */,
 				1F7EDE991D45EF6900ABED5D /* FSHomeViewController.xib in Resources */,
 				0436AEDC1DACE30C001E6808 /* waldenMap.png in Resources */,
 				1F04248F1D542FF30071A1D6 /* FSHomePictuerView.xib in Resources */,
 				1F8011571DAB493B00B320C7 /* FSLocationTableViewCell.xib in Resources */,
-				1F80114F1DAA481200B320C7 /* FSAddressViewController.xib in Resources */,
+				1F7617BA1E038F4500EF5AD0 /* FSAddressViewController.xib in Resources */,
 				1F0424941D543CCB0071A1D6 /* FSHomeVideoView.xib in Resources */,
 				04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */,
 				0436AED41DACE30C001E6808 /* toasterColorShift.png in Resources */,
@@ -3650,19 +3681,18 @@
 				0436AED21DACE30C001E6808 /* sutroEdgeBurn.png in Resources */,
 				1F76177E1E0149A400EF5AD0 /* guide_1.png in Resources */,
 				1F0424511D51F3C30071A1D6 /* LICENSE in Resources */,
-				1F7EDE9B1D45EF6900ABED5D /* FSMeViewController.xib in Resources */,
+				1F7618051E0397C900EF5AD0 /* FSMeViewController.xib in Resources */,
 				0436AEC21DACE30C001E6808 /* hefeGradientMap.png in Resources */,
 				0436AECA1DACE30C001E6808 /* lomoMap.png in Resources */,
-				1FE565B01DC041D5000AE61D /* FSUserNameViewController.xib in Resources */,
+				1F7618131E0398D000EF5AD0 /* FSUserNameViewController.xib in Resources */,
 				0436AECD1DACE30C001E6808 /* riseMap.png in Resources */,
 				0436AED61DACE30C001E6808 /* toasterMetal.png in Resources */,
 				1F3401FB1DCC226B009B9C32 /* FSRecivedPriaseViewController.xib in Resources */,
 				0436AEB91DACE30C001E6808 /* brannanContrast.png in Resources */,
 				0436AEB51DACE30C001E6808 /* 1977map.png in Resources */,
-				1FE565081DB855B9000AE61D /* FSTagSearchOneTableViewCell.xib in Resources */,
 				1FF36E6B1D49F3A900EB3C93 /* OptionViewController.xib in Resources */,
 				1FDE28E91D93827D00566A73 /* FSFoundStuffTableViewCell.xib in Resources */,
-				1F8011381DA8902C00B320C7 /* FSTipView.xib in Resources */,
+				1F7617C81E03904700EF5AD0 /* FSTipView.xib in Resources */,
 				0436AEDA1DACE30C001E6808 /* valenciaMap.png in Resources */,
 				1F0219C81D798C8B003A8A11 /* areas.plist in Resources */,
 				1F8011A71DACE92600B320C7 /* FSWatermarkViewController.xib in Resources */,
@@ -3672,7 +3702,7 @@
 				1F7EDE971D45EF6900ABED5D /* FSFoundViewController.xib in Resources */,
 				1F3402001DCC2296009B9C32 /* FSCommentViewController.xib in Resources */,
 				1FE564F41DB5F95C000AE61D /* FSZuoPinGroupTableViewCell.xib in Resources */,
-				1FF36E911D4B6BC500EB3C93 /* FSEditInformationViewController.xib in Resources */,
+				1F76180C1E03986A00EF5AD0 /* FSEditInformationViewController.xib in Resources */,
 				1FE565031DB77DC0000AE61D /* FSTagSearchCollectionViewCell.xib in Resources */,
 				0436AEC41DACE30C001E6808 /* hefeMetal.png in Resources */,
 				1FE564D31DB0DC6C000AE61D /* FSProgressView.xib in Resources */,
@@ -3682,7 +3712,7 @@
 				042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */,
 				1F32F8C21DD1775B000E2FF6 /* FSShareViewController.xib in Resources */,
 				0436AED71DACE30C001E6808 /* toasterOverlayMapWarm.png in Resources */,
-				1FE565B51DC050F4000AE61D /* FSSummaryViewController.xib in Resources */,
+				1F76181A1E03990C00EF5AD0 /* FSSummaryViewController.xib in Resources */,
 				1F8011331DA8861500B320C7 /* FSReleasePictureViewController.xib in Resources */,
 				1F42018D1D47389C00D3E6CB /* Localizable.strings in Resources */,
 				0436AEC91DACE30C001E6808 /* kelvinMap.png in Resources */,
@@ -3692,7 +3722,7 @@
 				1FDE28D71D92823E00566A73 /* FSTagTableViewCell.xib in Resources */,
 				1FE5655E1DBDF0C4000AE61D /* UMSocialSDKResources.bundle in Resources */,
 				1FE564C61DAF84A7000AE61D /* FSReportView.xib in Resources */,
-				1F8011421DA8E30800B320C7 /* FSReleaseView.xib in Resources */,
+				1F7617C11E038F7E00EF5AD0 /* FSReleaseView.xib in Resources */,
 				1FDE28DC1D92864300566A73 /* FSTagCollectionViewCell.xib in Resources */,
 				1FE564EF1DB5B95F000AE61D /* FSStuffCountTableViewCell.xib in Resources */,
 				0436AEC31DACE30C001E6808 /* hefeMap.png in Resources */,
@@ -3701,7 +3731,7 @@
 				1FE564F91DB5FC61000AE61D /* FSStuffCollectionViewCell.xib in Resources */,
 				1FF36E661D49F3A100EB3C93 /* ChanePwdViewController.xib in Resources */,
 				1FE564FE1DB75DBE000AE61D /* FSTagSearchViewController.xib in Resources */,
-				1F0424991D5467940071A1D6 /* FSHomeDetailViewController.xib in Resources */,
+				1F7617E91E03927F00EF5AD0 /* FSHomeDetailViewController.xib in Resources */,
 				0436AEB41DACE30C001E6808 /* 1977blowout.png in Resources */,
 				1F04249E1D5479C90071A1D6 /* FSCommendTableViewCell.xib in Resources */,
 				0436AEC51DACE30C001E6808 /* hefeSoftLight.png in Resources */,
@@ -3709,7 +3739,7 @@
 				1F0219C21D798567003A8A11 /* AddreesPickerViewController.xib in Resources */,
 				1FAB4C8D1DC891CB0037DBF9 /* FSPraisedViewController.xib in Resources */,
 				1FF36E641D49F3A100EB3C93 /* AboutViewController.xib in Resources */,
-				1FAB4C881DC829AC0037DBF9 /* FSChangeSexViewController.xib in Resources */,
+				1F7618211E03992500EF5AD0 /* FSChangeSexViewController.xib in Resources */,
 				1F84E9641DD0784700C71662 /* FSTipNumberView.xib in Resources */,
 				1F7EDEF21D4700E500ABED5D /* IQKeyboardManager.bundle in Resources */,
 			);
@@ -4089,6 +4119,174 @@
 				1F4201911D4738AB00D3E6CB /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		1F7617B51E038C7D00EF5AD0 /* FSAddTagViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617B41E038C7D00EF5AD0 /* Base */,
+				1F7617B71E038C8F00EF5AD0 /* en */,
+				1F7617B91E038C9500EF5AD0 /* zh-Hans */,
+			);
+			name = FSAddTagViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617BC1E038F4500EF5AD0 /* FSAddressViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617BB1E038F4500EF5AD0 /* Base */,
+				1F7617BE1E038F4700EF5AD0 /* en */,
+				1F7617C01E038F4900EF5AD0 /* zh-Hans */,
+			);
+			name = FSAddressViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617C31E038F7E00EF5AD0 /* FSReleaseView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617C21E038F7E00EF5AD0 /* Base */,
+				1F7617C51E038F8000EF5AD0 /* en */,
+				1F7617C71E038F8200EF5AD0 /* zh-Hans */,
+			);
+			name = FSReleaseView.xib;
+			sourceTree = "<group>";
+		};
+		1F7617CA1E03904700EF5AD0 /* FSTipView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617C91E03904700EF5AD0 /* Base */,
+				1F7617CC1E03904A00EF5AD0 /* en */,
+				1F7617CE1E03904C00EF5AD0 /* zh-Hans */,
+			);
+			name = FSTipView.xib;
+			sourceTree = "<group>";
+		};
+		1F7617D11E0390A900EF5AD0 /* FSContenHelpViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617D01E0390A900EF5AD0 /* Base */,
+				1F7617D31E0390AB00EF5AD0 /* en */,
+				1F7617D51E0390AC00EF5AD0 /* zh-Hans */,
+			);
+			name = FSContenHelpViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617DF1E03918600EF5AD0 /* FSTagSearchOneTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617E01E03918600EF5AD0 /* en */,
+			);
+			name = FSTagSearchOneTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		1F7617E41E0391F000EF5AD0 /* FSSearchViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617E31E0391F000EF5AD0 /* Base */,
+				1F7617E61E03920200EF5AD0 /* en */,
+				1F7617E81E03920500EF5AD0 /* zh-Hans */,
+			);
+			name = FSSearchViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617EB1E03927F00EF5AD0 /* FSHomeDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617EA1E03927F00EF5AD0 /* Base */,
+				1F7617ED1E03928200EF5AD0 /* en */,
+				1F7617EF1E03928300EF5AD0 /* zh-Hans */,
+			);
+			name = FSHomeDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617F21E03932E00EF5AD0 /* FSLoginViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617F11E03932E00EF5AD0 /* Base */,
+				1F7617F41E03933400EF5AD0 /* en */,
+				1F7617F61E03933700EF5AD0 /* zh-Hans */,
+			);
+			name = FSLoginViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7617F91E03940600EF5AD0 /* FSForgetViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617F81E03940600EF5AD0 /* Base */,
+				1F7617FB1E03940C00EF5AD0 /* en */,
+				1F7617FD1E03940E00EF5AD0 /* zh-Hans */,
+			);
+			name = FSForgetViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7618001E03955800EF5AD0 /* FSImproveViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7617FF1E03955800EF5AD0 /* Base */,
+				1F7618021E03973900EF5AD0 /* en */,
+				1F7618041E03973A00EF5AD0 /* zh-Hans */,
+			);
+			name = FSImproveViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7618071E0397C900EF5AD0 /* FSMeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7618061E0397C900EF5AD0 /* Base */,
+				1F7618091E0397CB00EF5AD0 /* en */,
+				1F76180B1E0397CC00EF5AD0 /* zh-Hans */,
+			);
+			name = FSMeViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F76180E1E03986A00EF5AD0 /* FSEditInformationViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F76180D1E03986A00EF5AD0 /* Base */,
+				1F7618101E03986D00EF5AD0 /* en */,
+				1F7618121E03986E00EF5AD0 /* zh-Hans */,
+			);
+			name = FSEditInformationViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7618151E0398D000EF5AD0 /* FSUserNameViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7618141E0398D000EF5AD0 /* Base */,
+				1F7618171E0398D300EF5AD0 /* en */,
+				1F7618191E0398D700EF5AD0 /* zh-Hans */,
+			);
+			name = FSUserNameViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F76181C1E03990C00EF5AD0 /* FSSummaryViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F76181B1E03990C00EF5AD0 /* Base */,
+				1F76181E1E03990E00EF5AD0 /* en */,
+				1F7618201E03990F00EF5AD0 /* zh-Hans */,
+			);
+			name = FSSummaryViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F7618231E03992500EF5AD0 /* FSChangeSexViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7618221E03992500EF5AD0 /* Base */,
+				1F7618251E03992900EF5AD0 /* en */,
+				1F7618271E03992A00EF5AD0 /* zh-Hans */,
+			);
+			name = FSChangeSexViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F76182A1E03996100EF5AD0 /* FSMeHeadTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F7618291E03996100EF5AD0 /* Base */,
+				1F76182C1E03996400EF5AD0 /* en */,
+				1F76182E1E03996500EF5AD0 /* zh-Hans */,
+			);
+			name = FSMeHeadTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		1F7EDE251D45E0D300ABED5D /* LaunchScreen.storyboard */ = {

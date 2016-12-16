@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "1.打开设置中的无线局域网"; ObjectID = "FeW-MV-Btk"; */
+"FeW-MV-Btk.text" = "1. Open the Settings of the wireless local area network (LAN)";
+
+/* Class = "UILabel"; text = "3.回到App完成连接"; ObjectID = "W3v-VH-GYH"; */
+"W3v-VH-GYH.text" = "3. The complete connection back to the App";
+
+/* Class = "UILabel"; text = "请到系统界面进行Wi-Fi连接"; ObjectID = "cYj-uw-hE8"; */
+"cYj-uw-hE8.text" = "Please go to the system interface for wi-fi connection";
+
+/* Class = "UILabel"; text = "2.选择以\"Fifish\"开头的热点"; ObjectID = "oM5-jb-429"; */
+"oM5-jb-429.text" = "2. Choose to \ "Fifish \" at the beginning of the hot spots";

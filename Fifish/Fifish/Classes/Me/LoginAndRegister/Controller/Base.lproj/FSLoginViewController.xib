@@ -56,7 +56,7 @@
                     <rect key="frame" x="113" y="80" width="149" height="23"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="La4-SU-CuI" userLabel="注册">
-                    <rect key="frame" x="375" y="118" width="375" height="277"/>
+                    <rect key="frame" x="375" y="148" width="375" height="277"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tf_bg" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-TJ-inv">
                             <rect key="frame" x="23" y="6.5" width="329" height="44"/>
@@ -143,7 +143,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B62-Sc-ulc" userLabel="手机号登录">
-                    <rect key="frame" x="0.0" y="118" width="375" height="233.5"/>
+                    <rect key="frame" x="0.0" y="148" width="375" height="233.5"/>
                     <subviews>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-Aa-KVF" userLabel="白色线1">
                             <rect key="frame" x="79" y="49.5" width="239" height="1"/>
@@ -353,7 +353,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="B62-Sc-ulc" firstAttribute="top" secondItem="ita-gq-Vzn" secondAttribute="bottom" constant="15" id="2q5-rO-pvq"/>
+                <constraint firstItem="B62-Sc-ulc" firstAttribute="top" secondItem="ita-gq-Vzn" secondAttribute="bottom" constant="45" id="2q5-rO-pvq"/>
                 <constraint firstItem="QOa-TJ-inv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.066" id="37H-bP-dkw"/>
                 <constraint firstItem="La4-SU-CuI" firstAttribute="width" secondItem="B62-Sc-ulc" secondAttribute="width" id="3f3-bO-zPb"/>
                 <constraint firstItem="ita-gq-Vzn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3nO-eN-tOv"/>

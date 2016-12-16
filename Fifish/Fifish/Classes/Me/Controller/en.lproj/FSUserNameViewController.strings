@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "昵称"; ObjectID = "fO5-qN-OEx"; */
+"fO5-qN-OEx.text" = "nickname";
+
+/* Class = "UILabel"; text = "4-20个字符，可由中英文、数字组成"; ObjectID = "zkg-XW-0AK"; */
+"zkg-XW-0AK.text" = "4-20 characters, may consist of both Chinese and English, Numbers";

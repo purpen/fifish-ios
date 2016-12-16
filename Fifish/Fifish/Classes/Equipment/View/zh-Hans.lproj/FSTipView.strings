@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "1.打开设置中的无线局域网"; ObjectID = "FeW-MV-Btk"; */
+"FeW-MV-Btk.text" = "1.打开设置中的无线局域网";
+
+/* Class = "UILabel"; text = "3.回到App完成连接"; ObjectID = "W3v-VH-GYH"; */
+"W3v-VH-GYH.text" = "3.回到App完成连接";
+
+/* Class = "UILabel"; text = "请到系统界面进行Wi-Fi连接"; ObjectID = "cYj-uw-hE8"; */
+"cYj-uw-hE8.text" = "请到系统界面进行Wi-Fi连接";
+
+/* Class = "UILabel"; text = "2.选择以\"Fifish\"开头的热点"; ObjectID = "oM5-jb-429"; */
+"oM5-jb-429.text" = "2.选择以\"Fifish\"开头的热点";
