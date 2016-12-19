@@ -146,7 +146,7 @@
         [defaults setObject:token forKey:@"token"];
         [defaults synchronize];
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Login successful", nil) maskType:SVProgressHUDMaskTypeNone];
-        if (first_login == 0) {
+        if (first_login == 1) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
@@ -291,7 +291,6 @@
         NSLog(@"first_login %ld",(long)first_login);
         if (first_login == 0) {
             FSImproveViewController *vc = [[FSImproveViewController alloc] init];
-            vc.type = YES;
             [self.navigationController pushViewController:vc animated:YES];
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];

@@ -12,6 +12,12 @@ PODS:
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - pop (1.0.9)
+  - ReactiveCocoa (2.1.8):
+    - ReactiveCocoa/Core (= 2.1.8)
+    - ReactiveCocoa/no-arc (= 2.1.8)
+  - ReactiveCocoa/Core (2.1.8):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.1.8)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -25,6 +31,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - pop (~> 1.0)
+  - ReactiveCocoa (~> 2.1.8)
   - SDWebImage (~> 3.8.1)
   - UICollectionViewLeftAlignedLayout
 
@@ -37,9 +44,10 @@ SPEC CHECKSUMS:
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: a255f385be79a208f978ae6ae6415dc57ea489d8
+PODFILE CHECKSUM: a8d2ceaf4eee0c067c629ca3fd182b0b48b4c484
 
 COCOAPODS: 1.1.1

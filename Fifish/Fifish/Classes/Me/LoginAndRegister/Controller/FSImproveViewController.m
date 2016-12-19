@@ -15,8 +15,9 @@
 #import "AddreesPickerViewController.h"
 #import "UIImageView+WebCache.h"
 #import "FSUserModel2.h"
+#import "ReactiveCocoa.h"
 
-@interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+@interface FSImproveViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *head_bg_view;
 @property (weak, nonatomic) IBOutlet UIImageView *head_bg_imageView;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
@@ -59,13 +60,22 @@
     [self.head_bg_imageView addGestureRecognizer:singleRecognizer];
     self.head_bg_imageView.userInteractionEnabled = YES;
     
-    if (self.userNameTF.text.length != 0) {
-        self.sureBtn.enabled = YES;
-    }
-    [self.sureBtn addTarget:self action:@selector(sureBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [[self.sureBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self sureBtnClick:self.sureBtn];
+    }];
     
-    self.userNameTF.delegate = self;
+    [[self.userNameTF.rac_textSignal filter:^BOOL(NSString *value) {
+        self.sureBtn.enabled = NO;
+        return value.length > 0;
+    }] subscribeNext:^(id x) {
+        self.sureBtn.enabled = YES;
+    }];
 }
+
+-(BOOL)isValidUserText:(NSString*)text{
+    return text.length > 0;
+}
+
 - (IBAction)clickAdreesBtn:(id)sender {
     self.addreesPickerVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     
@@ -79,23 +89,8 @@
     [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (textField.text.length == 0) {
-        self.sureBtn.enabled = NO;
-    }else{
-        self.sureBtn.enabled = YES;
-        self.type = NO;
-    }
-    return YES;
-}
-
 
 -(void)sureBtnClick:(UIButton*)sender{
-    if (self.type) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        return;
-    }
-    [SVProgressHUD show];
     //网络请求
     FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
                                                                                         @"username" : self.userNameTF.text,
@@ -150,7 +145,6 @@
 
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    self.type = NO;
     UIImage * editedImg = [info objectForKey:UIImagePickerControllerEditedImage];
     NSData * iconData = UIImageJPEGRepresentation([UIImage fixOrientation:editedImg] , 1);
     FBRequest *request = [FBAPI getWithUrlString:@"/upload/avatarToken" requestDictionary:nil delegate:self];

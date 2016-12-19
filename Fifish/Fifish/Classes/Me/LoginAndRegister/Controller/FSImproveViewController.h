@@ -10,7 +10,4 @@
 
 @interface FSImproveViewController : UIViewController
 
-/**  */
-@property (nonatomic, assign) BOOL type;
-
 @end

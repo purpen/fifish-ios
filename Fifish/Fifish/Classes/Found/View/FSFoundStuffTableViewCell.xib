@@ -158,7 +158,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50J-mp-S8l">
-                        <rect key="frame" x="284" y="14.5" width="75" height="27.5"/>
+                        <rect key="frame" x="280" y="14.5" width="75" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27.5" id="ELN-bu-WcM"/>
                             <constraint firstAttribute="width" constant="75" id="GOZ-Gb-1s3"/>
@@ -188,7 +188,7 @@
                     <constraint firstAttribute="trailing" secondItem="KDT-IC-oV5" secondAttribute="trailing" id="DZk-Mr-0n2"/>
                     <constraint firstItem="M9O-EF-VPs" firstAttribute="top" secondItem="hCc-Rs-QJx" secondAttribute="bottom" id="GeG-bY-2PW"/>
                     <constraint firstItem="KDT-IC-oV5" firstAttribute="top" secondItem="M9O-EF-VPs" secondAttribute="bottom" id="MSe-RM-ZoB"/>
-                    <constraint firstAttribute="trailing" secondItem="50J-mp-S8l" secondAttribute="trailing" constant="11" id="Thh-BS-s4T"/>
+                    <constraint firstAttribute="trailing" secondItem="50J-mp-S8l" secondAttribute="trailing" constant="15" id="Thh-BS-s4T"/>
                     <constraint firstItem="KDT-IC-oV5" firstAttribute="leading" secondItem="kb6-aT-ufJ" secondAttribute="leading" id="YBJ-Yf-il0"/>
                     <constraint firstItem="2C1-jy-QPJ" firstAttribute="leading" secondItem="r8q-rU-Gnb" secondAttribute="leading" constant="-5" id="YEW-gV-vHr"/>
                     <constraint firstItem="50J-mp-S8l" firstAttribute="centerY" secondItem="r8q-rU-Gnb" secondAttribute="centerY" id="Yiv-t3-Mk0"/>

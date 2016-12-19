@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewHeight = 176;
+    self.viewHeight = 132;
 }
 
 - (IBAction)reportClick:(id)sender {
@@ -38,7 +38,7 @@
         if (self.isMineStuff) {
             self.firstViewBottomSapce.constant = -self.viewHeight;
         } else {
-            self.haChBottomSpace.constant = 132;
+            self.haChBottomSpace.constant = 88;
         }
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {

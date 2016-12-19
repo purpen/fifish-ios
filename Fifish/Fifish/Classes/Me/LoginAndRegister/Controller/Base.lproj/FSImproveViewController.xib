@@ -208,8 +208,8 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="GFx-z4-h84"/>
                     <exclude reference="mqA-tB-Y2j"/>
+                    <exclude reference="GFx-z4-h84"/>
                 </mask>
             </variation>
         </view>
