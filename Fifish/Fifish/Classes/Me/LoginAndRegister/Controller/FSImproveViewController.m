@@ -60,8 +60,21 @@
     [self.head_bg_imageView addGestureRecognizer:singleRecognizer];
     self.head_bg_imageView.userInteractionEnabled = YES;
     
-    [[self.sureBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self sureBtnClick:self.sureBtn];
+
+    [[[self.sureBtn rac_signalForControlEvents:UIControlEventTouchUpInside] flattenMap:^RACStream *(id value) {
+        return [self signInSignal];
+    }] subscribeNext:^(NSNumber *x) {
+        BOOL success = [x boolValue];
+        if (success) {
+            [SVProgressHUD dismiss];
+            FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
+            model.username = self.userNameTF.text;
+            model.job = self.professionalTF.text;
+            model.zone = self.addressTF.text;
+            model.isLogin = YES;
+            [model saveOrUpdate];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
     
     [[self.userNameTF.rac_textSignal filter:^BOOL(NSString *value) {
@@ -69,6 +82,24 @@
         return value.length > 0;
     }] subscribeNext:^(id x) {
         self.sureBtn.enabled = YES;
+    }];
+}
+
+-(RACSignal*)signInSignal{
+    [SVProgressHUD show];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
+                                                                                          @"username" : self.userNameTF.text,
+                                                                                          @"job" : self.professionalTF.text,
+                                                                                          @"zone" : self.addressTF.text
+                                                                                          } delegate:self];
+        [request startRequestSuccess:^(FBRequest *request, id result) {
+            [subscriber sendNext:@(YES)];
+            [subscriber sendCompleted];
+        } failure:^(FBRequest *request, NSError *error) {
+            [SVProgressHUD dismiss];
+        }];
+        return nil;
     }];
 }
 
@@ -89,28 +120,6 @@
     [self.addreesPickerVC dismissViewControllerAnimated:NO completion:nil];
 }
 
-
--(void)sureBtnClick:(UIButton*)sender{
-    //网络请求
-    FBRequest *request = [FBAPI postWithUrlString:@"/me/settings" requestDictionary:@{
-                                                                                        @"username" : self.userNameTF.text,
-                                                                                        @"job" : self.professionalTF.text,
-                                                                                        @"zone" : self.addressTF.text
-                                                                                        } delegate:self];
-    [request startRequestSuccess:^(FBRequest *request, id result) {
-        [SVProgressHUD dismiss];
-        FSUserModel2 *model = [[FSUserModel2 findAll] lastObject];
-        model.username = self.userNameTF.text;
-        model.job = self.professionalTF.text;
-        model.zone = self.addressTF.text;
-        model.isLogin = YES;
-        [model saveOrUpdate];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } failure:^(FBRequest *request, NSError *error) {
-        [SVProgressHUD dismiss];
-    }];
-    
-}
 
 -(void)singleTap:(UITapGestureRecognizer*)recognizer{
     
