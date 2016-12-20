@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "FSRulersScrollView.h"
 #import "FSSettingManager.h"
+#import "FSRecordView.h"/*录制按钮view*/
 
 #import "RovInfo.h"
 @interface FSVideoDepthRulerView()
@@ -29,7 +30,7 @@
 
 @property (nonatomic,strong)UIView              * currentLineView;//标识线
 
-
+@property (nonatomic,strong)FSRecordView        * RecordView;//录制按钮view
 
 @end
 
@@ -64,22 +65,28 @@
     [self.leftRulersScrowView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(20);
         make.bottom.mas_equalTo (self.mas_bottom).offset(-20);
-        make.width.mas_equalTo(@30);
-//        make.centerX.equalTo(self.mas_centerX).offset(-150);
+        make.width.mas_equalTo(@60);
         make.left.mas_equalTo(self.depthBtn.mas_right).offset(5);
     }];
     
     [self addSubview:self.currentLineView];
     [self.currentLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.leftRulersScrowView.mas_centerY);
-        make.right.equalTo(self.leftRulersScrowView.mas_right);
+        make.left.equalTo(self.leftRulersScrowView.mas_left);
         make.size.mas_equalTo(CGSizeMake(20, 2));
+    }];
+    
+    [self addSubview:self.RecordView];
+    [self.RecordView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(70, 110));
+        make.right.equalTo(self.mas_right).offset(-20);
+        make.centerY.equalTo(self.mas_centerY);
     }];
 }
 
 -(FSRulersScrollView *)leftRulersScrowView{
     if (!_leftRulersScrowView) {
-        _leftRulersScrowView = [[FSRulersScrollView alloc] initWithMinValue:0 WithMaxValue:100.0 WithStpe:3.f WithFrame:CGRectMake(0, 0, 30, self.frame.size.height-40) WithRulerType:RulerLeftType];
+        _leftRulersScrowView = [[FSRulersScrollView alloc] initWithMinValue:0 WithMaxValue:100.0 WithStpe:3.f WithFrame:CGRectMake(0, 0, 60, self.frame.size.height-40) WithRulerType:RulerLeftType];
         _leftRulersScrowView.backgroundColor =[UIColor clearColor];
     }
     return _leftRulersScrowView;
@@ -124,6 +131,16 @@
     return _currentLineView;
 }
 
+//录制拍照VIEW
+-(FSRecordView *)RecordView{
+    if (!_RecordView) {
+        
+        _RecordView = [[FSRecordView alloc] init];
+    
+    }
+    
+    return _RecordView;
+}
 -(void)updataUI{
     //英尺为单位
     if ([FSSettingManager getDeepUnit]==0) {

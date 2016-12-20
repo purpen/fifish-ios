@@ -7,6 +7,7 @@
 //
 
 #import "FSFSVideoLiveStatusBar.h"
+#import "FSRecordTimeView.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
 
@@ -28,6 +29,7 @@
 
 @property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
 
+@property (nonatomic ,strong) FSRecordTimeView  * RecordTimeView;//录制时间
 
 @end
 
@@ -50,6 +52,12 @@
             make.right.equalTo(self.mas_right).offset(-10);
             make.centerY.equalTo(self.mas_centerY);
             
+        }];
+        
+        [self addSubview:self.RecordTimeView];
+        [self.RecordTimeView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.mas_centerY);
+            make.centerX.equalTo(self.mas_centerX);
         }];
         
         [self addSubview:self.batteryView];
@@ -105,6 +113,16 @@
         _batteryView = [[FSBatteryView alloc] init];
     }
     return _batteryView;
+}
+
+//录制时间view
+-(FSRecordTimeView *)RecordTimeView{
+    if (!_RecordTimeView) {
+        
+        _RecordTimeView =[[FSRecordTimeView alloc] init];
+        
+    }
+    return _RecordTimeView;
 }
 
 -(UILabel *)FifishBattery{

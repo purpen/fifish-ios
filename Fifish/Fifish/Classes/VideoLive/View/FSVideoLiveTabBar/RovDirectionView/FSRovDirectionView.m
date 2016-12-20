@@ -71,7 +71,7 @@
         
         
 //        测试旋转方法
-//        [self testMethed];
+        [self testMethed];
         
 //        监听ROV 航向
 //        [self ObserverWithOSDCourse];
@@ -104,40 +104,40 @@
         UILabel * Nlab =[[UILabel alloc] init];
         Nlab.textColor = [UIColor whiteColor];
         Nlab.font = [UIFont systemFontOfSize:10];
-        Nlab.text = @"N";
+        Nlab.text = @"000";
         [_directionLabView addSubview:Nlab];
         [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_directionLabView.mas_top).offset(5);
-            make.centerX.equalTo(_directionLabView.mas_centerX);
+            make.top.equalTo(self->_directionLabView.mas_top).offset(5);
+            make.centerX.equalTo(self->_directionLabView.mas_centerX);
         }];
         UILabel * Elab =[[UILabel alloc] init];
         Elab.textColor = [UIColor whiteColor];
         Elab.font = [UIFont systemFontOfSize:10];
-        Elab.text = @"E";
+        Elab.text = @"90";
         [_directionLabView addSubview:Elab];
         [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(_directionLabView.mas_right).offset(-5);
-            make.centerY.equalTo(_directionLabView.mas_centerY);
+            make.right.equalTo(self->_directionLabView.mas_right).offset(-5);
+            make.centerY.equalTo(self->_directionLabView.mas_centerY);
         }];
 
         UILabel * Slab =[[UILabel alloc] init];
         Slab.textColor = [UIColor whiteColor];
         Slab.font = [UIFont systemFontOfSize:10];
-        Slab.text = @"S";
+        Slab.text = @"180";
         [_directionLabView addSubview:Slab];
         [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(_directionLabView.mas_bottom).offset(-5);
-            make.centerX.equalTo(_directionLabView.mas_centerX);
+            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-5);
+            make.centerX.equalTo(self->_directionLabView.mas_centerX);
         }];
         
         UILabel * Wlab =[[UILabel alloc] init];
         Wlab.textColor = [UIColor whiteColor];
         Wlab.font = [UIFont systemFontOfSize:10];
-        Wlab.text = @"W";
+        Wlab.text = @"270";
         [_directionLabView addSubview:Wlab];
         [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_directionLabView.mas_left).offset(5);
-            make.centerY.equalTo(_directionLabView.mas_centerY);
+            make.left.equalTo(self->_directionLabView.mas_left).offset(5);
+            make.centerY.equalTo(self->_directionLabView.mas_centerY);
         }];
     }
     

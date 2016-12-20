@@ -430,5 +430,7 @@ void copyDecodeFrame(unsigned char * src, unsigned char * dist, int linesize, in
         av_frame_free(&_pFrame);
         _pFrame = NULL;
     }
+    
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

@@ -52,6 +52,7 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
         self.SelfHei = self.frame.size.height;
         self.SelfWidth= self.frame.size.width;
         [self setUpLayer];
+        
     }
     return self;
 }
@@ -76,18 +77,26 @@ CGFloat const DISTANCETOPANDBOTTOM = 5.f;
     if (self.type == RulerLeftType) {
         for (int i =0; i<=self.valueLenth; i++) {
             if (i % 10 == 0) {
-                CGPathMoveToPoint(pathRef2, NULL,_SelfWidth-14,  self.DISTANCEVALUE * i);
-                CGPathAddLineToPoint(pathRef2, NULL,_SelfWidth,  self.DISTANCEVALUE * i);
+                CGPathMoveToPoint(pathRef2, NULL,0,  self.DISTANCEVALUE * i);
+                CGPathAddLineToPoint(pathRef2, NULL,15,  self.DISTANCEVALUE * i);
+                
+                /*10个单位显示一个示数*/
+                UILabel * numberLab = [[UILabel alloc] initWithFrame:CGRectMake(20, self.DISTANCEVALUE * i-5, 20, 10)];
+                numberLab.text = [NSString stringWithFormat:@"%d",i];
+                numberLab.font = [UIFont systemFontOfSize:10];
+                numberLab.textColor = LIVEVIDEO_DEFAULT_COLOR;
+                [self addSubview:numberLab];
+            
             }
             
             else if (i % 5 == 0) {
-                CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
-                CGPathAddLineToPoint(pathRef1, NULL, _SelfWidth-10,  self.DISTANCEVALUE * i);
+                CGPathMoveToPoint(pathRef1, NULL, 0, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL, 10,  self.DISTANCEVALUE * i);
             }
             else
             {
-                CGPathMoveToPoint(pathRef1, NULL, _SelfWidth, self.DISTANCEVALUE * i );
-                CGPathAddLineToPoint(pathRef1, NULL,_SelfWidth-6, self.DISTANCEVALUE * i);
+                CGPathMoveToPoint(pathRef1, NULL, 0, self.DISTANCEVALUE * i );
+                CGPathAddLineToPoint(pathRef1, NULL,5, self.DISTANCEVALUE * i);
             }
             shapeLayer1.path = pathRef1;
             shapeLayer2.path = pathRef2;

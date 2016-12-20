@@ -84,7 +84,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(takePhoto) name:FSNoticeTakePhoto object:nil];
 }
 - (void)takePhoto{
+    
     [self.VideoGlView snapshotPicture];
+    
 }
 - (void)calibrateCameraTime{
     

@@ -130,6 +130,8 @@
 		04A1B6F71D6445000008223E /* FSVideoLiveBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */; };
 		04A23B861DAF2997001BD636 /* FSFliterImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A23B851DAF2997001BD636 /* FSFliterImage.m */; };
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
+		04AAAF651E09304B0036DF86 /* FSRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF641E09304B0036DF86 /* FSRecordView.m */; };
+		04AAAF6A1E09387D0036DF86 /* FSRecordTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */; };
 		04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D014171DED5C1E00AC51B5 /* FSSettingManager.m */; };
 		04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D5BAA81E02A44E0041CCAC /* Assets.xcassets */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
@@ -750,6 +752,10 @@
 		04A23B851DAF2997001BD636 /* FSFliterImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFliterImage.m; sourceTree = "<group>"; };
 		04A52EFF1D90DC1000F9303D /* FSliveVideoConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSliveVideoConst.h; sourceTree = "<group>"; };
 		04A52F001D90DC1000F9303D /* FSliveVideoConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSliveVideoConst.m; sourceTree = "<group>"; };
+		04AAAF631E09304B0036DF86 /* FSRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecordView.h; sourceTree = "<group>"; };
+		04AAAF641E09304B0036DF86 /* FSRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecordView.m; sourceTree = "<group>"; };
+		04AAAF681E09387D0036DF86 /* FSRecordTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecordTimeView.h; sourceTree = "<group>"; };
+		04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecordTimeView.m; sourceTree = "<group>"; };
 		04D014161DED5C1E00AC51B5 /* FSSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingManager.h; sourceTree = "<group>"; };
 		04D014171DED5C1E00AC51B5 /* FSSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingManager.m; sourceTree = "<group>"; };
 		04D5BAA81E02A44E0041CCAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2084,6 +2090,7 @@
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
+				04AAAF671E09386E0036DF86 /* FSRecordTimeView */,
 				04F20ED41D7D0B5E009790EE /* FifishBearingsView */,
 				046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */,
 				046765191D6328E100FFA743 /* FSFSVideoLiveStatusBar.m */,
@@ -2193,6 +2200,7 @@
 			isa = PBXGroup;
 			children = (
 				045D79E11DD56CA4009C2FD3 /* RovDirectionView */,
+				04AAAF621E0930220036DF86 /* RovRecordView */,
 				04A1B6F51D6445000008223E /* FSVideoLiveBottomBar.h */,
 				04A1B6F61D6445000008223E /* FSVideoLiveBottomBar.m */,
 			);
@@ -2206,6 +2214,24 @@
 				04A52F001D90DC1000F9303D /* FSliveVideoConst.m */,
 			);
 			path = const;
+			sourceTree = "<group>";
+		};
+		04AAAF621E0930220036DF86 /* RovRecordView */ = {
+			isa = PBXGroup;
+			children = (
+				04AAAF631E09304B0036DF86 /* FSRecordView.h */,
+				04AAAF641E09304B0036DF86 /* FSRecordView.m */,
+			);
+			path = RovRecordView;
+			sourceTree = "<group>";
+		};
+		04AAAF671E09386E0036DF86 /* FSRecordTimeView */ = {
+			isa = PBXGroup;
+			children = (
+				04AAAF681E09387D0036DF86 /* FSRecordTimeView.h */,
+				04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */,
+			);
+			path = FSRecordTimeView;
 			sourceTree = "<group>";
 		};
 		04D014151DED5BE400AC51B5 /* Tools */ = {
@@ -3936,6 +3962,7 @@
 				1F04241D1D51F3BA0071A1D6 /* FSZuoPin.m in Sources */,
 				0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */,
 				0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */,
+				04AAAF651E09304B0036DF86 /* FSRecordView.m in Sources */,
 				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */,
@@ -4041,6 +4068,7 @@
 				1F04244A1D51F3C30071A1D6 /* AFHTTPSessionManager.m in Sources */,
 				1FE087961D825649007790E3 /* FSBaseTableViewCell.m in Sources */,
 				1F0424611D51F3F20071A1D6 /* FBAPI.m in Sources */,
+				04AAAF6A1E09387D0036DF86 /* FSRecordTimeView.m in Sources */,
 				1F7EDEE51D4700E500ABED5D /* IQUIScrollView+Additions.m in Sources */,
 				1FF783BB1D9A855A00618245 /* FSBigImageViewController.m in Sources */,
 				1F0424661D51F40F0071A1D6 /* FSZuoPinTableViewCell.m in Sources */,
