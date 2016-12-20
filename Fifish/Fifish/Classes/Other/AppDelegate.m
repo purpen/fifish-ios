@@ -39,6 +39,9 @@
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
+/**  */
+@property (nonatomic, assign) BOOL type;
+
 @end
 
 @implementation AppDelegate
@@ -64,6 +67,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.type = NO;
     //设置推送---------------------------------------------------
     //创建UIUserNotificationSettings，并设置消息的显示类类型
     UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
@@ -133,9 +137,13 @@
 
 -(void)goToMssageViewControllerWith:(NSDictionary*)userinfo{
     if ([userinfo[@"infoType"] integerValue] == 8) {
+        if (self.type) {
+            return;
+        }
         [[FSTabBarController sharedManager] setSelectedIndex:3];
         FSMessageViewController *vc = [[FSMessageViewController alloc] init];
         [self.window.rootViewController.childViewControllers[3] pushViewController:vc animated:YES];
+        self.type = YES;
     }
 }
 
@@ -254,6 +262,7 @@ fetchCompletionHandler:
     }
     completionHandler(UIBackgroundFetchResultNewData);
     if (userInfo){
+        self.type = NO;
         [self goToMssageViewControllerWith:userInfo];
     }
 }
@@ -317,6 +326,7 @@ fetchCompletionHandler:
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         [JPUSHService resetBadge];
         NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+        self.type = NO;
         [self goToMssageViewControllerWith:userInfo];
     }
     else {
