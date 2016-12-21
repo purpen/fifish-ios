@@ -12,6 +12,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <UMSocialCore/UMSocialCore.h>
 
+
 @interface FSShareViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *wechatBtn;
@@ -59,6 +60,8 @@
 #pragma mark - 分享图片
 - (void)shareImageToPlatformType:(UMSocialPlatformType)platformType
 {
+    
+    
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     messageObject.text = self.model.content;
