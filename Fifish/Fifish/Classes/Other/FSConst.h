@@ -29,6 +29,8 @@ typedef enum {
 //  屏幕高
 #define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
 #define KEY_WINDOW      [UIApplication sharedApplication].keyWindow//当前工程window
+#define KImageBrowserWidth (SCREEN_WIDTH + 10.0f)
+#define KImageBrowserHeight SCREEN_HEIGHT
 
 #define Nav_Height  64.0
 #define Tab_Height  49.0

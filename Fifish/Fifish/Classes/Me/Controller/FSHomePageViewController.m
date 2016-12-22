@@ -325,7 +325,7 @@ const CGFloat kRefreshBoundary = 64.0f;
 
 -(UIImageView *)loadingView{
     if (!_loadingView) {
-        _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0f, 90.0f, 25.0f, 25.0f)];
+        _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0f, 38.0f, 25.0f, 25.0f)];
         _loadingView.contentMode = UIViewContentModeScaleAspectFill;
         _loadingView.image = [UIImage imageNamed:@"me_sex_selected"];
         _loadingView.clipsToBounds = YES;
@@ -667,7 +667,7 @@ const CGFloat kRefreshBoundary = 64.0f;
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
         _contentTableView = [[UITableView alloc] init];
-        _contentTableView.frame = CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT + 64);
+        _contentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSZuoPinTableViewCell class]) bundle:nil] forCellReuseIdentifier:zuoPinCellId];

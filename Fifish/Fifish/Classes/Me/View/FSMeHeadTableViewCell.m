@@ -42,7 +42,7 @@
 
 -(void)setModel2:(FSUserModel2 *)model2{
     _model2 = model2;
-    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
+    self.bg_imageView.image = [UIImage imageNamed:model2.imageStr];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model2.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.nickName.text = model2.username;
     self.addressLabel.text = model2.zone;
@@ -59,7 +59,7 @@
 
 -(void)setModel:(FSUserModel *)model{
     _model = model;
-    [self.bg_imageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"me_bg_large"]];
+    self.bg_imageView.image = [UIImage imageNamed:model.imageStr];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.large] placeholderImage:[UIImage imageNamed:@"login_head_default"]];
     self.nickName.text = model.username;
     self.addressLabel.text = model.zone;

@@ -48,6 +48,8 @@
 @property (nonatomic, assign) NSInteger following;
 /**  */
 @property (nonatomic, assign) NSInteger followFlag;
+/** 照片墙图片 */
+@property (nonatomic, strong) NSString *imageStr;
 
 
 @end
