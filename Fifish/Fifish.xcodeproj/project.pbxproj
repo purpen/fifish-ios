@@ -15,6 +15,7 @@
 		042365701D8431110095007A /* FSImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423656F1D8431110095007A /* FSImageTools.m */; };
 		042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */; };
 		042BEAD31D7015E00067FC16 /* FSBorswerImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */; };
+		042D971D1E0B7FDA00D8D412 /* FSRovStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D971C1E0B7FDA00D8D412 /* FSRovStatusBarView.m */; };
 		0434F2FA1D6193C300DBFFCE /* VideoLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F2F71D6193C300DBFFCE /* VideoLiveController.m */; };
 		0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0434F2FC1D61940000DBFFCE /* FishBaseViewController.m */; };
 		0434F3971D61B97600DBFFCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0434F3081D61B17800DBFFCE /* libz.tbd */; };
@@ -476,6 +477,8 @@
 		042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBorswerImageCell.m; sourceTree = "<group>"; };
 		042BEAD11D7015E00067FC16 /* FSBorswerImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSBorswerImageCell.xib; sourceTree = "<group>"; };
 		042BEAD41D7048130067FC16 /* Fifish-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Fifish-Prefix.pch"; sourceTree = "<group>"; };
+		042D971B1E0B7FDA00D8D412 /* FSRovStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovStatusBarView.h; sourceTree = "<group>"; };
+		042D971C1E0B7FDA00D8D412 /* FSRovStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovStatusBarView.m; sourceTree = "<group>"; };
 		0434F2F61D6193C300DBFFCE /* VideoLiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLiveController.h; sourceTree = "<group>"; };
 		0434F2F71D6193C300DBFFCE /* VideoLiveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoLiveController.m; sourceTree = "<group>"; };
 		0434F2FB1D61940000DBFFCE /* FishBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishBaseViewController.h; sourceTree = "<group>"; };
@@ -1446,6 +1449,15 @@
 			path = ImageTools;
 			sourceTree = "<group>";
 		};
+		042D971A1E0B7FC100D8D412 /* FSRovStatusBarView */ = {
+			isa = PBXGroup;
+			children = (
+				042D971B1E0B7FDA00D8D412 /* FSRovStatusBarView.h */,
+				042D971C1E0B7FDA00D8D412 /* FSRovStatusBarView.m */,
+			);
+			path = FSRovStatusBarView;
+			sourceTree = "<group>";
+		};
 		0434F2EB1D617E0600DBFFCE /* VideoLive */ = {
 			isa = PBXGroup;
 			children = (
@@ -1453,7 +1465,6 @@
 				0434F2FF1D61A16C00DBFFCE /* Tools */,
 				0434F2F51D6193C300DBFFCE /* Controller */,
 				0434F2F81D6193C300DBFFCE /* Model */,
-				0434F2F91D6193C300DBFFCE /* View */,
 			);
 			path = VideoLive;
 			sourceTree = "<group>";
@@ -1483,7 +1494,8 @@
 				0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */,
 				0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */,
 			);
-			path = View;
+			name = View;
+			path = ../../View;
 			sourceTree = "<group>";
 		};
 		0434F2FF1D61A16C00DBFFCE /* Tools */ = {
@@ -1911,6 +1923,7 @@
 		0452CCFA1D77CA4F007694CC /* OSDManager */ = {
 			isa = PBXGroup;
 			children = (
+				0434F2F91D6193C300DBFFCE /* View */,
 				0452CD021D77FFB6007694CC /* RovInfo.h */,
 				0452CD031D77FFB6007694CC /* RovInfo.m */,
 				0452CCFB1D77CA6A007694CC /* FSOSDManager.h */,
@@ -2103,6 +2116,7 @@
 		046765141D63283A00FFA743 /* FSVideoLiveStatusBar */ = {
 			isa = PBXGroup;
 			children = (
+				042D971A1E0B7FC100D8D412 /* FSRovStatusBarView */,
 				04AAAF671E09386E0036DF86 /* FSRecordTimeView */,
 				04F20ED41D7D0B5E009790EE /* FifishBearingsView */,
 				046765181D6328E100FFA743 /* FSFSVideoLiveStatusBar.h */,
@@ -4117,6 +4131,7 @@
 				1FE565021DB77DC0000AE61D /* FSTagSearchCollectionViewCell.m in Sources */,
 				1F0424591D51F3C30071A1D6 /* UIRefreshControl+AFNetworking.m in Sources */,
 				1F8011321DA8861500B320C7 /* FSReleasePictureViewController.m in Sources */,
+				042D971D1E0B7FDA00D8D412 /* FSRovStatusBarView.m in Sources */,
 				042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */,
 				1FE564EA1DB4D1E8000AE61D /* UIView+SDExtension.m in Sources */,
 				0436AE721DACBBC7001E6808 /* FSFilterCollectionViewCell.m in Sources */,
