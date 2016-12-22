@@ -77,12 +77,17 @@ typedef NS_ENUM(NSInteger, FSType) {
 @property (nonatomic, strong) UIButton *fucosBtn;
 /**  */
 @property (nonatomic, strong) UILabel *titleLabel;
+/** 是否需要更新 */
+@property (nonatomic, assign, getter=isNeedRefresh) BOOL needRefresh;
+/** 刷新图片 */
+@property (nonatomic, strong) UIImageView *loadingView;
 
 
 @end
 
 static NSString * const zuoPinCellId = @"zuoPin";
 static NSString * const fucosCellId = @"fucos";
+const CGFloat kRefreshBoundary = 64.0f;
 
 @implementation FSHomePageViewController
 
@@ -106,6 +111,11 @@ static NSString * const fucosCellId = @"fucos";
         _fenSiPersons = [NSMutableArray array];
     }
     return _fenSiPersons;
+}
+
+-(void)loadView{
+    [super loadView];
+    self.needRefresh = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -140,7 +150,7 @@ static NSString * const fucosCellId = @"fucos";
             [editBtn addTarget:self action:@selector(editBtn) forControlEvents:UIControlEventTouchUpInside];
             [_naviView addSubview:editBtn];
             [editBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(_naviView.mas_right).offset(-15);
+                make.right.mas_equalTo(self->_naviView.mas_right).offset(-15);
                 make.top.mas_equalTo(button.mas_top).offset(0);
             }];
             
@@ -155,7 +165,7 @@ static NSString * const fucosCellId = @"fucos";
             
             [_naviView addSubview:self.fucosBtn];
             [_fucosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(_naviView.mas_right).offset(-15);
+                make.right.mas_equalTo(self->_naviView.mas_right).offset(-15);
                 make.top.mas_equalTo(button.mas_top).offset(0);
                 make.width.mas_equalTo(72);
                 make.height.mas_equalTo(26);
@@ -169,6 +179,7 @@ static NSString * const fucosCellId = @"fucos";
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     UIColor * color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"me_bg_large_bottom"]];
     CGFloat offsetY = scrollView.contentOffset.y;
+    [self loadingViewAnimateWithScrollViewContentOffset:offsetY];
     if (offsetY > NAVBAR_CHANGE_POINT) {
         CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
@@ -178,6 +189,13 @@ static NSString * const fucosCellId = @"fucos";
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
         [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
         self.titleLabel.alpha = 0;
+    }
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    CGFloat offset = scrollView.contentOffset.y;
+    if (offset <= -kRefreshBoundary) {
+        [self setUpRefresh];
     }
 }
 
@@ -295,16 +313,61 @@ static NSString * const fucosCellId = @"fucos";
     // 不要自动调整inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.contentTableView];
-    [self setUpRefresh];
     [self.view.layer addSublayer:self.shadow];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (self.isNeedRefresh) {
+        [self setUpRefresh];
+    }
+}
+
+-(UIImageView *)loadingView{
+    if (!_loadingView) {
+        _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0f, 90.0f, 25.0f, 25.0f)];
+        _loadingView.contentMode = UIViewContentModeScaleAspectFill;
+        _loadingView.image = [UIImage imageNamed:@"me_sex_selected"];
+        _loadingView.clipsToBounds = YES;
+        _loadingView.backgroundColor = [UIColor clearColor];
+    }
+    return _loadingView;
+}
+
+-(void)refreshingAnimateBegin{
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.duration = 0.5f;
+    rotationAnimation.autoreverses = NO;
+    rotationAnimation.repeatCount = HUGE_VALF;
+    rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    rotationAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
+    [self.loadingView.layer addAnimation:rotationAnimation forKey:@"rotationAnimations"];
+}
+
+-(void)refreshingAnimateStop{
+    [self.loadingView.layer removeAllAnimations];
+}
+
+-(void)loadingViewAnimateWithScrollViewContentOffset:(CGFloat)offset{
+    if (offset <= 0 && offset > -64.0f) {
+        self.loadingView.transform = CGAffineTransformMakeRotation(offset * 0.1);
+    }
 }
 
 #pragma mark - 设置刷新
 -(void)setUpRefresh{
-    self.contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
-    // 自动改变透明度
-    self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
-    [self.contentTableView.mj_header beginRefreshing];
+    [self.contentTableView addSubview:self.loadingView];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.contentTableView.contentInset = UIEdgeInsetsMake(0, 0.0f, 0.0f, 0.0f);
+    } completion:^(BOOL finished) {
+        [self refreshingAnimateBegin];
+        [self loadNew];
+    }];
+    
+//    self.contentTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+//    // 自动改变透明度
+//    self.contentTableView.mj_header.automaticallyChangeAlpha = YES;
+//    [self.contentTableView.mj_header beginRefreshing];
     self.contentTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     self.contentTableView.mj_footer.hidden = YES;
 }
@@ -373,6 +436,14 @@ static NSString * const fucosCellId = @"fucos";
         default:
             break;
     }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self refreshingAnimateStop];
+        [UIView animateWithDuration:0.35f animations:^{
+            self.contentTableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f);
+        } completion:^(BOOL finished) {
+            self.needRefresh = NO;
+        }];
+    });
 }
 
 -(void)fucosRequsetMore{
@@ -442,7 +513,6 @@ static NSString * const fucosCellId = @"fucos";
 -(void)fansRequest{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/fans",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"粉丝 %@", result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -597,7 +667,7 @@ static NSString * const fucosCellId = @"fucos";
 -(UITableView *)contentTableView{
     if (!_contentTableView) {
         _contentTableView = [[UITableView alloc] init];
-        _contentTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        _contentTableView.frame = CGRectMake(0, -64, SCREEN_WIDTH, SCREEN_HEIGHT + 64);
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
         [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([FSZuoPinTableViewCell class]) bundle:nil] forCellReuseIdentifier:zuoPinCellId];
@@ -652,7 +722,7 @@ static NSString * const fucosCellId = @"fucos";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 284 / 667.0 * SCREEN_HEIGHT;
+        return 348 / 667.0 * SCREEN_HEIGHT;
     } else if (indexPath.section == 1) {
         switch (self.type) {
             case FSTypeZuoPin:

@@ -34,7 +34,7 @@
         downShadow.opacity = 0.5;
         downShadow.colors = @[(__bridge id)[UIColor clearColor].CGColor,
                             (__bridge id)[UIColor blackColor].CGColor];
-        downShadow.frame = CGRectMake(0, 284 - 200 , SCREEN_WIDTH, 200);
+        downShadow.frame = CGRectMake(0, 348 - 200 , SCREEN_WIDTH, 200);
         [self.bg_imageView.layer addSublayer:downShadow];
     }
     return self;

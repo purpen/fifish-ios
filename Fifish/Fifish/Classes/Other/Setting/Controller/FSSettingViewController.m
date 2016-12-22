@@ -125,7 +125,7 @@
     }
     self.cacheLabel.text = @"0.0M";
 }
-- (IBAction)evaluationBtn:(id)sender {
+- (IBAction)evaluationBtn:(id)sender { 
     NSString *urlStr = @"itms-apps://itunes.apple.com/app/id1089442815";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 }
