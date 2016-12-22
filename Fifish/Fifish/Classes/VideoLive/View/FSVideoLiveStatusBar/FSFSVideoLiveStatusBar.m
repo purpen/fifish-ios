@@ -10,6 +10,7 @@
 #import "FSRecordTimeView.h"
 #import "FSBatteryView.h"
 #import "FSTemperatureView.h"
+#import "FSRovStatusBarView.h"
 
 
 #import "LiveVideoMacro.h"
@@ -27,10 +28,9 @@
 
 @property (nonatomic ,strong) UIButton          * MenuBtn;//菜单
 
-@property (nonatomic ,strong) UILabel           * FifishBattery;//设备电量
-
 @property (nonatomic ,strong) FSRecordTimeView  * RecordTimeView;//录制时间
 
+@property (nonatomic ,strong) FSRovStatusBarView* RovStatusBar;//机器状态显示（一键返航、定深、巡航）
 @end
 
 @implementation FSFSVideoLiveStatusBar
@@ -73,12 +73,12 @@
             make.size.mas_equalTo(CGSizeMake(50, 10));
             make.centerY.equalTo(self.mas_centerY);
         }];
-   
-        [self addSubview:self.FifishBattery];
-        [self.FifishBattery mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        [self addSubview:self.RovStatusBar];
+        [self.RovStatusBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.TemperatureView.mas_left).offset(-10);
-            make.size.mas_equalTo(CGSizeMake(100, 10));
             make.centerY.equalTo(self.mas_centerY);
+            make.size.mas_equalTo(CGSizeMake(100, 50));
         }];
     }
     [self ObserverWithOSD];
@@ -125,14 +125,13 @@
     return _RecordTimeView;
 }
 
--(UILabel *)FifishBattery{
-    if (!_FifishBattery) {
-        _FifishBattery = [[UILabel alloc] init];
-        _FifishBattery.textColor = LIVEVIDEO_DEFAULT_COLOR;
-        _FifishBattery.textAlignment = NSTextAlignmentRight;
-        _FifishBattery.font = [UIFont systemFontOfSize:10];
+-(FSRovStatusBarView *)RovStatusBar{
+    if (!_RovStatusBar) {
+        
+        _RovStatusBar = [[FSRovStatusBarView alloc] init];
+        
     }
-    return _FifishBattery;
+    return _RovStatusBar;
 }
 
 - (void)menuBtnClick:(UIButton *)sender{
@@ -163,7 +162,6 @@
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.FifishBattery.text = [NSString stringWithFormat:@"ROV电量:%.1f％",rovinfo.Remain_battery];
         self.TemperatureView.Tempera = rovinfo.Temp;
     });
 }

@@ -15,7 +15,12 @@
 @interface FSRecordTimeView ()
 
 //录制时间
-@property (nonatomic, strong) UILabel   * record_TimeLab;
+@property (nonatomic, strong) UILabel           * record_TimeLab;
+
+/**
+ 录制红点
+ */
+@property (nonatomic, strong) UIView            * record_redPoint;
 //计时器
 @property (nonatomic,strong)  dispatch_source_t timer;
 
@@ -35,6 +40,12 @@
             make.centerX.equalTo(self.mas_centerX);
         }];
         
+        [self addSubview:self.record_redPoint];
+        [self.record_redPoint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.record_TimeLab.mas_left).offset(-10);
+            make.size.mas_equalTo(CGSizeMake(10, 10));
+            make.centerY.equalTo(self.mas_centerY);
+        }];
         //监听录制通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startRecordWithInfo:) name:FSNoticSaveMp4File object:nil];
     }
@@ -58,12 +69,24 @@
     }
     return _record_TimeLab;
 }
+- (UIView *)record_redPoint{
+    if (!_record_redPoint) {
+        _record_redPoint = [[UIView alloc] init];
+        _record_redPoint.layer.masksToBounds = YES;
+        _record_redPoint.backgroundColor =[UIColor redColor];
+        _record_redPoint.layer.cornerRadius = 5.0;
+        _record_redPoint.hidden = YES;
+    }
+    return _record_redPoint;
+}
 -(void)startRecordWithInfo:(NSNotification *)info{
     /*开始录制*/
     if ([info.userInfo[FSNoticSaveMp4FileStatus] integerValue]==1) {
         self.timeOutCount = 0;
         
         dispatch_resume(self.timer);
+        
+        _record_redPoint.hidden = NO;
     }
     /*结束录制*/
     else{
@@ -74,6 +97,7 @@
         }
         
         self.record_TimeLab.text = @"00:00:00";
+        _record_redPoint.hidden = YES;
     }
 }
 - (dispatch_source_t)timer{

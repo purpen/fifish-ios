@@ -20,8 +20,11 @@
  */
 @property (nonatomic,strong) UIView      * backGroundView;
 
-//方向imageview
+/*方向imageview*/
 @property (nonatomic,strong) UIButton * headingImageView;
+
+/*ROV*/
+@property (nonatomic,strong) UIImageView * RovImageView;
 
 /**
  东西南北文字显示
@@ -55,6 +58,12 @@
             make.centerY.equalTo(self.mas_centerY);
         }];
         
+        [self addSubview:self.RovImageView];
+        [self.RovImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(self.center);
+            make.size.mas_equalTo(CGSizeMake(70, 70));
+        }];
+        
         [self addSubview:self.headingImageView];
         [self.headingImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.equalTo(self.backGroundView);
@@ -85,6 +94,17 @@
     }
     return _backGroundView;
 }
+
+-(UIImageView *)RovImageView{
+    if (!_RovImageView) {
+        
+        _RovImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Rov_direction_Logo"]];
+        
+    }
+    
+    return _RovImageView;
+}
+
 -(UIButton *)headingImageView{
     if (!_headingImageView) {
         _headingImageView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -107,7 +127,7 @@
         Nlab.text = @"000";
         [_directionLabView addSubview:Nlab];
         [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self->_directionLabView.mas_top).offset(5);
+            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
             make.centerX.equalTo(self->_directionLabView.mas_centerX);
         }];
         UILabel * Elab =[[UILabel alloc] init];
@@ -116,8 +136,8 @@
         Elab.text = @"90";
         [_directionLabView addSubview:Elab];
         [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self->_directionLabView.mas_right).offset(-5);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY);
+            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
+            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
         }];
 
         UILabel * Slab =[[UILabel alloc] init];
@@ -126,7 +146,7 @@
         Slab.text = @"180";
         [_directionLabView addSubview:Slab];
         [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-5);
+            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
             make.centerX.equalTo(self->_directionLabView.mas_centerX);
         }];
         
@@ -136,8 +156,8 @@
         Wlab.text = @"270";
         [_directionLabView addSubview:Wlab];
         [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self->_directionLabView.mas_left).offset(5);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY);
+            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
+            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
         }];
     }
     
@@ -148,6 +168,7 @@
 #warning  转动测试！
 - (void)testMethed{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+
         while (1) {
             CGFloat randomNumber = arc4random()%360-self.testOrgrPoint;
             CGFloat routa = randomNumber*M_PI/180.0;
@@ -167,7 +188,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                    self.headingImageView.transform = CGAffineTransformMakeRotation(routa);
+                    self.RovImageView.transform = CGAffineTransformMakeRotation(routa);
                 } completion:nil];
                 
             });
@@ -185,8 +206,10 @@
 - (void)ObserverWithOSDCourse{
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changecourse:) name:@"RovInfoChange" object:nil];
+    
 }
 - (void)changecourse:(NSNotification *)notice{
+    
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
     
     CGFloat routa = (rovinfo.Heading_angle-self.testOrgrPoint)*M_PI/180.0;
@@ -204,7 +227,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            self.headingImageView.transform = CGAffineTransformMakeRotation(routa);
+            self.RovImageView.transform = CGAffineTransformMakeRotation(routa);
         } completion:nil];
         
     });
