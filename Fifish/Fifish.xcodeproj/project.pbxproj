@@ -133,6 +133,7 @@
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04AAAF651E09304B0036DF86 /* FSRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF641E09304B0036DF86 /* FSRecordView.m */; };
 		04AAAF6A1E09387D0036DF86 /* FSRecordTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */; };
+		04BB09D91E0CCA9200355DBA /* FSRovMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB09D81E0CCA9200355DBA /* FSRovMapView.m */; };
 		04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D014171DED5C1E00AC51B5 /* FSSettingManager.m */; };
 		04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D5BAA81E02A44E0041CCAC /* Assets.xcassets */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
@@ -758,6 +759,8 @@
 		04AAAF641E09304B0036DF86 /* FSRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecordView.m; sourceTree = "<group>"; };
 		04AAAF681E09387D0036DF86 /* FSRecordTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecordTimeView.h; sourceTree = "<group>"; };
 		04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecordTimeView.m; sourceTree = "<group>"; };
+		04BB09D71E0CCA9200355DBA /* FSRovMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovMapView.h; sourceTree = "<group>"; };
+		04BB09D81E0CCA9200355DBA /* FSRovMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMapView.m; sourceTree = "<group>"; };
 		04D014161DED5C1E00AC51B5 /* FSSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingManager.h; sourceTree = "<group>"; };
 		04D014171DED5C1E00AC51B5 /* FSSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingManager.m; sourceTree = "<group>"; };
 		04D5BAA81E02A44E0041CCAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1446,6 +1449,7 @@
 		0434F2EB1D617E0600DBFFCE /* VideoLive */ = {
 			isa = PBXGroup;
 			children = (
+				0434F2F91D6193C300DBFFCE /* View */,
 				04F20ED91D7D5882009790EE /* Business */,
 				0434F2FF1D61A16C00DBFFCE /* Tools */,
 				0434F2F51D6193C300DBFFCE /* Controller */,
@@ -1473,14 +1477,14 @@
 		0434F2F91D6193C300DBFFCE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04BB09D61E0CCA4E00355DBA /* FSRovMapView */,
 				04A1B6F41D6444E90008223E /* FSVideoLiveTabBar */,
 				047A857E1D79551700A88891 /* FSVideoDepthRulerView */,
 				046765141D63283A00FFA743 /* FSVideoLiveStatusBar */,
 				0434F4281D61D21000DBFFCE /* OpenGLFrameView.h */,
 				0434F4291D61D21000DBFFCE /* OpenGLFrameView.mm */,
 			);
-			name = View;
-			path = ../../View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		0434F2FF1D61A16C00DBFFCE /* Tools */ = {
@@ -1908,7 +1912,6 @@
 		0452CCFA1D77CA4F007694CC /* OSDManager */ = {
 			isa = PBXGroup;
 			children = (
-				0434F2F91D6193C300DBFFCE /* View */,
 				0452CD021D77FFB6007694CC /* RovInfo.h */,
 				0452CD031D77FFB6007694CC /* RovInfo.m */,
 				0452CCFB1D77CA6A007694CC /* FSOSDManager.h */,
@@ -2244,6 +2247,15 @@
 				04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */,
 			);
 			path = FSRecordTimeView;
+			sourceTree = "<group>";
+		};
+		04BB09D61E0CCA4E00355DBA /* FSRovMapView */ = {
+			isa = PBXGroup;
+			children = (
+				04BB09D71E0CCA9200355DBA /* FSRovMapView.h */,
+				04BB09D81E0CCA9200355DBA /* FSRovMapView.m */,
+			);
+			path = FSRovMapView;
 			sourceTree = "<group>";
 		};
 		04D014151DED5BE400AC51B5 /* Tools */ = {
@@ -3933,6 +3945,7 @@
 				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
 				0436AF461DACE5C2001E6808 /* FSLordKelvinFilter.m in Sources */,
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
+				04BB09D91E0CCA9200355DBA /* FSRovMapView.m in Sources */,
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */,
