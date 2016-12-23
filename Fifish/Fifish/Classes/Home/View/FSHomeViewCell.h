@@ -23,6 +23,7 @@
 
 @interface FSHomeViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 /**  */
 @property (nonatomic, strong) FSZuoPin *model;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;

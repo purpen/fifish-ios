@@ -24,5 +24,7 @@
 // 控件截屏
 + (UIImage *)imageWithCaputureView:(UIView *)view;
 
+- (UIImage *)applyBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
+
 @end
 

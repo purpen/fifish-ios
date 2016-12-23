@@ -21,5 +21,13 @@
              };
 }
 
+-(instancetype)init{
+    if (self = [super init]) {
+        int value = (arc4random() % 10) + 1;
+        NSString *str = [NSString stringWithFormat:@"me_bg_large%d",value];
+        self.imageStr = str;
+    }
+    return self;
+}
 
 @end
