@@ -30,6 +30,7 @@
 #import "UINavigationBar+FSExtension.h"
 #import "UIBarButtonItem+FSExtension.h"
 #import "FSUserModel2.h"
+#import "NSString+Helper.h"
 
 #define NAVBAR_CHANGE_POINT 170
 
@@ -470,7 +471,6 @@ const CGFloat kRefreshBoundary = 64.0f;
 -(void)fucosRequset{
     FBRequest *request = [FBAPI getWithUrlString:[NSString stringWithFormat:@"/user/%@/followers",self.userId] requestDictionary:nil delegate:self];
     [request startRequestSuccess:^(FBRequest *request, id result) {
-        NSLog(@"关注  %@", result);
         self.current_page = [result[@"meta"][@"pagination"][@"current_page"] integerValue];
         self.total_rows = [result[@"meta"][@"pagination"][@"total"] integerValue];
         NSArray *dataAry = result[@"data"];
@@ -537,10 +537,12 @@ const CGFloat kRefreshBoundary = 64.0f;
         FBRequest *request2 = [FBAPI getWithUrlString:@"/me/profile" requestDictionary:nil delegate:self];
         [request2 startRequestSuccess:^(FBRequest *request, id result) {
             FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+            NSString *imageStr = userModel.imageStr;
             NSDictionary *dict = result[@"data"];
             userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
             userModel.isLogin = YES;
             self.userId = userModel.userId;
+            userModel.imageStr = imageStr;
             [userModel saveOrUpdate];
             [self.contentTableView reloadData];
         } failure:^(FBRequest *request, NSError *error) {
@@ -877,33 +879,33 @@ const CGFloat kRefreshBoundary = 64.0f;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"replaceHeadPortrait", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        //判断是否支持相机。模拟器没有相机
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"takingPictures", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                //调取相机xx
-                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-                picker.delegate = self;
-                picker.allowsEditing = YES;
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentViewController:picker animated:YES completion:nil];
-            }];
-            [alertC addAction:cameraAction];
-        }
-        UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"fromAlbumToChoose", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //调取相册
-            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = self;
-            picker.allowsEditing = YES;
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:picker animated:YES completion:nil];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [alertC addAction:phontoAction];
-        [alertC addAction:cancelAction];
-        [self presentViewController:alertC animated:YES completion:nil];
+//        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"replaceHeadPortrait", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+//        //判断是否支持相机。模拟器没有相机
+//        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"takingPictures", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                //调取相机xx
+//                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//                picker.delegate = self;
+//                picker.allowsEditing = YES;
+//                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//                [self presentViewController:picker animated:YES completion:nil];
+//            }];
+//            [alertC addAction:cameraAction];
+//        }
+//        UIAlertAction *phontoAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"fromAlbumToChoose", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            //调取相册
+//            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//            picker.delegate = self;
+//            picker.allowsEditing = YES;
+//            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//            [self presentViewController:picker animated:YES completion:nil];
+//        }];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }];
+//        [alertC addAction:phontoAction];
+//        [alertC addAction:cancelAction];
+//        [self presentViewController:alertC animated:YES completion:nil];
     }
     if (indexPath.section == 1) {
         switch (self.type) {

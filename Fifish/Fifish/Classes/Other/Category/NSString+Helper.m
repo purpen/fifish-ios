@@ -96,4 +96,10 @@
     return sex;
 }
 
++(NSString *)setupImageStr{
+    int value = (arc4random() % 10) + 1;
+    NSString *str = [NSString stringWithFormat:@"me_bg_large%d",value];
+    return str;
+}
+
 @end

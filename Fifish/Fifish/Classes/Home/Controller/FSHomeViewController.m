@@ -541,25 +541,27 @@ static NSString * const CellId = @"home";
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{
-    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    FSZuoPin *model = self.modelAry[sender.tag];
-    vc.model = model;
-    [self presentViewController:vc animated:YES completion:nil];
+//    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 //    FSZuoPin *model = self.modelAry[sender.tag];
-//    FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
-//    NSMutableArray *tmps = [NSMutableArray array];
-//    FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
-//                                                                     thumbnailURL:[NSURL URLWithString:model.file_small]
-//                                                                            HDURL:[NSURL URLWithString:model.srcfile]
-//                                                                    containerView:cell.contentView
-//                                                              positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 40, SCREEN_WIDTH, 211)
-//                                                                                        index:0];
-//    [tmps addObject:imageBrowserModel];
-//    FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
-//                                                                          currentIndex:0];
-//    [browserVC show];
+//    vc.model = model;
+//    [self presentViewController:vc animated:YES completion:nil];
+    FSZuoPin *model = self.modelAry[sender.tag];
+    FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
+    NSMutableArray *tmps = [NSMutableArray array];
+    FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
+                                                                     thumbnailURL:[NSURL URLWithString:model.file_small]
+                                                                            HDURL:[NSURL URLWithString:model.srcfile]
+                                                                    containerView:cell.contentView
+                                                              positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
+                                                                                        index:0];
+    [tmps addObject:imageBrowserModel];
+    FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
+                                                                        currentIndex:0];
+    browserVC.parentVC = self;
+    browserVC.isShowPageControl = NO;
+    [browserVC show];
 }
 
 #pragma mark - 更多按钮

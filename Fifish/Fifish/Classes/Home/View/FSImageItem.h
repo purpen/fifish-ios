@@ -12,6 +12,7 @@
 @protocol FSImageItemProtocol <NSObject>
 
 @optional
+
 -(void)didClickedItemToHide;
 -(void)didFinishedDownLoadHDImage;
 

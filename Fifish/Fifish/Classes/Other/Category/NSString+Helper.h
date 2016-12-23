@@ -55,4 +55,9 @@
 //根据数字返回性别
 +(NSString*)getSexByNum:(NSNumber*)num;
 
+/**
+ *  随机返回背景图片字符串
+ */
++(NSString *)setupImageStr;
+
 @end

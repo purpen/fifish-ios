@@ -23,6 +23,7 @@
 #import "FSTipNumberView.h"
 #import "Masonry.h"
 #import "JPUSHService.h"
+#import "NSString+Helper.h"
 
 @interface FSMeViewController ()
 
@@ -99,8 +100,15 @@
 
         NSDictionary *dict = result[@"data"];
         FSUserModel2 *userModel = [[FSUserModel2 findAll] lastObject];
+        NSString *str = nil;
+        if (userModel.imageStr.length) {
+            str = userModel.imageStr;
+        } else {
+            str = [NSString setupImageStr];
+        }
         userModel = [FSUserModel2 mj_objectWithKeyValues:dict];
         userModel.isLogin = YES;
+        userModel.imageStr = str;
         [userModel saveOrUpdate];
         [self settingTheProject:userModel];
         

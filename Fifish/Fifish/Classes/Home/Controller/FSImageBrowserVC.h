@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isScalingToHide;
 /** 是否显示页码 */
 @property (nonatomic, assign) BOOL isShowPageControl;
+@property (nonatomic, weak) UIViewController *parentVC;
 
 /**
  *  构造方法

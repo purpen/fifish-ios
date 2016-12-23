@@ -21,12 +21,12 @@
 
 <UICollectionViewDelegate,
 UICollectionViewDataSource,
+FSImageItemProtocol,
 FSImageItemProtocol>
 
 @property (nonatomic, strong) UIImageView *blurImageView;
 @property (nonatomic, strong) UIImage *blurImage;
 @property (nonatomic, assign, getter=isFirstShow) BOOL firstShow;
-@property (nonatomic, weak) UIViewController *parentVC;
 @property(nonatomic,copy) NSArray *imageModels;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) UIImage *screenshot;
@@ -202,7 +202,7 @@ FSImageItemProtocol>
     if (self) {
         self.firstShow = YES;
         self.isScalingToHide = YES;
-        self.parentVC = [self _getParentVC];
+//        self.parentVC = [self _getParentVC];
         self.imageModels = imageModels;
         self.currentIndex = index;
         self.screenshot = [self _screenshotFromView:KEY_WINDOW];
@@ -219,45 +219,45 @@ FSImageItemProtocol>
     return screenshotImage;
 }
 
--(UIViewController *)_getParentVC{
-    UIViewController *result = nil;
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    
-    if (window.windowLevel != UIWindowLevelNormal) {
-        NSArray *windows = [UIApplication sharedApplication].windows;
-        for (UIWindow *tmpWin in windows) {
-            if (tmpWin.windowLevel == UIWindowLevelNormal) {
-                window = tmpWin;
-                break;
-            }
-        }
-    }
-    
-    id nextResponder = nil;
-    UIViewController *appRootVC = window.rootViewController;
-    if (appRootVC.presentationController) {
-        
-        nextResponder = appRootVC.presentationController;
-        
-    }else{
-    
-        UIView *frontView = [window subviews][0];
-        nextResponder = [frontView nextResponder];
-    
-    }
-    if ([nextResponder isKindOfClass:[UITabBarController class]]) {
-        
-        UITabBarController *tabbar = (UITabBarController *)nextResponder;
-        UINavigationController *nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];
-        result = nav.childViewControllers.lastObject;
-        
-    } else {
-    
-        result = nextResponder;
-    
-    }
-    return result;
-}
+//-(UIViewController *)_getParentVC{
+//    UIViewController *result = nil;
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    
+//    if (window.windowLevel != UIWindowLevelNormal) {
+//        NSArray *windows = [UIApplication sharedApplication].windows;
+//        for (UIWindow *tmpWin in windows) {
+//            if (tmpWin.windowLevel == UIWindowLevelNormal) {
+//                window = tmpWin;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    id nextResponder = nil;
+//    UIViewController *appRootVC = window.rootViewController;
+//    if (appRootVC.presentationController) {
+//        
+//        nextResponder = appRootVC.presentationController;
+//        
+//    }else{
+//    
+//        UIView *frontView = [window subviews][0];
+//        nextResponder = [frontView nextResponder];
+//    
+//    }
+//    if ([nextResponder isKindOfClass:[UITabBarController class]]) {
+//        
+//        UITabBarController *tabbar = (UITabBarController *)nextResponder;
+//        UINavigationController *nav = (UINavigationController *)tabbar.viewControllers[tabbar.selectedIndex];
+//        result = nav.childViewControllers.lastObject;
+//        
+//    } else {
+//    
+//        result = nextResponder;
+//    
+//    }
+//    return result;
+//}
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -283,6 +283,11 @@ FSImageItemProtocol>
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self _setCurrentItem];
+}
+
+#pragma mark - FSImageItemDelegate
+-(void)didClickedItemToHide{
+    [self _hide];
 }
 
 @end

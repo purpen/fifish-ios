@@ -52,4 +52,5 @@
 @property (nonatomic, strong) NSString *imageStr;
 
 
+
 @end
