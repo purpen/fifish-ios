@@ -8,6 +8,7 @@
 
 #import "FSRovMapView.h"
 
+#import "Masonry.h"
 @interface FSRovMapView ()
 /**
  指南针
@@ -31,11 +32,30 @@
             make.right.equalTo(self.mas_right);
             make.top.equalTo(self.mas_top);
         }];
+    
+        
+        //监听rov信息
+        [self registerNotice];
     }
+    
     
     return self;
 }
 
+/**
+ 监听ROV数据通知.
+ */
+- (void)registerNotice{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RovLocationChange:) name:@"RovInfoChange" object:nil];
+}
+
+- (void)RovLocationChange:(NSNotification *)info{
+    NSLog(@"%@",info.userInfo);
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (UIImageView *)copassImageView{
     if (!_copassImageView) {
         _copassImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rov_compass_icon"]];
@@ -48,13 +68,13 @@
 - (void)drawRect:(CGRect)rect {
     
     UIBezierPath * path;
-    CGFloat lineSpace = rect.size.width/6.0;
+    CGFloat lineSpace = rect.size.width/20.0;
     [[UIColor whiteColor] set];
-    for (int i = 0; i<lineSpace; i++) {
+    for (int i = 0; i<20; i++) {
         
         path = [UIBezierPath bezierPath];
         [path setLineWidth:1];
-        if (i==3) {
+        if (i==10) {
             [path setLineWidth:2];
         }
         else{
@@ -74,6 +94,10 @@
     UIImage * pointImage = [UIImage imageNamed:@"Rov_centerpoint_icon"];
     [pointImage drawAtPoint:CGPointMake(((rect.size.width-pointImage.size.width)/2.0), ((rect.size.height-pointImage.size.height)/2.0))];
 
+    UIImage * logoImage = [UIImage imageNamed:@"P4_logo"];
+    [logoImage drawInRect:CGRectMake(43, 76, 20, 20)];
+    
+    
 }
 
 

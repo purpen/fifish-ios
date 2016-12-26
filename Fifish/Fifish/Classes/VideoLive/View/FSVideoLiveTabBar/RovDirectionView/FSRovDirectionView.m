@@ -205,7 +205,6 @@
 //监听ROV航向
 - (void)ObserverWithOSDCourse{
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changecourse:) name:@"RovInfoChange" object:nil];
     
 }
 - (void)changecourse:(NSNotification *)notice{
