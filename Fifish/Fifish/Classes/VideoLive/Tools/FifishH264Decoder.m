@@ -288,7 +288,7 @@
 //        packet->dts = av_rescale_q_rnd(packet->dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF);
 //        packet->duration = av_rescale_q(packet->duration, in_stream->time_base, out_stream->time_base);
 //        packet->pos = -1;
-        packet->pts = frame_index*512;
+        packet->pts = frame_index*512;/*1024*/
         packet->dts = packet->pts;
         packet->duration = 512;
         packet->pos = -1;

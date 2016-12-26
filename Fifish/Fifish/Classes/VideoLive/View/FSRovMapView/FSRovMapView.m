@@ -68,13 +68,13 @@
 - (void)drawRect:(CGRect)rect {
     
     UIBezierPath * path;
-    CGFloat lineSpace = rect.size.width/20.0;
+    CGFloat lineSpace = rect.size.width/10.0;
     [[UIColor whiteColor] set];
-    for (int i = 0; i<20; i++) {
+    for (int i = 0; i<10; i++) {
         
         path = [UIBezierPath bezierPath];
         [path setLineWidth:1];
-        if (i==10) {
+        if (i==5) {
             [path setLineWidth:2];
         }
         else{
@@ -95,7 +95,9 @@
     [pointImage drawAtPoint:CGPointMake(((rect.size.width-pointImage.size.width)/2.0), ((rect.size.height-pointImage.size.height)/2.0))];
 
     UIImage * logoImage = [UIImage imageNamed:@"P4_logo"];
-    [logoImage drawInRect:CGRectMake(43, 76, 20, 20)];
+    [logoImage drawInRect:CGRectMake(43, 76, 15, 15)];
+    
+    
     
     
 }
