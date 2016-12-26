@@ -551,14 +551,15 @@ static NSString * const CellId = @"home";
     FSHomeViewCell *cell = [self.contenTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
     NSMutableArray *tmps = [NSMutableArray array];
     FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
-                                                                     thumbnailURL:[NSURL URLWithString:model.file_small]
-                                                                            HDURL:[NSURL URLWithString:model.srcfile]
-                                                                    containerView:cell.contentView
-                                                              positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
+                                                                                 thumbnailURL:[NSURL URLWithString:model.file_small]
+                                                                                        HDURL:[NSURL URLWithString:model.srcfile]
+                                                                                containerView:cell.contentView
+                                                                          positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
                                                                                         index:0];
+    
     [tmps addObject:imageBrowserModel];
     FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
-                                                                        currentIndex:0];
+                                                                          currentIndex:0];
     browserVC.parentVC = self;
     browserVC.isShowPageControl = NO;
     [browserVC show];

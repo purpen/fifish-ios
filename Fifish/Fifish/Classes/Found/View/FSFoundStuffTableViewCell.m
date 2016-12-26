@@ -27,7 +27,6 @@
 @interface FSFoundStuffTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *tagtagLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

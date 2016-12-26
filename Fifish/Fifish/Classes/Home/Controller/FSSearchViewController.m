@@ -32,6 +32,8 @@
 #import "WMPlayer.h"
 #import "FSHistoryView.h"
 #import "FSSearchModel.h"
+#import "FSImageBrowserModel.h"
+#import "FSImageBrowserVC.h"
 #define ADVICE_TABLEVIEW 11
 
 @interface FSSearchViewController () <UISearchBarDelegate, SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSFoundStuffTableViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSHistoryViewDelegate, FSReportViewControllerDelegate>
@@ -341,12 +343,29 @@
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{
-    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSZuoPin *model = self.stuffAry[sender.tag];
+//    vc.model = model;
+//    [self presentViewController:vc animated:YES completion:nil];
     FSZuoPin *model = self.stuffAry[sender.tag];
-    vc.model = model;
-    [self presentViewController:vc animated:YES completion:nil];
+    FSFoundStuffTableViewCell *cell = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
+    NSMutableArray *tmps = [NSMutableArray array];
+    FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
+                                                                                 thumbnailURL:[NSURL URLWithString:model.file_small]
+                                                                                        HDURL:[NSURL URLWithString:model.srcfile]
+                                                                                containerView:cell.contentView
+                                                                          positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
+                                                                                        index:0];
+    
+    [tmps addObject:imageBrowserModel];
+    FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
+                                                                          currentIndex:0];
+    browserVC.parentVC = self;
+    browserVC.isShowPageControl = NO;
+    [browserVC show];
+
 }
 
 
