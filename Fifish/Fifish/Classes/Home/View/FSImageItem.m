@@ -9,6 +9,8 @@
 #import "FSImageItem.h"
 #import "SDWebImageManager.h"
 #import "UIImageView+WebCache.h"
+#import "FSProgressViewProgress.h"
+#import "Masonry.h"
 
 const CGFloat kMaximumZoomScale = 3.0f;
 const CGFloat kMinimumZoomScale = 1.0f;
@@ -16,9 +18,18 @@ const CGFloat kDuration = 0.3f;
 
 @interface FSImageItem ()<UIScrollViewDelegate>
 
+@property (nonatomic, strong) FSProgressViewProgress *progressView;
+
 @end
 
 @implementation FSImageItem
+
+-(FSProgressViewProgress *)progressView{
+    if (!_progressView) {
+        _progressView = [[FSProgressViewProgress alloc] init];
+    }
+    return _progressView;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -30,6 +41,12 @@ const CGFloat kDuration = 0.3f;
         self.minimumZoomScale = kMinimumZoomScale;
         self.zoomScale = 1.0f;
         [self addSubview:self.imageView];
+        [self addSubview:self.progressView];
+        [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(self->_imageView.center);
+            make.width.height.mas_equalTo(60);
+        }];
+        self.progressView.hidden = YES;
         [self setupGestures];
     }
     return self;
@@ -58,7 +75,11 @@ const CGFloat kDuration = 0.3f;
     }
     self.zoomScale = 1.0f;
     if (self.isFirstShow) {
-        [self loadHdImage:YES];
+        if (self.imageModel.thumbnailImage) {
+            [self loadHdImage:YES];
+        } else {
+            [self performSelector:@selector(loadHdImage:) withObject:@(YES) afterDelay:0.5];
+        }
     } else {
         [self loadHdImage:NO];
     }
@@ -128,11 +149,15 @@ const CGFloat kDuration = 0.3f;
                                              options:options
                                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                 //hud
+                                                self.progressView.hidden = NO;
+                                                CGFloat pictureProgress = 1.0 * receivedSize / expectedSize;
+                                                [self.progressView setProgress:pictureProgress animated:YES];
                                             }
                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                                __strong typeof(weakSelf) sself = weakSelf;
                                                if (finished && image) {
                                                    //hide hud
+                                                   self.progressView.hidden = YES;
                                                    sself.imageView.image = image;
                                                    sself.imageModel.thumbnailImage = image;
                                                    if ([sself.eventDelegate respondsToSelector:@selector(didFinishedDownLoadHDImage)]) {

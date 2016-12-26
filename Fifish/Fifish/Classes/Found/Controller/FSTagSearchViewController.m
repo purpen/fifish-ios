@@ -25,6 +25,8 @@
 #import "CoreTextData.h"
 #import "CTFrameParser.h"
 #import "WMPlayer.h"
+#import "FSImageBrowserModel.h"
+#import "FSImageBrowserVC.h"
 
 @interface FSTagSearchViewController ()<SGTopTitleViewDelegate, UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 {
@@ -470,12 +472,28 @@
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{
-    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSZuoPin *model = self.stuffAry[sender.tag];
+//    vc.model = model;
+//    [self presentViewController:vc animated:YES completion:nil];
     FSZuoPin *model = self.stuffAry[sender.tag];
-    vc.model = model;
-    [self presentViewController:vc animated:YES completion:nil];
+    FSHomeViewCell *cell = [self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag + 1]];
+    NSMutableArray *tmps = [NSMutableArray array];
+    FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
+                                                                                 thumbnailURL:[NSURL URLWithString:model.file_small]
+                                                                                        HDURL:[NSURL URLWithString:model.srcfile]
+                                                                                containerView:cell.contentView
+                                                                          positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
+                                                                                        index:0];
+    
+    [tmps addObject:imageBrowserModel];
+    FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
+                                                                          currentIndex:0];
+    browserVC.parentVC = self;
+    browserVC.isShowPageControl = NO;
+    [browserVC show];
 }
 
 #pragma mark - 更多按钮
@@ -582,9 +600,9 @@
 - (void)toCell {
     [wmPlayer removeFromSuperview];
     [UIView animateWithDuration:0.5f animations:^{
-        wmPlayer.transform = CGAffineTransformIdentity;
-        wmPlayer.frame = self.imageView.bounds;
-        wmPlayer.playerLayer.frame =  wmPlayer.bounds;
+        self->wmPlayer.transform = CGAffineTransformIdentity;
+        self->wmPlayer.frame = self.imageView.bounds;
+        wmPlayer.playerLayer.frame =  self->wmPlayer.bounds;
         [self.imageView addSubview:wmPlayer];
         [self.imageView bringSubviewToFront:wmPlayer];
         [wmPlayer.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {

@@ -29,6 +29,8 @@
 #import "WMPlayer.h"
 #import "FSUserModel2.h"
 #import "UILabel+MultipleLines.h"
+#import "FSImageBrowserModel.h"
+#import "FSImageBrowserVC.h"
 
 @interface FSHomeDetailViewController ()<UITableViewDelegate, UITableViewDataSource, FSHomeViewCellDelegate, WMPlayerDelegate, FSReportViewControllerDelegate>
 {
@@ -263,12 +265,28 @@ static NSString * const FSCommentId = @"comment";
 
 #pragma mark - 点击图片
 -(void)imageClick:(UIButton*)sender{
-    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSBigImageViewController *vc = [[FSBigImageViewController alloc] init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    FSZuoPin *model = self.model;
+//    vc.model = model;
+//    [self presentViewController:vc animated:YES completion:nil];
     FSZuoPin *model = self.model;
-    vc.model = model;
-    [self presentViewController:vc animated:YES completion:nil];
+    NSMutableArray *tmps = [NSMutableArray array];
+    FSHomeViewCell *cell = (FSHomeViewCell *)self.commendTableView.tableHeaderView;
+    FSImageBrowserModel *imageBrowserModel = [[FSImageBrowserModel alloc] initWithplaceholder:nil
+                                                                                 thumbnailURL:[NSURL URLWithString:model.file_small]
+                                                                                        HDURL:[NSURL URLWithString:model.srcfile]
+                                                                                containerView:cell.contentView
+                                                                          positionInContainer:CGRectMake(0, cell.headImageView.y + cell.headImageView.height + 10, SCREEN_WIDTH, 211)
+                                                                                        index:0];
+    
+    [tmps addObject:imageBrowserModel];
+    FSImageBrowserVC *browserVC = [[FSImageBrowserVC alloc] initWithImageBrowserModels:tmps
+                                                                          currentIndex:0];
+    browserVC.parentVC = self;
+    browserVC.isShowPageControl = NO;
+    [browserVC show];
 }
 
 #pragma mark - 更多按钮

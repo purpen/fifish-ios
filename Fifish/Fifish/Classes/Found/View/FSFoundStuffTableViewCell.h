@@ -47,5 +47,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *like_count_label;
 /**  */
 @property (nonatomic, weak) id<FSFoundStuffTableViewCellDelegate> fSHomeViewDelegate;
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
 @end
