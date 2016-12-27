@@ -8,11 +8,14 @@
 
 #import "FSRovDirectionView.h"
 
+#import "FSdirectionManager.h"
+
 //测试用
 #import "UIView+Toast.h"
 
 //rov消息
 #import "RovInfo.h"
+#define toRad(X) (X*M_PI/180.0)
 @interface FSRovDirectionView ()
 
 /**
@@ -41,6 +44,12 @@
  测试用    是否需要记重置位置
  */
 @property (nonatomic)           BOOL      isResavePoint;
+
+/*
+ 地磁方向管理器
+ */
+@property (nonatomic,strong)FSdirectionManager * directionManager ;
+
 
 @end
 
@@ -84,6 +93,9 @@
         
 //        监听ROV 航向
 //        [self ObserverWithOSDCourse];
+        
+        //地磁指南针
+        [self realAngel];
     }
     return self;
 }
@@ -165,6 +177,18 @@
     
 }
 
+
+/*地磁方向管理器*/
+-(FSdirectionManager *)directionManager{
+    if (!_directionManager) {
+        
+        _directionManager = [FSdirectionManager shared];
+        
+    }
+    return _directionManager;
+}
+
+
 #warning  转动测试！
 - (void)testMethed{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -183,8 +207,8 @@
                 self.isResavePoint = NO;
             }
             
-            NSLog(@"%f",self.testOrgrPoint);
-            NSLog(@"%f",randomNumber);
+//            NSLog(@"%f",self.testOrgrPoint);
+//            NSLog(@"%f",randomNumber);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -199,6 +223,27 @@
         
     });
     
+}
+
+- (void)realAngel{
+    __block FSRovDirectionView * blockSelf = self;
+    self.directionManager.didUpdateHeadingBlock = ^(CLLocationDirection theHeading){
+        NSLog(@"%f",theHeading);
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             CGAffineTransform headingRotation;
+                             headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity, (CGFloat)toRad(0)-toRad(theHeading)-(CGFloat)toRad(90));
+                             
+                             headingRotation = CGAffineTransformScale(headingRotation, 1, 1);
+                             blockSelf.headingImageView.transform = headingRotation;
+                         }
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    };
+    [self.directionManager startSensor];
 }
 
 #pragma marke 通知中心
@@ -234,6 +279,8 @@
 -(void)dealloc{
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self.directionManager stopSensor];
 
 }
 

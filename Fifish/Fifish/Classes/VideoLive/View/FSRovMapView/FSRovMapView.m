@@ -7,13 +7,24 @@
 //
 
 #import "FSRovMapView.h"
+#import "FSMapScrollview.h"
+
+#import "FSdirectionManager.h"
+
 
 #import "Masonry.h"
+
+
+#define toRad(X) (X*M_PI/180.0)
 @interface FSRovMapView ()
 /**
  指南针
  */
-@property (nonatomic,strong)UIImageView * copassImageView;
+@property (nonatomic,strong)UIImageView     * copassImageView;
+
+@property (nonatomic,strong)FSMapScrollview * mapScrollview;
+
+@property (nonatomic,strong)FSdirectionManager * directionManager ;
 
 @end
 
@@ -25,21 +36,54 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.userInteractionEnabled = YES;
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         
+        [self addSubview:self.mapScrollview];
+        [self.mapScrollview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.mas_left);
+            make.top.equalTo(self.mas_top);
+            make.right.equalTo(self.mas_right);
+            make.bottom.equalTo(self.mas_bottom);
+        }];
+    
         [self addSubview:self.copassImageView];
         [self.copassImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mas_right);
             make.top.equalTo(self.mas_top);
         }];
-    
+        
+        //设置表格中心显示在视图中心
+        _mapScrollview.contentOffset = CGPointMake((_mapScrollview.contentSize.width-120)/2, (_mapScrollview.contentSize.height-120)/2);
         
         //监听rov信息
         [self registerNotice];
+        
+        
+        //地磁指南针
+        [self compassViewAngleChange];
+        
     }
     
     
     return self;
+}
+
+-(FSMapScrollview *)mapScrollview{
+    if (!_mapScrollview) {
+        _mapScrollview = [[FSMapScrollview alloc] init];
+        _mapScrollview.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+    }
+    return _mapScrollview;
+}
+
+-(FSdirectionManager *)directionManager{
+    if (!_directionManager) {
+        
+        _directionManager = [FSdirectionManager shared];
+        
+    }
+    return _directionManager;
 }
 
 /**
@@ -53,8 +97,31 @@
     NSLog(@"%@",info.userInfo);
 }
 
+//地磁指南针方向
+- (void)compassViewAngleChange{
+    __block FSRovMapView * blockSelf = self;
+    self.directionManager.didUpdateHeadingBlock = ^(CLLocationDirection theHeading){
+        NSLog(@"%f",theHeading);
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction
+                         animations:^{
+                             CGAffineTransform headingRotation;
+                             headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity, (CGFloat)toRad(0)-toRad(theHeading)-(CGFloat)toRad(90));
+                             
+                             headingRotation = CGAffineTransformScale(headingRotation, 1, 1);
+                             blockSelf.copassImageView.transform = headingRotation;
+                         }
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    };
+    [self.directionManager startSensor];
+}
+
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.directionManager stopSensor];
 }
 - (UIImageView *)copassImageView{
     if (!_copassImageView) {
@@ -67,37 +134,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     
-    UIBezierPath * path;
-    CGFloat lineSpace = rect.size.width/10.0;
-    [[UIColor whiteColor] set];
-    for (int i = 0; i<10; i++) {
-        
-        path = [UIBezierPath bezierPath];
-        [path setLineWidth:1];
-        if (i==5) {
-            [path setLineWidth:2];
-        }
-        else{
-            [path setLineWidth:1];
-        }
-        
-        [path moveToPoint:CGPointMake(0, i*lineSpace)];
-        [path  addLineToPoint:CGPointMake(rect.size.width, i*lineSpace)];
-        
-        [path moveToPoint:CGPointMake(i*lineSpace, 0)];
-        [path  addLineToPoint:CGPointMake(i*lineSpace,rect.size.height)];
-        
-        [path stroke];
-        
-    }
-    
-    UIImage * pointImage = [UIImage imageNamed:@"Rov_centerpoint_icon"];
-    [pointImage drawAtPoint:CGPointMake(((rect.size.width-pointImage.size.width)/2.0), ((rect.size.height-pointImage.size.height)/2.0))];
-
-    UIImage * logoImage = [UIImage imageNamed:@"P4_logo"];
-    [logoImage drawInRect:CGRectMake(43, 76, 15, 15)];
-    
-    
+   
     
     
 }

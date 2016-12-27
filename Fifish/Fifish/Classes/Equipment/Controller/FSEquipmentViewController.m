@@ -17,7 +17,6 @@
 #import "AppDelegate.h"
 #import "FSTipView.h"
 #import "UIView+FSExtension.h"
-
 @interface FSEquipmentViewController ()<UIScrollViewDelegate,reachableDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *connectionBtn;
@@ -106,8 +105,13 @@
     } else if (self.pictuerAry.count > 1) {
         self.pagrControl.hidden = NO;
     }
+    
+    
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+}
 #pragma mark - 连接帮助
 - (IBAction)contenHelp:(UIButton *)sender {
     FSContenHelpViewController *vc = [[FSContenHelpViewController alloc] init];

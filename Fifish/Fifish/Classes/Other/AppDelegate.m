@@ -228,6 +228,7 @@
 #pragma mark - 注册APNs成功并上报DeviceToken
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     [JPUSHService registerDeviceToken:deviceToken];
+    [JPUSHService setLogOFF];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
