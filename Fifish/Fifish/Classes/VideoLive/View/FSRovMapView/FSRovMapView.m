@@ -94,7 +94,7 @@
 }
 
 - (void)RovLocationChange:(NSNotification *)info{
-    NSLog(@"%@",info.userInfo);
+//    NSLog(@"%@",info.userInfo);
 }
 
 //地磁指南针方向

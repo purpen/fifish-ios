@@ -132,45 +132,45 @@
         _directionLabView = [[UIView alloc] init];
         _directionLabView.userInteractionEnabled = NO;
         
-#warning 我感觉这个渣渣写法肯定不对，肯定有简便布局方法
-        UILabel * Nlab =[[UILabel alloc] init];
-        Nlab.textColor = [UIColor whiteColor];
-        Nlab.font = [UIFont systemFontOfSize:10];
-        Nlab.text = @"000";
-        [_directionLabView addSubview:Nlab];
-        [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
-            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-        }];
-        UILabel * Elab =[[UILabel alloc] init];
-        Elab.textColor = [UIColor whiteColor];
-        Elab.font = [UIFont systemFontOfSize:10];
-        Elab.text = @"90";
-        [_directionLabView addSubview:Elab];
-        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-        }];
-
-        UILabel * Slab =[[UILabel alloc] init];
-        Slab.textColor = [UIColor whiteColor];
-        Slab.font = [UIFont systemFontOfSize:10];
-        Slab.text = @"180";
-        [_directionLabView addSubview:Slab];
-        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
-            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-        }];
-        
-        UILabel * Wlab =[[UILabel alloc] init];
-        Wlab.textColor = [UIColor whiteColor];
-        Wlab.font = [UIFont systemFontOfSize:10];
-        Wlab.text = @"270";
-        [_directionLabView addSubview:Wlab];
-        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-        }];
+//#warning 我感觉这个渣渣写法肯定不对，肯定有简便布局方法
+//        UILabel * Nlab =[[UILabel alloc] init];
+//        Nlab.textColor = [UIColor whiteColor];
+//        Nlab.font = [UIFont systemFontOfSize:10];
+//        Nlab.text = @"000";
+//        [_directionLabView addSubview:Nlab];
+//        [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
+//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
+//        }];
+//        UILabel * Elab =[[UILabel alloc] init];
+//        Elab.textColor = [UIColor whiteColor];
+//        Elab.font = [UIFont systemFontOfSize:10];
+//        Elab.text = @"90";
+//        [_directionLabView addSubview:Elab];
+//        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
+//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
+//        }];
+//
+//        UILabel * Slab =[[UILabel alloc] init];
+//        Slab.textColor = [UIColor whiteColor];
+//        Slab.font = [UIFont systemFontOfSize:10];
+//        Slab.text = @"180";
+//        [_directionLabView addSubview:Slab];
+//        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
+//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
+//        }];
+//        
+//        UILabel * Wlab =[[UILabel alloc] init];
+//        Wlab.textColor = [UIColor whiteColor];
+//        Wlab.font = [UIFont systemFontOfSize:10];
+//        Wlab.text = @"270";
+//        [_directionLabView addSubview:Wlab];
+//        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
+//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
+//        }];
     }
     
     return _directionLabView;

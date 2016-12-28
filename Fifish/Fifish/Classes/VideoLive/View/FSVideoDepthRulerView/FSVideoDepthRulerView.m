@@ -118,8 +118,8 @@
     if (!_depthBtn) {
         _depthBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_depthBtn setBackgroundImage:[UIImage imageNamed:@"line_depth"] forState:UIControlStateNormal];
+        [_depthBtn setTitleColor:LIVEVIDEO_WHITE_COLOR forState:UIControlStateNormal];
         _depthBtn.titleLabel.font = [UIFont systemFontOfSize:10];
-        [_depthBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     return _depthBtn;
 }

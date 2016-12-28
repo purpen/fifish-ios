@@ -10,6 +10,8 @@
 
 #import "LiveVideoMacro.h"
 
+#import "RovInfo.h"
+
 @interface FSBatteryView()
 
 //电量
@@ -24,7 +26,7 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkBattery) name:UIDeviceBatteryLevelDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkBattery:) name:@"RovInfoChange" object:nil];
         
     }
     return self;
@@ -33,20 +35,22 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 //电量改变
-- (void)checkBattery{
+- (void)checkBattery:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    self.BatteryValue = rovinfo.Remain_battery;
+    
     [self setNeedsDisplay];
 }
 
 - (float)BatteryValue{
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-    return [UIDevice currentDevice].batteryLevel;
+    return _BatteryValue;
     
 }
 - (void)drawRect:(CGRect)rect{
     
     [super drawRect:rect];
     
-    float   _currentNum = self.BatteryValue;
+    float   _currentNum = _BatteryValue;
     
     CGContextRef bgContextRef = UIGraphicsGetCurrentContext();
     
@@ -73,7 +77,18 @@
     CGContextStrokePath(bgContextRef);
     
     
-    
+    if (_currentNum <=0.2&&_currentNum>0.1) {
+        [[UIColor orangeColor] set];
+    }
+    else if (_currentNum<=0.1&&_currentNum>0){
+        [[UIColor redColor] set];
+    }
+    else if (_currentNum<=0.5&&_currentNum>0.2){
+        [[UIColor yellowColor] set];
+    }
+    else{
+        [LIVEVIDEO_DEFAULT_COLOR setFill];
+    }
     CGContextFillRect(bgContextRef,CGRectMake(1, edgeframe.size.height*(1-_currentNum)+2+1,edgeframe.size.width-2,edgeframe.size.height*_currentNum-2));//填充框
     
     CGContextDrawPath(bgContextRef, kCGPathFillStroke);//绘画路径

@@ -46,7 +46,7 @@
         
         
         NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%360 distence:0.1]];
+            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.1]];
         }];
         [timer fire];
         
@@ -196,6 +196,7 @@
 }
 
 -(void)Addpoints:(CGPoint)point{
+    
     [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
     
     [self drawLineOntheLayer];
