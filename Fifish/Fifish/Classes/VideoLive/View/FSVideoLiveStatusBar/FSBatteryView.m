@@ -37,15 +37,17 @@
 //电量改变
 - (void)checkBattery:(NSNotification *)notice{
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
-    self.BatteryValue = rovinfo.Remain_battery;
+    if (self.BatteryValue!=rovinfo.Remain_battery) {
     
-    [self setNeedsDisplay];
+      self.BatteryValue = rovinfo.Remain_battery;
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self setNeedsDisplay];
+        });
+        
+    }
+  
 }
 
-- (float)BatteryValue{
-    return _BatteryValue;
-    
-}
 - (void)drawRect:(CGRect)rect{
     
     [super drawRect:rect];

@@ -28,6 +28,12 @@
  */
 @property (nonatomic)       CGFloat      boxSpace;
 
+
+/**
+ 是否需要追焦
+ */
+@property (nonatomic)      BOOL         isNeedFocus;
+
 @end
 
 
@@ -45,24 +51,36 @@
         //添加中心点和ROVlogo
         [self addCenterPointAndRovLogo];
         
-        
-//        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-//            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.1]];
-//        }];
-//        [timer fire];
-        
     }
     return self;
 }
 
 //设置
 - (void)setUp{
+
+    /*默认设置追焦*/
+    self.isNeedFocus = YES;
+    
     self.userInteractionEnabled = YES;
     
     self.contentSize =CGSizeMake(4000, 4000);
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+    self.delegate = self;
+    
+    [self addObserverRovinfo];
 }
+
+
+//监听ROVinfo
+- (void)addObserverRovinfo{
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
+    }];
+    [timer fire];
+}
+
+
 - (CGPoint)LastPoitn:(CGPoint)lastpoin currentAngel:(CGFloat)currentAngle distence:(CGFloat)distence{
     
     CGFloat RecultAngle = 0.0;
@@ -229,16 +247,19 @@
 
 -(void)Addpoints:(CGPoint)point{
     
-//    if (self.pointArrs.count>10) {
-//        [self.pointArrs removeAllObjects];
-//        [self.BGview removeFromSuperview];
-//        [self addSubview:self.BGview];
-//    }
-//    else{
-    [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
-
+    /*计算当前左边x,y轴的最大值*/
+    CGFloat Maxpoint = MAX(fabs(point.x),fabs(point.y))*self.boxSpace;
+    
+    NSLog(@"max___-------_________%f",Maxpoint);
+    if (Maxpoint>self.contentSize.width/2) {
+        [self.pointArrs removeAllObjects];
+        [self.BGview removeFromSuperview];
+        [self addSubview:self.BGview];
+    }
+    else{
+        [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
         [self drawLineOntheLayer];
-//    }
+    }
 
 }
 
@@ -279,9 +300,10 @@
 //    rov跟随轨迹点运动
     self.LogoImageView.center = currentPoint;
     
-//    让当前点始终处于屏幕中心
-    self.contentOffset = CGPointMake(currentPoint.x-(self.frame.size.width/2), currentPoint.y-(self.frame.size.height/2));
-    
+//    追焦
+    if (self.isNeedFocus) {
+        self.contentOffset = CGPointMake(currentPoint.x-(self.frame.size.width/2), currentPoint.y-(self.frame.size.height/2));
+    }
     CGPathRelease(linePath);
     
 }
@@ -300,8 +322,22 @@
 
 
 
+#pragma  mark scrllowviewDelegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    self.isNeedFocus = NO;
+}
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isNeedFocus = YES;
+    });
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isNeedFocus = YES;
+    });
+}
 
 
 
