@@ -17,7 +17,7 @@ struct RovinfoStruct{
     unsigned char battery;
     unsigned char I_O;//开关
     unsigned char sonar_lenth;//声呐距离
-    unsigned char reserver1;//预留字段
+    unsigned char Distance;//预留字段
     unsigned char reserver2;
     unsigned char packetEnd;//包尾
 };
@@ -96,6 +96,7 @@ struct RovinfoStruct{
  *  以16进制存储
  */
 @property (nonatomic) CGFloat Remain_battery;
+
 @property (nonatomic , strong) NSString * IO_Switch;
 /**
  *  @author MC
@@ -104,6 +105,12 @@ struct RovinfoStruct{
  */
 @property (nonatomic , strong) NSString * Sonar_length;
 
+/**
+ *  @author MC
+ *
+ *  距离
+ */
+@property (nonatomic) CGFloat  distence;
 
 @property (nonatomic,assign)id<RovInfoDelegate>delegate;
 

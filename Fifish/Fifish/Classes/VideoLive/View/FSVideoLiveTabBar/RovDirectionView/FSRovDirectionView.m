@@ -89,10 +89,10 @@
         
         
 //        测试旋转方法
-        [self testMethed];
+//        [self testMethed];
         
 //        监听ROV 航向
-//        [self ObserverWithOSDCourse];
+        [self ObserverWithOSDCourse];
         
         //地磁指南针
         [self realAngel];
@@ -249,6 +249,7 @@
 #pragma marke 通知中心
 //监听ROV航向
 - (void)ObserverWithOSDCourse{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changecourse:) name:@"RovInfoChange" object:nil];
     
     
 }
@@ -267,7 +268,8 @@
         });
     }
     
-    NSLog(@"%f",self.testOrgrPoint);
+    //打印角度
+//    NSLog(@"%f",self.testOrgrPoint);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{

@@ -8,11 +8,15 @@
 
 #import "FSMapScrollview.h"
 #import "LiveVideoMacro.h"
+#import "RovInfo.h"
 #import "Masonry.h"
 
-@interface FSMapScrollview()
+@interface FSMapScrollview()<UIScrollViewDelegate>
 @property (nonatomic)       NSInteger   testNumber;
 @property (nonatomic,strong)UIImageView * centerImageview;
+
+@property (nonatomic,strong)UIView      * BGview;
+
 
 /**
  ROV图标
@@ -33,10 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled = YES;
-        
-        
-        self.contentSize =CGSizeMake(4000, 4000);
+        [self setUp];
         
         //画格子
         [self drawBox];
@@ -45,15 +46,23 @@
         [self addCenterPointAndRovLogo];
         
         
-        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.1]];
-        }];
-        [timer fire];
+//        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.1]];
+//        }];
+//        [timer fire];
         
     }
     return self;
 }
 
+//设置
+- (void)setUp{
+    self.userInteractionEnabled = YES;
+    
+    self.contentSize =CGSizeMake(4000, 4000);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+}
 - (CGPoint)LastPoitn:(CGPoint)lastpoin currentAngel:(CGFloat)currentAngle distence:(CGFloat)distence{
     
     CGFloat RecultAngle = 0.0;
@@ -120,13 +129,36 @@
    
 }
 
+//接受距离
+- (void)distenceChange:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+         [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:rovinfo.Heading_angle distence:rovinfo.distence]];
+    });
+                   
+}
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self test];
 }
 - (void)addCenterPointAndRovLogo{
-    [self addSubview:self.centerImageview];
-    [self addSubview:self.LogoImageView];
+    [self addSubview:self.BGview];
+    [self.BGview addSubview:self.centerImageview];
+    [self.BGview addSubview:self.LogoImageView];
+    
 
+}
+
+-(UIView *)BGview{
+    
+    if (!_BGview) {
+        _BGview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentSize.width, self.contentSize.height)];
+        _BGview.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _BGview;
+    
 }
 
 -(UIImageView *)centerImageview{
@@ -171,7 +203,7 @@
             
             LineLayer.path = pathRef;
             
-            [self.layer addSublayer:LineLayer];
+            [self.BGview.layer addSublayer:LineLayer];
             
         }
     }
@@ -189,7 +221,7 @@
     
     LineLayerTen.path = pathRefTen;
     
-    [self.layer addSublayer:LineLayerTen];
+    [self.BGview.layer addSublayer:LineLayerTen];
     
     CGPathRelease(pathRef);
     CGPathRelease(pathRefTen);
@@ -197,17 +229,26 @@
 
 -(void)Addpoints:(CGPoint)point{
     
+//    if (self.pointArrs.count>10) {
+//        [self.pointArrs removeAllObjects];
+//        [self.BGview removeFromSuperview];
+//        [self addSubview:self.BGview];
+//    }
+//    else{
     [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
-    
-    [self drawLineOntheLayer];
+
+        [self drawLineOntheLayer];
+//    }
+
 }
 
 - (NSMutableArray *)pointArrs{
     if (!_pointArrs) {
-        
         _pointArrs = [NSMutableArray array];
+
+    }
+    if (_pointArrs.count==0) {
         [_pointArrs addObject:[NSValue valueWithCGPoint:CGPointMake(0, 0)]];
-        
     }
     return _pointArrs;
     
@@ -233,10 +274,7 @@
     CGPathAddLineToPoint(linePath, NULL, currentPoint.x, currentPoint.y);
     lineLayer.path = linePath;
     
-//    NSLog(@"last:-----%@\n",NSStringFromCGPoint(lastPoint));
-//    
-//    NSLog(@"current:=====%@\n",NSStringFromCGPoint(currentPoint));
-    [self.layer addSublayer:lineLayer];
+    [self.BGview.layer addSublayer:lineLayer];
     
 //    rov跟随轨迹点运动
     self.LogoImageView.center = currentPoint;
@@ -256,11 +294,9 @@
 
 
 
-
-
-
-
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 
 

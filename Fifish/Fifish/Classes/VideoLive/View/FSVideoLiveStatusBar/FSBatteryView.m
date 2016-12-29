@@ -52,6 +52,7 @@
     
     float   _currentNum = _BatteryValue;
     
+    
     CGContextRef bgContextRef = UIGraphicsGetCurrentContext();
     
     CGRect edgeframe = CGRectMake(0, 2, 10, self.frame.size.height-2);

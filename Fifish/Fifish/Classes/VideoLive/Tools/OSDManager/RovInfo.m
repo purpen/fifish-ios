@@ -36,7 +36,10 @@
         self.Pitch_angle = ((((info.pitch_angle[0]&0xff)<<8)|(info.pitch_angle[1]&0xff))/100.0)-90.0;
         self.Roll_angle  = ((((info.roll_angle[0]&0xff)<<8)|(info.roll_angle[1]&0xff))/100.0)-90;
         self.Remain_battery = (info.battery&0xff)/100.0;
-        printf("-------->%d\n",info.battery);
+        self.distence = (info.Distance&0xff)/100.0;
+        //打印距离
+        NSLog(@"distecen------->%d",info.Distance&0xff);
+        
         NSNotification * notice = [NSNotification notificationWithName:@"RovInfoChange" object:nil userInfo:@{@"RVOINFO":self}];
         [[NSNotificationCenter defaultCenter] postNotification:notice];
     }
