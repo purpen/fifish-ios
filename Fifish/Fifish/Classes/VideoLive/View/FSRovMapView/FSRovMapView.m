@@ -57,7 +57,8 @@
         _mapScrollview.contentOffset = CGPointMake((_mapScrollview.contentSize.width-120)/2, (_mapScrollview.contentSize.height-120)/2);
         
         //监听rov信息
-        [self registerNotice];
+        /*暂时不在这监听，去里面的View监听*/
+//        [self registerNotice];
         
         
         //地磁指南针

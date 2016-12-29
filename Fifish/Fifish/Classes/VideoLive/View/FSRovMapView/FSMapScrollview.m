@@ -11,6 +11,7 @@
 #import "RovInfo.h"
 #import "Masonry.h"
 
+#define toRad(X) (X*M_PI/180.0)
 @interface FSMapScrollview()<UIScrollViewDelegate>
 @property (nonatomic)       NSInteger   testNumber;
 @property (nonatomic,strong)UIImageView * centerImageview;
@@ -73,11 +74,11 @@
 
 //监听ROVinfo
 - (void)addObserverRovinfo{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
-    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
-    }];
-    [timer fire];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+//    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
+//    }];
+//    [timer fire];
 }
 
 
@@ -150,11 +151,19 @@
 //接受距离
 - (void)distenceChange:(NSNotification *)notice{
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    __block FSMapScrollview * blockSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         
          [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:rovinfo.Heading_angle distence:rovinfo.distence]];
+        
+        CGAffineTransform headingRotation;
+        headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity,toRad(rovinfo.Heading_angle));
+        
+        headingRotation = CGAffineTransformScale(headingRotation, 1, 1);
+        blockSelf.LogoImageView.transform = headingRotation;
+        
     });
-                   
+    
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
