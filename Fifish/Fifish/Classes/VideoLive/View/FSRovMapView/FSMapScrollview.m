@@ -259,7 +259,7 @@
     /*计算当前左边x,y轴的最大值*/
     CGFloat Maxpoint = MAX(fabs(point.x),fabs(point.y))*self.boxSpace;
     
-    NSLog(@"max___-------_________%f",Maxpoint);
+    
     if (Maxpoint>self.contentSize.width/2) {
         [self.pointArrs removeAllObjects];
         [self.BGview removeFromSuperview];

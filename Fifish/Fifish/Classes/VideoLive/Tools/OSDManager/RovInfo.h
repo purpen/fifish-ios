@@ -97,7 +97,37 @@ struct RovinfoStruct{
  */
 @property (nonatomic) CGFloat Remain_battery;
 
-@property (nonatomic , strong) NSString * IO_Switch;
+/**
+ *  @author MC
+ *
+ *  定深开关
+ *  0关闭。1 打开
+ */
+@property (nonatomic) BOOL    isFixedDepth;
+
+/**
+ *  @author MC
+ *
+ *  定速巡航开关
+ *  0关闭。1 打开
+ */
+@property (nonatomic) BOOL    isFixedCruise;
+
+/**
+ *  @author MC
+ *
+ *  录制视频开关0关闭，1打开
+ *  0停止录制。1 开始录制
+ */
+@property (nonatomic) BOOL    isRecored;
+
+/**
+ *  @author MC
+ *
+ *  拍照开关
+ *  1 拍照
+ */
+@property (nonatomic) BOOL    isTakeAPicture;
 /**
  *  @author MC
  *

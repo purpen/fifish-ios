@@ -37,8 +37,16 @@
         self.Roll_angle  = ((((info.roll_angle[0]&0xff)<<8)|(info.roll_angle[1]&0xff))/100.0)-90;
         self.Remain_battery = (info.battery&0xff)/100.0;
         self.distence = (info.Distance&0xff)/100.0;
-        //打印距离
-        NSLog(@"distecen------->%d",info.Distance&0xff);
+        
+        self.isFixedDepth = ((info.I_O&(1))==1);
+        self.isFixedCruise = ((info.I_O&(1<<1))==2);
+        self.isRecored = ((info.I_O&(1<<2))==4);
+        self.isTakeAPicture = ((info.I_O&(1<<3))==8);
+        
+        if (self.isTakeAPicture) {
+            NSLog(@"拍照");
+        }
+        
         
         NSNotification * notice = [NSNotification notificationWithName:@"RovInfoChange" object:nil userInfo:@{@"RVOINFO":self}];
         [[NSNotificationCenter defaultCenter] postNotification:notice];

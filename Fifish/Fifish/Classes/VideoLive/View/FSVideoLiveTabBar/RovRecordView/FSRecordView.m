@@ -14,6 +14,8 @@
 
 #import "FSliveVideoConst.h"
 
+#import "RovInfo.h"
+
 @interface FSRecordView ()
 
 //录像按钮
@@ -46,6 +48,9 @@
             make.top.equalTo(self.mas_top);
             make.centerX.equalTo(self.mas_centerX);
         }];
+        
+        //监听当前camera状态
+        [self addObserverCameraInfo];
     }
     return self;
 }
@@ -88,6 +93,7 @@
     
     //  本地截取一帧图片
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];
+    [SVProgressHUD showSuccessWithStatus:@"拍照成功"];
     
 }
 
@@ -122,5 +128,22 @@
     }
 }
 
-
+#pragma  mark cameraDelegate
+- (void)addObserverCameraInfo{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(CamerastatusChange:) name:@"RovInfoChange" object:nil];
+}
+- (void)CamerastatusChange:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    if (self.isReciveVideo!=rovinfo.isRecored) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self recordViedeo:self.record_btn];
+        });
+    }
+    if (rovinfo.isTakeAPicture) {
+        [self takePhotoClick];
+    }
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
