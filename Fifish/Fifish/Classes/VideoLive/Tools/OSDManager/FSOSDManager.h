@@ -30,4 +30,7 @@
 //断开连接
 - (void)stopConnectWithOSD;
 
+//发送消息
+- (void)sendMessage:(NSString *)message;
+
 @end
