@@ -10,6 +10,8 @@
 
 #import "FSCameraManager.h"
 
+#import "FSOSDManager.h"
+
 #import "SVProgressHUD.h"
 
 #import "FSliveVideoConst.h"
@@ -61,7 +63,7 @@
         _record_btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn_seleted"] forState:UIControlStateSelected];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
-        [_record_btn addTarget:self action:@selector(recordViedeo:) forControlEvents:UIControlEventTouchUpInside];
+//        [_record_btn addTarget:self action:@selector(recordViedeoWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _record_btn;
 }
@@ -99,8 +101,30 @@
 
 
 #pragma mark 录制
+- (void)recordViedeoWithBtn:(UIButton *)sender{
+    
+    //解决控制板时间冲突问题，每次先移除通知，然后延迟1.5秒再注册通知
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RovInfoChange" object:nil];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self addObserverCameraInfo];
+//    });
+    
+    [self recordViedeo:sender];
+}
+
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
+    
+    
+    
+    if (self.isReciveVideo) {
+        [[FSOSDManager sharedManager] sendMessage:@"recording"];
+    }
+    else{
+        [[FSOSDManager sharedManager] sendMessage:@"no_recording"];
+    }
+    
+    
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticSaveMp4File object:nil userInfo:@{FSNoticSaveMp4FileStatus:[NSNumber numberWithBool:self.isReciveVideo]}];
     //通知ROV录制
