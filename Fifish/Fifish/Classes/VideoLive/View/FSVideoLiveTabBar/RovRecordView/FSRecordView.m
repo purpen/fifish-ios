@@ -164,7 +164,10 @@
         });
     }
     if (rovinfo.isTakeAPicture) {
-        [self takePhotoClick];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self takePhotoClick];
+        });
+        
     }
 }
 -(void)dealloc{
