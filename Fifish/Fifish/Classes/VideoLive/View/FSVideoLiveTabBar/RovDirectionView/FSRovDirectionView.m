@@ -123,6 +123,11 @@
 //        _headingImageView.image= [UIImage imageNamed:@"Rov_direction_BG"];
         [_headingImageView setBackgroundImage:[UIImage imageNamed:@"Rov_direction_BG"] forState:UIControlStateNormal];
         [_headingImageView addTarget:self action:@selector(ResavePoint:) forControlEvents:UIControlEventTouchDownRepeat];
+        
+        //长按
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(restoreRodeMap:)];
+        longPress.minimumPressDuration = 2; //定义按的时间
+        [_headingImageView addGestureRecognizer:longPress];
     }
     return _headingImageView;
 }
@@ -287,8 +292,19 @@
 }
 
 #pragma mark test
+//手动记录当前偏转角作为基准值
 - (void)ResavePoint:(UIButton*)btn{
     NSLog(@"fafafaf");
     self.isResavePoint = YES;
+}
+
+#pragma mark 点击重置路径点，测试用
+- (void)restoreRodeMap:(UILongPressGestureRecognizer *)Gesture{
+    if ([Gesture state] == UIGestureRecognizerStateBegan) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [KEY_WINDOW makeToast:@"路径重置成功！"];
+        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteRodeMap" object:nil];
+    }
 }
 @end

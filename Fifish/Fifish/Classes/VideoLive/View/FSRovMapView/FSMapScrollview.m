@@ -75,6 +75,10 @@
 //监听ROVinfo
 - (void)addObserverRovinfo{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+    
+    //点击左下角方向视图重置路径，测试用。
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restoreLayer) name:@"deleteRodeMap" object:nil];
+    
 //    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
 //        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
 //    }];
@@ -144,9 +148,6 @@
 }
 
 
-- (void)test{
-   
-}
 
 //接受距离
 - (void)distenceChange:(NSNotification *)notice{
@@ -166,9 +167,6 @@
     
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self test];
-}
 - (void)addCenterPointAndRovLogo{
     [self addSubview:self.BGview];
     [self.BGview addSubview:self.centerImageview];
@@ -261,9 +259,7 @@
     
     
     if (Maxpoint>self.contentSize.width/2) {
-        [self.pointArrs removeAllObjects];
-        [self.BGview removeFromSuperview];
-        [self addSubview:self.BGview];
+        [self restoreLayer];
     }
     else{
         [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
@@ -271,7 +267,15 @@
     }
 
 }
-
+//重置轨迹点
+- (void)restoreLayer{
+    [self.pointArrs removeAllObjects];
+    [self.BGview removeFromSuperview];
+    self.BGview = nil;
+    [self addSubview:self.BGview];
+    [self drawBox];
+    [self addCenterPointAndRovLogo];
+}
 - (NSMutableArray *)pointArrs{
     if (!_pointArrs) {
         _pointArrs = [NSMutableArray array];

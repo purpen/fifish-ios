@@ -25,6 +25,6 @@
  @param currentAngle 当前角度
  @param distence 相对于上一次数据传过来的距离差
  */
-- (void)addPointWithCurrentAngel:(CGFloat)currentAngle distence:(CGFloat)distence;
+//- (void)addPointWithCurrentAngel:(CGFloat)currentAngle distence:(CGFloat)distence;
 
 @end
