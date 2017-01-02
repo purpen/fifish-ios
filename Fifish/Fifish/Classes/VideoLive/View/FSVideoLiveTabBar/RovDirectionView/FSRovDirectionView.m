@@ -261,8 +261,8 @@
 - (void)changecourse:(NSNotification *)notice{
     
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
-    
-    CGFloat routa = (rovinfo.Heading_angle-self.testOrgrPoint)*M_PI/180.0;
+
+    CGFloat routa = (360.0-(rovinfo.Heading_angle-self.testOrgrPoint))*M_PI/180.0;/*硬件磁感器装反了所以都用360减一下*/
     
     if (self.isResavePoint==YES) {
         self.testOrgrPoint = rovinfo.Heading_angle;

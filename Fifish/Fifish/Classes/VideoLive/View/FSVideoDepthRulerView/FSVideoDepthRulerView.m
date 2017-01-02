@@ -192,7 +192,7 @@
         CGPoint point = CGPointMake(0,((rovinfo.Depth-self.testOriginalDeptch)*self.leftRulersScrowView.stpe)-(self.leftRulersScrowView.frame.size.height/2));
         [self.leftRulersScrowView setContentOffset:point animated:YES];
 //        [self.rightRulersScrowView setContentOffset:point animated:YES;
-        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",rovinfo.Depth*self.deepCoefficient] forState:UIControlStateNormal];
+        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",(rovinfo.Depth-self.testOriginalDeptch)*self.deepCoefficient] forState:UIControlStateNormal];
     });
 }
 
