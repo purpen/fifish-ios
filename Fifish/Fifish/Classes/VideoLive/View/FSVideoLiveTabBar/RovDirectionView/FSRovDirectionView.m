@@ -227,7 +227,7 @@
             self.CurrentRovAngleValue = routa;
             
             if (self.isResavePoint==YES) {
-                self.initialRovAngleValue = routa;/*手动记录rov初始值*/
+                self.initialRovAngleValue = randomNumber;/*手动记录rov初始值*/
                 self.isResavePoint = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.initialRovAngleValue]];
@@ -264,7 +264,7 @@
     self.CurrentRovAngleValue = routa;
     
     if (self.isResavePoint==YES) {
-        self.initialRovAngleValue = routa;/*手动记录rov初始值*/
+        self.initialRovAngleValue = rovinfo.Heading_angle;/*手动记录rov初始值*/
         self.isResavePoint = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.initialRovAngleValue]];
