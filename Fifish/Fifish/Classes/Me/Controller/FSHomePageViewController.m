@@ -328,7 +328,7 @@ const CGFloat kRefreshBoundary = 64.0f;
     if (!_loadingView) {
         _loadingView = [[UIImageView alloc] initWithFrame:CGRectMake(50.0f, 38.0f, 25.0f, 25.0f)];
         _loadingView.contentMode = UIViewContentModeScaleAspectFill;
-        _loadingView.image = [UIImage imageNamed:@"me_sex_selected"];
+        _loadingView.image = [UIImage imageNamed:@"me_loading"];
         _loadingView.clipsToBounds = YES;
         _loadingView.backgroundColor = [UIColor clearColor];
     }
