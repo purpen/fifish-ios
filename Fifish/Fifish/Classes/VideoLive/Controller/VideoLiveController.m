@@ -285,6 +285,9 @@
     [self.activityIndicatorView stopAnimating];
 }
 
+- (BOOL)prefersStatusBarHidden{
+        return YES;//隐藏    
+}
 //横屏
 - (BOOL)shouldAutorotate
 

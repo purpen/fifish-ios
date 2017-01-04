@@ -3630,7 +3630,7 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -4457,7 +4457,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				DEVELOPMENT_TEAM = 3256449JXC;
 				ENABLE_BITCODE = NO;
@@ -4494,8 +4493,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
-				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
+				PROVISIONING_PROFILE = "394b8307-9c63-4dd7-8931-b7c846e4511b";
+				PROVISIONING_PROFILE_SPECIFIER = QYAll;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4509,7 +4508,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_ENTITLEMENTS = Fifish/Fifish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chong Zhang (28X75VMVQY)";
 				DEVELOPMENT_TEAM = 3256449JXC;
@@ -4547,8 +4545,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66cea56e-2ae8-4a51-b954-ae6201eed7e1";
-				PROVISIONING_PROFILE_SPECIFIER = FifishDevProfile;
+				PROVISIONING_PROFILE = "394b8307-9c63-4dd7-8931-b7c846e4511b";
+				PROVISIONING_PROFILE_SPECIFIER = QYAll;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
