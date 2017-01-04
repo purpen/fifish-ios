@@ -89,10 +89,10 @@
         
         
 //        测试旋转方法
-        [self testMethed];
+//        [self testMethed];
         
 //        监听ROV 航向
-//        [self ObserverWithOSDCourse];
+        [self ObserverWithOSDCourse];
         
         //地磁指南针
         [self realAngel];
@@ -123,6 +123,11 @@
 //        _headingImageView.image= [UIImage imageNamed:@"Rov_direction_BG"];
         [_headingImageView setBackgroundImage:[UIImage imageNamed:@"Rov_direction_BG"] forState:UIControlStateNormal];
         [_headingImageView addTarget:self action:@selector(ResavePoint:) forControlEvents:UIControlEventTouchDownRepeat];
+        
+        //长按
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(restoreRodeMap:)];
+        longPress.minimumPressDuration = 2; //定义按的时间
+        [_headingImageView addGestureRecognizer:longPress];
     }
     return _headingImageView;
 }
@@ -132,45 +137,45 @@
         _directionLabView = [[UIView alloc] init];
         _directionLabView.userInteractionEnabled = NO;
         
-#warning 我感觉这个渣渣写法肯定不对，肯定有简便布局方法
-        UILabel * Nlab =[[UILabel alloc] init];
-        Nlab.textColor = [UIColor whiteColor];
-        Nlab.font = [UIFont systemFontOfSize:10];
-        Nlab.text = @"000";
-        [_directionLabView addSubview:Nlab];
-        [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
-            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-        }];
-        UILabel * Elab =[[UILabel alloc] init];
-        Elab.textColor = [UIColor whiteColor];
-        Elab.font = [UIFont systemFontOfSize:10];
-        Elab.text = @"90";
-        [_directionLabView addSubview:Elab];
-        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-        }];
-
-        UILabel * Slab =[[UILabel alloc] init];
-        Slab.textColor = [UIColor whiteColor];
-        Slab.font = [UIFont systemFontOfSize:10];
-        Slab.text = @"180";
-        [_directionLabView addSubview:Slab];
-        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
-            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-        }];
-        
-        UILabel * Wlab =[[UILabel alloc] init];
-        Wlab.textColor = [UIColor whiteColor];
-        Wlab.font = [UIFont systemFontOfSize:10];
-        Wlab.text = @"270";
-        [_directionLabView addSubview:Wlab];
-        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
-            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-        }];
+//#warning 我感觉这个渣渣写法肯定不对，肯定有简便布局方法
+//        UILabel * Nlab =[[UILabel alloc] init];
+//        Nlab.textColor = [UIColor whiteColor];
+//        Nlab.font = [UIFont systemFontOfSize:10];
+//        Nlab.text = @"000";
+//        [_directionLabView addSubview:Nlab];
+//        [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
+//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
+//        }];
+//        UILabel * Elab =[[UILabel alloc] init];
+//        Elab.textColor = [UIColor whiteColor];
+//        Elab.font = [UIFont systemFontOfSize:10];
+//        Elab.text = @"90";
+//        [_directionLabView addSubview:Elab];
+//        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
+//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
+//        }];
+//
+//        UILabel * Slab =[[UILabel alloc] init];
+//        Slab.textColor = [UIColor whiteColor];
+//        Slab.font = [UIFont systemFontOfSize:10];
+//        Slab.text = @"180";
+//        [_directionLabView addSubview:Slab];
+//        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
+//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
+//        }];
+//        
+//        UILabel * Wlab =[[UILabel alloc] init];
+//        Wlab.textColor = [UIColor whiteColor];
+//        Wlab.font = [UIFont systemFontOfSize:10];
+//        Wlab.text = @"270";
+//        [_directionLabView addSubview:Wlab];
+//        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
+//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
+//        }];
     }
     
     return _directionLabView;
@@ -249,14 +254,15 @@
 #pragma marke 通知中心
 //监听ROV航向
 - (void)ObserverWithOSDCourse{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changecourse:) name:@"RovInfoChange" object:nil];
     
     
 }
 - (void)changecourse:(NSNotification *)notice{
     
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
-    
-    CGFloat routa = (rovinfo.Heading_angle-self.testOrgrPoint)*M_PI/180.0;
+
+    CGFloat routa = (360.0-(rovinfo.Heading_angle-self.testOrgrPoint))*M_PI/180.0;/*硬件磁感器装反了所以都用360减一下*/
     
     if (self.isResavePoint==YES) {
         self.testOrgrPoint = rovinfo.Heading_angle;
@@ -267,7 +273,8 @@
         });
     }
     
-    NSLog(@"%f",self.testOrgrPoint);
+    //打印角度
+//    NSLog(@"%f",self.testOrgrPoint);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -285,8 +292,19 @@
 }
 
 #pragma mark test
+//手动记录当前偏转角作为基准值
 - (void)ResavePoint:(UIButton*)btn{
     NSLog(@"fafafaf");
     self.isResavePoint = YES;
+}
+
+#pragma mark 点击重置路径点，测试用
+- (void)restoreRodeMap:(UILongPressGestureRecognizer *)Gesture{
+    if ([Gesture state] == UIGestureRecognizerStateBegan) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [KEY_WINDOW makeToast:@"路径重置成功！"];
+        });
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteRodeMap" object:nil];
+    }
 }
 @end

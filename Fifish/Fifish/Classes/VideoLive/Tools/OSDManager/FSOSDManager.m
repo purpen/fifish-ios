@@ -99,6 +99,9 @@ NSInteger  const Fish_OSD_Port = 4321;
     }
 }
 #pragma mark - 消息发送成功 代理函数
+- (void)sendMessage:(NSString *)message{
+    [self.OSDConnectSocket writeData:[message dataUsingEncoding:NSUTF8StringEncoding] withTimeout:3 tag:1];
+}
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     NSLog(@"消息发送成功");
 }

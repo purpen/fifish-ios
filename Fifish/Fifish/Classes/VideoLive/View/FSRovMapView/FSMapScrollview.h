@@ -19,4 +19,12 @@
 //添加坐标点
 - (void)Addpoints:(CGPoint)point;
 
+/**
+ 根据角度个距离添加坐标点
+
+ @param currentAngle 当前角度
+ @param distence 相对于上一次数据传过来的距离差
+ */
+//- (void)addPointWithCurrentAngel:(CGFloat)currentAngle distence:(CGFloat)distence;
+
 @end

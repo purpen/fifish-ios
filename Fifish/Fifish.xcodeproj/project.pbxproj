@@ -11,6 +11,8 @@
 		040995641D95174600BFEC92 /* FSImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040995631D95174600BFEC92 /* FSImageModel.m */; };
 		040995671D95175400BFEC92 /* FSVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040995661D95175400BFEC92 /* FSVideoModel.m */; };
 		0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */; };
+		04120EFE1E14EBC80070DA87 /* FSMapScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 04120EFD1E14EBC80070DA87 /* FSMapScrollview.m */; };
+		04120F001E14EBDC0070DA87 /* FSRovMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04120EFF1E14EBDC0070DA87 /* FSRovMapView.m */; };
 		042365641D8401A70095007A /* FSCameraInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042365631D8401A70095007A /* FSCameraInfoModel.m */; };
 		042365701D8431110095007A /* FSImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423656F1D8431110095007A /* FSImageTools.m */; };
 		042BEAD21D7015E00067FC16 /* FSBorswerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BEAD01D7015E00067FC16 /* FSBorswerImageCell.m */; };
@@ -113,7 +115,6 @@
 		04596A901D802EEE008D1DD5 /* FSsettingBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A8F1D802EEE008D1DD5 /* FSsettingBaseViewController.m */; };
 		04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A921D8052FA008D1DD5 /* FSEncodingSettingViewController.m */; };
 		04596A9A1D805B58008D1DD5 /* FSFrameRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */; };
-		045CCD0D1E11FD8900F153BD /* FSMapScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 045CCD0C1E11FD8900F153BD /* FSMapScrollview.m */; };
 		045CCD131E126FB400F153BD /* FSdirectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 045CCD121E126FB400F153BD /* FSdirectionManager.m */; };
 		045D79E71DD5C36E009C2FD3 /* FSRovDirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D79E61DD5C36E009C2FD3 /* FSRovDirectionView.m */; };
 		046765171D63285800FFA743 /* FSBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046765161D63285800FFA743 /* FSBatteryView.m */; };
@@ -135,7 +136,6 @@
 		04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A52F001D90DC1000F9303D /* FSliveVideoConst.m */; };
 		04AAAF651E09304B0036DF86 /* FSRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF641E09304B0036DF86 /* FSRecordView.m */; };
 		04AAAF6A1E09387D0036DF86 /* FSRecordTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */; };
-		04BB09D91E0CCA9200355DBA /* FSRovMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB09D81E0CCA9200355DBA /* FSRovMapView.m */; };
 		04D014181DED5C1E00AC51B5 /* FSSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D014171DED5C1E00AC51B5 /* FSSettingManager.m */; };
 		04D5BAA91E02A44E0041CCAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D5BAA81E02A44E0041CCAC /* Assets.xcassets */; };
 		04F20ED71D7D0B79009790EE /* FSBearingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F20ED61D7D0B79009790EE /* FSBearingsView.m */; };
@@ -465,6 +465,8 @@
 		040995661D95175400BFEC92 /* FSVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVideoModel.m; sourceTree = "<group>"; };
 		0411CF941D863CAE0021E055 /* FSRovMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovMediaViewController.h; sourceTree = "<group>"; };
 		0411CF951D863CAE0021E055 /* FSRovMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMediaViewController.m; sourceTree = "<group>"; };
+		04120EFD1E14EBC80070DA87 /* FSMapScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMapScrollview.m; sourceTree = "<group>"; };
+		04120EFF1E14EBDC0070DA87 /* FSRovMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMapView.m; sourceTree = "<group>"; };
 		042365621D8401A70095007A /* FSCameraInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCameraInfoModel.h; sourceTree = "<group>"; };
 		042365631D8401A70095007A /* FSCameraInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCameraInfoModel.m; sourceTree = "<group>"; };
 		0423656E1D8431110095007A /* FSImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTools.h; sourceTree = "<group>"; };
@@ -721,7 +723,6 @@
 		04596A981D805B58008D1DD5 /* FSFrameRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSFrameRateViewController.h; sourceTree = "<group>"; };
 		04596A991D805B58008D1DD5 /* FSFrameRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSFrameRateViewController.m; sourceTree = "<group>"; };
 		045CCD0B1E11FD8900F153BD /* FSMapScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMapScrollview.h; sourceTree = "<group>"; };
-		045CCD0C1E11FD8900F153BD /* FSMapScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMapScrollview.m; sourceTree = "<group>"; };
 		045CCD0E1E126A7500F153BD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		045CCD111E126FB400F153BD /* FSdirectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSdirectionManager.h; sourceTree = "<group>"; };
 		045CCD121E126FB400F153BD /* FSdirectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSdirectionManager.m; sourceTree = "<group>"; };
@@ -765,7 +766,6 @@
 		04AAAF681E09387D0036DF86 /* FSRecordTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRecordTimeView.h; sourceTree = "<group>"; };
 		04AAAF691E09387D0036DF86 /* FSRecordTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRecordTimeView.m; sourceTree = "<group>"; };
 		04BB09D71E0CCA9200355DBA /* FSRovMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRovMapView.h; sourceTree = "<group>"; };
-		04BB09D81E0CCA9200355DBA /* FSRovMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRovMapView.m; sourceTree = "<group>"; };
 		04D014161DED5C1E00AC51B5 /* FSSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSettingManager.h; sourceTree = "<group>"; };
 		04D014171DED5C1E00AC51B5 /* FSSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSettingManager.m; sourceTree = "<group>"; };
 		04D5BAA81E02A44E0041CCAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2263,9 +2263,9 @@
 			isa = PBXGroup;
 			children = (
 				04BB09D71E0CCA9200355DBA /* FSRovMapView.h */,
-				04BB09D81E0CCA9200355DBA /* FSRovMapView.m */,
+				04120EFF1E14EBDC0070DA87 /* FSRovMapView.m */,
 				045CCD0B1E11FD8900F153BD /* FSMapScrollview.h */,
-				045CCD0C1E11FD8900F153BD /* FSMapScrollview.m */,
+				04120EFD1E14EBC80070DA87 /* FSMapScrollview.m */,
 			);
 			path = FSRovMapView;
 			sourceTree = "<group>";
@@ -3949,7 +3949,6 @@
 				1FDE28CD1D92739700566A73 /* FSTageModel.m in Sources */,
 				0436AF461DACE5C2001E6808 /* FSLordKelvinFilter.m in Sources */,
 				04A52F011D90DC1000F9303D /* FSliveVideoConst.m in Sources */,
-				04BB09D91E0CCA9200355DBA /* FSRovMapView.m in Sources */,
 				1FF783BF1D9B585700618245 /* FSImageScrollView.m in Sources */,
 				0434F2FD1D61940000DBFFCE /* FishBaseViewController.m in Sources */,
 				1FE564F21DB5CC12000AE61D /* FSZuoPinGroupTableViewCell.m in Sources */,
@@ -3961,6 +3960,7 @@
 				1F0424501D51F3C30071A1D6 /* AFURLSessionManager.m in Sources */,
 				0442D51F1DAE29A7001ECC6B /* FSRegulateSliderView.m in Sources */,
 				1F4201D01D475C8A00D3E6CB /* SVRadialGradientLayer.m in Sources */,
+				04120F001E14EBDC0070DA87 /* FSRovMapView.m in Sources */,
 				48FC207E1DBC4A08001D71F4 /* CTFrameParser.m in Sources */,
 				04596A8D1D802406008D1DD5 /* FSImageSettingTableViewCell.m in Sources */,
 				1F0219CC1D799027003A8A11 /* FSForgetViewController.m in Sources */,
@@ -3974,7 +3974,6 @@
 				1F04244E1D51F3C30071A1D6 /* AFURLRequestSerialization.m in Sources */,
 				1F04246A1D51F4260071A1D6 /* NSString+FBMD5.m in Sources */,
 				0411CF961D863CAE0021E055 /* FSRovMediaViewController.m in Sources */,
-				045CCD0D1E11FD8900F153BD /* FSMapScrollview.m in Sources */,
 				04F584761DA9EFA0008FC43A /* FSMediaBrowseViewController.m in Sources */,
 				0436AF4E1DACE5C2001E6808 /* FSWaldenFilter.m in Sources */,
 				1FE564B61DAE275A000AE61D /* UIView+SGExtension.m in Sources */,
@@ -3991,6 +3990,7 @@
 				0442D50F1DADE294001ECC6B /* FSRegulateCollectionView.m in Sources */,
 				0436AF441DACE5C2001E6808 /* FSInkwellFilter.m in Sources */,
 				04AAAF651E09304B0036DF86 /* FSRecordView.m in Sources */,
+				04120EFE1E14EBC80070DA87 /* FSMapScrollview.m in Sources */,
 				1F8011361DA8902000B320C7 /* FSTipView.m in Sources */,
 				047A85841D795C6600A88891 /* FSRulersScrollView.m in Sources */,
 				04596A931D8052FA008D1DD5 /* FSEncodingSettingViewController.m in Sources */,

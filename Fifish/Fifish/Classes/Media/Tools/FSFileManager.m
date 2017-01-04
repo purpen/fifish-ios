@@ -115,8 +115,6 @@
 - (void)SaveMediaToSysLabWithFilePath:(NSString *)filePath WithMediaType:(FSmediaType)type{
     
     //判断是否授权了
-    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
-        
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
             
             //未授权
@@ -182,7 +180,6 @@
                 }
             }
         }];
-    }
     
 //    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
 //        PHAssetCollectionChangeRequest *request = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:createdCollection];

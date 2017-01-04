@@ -8,11 +8,16 @@
 
 #import "FSMapScrollview.h"
 #import "LiveVideoMacro.h"
+#import "RovInfo.h"
 #import "Masonry.h"
 
-@interface FSMapScrollview()
+#define toRad(X) (X*M_PI/180.0)
+@interface FSMapScrollview()<UIScrollViewDelegate>
 @property (nonatomic)       NSInteger   testNumber;
 @property (nonatomic,strong)UIImageView * centerImageview;
+
+@property (nonatomic,strong)UIView      * BGview;
+
 
 /**
  ROV图标
@@ -24,6 +29,12 @@
  */
 @property (nonatomic)       CGFloat      boxSpace;
 
+
+/**
+ 是否需要追焦
+ */
+@property (nonatomic)      BOOL         isNeedFocus;
+
 @end
 
 
@@ -33,10 +44,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled = YES;
-        
-        
-        self.contentSize =CGSizeMake(4000, 4000);
+        [self setUp];
         
         //画格子
         [self drawBox];
@@ -44,15 +52,39 @@
         //添加中心点和ROVlogo
         [self addCenterPointAndRovLogo];
         
-        
-        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%360 distence:0.1]];
-        }];
-        [timer fire];
-        
     }
     return self;
 }
+
+//设置
+- (void)setUp{
+
+    /*默认设置追焦*/
+    self.isNeedFocus = YES;
+    
+    self.userInteractionEnabled = YES;
+    
+    self.contentSize =CGSizeMake(4000, 4000);
+    
+    self.delegate = self;
+    
+    [self addObserverRovinfo];
+}
+
+
+//监听ROVinfo
+- (void)addObserverRovinfo{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(distenceChange:) name:@"RovInfoChange" object:nil];
+    
+    //点击左下角方向视图重置路径，测试用。
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restoreLayer) name:@"deleteRodeMap" object:nil];
+    
+//    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
+//    }];
+//    [timer fire];
+}
+
 
 - (CGPoint)LastPoitn:(CGPoint)lastpoin currentAngel:(CGFloat)currentAngle distence:(CGFloat)distence{
     
@@ -116,17 +148,42 @@
 }
 
 
-- (void)test{
-   
+
+//接受距离
+- (void)distenceChange:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    __block FSMapScrollview * blockSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+         [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:rovinfo.Heading_angle distence:rovinfo.distence]];
+        
+        CGAffineTransform headingRotation;
+        headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity,toRad(rovinfo.Heading_angle));
+        
+        headingRotation = CGAffineTransformScale(headingRotation, 1, 1);
+        blockSelf.LogoImageView.transform = headingRotation;
+        
+    });
+    
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self test];
-}
 - (void)addCenterPointAndRovLogo{
-    [self addSubview:self.centerImageview];
-    [self addSubview:self.LogoImageView];
+    [self addSubview:self.BGview];
+    [self.BGview addSubview:self.centerImageview];
+    [self.BGview addSubview:self.LogoImageView];
+    
 
+}
+
+-(UIView *)BGview{
+    
+    if (!_BGview) {
+        _BGview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentSize.width, self.contentSize.height)];
+        _BGview.backgroundColor = [UIColor clearColor];
+        
+    }
+    return _BGview;
+    
 }
 
 -(UIImageView *)centerImageview{
@@ -171,7 +228,7 @@
             
             LineLayer.path = pathRef;
             
-            [self.layer addSublayer:LineLayer];
+            [self.BGview.layer addSublayer:LineLayer];
             
         }
     }
@@ -189,24 +246,43 @@
     
     LineLayerTen.path = pathRefTen;
     
-    [self.layer addSublayer:LineLayerTen];
+    [self.BGview.layer addSublayer:LineLayerTen];
     
     CGPathRelease(pathRef);
     CGPathRelease(pathRefTen);
 }
 
 -(void)Addpoints:(CGPoint)point{
-    [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
     
-    [self drawLineOntheLayer];
-}
+    /*计算当前左边x,y轴的最大值*/
+    CGFloat Maxpoint = MAX(fabs(point.x),fabs(point.y))*self.boxSpace;
+    
+    
+    if (Maxpoint>self.contentSize.width/2) {
+        [self restoreLayer];
+    }
+    else{
+        [self.pointArrs addObject:[NSValue valueWithCGPoint:point]];
+        [self drawLineOntheLayer];
+    }
 
+}
+//重置轨迹点
+- (void)restoreLayer{
+    [self.pointArrs removeAllObjects];
+    [self.BGview removeFromSuperview];
+    self.BGview = nil;
+    [self addSubview:self.BGview];
+    [self drawBox];
+    [self addCenterPointAndRovLogo];
+}
 - (NSMutableArray *)pointArrs{
     if (!_pointArrs) {
-        
         _pointArrs = [NSMutableArray array];
+
+    }
+    if (_pointArrs.count==0) {
         [_pointArrs addObject:[NSValue valueWithCGPoint:CGPointMake(0, 0)]];
-        
     }
     return _pointArrs;
     
@@ -232,17 +308,15 @@
     CGPathAddLineToPoint(linePath, NULL, currentPoint.x, currentPoint.y);
     lineLayer.path = linePath;
     
-//    NSLog(@"last:-----%@\n",NSStringFromCGPoint(lastPoint));
-//    
-//    NSLog(@"current:=====%@\n",NSStringFromCGPoint(currentPoint));
-    [self.layer addSublayer:lineLayer];
+    [self.BGview.layer addSublayer:lineLayer];
     
 //    rov跟随轨迹点运动
     self.LogoImageView.center = currentPoint;
     
-//    让当前点始终处于屏幕中心
-    self.contentOffset = CGPointMake(currentPoint.x-(self.frame.size.width/2), currentPoint.y-(self.frame.size.height/2));
-    
+//    追焦
+    if (self.isNeedFocus) {
+        self.contentOffset = CGPointMake(currentPoint.x-(self.frame.size.width/2), currentPoint.y-(self.frame.size.height/2));
+    }
     CGPathRelease(linePath);
     
 }
@@ -255,16 +329,28 @@
 
 
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 
 
+#pragma  mark scrllowviewDelegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    self.isNeedFocus = NO;
+}
 
-
-
-
-
-
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isNeedFocus = YES;
+    });
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.isNeedFocus = YES;
+    });
+}
 
 
 

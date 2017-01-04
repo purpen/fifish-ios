@@ -13,6 +13,11 @@
 #import "FSRecordView.h"/*录制按钮view*/
 
 #import "RovInfo.h"
+
+#import "FSConst.h"
+
+//测试用
+#import "UIView+Toast.h"
 @interface FSVideoDepthRulerView()
 
 //左边刻度尺
@@ -31,6 +36,12 @@
 @property (nonatomic,strong)UIView              * currentLineView;//标识线
 
 @property (nonatomic,strong)FSRecordView        * RecordView;//录制按钮view
+
+//测试用的基准值，用于校准传感器偏差
+@property (nonatomic)       CGFloat               testOriginalDeptch;
+//是否需要校准当前值
+@property (nonatomic)       BOOL                  needRecordDeptchValue;
+
 
 @end
 
@@ -118,8 +129,9 @@
     if (!_depthBtn) {
         _depthBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_depthBtn setBackgroundImage:[UIImage imageNamed:@"line_depth"] forState:UIControlStateNormal];
+        [_depthBtn setTitleColor:LIVEVIDEO_WHITE_COLOR forState:UIControlStateNormal];
+        [_depthBtn addTarget:self action:@selector(recordCurrentDepth:) forControlEvents:UIControlEventTouchDownRepeat];
         _depthBtn.titleLabel.font = [UIFont systemFontOfSize:10];
-        [_depthBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     return _depthBtn;
 }
@@ -168,12 +180,25 @@
 }
 - (void)depthChange:(NSNotification *)notice{
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    if (self.needRecordDeptchValue ==YES) {
+        self.testOriginalDeptch = rovinfo.Depth;
+        self.needRecordDeptchValue = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.testOriginalDeptch]];
+        });
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        CGPoint point = CGPointMake(0,(rovinfo.Depth*self.leftRulersScrowView.stpe)-(self.leftRulersScrowView.frame.size.height/2));
+        CGPoint point = CGPointMake(0,((rovinfo.Depth-self.testOriginalDeptch)*self.leftRulersScrowView.stpe)-(self.leftRulersScrowView.frame.size.height/2));
         [self.leftRulersScrowView setContentOffset:point animated:YES];
-        [self.rightRulersScrowView setContentOffset:point animated:YES];
-        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",rovinfo.Depth*self.deepCoefficient] forState:UIControlStateNormal];
+//        [self.rightRulersScrowView setContentOffset:point animated:YES;
+        [self.depthBtn setTitle:[NSString stringWithFormat:@"-%.2f",(rovinfo.Depth-self.testOriginalDeptch)*self.deepCoefficient] forState:UIControlStateNormal];
     });
+}
+
+#pragma mark test
+- (void)recordCurrentDepth:(UIButton *)btn{
+    self.needRecordDeptchValue = YES;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

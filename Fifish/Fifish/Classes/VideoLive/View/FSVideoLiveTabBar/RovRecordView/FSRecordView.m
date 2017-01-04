@@ -10,9 +10,13 @@
 
 #import "FSCameraManager.h"
 
+#import "FSOSDManager.h"
+
 #import "SVProgressHUD.h"
 
 #import "FSliveVideoConst.h"
+
+#import "RovInfo.h"
 
 @interface FSRecordView ()
 
@@ -46,6 +50,9 @@
             make.top.equalTo(self.mas_top);
             make.centerX.equalTo(self.mas_centerX);
         }];
+        
+        //监听当前camera状态
+        [self addObserverCameraInfo];
     }
     return self;
 }
@@ -56,7 +63,7 @@
         _record_btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn_seleted"] forState:UIControlStateSelected];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
-        [_record_btn addTarget:self action:@selector(recordViedeo:) forControlEvents:UIControlEventTouchUpInside];
+//        [_record_btn addTarget:self action:@selector(recordViedeoWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _record_btn;
 }
@@ -88,13 +95,36 @@
     
     //  本地截取一帧图片
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticeTakePhoto object:nil];
+    [SVProgressHUD showSuccessWithStatus:@"拍照成功"];
     
 }
 
 
 #pragma mark 录制
+- (void)recordViedeoWithBtn:(UIButton *)sender{
+    
+    //解决控制板时间冲突问题，每次先移除通知，然后延迟1.5秒再注册通知
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RovInfoChange" object:nil];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self addObserverCameraInfo];
+//    });
+    
+    [self recordViedeo:sender];
+}
+
 - (void)recordViedeo:(UIButton *)sender{
     sender.selected =  self.isReciveVideo = !self.isReciveVideo;
+    
+    
+    
+    if (self.isReciveVideo) {
+        [[FSOSDManager sharedManager] sendMessage:@"recording"];
+    }
+    else{
+        [[FSOSDManager sharedManager] sendMessage:@"no_recording"];
+    }
+    
+    
     //录制通知
     [[NSNotificationCenter defaultCenter] postNotificationName:FSNoticSaveMp4File object:nil userInfo:@{FSNoticSaveMp4FileStatus:[NSNumber numberWithBool:self.isReciveVideo]}];
     //通知ROV录制
@@ -122,5 +152,25 @@
     }
 }
 
-
+#pragma  mark cameraDelegate
+- (void)addObserverCameraInfo{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(CamerastatusChange:) name:@"RovInfoChange" object:nil];
+}
+- (void)CamerastatusChange:(NSNotification *)notice{
+    RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
+    if (self.isReciveVideo!=rovinfo.isRecored) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self recordViedeo:self.record_btn];
+        });
+    }
+    if (rovinfo.isTakeAPicture) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self takePhotoClick];
+        });
+        
+    }
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
