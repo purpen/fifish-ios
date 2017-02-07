@@ -113,4 +113,7 @@ NSInteger  const Fish_OSD_Port = 4321;
     }
     [sock readDataWithTimeout:-1 tag:200];
 }
+-(void)dealloc{
+    [self.OSDConnectSocket disconnect];
+}
 @end

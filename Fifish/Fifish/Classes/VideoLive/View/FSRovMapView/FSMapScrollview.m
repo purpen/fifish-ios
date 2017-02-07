@@ -168,11 +168,11 @@
 }
 
 - (void)addCenterPointAndRovLogo{
+    
     [self addSubview:self.BGview];
     [self.BGview addSubview:self.centerImageview];
     [self.BGview addSubview:self.LogoImageView];
     
-
 }
 
 -(UIView *)BGview{
