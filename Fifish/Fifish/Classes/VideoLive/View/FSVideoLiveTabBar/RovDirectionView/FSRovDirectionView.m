@@ -36,9 +36,24 @@
 
 
 /**
- 测试用   0位置
+ 当前ROV不能获取真正的地磁值，过度用字段(用于手动记录rov初始值)   0位置
  */
-@property (nonatomic)           CGFloat   testOrgrPoint;
+@property (nonatomic)           CGFloat   initialRovAngleValue;
+
+/**
+ 当前ROV不能获取真正的地磁值，过度用字段(当前Rov角度值)
+ */
+@property (nonatomic)           CGFloat   CurrentRovAngleValue;
+
+/**
+ 当前ROV不能获取真正的地磁值，过度用字段(用于手动记录地磁初始值)
+ */
+@property (nonatomic)           CGFloat   initialMagneticFieldVale;
+
+/**
+ 当前ROV不能获取真正的地磁值，过度用字段(当前地磁偏转值)
+ */
+@property (nonatomic)           CGFloat   CurrentMagneticFieldVale;
 
 /**
  测试用    是否需要记重置位置
@@ -136,46 +151,6 @@
     if (!_directionLabView) {
         _directionLabView = [[UIView alloc] init];
         _directionLabView.userInteractionEnabled = NO;
-        
-//#warning 我感觉这个渣渣写法肯定不对，肯定有简便布局方法
-//        UILabel * Nlab =[[UILabel alloc] init];
-//        Nlab.textColor = [UIColor whiteColor];
-//        Nlab.font = [UIFont systemFontOfSize:10];
-//        Nlab.text = @"000";
-//        [_directionLabView addSubview:Nlab];
-//        [Nlab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self->_directionLabView.mas_top).offset(7);
-//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-//        }];
-//        UILabel * Elab =[[UILabel alloc] init];
-//        Elab.textColor = [UIColor whiteColor];
-//        Elab.font = [UIFont systemFontOfSize:10];
-//        Elab.text = @"90";
-//        [_directionLabView addSubview:Elab];
-//        [Elab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.right.equalTo(self->_directionLabView.mas_right).offset(-7);
-//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-//        }];
-//
-//        UILabel * Slab =[[UILabel alloc] init];
-//        Slab.textColor = [UIColor whiteColor];
-//        Slab.font = [UIFont systemFontOfSize:10];
-//        Slab.text = @"180";
-//        [_directionLabView addSubview:Slab];
-//        [Slab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(self->_directionLabView.mas_bottom).offset(-3);
-//            make.centerX.equalTo(self->_directionLabView.mas_centerX);
-//        }];
-//        
-//        UILabel * Wlab =[[UILabel alloc] init];
-//        Wlab.textColor = [UIColor whiteColor];
-//        Wlab.font = [UIFont systemFontOfSize:10];
-//        Wlab.text = @"270";
-//        [_directionLabView addSubview:Wlab];
-//        [Wlab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(self->_directionLabView.mas_left).offset(7);
-//            make.centerY.equalTo(self->_directionLabView.mas_centerY).offset(2);
-//        }];
     }
     
     return _directionLabView;
@@ -194,55 +169,33 @@
 }
 
 
-#warning  转动测试！
-- (void)testMethed{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
 
-        while (1) {
-            CGFloat randomNumber = arc4random()%360-self.testOrgrPoint;
-            CGFloat routa = randomNumber*M_PI/180.0;
-            
-            if (self.isResavePoint==YES) {
-                self.testOrgrPoint = randomNumber;
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.testOrgrPoint]];
-                });
-                
-                self.isResavePoint = NO;
-            }
-            
-//            NSLog(@"%f",self.testOrgrPoint);
-//            NSLog(@"%f",randomNumber);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-                    self.RovImageView.transform = CGAffineTransformMakeRotation(routa);
-                } completion:nil];
-                
-            });
-            
-            sleep(2);
-        
-        }
-        
-    });
-    
-}
 
+
+/*
+    监听地磁角度，在block里面一直调用、
+ */
 - (void)realAngel{
     __block FSRovDirectionView * blockSelf = self;
     self.directionManager.didUpdateHeadingBlock = ^(CLLocationDirection theHeading){
         NSLog(@"%f",theHeading);
+        blockSelf.CurrentMagneticFieldVale = theHeading;
+        
+        CGFloat AngleOffset     = blockSelf.CurrentMagneticFieldVale-blockSelf.initialMagneticFieldVale;/*地磁偏移量*/
+        CGFloat HeadImagAngle   = 0-theHeading-90;
+        CGFloat RovAngle        = blockSelf.CurrentRovAngleValue-AngleOffset;
+        
+        NSLog(@"磁场 ====%f",RovAngle);
         [UIView animateWithDuration:0.6
                               delay:0.0
                             options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              CGAffineTransform headingRotation;
-                             headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity, (CGFloat)toRad(0)-toRad(theHeading)-(CGFloat)toRad(90));
+                             headingRotation = CGAffineTransformRotate(CGAffineTransformIdentity,(CGFloat)toRad(HeadImagAngle));
                              
                              headingRotation = CGAffineTransformScale(headingRotation, 1, 1);
                              blockSelf.headingImageView.transform = headingRotation;
+                             blockSelf.RovImageView.transform =CGAffineTransformRotate(CGAffineTransformIdentity, (CGFloat)toRad(RovAngle));
                          }
                          completion:^(BOOL finished) {
                              
@@ -258,27 +211,76 @@
     
     
 }
+
+
+#warning  转动测试！
+- (void)testMethed{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+       
+        
+        while (1) {
+            
+            
+            CGFloat randomNumber = arc4random()%70;
+            CGFloat routa = (360.0-(randomNumber-self.initialRovAngleValue/*当前值减去初始值*/));/*硬件磁感器装反了所以都用360减一下*/
+            self.CurrentRovAngleValue = routa;
+            
+            if (self.isResavePoint==YES) {
+                self.initialRovAngleValue = randomNumber;/*手动记录rov初始值*/
+                self.isResavePoint = NO;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.initialRovAngleValue]];
+                });
+            }
+            
+            /*
+             算出当前地磁相对于手动初始的偏移量、Rov手动初始的偏移量。rov最终旋转的角度就等于rov偏移量减去地磁偏移量，从而
+             保证rov方向固定
+             */
+            CGFloat AngleOffset = self.CurrentMagneticFieldVale-self.initialMagneticFieldVale;/*地磁偏移量*/
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGFloat currentRovValue = (routa-AngleOffset);
+                NSLog(@"RSDVALUE ====%f",currentRovValue);
+                [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+                    self.RovImageView.transform = CGAffineTransformMakeRotation((CGFloat)toRad(currentRovValue));
+                } completion:nil];
+                
+            });
+            
+            sleep(1);
+            
+        }
+        
+    });
+    
+}
+
 - (void)changecourse:(NSNotification *)notice{
     
     RovInfo *rovinfo = notice.userInfo[@"RVOINFO"];
 
-    CGFloat routa = (360.0-(rovinfo.Heading_angle-self.testOrgrPoint))*M_PI/180.0;/*硬件磁感器装反了所以都用360减一下*/
+    CGFloat routa = (360.0-(rovinfo.Heading_angle-self.initialRovAngleValue/*当前值减去初始值*/));/*硬件磁感器装反了所以都用360减一下*/
+    self.CurrentRovAngleValue = routa;
     
     if (self.isResavePoint==YES) {
-        self.testOrgrPoint = rovinfo.Heading_angle;
-        
+        self.initialRovAngleValue = rovinfo.Heading_angle;/*手动记录rov初始值*/
         self.isResavePoint = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.testOrgrPoint]];
+            [KEY_WINDOW makeToast:[NSString stringWithFormat:@"方向初始成功，初始角度为:%f",self.initialRovAngleValue]];
         });
     }
     
-    //打印角度
-//    NSLog(@"%f",self.testOrgrPoint);
-    
+    /*
+     算出当前地磁相对于手动初始的偏移量、Rov手动初始的偏移量。rov最终旋转的角度就等于rov偏移量减去地磁偏移量，从而
+     保证rov方向固定
+     */
+    CGFloat AngleOffset = self.CurrentMagneticFieldVale-self.initialMagneticFieldVale;/*地磁偏移量*/
     dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat currentRovValue = (routa-AngleOffset);
+        NSLog(@"RSDVALUE ====%f",currentRovValue);
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            self.RovImageView.transform = CGAffineTransformMakeRotation(routa);
+            self.RovImageView.transform = CGAffineTransformMakeRotation((CGFloat)toRad(currentRovValue));
         } completion:nil];
         
     });
@@ -291,10 +293,12 @@
 
 }
 
-#pragma mark test
+#pragma mark 初始化操作
 //手动记录当前偏转角作为基准值
 - (void)ResavePoint:(UIButton*)btn{
     NSLog(@"fafafaf");
+    
+    self.initialMagneticFieldVale = self.CurrentMagneticFieldVale;/*手动记录当前磁场值*/
     self.isResavePoint = YES;
 }
 

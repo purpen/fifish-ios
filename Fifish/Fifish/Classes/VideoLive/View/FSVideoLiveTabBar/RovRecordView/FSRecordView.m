@@ -63,7 +63,7 @@
         _record_btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn_seleted"] forState:UIControlStateSelected];
         [_record_btn setImage:[UIImage imageNamed:@"record_btn"] forState:UIControlStateNormal];
-//        [_record_btn addTarget:self action:@selector(recordViedeoWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_record_btn addTarget:self action:@selector(recordViedeoWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _record_btn;
 }
