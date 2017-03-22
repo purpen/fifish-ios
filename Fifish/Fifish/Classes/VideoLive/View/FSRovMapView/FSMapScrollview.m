@@ -78,17 +78,11 @@
     
     //点击左下角方向视图重置路径，测试用。
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restoreLayer) name:@"deleteRodeMap" object:nil];
-//    __block int i = 0;
-//    __block int angle = 0;
-    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-//        if (i%13==0) {
-//            angle = i/13*90;
-//        }
-        
-        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
-//        i++;
-    }];
-    [timer fire];
+    
+//    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        [self Addpoints:[self LastPoitn:[self.pointArrs[self.pointArrs.count-1] CGPointValue] currentAngel:arc4random()%45 distence:0.3]];
+//    }];
+//    [timer fire];
 }
 
 
