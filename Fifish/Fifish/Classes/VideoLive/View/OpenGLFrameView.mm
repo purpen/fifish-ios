@@ -593,7 +593,6 @@ exit:
 
 #pragma mark 图片存到本地
 - (void)writeImageDataTofile:(UIImage *)image{
-
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString* path = [paths objectAtIndex:0];
     NSLog(@"MP4 PATH: %@",path);
