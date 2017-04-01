@@ -2,8 +2,8 @@
 //  OpenGLFrameView.m
 //  OpenGLFrameView
 //
-//  Created by macpro on 16/8/13.
-//  Copyright © 2016年 taihuoniao. All rights reserved.
+//  Created by MC on 16/8/13.
+//  Copyright © 2016年 MC. All rights reserved.
 //
 
 
