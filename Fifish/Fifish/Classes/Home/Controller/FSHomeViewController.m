@@ -40,6 +40,7 @@
 #import "FSGuideManager.h"
 #import "FSImageBrowserModel.h"
 #import "FSImageBrowserVC.h"
+#import "FSUserModel2.h"
 
 @interface FSHomeViewController ()<UITableViewDelegate,UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, FSHomeViewCellDelegate, WMPlayerDelegate, FSHomeDetailViewControllerDelegate, FSReportViewControllerDelegate>
 
