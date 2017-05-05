@@ -270,7 +270,7 @@
     if (!_ViedoDecoder) {
 //        rtsp://218.204.223.237:554/live/1/66251FC11353191F/e7ooqwcfbqjoo80j.sdp
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://admin:admin@192.168.2.158:554/channel1/2"];
-        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://192.168.1.12/live"];
+        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"rtsp://192.168.2.158/channel1/2"];
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1476690710257396.flv"];
 
 //        _ViedoDecoder  = [[FifishH264Decoder alloc] initWithUrl:@"http://pull99.a8.com/live/1483361770008301.flv"];
