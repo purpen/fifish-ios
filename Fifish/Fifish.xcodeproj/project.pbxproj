@@ -3566,6 +3566,7 @@
 				1F7EDE121D45E0D200ABED5D /* Resources */,
 				CA66C69DF50A13C056668FDF /* [CP] Embed Pods Frameworks */,
 				28652571F062C7001495C259 /* [CP] Copy Pods Resources */,
+				FC07A2551F0279890050FFC2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3625,7 +3626,7 @@
 					1F7EDE131D45E0D200ABED5D = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 3256449JXC;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -3858,6 +3859,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fifish/Pods-Fifish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FC07A2551F0279890050FFC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion `date '+%Y%m%d%H%M'`\" \"${TARGET_BUILD_DIR}\"/${INFOPLIST_PATH}";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4459,8 +4473,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen QiYuan Technology Co. Ltd. (3256449JXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen QiYuan Technology Co. Ltd. (3256449JXC)";
-				DEVELOPMENT_TEAM = 3256449JXC;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -4496,8 +4510,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8d8af1ec-3b60-4c8a-92e1-cb379d587b9b";
-				PROVISIONING_PROFILE_SPECIFIER = allProfile1;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Debug;
@@ -4512,8 +4526,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen QiYuan Technology Co. Ltd. (3256449JXC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen QiYuan Technology Co. Ltd. (3256449JXC)";
-				DEVELOPMENT_TEAM = 3256449JXC;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -4548,8 +4562,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiyuan.fifish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8d8af1ec-3b60-4c8a-92e1-cb379d587b9b";
-				PROVISIONING_PROFILE_SPECIFIER = allProfile1;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Fifish/Classes/ThirdParty/FFmpeg-iOS/include ${SRCROOT}/**";
 			};
 			name = Release;
